@@ -7,7 +7,7 @@ const Components: NextPage<{}> = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    router.push('/components/avatar');
+    router.push(`${process.env.BASE_URL}/components/avatar`);
   }, []);
 
   return null;
