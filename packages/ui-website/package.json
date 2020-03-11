@@ -2,6 +2,8 @@
   "name": "@ustudio/ui-website",
   "version": "1.0.0",
   "author": "uStudio Front-end Department",
+  "repository": "https://github.com/uStudioCompany/ustudio-ui",
+  "homepage": "https://ustudiocompany.github.io/ustudio-ui/",
   "scripts": {
     "clean:out": "rimraf dist",
     "dev": "next",
