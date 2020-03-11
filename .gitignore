@@ -1,0 +1,15 @@
+.idea
+.vscode
+
+node_modules
+
+lib
+dist
+
+.next
+
+*.log
+
+# misc
+.DS_Store
+.env
