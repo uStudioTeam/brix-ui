@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import styled from 'styled-components';
 
@@ -72,14 +72,17 @@ const DrawerPage = () => {
               <Cell>
                 <Text variant="h3">Friends list</Text>
               </Cell>
-              {friendsList.map(friend => (
-                <Cell key={friend} direction="row" alignment={{ horizontal: 'start' }}>
-                  <Flex alignment={{ vertical: 'center' }}>
-                    <Styled.Avatar>{friend}</Styled.Avatar>
-                    <Text variant="span">{friend}</Text>
-                  </Flex>
-                </Cell>
-              ))}
+              {/* @TODO need clarification */}
+              {
+                (friendsList.map(friend => (
+                  <Cell key={friend} direction="row" alignment={{ horizontal: 'start' }}>
+                    <Flex alignment={{ vertical: 'center' }}>
+                      <Styled.Avatar>{friend}</Styled.Avatar>
+                      <Text variant="span">{friend}</Text>
+                    </Flex>
+                  </Cell>
+                )) as unknown) as ReactElement
+              }
             </Grid>
           </Flex>
         </Drawer>
