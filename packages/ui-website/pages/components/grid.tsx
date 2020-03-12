@@ -46,7 +46,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         gap: { type: '`number`', defaultValue: '`0`' },
         divideBy: {
           type: '`number`',
-          defaultValue: '`3`',
+          defaultValue: '`1`',
           description: 'Controls division rate of each Cell in a row',
           tooltip: `Works only if 'direction' is set to 'row'`,
         },
@@ -78,7 +78,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
             </Grid>
           </Cell>
           <Cell>
-            <Grid direction="row" gap={16}>
+            <Grid direction="row" gap={16} divideBy={3}>
               <Cell xs={2}>
                 <Styled.Flex>Rabbit 4</Styled.Flex>
               </Cell>
