@@ -9,6 +9,7 @@ module.exports = {
   env: {
     BASE_URL: isProduction ? process.env.BASE_URL || '' : '',
   },
+  exportTrailingSlash: true,
   assetPrefix: isProduction ? process.env.BASE_URL || '' : '',
   webpack: config => {
     config.module.rules.push(
