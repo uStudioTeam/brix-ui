@@ -1,32 +1,32 @@
-import React, { Children, cloneElement, useMemo } from 'react';
+import React, { createContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import Cell from '../Cell';
 
 import { common } from '../../../utils';
 
-import { Styled } from '../styled';
+import { Styled } from '../styles';
+import { gridUtils } from './utils';
 
-function mapCells({ cells, cellsCount, gridDirection, divideBy }) {
-  return Children.map(cells, (cell, cellIndex) =>
-    cloneElement(cell, { cellsCount, cellIndex, gridDirection, divideBy })
+export const GridContext = createContext([]);
+
+const Grid = ({ children: cells, isContainer = false, className, ...breakpoints }) => {
+  const { divisions, cellsSizes, cellsCount } = useMemo(
+    () => ({ divisions: gridUtils.countDivisions(cells), cellsSizes: gridUtils.countCellsSizes(cells), cellsCount: gridUtils.countCells(cells) }),
+    [cells]
   );
-}
-
-const Grid = ({ children: cells, direction = 'column', divideBy = 3, className, ...props }) => {
-  const cellsCount = useMemo(() => {
-    return Children.count(cells);
-  }, [cells]);
 
   return (
-    <Styled.Grid
-      {...props}
-      dataDirection={direction}
-      className={className || ''}
-      divideBy={divideBy}
-      cellsCount={cellsCount}
-    >
-      {mapCells({ cells, cellsCount, gridDirection: direction, divideBy })}
+    <Styled.Grid className={className || ''} divisions={divisions} isContainer={isContainer} cellsCount={cellsCount} {...breakpoints}>
+      <GridContext.Provider
+        value={{
+          divisions,
+          cellsSizes,
+          gridBreakpoints: breakpoints,
+        }}
+      >
+        {gridUtils.mapCells(cells)}
+      </GridContext.Provider>
     </Styled.Grid>
   );
 };
@@ -36,26 +36,37 @@ Grid.displayName = 'Grid';
 Grid.propTypes = {
   /**
    * https://github.com/facebook/react/issues/2979#issuecomment-218833260
-  */
+   */
   children: PropTypes.oneOfType([
     PropTypes.shape({
-      type: PropTypes.oneOf([Cell])
+      type: PropTypes.oneOf([Cell]),
     }),
 
-    PropTypes.arrayOf(PropTypes.shape({
-      type: PropTypes.oneOf([Cell])
-    }))
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([Cell]),
+      })
+    ),
   ]).isRequired,
-  direction: common.direction,
-  gap: PropTypes.number,
-  alignment: common.alignment,
-  divideBy: PropTypes.number,
+  isContainer: PropTypes.bool,
+  ...['xs', 'md', 'lg', 'xl'].reduce(
+    (breakpoints, breakpoint) =>
+      Object.assign(breakpoints, {
+        [breakpoint]: PropTypes.exact({
+          template: PropTypes.string,
+          maxWidth: PropTypes.number,
+          direction: common.direction,
+          gap: PropTypes.number,
+          alignment: common.alignment,
+        }),
+      }),
+    {}
+  ),
   className: PropTypes.string,
 };
 
 Grid.defaultProps = {
-  direction: 'column',
-  divideBy: 1,
+  isContainer: false,
 };
 
 export default Grid;

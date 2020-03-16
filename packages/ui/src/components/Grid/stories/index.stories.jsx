@@ -23,13 +23,13 @@ gridStory
   .addDecorator(jsxDecorator)
   .addParameters({ jsx: { skip: 1 } })
   .add('Grid', () => (
-    <Grid gap={16}>
+    <Grid isContainer xs={{ gap: 16, direction: 'column' }}>
       <Cell>
         <StyledBox>1</StyledBox>
       </Cell>
 
-      <Cell>
-        <Grid gap={16} direction="row">
+      <Cell md={{ size: 2 }}>
+        <Grid>
           <Cell>
             <StyledBox>1/2</StyledBox>
           </Cell>
@@ -41,16 +41,16 @@ gridStory
       </Cell>
 
       <Cell>
-        <Grid gap={16} direction="row">
+        <Grid>
           <Cell>
             <StyledBox>1/3</StyledBox>
           </Cell>
 
-          <Cell xs={4}>
+          <Cell>
             <StyledBox>1/3</StyledBox>
           </Cell>
 
-          <Cell offset={{ xs: { before: 1 } }}>
+          <Cell>
             <StyledBox>1/3</StyledBox>
           </Cell>
         </Grid>
