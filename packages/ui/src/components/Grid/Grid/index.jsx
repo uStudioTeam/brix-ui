@@ -1,7 +1,5 @@
-import React, { createContext, useMemo, Children } from 'react';
+import React, { createContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
-
-import Cell from '../Cell';
 
 import { common } from '../../../utils';
 
@@ -66,9 +64,6 @@ const cellsValidator = (props, propName, componentName) => {
 };
 
 Grid.propTypes = {
-  /**
-   * https://github.com/facebook/react/issues/2979#issuecomment-218833260
-   */
   children: cellsValidator,
   isContainer: PropTypes.bool,
   ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
