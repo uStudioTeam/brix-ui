@@ -72,7 +72,6 @@ const DrawerPage = () => {
               <Cell>
                 <Text variant="h3">Friends list</Text>
               </Cell>
-              {/* @TODO need clarification */}
               {
                 (friendsList.map(friend => (
                   <Cell key={friend}>

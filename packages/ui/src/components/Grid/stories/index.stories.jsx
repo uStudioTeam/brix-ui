@@ -22,38 +22,40 @@ const StyledBox = styled(Flex)`
 gridStory
   .addDecorator(jsxDecorator)
   .addParameters({ jsx: { skip: 1 } })
-  .add('Grid', () => (
-    <Grid isContainer xs={{ gap: 16, direction: 'column' }}>
-      <Cell>
-        <StyledBox>1</StyledBox>
-      </Cell>
+  .add('Grid', () => {
+    return (
+      <Grid isContainer xs={{ gap: 16, direction: 'column' }}>
+        <Cell>
+          <StyledBox>1</StyledBox>
+        </Cell>
 
-      <Cell md={{ size: 2 }}>
-        <Grid>
-          <Cell>
-            <StyledBox>1/2</StyledBox>
-          </Cell>
+        <Cell md={{ size: 2 }}>
+          <Grid>
+            <Cell key="12">
+              <StyledBox>1/2</StyledBox>
+            </Cell>
 
-          <Cell>
-            <StyledBox>1/2</StyledBox>
-          </Cell>
-        </Grid>
-      </Cell>
+            <Cell key="adgfa">
+              <StyledBox>1/2</StyledBox>
+            </Cell>
+          </Grid>
+        </Cell>
 
-      <Cell>
-        <Grid>
-          <Cell>
-            <StyledBox>1/3</StyledBox>
-          </Cell>
+        <Cell>
+          <Grid>
+            <Flex>
+              <StyledBox>1/3</StyledBox>
+            </Flex>
 
-          <Cell>
-            <StyledBox>1/3</StyledBox>
-          </Cell>
+            <Cell>
+              <StyledBox>1/3</StyledBox>
+            </Cell>
 
-          <Cell>
-            <StyledBox>1/3</StyledBox>
-          </Cell>
-        </Grid>
-      </Cell>
-    </Grid>
-  ));
+            <Cell>
+              <StyledBox>1/3</StyledBox>
+            </Cell>
+          </Grid>
+        </Cell>
+      </Grid>
+    );
+  });

@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useMemo, Children } from 'react';
 import PropTypes from 'prop-types';
 
 import Cell from '../Cell';
@@ -8,21 +8,31 @@ import { common } from '../../../utils';
 import { Styled } from '../styles';
 import { gridUtils } from './utils';
 
-export const GridContext = createContext([]);
+export const GridContext = createContext({});
 
-const Grid = ({ children: cells, isContainer = false, className, ...breakpoints }) => {
+const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl }) => {
+  console.log(cells);
   const { divisions, cellsSizes, cellsCount } = useMemo(
-    () => ({ divisions: gridUtils.countDivisions(cells), cellsSizes: gridUtils.countCellsSizes(cells), cellsCount: gridUtils.countCells(cells) }),
+    () => ({
+      divisions: gridUtils.countDivisions(cells),
+      cellsSizes: gridUtils.countCellsSizes(cells),
+      cellsCount: gridUtils.countCells(cells),
+    }),
     [cells]
   );
 
   return (
-    <Styled.Grid className={className || ''} divisions={divisions} isContainer={isContainer} cellsCount={cellsCount} {...breakpoints}>
+    <Styled.Grid
+      className={className || ''}
+      divisions={divisions}
+      isContainer={isContainer}
+      cellsCount={cellsCount}
+      breakpoints={{ xs, md, lg, xl }}
+    >
       <GridContext.Provider
         value={{
-          divisions,
           cellsSizes,
-          gridBreakpoints: breakpoints,
+          gridBreakpoints: { xs, md, lg, xl },
         }}
       >
         {gridUtils.mapCells(cells)}
@@ -33,35 +43,43 @@ const Grid = ({ children: cells, isContainer = false, className, ...breakpoints 
 
 Grid.displayName = 'Grid';
 
+const cellsValidator = (props, propName, componentName) => {
+  const validateCell = cell => {
+    if (cell.type.name !== 'Cell') {
+      throw {};
+    }
+  };
+
+  try {
+    props[propName].forEach(cell => {
+      if (Array.isArray(cell)) {
+        cell.forEach(validateCell);
+      } else {
+        validateCell(cell);
+      }
+    });
+  } catch {
+    return new Error(
+      `Invalid prop \`${propName}\` passed to \`${componentName}\`. Expected Cell component as children.`
+    );
+  }
+};
+
 Grid.propTypes = {
   /**
    * https://github.com/facebook/react/issues/2979#issuecomment-218833260
    */
-  children: PropTypes.oneOfType([
-    PropTypes.shape({
-      type: PropTypes.oneOf([Cell]),
-    }),
-
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([Cell]),
-      })
-    ),
-  ]).isRequired,
+  children: cellsValidator,
   isContainer: PropTypes.bool,
-  ...['xs', 'md', 'lg', 'xl'].reduce(
-    (breakpoints, breakpoint) =>
-      Object.assign(breakpoints, {
-        [breakpoint]: PropTypes.exact({
-          template: PropTypes.string,
-          maxWidth: PropTypes.number,
-          direction: common.direction,
-          gap: PropTypes.number,
-          alignment: common.alignment,
-        }),
-      }),
-    {}
-  ),
+  ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
+    [breakpoint]: PropTypes.exact({
+      template: PropTypes.string,
+      maxWidth: PropTypes.number,
+      direction: common.direction,
+      gap: PropTypes.number,
+      alignment: common.alignment,
+    }),
+  })),
   className: PropTypes.string,
 };
 
