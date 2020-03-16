@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Text, Grid, Cell } from '@ustudio/ui';
+import { Text, Grid, Cell, Flex } from '@ustudio/ui';
 
 import { ComponentInfo, ComponentInfoItem } from '../../components';
 
@@ -29,24 +29,30 @@ const TextPage = () => {
       classNames={['Text']}
     >
       <ComponentInfoItem>
-        <Grid alignment={{ horizontal: 'center', vertical: 'center' }} gap={32}>
-          <Cell direction="column">
-            <Text variant="h1">h1: Heading 1</Text>
-            <Text variant="h2">h2: Heading 2</Text>
-            <Text variant="h3">h3: Heading 3</Text>
-            <Text variant="h4">h4: Heading 4</Text>
-            <Text variant="h5">h5: Heading 5</Text>
-            <Text variant="h6">h6: Heading 6</Text>
-            <Text variant="caption">caption: Lorem ipsum</Text>
+        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, gap: 32 }}>
+          <Cell>
+            <Flex direction="column">
+              <Text variant="h1">h1: Heading 1</Text>
+              <Text variant="h2">h2: Heading 2</Text>
+              <Text variant="h3">h3: Heading 3</Text>
+              <Text variant="h4">h4: Heading 4</Text>
+              <Text variant="h5">h5: Heading 5</Text>
+              <Text variant="h6">h6: Heading 6</Text>
+              <Text variant="caption">caption: Lorem ipsum</Text>
+            </Flex>
           </Cell>
-          <Cell direction="column">
-            <Text variant="body">body: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-            <Text variant="article">article: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-            <Text variant="code">code: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+          <Cell>
+            <Flex direction="column">
+              <Text variant="body">body: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text variant="article">article: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text variant="code">code: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+            </Flex>
           </Cell>
-          <Cell direction="column">
-            <Text variant="span">span: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-            <Text variant="small">small: Lorem ipsum</Text>
+          <Cell>
+            <Flex direction="column">
+              <Text variant="span">span: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text variant="small">small: Lorem ipsum</Text>
+            </Flex>
           </Cell>
         </Grid>
       </ComponentInfoItem>
@@ -56,7 +62,7 @@ const TextPage = () => {
         description="Body accepts any variant of an 'appearance' prop."
         direction="column"
       >
-        <Grid alignment={{ horizontal: 'center' }}>
+        <Grid xs={{ alignment: { horizontal: 'center' } }}>
           <Cell>
             <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
           </Cell>

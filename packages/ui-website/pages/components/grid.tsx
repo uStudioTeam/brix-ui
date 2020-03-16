@@ -22,17 +22,14 @@ const GridPage = () => {
       name="Grid"
       componentName="Grid"
       description={`
-Primary focus of our grid system are customizable columns. You can control
-for how many parts each column is divided, add before/after offsets (constrained by its size)
-and move each column inside the grid.
+Use it like you are used to - through breakpoints! \`Grid\` and \`Cell\` accept four breakpoints in their props,
+each controlling its own state.
 
-Position of each Cell consists of three main properties: offset before, size (\`xs, md, lg, xl\`),
-offset after. They determine start and end positions relatively to created grid tracks in a column layout.
+For \`Cell\` you may define its \`size\` and \`offset\`, which are automatically adjusted inside existing grid.
+For \`Grid\` you are able to overwrite its \`template\`, set \`maxWidth\`, \`direction\`, \`gap\` and \`alignment\` of its Cells.
 
-Rows, on the other hand, are built automatically and require no adjustment.
-
-Each size and offset value corresponds to the media breakpoints defined in \`ThemeProvider\`,
-their values correspond to the fraction of column's division.
+Each breakpoint value corresponds to the media breakpoints defined in \`ThemeProvider\`,
+their values correspond to the fraction of cell's division.
 
 Grid's template is built using \`fr\` units.
 
@@ -42,33 +39,35 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
           type: '`ReactNode[] | ReactNode`',
           required: true,
         },
-        direction: { type: `\`'row' | 'column'\``, defaultValue: `\`'column'\`` },
-        gap: { type: '`number`', defaultValue: '`0`' },
-        divideBy: {
-          type: '`number`',
-          defaultValue: '`3`',
-          description: 'Controls division rate of each Cell in a row',
-          tooltip: `Works only if 'direction' is set to 'row'`,
+        isContainer: {
+          type: '`boolean`',
+          description: 'Could be used to add side margins in a top-level grid',
         },
-        alignment: {
-          type: `\`
-{
-  [horizontal | vertical]?:
-    'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+        ...['xs', 'md', 'xl', 'lg'].reduce(
+          (props, breakpoint) =>
+            Object.assign(props, {
+              [breakpoint]: `\`{
+  template?: string;
+  maxWidth?: number;
+  direction?: 'row' | 'column';
+  gap?: number;
+  alignment?: {
+    [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+  };
 }\``,
-          description: 'Aligns all Cells inside the Grid',
-          tooltip: 'Acts similarly to that of Flex',
-        },
+            }),
+          {}
+        ),
       }}
     >
       <ComponentInfoItem>
-        <Grid gap={16}>
+        <Grid xs={{ gap: 16, direction: 'column' }}>
           <Cell>
             <Styled.Flex>Rabbit 1</Styled.Flex>
           </Cell>
 
           <Cell>
-            <Grid direction="row" gap={16}>
+            <Grid xs={{ gap: 16 }}>
               <Cell>
                 <Styled.Flex>Rabbit 2</Styled.Flex>
               </Cell>
@@ -78,17 +77,17 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
             </Grid>
           </Cell>
           <Cell>
-            <Grid direction="row" gap={16}>
-              <Cell xs={2}>
+            <Grid xs={{ gap: 16 }}>
+              <Cell>
                 <Styled.Flex>Rabbit 4</Styled.Flex>
               </Cell>
-              <Cell offset={{ xs: { before: -1 } }} xs={4}>
+              <Cell>
                 <Styled.Flex>Rabbit 5 ate a bit of Rabbit 4</Styled.Flex>
               </Cell>
-              <Cell xs={5}>
+              <Cell>
                 <Styled.Flex>Rabbit 6</Styled.Flex>
               </Cell>
-              <Cell xs={1} offset={{ xs: { before: 3 } }}>
+              <Cell>
                 <Styled.Flex>x_x</Styled.Flex>
               </Cell>
             </Grid>
@@ -103,31 +102,18 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
             type: '`ReactNode[] | ReactNode`',
             required: true,
           },
-          direction: { type: `\`'row' | 'column'\``, defaultValue: `\`'row'\`` },
-          isReversed: { type: '`boolean`', defaultValue: '`false`' },
-          offset: {
-            type: `\`
-{
-  [xs | md | lg | xl]?:
-    {
-      before?: number;
-      after?: number
-    };
+          ...['xs', 'md', 'xl', 'lg'].reduce(
+            (props, breakpoint) =>
+              Object.assign(props, {
+                [breakpoint]: `\`{
+  size?: number;
+  offset?: {
+    [before | after]?: number;
+  };
 }\``,
-          },
-          xs: { type: '`number`' },
-          md: { type: '`number`' },
-          lg: { type: '`number`' },
-          xl: { type: '`number`' },
-          alignment: {
-            type: `\`
-{
-  [horizontal | vertical]?:
-    'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
-}\``,
-            description: 'Aligns content inside the Cell',
-            tooltip: 'Acts similarly to that of Flex',
-          },
+              }),
+            {}
+          ),
         }}
       />
     </ComponentInfo>
