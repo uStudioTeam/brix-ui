@@ -1,4 +1,4 @@
-import { getTextAppearance, getTextVariant } from '../../utils';
+import { getTextAppearance, getTextVariant } from '../../../utils';
 import styled, { css } from 'styled-components';
 
 const Text = styled.p.withConfig({ displayName: 'Text' })(
