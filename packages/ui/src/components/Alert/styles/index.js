@@ -1,46 +1,24 @@
-import IconComponent from '../internal/Icon';
+import IconComponent from '../../internal/Icon';
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
-
-function isVerticalPositionValid(verticalPosition) {
-  return verticalPosition === 'top' || verticalPosition === 'bottom';
-}
-
-function isHorizontalPositionValid(horizontalPosition) {
-  return horizontalPosition === 'left' || horizontalPosition === 'center' || horizontalPosition === 'right';
-}
-
-function getPosition({ isOpen, verticalPosition, horizontalPosition }) {
-  const vPos = isVerticalPositionValid(verticalPosition) ? verticalPosition : 'bottom';
-  const hPos = isHorizontalPositionValid(horizontalPosition) ? horizontalPosition : 'right';
-
-  return hPos !== 'center'
-    ? css`
-        ${vPos}: var(--i-regular);
-        ${hPos}: ${isOpen ? 'var(--i-regular)' : '-50%'};
-      `
-    : css`
-        ${vPos}: ${isOpen ? 'var(--i-regular)' : '-3rem'};
-        left: 50%;
-        transform: translateX(-50%);
-      `;
-}
+import { Mixin } from '../../../theme';
+import { inject } from './inject';
 
 const Alert = styled.button.withConfig({ displayName: 'Alert' })(
   ({ isOpen, intent, verticalPosition, horizontalPosition }) => css`
+    ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-light)', colorBottom: `var(--c-${intent})` })};
+
     position: fixed;
     z-index: var(--l-topmost);
-    ${getPosition({ isOpen, verticalPosition, horizontalPosition })};
+    ${inject.position({ isOpen, verticalPosition, horizontalPosition })};
 
     padding: var(--i-medium) var(--i-regular);
 
     display: flex;
     align-items: center;
+
     color: var(--c-darkest);
     background: var(--c-lightest);
     border-radius: var(--border-radius);
-
-    ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-light)', colorBottom: `var(--c-${intent})` })};
     box-shadow: var(--s-light);
 
     transition: var(--transition);
@@ -81,9 +59,10 @@ const Alert = styled.button.withConfig({ displayName: 'Alert' })(
 
 const Icon = styled(IconComponent)(
   ({ intent }) => css`
-    color: ${`var(--c-${intent})`};
     margin-left: var(--i-regular);
     margin-bottom: -2px;
+
+    color: ${`var(--c-${intent})`};
 
     ${Alert}:focus & {
       transition-delay: 150ms;
