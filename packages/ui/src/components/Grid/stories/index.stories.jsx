@@ -29,20 +29,20 @@ gridStory
           <StyledBox>1</StyledBox>
         </Cell>
 
-        <Cell md={{ size: 2 }}>
-          <Grid>
-            <Cell key="12">
+        <Cell>
+          <Grid xs={{ gap: 16 }}>
+            <Cell>
               <StyledBox>1/2</StyledBox>
             </Cell>
 
-            <Cell key="adgfa">
+            <Cell>
               <StyledBox>1/2</StyledBox>
             </Cell>
           </Grid>
         </Cell>
 
         <Cell>
-          <Grid>
+          <Grid xs={{ gap: 16 }}>
             <Flex>
               <StyledBox>1/3</StyledBox>
             </Flex>
