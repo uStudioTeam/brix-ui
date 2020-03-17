@@ -20,10 +20,10 @@ function renderValue(metaProps) {
   );
 }
 
-const Meta = ({ variant = 'small', title, value, href, classNames, className }) => (
-  <Styled.Meta className={`${classNames?.Meta || ''} ${className || ''}`}>
+const Meta = ({ variant = 'small', title, value, href, classNames, className = '' }) => (
+  <Styled.Meta classNames={classNames} className={className}>
     {title && (
-      <Styled.Title variant={variant === 'small' ? 'caption' : 'h6'} classNames={{ Text: classNames?.Title || '' }}>
+      <Styled.Title variant={variant === 'small' ? 'caption' : 'h6'} classNames={classNames?.Title || ''}>
         {title}
       </Styled.Title>
     )}
