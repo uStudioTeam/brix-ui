@@ -1,9 +1,10 @@
+import { StyledComponents } from '../../../utils/styles/styled-component';
 import IconComponent from '../../internal/Icon';
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 import { inject } from './inject';
 
-const Alert = styled.button.withConfig({ displayName: 'Alert' })(
+const Alert = styled.button(
   ({ isOpen, intent, verticalPosition, horizontalPosition }) => css`
     ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-light)', colorBottom: `var(--c-${intent})` })};
 
@@ -71,7 +72,7 @@ const Icon = styled(IconComponent)(
   `
 );
 
-export const Styled = {
+export const Styled = StyledComponents({
   Alert,
   Icon,
-};
+});

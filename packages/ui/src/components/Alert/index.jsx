@@ -30,13 +30,14 @@ const Alert = ({
         intent={intent}
         verticalPosition={verticalPosition}
         horizontalPosition={horizontalPosition}
-        className={`${classNames?.Alert || ''} ${className}`}
+        classNames={classNames}
+        className={className}
       >
-        <Text variant="caption" className={{ Text: classNames?.Content || '' }}>
+        <Text variant="caption" className={classNames?.Content || ''}>
           {children}
         </Text>
 
-        <Styled.Icon name="times" intent={intent} className={{ Icon: classNames?.Icon || '' }} />
+        <Styled.Icon name="times" intent={intent} classNames={classNames} />
       </Styled.Alert>
     </Portal>
   );
