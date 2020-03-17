@@ -25,7 +25,8 @@ const Text = forwardRef(function Text(
       variant={variant}
       align={align}
       appearance={appearance}
-      className={`${classNames?.Text || ''} ${className}`}
+      classNames={classNames}
+      className={className}
       {...htmlAttributes}
     >
       {children}
@@ -44,7 +45,6 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
-  children: '',
   variant: 'body',
   align: 'left',
   appearance: 'regular',
