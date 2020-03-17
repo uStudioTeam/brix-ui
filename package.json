@@ -1,14 +1,13 @@
 {
   "version": "1.0.0",
   "author": "uStudio Front End Department",
-  "repository": "!!!",
   "private": true,
   "scripts": {
     "ui:dev": "yarn --cwd packages/ui dev",
     "ui:build": "yarn --cwd packages/ui build",
     "ui-website:dev": "yarn ui:build && yarn --cwd packages/ui-website dev",
     "ui-website:build": "yarn ui:build && yarn --cwd packages/ui-website build",
-    "ui-website:deploy": "yarn --cwd packages/ui-website deploy"
+    "ui-website:deploy": "yarn ui:build && yarn --cwd packages/ui-website deploy"
   },
   "workspaces": [
     "packages/*"

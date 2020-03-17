@@ -23,7 +23,8 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [isMounted, setMounted] = useState(false);
+  // Bugfix order styled from styled-components in dev mode
+  const [isMounted, setMounted] = useState(process.env.NODE_ENV === 'production');
 
   useEffect(() => {
     setMounted(true);

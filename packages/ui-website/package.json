@@ -2,10 +2,12 @@
   "name": "@ustudio/ui-website",
   "version": "1.0.0",
   "author": "uStudio Front-end Department",
+  "repository": "https://github.com/uStudioCompany/ustudio-ui",
+  "homepage": "https://ustudiocompany.github.io/ustudio-ui/",
   "scripts": {
-    "clean:out": "rimraf dist",
+    "clean:dist": "rimraf dist",
     "dev": "next",
-    "build": "yarn clean:out && next build && next export -o dist && copyfiles .nojekyll dist",
+    "build": "yarn clean:dist && next build && next export -o dist && copyfiles .nojekyll dist",
     "deploy": "yarn build && gh-pages -b gh-pages --dotfiles=true -d dist"
   },
   "dependencies": {
