@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
+import { Mixin } from '../../../theme';
 
 const Container = styled.div.withConfig({ displayName: 'DropdownContainer' })(
   ({ isOpen }) => css`
