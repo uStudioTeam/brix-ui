@@ -5,7 +5,7 @@ import Text from '../../components/Text';
 
 import { classNames } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Badge = ({ children, isDisabled = false, appearance, classNames, className = "" }) => (
   <Styled.Badge
