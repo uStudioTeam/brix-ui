@@ -1,12 +1,11 @@
-import React, { createContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { common } from '../../../utils';
 
 import { Styled } from '../styles';
-import { gridUtils } from './utils';
-
-export const GridContext = createContext({});
+import { gridUtils } from '../utils';
+import { GridContext } from '../utils/context';
 
 const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl }) => {
   console.log(cells);

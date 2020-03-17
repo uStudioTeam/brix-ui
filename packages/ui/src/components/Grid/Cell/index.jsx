@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { GridContext } from '../Grid';
-import { gridUtils } from '../Grid/utils';
+import { gridUtils } from '../utils';
+import { GridContext } from '../utils/context';
 
 import { Styled } from '../styles';
 
