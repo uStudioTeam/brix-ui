@@ -12,7 +12,8 @@ const Badge = ({ children, isDisabled = false, appearance, classNames, className
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
-    className={`${classNames?.Badge || ''} ${className}`}
+    classNames={classNames}
+    className={className}
   >
     <Text variant="caption" classNames={{ Text: classNames?.Content || '' }}>{`${children}`}</Text>
   </Styled.Badge>
