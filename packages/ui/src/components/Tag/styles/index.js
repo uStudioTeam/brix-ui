@@ -5,7 +5,7 @@ import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
 const Tag = styled.span(
-  appearance => css`
+  ({ appearance }) => css`
     ${Mixin.Font.bodySmall()};
 
     padding: 3px var(--i-medium) var(--i-small);
