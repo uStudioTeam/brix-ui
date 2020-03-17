@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
-const background = background => `background: ${background || 'var(--g-primary)'}`;
+const background = (background = 'var(--g-primary)') => `background: ${background}`;
 
-const color = color => `color: ${color || 'var(--c-lightest)'}`;
+const color = (color = 'var(--c-lightest)') => `color: ${color}`;
 
 const avatarSize = (size = 'medium') => {
   const avatarSize = {
