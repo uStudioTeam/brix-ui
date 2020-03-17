@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { inject } from './inject';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 
-const Avatar = styled.div.withConfig({ displayName: 'Avatar' })(
+const Avatar = styled.div(
   ({ isDisabled, appearance }) => css`
     display: inline-flex;
     justify-content: center;
