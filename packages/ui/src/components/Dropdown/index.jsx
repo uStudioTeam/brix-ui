@@ -5,27 +5,27 @@ import Icon from '../internal/Icon';
 import { classNames } from '../../utils';
 import { useDropdown, useKeyPressClose } from '../../hooks';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Dropdown = ({
-  isDefaultOpen = false,
-  onChange,
-  isDisabled = false,
-  title,
   children,
   name,
-  classNames,
-  className,
+  onChange,
+  title,
   icon = <Icon name="chevron" />,
+  isDefaultOpen = false,
+  isDisabled = false,
+  classNames,
+  className = '',
 }) => {
-  const [isOpen, setOpen] = useState(isDefaultOpen ?? false);
+  const [isOpen, setOpen] = useState(isDefaultOpen || false);
 
   const { ref, height } = useDropdown(isOpen, 'height');
 
   useKeyPressClose(setOpen);
 
   return (
-    <Styled.Container isOpen={isOpen} className={`${classNames?.Container || ''} ${className || ''}`}>
+    <Styled.Container isOpen={isOpen} className={`${classNames?.Container || ''} ${className}`}>
       <Styled.Title
         onClick={() => {
           onChange && onChange();
@@ -33,7 +33,7 @@ const Dropdown = ({
         }}
         disabled={isDisabled}
         aria-disabled={isDisabled}
-        aria-labelledby={`Dropdown ${name || ''}`}
+        aria-labelledby={name}
         className={classNames?.Title || ''}
       >
         {title}
@@ -55,13 +55,13 @@ const Dropdown = ({
 Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
-  isDefaultOpen: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string,
   onChange: PropTypes.func,
   title: PropTypes.node.isRequired,
-  children: PropTypes.node.isRequired,
-  isDisabled: PropTypes.bool,
-  name: PropTypes.string,
   icon: PropTypes.node,
+  isDefaultOpen: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   ...classNames(Object.keys(Styled)),
 };
 
