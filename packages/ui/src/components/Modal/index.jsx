@@ -8,9 +8,9 @@ import Icon from '../internal/Icon';
 import { classNames } from '../../utils';
 import { useKeyPressClose } from '../../hooks';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Modal = ({ isOpen, onChange, title, children, classNames, className }) => {
+const Modal = ({ children, isOpen, onChange, title, classNames, className = '' }) => {
   useKeyPressClose(onChange);
 
   return (
@@ -20,37 +20,38 @@ const Modal = ({ isOpen, onChange, title, children, classNames, className }) => 
           isOpen={isOpen}
           aria-hidden={!isOpen}
           direction="column"
-          classNames={{ Flex: classNames?.Modal || '' }}
-          className={className || ''}
+          classNames={classNames}
+          className={className}
         >
           <Styled.Header
             alignment={{
               horizontal: 'space-between',
               vertical: 'center',
             }}
-            classNames={{ Flex: classNames?.Header || '' }}
+            classNames={classNames}
           >
-            <Text variant="h3" classNames={{ Text: classNames?.Title || '' }}>
+            <Text variant="h3" classNames={{ Text: classNames?.Title }}>
               {title}
             </Text>
 
             <Styled.Icon
               type="button"
-              aria-labelledby={`Close ${title} modal`}
+              aria-labelledby={`Close ${title}`}
               onClick={() => onChange(false)}
-              className={classNames?.Icon || ''}
+              classNames={classNames}
             >
               <Icon name="times" size="large" />
             </Styled.Icon>
           </Styled.Header>
 
-          <Styled.Content classNames={{ Flex: classNames?.Content || '' }}>{children}</Styled.Content>
+          <Styled.Content classNames={classNames}>{children}</Styled.Content>
         </Styled.Modal>
 
         <Styled.Overlay
           aria-hidden={!isOpen}
-          aria-labelledby={`${title} modal overlay`}
+          aria-labelledby={`${title} overlay`}
           onClick={() => onChange(false)}
+          classNames={classNames}
         />
       </>
     </Portal>
@@ -60,11 +61,11 @@ const Modal = ({ isOpen, onChange, title, children, classNames, className }) => 
 Modal.displayName = 'Modal';
 
 Modal.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
-  ...classNames(Object.keys(Styled)),
+  ...classNames([...Object.keys(Styled), 'Title']),
 };
 
 export default Modal;
