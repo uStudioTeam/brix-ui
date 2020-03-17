@@ -40,24 +40,30 @@ const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl 
 Grid.displayName = 'Grid';
 
 const cellsValidator = (props, propName, componentName) => {
+  const cells = props[propName];
+  
   const validateCell = cell => {
     if (cell.type.name !== 'Cell') {
-      throw {};
+      throw new Error(
+        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type.name}".`
+      );
     }
   };
 
   try {
-    props[propName].forEach(cell => {
-      if (Array.isArray(cell)) {
-        cell.forEach(validateCell);
-      } else {
-        validateCell(cell);
-      }
-    });
-  } catch {
-    return new Error(
-      `Invalid prop \`${propName}\` passed to \`${componentName}\`. Expected Cell component as children.`
-    );
+    if (Array.isArray(cells)) {
+      cells.forEach(cell => {
+        if (Array.isArray(cell)) {
+          cell.forEach(validateCell);
+        } else {
+          validateCell(cell);
+        }
+      });
+    } else {
+      validateCell(cells);
+    }
+  } catch (error) {
+    return error;
   }
 };
 
