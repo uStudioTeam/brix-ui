@@ -5,7 +5,7 @@ import Text from '../Text';
 
 import { classNames } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 function renderValue(metaProps) {
   const { href, ...props } = metaProps;
