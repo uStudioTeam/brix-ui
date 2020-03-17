@@ -5,15 +5,17 @@ import Text from '../../components/Text';
 
 import { classNames } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Badge = ({ children, isDisabled = false, appearance, classNames, className }) => (
+const Badge = ({ children, isDisabled = false, appearance, classNames, className = '' }) => (
   <Styled.Badge
     aria-disabled={isDisabled}
-    {...{ isDisabled, appearance }}
-    className={`${classNames?.Badge || ''} ${className || ''}`}
+    isDisabled={isDisabled}
+    appearance={appearance}
+    classNames={classNames}
+    className={className}
   >
-    <Text variant="caption" classNames={{ Text: classNames?.Content || '' }}>{`${children}`}</Text>
+    <Text variant="caption" classNames={{ Text: classNames?.Content }}>{`${children}`}</Text>
   </Styled.Badge>
 );
 
