@@ -21,6 +21,8 @@ const Avatar = ({ children, appearance, isDisabled = false, classNames, classNam
   </Styled.Avatar>
 );
 
+Avatar.displayName = 'Avatar';
+
 Avatar.propTypes = {
   children: PropTypes.string.isRequired,
   appearance: PropTypes.exact({
