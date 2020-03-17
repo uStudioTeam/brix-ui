@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { inject } from './inject';
 
-const Cell = styled.div.withConfig({ displayName: 'Cell' })(
+const Cell = styled.div(
   ({ index, cellsSizes, gridBreakpoints, breakpoints }) => css`
     display: flex;
 
@@ -9,7 +9,9 @@ const Cell = styled.div.withConfig({ displayName: 'Cell' })(
   `
 );
 
-const Grid = styled.div.withConfig({ displayName: 'Grid' })(
+Cell.displayName = 'Cell';
+
+const Grid = styled.div(
   ({ divisions, isContainer, cellsCount, breakpoints }) => css`
     display: grid;
     width: 100%;
@@ -26,5 +28,7 @@ const Grid = styled.div.withConfig({ displayName: 'Grid' })(
       : ''};
   `
 );
+
+Grid.displayName = 'Grid';
 
 export const Styled = { Cell, Grid };
