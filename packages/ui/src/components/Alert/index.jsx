@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Portal from '../../components/internal/Portal';
-import Text from '../../components/Text';
+import Portal from '../internal/Portal';
+import Text from '../Text';
 
 import { useKeyPressClose } from '../../hooks';
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Alert = ({
+  children,
   isOpen,
+  onChange,
   intent = 'primary',
   verticalPosition,
   horizontalPosition,
-  onChange,
-  children,
   classNames,
-  className,
+  className = '',
 }) => {
   useKeyPressClose(onChange);
 
@@ -26,14 +26,18 @@ const Alert = ({
       <Styled.Alert
         type="button"
         onClick={onChange}
-        {...{ isOpen, intent, verticalPosition, horizontalPosition }}
-        className={`${classNames?.Alert || ''} ${className || ''}`}
+        isOpen={isOpen}
+        intent={intent}
+        verticalPosition={verticalPosition}
+        horizontalPosition={horizontalPosition}
+        classNames={classNames}
+        className={className}
       >
-        <Text variant="caption" classNames={{ Text: classNames?.Content || '' }}>
+        <Text variant="caption" classNames={{ Text: classNames?.Content }}>
           {children}
         </Text>
 
-        <Styled.Icon name="times" intent={intent} classNames={{ Icon: classNames?.Icon || '' }} />
+        <Styled.Icon name="times" intent={intent} classNames={classNames} />
       </Styled.Alert>
     </Portal>
   );
