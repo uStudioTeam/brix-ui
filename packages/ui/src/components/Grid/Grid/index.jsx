@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { common } from '../../../utils';
+import { classNames, common } from '../../../utils';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 
-const Grid = ({ children: cells, isContainer = false, className = '', xs, md, lg, xl }) => {
+const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
   const { divisions, cellsSizes, cellsCount } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
@@ -19,11 +19,12 @@ const Grid = ({ children: cells, isContainer = false, className = '', xs, md, lg
 
   return (
     <Styled.Grid
-      className={className}
       divisions={divisions}
       isContainer={isContainer}
       cellsCount={cellsCount}
       breakpoints={{ xs, md, lg, xl }}
+      classNames={classNames}
+      className={className}
     >
       <GridContext.Provider
         value={{
@@ -79,7 +80,7 @@ Grid.propTypes = {
       alignment: common.alignment,
     }),
   })),
-  className: PropTypes.string,
+  ...classNames(['Grid'])
 };
 
 Grid.defaultProps = {

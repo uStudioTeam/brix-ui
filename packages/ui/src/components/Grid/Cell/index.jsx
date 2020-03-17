@@ -1,16 +1,23 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { classNames } from '../../../utils/prop-types';
 
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 
 import { Styled } from '../styles';
 
-const Cell = ({ children, className = '', index, xs, md, lg, xl }) => {
+const Cell = ({ children, classNames, className = '', index, xs, md, lg, xl }) => {
   const gridData = useContext(GridContext);
 
   return (
-    <Styled.Cell className={className} index={index} breakpoints={{ xs, md, lg, xl }} {...gridData}>
+    <Styled.Cell
+      index={index}
+      breakpoints={{ xs, md, lg, xl }}
+      classNames={classNames}
+      className={className}
+      {...gridData}
+    >
       {children}
     </Styled.Cell>
   );
@@ -29,7 +36,7 @@ Cell.propTypes = {
       }),
     }),
   })),
-  className: PropTypes.string,
+  ...classNames(['Cell']),
 };
 
 export default Cell;

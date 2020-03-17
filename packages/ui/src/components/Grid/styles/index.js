@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
 const Cell = styled.div(
@@ -8,8 +9,6 @@ const Cell = styled.div(
     ${inject.cellTemplate({ cellsSizes, index, gridBreakpoints, breakpoints })};
   `
 );
-
-Cell.displayName = 'Cell';
 
 const Grid = styled.div(
   ({ divisions, isContainer, cellsCount, breakpoints }) => css`
@@ -29,6 +28,4 @@ const Grid = styled.div(
   `
 );
 
-Grid.displayName = 'Grid';
-
-export const Styled = { Cell, Grid };
+export const Styled = StyledComponents({ Cell, Grid });
