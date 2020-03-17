@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Flex = ({ children, classNames, className, direction = 'row', ...props }) => (
-  <Styled.Flex className={`${classNames?.Flex || ''} ${className || ''}`} dataDirection={direction} {...props}>
+const Flex = ({ children, direction = 'row', isReversed, isInline, alignment, classNames, className = '' }) => (
+  <Styled.Flex
+    dataDirection={direction}
+    isReversed={isReversed}
+    isInline={isInline}
+    alignment={alignment}
+    classNames={classNames}
+    className={className}
+  >
     {children}
   </Styled.Flex>
 );
@@ -23,7 +30,7 @@ Flex.propTypes = {
 };
 
 Flex.defaultProps = {
-  direction: 'row'
+  direction: 'row',
 };
 
 export default Flex;
