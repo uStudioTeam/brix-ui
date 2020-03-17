@@ -7,11 +7,12 @@ import { Styled } from './styles';
 
 const Flex = ({ children, direction = 'row', isReversed, isInline, alignment, classNames, className = '' }) => (
   <Styled.Flex
-    className={`${classNames?.Flex || ''} ${className}`}
     dataDirection={direction}
     isReversed={isReversed}
     isInline={isInline}
     alignment={alignment}
+    classNames={classNames}
+    className={className}
   >
     {children}
   </Styled.Flex>

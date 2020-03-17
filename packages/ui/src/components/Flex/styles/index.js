@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { getAlignment } from '../../../utils';
+import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
 const Flex = styled.div.withConfig({ displayName: 'Flex' })(
@@ -12,4 +13,4 @@ const Flex = styled.div.withConfig({ displayName: 'Flex' })(
   `
 );
 
-export const Styled = { Flex };
+export const Styled = StyledComponents({ Flex });
