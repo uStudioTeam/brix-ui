@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
+import { inject } from './inject';
 
 const Container = styled.div.withConfig({ displayName: 'DropdownContainer' })(
   ({ isOpen }) => css`
@@ -10,7 +11,7 @@ const Container = styled.div.withConfig({ displayName: 'DropdownContainer' })(
     color: var(--c-darkest);
     background-color: var(--c-lightest);
 
-    box-shadow: ${isOpen ? 'var(--s-light)' : 'none'};
+    ${inject.boxShadow(isOpen)};
     border-radius: var(--border-radius);
 
     transition: var(--transition);
