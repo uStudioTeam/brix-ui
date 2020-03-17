@@ -33,7 +33,7 @@ const Alert = ({
         classNames={classNames}
         className={className}
       >
-        <Text variant="caption" className={classNames?.Content || ''}>
+        <Text variant="caption" classNames={{ Text: classNames?.Content }}>
           {children}
         </Text>
 
