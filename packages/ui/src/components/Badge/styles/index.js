@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { inject } from './inject';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 
-const Badge = styled.span.withConfig({ displayName: 'Badge' })(
+const Badge = styled.span(
   ({ isDisabled, appearance }) => css`
     display: inline-flex;
     justify-content: center;
