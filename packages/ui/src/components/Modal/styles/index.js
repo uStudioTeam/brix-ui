@@ -1,8 +1,12 @@
-import Flex from '../Flex';
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
 
-const Modal = styled(Flex).withConfig({ displayName: 'Modal' })(
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import Flex from '../../Flex';
+import { Mixin } from '../../../theme';
+
+import { inject } from './inject';
+
+const Modal = styled(Flex)(
   ({ isOpen }) => css`
     min-width: 20%;
 
@@ -12,20 +16,14 @@ const Modal = styled(Flex).withConfig({ displayName: 'Modal' })(
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: ${isOpen ? 'var(--l-topmost)' : -1};
 
     transform: translateY(-50%) translateX(-50%);
 
-    opacity: ${isOpen ? 1 : 0};
-
-    & + ${Overlay} {
-      opacity: ${isOpen ? 0.25 : 0};
-      z-index: ${isOpen ? 'calc(var(--l-topmost) - 1)' : -1};
-    }
+    ${inject.toggleStyles(isOpen)};
   `
 );
 
-const Icon = styled.button.withConfig({ displayName: 'Icon' })`
+const Icon = styled.button`
   display: flex;
   align-items: center;
 
@@ -57,7 +55,7 @@ const Icon = styled.button.withConfig({ displayName: 'Icon' })`
   `)}
 `;
 
-const Overlay = styled.button.withConfig({ displayName: 'Overlay' })`
+const Overlay = styled.button`
   position: fixed;
   top: 0;
   left: 0;
@@ -77,4 +75,5 @@ const Header = styled(Flex)`
 const Content = styled(Flex)`
   padding: var(--i-regular);
 `;
-export const Styled = { Modal, Header, Content, Icon, Overlay };
+
+export const Styled = StyledComponents({ Modal, Header, Content, Icon, Overlay });
