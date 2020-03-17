@@ -8,7 +8,6 @@ import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 
 const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl }) => {
-  console.log(cells);
   const { divisions, cellsSizes, cellsCount } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
