@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Avatar = ({ children, appearance, isDisabled = false, classNames, className }) => (
+const Avatar = ({ children, appearance, isDisabled = false, classNames, className = '' }) => (
   <Styled.Avatar
-    className={`${classNames?.Avatar || ''} ${className || ''}`}
+    className={`${classNames?.Avatar || ''} ${className}`}
     aria-labelledby={`${children} avatar`}
     aria-disabled={isDisabled}
-    {...{ isDisabled, appearance }}
+    isDisabled={isDisabled}
+    appearance={appearance}
   >
     {children
       .split(' ', 2)
@@ -19,8 +20,6 @@ const Avatar = ({ children, appearance, isDisabled = false, classNames, classNam
       .toUpperCase()}
   </Styled.Avatar>
 );
-
-Avatar.displayName = 'Avatar';
 
 Avatar.propTypes = {
   children: PropTypes.string.isRequired,
