@@ -9,10 +9,10 @@ const Tag = ({
   children: tag,
   appearance = { background: 'var(--g-primary)', color: 'inherit' },
   classNames,
-  className,
+  className = '',
 }) => {
   return (
-    <Styled.Tag appearance={appearance} className={`${classNames?.Tag || ''} ${className || ''}`}>
+    <Styled.Tag appearance={appearance} classNames={classNames} className={className}>
       {tag}
     </Styled.Tag>
   );

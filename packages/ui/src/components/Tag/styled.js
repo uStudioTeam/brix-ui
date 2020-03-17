@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
+
 import { Mixin } from '../../theme';
+import { StyledComponents } from '../../utils/styles/styled-component';
 
 const Tag = styled.span(
   ({ appearance }) => css`
@@ -12,4 +14,4 @@ const Tag = styled.span(
   `
 );
 
-export const Styled = { Tag };
+export const Styled = StyledComponents({ Tag });
