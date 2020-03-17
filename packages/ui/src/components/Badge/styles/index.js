@@ -13,12 +13,12 @@ const Badge = styled.span.withConfig({ displayName: 'Badge' })(
     border-radius: 1.6875rem;
 
     ${isDisabled
-      ? css`
+    ? css`
           color: var(--c-neutral);
           background: var(--c-light);
           cursor: not-allowed;
         `
-      : ''}
+    : ''}
   `
 );
 
