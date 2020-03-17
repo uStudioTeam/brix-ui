@@ -7,7 +7,7 @@ import { Styled } from '../styles';
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 
-const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl }) => {
+const Grid = ({ children: cells, isContainer = false, className = '', xs, md, lg, xl }) => {
   const { divisions, cellsSizes, cellsCount } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
@@ -19,7 +19,7 @@ const Grid = ({ children: cells, isContainer = false, className, xs, md, lg, xl 
 
   return (
     <Styled.Grid
-      className={className || ''}
+      className={className}
       divisions={divisions}
       isContainer={isContainer}
       cellsCount={cellsCount}

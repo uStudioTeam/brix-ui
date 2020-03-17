@@ -6,11 +6,11 @@ import { GridContext } from '../utils/context';
 
 import { Styled } from '../styles';
 
-const Cell = ({ children, className, index, xs, md, lg, xl }) => {
+const Cell = ({ children, className = '', index, xs, md, lg, xl }) => {
   const gridData = useContext(GridContext);
 
   return (
-    <Styled.Cell className={className || ''} index={index} breakpoints={{ xs, md, lg, xl }} {...gridData}>
+    <Styled.Cell className={className} index={index} breakpoints={{ xs, md, lg, xl }} {...gridData}>
       {children}
     </Styled.Cell>
   );
