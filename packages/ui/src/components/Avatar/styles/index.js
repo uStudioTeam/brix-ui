@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
+
 import { inject } from './inject';
+import { StyledComponents } from '../../../utils/styles/styled-component';
 
 const Avatar = styled.div.withConfig({ displayName: 'Avatar' })(
   ({ isDisabled, appearance }) => css`
@@ -18,4 +20,4 @@ const Avatar = styled.div.withConfig({ displayName: 'Avatar' })(
     ${inject.disabledStyles(isDisabled)}
   `
 );
-export const Styled = { Avatar };
+export const Styled = StyledComponents({ Avatar });

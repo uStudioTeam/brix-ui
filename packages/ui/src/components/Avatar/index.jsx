@@ -7,11 +7,12 @@ import { Styled } from './styles';
 
 const Avatar = ({ children, appearance, isDisabled = false, classNames, className = '' }) => (
   <Styled.Avatar
-    className={`${classNames?.Avatar || ''} ${className}`}
     aria-labelledby={`${children} avatar`}
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
+    classNames={classNames}
+    className={className}
   >
     {children
       .split(' ', 2)
