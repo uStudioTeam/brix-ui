@@ -1,4 +1,4 @@
-export const StyledComponent = ({ displayName }) => Component => {
+export const StyledComponent = (displayName) => Component => {
   Component.displayName = displayName;
   Component.attrs = [
     props => ({
