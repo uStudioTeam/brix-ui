@@ -23,6 +23,8 @@ interface ComponentInfoItemProps {
 
 const Styled = {
   Article: styled.article`
+    margin: var(--i-large) 0;
+
     display: flex;
     flex-direction: column;
     flex: 1;

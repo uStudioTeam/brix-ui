@@ -137,39 +137,41 @@ const Index: NextPage = () => {
       </Head>
 
       <Flex direction="column">
-        <Styled.Banner direction="row" alignment={{ horizontal: 'center' }} gap={32}>
-          <Cell direction="column" alignment={{ vertical: 'center' }}>
-            <Styled.Title variant="h1">uStudio UI</Styled.Title>
+        <Styled.Banner xs={{ alignment: { horizontal: 'center' }, gap: 32 }}>
+          <Cell>
+            <Flex direction="column" alignment={{ vertical: 'center' }}>
+              <Styled.Title variant="h1">uStudio UI</Styled.Title>
 
-            <Styled.Subtitle variant="h6">simple and concise</Styled.Subtitle>
+              <Styled.Subtitle variant="h6">simple and concise</Styled.Subtitle>
 
-            <Styled.Description>
-              The library of reusable UI components for React, made in minimalistic and light style, adopting modern
-              technologies and approaches.
-            </Styled.Description>
+              <Styled.Description>
+                The library of reusable UI components for React, made in minimalistic and light style, adopting modern
+                technologies and approaches.
+              </Styled.Description>
 
-            <Code
-              language="bash"
-              style={coy}
-              customStyle={{
-                margin: 'var(--i-large) 0 0',
-                opacity: isMounted ? 1 : 0,
-                transition: 'opacity 2s',
-              }}
-              codeTagProps={{
-                style: {
-                  whiteSpace: 'pre-wrap',
-                },
-              }}
-            >
-              {`$ yarn add @ustudio/ui \n# or \n$ npm i @ustudio/ui`}
-            </Code>
+              <Code
+                language="bash"
+                style={coy}
+                customStyle={{
+                  margin: 'var(--i-large) 0 0',
+                  opacity: isMounted ? 1 : 0,
+                  transition: 'opacity 2s',
+                }}
+                codeTagProps={{
+                  style: {
+                    whiteSpace: 'pre-wrap',
+                  },
+                }}
+              >
+                {`$ yarn add @ustudio/ui \n# or \n$ npm i @ustudio/ui`}
+              </Code>
 
-            <Styled.Actions>
-              <Link href="/docs/installation" passHref>
-                <Styled.GuideLink forwardedAs="a">Get started</Styled.GuideLink>
-              </Link>
-            </Styled.Actions>
+              <Styled.Actions>
+                <Link href="/docs/installation" passHref>
+                  <Styled.GuideLink forwardedAs="a">Get started</Styled.GuideLink>
+                </Link>
+              </Styled.Actions>
+            </Flex>
           </Cell>
 
           <Cell>
@@ -193,7 +195,7 @@ const Index: NextPage = () => {
         </Styled.Banner>
 
         <Styled.AdvantagesContainer>
-          <Styled.Advantages direction="row" gap={32}>
+          <Styled.Advantages xs={{ gap: 32 }}>
             {[
               <Advantage title="Minimalistic design">
                 uStudio UI components implement minimalistic design for modern applications.
@@ -212,8 +214,8 @@ const Index: NextPage = () => {
                 Type definitions are bundled alongside everything else.
               </Advantage>,
             ].map(advantage => (
-              <Cell key={advantage.props.title} direction="column">
-                {advantage}
+              <Cell key={advantage.props.title}>
+                <Flex direction="column">{advantage}</Flex>
               </Cell>
             ))}
           </Styled.Advantages>

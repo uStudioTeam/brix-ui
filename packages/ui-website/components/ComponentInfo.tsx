@@ -1,8 +1,8 @@
-import React, { Children, ReactElement } from 'react';
+import React from 'react';
 
 import Head from 'next/head';
 
-import { Text, Grid, Cell } from '@ustudio/ui';
+import { Text, Flex } from '@ustudio/ui';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import { renderers } from './markdown/renderers';
@@ -18,9 +18,6 @@ interface ComponentInfoProps {
 }
 
 const Styled = {
-  Section: styled(Grid)`
-    color: var(--c-darkest);
-  `,
   Heading: styled(Text)`
     margin-top: calc((2.875rem * 0.375) / -2);
   `,
@@ -43,25 +40,17 @@ export const ComponentInfo: React.FC<ComponentInfoProps> = ({
       <Head>
         <title>{name}</title>
       </Head>
-      <Grid gap={64}>
-        <Cell direction="column">
-          <Styled.Heading variant="h1">{name}</Styled.Heading>
+      <Flex direction="column">
+        <Styled.Heading variant="h1">{name}</Styled.Heading>
 
-          <Styled.Description>
-            <ReactMarkdown escapeHtml={false} source={description} renderers={renderers} />
-          </Styled.Description>
-        </Cell>
+        <Styled.Description>
+          <ReactMarkdown escapeHtml={false} source={description} renderers={renderers} />
+        </Styled.Description>
+      </Flex>
 
-        <Cell>
-          <Grid gap={64} direction="column">
-            {Children.map(children, child => <Cell direction="column">{child as ReactElement}</Cell>) as ReactElement[]}
-          </Grid>
-        </Cell>
+      {children}
 
-        <Cell direction="column">
-          <PropsTable props={props} classNames={classNames} componentName={componentName} />
-        </Cell>
-      </Grid>
+      <PropsTable props={props} classNames={classNames} componentName={componentName} />
     </>
   );
 };

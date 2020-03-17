@@ -68,15 +68,14 @@ const DrawerPage = () => {
           onChange={() => setIsOpen(false)}
         >
           <Flex alignment={{ vertical: 'start' }}>
-            <Grid direction="column" gap={20}>
+            <Grid xs={{ direction: 'column', gap: 16 }}>
               <Cell>
                 <Text variant="h3">Friends list</Text>
               </Cell>
-              {/* @TODO need clarification */}
               {
                 (friendsList.map(friend => (
-                  <Cell key={friend} direction="row" alignment={{ horizontal: 'start' }}>
-                    <Flex alignment={{ vertical: 'center' }}>
+                  <Cell key={friend}>
+                    <Flex direction="row" alignment={{ vertical: 'center', horizontal: 'start' }}>
                       <Styled.Avatar>{friend}</Styled.Avatar>
                       <Text variant="span">{friend}</Text>
                     </Flex>
