@@ -5,5 +5,3 @@ export * from './parse-alignment';
 export * from './get-alignment-from-direction';
 export * from './get-alignment';
 export * from './text-style';
-export * from './avatar-size';
-export * from './disabled-element';

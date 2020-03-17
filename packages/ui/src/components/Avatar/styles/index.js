@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { avatarSize, disabledElement } from '../../../utils';
 import { inject } from './inject';
 
 const Avatar = styled.div.withConfig({ displayName: 'Avatar' })(
@@ -11,12 +10,12 @@ const Avatar = styled.div.withConfig({ displayName: 'Avatar' })(
     ${inject.background(appearance?.background)};
     ${inject.color(appearance?.color)};
 
-    ${avatarSize(appearance?.size)};
+    ${inject.avatarSize(appearance?.size)};
     line-height: 1;
 
     user-select: none;
 
-    ${disabledElement(isDisabled)}
+    ${inject.disabledStyles(isDisabled)}
   `
 );
 export const Styled = { Avatar };
