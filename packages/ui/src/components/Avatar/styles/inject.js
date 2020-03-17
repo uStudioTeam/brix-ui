@@ -23,6 +23,7 @@ const avatarSize = size => {
 
         ${Mixin.Font.h2()};
       `;
+    case 'medium':
     default:
       return css`
         width: 2.75rem;
