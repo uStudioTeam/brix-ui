@@ -18,7 +18,7 @@ const _getElementTemplate = (breakpoints, { breakpointTemplateCallback, defaultT
 };
 
 const _getBreakpointData = ({ breakpoints, breakpoint }) =>
-  breakpoints?.[breakpoint] ? { ...breakpoints?.[breakpoint] } : {};
+  breakpoints?.[breakpoint] ? { ...breakpoints[breakpoint] } : {};
 
 const _gridTemplate = ({ direction = defaultGridDirection, template = defaultGridTemplate, divisions }) => {
   return css`
@@ -99,8 +99,8 @@ const cellTemplate = ({ cellsSizes, index, gridBreakpoints, breakpoints }) => {
       `;
     },
     defaultTemplate: css`
-    grid-${defaultGridDirection}: auto;
-  `,
+      grid-${defaultGridDirection}: auto;
+    `,
   });
 };
 
