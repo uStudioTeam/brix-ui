@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
+import { css } from 'styled-components';
+import { Mixin } from '../../../theme';
 
 function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) {
   return {
     text: css`
       ${Mixin.Style.inputPadding()};
-      color: var(--c-${intent});
+      color: var(--c- ${intent});
 
       &:after {
         content: '';
@@ -15,7 +15,7 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
         left: 0;
         right: 0;
         border-radius: var(--border-radius);
-        background: var(--g-${intent}), var(--c-${intent}-light);
+        background: var(--g- ${intent}), var(--c- ${intent}-light);
         opacity: 0;
         pointer-events: none;
         transition: var(--transition);
@@ -52,11 +52,9 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
     contained: css`
       ${Mixin.Style.inputPadding()};
 
-      ${disabled || isLoading ? 'border-color: var(--c-light)' : ''};
+      ${containedDisabledOrLoadingBorder(disabled, isLoading)};
+      ${containedDisabledOrLoadingBackground(disabled, isLoading, intent)};
 
-      background: ${disabled || isLoading
-        ? 'var(--c-light)'
-        : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`};
       color: var(--c-lightest);
 
       ${Mixin.Device.mobile(css`
@@ -84,10 +82,10 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
       ${Mixin.Style.inputPadding()};
       ${Mixin.Style.borderAll({ color: `var(--c-${intent})` || '' })};
 
-      ${disabled || isLoading ? 'border-color: var(--c-neutral)' : ''};
+      ${outlinedDisabledOrLoadingBorder(disabled, isLoading)};
 
       background-color: transparent;
-      color: var(--c-${intent});
+      color: var(--c- ${intent});
 
       &:after {
         content: '';
@@ -97,7 +95,7 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
         left: 0;
         right: 0;
         border-radius: var(--border-radius);
-        background: var(--g-${intent}), var(--c-${intent}-light);
+        background: var(--g- ${intent}), var(--c- ${intent}-light);
         opacity: 0;
         pointer-events: none;
         transition: var(--transition);
@@ -105,7 +103,7 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
 
       ${Mixin.Device.mobile(css`
         &:active {
-          color: var(--c-${intent}-light);
+          color: var(--c- ${intent}-light);
           border-color: ${disabled || isLoading ? 'var(--c-neutral)' : ''};
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.1};
@@ -116,7 +114,7 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
       ${Mixin.Device.desktop(css`
         &:hover {
           border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
-          color: ${disabled || isLoading ? 'var(--c-neutral)': `var(--c-${intent}-light`});
+          color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light`});
         }
 
         &:focus {
@@ -137,63 +135,37 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
   }[appearance];
 }
 
-const Button = styled.button.withConfig({ displayName: 'Button' })(
-  ({ intent, appearance, disabled, isLoading }) => css`
-    position: relative;
+const containedDisabledOrLoadingBorder = (disabled, isLoading) =>
+  disabled || isLoading ? 'border-color: var(--c-light)' : '';
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 1 auto;
+const containedDisabledOrLoadingBackground = (disabled, isLoading, intent) =>
+  `background: ${disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`}`;
 
-    ${getAppearance({ isDisabled: disabled, isLoading, intent, appearance })};
-    border-radius: var(--border-radius);
+const outlinedDisabledOrLoadingBorder = (disabled, isLoading) =>
+  disabled || isLoading ? 'border-color: var(--c-neutral)' : '';
 
-    user-select: none;
-    transition: var(--transition);
+function loadingStyles(isLoading) {
+  if (isLoading) {
+    return css`
+      color: transparent;
+      cursor: wait;
 
-    ${Mixin.Font.bodyRegular()};
+      &:hover {
+        box-shadow: none;
+      }
 
-    &[disabled] {
-      cursor: not-allowed;
-      color: var(--c-neutral);
+      &:active,
+      &:focus {
+        box-shadow: none;
+        pointer-events: none;
+      }
 
-      ${Mixin.Device.desktop(css`
-        &:hover {
-          box-shadow: none;
-        }
-      `)}
-    }
+      &[disabled] {
+        cursor: wait;
+        color: transparent;
+      }
+    `;
+  }
+}
 
-    ${isLoading
-      ? css`
-          color: transparent;
-          cursor: wait;
-
-          &:hover {
-            box-shadow: none;
-          }
-
-          &:active,
-          &:focus {
-            box-shadow: none;
-            pointer-events: none;
-          }
-
-          &[disabled] {
-            cursor: wait;
-            color: transparent;
-          }
-        `
-      : ''};
-  `
-);
-
-const LoadingSpinner = styled.span.withConfig({ displayName: 'LoadingSpinner' })`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-`;
-
-export const Styled = { Button, LoadingSpinner };
+export const inject = { getAppearance, loadingStyles };
