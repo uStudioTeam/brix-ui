@@ -13,8 +13,7 @@ const Text = forwardRef(function Text(
     align = 'left',
     appearance = 'regular',
     className = '',
-    classNames,
-    ...htmlAttributes
+    classNames
   },
   ref
 ) {
@@ -27,7 +26,6 @@ const Text = forwardRef(function Text(
       appearance={appearance}
       classNames={classNames}
       className={className}
-      {...htmlAttributes}
     >
       {children}
     </Styled.Text>
