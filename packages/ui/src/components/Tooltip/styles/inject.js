@@ -1,15 +1,15 @@
 import { css } from 'styled-components';
 
-function reversePosition(position) {
+const reversePosition = position => {
   return {
     top: 'bottom',
     right: 'left',
     bottom: 'top',
     left: 'right',
   }[position];
-}
+};
 
-function sidePositions(position) {
+const sidePositions = position => {
   switch (position) {
     case 'top':
     case 'bottom':
@@ -19,18 +19,18 @@ function sidePositions(position) {
     default:
       return ['top', 'bottom'];
   }
-}
+};
 
-function translateByPosition(position) {
+const translateByPosition = position => {
   return {
     top: css`translate(-50%, calc(-100% - 0.25rem))`,
     right: css`translate(calc(100% + 0.25rem), -50%)`,
     bottom: css`translate(-50%, calc(100% + 0.25rem))`,
     left: css`translate(calc(-100% - 0.25rem), -50%)`,
   }[position];
-}
+};
 
-function sideBordersByPosition(position) {
+const sideBordersByPosition = position => {
   return sidePositions(reversePosition(position)).reduce(
     (map, pos) => `
         ${map}
@@ -38,9 +38,9 @@ function sideBordersByPosition(position) {
       `,
     ''
   );
-}
+};
 
-function indent(position) {
+const indent = position => {
   if (position === 'left' || position === 'right') {
     // move sideways
     return `${position}: -0.25rem; top: 50%`;
@@ -49,10 +49,11 @@ function indent(position) {
     // center horizontally
     return `${position}: -0.25rem; left: 50%;`;
   }
-}
-function compensateCentring(position) {
+};
+
+const compensateCentring = position => {
   return `transform: translate${position === 'left' || position === 'right' ? 'Y' : 'X'}(-50%)`;
-}
+};
 
 export const inject = {
   reversePosition,
