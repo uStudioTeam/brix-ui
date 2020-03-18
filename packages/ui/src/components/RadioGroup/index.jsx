@@ -29,7 +29,7 @@ const RadioGroup = forwardRef(function RadioGroup(
   return (
     <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
       {options.map(option => (
-        <Styled.RadioGroupItem key={option} className={classNames}>
+        <Styled.RadioGroupItem key={option} classNames={classNames}>
           <Styled.Label
             classNames={classNames}
             isDisabled={disabledOptions?.includes(option) || isDisabled}
