@@ -27,10 +27,11 @@ const Checkbox = forwardRef(function Checkbox(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        className={classNames}
+        className={className}
+        classNames={classNames}
       />
 
-      <Styled.Checkbox className={classNames}>
+      <Styled.Checkbox classNames={classNames}>
         <Icon name="check" />
       </Styled.Checkbox>
     </Styled.Container>
