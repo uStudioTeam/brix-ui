@@ -50,7 +50,6 @@ editableTextStory.add('Primary', () => {
         variant={variant}
         onChange={setValue}
         appearance={appearance}
-        placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       >
         {value}
