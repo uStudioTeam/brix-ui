@@ -2,9 +2,7 @@ import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
 const _getDropdownHeight = ({ items, groups }) => {
-  function cutLength() {
-    return items.length > 5 ? 5 : items?.length;
-  }
+  const cutLength = () => (items.length > 5 ? 5 : items?.length);
 
   return groups ? 32 * cutLength() - 7 : 32 * cutLength() + 2;
 };
@@ -18,8 +16,8 @@ const containerLayer = isOpen => (isOpen ? 'var(--l-bottom)' : 1);
 
 const containerShadow = ({ isOpen, isDisabled }) => (isOpen && !isDisabled ? 'var(--s-light)' : 'none');
 
-const containerDisabledStyles = ({ isDisabled, Dropdown }) =>
-  isDisabled
+const containerDisabledStyles = ({ isDisabled, Dropdown }) => {
+  return isDisabled
     ? css`
         background-color: var(--c-light);
 
@@ -76,11 +74,12 @@ const containerDisabledStyles = ({ isDisabled, Dropdown }) =>
           }
         `)}
       `;
+};
 
 // Select
 
-const selectDisabledStyles = disabled =>
-  disabled
+const selectDisabledStyles = disabled => {
+  return disabled
     ? css`
         color: var(--c-neutral);
         cursor: not-allowed;
@@ -89,6 +88,7 @@ const selectDisabledStyles = disabled =>
     : css`
         background-color: var(--c-lightest);
       `;
+};
 
 // Select Icon
 
@@ -96,8 +96,8 @@ const selectIconColor = isDisabled => (isDisabled ? 'var(--c-neutral)' : 'var(--
 
 // Selected List Item
 
-const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) =>
-  isDisabled
+const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) => {
+  return isDisabled
     ? css`
         background: var(--c-light);
         color: var(--c-neutral);
@@ -140,13 +140,14 @@ const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) =>
           }
         `)}
       `;
+};
 
 // Dropdown
 
 const dropdownScale = isOpen => `scaleX(${isOpen ? 1 : 0})`;
 
-const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) =>
-  isOpen
+const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) => {
+  return isOpen
     ? css`
         ${ValuesList}, & {
           height: ${_getDropdownHeight({ items, groups })}px;
@@ -159,11 +160,12 @@ const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) =>
           transition-delay: var(--transition);
         }
       `;
+};
 
 // Values List Item
 
-const valuesItemDesktopToggleStyles = ({ selected, ValuesListIcon }) =>
-  selected
+const valuesItemDesktopToggleStyles = ({ selected, ValuesListIcon }) => {
+  return selected
     ? css`
         &:not([disabled]) {
           color: var(--c-lightest);
@@ -186,6 +188,7 @@ const valuesItemDesktopToggleStyles = ({ selected, ValuesListIcon }) =>
           }
         }
       `;
+};
 
 export const inject = {
   containerLayer,
@@ -197,5 +200,5 @@ export const inject = {
   selectedItemDisabledStyles,
   dropdownScale,
   dropdownToggleStyles,
-  valuesItemDesktopToggleStyles
+  valuesItemDesktopToggleStyles,
 };
