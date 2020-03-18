@@ -3,14 +3,24 @@ import PropTypes from 'prop-types';
 
 import { classNames, inputProps } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Switch = forwardRef(function Switch(
-  { label, value, defaultValue, onChange, isDisabled = false, isRequired = false, alternative, classNames, className },
+  {
+    label,
+    value,
+    defaultValue,
+    onChange,
+    isDisabled = false,
+    isRequired = false,
+    alternative,
+    classNames,
+    className = '',
+  },
   ref
 ) {
   return (
-    <Styled.Container className={`${classNames?.Container || ''} ${className || ''}`} isDisabled={isDisabled}>
+    <Styled.Container className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -24,10 +34,10 @@ const Switch = forwardRef(function Switch(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        className={classNames?.Input || ''}
+        className={classNames}
       />
 
-      <Styled.Switch alternative={alternative} className={classNames?.Switch || ''} />
+      <Styled.Switch alternative={alternative} className={classNames} />
     </Styled.Container>
   );
 });
