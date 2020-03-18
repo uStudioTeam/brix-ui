@@ -14,6 +14,7 @@ const Title = styled.div(
     display: inline-block;
     color: var(--c-dark);
     margin-bottom: var(--i-medium) - 0.375rem;
+    
     ${inject.titleVariant(variant)}
   `
 );
@@ -21,6 +22,7 @@ const Title = styled.div(
 const Value = styled.div(
   ({ variant }) => css`
     display: inline-block;
+    
     ${inject.valueVariant(variant)}
   `
 );
