@@ -11,7 +11,7 @@ interface MetaProps extends ClassNames<Styled> {
   variant?: 'small' | 'large';
 
   title?: ReactNode;
-  value: ReactNode;
+  children: ReactNode;
 }
 
 declare const Meta: {

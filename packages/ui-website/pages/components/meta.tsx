@@ -10,7 +10,7 @@ const MetaPage = () => {
       name="Meta"
       description="Meta component is used to represent key-value pairs of data."
       props={{
-        value: {
+        children: {
           type: '`ReactNode`',
           required: true,
         },
@@ -25,21 +25,21 @@ const MetaPage = () => {
       classNames={['Meta', 'Title']}
     >
       <ComponentInfoItem>
-        <Meta value="John" title="First Name" />
+        <Meta title="First Name">John</Meta>
 
-        <Meta value="Doe" title="Last Name" />
+        <Meta title="Last Name">Doe</Meta>
       </ComponentInfoItem>
 
       <ComponentInfoItem>
-        <Meta value="John" variant="large" />
+        <Meta variant="large">John</Meta>
 
-        <Meta value="Doe" variant="large" title="Last Name" />
+        <Meta variant="large" title="Last Name">
+          Doe
+        </Meta>
 
-        <Meta
-          value={<a href="https://en.wikipedia.org/wiki/John_Doe">Personal web page</a>}
-          variant="large"
-          title="Web-site"
-        />
+        <Meta variant="large" title="Web-site">
+          <a href="https://en.wikipedia.org/wiki/John_Doe">Personal web page</a>
+        </Meta>
       </ComponentInfoItem>
     </ComponentInfo>
   );
