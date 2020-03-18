@@ -32,7 +32,7 @@ const translateByPosition = position => {
 
 const sideBordersByPosition = position => {
   return sidePositions(reversePosition(position)).reduce(
-    (map, pos) => `
+    (map, pos) => css`
         ${map}
         border-${pos}: 0.5rem solid transparent;
       `,
@@ -43,16 +43,16 @@ const sideBordersByPosition = position => {
 const indent = position => {
   if (position === 'left' || position === 'right') {
     // move sideways
-    return `${position}: -0.25rem; top: 50%`;
+    return css`${position}: -0.25rem; top: 50%`;
   }
   if (position === 'top' || position === 'bottom') {
     // center horizontally
-    return `${position}: -0.25rem; left: 50%;`;
+    return css`${position}: -0.25rem; left: 50%;`;
   }
 };
 
 const compensateCentring = position => {
-  return `transform: translate${position === 'left' || position === 'right' ? 'Y' : 'X'}(-50%)`;
+  return css`transform: translate${position === 'left' || position === 'right' ? 'Y' : 'X'}(-50%)`;
 };
 
 export const inject = {
