@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 
-import { reverseDirection } from '../../utils';
-import { Mixin } from '../../theme';
+import { reverseDirection } from '../../../utils';
+import { Mixin } from '../../../theme';
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject';
 
-const Container = styled.div.withConfig({ displayName: 'RadioGroupContainer' })(
+const Container = styled.div(
   ({ dataDirection }) => css`
     display: grid;
     grid-auto-flow: ${reverseDirection(dataDirection)};
@@ -11,7 +13,7 @@ const Container = styled.div.withConfig({ displayName: 'RadioGroupContainer' })(
   `
 );
 
-const RadioGroup = styled.ul.withConfig({ displayName: 'RadioGroup' })(
+const RadioGroup = styled.ul(
   ({ dataDirection }) => css`
     flex: 1;
     display: grid;
@@ -20,61 +22,32 @@ const RadioGroup = styled.ul.withConfig({ displayName: 'RadioGroup' })(
   `
 );
 
-const RadioGroupItem = styled.li.withConfig({ displayName: 'RadioGroupItem' })`
+const RadioGroupItem = styled.li`
   position: relative;
 
   display: flex;
   align-items: center;
 `;
 
-const Label = styled.label.withConfig({ displayName: 'RadioGroupLabel' })(
+const Label = styled.label(
   ({ isDisabled, isReversed }) => css`
     ${Mixin.Font.bodyRegular()};
+
     height: var(--i-regular);
 
     display: flex;
-    flex-direction: ${isReversed ? 'row-reverse' : 'row'};
+
+    ${inject.labelDirection(isReversed)};
+
     align-items: center;
 
     cursor: pointer;
 
     ${RadioButton} {
-      margin-right: ${isReversed ? '0' : 'var(--i-regular)'};
-      margin-left: ${isReversed ? 'var(--i-regular)' : '0'};
+      ${inject.radioButtonMargins(isReversed)}
     }
 
-    ${isDisabled
-      ? css`
-          color: var(--c-neutral);
-          cursor: not-allowed;
-
-          ${Mixin.Device.desktop(css`
-            &:hover {
-              ${RadioButton} {
-                box-shadow: none;
-              }
-            }
-
-            &:active {
-              ${RadioButton} {
-                &:after {
-                  background-color: var(--c-lightest);
-                }
-              }
-            }
-          `)}
-
-          ${Mixin.Device.mobile(css`
-            &:active {
-              ${RadioButton} {
-                &:after {
-                  background-color: var(--c-lightest);
-                }
-              }
-            }
-          `)}
-        `
-      : ''};
+    ${inject.labelDisabledStyles(isDisabled, RadioButton)}
   `
 );
 
@@ -109,7 +82,7 @@ const RadioButton = styled.span`
   }
 `;
 
-const Input = styled.input.withConfig({ displayName: 'RadioGroupInput' })`
+const Input = styled.input`
   position: absolute;
   width: 0;
   height: 0;
@@ -182,4 +155,4 @@ const Input = styled.input.withConfig({ displayName: 'RadioGroupInput' })`
   }
 `;
 
-export const Styled = { Container, RadioGroup, RadioGroupItem, Label, RadioButton, Input };
+export const Styled = StyledComponents({ Container, RadioGroup, RadioGroupItem, Label, RadioButton, Input });
