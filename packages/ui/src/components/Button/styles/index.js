@@ -5,8 +5,6 @@ import { inject } from './inject';
 
 const Button = styled.button(
   ({ intent, appearance, disabled, isLoading }) => css`
-    ${Mixin.Font.bodyRegular()};
-
     position: relative;
 
     display: inline-flex;
@@ -16,6 +14,8 @@ const Button = styled.button(
 
     ${inject.getAppearance({ isDisabled: disabled, isLoading, intent, appearance })};
     border-radius: var(--border-radius);
+
+    ${Mixin.Font.bodyRegular()};
 
     user-select: none;
     transition: var(--transition);
