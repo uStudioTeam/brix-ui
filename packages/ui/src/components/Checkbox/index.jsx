@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import Icon from '../internal/Icon';
 import { classNames, inputProps } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Checkbox = forwardRef(function Checkbox(
-  { label, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className },
+  { label, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className = '' },
   ref
 ) {
   return (
-    <Styled.Container className={`${classNames?.Container || ''} ${className || ''}`} isDisabled={isDisabled}>
+    <Styled.Container className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -27,17 +27,17 @@ const Checkbox = forwardRef(function Checkbox(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        className={classNames?.Input || ''}
+        className={classNames}
       />
 
-      <Styled.Checkbox className={classNames?.Checkbox || ''}>
+      <Styled.Checkbox className={classNames}>
         <Icon name="check" />
       </Styled.Checkbox>
     </Styled.Container>
   );
 });
 
-Checkbox.displayName ='Checkbox';
+Checkbox.displayName = 'Checkbox';
 
 Checkbox.propTypes = {
   ...inputProps(PropTypes.bool),
