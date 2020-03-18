@@ -5,14 +5,14 @@ import Text from '../Text';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Tooltip = ({ value, children, position, classNames, className }) => (
+const Tooltip = ({ value, children, position, classNames, className = '' }) => (
   <Styled.TooltipContainer>
     {children}
 
-    <Styled.Tooltip position={position} className={`${classNames?.Tooltip || ''} ${className || ''}`}>
-      <Text variant="small" classNames={{ Text: classNames?.Content || '' }}>
+    <Styled.Tooltip position={position} classNames={classNames} className={className}>
+      <Text variant="small" classNames={{ Text: classNames?.Content }}>
         {value}
       </Text>
     </Styled.Tooltip>
