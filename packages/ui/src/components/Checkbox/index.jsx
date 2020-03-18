@@ -27,7 +27,6 @@ const Checkbox = forwardRef(function Checkbox(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        className={className}
         classNames={classNames}
       />
 
