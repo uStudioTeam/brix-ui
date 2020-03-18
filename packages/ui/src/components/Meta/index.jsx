@@ -12,7 +12,7 @@ const Meta = ({ variant = 'small', title, children: value, classNames, className
         {title}
       </Styled.Title>
     )}
-    <Styled.Value variant={variant} className={classNames}>
+    <Styled.Value variant={variant} classNames={classNames}>
       {value}
     </Styled.Value>
   </Styled.Meta>
