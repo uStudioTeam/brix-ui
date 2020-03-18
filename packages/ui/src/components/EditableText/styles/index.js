@@ -49,6 +49,7 @@ const EditableText = styled.article`
   overflow-wrap: break-word;
   opacity: 1;
   width: 100%;
+  min-height: 21px;
 
   transition: opacity var(--transition);
 `;
