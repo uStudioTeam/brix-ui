@@ -53,7 +53,7 @@ const EditableText = forwardRef(function EditableText(
   };
 
   return (
-    <Styled.EditableText classNames={classNames} className={className} isDisabled={isDisabled}>
+    <Styled.EditableText classNames={classNames} className={className} isDisabled={isDisabled} isEditing={isEditing}>
       <Styled.Text
         ref={textRef}
         isEditing={isEditing}

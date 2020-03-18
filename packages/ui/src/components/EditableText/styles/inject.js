@@ -17,4 +17,10 @@ const disabledStyles = isDisabled =>
       `
     : ``;
 
-export const inject = { dimension, opacity, disabledStyles };
+const afterToggle = isEditing => css`
+  transform: scaleX(${isEditing ? 1 : 0});
+  transform-origin: left;
+  transition: transform var(--transition);
+`;
+
+export const inject = { dimension, opacity, disabledStyles, afterToggle };

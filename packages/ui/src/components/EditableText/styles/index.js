@@ -45,7 +45,7 @@ const Text = styled(TextComponent)(
 );
 
 const EditableText = styled.article(
-  ({ isDisabled }) => css`
+  ({ isDisabled, isEditing }) => css`
     position: relative;
 
     overflow-wrap: break-word;
@@ -60,6 +60,26 @@ const EditableText = styled.article(
     transition: opacity var(--transition);
 
     ${inject.disabledStyles(isDisabled)};
+
+    &:after {
+      position: absolute;
+      content: '';
+      bottom: -2px;
+      left: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: var(--c-primary);
+
+      ${inject.afterToggle(isEditing)};
+    }
+
+    &:hover {
+      ${Icon} {
+        color: var(--c-primary);
+      }
+    }
   `
 );
 
@@ -71,7 +91,7 @@ const Icon = styled(IconComponent)(
 
     color: var(--c-neutral);
 
-    transition: opacity var(--transition);
+    transition: var(--transition);
 
     opacity: ${inject.opacity(!isEditing)};
   `
