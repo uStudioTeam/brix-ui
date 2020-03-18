@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
+import { Input } from '../../input';
 import { TextProps } from '../Text';
 
 interface Styled {
@@ -9,9 +10,9 @@ interface Styled {
 }
 
 type EditableTextProps = Omit<TextProps, 'align'> &
-  ClassNames<Styled> & {
+  ClassNames<Styled> &
+  Input<string> & {
     isDefaultEditable?: boolean;
-    onChange: (value: string) => void;
     icon?: ReactNode;
     placeholder?: string;
   };

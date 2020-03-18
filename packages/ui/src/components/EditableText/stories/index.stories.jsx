@@ -1,5 +1,5 @@
 import { addDecorator, addParameters, storiesOf } from '@storybook/react';
-import { select, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
@@ -46,7 +46,13 @@ editableTextStory.add('Primary', () => {
 
   return (
     <StyledBox>
-      <EditableText variant={variant} onChange={setValue} appearance={appearance} placeholder={text('Placeholder', '')}>
+      <EditableText
+        variant={variant}
+        onChange={setValue}
+        appearance={appearance}
+        placeholder={text('Placeholder', '')}
+        isDisabled={boolean('Disabled', false)}
+      >
         {value}
       </EditableText>
     </StyledBox>
