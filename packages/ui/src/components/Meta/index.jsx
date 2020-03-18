@@ -5,7 +5,7 @@ import { classNames } from '../../utils';
 
 import { Styled } from './styles';
 
-const Meta = ({ variant = 'small', title, children, classNames, className = '' }) => (
+const Meta = ({ variant = 'small', title, children: value, classNames, className = '' }) => (
   <Styled.Meta classNames={classNames} className={className}>
     {title && (
       <Styled.Title variant={variant} classNames={classNames}>
@@ -13,7 +13,7 @@ const Meta = ({ variant = 'small', title, children, classNames, className = '' }
       </Styled.Title>
     )}
     <Styled.Value variant={variant} className={classNames}>
-      {children}
+      {value}
     </Styled.Value>
   </Styled.Meta>
 );
