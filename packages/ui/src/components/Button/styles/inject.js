@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
-function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) {
+const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
   return {
     text: css`
       ${Mixin.Style.inputPadding()};
@@ -135,7 +135,7 @@ function getAppearance({ isDisabled: disabled, isLoading, intent, appearance = '
       `)}
     `,
   }[appearance];
-}
+};
 
 const containedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-light)' : '');
 
@@ -155,7 +155,7 @@ const outlinedDesktopHoverColor = (disabled, isLoading, intent) =>
 
 const outlinedDesktopActiveOpacity = (disabled, isLoading) => `opacity: ${disabled || isLoading ? 0 : 1}`;
 
-function loadingStyles(isLoading) {
+const loadingStyles = isLoading => {
   if (isLoading) {
     return css`
       color: transparent;
@@ -177,6 +177,6 @@ function loadingStyles(isLoading) {
       }
     `;
   }
-}
+};
 
 export const inject = { getAppearance, loadingStyles };
