@@ -13,11 +13,11 @@ function sidePositions(position) {
   switch (position) {
     case 'top':
     case 'bottom':
-      return { left: 'left', right: 'right' };
+      return ['left', 'right'];
     case 'left':
     case 'right':
     default:
-      return { top: 'top', bottom: 'bottom' };
+      return ['top', 'bottom'];
   }
 }
 
@@ -31,7 +31,7 @@ function translateByPosition(position) {
 }
 
 function sideBordersByPosition(position) {
-  return Object.keys(sidePositions(reversePosition(position))).reduce(
+  return sidePositions(reversePosition(position)).reduce(
     (map, pos) => `
         ${map}
         border-${pos}: 0.5rem solid transparent;

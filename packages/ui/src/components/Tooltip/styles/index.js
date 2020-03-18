@@ -34,7 +34,7 @@ const Tooltip = styled.span(
     ${inject.reversePosition(position)}: -0.5rem;
     
     // center by opposite axis
-    ${Object.keys(inject.sidePositions(position))[0]}: 50%;
+    ${inject.sidePositions(position)[0]}: 50%;
 
     // triangle from borders
     border-${position}: var(--i-medium) solid var(--c-light);
@@ -64,6 +64,7 @@ const TooltipContainer = styled.span`
       }
     }
   `)}
+  
   ${Mixin.Device.desktop(css`
     &:hover {
       cursor: help;
