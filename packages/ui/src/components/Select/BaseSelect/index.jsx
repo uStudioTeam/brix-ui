@@ -69,7 +69,6 @@ const BaseSelect = forwardRef(function BaseSelect(
         aria-required={isRequired}
         ref={ref}
         multiple={multiple}
-        size={itemsArray.length}
       >
         {itemsArray.map(item => (
           <option value={item.value} disabled={item.isDisabled} key={item.value}>
