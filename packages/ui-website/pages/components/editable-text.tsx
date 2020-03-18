@@ -30,20 +30,20 @@ const EditableTextPage = () => {
           type: `\`'span' | 'code' | 'small' | 'body' | 'article' | 'caption' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1'\``,
           defaultValue: `\`'body'\``,
         },
-        align: {
-          type: `\`'left' | 'center' | 'right'\``,
-          defaultValue: `\`'left'\``,
-        },
         appearance: {
           type: `\`'regular' | 'italic' | 'underlined' | 'bold'\``,
           defaultValue: `\`'regular'\``,
         },
-        defaultEditable: {
+        isDefaultEditable: {
           type: '`boolean`',
           defaultValue: '`false`',
         },
+        icon: {
+          type: '`ReactNode`',
+          description: 'Pass your custom icon that will accept internal isEditing prop for style control purposes',
+        },
       }}
-      classNames={['Container', 'TextArea', 'Text']}
+      classNames={['Container', 'TextArea', 'Text', 'Icon']}
     >
       <ComponentInfoItem>
         <EditableText onChange={setValue}>{value}</EditableText>
