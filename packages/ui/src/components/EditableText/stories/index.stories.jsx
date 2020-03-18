@@ -1,8 +1,10 @@
 import { addDecorator, addParameters, storiesOf } from '@storybook/react';
-import { select, withKnobs } from '@storybook/addon-knobs';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import Flex from '../../Flex';
 
 import EditableText from '../index';
 
@@ -11,6 +13,14 @@ addDecorator(jsxDecorator);
 addParameters({ jsx: { skip: 1 } });
 
 const editableTextStory = storiesOf('EditableText', module);
+
+const StyledBox = styled(Flex)`
+  background-color: var(--c-light);
+  border-radius: var(--border-radius);
+  padding: var(--i-regular);
+  width: 100%;
+  justify-content: center;
+`;
 
 editableTextStory.add('Primary', () => {
   const [value, setValue] = useState(
@@ -35,8 +45,10 @@ editableTextStory.add('Primary', () => {
       : undefined;
 
   return (
-    <EditableText variant={variant} onChange={setValue} appearance={appearance}>
-      {value}
-    </EditableText>
+    <StyledBox>
+      <EditableText variant={variant} onChange={setValue} appearance={appearance} placeholder={text('Placeholder', '')}>
+        {value}
+      </EditableText>
+    </StyledBox>
   );
 });

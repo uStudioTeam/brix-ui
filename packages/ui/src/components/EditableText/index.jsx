@@ -8,7 +8,7 @@ import { Styled } from './styles';
 import { editableTextUtils } from './utils';
 
 const EditableText = forwardRef(function EditableText(
-  { children: value, onChange, isDefaultEditable = false, classNames, className = '', icon, variant, appearance },
+  { children: value, onChange, placeholder, isDefaultEditable = false, classNames, className = '', icon, variant, appearance },
   ref
 ) {
   const [isEditing, setEditing] = useState(isDefaultEditable);
@@ -44,7 +44,7 @@ const EditableText = forwardRef(function EditableText(
         appearance={appearance}
         classNames={classNames}
       >
-        {value}
+        {value || placeholder}
       </Styled.Text>
 
       <Styled.TextArea
@@ -54,7 +54,7 @@ const EditableText = forwardRef(function EditableText(
         autoFocus={isDefaultEditable}
         isEditing={isEditing}
         dimensions={textDimensions}
-        value={value}
+        value={value || placeholder}
         onChange={handleChange}
         onFocus={() => setEditing(true)}
         onBlur={() => setEditing(false)}
@@ -76,6 +76,7 @@ EditableText.propTypes = {
   appearance: PropTypes.oneOf(['regular', 'italic', 'underlined', 'bold']),
   isDefaultEditable: PropTypes.bool,
   icon: PropTypes.node,
+  placeholder: PropTypes.string,
   ...classNames(Object.keys(Styled)),
 };
 
