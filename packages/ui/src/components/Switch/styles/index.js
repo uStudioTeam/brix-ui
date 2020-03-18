@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
+import { Mixin } from '../../../theme';
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject';
 
-const Container = styled.span.withConfig({ displayName: 'SwitchLabel' })(
+const Container = styled.span(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -13,21 +15,11 @@ const Container = styled.span.withConfig({ displayName: 'SwitchLabel' })(
 
     cursor: pointer;
 
-    ${isDisabled
-      ? css`
-          color: var(--c-neutral);
-          cursor: not-allowed;
-
-          &:active,
-          &:focus {
-            pointer-events: none;
-          }
-        `
-      : ''};
+    ${inject.disabledStyles(isDisabled)}
   `
 );
 
-const Switch = styled.span.withConfig({ displayName: 'Switch' })(
+const Switch = styled.span(
   ({ alternative }) => css`
     ${Mixin.Style.borderAll({ color: 'var(--c-primary)' })};
 
@@ -43,7 +35,7 @@ const Switch = styled.span.withConfig({ displayName: 'Switch' })(
     background: var(--g-primary) no-repeat, var(--c-lightest);
     background-position-x: -2rem;
 
-    border-radius: ${alternative ? 'var(--border-radius)' : 'var(--i-regular)'};
+    ${inject.borderRadius(alternative)};
 
     transition: var(--transition);
 
@@ -58,7 +50,8 @@ const Switch = styled.span.withConfig({ displayName: 'Switch' })(
       height: calc(0.75rem);
 
       border: 1px solid var(--c-primary);
-      border-radius: ${alternative ? '1px' : 'calc(var(--i-regular) - 4px)'};
+
+      ${inject.borderRadiusAfterElement(alternative)};
 
       background: var(--g-primary) no-repeat, var(--c-lightest);
       background-position-x: 0;
@@ -70,7 +63,7 @@ const Switch = styled.span.withConfig({ displayName: 'Switch' })(
   `
 );
 
-const Input = styled.input.withConfig({ displayName: 'SwitchInput' })`
+const Input = styled.input`
   position: absolute;
 
   width: 100%;
@@ -125,4 +118,4 @@ const Input = styled.input.withConfig({ displayName: 'SwitchInput' })`
   }
 `;
 
-export const Styled = { Switch, Input, Container };
+export const Styled = StyledComponents({ Switch, Input, Container });
