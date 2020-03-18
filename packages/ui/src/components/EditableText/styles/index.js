@@ -46,10 +46,15 @@ const Text = styled(TextComponent)(
 
 const EditableText = styled.article`
   position: relative;
+
   overflow-wrap: break-word;
+
   opacity: 1;
+
   width: 100%;
   min-height: 21px;
+
+  padding-right: var(--i-small);
 
   transition: opacity var(--transition);
 `;
@@ -57,7 +62,7 @@ const EditableText = styled.article`
 const Icon = styled(IconComponent)(
   ({ isEditing }) => css`
     position: absolute;
-    right: -14px;
+    right: -10px;
     top: 6px;
 
     color: var(--c-neutral);
