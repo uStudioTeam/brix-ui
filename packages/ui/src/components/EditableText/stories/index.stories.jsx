@@ -26,6 +26,7 @@ editableTextStory.add('Primary', () => {
     ['small', 'body', 'article', 'caption', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1'],
     'body'
   );
+
   const appearance =
     variant === 'article' || variant === 'body'
       ? variant === 'article'

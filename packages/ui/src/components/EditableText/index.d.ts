@@ -7,11 +7,11 @@ interface Styled {
   Textarea;
 }
 
-type EditableTextProps = TextProps &
+type EditableTextProps = Omit<TextProps, 'align'> &
   ClassNames<Styled> & {
-  defaultEditing?: boolean;
-  onChange: (value: string) => void;
-};
+    isDefaultEditable?: boolean;
+    onChange: (value: string) => void;
+  };
 
 declare const EditableText: {
   (props: EditableTextProps): JSX.Element;
