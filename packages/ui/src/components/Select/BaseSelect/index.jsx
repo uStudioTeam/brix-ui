@@ -50,7 +50,7 @@ const BaseSelect = forwardRef(function BaseSelect(
             {item.label}
           </Styled.ValuesListText>
 
-          {<Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} />}
+          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} />
         </Styled.ValuesListItem>
       </li>
     ));
