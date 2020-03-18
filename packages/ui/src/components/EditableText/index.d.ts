@@ -14,7 +14,6 @@ type EditableTextProps = Omit<TextProps, 'align', 'onChange'> &
   Input<string> & {
     isDefaultEditable?: boolean;
     icon?: ReactNode;
-    placeholder?: string;
   };
 
 declare const EditableText: {

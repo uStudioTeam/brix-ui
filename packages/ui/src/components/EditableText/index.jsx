@@ -14,7 +14,6 @@ const EditableText = forwardRef(function EditableText(
     defaultValue,
     onChange,
     label,
-    placeholder,
     isDisabled = false,
     isRequired = false,
     isDefaultEditable = false,
@@ -61,7 +60,7 @@ const EditableText = forwardRef(function EditableText(
         appearance={appearance}
         classNames={classNames}
       >
-        {value || placeholder}
+        {value || defaultValue}
       </Styled.Text>
 
       <Styled.TextArea
@@ -71,7 +70,7 @@ const EditableText = forwardRef(function EditableText(
         autoFocus={isEditing || isDefaultEditable}
         isEditing={isEditing}
         dimensions={textDimensions}
-        value={value || placeholder}
+        value={value || defaultValue}
         onChange={handleChange}
         onFocus={() => setEditing(true)}
         onBlur={() => setEditing(false)}
@@ -102,7 +101,6 @@ EditableText.propTypes = {
   appearance: PropTypes.oneOf(['regular', 'italic', 'underlined', 'bold']),
   isDefaultEditable: PropTypes.bool,
   icon: PropTypes.node,
-  placeholder: PropTypes.string,
   ...classNames(Object.keys(Styled)),
 };
 
