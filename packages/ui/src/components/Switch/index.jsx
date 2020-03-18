@@ -34,10 +34,10 @@ const Switch = forwardRef(function Switch(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        className={classNames}
+        classNames={classNames}
       />
 
-      <Styled.Switch alternative={alternative} className={classNames} />
+      <Styled.Switch alternative={alternative} classNames={classNames} />
     </Styled.Container>
   );
 });
