@@ -52,8 +52,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
     contained: css`
       ${Mixin.Style.inputPadding()};
 
-      ${containedBorder(disabled, isLoading)};
-      ${containedBackground(disabled, isLoading, intent)};
+      ${_containedBorder(disabled, isLoading)};
+      ${_containedBackground(disabled, isLoading, intent)};
 
       color: var(--c-lightest);
 
@@ -82,7 +82,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
       ${Mixin.Style.inputPadding()};
       ${Mixin.Style.borderAll({ color: `var(--c-${intent})` || '' })};
 
-      ${outlinedBorder(disabled, isLoading)};
+      ${_outlinedBorder(disabled, isLoading)};
 
       background-color: transparent;
       color: var(--c-${intent});
@@ -105,7 +105,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
         &:active {
           color: var(--c-${intent}-light);
 
-          ${outlinedMobileActiveBorder(disabled, isLoading)}
+          ${_outlinedMobileActiveBorder(disabled, isLoading)}
 
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.1};
@@ -115,8 +115,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 
       ${Mixin.Device.desktop(css`
         &:hover {
-          ${outlinedDesktopHoverBorder(disabled, isLoading, intent)};
-          ${outlinedDesktopHoverColor(disabled, isLoading)}
+          ${_outlinedDesktopHoverBorder(disabled, isLoading, intent)};
+          ${_outlinedDesktopHoverColor(disabled, isLoading)}
         }
 
         &:focus {
@@ -129,7 +129,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
           color: var(--c-${intent}-light);
           border-color: outlinedBorder(disabled, isLoading);
           &:after {
-            ${outlinedDesktopActiveOpacity(disabled, isLoading)};
+            ${_outlinedDesktopActiveOpacity(disabled, isLoading)};
           }
         }
       `)}
@@ -137,23 +137,29 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
   }[appearance];
 };
 
-const containedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-light)' : '');
+const _containedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-light)' : '');
 
-const containedBackground = (disabled, isLoading, intent) =>
-  `background: ${disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`}`;
+const _containedBackground = (disabled, isLoading, intent) => {
+  return `background: ${
+    disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`
+  }`;
+};
 
-const outlinedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-neutral)' : '');
+const _outlinedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-neutral)' : '');
 
-const outlinedMobileActiveBorder = (disabled, isLoading) =>
-  disabled || isLoading ? 'border-color: var(--c-neutral)' : '';
+const _outlinedMobileActiveBorder = (disabled, isLoading) => {
+  return disabled || isLoading ? 'border-color: var(--c-neutral)' : '';
+};
 
-const outlinedDesktopHoverBorder = (disabled, isLoading, intent) =>
-  `border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+const _outlinedDesktopHoverBorder = (disabled, isLoading, intent) => {
+  return `border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+};
 
-const outlinedDesktopHoverColor = (disabled, isLoading, intent) =>
-  `color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+const _outlinedDesktopHoverColor = (disabled, isLoading, intent) => {
+  return `color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+};
 
-const outlinedDesktopActiveOpacity = (disabled, isLoading) => `opacity: ${disabled || isLoading ? 0 : 1}`;
+const _outlinedDesktopActiveOpacity = (disabled, isLoading) => `opacity: ${disabled || isLoading ? 0 : 1}`;
 
 const loadingStyles = isLoading => {
   if (isLoading) {
