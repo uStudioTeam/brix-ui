@@ -39,9 +39,6 @@ const EditableTextPage = () => {
           type: '`ReactNode`',
           description: 'Pass your custom icon that will accept internal isEditing prop for style control purposes',
         },
-        placeholder: {
-          type: '`string`',
-        },
       }}
       classNames={['Container', 'TextArea', 'Text', 'Icon']}
     >
