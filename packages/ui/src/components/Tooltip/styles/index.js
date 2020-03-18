@@ -6,6 +6,7 @@ import { inject } from './inject';
 const Tooltip = styled.span(
   ({ position }) => css`
   position: absolute;
+  
   ${inject.indent(position)};
 
   display: block;
@@ -19,6 +20,7 @@ const Tooltip = styled.span(
   box-shadow: var(--s-light);
 
   transform: ${inject.translateByPosition(position)};
+  
   transition: opacity var(--transition);
   transition-delay: 5ms;
 
@@ -28,12 +30,15 @@ const Tooltip = styled.span(
     content: '';
 
     position: absolute;
+    
     ${inject.reversePosition(position)}: -0.5rem;
+    
     // center by opposite axis
     ${Object.keys(inject.sidePositions(position))[0]}: 50%;
 
     // triangle from borders
     border-${position}: var(--i-medium) solid var(--c-light);
+    
     ${inject.sideBordersByPosition(position)};
 
     ${inject.compensateCentring(position)}
