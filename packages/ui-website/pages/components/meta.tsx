@@ -11,7 +11,7 @@ const MetaPage = () => {
       description="Meta component is used to represent key-value pairs of data."
       props={{
         value: {
-          type: '`string`',
+          type: '`ReactNode`',
           required: true,
         },
         variant: {
@@ -19,11 +19,7 @@ const MetaPage = () => {
           defaultValue: `\`'small'\``,
         },
         title: {
-          type: '`string`',
-        },
-        href: {
-          type: '`string`',
-          description: 'Provide this to make value a link',
+          type: '`ReactNode`',
         },
       }}
       classNames={['Meta', 'Title']}
@@ -40,8 +36,7 @@ const MetaPage = () => {
         <Meta value="Doe" variant="large" title="Last Name" />
 
         <Meta
-          value="Personal web page"
-          href="https://en.wikipedia.org/wiki/John_Doe"
+          value={<a href="https://en.wikipedia.org/wiki/John_Doe">Personal web page</a>}
           variant="large"
           title="Web-site"
         />
