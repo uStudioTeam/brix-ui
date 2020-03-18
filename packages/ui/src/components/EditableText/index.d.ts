@@ -9,7 +9,7 @@ interface Styled {
   Textarea;
 }
 
-type EditableTextProps = Omit<TextProps, 'align'> &
+type EditableTextProps = Omit<TextProps, 'align', 'onChange'> &
   ClassNames<Styled> &
   Input<string> & {
     isDefaultEditable?: boolean;
