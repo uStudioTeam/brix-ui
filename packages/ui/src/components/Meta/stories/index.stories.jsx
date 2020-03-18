@@ -21,7 +21,7 @@ metaStory.add('Primary', () => (
   <SContainer>
     <Meta
       title={text('Title', 'Title')}
-      children={text('Children', 'Value')}
+      children={text('Content', 'Value')}
       variant={select('Variant', ['small', 'large'], 'small')}
     />
   </SContainer>
