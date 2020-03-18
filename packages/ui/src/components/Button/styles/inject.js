@@ -127,7 +127,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 
         &:active {
           color: var(--c-${intent}-light);
-          border-color: outlinedDisabledOrLoadingBorder(disabled, isLoading);
+          border-color: outlinedBorder(disabled, isLoading);
           &:after {
             ${outlinedDesktopActiveOpacity(disabled, isLoading)};
           }
