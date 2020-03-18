@@ -44,20 +44,24 @@ const Text = styled(TextComponent)(
   `
 );
 
-const EditableText = styled.article`
-  position: relative;
+const EditableText = styled.article(
+  ({ isDisabled }) => css`
+    position: relative;
 
-  overflow-wrap: break-word;
+    overflow-wrap: break-word;
 
-  opacity: 1;
+    opacity: 1;
 
-  width: 100%;
-  min-height: 21px;
+    width: 100%;
+    min-height: 21px;
 
-  padding-right: var(--i-small);
+    padding-right: var(--i-small);
 
-  transition: opacity var(--transition);
-`;
+    transition: opacity var(--transition);
+
+    ${inject.disabledStyles(isDisabled)};
+  `
+);
 
 const Icon = styled(IconComponent)(
   ({ isEditing }) => css`
