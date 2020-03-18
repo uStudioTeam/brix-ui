@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MultiSelect, Grid, Cell } from '@ustudio/ui';
+import { MultiSelect, Grid, Cell, Flex } from '@ustudio/ui';
 
 import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
@@ -68,32 +68,38 @@ ${controlledInputDescription('Multiple select')}.`}
       ]}
     >
       <ComponentInfoItem>
-        <Grid direction="row" gap={16}>
-          <Cell alignment={{ horizontal: 'center' }}>
-            <MultiSelect
-              items={items}
-              value={valueSelected}
-              label="Multi select"
-              onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
-            />
+        <Grid xs={{ gap: 16 }}>
+          <Cell>
+            <Flex alignment={{ horizontal: 'center' }}>
+              <MultiSelect
+                items={items}
+                value={valueSelected}
+                label="Multi select"
+                onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
+              />
+            </Flex>
           </Cell>
-          <Cell alignment={{ horizontal: 'center' }}>
-            <MultiSelect
-              groups={groups}
-              value={valueSelected}
-              label="Group select"
-              onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
-            />
+          <Cell>
+            <Flex alignment={{ horizontal: 'center' }}>
+              <MultiSelect
+                groups={groups}
+                value={valueSelected}
+                label="Group select"
+                onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
+              />
+            </Flex>
           </Cell>
-          <Cell alignment={{ horizontal: 'center' }}>
-            <MultiSelect
-              items={items}
-              value={valueSelected}
-              defaultValue={['4']}
-              label="Disabled select"
-              onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
-              isDisabled
-            />
+          <Cell>
+            <Flex alignment={{ horizontal: 'center' }}>
+              <MultiSelect
+                items={items}
+                value={valueSelected}
+                defaultValue={['4']}
+                label="Disabled select"
+                onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
+                isDisabled
+              />
+            </Flex>
           </Cell>
         </Grid>
       </ComponentInfoItem>

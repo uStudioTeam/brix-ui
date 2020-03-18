@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle(
 
       // Breakpoints
 
-      ${Object.keys(theme.breakpoint).reduce((map, bp) => map + `--${bp}: ${theme.breakpoint[bp]}px;`, ``)};
+      ${Object.keys(theme.breakpoint).reduce((map, bp) => map + `--bp-${bp}: ${theme.breakpoint[bp]}px;`, ``)};
 
       // Blocks
 

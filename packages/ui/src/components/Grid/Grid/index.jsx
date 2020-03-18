@@ -1,61 +1,90 @@
-import React, { Children, cloneElement, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import Cell from '../Cell';
+import { classNames, common } from '../../../utils';
 
-import { common } from '../../../utils';
+import { Styled } from '../styles';
+import { gridUtils } from '../utils';
+import { GridContext } from '../utils/context';
 
-import { Styled } from '../styled';
-
-function mapCells({ cells, cellsCount, gridDirection, divideBy }) {
-  return Children.map(cells, (cell, cellIndex) =>
-    cloneElement(cell, { cellsCount, cellIndex, gridDirection, divideBy })
+const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
+  const { divisions, cellsSizes, cellsCount } = useMemo(
+    () => ({
+      divisions: gridUtils.countDivisions(cells),
+      cellsSizes: gridUtils.countCellsSizes(cells),
+      cellsCount: gridUtils.countCells(cells),
+    }),
+    [cells]
   );
-}
-
-const Grid = ({ children: cells, direction = 'column', divideBy = 3, className, ...props }) => {
-  const cellsCount = useMemo(() => {
-    return Children.count(cells);
-  }, [cells]);
 
   return (
     <Styled.Grid
-      {...props}
-      dataDirection={direction}
-      className={className || ''}
-      divideBy={divideBy}
+      divisions={divisions}
+      isContainer={isContainer}
       cellsCount={cellsCount}
+      breakpoints={{ xs, md, lg, xl }}
+      classNames={classNames}
+      className={className}
     >
-      {mapCells({ cells, cellsCount, gridDirection: direction, divideBy })}
+      <GridContext.Provider
+        value={{
+          cellsSizes,
+          gridBreakpoints: { xs, md, lg, xl },
+        }}
+      >
+        {gridUtils.mapCells(cells)}
+      </GridContext.Provider>
     </Styled.Grid>
   );
 };
 
 Grid.displayName = 'Grid';
 
-Grid.propTypes = {
-  /**
-   * https://github.com/facebook/react/issues/2979#issuecomment-218833260
-  */
-  children: PropTypes.oneOfType([
-    PropTypes.shape({
-      type: PropTypes.oneOf([Cell])
-    }),
+const cellsValidator = (props, propName, componentName) => {
+  const cells = props[propName];
+  
+  const validateCell = cell => {
+    if (cell.type.name !== 'Cell') {
+      throw new Error(
+        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type.name}".`
+      );
+    }
+  };
 
-    PropTypes.arrayOf(PropTypes.shape({
-      type: PropTypes.oneOf([Cell])
-    }))
-  ]).isRequired,
-  direction: common.direction,
-  gap: PropTypes.number,
-  alignment: common.alignment,
-  divideBy: PropTypes.number,
-  className: PropTypes.string,
+  try {
+    if (Array.isArray(cells)) {
+      cells.forEach(cell => {
+        if (Array.isArray(cell)) {
+          cell.forEach(validateCell);
+        } else {
+          validateCell(cell);
+        }
+      });
+    } else {
+      validateCell(cells);
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+Grid.propTypes = {
+  children: cellsValidator,
+  isContainer: PropTypes.bool,
+  ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
+    [breakpoint]: PropTypes.exact({
+      template: PropTypes.string,
+      maxWidth: PropTypes.number,
+      direction: common.direction,
+      gap: PropTypes.number,
+      alignment: common.alignment,
+    }),
+  })),
+  ...classNames(['Grid'])
 };
 
 Grid.defaultProps = {
-  direction: 'column',
-  divideBy: 1,
+  isContainer: false,
 };
 
 export default Grid;

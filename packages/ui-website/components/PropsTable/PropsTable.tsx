@@ -22,6 +22,9 @@ interface Prop {
 }
 
 const Styled = {
+  TableTitle: styled(Text)`
+    margin-top: var(--i-large);
+  `,
   Table: styled.div`
     display: grid;
     grid-auto-flow: row;
@@ -124,7 +127,7 @@ export const PropsTable = ({
 }) => {
   return (
     <>
-      <Text variant="h4">{componentName ? `${componentName} props` : 'Props'}</Text>
+      <Styled.TableTitle variant="h4">{componentName ? `${componentName} props` : 'Props'}</Styled.TableTitle>
       <Styled.Table>
         <Styled.TableRow>
           {['prop', 'type', 'default value'].map(title => (

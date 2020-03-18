@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import { classNames } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Tag = ({
   children: tag,
   appearance = { background: 'var(--g-primary)', color: 'inherit' },
   classNames,
-  className,
+  className = '',
 }) => {
   return (
-    <Styled.Tag appearance={appearance} className={`${classNames?.Tag || ''} ${className || ''}`}>
+    <Styled.Tag appearance={appearance} classNames={classNames} className={className}>
       {tag}
     </Styled.Tag>
   );

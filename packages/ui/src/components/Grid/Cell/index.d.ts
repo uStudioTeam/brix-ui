@@ -1,15 +1,15 @@
-import { Alignment, Direction } from '../../../theme/theme';
-import { BreakpointOffsets, BreakpointSizes, Children } from '../types';
+import { Breakpoint } from '../../../theme/theme';
+import { Children, Offset, Size } from '../types';
 
-interface CellProps extends BreakpointSizes {
+type CellBreakpointData = {
+  [breakpoint in Breakpoint]?: {
+    size?: Size;
+    offset?: Offset;
+  }
+}
+
+interface CellProps extends CellBreakpointData {
   children: Children;
-  
-  direction?: Direction;
-  isReversed?: boolean;
-  
-  alignment?: Alignment;
-  
-  offset?: BreakpointOffsets;
   
   className?: string;
 }

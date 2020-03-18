@@ -54,7 +54,7 @@ ${controlledInputDescription('Single select')}.`}
       classNames={['ValuesListIcon', 'Container', 'Select', 'SelectIcon', 'Dropdown', 'ValuesList', 'ValuesListTitle']}
     >
       <ComponentInfoItem>
-        <Grid direction="row" gap={16}>
+        <Grid xs={{ gap: 16 }}>
           <Cell>
             <Select
               items={items}

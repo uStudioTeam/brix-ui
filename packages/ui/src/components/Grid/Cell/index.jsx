@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { classNames } from '../../../utils/prop-types';
 
-import { common } from '../../../utils';
+import { gridUtils } from '../utils';
+import { GridContext } from '../utils/context';
 
-import { Styled } from '../styled';
+import { Styled } from '../styles';
 
-const Cell = ({ children, direction = 'row', className, ...props }) => (
-  <Styled.Cell {...props} dataDirection={direction} className={className || ''}>
-    {children}
-  </Styled.Cell>
-);
+const Cell = ({ children, classNames, className = '', index, xs, md, lg, xl }) => {
+  const gridData = useContext(GridContext);
+
+  return (
+    <Styled.Cell
+      index={index}
+      breakpoints={{ xs, md, lg, xl }}
+      classNames={classNames}
+      className={className}
+      {...gridData}
+    >
+      {children}
+    </Styled.Cell>
+  );
+};
 
 Cell.displayName = 'Cell';
 
 Cell.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
-  direction: common.direction,
-  isReversed: PropTypes.bool,
-  alignment: common.alignment,
-  offset: PropTypes.exact(
-    ['xs', 'md', 'lg', 'xl'].reduce(
-      (obj, bp) => Object.assign(obj, { [bp]: PropTypes.exact({ before: PropTypes.number, after: PropTypes.number }) }),
-      {}
-    )
-  ),
-  ...['xs', 'md', 'lg', 'xl'].reduce((obj, bp) => Object.assign(obj, { [bp]: PropTypes.number }), {}),
-  className: PropTypes.string,
-};
-
-Cell.defaultProps = {
-  direction: 'row',
+  ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
+    [breakpoint]: PropTypes.exact({
+      size: PropTypes.number,
+      offset: PropTypes.exact({
+        before: PropTypes.number,
+        after: PropTypes.number,
+      }),
+    }),
+  })),
+  ...classNames(['Cell']),
 };
 
 export default Cell;
