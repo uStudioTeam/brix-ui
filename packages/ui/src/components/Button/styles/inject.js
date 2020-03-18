@@ -1,6 +1,30 @@
 import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
+const _containedBorder = (disabled, isLoading) => (disabled || isLoading ? css`border-color: var(--c-light)` : '');
+
+const _containedBackground = (disabled, isLoading, intent) => {
+  return css`background: ${
+    disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`
+  }`;
+};
+
+const _outlinedBorder = (disabled, isLoading) => (disabled || isLoading ? css`border-color: var(--c-neutral)` : '');
+
+const _outlinedMobileActiveBorder = (disabled, isLoading) => {
+  return disabled || isLoading ? css`border-color: var(--c-neutral)` : '';
+};
+
+const _outlinedDesktopHoverBorder = (disabled, isLoading, intent) => {
+  return css`border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+};
+
+const _outlinedDesktopHoverColor = (disabled, isLoading, intent) => {
+  return css`color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+};
+
+const _outlinedDesktopActiveOpacity = (disabled, isLoading) => css`opacity: ${disabled || isLoading ? 0 : 1}`;
+
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
   return {
     text: css`
@@ -136,30 +160,6 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
     `,
   }[appearance];
 };
-
-const _containedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-light)' : '');
-
-const _containedBackground = (disabled, isLoading, intent) => {
-  return `background: ${
-    disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`
-  }`;
-};
-
-const _outlinedBorder = (disabled, isLoading) => (disabled || isLoading ? 'border-color: var(--c-neutral)' : '');
-
-const _outlinedMobileActiveBorder = (disabled, isLoading) => {
-  return disabled || isLoading ? 'border-color: var(--c-neutral)' : '';
-};
-
-const _outlinedDesktopHoverBorder = (disabled, isLoading, intent) => {
-  return `border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
-};
-
-const _outlinedDesktopHoverColor = (disabled, isLoading, intent) => {
-  return `color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
-};
-
-const _outlinedDesktopActiveOpacity = (disabled, isLoading) => `opacity: ${disabled || isLoading ? 0 : 1}`;
 
 const loadingStyles = isLoading => {
   if (isLoading) {
