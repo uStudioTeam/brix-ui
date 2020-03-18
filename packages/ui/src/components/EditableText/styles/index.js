@@ -59,7 +59,7 @@ const EditableText = styled.article(
 
     transition: opacity var(--transition);
 
-    ${inject.disabledStyles(isDisabled)};
+    ${inject.disabledStyles({ isDisabled, Icon })};
 
     &:after {
       position: absolute;
@@ -73,12 +73,6 @@ const EditableText = styled.article(
       background-color: var(--c-primary);
 
       ${inject.afterToggle(isEditing)};
-    }
-
-    &:hover {
-      ${Icon} {
-        color: var(--c-primary);
-      }
     }
   `
 );

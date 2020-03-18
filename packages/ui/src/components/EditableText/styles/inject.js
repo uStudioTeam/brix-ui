@@ -4,7 +4,7 @@ const dimension = (dimension, isEditing) => `${isEditing ? `${dimension}px` : '1
 
 const opacity = isEditing => (isEditing ? 1 : 0);
 
-const disabledStyles = isDisabled =>
+const disabledStyles = ({ isDisabled, Icon }) =>
   isDisabled
     ? css`
         color: var(--c-neutral);
@@ -15,7 +15,13 @@ const disabledStyles = isDisabled =>
           pointer-events: none;
         }
       `
-    : ``;
+    : css`
+        &:hover {
+          ${Icon} {
+            color: var(--c-primary);
+          }
+        }
+      `;
 
 const afterToggle = isEditing => css`
   transform: scaleX(${isEditing ? 1 : 0});
