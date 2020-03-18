@@ -41,7 +41,7 @@ const Button = forwardRef(function Button(
       {iconBefore}
 
       {isLoading && (
-        <Styled.LoadingSpinner className={classNames}>
+        <Styled.LoadingSpinner classNames={classNames}>
           <Spinner appearance={{ color: 'var(--c-neutral)', size: 16 }} />
         </Styled.LoadingSpinner>
       )}
