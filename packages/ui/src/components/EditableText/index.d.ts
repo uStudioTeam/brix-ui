@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
 import { TextProps } from '../Text';
 
@@ -11,6 +12,7 @@ type EditableTextProps = Omit<TextProps, 'align'> &
   ClassNames<Styled> & {
     isDefaultEditable?: boolean;
     onChange: (value: string) => void;
+    icon?: ReactNode;
   };
 
 declare const EditableText: {

@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 
 import TextComponent from '../../Text';
+import IconComponent from '../../internal/Icon';
+
 import { getTextAppearance, getTextVariant } from '../../../utils';
 import { inject } from './inject';
 
@@ -50,4 +52,19 @@ const EditableText = styled.article`
   transition: opacity var(--transition);
 `;
 
-export const Styled = StyledComponents({ EditableText, TextArea, Text });
+const Icon = styled(IconComponent)(
+  ({ isEditing }) => css`
+    position: absolute;
+    right: var(--i-small);
+    top: var(--i-small);
+
+    color: var(--c-neutral);
+    outline: var(--c-lightest);
+
+    transition: opacity var(--transition);
+
+    opacity: ${inject.opacity(!isEditing)};
+  `
+);
+
+export const Styled = StyledComponents({ EditableText, TextArea, Text, Icon });
