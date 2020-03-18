@@ -3,8 +3,8 @@ import { Mixin } from '../../../theme';
 
 const labelDirection = isReversed => `flex-direction: ${isReversed ? 'row-reverse' : 'row'}`;
 
-const labelDisabledStyles = (isDisabled, RadioButton) =>
-  `${
+const labelDisabledStyles = (isDisabled, RadioButton) => {
+  return `${
     isDisabled
       ? css`
           color: var(--c-neutral);
@@ -38,7 +38,7 @@ const labelDisabledStyles = (isDisabled, RadioButton) =>
         `
       : ''
   };`;
-
+};
 const radioButtonMargins = isReversed => {
   return `
     margin-right: ${isReversed ? '0' : 'var(--i-regular)'};
