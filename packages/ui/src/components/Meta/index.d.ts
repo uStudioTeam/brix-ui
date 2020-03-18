@@ -1,16 +1,17 @@
+import { ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
-  Meta, Title, Link
+  Meta;
+  Title;
+  Link;
 }
 
 interface MetaProps extends ClassNames<Styled> {
   variant?: 'small' | 'large';
-  
-  title?: string;
-  value: string;
-  
-  href?: string;
+
+  title?: ReactNode;
+  value: ReactNode;
 }
 
 declare const Meta: {
