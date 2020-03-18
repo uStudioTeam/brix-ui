@@ -48,6 +48,7 @@ const EditableText = styled.article`
   position: relative;
   overflow-wrap: break-word;
   opacity: 1;
+  max-width: 100%;
 
   transition: opacity var(--transition);
 `;
@@ -55,11 +56,10 @@ const EditableText = styled.article`
 const Icon = styled(IconComponent)(
   ({ isEditing }) => css`
     position: absolute;
-    right: var(--i-small);
-    top: var(--i-small);
+    right: -14px;
+    top: 6px;
 
     color: var(--c-neutral);
-    outline: var(--c-lightest);
 
     transition: opacity var(--transition);
 
