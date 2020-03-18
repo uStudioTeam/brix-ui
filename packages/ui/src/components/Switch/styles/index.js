@@ -51,7 +51,7 @@ const Switch = styled.span(
 
       border: 1px solid var(--c-primary);
 
-      ${inject.borderRadiusAfterElement(alternative)};
+      ${inject.borderRadiusInnerEl(alternative)};
 
       background: var(--g-primary) no-repeat, var(--c-lightest);
       background-position-x: 0;

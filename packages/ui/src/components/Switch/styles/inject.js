@@ -16,6 +16,6 @@ const disabledStyles = isDisabled => {
 
 const borderRadius = alternative => `border-radius: ${alternative ? 'var(--border-radius)' : 'var(--i-regular)'}`;
 
-const borderRadiusAfterElement = alternative => `border-radius: ${alternative ? '1px' : 'calc(var(--i-regular) - 4px)'}`;
+const borderRadiusInnerEl = alternative => `border-radius: ${alternative ? '1px' : 'calc(var(--i-regular) - 4px)'}`;
 
-export const inject = { disabledStyles, borderRadius, borderRadiusAfterElement };
+export const inject = { disabledStyles, borderRadius, borderRadiusInnerEl };
