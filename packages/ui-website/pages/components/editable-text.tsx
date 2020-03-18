@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { EditableText } from '@ustudio/ui';
 
-import { ComponentInfo, ComponentInfoItem } from '../../components';
+import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 
 const EditableTextPage = () => {
   const [value, setValue] = useState(
@@ -18,12 +18,9 @@ const EditableTextPage = () => {
       name="EditableText"
       description="You can edit text contained in this component."
       props={{
+        ...inputProps('`string`'),
         children: {
           type: '`ReactNode`',
-          required: true,
-        },
-        onChange: {
-          type: '`(value: string) => void`',
           required: true,
         },
         variant: {
@@ -41,6 +38,9 @@ const EditableTextPage = () => {
         icon: {
           type: '`ReactNode`',
           description: 'Pass your custom icon that will accept internal isEditing prop for style control purposes',
+        },
+        placeholder: {
+          type: '`string`',
         },
       }}
       classNames={['Container', 'TextArea', 'Text', 'Icon']}
