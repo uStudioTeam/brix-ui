@@ -1,6 +1,6 @@
-import Text from '../../Text';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject.js';
 
 const Meta = styled.div`
   display: flex;
@@ -9,15 +9,20 @@ const Meta = styled.div`
   color: var(--c-darkest);
 `;
 
-const Title = styled(Text)`
-  display: inline-block;
-  color: var(--c-dark);
-  margin-bottom: var(--i-medium) - 0.375rem;
-`;
+const Title = styled.div(
+  ({ variant }) => css`
+    display: inline-block;
+    color: var(--c-dark);
+    margin-bottom: var(--i-medium) - 0.375rem;
+    ${inject.titleVariant(variant)}
+  `
+);
 
-const Link = styled.a`
-  display: inline-block;
-  align-self: flex-start;
-`;
+const Value = styled.div(
+  ({ variant }) => css`
+    display: inline-block;
+    ${inject.valueVariant(variant)}
+  `
+);
 
-export const Styled = StyledComponents({ Meta, Title, Link });
+export const Styled = StyledComponents({ Meta, Title, Value });
