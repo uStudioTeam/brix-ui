@@ -4,7 +4,7 @@ import { ClassNames } from '../../theme/theme';
 interface Styled {
   Meta;
   Title;
-  Link;
+  Value;
 }
 
 interface MetaProps extends ClassNames<Styled> {
