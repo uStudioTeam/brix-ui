@@ -1,24 +1,4 @@
-import { keyframes, css } from 'styled-components';
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const load = keyframes`
-  from {
-    stroke-dashoffset: 600;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
-`;
+import { css } from 'styled-components';
 
 const stroke = appearance => {
   return css`
@@ -33,4 +13,4 @@ const size = appearance => {
   `;
 };
 
-export const inject = { rotate, load, stroke, size };
+export const inject = { stroke, size };
