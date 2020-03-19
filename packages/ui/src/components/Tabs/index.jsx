@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames, className }) => {
+const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames, className = '' }) => {
   const [offset, setOffset] = useState(0);
 
   return (
     <Styled.Tabs
       tabsQuantity={(1 / tabs.length) * 100}
       dataOffset={offset}
-      className={`${classNames?.Tabs || ''} ${className || ''}`}
+      className={className}
+      classNames={classNames}
     >
       {tabs.map((tab, index) => (
-        <Styled.TabContainer key={tab.value} className={classNames?.TabContainer || ''}>
+        <Styled.TabContainer key={tab.value} classNames={classNames}>
           <Styled.Tab
             role="tab"
             isActive={active === tab.value}
@@ -25,9 +26,9 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames
               setOffset((index / tabs.length) * 100);
             }}
             variant={variant}
-            className={classNames?.Tab || ''}
+            classNames={classNames}
           >
-            <Styled.TabContent className={classNames?.TabContent || ''}>{tab.children}</Styled.TabContent>
+            <Styled.TabContent classNames={classNames}>{tab.children}</Styled.TabContent>
           </Styled.Tab>
         </Styled.TabContainer>
       ))}
@@ -52,7 +53,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  variant: 'h3'
+  variant: 'h3',
 };
 
 export default Tabs;
