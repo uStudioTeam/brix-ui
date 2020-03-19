@@ -1,14 +1,4 @@
-import { keyframes, css } from 'styled-components';
-
-const load = keyframes`
-  from {
-    background-position-x: -1200px;
-  }
-
-  to {
-    background-position-x: 1200px;
-  }
-`;
+import { css } from 'styled-components';
 
 const width = ({ value, max }) => {
   return css`
@@ -16,4 +6,4 @@ const width = ({ value, max }) => {
   `;
 };
 
-export const inject = { load, width };
+export const inject = { width };

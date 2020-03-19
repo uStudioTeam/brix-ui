@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
+import { animation } from './animation';
 
 const Progress = styled.progress(
   ({ value, max }) => css`
@@ -33,7 +34,7 @@ const Progress = styled.progress(
       background: linear-gradient(to right, var(--c-primary-light), var(--c-primary));
       background-size: 1200px;
 
-      animation: ${inject.load} 2s linear infinite;
+      animation: ${animation.load} 2s linear infinite;
     }
 
     &:before {
