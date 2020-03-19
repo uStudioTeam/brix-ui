@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Placeholder = ({ variant = 'block', appearance, classNames, className }) => (
-  <Styled.Placeholder {...{ variant, appearance }} className={`${classNames?.Placeholder || ''} ${className || ''}`} />
-);
+const Placeholder = ({ variant = 'block', appearance, classNames, className = '' }) => {
+  return <Styled.Placeholder variant={variant} appearance={appearance} className={className} classNames={classNames} />;
+};
 
 Placeholder.displayName = 'Placeholder';
 
