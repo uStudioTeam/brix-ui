@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, inputProps } from '../../../utils';
+import { BaseInput, props } from '../BaseInput';
 
-import { Styled } from '../styled';
+import { Styled } from '../styles';
 
 const TextInput = forwardRef(function TextInput(
   {
@@ -23,44 +23,35 @@ const TextInput = forwardRef(function TextInput(
   ref
 ) {
   return (
-    <Styled.InputContainer isDisabled={isDisabled} className={`${classNames?.InputContainer || ''} ${className || ''}`}>
-      {prefix && <Styled.Prefix className={classNames?.Prefix || ''}>{prefix}</Styled.Prefix>}
-
-      <Styled.Input
-        ref={ref}
-        type="text"
-        name={label}
-        value={value ?? defaultValue}
-        onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
-        disabled={isDisabled}
-        aria-disabled={isDisabled}
-        required={isRequired}
-        aria-required={isRequired}
-        aria-labelledby={`${label} text input`}
-        autoComplete={autoComplete}
-        className={`${classNames?.Input || ''} ${className || ''}`}
-        {...htmlAttributes}
-      />
-
-      {suffix && <Styled.Suffix className={classNames?.Suffix || ''}>{suffix}</Styled.Suffix>}
-    </Styled.InputContainer>
+    <BaseInput
+      ref={ref}
+      type="text"
+      label={label}
+      value={value}
+      defaultValue={defaultValue}
+      onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      prefix={prefix}
+      suffix={suffix}
+      classNames={classNames}
+      className={className}
+      autoComplete={autoComplete}
+      {...htmlAttributes}
+    />
   );
 });
 
-const { TextAreaLabel: _, ...StyledTextInput } = Styled;
+const { TextAreaLabel: _tal, ...StyledTextInput } = Styled;
 
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  ...inputProps(PropTypes.string),
-  prefix: PropTypes.node,
-  suffix: PropTypes.node,
-  ...classNames(Object.keys(StyledTextInput)),
+  ...props.propTypes({ valueType: PropTypes.string, classes: StyledTextInput }),
 };
 
 TextInput.defaultProps = {
-  isDisabled: false,
-  isRequired: false,
+  ...props.defaultProps,
   autoComplete: 'off',
 };
 

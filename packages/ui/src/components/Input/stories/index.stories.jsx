@@ -17,7 +17,6 @@ addParameters({ jsx: { skip: 1 } });
 const inputStory = storiesOf('Input', module);
 
 const SContainer = styled.div`
-  width: fit-content;
   margin: 1rem;
 `;
 

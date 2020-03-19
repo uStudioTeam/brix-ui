@@ -14,9 +14,17 @@ const Styled = {
     width: 12px;
     height: 12px;
   `,
+  InputsContainer: styled.div`
+    flex: 1;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: var(--i-large);
+  `,
 };
 
 Styled.CodeIcon.displayName = 'Icon';
+Styled.InputsContainer.displayName = 'Container';
 
 const FileInputPage = () => {
   interface Values {
@@ -53,41 +61,47 @@ ${controlledInputDescription('File input')}.`}
       classNames={['FileInputContainer', 'Input', 'Prefix', 'Suffix']}
     >
       <ComponentInfoItem>
-        <FileInput
-          label="Default"
-          onChange={(val: any) => setValues({ ...values, default: val })}
-          value={values.default}
-          placeholder="Placeholder"
-          isRequired
-        />
-        <FileInput label="Disabled" placeholder="Placeholder" isDisabled />
+        <Styled.InputsContainer>
+          <FileInput
+            label="Default"
+            onChange={(val: any) => setValues({ ...values, default: val })}
+            value={values.default}
+            placeholder="Placeholder"
+            isRequired
+          />
+          <FileInput label="Disabled" placeholder="Placeholder" isDisabled />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Prefix and suffix" description="Inputs can even have prefix and suffix!">
-        <FileInput
-          label="With prefix"
-          onChange={(val: FileList) => setValues({ ...values, prefix: val })}
-          value={values.prefix}
-          prefix={<Styled.CodeIcon />}
-          placeholder="Placeholder"
-        />
-        <FileInput
-          label="With suffix"
-          onChange={(val: FileList) => setValues({ ...values, suffix: val })}
-          value={values.suffix}
-          suffix={<Styled.CodeIcon />}
-          placeholder="Placeholder"
-        />
+        <Styled.InputsContainer>
+          <FileInput
+            label="With prefix"
+            onChange={(val: FileList) => setValues({ ...values, prefix: val })}
+            value={values.prefix}
+            prefix={<Styled.CodeIcon />}
+            placeholder="Placeholder"
+          />
+          <FileInput
+            label="With suffix"
+            onChange={(val: FileList) => setValues({ ...values, suffix: val })}
+            value={values.suffix}
+            suffix={<Styled.CodeIcon />}
+            placeholder="Placeholder"
+          />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Multiple" description="Upload multiple files at once.">
-        <FileInput
-          label="Multiple"
-          onChange={(val: FileList) => setValues({ ...values, multiple: val })}
-          value={values.multiple}
-          placeholder="Placeholder"
-          multiple
-        />
+        <Styled.InputsContainer>
+          <FileInput
+            label="Multiple"
+            onChange={(val: FileList) => setValues({ ...values, multiple: val })}
+            value={values.multiple}
+            placeholder="Placeholder"
+            multiple
+          />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
     </ComponentInfo>
   );
