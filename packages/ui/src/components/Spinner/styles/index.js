@@ -9,7 +9,7 @@ const Spinner = styled.svg(
     animation: ${animation.rotate} 2s infinite linear;
     transform-origin: center center;
 
-    ${inject.size(appearance)};
+    ${inject.size(appearance?.size)};
 
     cursor: wait;
 
@@ -21,7 +21,7 @@ const Spinner = styled.svg(
       stroke-width: 16;
       stroke-linecap: round;
 
-      ${inject.stroke(appearance)};
+      ${inject.stroke(appearance?.color)};
 
       fill: transparent;
     }

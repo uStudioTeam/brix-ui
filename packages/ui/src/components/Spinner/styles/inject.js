@@ -1,15 +1,15 @@
 import { css } from 'styled-components';
 
-const stroke = appearance => {
+const stroke = (color = 'var(--c-primary)') => {
   return css`
-    stroke: ${appearance?.color || 'var(--c-primary)'};
+    stroke: ${color};
   `;
 };
 
-const size = appearance => {
+const size = (size = 32) => {
   return css`
-    height: ${appearance?.size || 32}px;
-    width: ${appearance?.size || 32}px;
+    height: ${size}px;
+    width: ${size}px;
   `;
 };
 
