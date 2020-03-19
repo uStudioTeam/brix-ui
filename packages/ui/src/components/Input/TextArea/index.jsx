@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, inputProps } from '../../../utils';
+import { BaseInput, props } from '../BaseInput';
 
-import { Styled } from '../styled';
+import { Styled } from '../styles';
 
 const TextArea = forwardRef(function TextArea(
   {
@@ -14,30 +14,27 @@ const TextArea = forwardRef(function TextArea(
     isDisabled = false,
     isRequired = false,
     classNames,
-    className,
+    className = '',
     rows = 3,
     ...htmlAttributes
   },
   ref
 ) {
   return (
-    <Styled.InputContainer isDisabled={isDisabled} className={`${classNames?.InputContainer || ''} ${className || ''}`}>
-      <Styled.Input
-        as="textarea"
-        ref={ref}
-        name={label}
-        value={value ?? defaultValue}
-        onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
-        disabled={isDisabled}
-        aria-disabled={isDisabled}
-        required={isRequired}
-        aria-required={isRequired}
-        aria-labelledby={`${label} text input`}
-        rows={rows}
-        className={`${classNames?.Input || ''} ${className || ''}`}
-        {...htmlAttributes}
-      />
-    </Styled.InputContainer>
+    <BaseInput
+      as="textarea"
+      ref={ref}
+      label={label}
+      value={value}
+      defaultValue={defaultValue}
+      onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      classNames={classNames}
+      className={className}
+      rows={rows}
+      {...htmlAttributes}
+    />
   );
 });
 
@@ -45,14 +42,10 @@ const { Prefix: _p, Suffix: _s, TextAreaLabel: _tal, ...StyledTextArea } = Style
 
 TextArea.displayName = 'TextArea';
 
-TextArea.propTypes = {
-  ...inputProps(PropTypes.string),
-  ...classNames(Object.keys(StyledTextArea)),
-};
+TextArea.propTypes = props.propTypes({ valueType: PropTypes.string, classes: StyledTextArea, slots: false });
 
 TextArea.defaultProps = {
-  isDisabled: false,
-  isRequired: false,
+  ...props.defaultProps,
   rows: 3,
 };
 

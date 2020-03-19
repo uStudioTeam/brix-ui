@@ -2,8 +2,9 @@ import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { classNames, inputProps } from '../../../utils';
+import { props } from '../BaseInput';
 
-import { StyledFileInput as Styled } from '../styled';
+import { StyledFileInput as Styled } from '../styles';
 
 const FileInput = forwardRef(function FileInput(
   {
@@ -17,48 +18,52 @@ const FileInput = forwardRef(function FileInput(
     prefix,
     suffix,
     classNames,
-    className,
+    className = '',
     ...htmlAttributes
   },
   ref
 ) {
   const [fileList, setFileList] = useState();
 
+  const renderStringValue = () => {
+    return `${
+      Array.from(value ?? {}).length
+        ? Array.from(value)
+            ?.map(file => file.name)
+            .join(', ')
+        : htmlAttributes?.placeholder || label
+    }`;
+  };
+
   return (
-    <Styled.FileInputWrapper className={`${classNames?.FileInputWrapper || ''} ${className || ''}`} isDisabled={isDisabled}>
-      <Styled.FileInputContainer isDisabled={isDisabled} className={classNames?.FileInputContainer || ''}>
-        {prefix && <Styled.Prefix className={classNames?.Prefix || ''}>{prefix}</Styled.Prefix>}
+    <Styled.FileInputWrapper className={className} classNames={classNames} isDisabled={isDisabled}>
+      <Styled.HiddenFileInput
+        ref={ref}
+        type="file"
+        name={label}
+        value={fileList ?? ''}
+        onChange={({ target: { files, value: fileNames } }) => {
+          onChange(files);
+          setFileList(fileNames);
+        }}
+        multiple={multiple}
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
+        required={isRequired}
+        aria-required={isRequired}
+        aria-labelledby={`${label} file input`}
+        classNames={classNames}
+        {...htmlAttributes}
+      />
 
-        <Styled.HiddenFileInput
-          ref={ref}
-          type="file"
-          name={label}
-          value={fileList ?? ''}
-          onChange={({ target: { files, value: fileNames } }) => {
-            onChange(files);
-            setFileList(fileNames);
-          }}
-          multiple={multiple}
-          disabled={isDisabled}
-          aria-disabled={isDisabled}
-          required={isRequired}
-          aria-required={isRequired}
-          aria-labelledby={`${label} file input`}
-          className={`${classNames?.HiddenFileInput || ''} ${className || ''}`}
-          {...htmlAttributes}
-        />
+      <Styled.FileInputContainer isDisabled={isDisabled} classNames={classNames}>
+        {prefix && <Styled.Prefix classNames={classNames}>{prefix}</Styled.Prefix>}
 
-        <Styled.FileInput as="div" value={value} className={classNames?.FileInput || ''}>
-          {`${
-            Array.from(value ?? {}).length
-              ? Array.from(value)
-                ?.map(file => file.name)
-                .join(', ')
-              : htmlAttributes?.placeholder || label
-          }`}
+        <Styled.FileInput as="div" value={value} classNames={classNames}>
+          {renderStringValue()}
         </Styled.FileInput>
 
-        {suffix && <Styled.Suffix className={classNames?.Suffix || ''}>{suffix}</Styled.Suffix>}
+        {suffix && <Styled.Suffix classNames={classNames}>{suffix}</Styled.Suffix>}
       </Styled.FileInputContainer>
 
       <Styled.FileInputButton
@@ -66,7 +71,7 @@ const FileInput = forwardRef(function FileInput(
         disabled={isDisabled}
         appearance="contained"
         intent="primary"
-        classNames={{ Button: classNames?.FileInputButton }}
+        classNames={classNames}
         isDisabled={isDisabled}
       >
         {buttonValue}
@@ -78,19 +83,15 @@ const FileInput = forwardRef(function FileInput(
 FileInput.displayName = 'FileInput';
 
 FileInput.propTypes = {
-  ...inputProps(PropTypes.object),
+  ...props.propTypes({ valueType: PropTypes.object, classes: Styled }),
   buttonValue: PropTypes.string,
   multiple: PropTypes.bool,
-  prefix: PropTypes.node,
-  suffix: PropTypes.node,
-  ...classNames(Object.keys(Styled)),
 };
 
 FileInput.defaultProps = {
+  ...props.defaultProps,
   buttonValue: 'Upload',
   multiple: false,
-  isDisabled: false,
-  isRequired: false,
 };
 
 export default FileInput;

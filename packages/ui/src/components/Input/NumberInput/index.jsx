@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, inputProps } from '../../../utils';
+import { BaseInput, props } from '../BaseInput';
 
-import { Styled } from '../styled';
+import { Styled } from '../styles';
 
 const NumberInput = forwardRef(function NumberInput(
   {
@@ -16,51 +16,43 @@ const NumberInput = forwardRef(function NumberInput(
     prefix,
     suffix,
     classNames,
-    className,
+    className = '',
     autoComplete = 'off',
     ...htmlAttributes
   },
   ref
 ) {
   return (
-    <Styled.InputContainer isDisabled={isDisabled} className={`${classNames?.InputContainer || ''} ${className || ''}`}>
-      {prefix && <Styled.Prefix className={classNames?.Prefix || ''}>{prefix}</Styled.Prefix>}
-
-      <Styled.Input
-        ref={ref}
-        type="number"
-        name={label}
-        value={value ?? defaultValue ?? ''}
-        onChange={({ target: { valueAsNumber: inputValue } }) => onChange(inputValue || '')}
-        autoComplete={autoComplete}
-        disabled={isDisabled}
-        aria-disabled={isDisabled}
-        required={isRequired}
-        aria-required={isRequired}
-        aria-labelledby={`${label} number input`}
-        className={`${classNames?.Input || ''} ${className || ''}`}
-        {...htmlAttributes}
-      />
-
-      {suffix && <Styled.Suffix className={classNames?.Suffix || ''}>{suffix}</Styled.Suffix>}
-    </Styled.InputContainer>
+    <BaseInput
+      ref={ref}
+      type="number"
+      label={label}
+      value={value}
+      defaultValue={defaultValue}
+      onChange={({ target: { valueAsNumber: inputValue } }) => onChange(inputValue || '')}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      prefix={prefix}
+      suffix={suffix}
+      classNames={classNames}
+      className={className}
+      autoComplete={autoComplete}
+      {...htmlAttributes}
+    />
   );
 });
 
-const { TextAreaLabel: _, ...StyledNumberInput } = Styled;
+const { TextAreaLabel: _tal, ...StyledNumberInput } = Styled;
 
 NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
-  ...inputProps(PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])])),
-  prefix: PropTypes.node,
-  suffix: PropTypes.node,
-  ...classNames(Object.keys(StyledNumberInput)),
+  ...props.propTypes({
+    valueType: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])]),
+    classes: StyledNumberInput,
+  }),
 };
 
-NumberInput.defaultProps = {
-  isDisabled: false,
-  isRequired: false,
-};
+NumberInput.defaultProps = props.defaultProps;
 
 export default NumberInput;
