@@ -54,7 +54,8 @@ const Input = styled.input(
         ${inject.nativeThumbStyles(css`
           background-position-y: -0.75rem;
           box-shadow: var(--s-primary);
-        `)};
+        `)}
+      }
     `)}
 
     ${Mixin.Device.desktop(css`
@@ -64,7 +65,7 @@ const Input = styled.input(
           css`
             box-shadow: var(--s-primary);
           `
-        )};
+        )}
       }
 
       &:active {
@@ -72,7 +73,7 @@ const Input = styled.input(
           css`
             background-position-y: -0.75rem;
           `
-        )};
+        )}
       }
     `)}
 
@@ -109,9 +110,9 @@ const Input = styled.input(
       border-radius: 0.75rem;
 
       transition: var(--transition);
-    `)};
 
-    ${inject.nativeThumbDisabledStyles(disabled)};
+      ${inject.nativeThumbDisabledStyles(disabled)};
+    `)}
   `
 );
 

@@ -4,7 +4,6 @@ import { Mixin } from '../../../theme';
 const nativeThumbStyles = style => {
   return css`
     &::-webkit-slider-thumb {
-      appearance: none;
       ${style};
     }
 
