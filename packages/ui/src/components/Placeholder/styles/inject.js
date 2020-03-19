@@ -8,22 +8,32 @@ const _textLikeStyle = fontSize => {
 };
 
 const _getTextStyle = (height = 'body') => {
-  return {
-    code: _textLikeStyle(12),
-    small: _textLikeStyle(12),
-    span: _textLikeStyle(12),
-    body: _textLikeStyle(16),
-    article: _textLikeStyle(14),
-    caption: css`
-      height: 0.75rem;
-    `,
-    h6: _textLikeStyle(16),
-    h5: _textLikeStyle(20),
-    h4: _textLikeStyle(22),
-    h3: _textLikeStyle(24),
-    h2: _textLikeStyle(32),
-    h1: _textLikeStyle(46),
-  }[height];
+  switch (height) {
+    case 'code':
+    case 'small':
+    case 'span':
+      return _textLikeStyle(12);
+    case 'article':
+      return _textLikeStyle(14);
+    case 'caption':
+      return css`
+        height: 0.75rem;
+      `;
+    case 'h5':
+      return _textLikeStyle(20);
+    case 'h4':
+      return _textLikeStyle(22);
+    case 'h3':
+      return _textLikeStyle(24);
+    case 'h2':
+      return _textLikeStyle(32);
+    case 'h1':
+      return _textLikeStyle(46);
+    case 'body':
+    case 'h6':
+    default:
+      return _textLikeStyle(16);
+  }
 };
 
 const _textWidth = appearance => {
