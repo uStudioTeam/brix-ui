@@ -16,7 +16,7 @@ const TextInput = forwardRef(function TextInput(
     prefix,
     suffix,
     classNames,
-    className = '',
+    className,
     autoComplete = 'off',
     ...htmlAttributes
   },

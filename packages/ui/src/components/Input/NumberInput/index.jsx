@@ -16,7 +16,7 @@ const NumberInput = forwardRef(function NumberInput(
     prefix,
     suffix,
     classNames,
-    className = '',
+    className,
     autoComplete = 'off',
     ...htmlAttributes
   },

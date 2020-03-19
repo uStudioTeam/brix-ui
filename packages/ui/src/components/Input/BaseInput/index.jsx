@@ -16,7 +16,7 @@ const BaseInput = forwardRef(function BaseInput(
     prefix,
     suffix,
     classNames,
-    className,
+    className = '',
     ...inputProps
   },
   ref

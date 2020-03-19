@@ -14,7 +14,7 @@ const TextArea = forwardRef(function TextArea(
     isDisabled = false,
     isRequired = false,
     classNames,
-    className = '',
+    className,
     rows = 3,
     ...htmlAttributes
   },
