@@ -47,7 +47,7 @@ const Label = styled.label(
       ${inject.radioButtonMargins(isReversed)}
     }
 
-    ${inject.labelDisabledStyles(isDisabled, RadioButton)}
+    ${inject.labelDisabledStyles({ isDisabled, RadioButton })}
   `
 );
 

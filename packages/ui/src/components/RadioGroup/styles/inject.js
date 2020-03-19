@@ -3,7 +3,7 @@ import { Mixin } from '../../../theme';
 
 const labelDirection = isReversed => `flex-direction: ${isReversed ? 'row-reverse' : 'row'}`;
 
-const labelDisabledStyles = (isDisabled, RadioButton) => {
+const labelDisabledStyles = ({isDisabled, RadioButton}) => {
   return `${
     isDisabled
       ? css`
@@ -24,7 +24,7 @@ const labelDisabledStyles = (isDisabled, RadioButton) => {
                 }
               }
             }
-          `)}
+          `)};
 
           ${Mixin.Device.mobile(css`
             &:active {
@@ -34,7 +34,7 @@ const labelDisabledStyles = (isDisabled, RadioButton) => {
                 }
               }
             }
-          `)}
+          `)};
         `
       : ''
   };`;
