@@ -68,9 +68,10 @@ const getVariant = ({ variant, appearance }) => {
   }
 };
 
-const borderRadius = (borderRadius = 'var(--border-radius)') =>
-  css`
+const borderRadius = (borderRadius = 'var(--border-radius)') => {
+  return css`
     border-radius: ${borderRadius};
   `;
+}
 
 export const inject = { getVariant, borderRadius };
