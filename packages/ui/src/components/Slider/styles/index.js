@@ -172,7 +172,7 @@ const Step = styled.span(
     height: 4px;
     width: 1px;
 
-    background-color: ${isActive ? 'var(--c-primary)' : 'var(--c-neutral)'};
+    background-color: ${inject.stepBackgroundToggle(isActive)};
     outline: 1px solid var(--c-lightest);
 
     position: absolute;

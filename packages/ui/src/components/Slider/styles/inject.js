@@ -121,6 +121,8 @@ const stepLabelStyles = ({ dataLabel, isActive, style }) => {
     : '';
 };
 
+const stepBackgroundToggle = isActive => isActive ? 'var(--c-primary)' : 'var(--c-neutral)';
+
 export const inject = {
   containerDisabledStyles,
   nativeThumbDisabledStyles,
@@ -129,4 +131,5 @@ export const inject = {
   helperDisabledStyles,
   stepDisplayStyles,
   stepLabelStyles,
+  stepBackgroundToggle
 };
