@@ -12,6 +12,7 @@ interface Styled {
 type EditableTextProps = Omit<TextProps, 'align' | 'onChange'> &
   ClassNames<Styled> &
   Input<string> & {
+    defaultValue: string;
     isDefaultEditable?: boolean;
     icon?: ReactNode;
   };
