@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { classNames } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Progress = ({ value, max, classNames, className }) => {
-  return <Styled.Progress {...{ value, max }} className={`${classNames?.Progress || ''} ${className || ''}`} />;
+const Progress = ({ value, max, classNames, className = '' }) => {
+  return <Styled.Progress value={value} max={max} className={className} classNames={classNames} />;
 };
 
 Progress.displayName = 'Progress';
