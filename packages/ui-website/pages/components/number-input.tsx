@@ -13,6 +13,13 @@ const Styled = {
     width: 12px;
     height: 12px;
   `,
+  InputsContainer: styled.div`
+    flex: 1;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: var(--i-large);
+  `,
 };
 
 Styled.CodeIcon.displayName = 'Icon';
@@ -39,31 +46,35 @@ const NumberInputPage = () => {
       classNames={['InputContainer', 'Input', 'Prefix', 'Suffix']}
     >
       <ComponentInfoItem>
-        <NumberInput
-          label="Number input"
-          onChange={(val: number) => setValues({ ...values, default: val })}
-          value={values.default}
-          placeholder="Placeholder"
-          isRequired
-        />
-        <NumberInput label="Disabled number input" placeholder="Placeholder" isDisabled />
+        <Styled.InputsContainer>
+          <NumberInput
+            label="Number input"
+            onChange={(val: number) => setValues({ ...values, default: val })}
+            value={values.default}
+            placeholder="Placeholder"
+            isRequired
+          />
+          <NumberInput label="Disabled number input" placeholder="Placeholder" isDisabled />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Prefix and suffix" description="Inputs can even have prefix and suffix!">
-        <NumberInput
-          label="With prefix"
-          onChange={(val: number) => setValues({ ...values, prefix: val })}
-          value={values.prefix}
-          placeholder="Placeholder"
-          prefix={<Styled.CodeIcon />}
-        />
-        <NumberInput
-          label="With suffix"
-          onChange={(val: number) => setValues({ ...values, suffix: val })}
-          value={values.suffix}
-          placeholder="Placeholder"
-          suffix={<Styled.CodeIcon />}
-        />
+        <Styled.InputsContainer>
+          <NumberInput
+            label="With prefix"
+            onChange={(val: number) => setValues({ ...values, prefix: val })}
+            value={values.prefix}
+            placeholder="Placeholder"
+            prefix={<Styled.CodeIcon />}
+          />
+          <NumberInput
+            label="With suffix"
+            onChange={(val: number) => setValues({ ...values, suffix: val })}
+            value={values.suffix}
+            placeholder="Placeholder"
+            suffix={<Styled.CodeIcon />}
+          />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
     </ComponentInfo>
   );
