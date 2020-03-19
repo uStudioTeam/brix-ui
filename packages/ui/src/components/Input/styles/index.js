@@ -1,17 +1,19 @@
-import { Styled as StyledButton } from '../../components/Button/styled'; // <button> does not work inside a <label>, so we need to import a styled component to use it as a wrapper for a "button"
+import { Styled as StyledButton } from '../../../components/Button/styled'; // <button> does not work inside a <label>, so we need to import a styled component to use it as a wrapper for a "button"
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
+import { Mixin } from '../../../theme';
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject';
 
-const Prefix = styled.div.withConfig({ displayName: 'Prefix' })`
+const Prefix = styled.div`
   ${Mixin.Font.bodySmall()};
 
   display: flex;
   align-items: center;
 `;
 
-const Suffix = styled(Prefix).withConfig({ displayName: 'Suffix' })``;
+const Suffix = styled(Prefix)``;
 
-const Input = styled.input.withConfig({ displayName: 'Input' })`
+const Input = styled.input`
   ${Mixin.Font.bodyRegular()};
 
   margin-top: -1px;
@@ -28,7 +30,7 @@ const Input = styled.input.withConfig({ displayName: 'Input' })`
   }
 `;
 
-const InputContainer = styled.div.withConfig({ displayName: 'InputContainer' })(
+const InputContainer = styled.div(
   ({ isDisabled }) => css`
     ${Mixin.Style.inputPadding()};
     ${Mixin.Style.borderAll({ color: 'var(--c-neutral)' })};
@@ -65,44 +67,7 @@ const InputContainer = styled.div.withConfig({ displayName: 'InputContainer' })(
       transition: transform var(--transition);
     }
 
-    ${isDisabled
-      ? css`
-          cursor: not-allowed;
-          color: var(--c-neutral);
-          background-color: var(--c-light);
-          border-color: var(--c-light);
-        `
-      : css`
-          ${Mixin.Device.mobile(css`
-            &:active {
-              box-shadow: var(--s-light);
-
-              &:after {
-                transform: scale(1);
-              }
-            }
-          `)}
-
-          ${Mixin.Device.desktop(css`
-            &:hover {
-              border-color: var(--c-light);
-              box-shadow: var(--s-light);
-            }
-
-            &:focus-within {
-              ${Input}::placeholder {
-                opacity: 0;
-              }
-
-              border-color: var(--c-light);
-              box-shadow: var(--s-light);
-
-              &:after {
-                transform: scale(1);
-              }
-            }
-          `)}
-        `}
+    ${inject.inputContainerDisabledStyles({ isDisabled, Input })};
   `
 );
 
@@ -116,13 +81,7 @@ const FileInput = styled(Input)(
     white-space: nowrap;
     border: none;
 
-    ${typeof value !== 'undefined' && value?.length
-      ? css`
-          color: inherit;
-        `
-      : css`
-          color: var(--c-neutral);
-        `}
+    ${inject.fileInputColorToggle(value)};
   `
 );
 
@@ -156,12 +115,7 @@ const FileInputWrapper = styled.div(
 
     transition: var(--transition);
 
-    ${isDisabled
-      ? css`
-          cursor: not-allowed;
-          border-color: var(--c-light);
-        `
-      : ''}
+    ${inject.fileInputWrapperDisabledStyles(isDisabled)};
   `
 );
 
@@ -202,8 +156,8 @@ const FileInputButton = styled(StyledButton.Button)`
   `)}
 `;
 
-export const Styled = { InputContainer, Input, Prefix, Suffix };
-export const StyledFileInput = {
+export const Styled = StyledComponents({ InputContainer, Input, Prefix, Suffix });
+export const StyledFileInput = StyledComponents({
   HiddenFileInput,
   FileInput,
   FileInputButton,
@@ -211,4 +165,4 @@ export const StyledFileInput = {
   FileInputWrapper,
   Prefix,
   Suffix,
-};
+});
