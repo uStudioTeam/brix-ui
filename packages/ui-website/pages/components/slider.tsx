@@ -48,7 +48,7 @@ ${controlledInputDescription('Text input')}.`}
           isRequired
         />
 
-        <Slider label="Disabled" isDisabled />
+        <Slider label="Disabled" value={54} isDisabled />
       </ComponentInfoItem>
 
       <ComponentInfoItem title="With displayed steps">
