@@ -14,7 +14,7 @@ addParameters({ jsx: { skip: 1 } });
 const sliderStory = storiesOf('Slider', module);
 
 const SContainer = styled.div`
-  margin: 0.5rem 33%;
+  margin: 0.5rem 0;
 `;
 
 sliderStory.add('Primary', () => {

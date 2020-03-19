@@ -7,11 +7,10 @@ import { inject } from './inject';
 
 const SliderContainer = styled.div(
   ({ isDisabled }) => css`
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: var(--i-regular);
+    display: flex;
     align-items: center;
 
+    width: 100%;
     height: 1.375rem;
 
     ${inject.containerDisabledStyles(isDisabled)};
@@ -119,8 +118,11 @@ const Input = styled.input(
 const Value = styled(Text)`
   display: flex;
   justify-content: flex-start;
+  flex: 0;
 
   width: 2rem;
+  margin-left: var(--i-regular);
+
   overflow-x: visible;
 
   text-align: center;
