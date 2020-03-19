@@ -48,7 +48,7 @@ const EditableTextPage = () => {
       classNames={['Container', 'TextArea', 'Text', 'Icon']}
     >
       <ComponentInfoItem>
-        <EditableText onChange={setValue}>{value}</EditableText>
+        <EditableText defaultValue="Edit me" onChange={setValue}>{value}</EditableText>
       </ComponentInfoItem>
     </ComponentInfo>
   );
