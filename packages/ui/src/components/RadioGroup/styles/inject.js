@@ -37,11 +37,7 @@ const labelDisabledStyles = ({ isDisabled, RadioButton }) => {
       `
     : '';
 };
-const radioButtonMargins = isReversed => {
-  return `
-    margin-right: ${isReversed ? '0' : 'var(--i-regular)'};
-    margin-left: ${isReversed ? 'var(--i-regular)' : '0'};
-  `;
-};
 
-export const inject = { labelDirection, labelDisabledStyles, radioButtonMargins };
+const radioButtonMargin = isReversed => (isReversed ? 'var(--i-regular)' : '0');
+
+export const inject = { labelDirection, labelDisabledStyles, radioButtonMargin };

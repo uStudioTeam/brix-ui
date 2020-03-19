@@ -44,7 +44,8 @@ const Label = styled.label(
     cursor: pointer;
 
     ${RadioButton} {
-      ${inject.radioButtonMargins(isReversed)}
+      margin-right: ${inject.radioButtonMargin(!isReversed)};
+      margin-left: ${inject.radioButtonMargin(isReversed)};
     }
 
     ${inject.labelDisabledStyles({ isDisabled, RadioButton })}
