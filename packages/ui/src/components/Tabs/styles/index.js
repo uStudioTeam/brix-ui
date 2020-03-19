@@ -1,10 +1,17 @@
-import { getTextVariant } from '../../utils';
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
 
-const Tabs = styled.ul.withConfig({ displayName: 'Tabs' })(
+import { getTextVariant } from '../../../utils';
+import { Mixin } from '../../../theme';
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject';
+
+const TabContainer = styled.li`
+  display: flex;
+  flex: 1;
+`;
+
+const Tabs = styled.ul(
   ({ dataOffset, tabsQuantity }) => css`
-    ${Mixin.Style.borderAll({ color: 'var(--c-light)' })};
     position: relative;
     width: 100%;
 
@@ -12,7 +19,9 @@ const Tabs = styled.ul.withConfig({ displayName: 'Tabs' })(
     align-items: stretch;
     flex-wrap: wrap;
 
+    ${Mixin.Style.borderAll({ color: 'var(--c-light)' })};
     border-radius: var(--border-radius);
+
     overflow: hidden;
 
     &:before {
@@ -32,21 +41,16 @@ const Tabs = styled.ul.withConfig({ displayName: 'Tabs' })(
   `
 );
 
-const TabContainer = styled.li.withConfig({ displayName: 'TabContainer' })`
-  display: flex;
-  flex: 1;
-`;
-
-const Tab = styled.button.withConfig({ displayName: 'Tab' })(
+const Tab = styled.button(
   ({ isActive, variant }) => css`
-    ${getTextVariant({ variant })};
+    position: relative;
+    flex: 1;
+
     ${Mixin.Style.inputPadding()};
 
-    position: relative;
-
-    flex: 1;
     text-align: center;
 
+    ${getTextVariant({ variant })};
     color: var(--c-darkest);
     transition: var(--transition);
 
@@ -86,6 +90,8 @@ const Tab = styled.button.withConfig({ displayName: 'Tab' })(
         background-color: var(--c-light);
       }
     }
+    
+    ${inject.tabActiveStyles(isActive)}
 
     &:before {
       position: absolute;
@@ -100,20 +106,12 @@ const Tab = styled.button.withConfig({ displayName: 'Tab' })(
       background-color: var(--c-lightest);
       transition: background-color var(--transition);
     }
-
-    ${isActive
-      ? css`
-          &:not([disabled]) {
-            color: var(--c-lightest);
-          }
-        `
-      : ''}
   `
 );
 
-const TabContent = styled.span.withConfig({ displayName: 'TabContent' })`
+const TabContent = styled.span`
   position: relative;
   z-index: 3;
 `;
 
-export const Styled = { Tabs, TabContainer, Tab, TabContent };
+export const Styled = StyledComponents({ Tabs, TabContainer, Tab, TabContent });
