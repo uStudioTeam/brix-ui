@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { EditableText } from '@ustudio/ui';
 
-import { ComponentInfo, ComponentInfoItem } from '../../components';
+import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 
 const EditableTextPage = () => {
   const [value, setValue] = useState(
@@ -18,35 +18,37 @@ const EditableTextPage = () => {
       name="EditableText"
       description="You can edit text contained in this component."
       props={{
+        ...inputProps('string'),
         children: {
           type: '`ReactNode`',
           required: true,
         },
-        onChange: {
-          type: '`(value: string) => void`',
+        defaultValue: {
+          type: '`string`',
           required: true,
+          description: 'This component is not intended to be empty'
         },
         variant: {
           type: `\`'span' | 'code' | 'small' | 'body' | 'article' | 'caption' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1'\``,
           defaultValue: `\`'body'\``,
         },
-        align: {
-          type: `\`'left' | 'center' | 'right'\``,
-          defaultValue: `\`'left'\``,
-        },
         appearance: {
           type: `\`'regular' | 'italic' | 'underlined' | 'bold'\``,
           defaultValue: `\`'regular'\``,
         },
-        defaultEditable: {
+        isDefaultEditable: {
           type: '`boolean`',
           defaultValue: '`false`',
         },
+        icon: {
+          type: '`ReactNode`',
+          description: 'Pass your custom icon that will accept internal isEditing prop for style control purposes',
+        },
       }}
-      classNames={['Container', 'TextArea', 'Text']}
+      classNames={['Container', 'TextArea', 'Text', 'Icon']}
     >
       <ComponentInfoItem>
-        <EditableText onChange={setValue}>{value}</EditableText>
+        <EditableText defaultValue="Edit me" onChange={setValue}>{value}</EditableText>
       </ComponentInfoItem>
     </ComponentInfo>
   );

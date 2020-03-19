@@ -1,11 +1,13 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
   Text;
 }
 
-interface AnyTextProps extends ClassNames<Styled>, Partial<HTMLElement> {
+interface AnyTextProps
+  extends ClassNames<Styled>,
+    Partial<HTMLAttributes<HTMLElement>> {
   variant?: Variant;
   align?: 'left' | 'center' | 'right';
 

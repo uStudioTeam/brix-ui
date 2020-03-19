@@ -1,4 +1,6 @@
+import { ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
+import { Input } from '../../input';
 import { TextProps } from '../Text';
 
 interface Styled {
@@ -7,11 +9,13 @@ interface Styled {
   Textarea;
 }
 
-type EditableTextProps = TextProps &
-  ClassNames<Styled> & {
-  defaultEditing?: boolean;
-  onChange: (value: string) => void;
-};
+type EditableTextProps = Omit<TextProps, 'align' | 'onChange'> &
+  ClassNames<Styled> &
+  Input<string> & {
+    defaultValue: string;
+    isDefaultEditable?: boolean;
+    icon?: ReactNode;
+  };
 
 declare const EditableText: {
   (props: EditableTextProps): JSX.Element;
