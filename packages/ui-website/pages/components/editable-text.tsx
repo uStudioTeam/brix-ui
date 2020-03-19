@@ -18,10 +18,15 @@ const EditableTextPage = () => {
       name="EditableText"
       description="You can edit text contained in this component."
       props={{
-        ...inputProps('`string`'),
+        ...inputProps('string'),
         children: {
           type: '`ReactNode`',
           required: true,
+        },
+        defaultValue: {
+          type: '`string`',
+          required: true,
+          description: 'This component is not intended to be empty'
         },
         variant: {
           type: `\`'span' | 'code' | 'small' | 'body' | 'article' | 'caption' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1'\``,
