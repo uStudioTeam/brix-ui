@@ -108,6 +108,8 @@ const HiddenFileInput = styled.input`
 
 const FileInputWrapper = styled.div(
   ({ isDisabled }) => css`
+    width: 100%;
+
     display: flex;
     align-items: stretch;
 
