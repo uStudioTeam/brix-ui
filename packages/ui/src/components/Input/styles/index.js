@@ -9,9 +9,15 @@ const Prefix = styled.div`
 
   display: flex;
   align-items: center;
+
+  flex: 0;
+  margin-right: var(--i-regular);
 `;
 
-const Suffix = styled(Prefix)``;
+const Suffix = styled(Prefix)`
+  margin-right: 0;
+  margin-left: var(--i-regular);
+`;
 
 const Input = styled.input`
   width: 100%;
@@ -33,9 +39,7 @@ const Input = styled.input`
 
 const InputContainer = styled.div(
   ({ isDisabled }) => css`
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: var(--i-medium);
+    display: flex;
     align-items: center;
 
     width: 100%;
