@@ -1,4 +1,4 @@
-import { css, keyframes } from 'styled-components';
+import { css } from 'styled-components';
 
 const _textLikeStyle = fontSize => {
   return css`
@@ -36,9 +36,9 @@ const _getTextStyle = (height = 'body') => {
   }
 };
 
-const _textWidth = appearance => {
+const _textWidth = (width = '100%') => {
   return css`
-    width: ${appearance?.width || '100%'};
+    width: ${width};
   `;
 };
 
@@ -50,31 +50,27 @@ const _blockSize = appearance => {
 };
 
 const getVariant = ({ variant, appearance }) => {
-  return {
-    text: css`
-      display: inline-block;
+  switch (variant) {
+    case 'text':
+      return css`
+        display: inline-block;
 
-      ${_textWidth(appearance)};
-      ${_getTextStyle(appearance?.height)};
-    `,
-    block: css`
-      display: block;
+        ${_textWidth(appearance?.width)};
+        ${_getTextStyle(appearance?.height)};
+      `;
+    case 'block':
+    default:
+      return css`
+        display: block;
 
-      ${_blockSize(appearance)}
-    `,
-  }[variant];
+        ${_blockSize(appearance)}
+      `;
+  }
 };
 
-const shimmer = keyframes`
-  from {
-    background-position: -1200px 0;
-  }
+const borderRadius = (borderRadius = 'var(--border-radius)') =>
+  css`
+    border-radius: ${borderRadius};
+  `;
 
-  to {
-    background-position: 1200px 0;
-  }
-`;
-
-const borderRadius = appearance => `border-radius: ${appearance?.borderRadius || 'var(--border-radius)'}`;
-
-export const inject = { getVariant, shimmer, borderRadius };
+export const inject = { getVariant, borderRadius };
