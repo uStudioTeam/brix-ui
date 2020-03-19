@@ -3,16 +3,20 @@ const getValue = ({ value, defaultValue }) => {
 };
 
 const validateValue = (setUsedValue, { min, max, step, ...value }) => {
-  if (typeof getValue(value) !== 'undefined') {
-    if (getValue(value) < min) {
+  const resolvedValue = getValue({ ...value });
+
+  if (typeof resolvedValue !== 'undefined') {
+    if (resolvedValue < min) {
       setUsedValue(min);
-    } else if (getValue(value) > max) {
+    } else if (resolvedValue > max) {
       setUsedValue(max);
-    } else if (getValue(value) % step !== 0) {
-      setUsedValue(+(getValue(value) - (getValue(value) % step)).toFixed(2));
+    } else if (resolvedValue % step !== 0) {
+      setUsedValue(+(resolvedValue - (resolvedValue % step)).toFixed(2));
     } else {
-      setUsedValue(+getValue(value).toFixed(2));
+      setUsedValue(+resolvedValue.toFixed(2));
     }
+  } else {
+    setUsedValue(min);
   }
 };
 
