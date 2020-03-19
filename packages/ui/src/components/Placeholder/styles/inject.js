@@ -42,10 +42,10 @@ const _textWidth = (width = '100%') => {
   `;
 };
 
-const _blockSize = appearance => {
+const _blockSize = ({ width = '2rem', height = '2rem' }) => {
   return css`
-    width: ${appearance?.width || appearance?.height || '2rem'};
-    height: ${appearance?.height || appearance?.width || '2rem'};
+    width: ${width};
+    height: ${height};
   `;
 };
 
