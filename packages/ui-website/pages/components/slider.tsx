@@ -1,9 +1,22 @@
 import React from 'react';
 
 import { Slider } from '@ustudio/ui';
+import styled from 'styled-components';
 
 import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
+
+const Styled = {
+  InputsContainer: styled.div`
+    flex: 1;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: var(--i-large);
+  `,
+};
+
+Styled.InputsContainer.displayName = 'Container';
 
 const SliderPage = () => {
   interface Values {
@@ -41,14 +54,16 @@ ${controlledInputDescription('Text input')}.`}
       classNames={['StepContainer', 'Step', 'Container', 'InputContainer', 'HelperContainer', 'Helper', 'Line']}
     >
       <ComponentInfoItem>
-        <Slider
-          label="Slider"
-          value={values.default}
-          onChange={(val: number) => setValues({ ...values, default: val })}
-          isRequired
-        />
+        <Styled.InputsContainer>
+          <Slider
+            label="Slider"
+            value={values.default}
+            onChange={(val: number) => setValues({ ...values, default: val })}
+            isRequired
+          />
 
-        <Slider label="Disabled" isDisabled />
+          <Slider label="Disabled" value={54} isDisabled />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="With displayed steps">

@@ -3,7 +3,8 @@ import React, { forwardRef, useEffect, useState } from 'react';
 
 import { classNames, inputProps } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
+import { sliderUtils } from './utils';
 
 const Slider = forwardRef(function Slider(
   {
@@ -20,45 +21,38 @@ const Slider = forwardRef(function Slider(
     isDisabled = false,
     isRequired = false,
     classNames,
+    className = '',
   },
   ref
 ) {
-  function getValue() {
-    return value ?? defaultValue;
-  }
-
-  const [usedValue, setUsedValue] = useState(getValue());
+  const [usedValue, setUsedValue] = useState(sliderUtils.getValue({ value, defaultValue }));
   const range = max - min;
 
   useEffect(() => {
-    if (typeof getValue() !== 'undefined') {
-      if (getValue() < min) {
-        setUsedValue(min);
-      } else if (getValue() > max) {
-        setUsedValue(max);
-      } else if (getValue() % step !== 0) {
-        setUsedValue(+(getValue() - (getValue() % step)).toFixed(2));
-      } else {
-        setUsedValue(+getValue().toFixed(2));
-      }
-    }
+    sliderUtils.validateValue(setUsedValue, { max, min, step, value, defaultValue });
   }, [value, defaultValue, max, min, step]);
 
   useEffect(() => {
-    if (getValue()) setUsedValue(getValue());
+    const resolvedValue = sliderUtils.getValue({ value, defaultValue });
+
+    if (resolvedValue) {
+      setUsedValue(resolvedValue);
+    }
   }, [value, defaultValue]);
 
-  function renderSteps() {
+  const renderSteps = () => {
     return (
-      <Styled.StepContainer className={classNames?.StepContainer || ''}>
-        {Array.from(Array(range / step + 1).keys()).map(index => {
+      <Styled.StepContainer classNames={classNames}>
+        {sliderUtils.createSteps({ range, step }).map(index => {
+          const currentStepLabel = stepLabels?.[index * step];
+
           return (
             <Styled.Step
               isActive={index * step + min <= usedValue}
-              dataDisplay={stepLabels?.[index * step]?.isDisplayed ?? true}
-              dataLabel={stepLabels?.[index * step]?.label}
+              dataDisplay={currentStepLabel?.isDisplayed ?? true}
+              dataLabel={currentStepLabel?.label}
               key={index * step}
-              className={classNames?.Step || ''}
+              classNames={classNames}
               style={{
                 left: `${(step / range) * index * 100}%`,
               }}
@@ -67,17 +61,16 @@ const Slider = forwardRef(function Slider(
         })}
       </Styled.StepContainer>
     );
-  }
+  };
+
+  const handleChange = ({ currentTarget: { valueAsNumber } }) => onChange && onChange(+valueAsNumber.toFixed(2));
 
   return (
-    <Styled.Container className={classNames?.Container || ''} isDisabled={isDisabled}>
-      <Styled.InputContainer className={classNames?.InputContainer || ''}>
-        <Styled.HelperContainer className={classNames?.HelperContainer || ''}>
-          <Styled.Helper isDisabled={isDisabled} className={classNames?.Helper || ''}>
-            <Styled.Line
-              style={{ width: `${((usedValue - min) * 100) / range}%` }}
-              className={classNames?.Line || ''}
-            />
+    <Styled.SliderContainer classNames={classNames} className={className} isDisabled={isDisabled}>
+      <Styled.InputContainer classNames={classNames}>
+        <Styled.HelperContainer classNames={classNames}>
+          <Styled.Helper isDisabled={isDisabled} classNames={classNames}>
+            <Styled.Line style={{ width: `${((usedValue - min) * 100) / range}%` }} classNames={classNames} />
 
             {displaySteps && renderSteps()}
           </Styled.Helper>
@@ -88,7 +81,7 @@ const Slider = forwardRef(function Slider(
           type="range"
           name={label}
           value={usedValue}
-          onChange={({ currentTarget: { valueAsNumber } }) => onChange && onChange(+valueAsNumber.toFixed(2))}
+          onChange={handleChange}
           step={step}
           min={min}
           max={max}
@@ -96,15 +89,15 @@ const Slider = forwardRef(function Slider(
           aria-disabled={isDisabled}
           required={isRequired}
           aria-required={isRequired}
-          aria-labelledby={`${label} slider`}
-          className={classNames?.Input || ''}
+          aria-labelledby={label}
+          classNames={classNames}
         />
       </Styled.InputContainer>
 
       <Styled.Value variant="small" classNames={{ Text: classNames?.Value || '' }}>
         {usedValue}
       </Styled.Value>
-    </Styled.Container>
+    </Styled.SliderContainer>
   );
 });
 
