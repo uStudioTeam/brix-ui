@@ -5,27 +5,27 @@ import Icon from '../internal/Icon';
 import { classNames } from '../../utils';
 import { useDropdown, useKeyPressClose } from '../../hooks';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Dropdown = ({
-  isDefaultOpen = false,
-  onChange,
-  isDisabled = false,
-  title,
   children,
   name,
-  classNames,
-  className,
+  onChange,
+  title,
   icon = <Icon name="chevron" />,
+  isDefaultOpen = false,
+  isDisabled = false,
+  classNames,
+  className = '',
 }) => {
-  const [isOpen, setOpen] = useState(isDefaultOpen ?? false);
+  const [isOpen, setOpen] = useState(isDefaultOpen || false);
 
   const { ref, height } = useDropdown(isOpen, 'height');
 
   useKeyPressClose(setOpen);
 
   return (
-    <Styled.Container isOpen={isOpen} className={`${classNames?.Container || ''} ${className || ''}`}>
+    <Styled.DropdownContainer isOpen={isOpen} classNames={classNames} className={className}>
       <Styled.Title
         onClick={() => {
           onChange && onChange();
@@ -33,35 +33,35 @@ const Dropdown = ({
         }}
         disabled={isDisabled}
         aria-disabled={isDisabled}
-        aria-labelledby={`Dropdown ${name || ''}`}
-        className={classNames?.Title || ''}
+        aria-labelledby={name}
+        classNames={classNames}
       >
         {title}
 
-        <Styled.TitleIcon className={classNames?.TitleIcon || ''}>
+        <Styled.TitleIcon classNames={classNames}>
           {cloneElement(icon, { angle: isOpen ? 0 : -180 })}
         </Styled.TitleIcon>
       </Styled.Title>
 
-      <Styled.Dropdown dropdownHeight={height} className={classNames?.Dropdown || ''}>
-        <Styled.Content ref={ref} className={classNames?.Content || ''}>
+      <Styled.Dropdown dropdownHeight={height} classNames={classNames}>
+        <Styled.Content ref={ref} classNames={classNames}>
           {children}
         </Styled.Content>
       </Styled.Dropdown>
-    </Styled.Container>
+    </Styled.DropdownContainer>
   );
 };
 
 Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
-  isDefaultOpen: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string,
   onChange: PropTypes.func,
   title: PropTypes.node.isRequired,
-  children: PropTypes.node.isRequired,
-  isDisabled: PropTypes.bool,
-  name: PropTypes.string,
   icon: PropTypes.node,
+  isDefaultOpen: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   ...classNames(Object.keys(Styled)),
 };
 

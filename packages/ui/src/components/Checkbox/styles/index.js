@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
-import { Mixin } from '../../theme';
+import { Mixin } from '../../../theme';
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import {inject} from "./inject.js"
 
-const Container = styled.span.withConfig({ displayName: 'Container' })(
+const Container = styled.span(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -14,21 +16,11 @@ const Container = styled.span.withConfig({ displayName: 'Container' })(
 
     position: relative;
 
-    ${isDisabled
-      ? css`
-          color: var(--c-neutral);
-          cursor: not-allowed;
-
-          &:active,
-          &:focus {
-            pointer-events: none;
-          }
-        `
-      : ''};
+    ${inject.disabledStyles(isDisabled)}
   `
 );
 
-const Checkbox = styled.span.withConfig({ displayName: 'Checkbox' })`
+const Checkbox = styled.span`
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -46,7 +38,7 @@ const Checkbox = styled.span.withConfig({ displayName: 'Checkbox' })`
   transition: var(--transition);
 `;
 
-const Input = styled.input.withConfig({ displayName: 'Input' })`
+const Input = styled.input`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -116,4 +108,4 @@ const Input = styled.input.withConfig({ displayName: 'Input' })`
   }
 `;
 
-export const Styled = { Container, Input, Checkbox };
+export const Styled = StyledComponents({ Container, Input, Checkbox });

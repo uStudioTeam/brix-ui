@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 
 import { classNames, common } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const Button = forwardRef(function Button(
   {
@@ -17,7 +17,7 @@ const Button = forwardRef(function Button(
     isLoading = false,
     children,
     classNames,
-    className,
+    className = '',
     ...htmlAttributes
   },
   ref
@@ -32,15 +32,16 @@ const Button = forwardRef(function Button(
         iconAfter,
         disabled: isLoading || isDisabled,
         isLoading,
+        className,
+        classNames,
         children,
         ...htmlAttributes,
       }}
-      className={`${classNames?.Button || ''} ${className || ''}`}
     >
       {iconBefore}
 
       {isLoading && (
-        <Styled.LoadingSpinner className={classNames?.LoadingSpinner || ''}>
+        <Styled.LoadingSpinner classNames={classNames}>
           <Spinner appearance={{ color: 'var(--c-neutral)', size: 16 }} />
         </Styled.LoadingSpinner>
       )}

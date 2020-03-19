@@ -21,9 +21,8 @@ metaStory.add('Primary', () => (
   <SContainer>
     <Meta
       title={text('Title', 'Title')}
-      value={text('Value', 'Value')}
+      children={text('Content', 'Value')}
       variant={select('Variant', ['small', 'large'], 'small')}
-      href={text('Value link', '')}
     />
   </SContainer>
 ));
