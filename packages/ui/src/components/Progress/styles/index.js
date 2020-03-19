@@ -1,16 +1,9 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const load = keyframes`
-  from {
-    background-position-x: -1200px;
-  }
+import { StyledComponents } from '../../../utils/styles/styled-component';
+import { inject } from './inject';
 
-  to {
-    background-position-x: 1200px;
-  }
-`;
-
-const Progress = styled.progress.withConfig({ displayName: 'Progress' })(
+const Progress = styled.progress(
   ({ value, max }) => css`
     appearance: none;
     overflow: hidden;
@@ -21,7 +14,7 @@ const Progress = styled.progress.withConfig({ displayName: 'Progress' })(
     border-radius: 0.5rem;
 
     position: relative;
-    
+
     cursor: wait;
 
     &:before,
@@ -35,11 +28,12 @@ const Progress = styled.progress.withConfig({ displayName: 'Progress' })(
     }
 
     &:after {
-      width: ${(value / max) * 100}%;
+      ${inject.width({ value, max })};
+
       background: linear-gradient(to right, var(--c-primary-light), var(--c-primary));
       background-size: 1200px;
 
-      animation: ${load} 2s linear infinite;
+      animation: ${inject.load} 2s linear infinite;
     }
 
     &:before {
@@ -49,4 +43,4 @@ const Progress = styled.progress.withConfig({ displayName: 'Progress' })(
   `
 );
 
-export const Styled = { Progress };
+export const Styled = StyledComponents({ Progress });
