@@ -51,6 +51,7 @@ editableTextStory.add('Primary', () => {
         onChange={setValue}
         appearance={appearance}
         isDisabled={boolean('Disabled', false)}
+        defaultValue={text('Default value', 'Edit me')}
       >
         {value}
       </EditableText>

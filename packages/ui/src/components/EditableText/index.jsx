@@ -51,6 +51,14 @@ const EditableText = forwardRef(function EditableText(
     if ((event.keyCode === 13 && event.shiftKey) || event.keyCode === 13) event.preventDefault();
   };
 
+  const handleBlur = () => {
+    if (!valueProp && !children) {
+      onChange(defaultValue);
+    }
+
+    setEditing(false);
+  };
+
   return (
     <Styled.EditableText classNames={classNames} className={className} isDisabled={isDisabled} isEditing={isEditing}>
       <Styled.Text
@@ -60,7 +68,7 @@ const EditableText = forwardRef(function EditableText(
         appearance={appearance}
         classNames={classNames}
       >
-        {value || defaultValue}
+        {value}
       </Styled.Text>
 
       <Styled.TextArea
@@ -70,10 +78,10 @@ const EditableText = forwardRef(function EditableText(
         autoFocus={isEditing || isDefaultEditable}
         isEditing={isEditing}
         dimensions={textDimensions}
-        value={value || defaultValue}
+        value={value}
         onChange={handleChange}
         onFocus={() => setEditing(true)}
-        onBlur={() => setEditing(false)}
+        onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         classNames={classNames}
         disabled={isDisabled}
@@ -97,6 +105,7 @@ EditableText.displayName = 'EditableText';
 EditableText.propTypes = {
   ...inputProps(PropTypes.string),
   children: PropTypes.node.isRequired,
+  defaultValue: PropTypes.string.isRequired,
   variant: common.text,
   appearance: PropTypes.oneOf(['regular', 'italic', 'underlined', 'bold']),
   isDefaultEditable: PropTypes.bool,
