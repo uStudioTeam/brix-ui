@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { classNames, timeout } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
-const Spinner = ({ appearance, delay, classNames, className }) => {
+const Spinner = ({ appearance, delay, classNames, className = '' }) => {
   const [isMounted, setMounted] = useState(!!delay || true);
 
   useEffect(() => {
@@ -21,7 +21,8 @@ const Spinner = ({ appearance, delay, classNames, className }) => {
       y="0px"
       viewBox="0 0 160 160"
       appearance={appearance}
-      className={`${classNames?.Spinner || ''} ${className || ''}`}
+      className={className}
+      classNames={classNames}
     >
       <circle r={60} cx={80} cy={80} />
     </Styled.Spinner>
