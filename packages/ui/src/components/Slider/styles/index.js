@@ -23,6 +23,8 @@ const InputContainer = styled.div`
   width: 100%;
   height: 12px;
 
+  flex: 1;
+
   display: flex;
   align-items: center;
 
@@ -118,7 +120,6 @@ const Input = styled.input(
 const Value = styled(Text)`
   display: flex;
   justify-content: flex-start;
-  flex: 0;
 
   width: 2rem;
   margin-left: var(--i-regular);
