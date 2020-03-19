@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { classNames, common, inputProps } from '../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './styles';
 
 const RadioGroup = forwardRef(function RadioGroup(
   {
@@ -18,7 +18,7 @@ const RadioGroup = forwardRef(function RadioGroup(
     isReversed = false,
     onChange,
     classNames,
-    className,
+    className = '',
   },
   ref
 ) {
@@ -27,11 +27,11 @@ const RadioGroup = forwardRef(function RadioGroup(
   }
 
   return (
-    <Styled.RadioGroup dataDirection={direction} className={`${classNames?.RadioGroup || ''} ${className || ''}`}>
+    <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
       {options.map(option => (
-        <Styled.RadioGroupItem key={option} className={classNames?.RadioGroupItem || ''}>
+        <Styled.RadioGroupItem key={option} classNames={classNames}>
           <Styled.Label
-            className={classNames?.Label || ''}
+            classNames={classNames}
             isDisabled={disabledOptions?.includes(option) || isDisabled}
             isReversed={isReversed}
           >
@@ -48,11 +48,10 @@ const RadioGroup = forwardRef(function RadioGroup(
               aria-checked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
               aria-labelledby={`${label} ${option} radiobutton`}
               aria-disabled={!!disabledOptions?.includes(option)}
-              className={classNames?.Input || ''}
+              classNames={classNames}
             />
 
-            <Styled.RadioButton className={classNames?.RadioButton || ''} />
-
+            <Styled.RadioButton classNames={classNames} />
             {option}
           </Styled.Label>
         </Styled.RadioGroupItem>
