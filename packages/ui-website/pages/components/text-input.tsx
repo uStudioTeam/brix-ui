@@ -24,6 +24,7 @@ const Styled = {
 };
 
 Styled.CodeIcon.displayName = 'Icon';
+Styled.InputsContainer.displayName = 'Container';
 
 const TextInputPage = () => {
   const [values, setValues] = React.useState({ default: '', row: '', column: '', prefix: '', suffix: '' });

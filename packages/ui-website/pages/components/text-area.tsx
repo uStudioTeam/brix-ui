@@ -16,6 +16,8 @@ const Styled = {
   `,
 };
 
+Styled.InputsContainer.displayName = 'Container';
+
 const TextAreaPage = () => {
   const [values, setValues] = React.useState({ default: '', row: '', column: '' });
   return (

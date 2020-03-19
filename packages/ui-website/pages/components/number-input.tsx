@@ -23,6 +23,7 @@ const Styled = {
 };
 
 Styled.CodeIcon.displayName = 'Icon';
+Styled.InputsContainer.displayName = 'Container';
 
 const NumberInputPage = () => {
   interface Values {
