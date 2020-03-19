@@ -14,9 +14,10 @@ const Prefix = styled.div`
 const Suffix = styled(Prefix)``;
 
 const Input = styled.input`
-  ${Mixin.Font.bodyRegular()};
-
+  width: 100%;
   margin-top: -1px;
+
+  ${Mixin.Font.bodyRegular()};
 
   transition: var(--transition);
 
@@ -32,17 +33,16 @@ const Input = styled.input`
 
 const InputContainer = styled.div(
   ({ isDisabled }) => css`
-    ${Mixin.Style.inputPadding()};
-    ${Mixin.Style.borderAll({ color: 'var(--c-neutral)' })};
-
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: var(--i-medium);
     align-items: center;
 
-    width: auto;
+    width: 100%;
+    ${Mixin.Style.inputPadding()};
 
     border-radius: var(--border-radius);
+    ${Mixin.Style.borderAll({ color: 'var(--c-neutral)' })};
     background-color: var(--c-lightest);
 
     overflow: hidden;
