@@ -56,19 +56,19 @@ ${controlledInputDescription('Text input')}.`}
       <ComponentInfoItem>
         <Styled.InputsContainer>
           <Slider
-            label="Slider"
+            name="Slider"
             value={values.default}
             onChange={(val: number) => setValues({ ...values, default: val })}
             isRequired
           />
 
-          <Slider label="Disabled" value={54} isDisabled />
+          <Slider name="Disabled" value={54} isDisabled />
         </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="With displayed steps">
         <Slider
-          label="Steps"
+          name="Steps"
           min={0}
           max={20}
           step={5}
