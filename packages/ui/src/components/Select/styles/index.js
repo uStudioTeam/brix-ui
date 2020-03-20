@@ -302,10 +302,12 @@ export const StyledSelect = StyledComponents({
   ValuesListIcon,
 });
 
-export const StyledMultiSelect = StyledComponents({
-         Select,
-         SelectedList,
-         SelectedListItem,
-         SelectedListLabel,
-         SelectedListIcon,
-       });
+export const StyledMultiSelect = {
+  ...StyledSelect,
+  ...StyledComponents({
+    SelectedList,
+    SelectedListItem,
+    SelectedListLabel,
+    SelectedListIcon,
+  }),
+};

@@ -5,7 +5,7 @@ interface Styled {
   RadioGroup;
   RadioGroupItem;
   Label;
-  Radiobutton;
+  RadioButton;
   Input;
 }
 

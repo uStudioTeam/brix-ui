@@ -3,7 +3,7 @@ import { Mixin } from '../../../theme';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
-const Container = styled.span(
+const SwitchContainer = styled.span(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -118,4 +118,4 @@ const Input = styled.input`
   }
 `;
 
-export const Styled = StyledComponents({ Switch, Input, Container });
+export const Styled = StyledComponents({ Switch, Input, SwitchContainer });
