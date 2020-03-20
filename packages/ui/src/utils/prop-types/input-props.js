@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 
 export function inputProps(valueType) {
   return {
-    label: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
     value: valueType,
     defaultValue: valueType,
     onChange: PropTypes.func,
