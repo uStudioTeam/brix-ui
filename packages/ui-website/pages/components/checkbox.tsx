@@ -25,7 +25,7 @@ Allows selecting several items from a set.
 
 ${controlledInputDescription('Checkbox')}.`}
       props={inputProps('boolean')}
-      classNames={['Container', 'Input', 'Checkbox']}
+      classNames={['CheckboxContainer', 'Input', 'Checkbox']}
     >
       <ComponentInfoItem>
         <Flex alignment={{ vertical: 'center' }}>

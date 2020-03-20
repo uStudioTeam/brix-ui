@@ -22,7 +22,7 @@ ${controlledInputDescription('Switch')}.`}
           type: '`true`',
         },
       }}
-      classNames={['Container', 'Input', 'Switch']}
+      classNames={['SwitchContainer', 'Input', 'Switch']}
     >
       <ComponentInfoItem>
         <Switch

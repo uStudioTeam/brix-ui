@@ -29,7 +29,7 @@ const ModalPage = () => {
           required: true,
         },
       }}
-      classNames={['Modal', 'Header', 'Title', 'Content']}
+      classNames={['Modal', 'Header', 'Title', 'Content', 'Icon', 'Overlay']}
     >
       <ComponentInfoItem>
         <Button onClick={() => setIsOpen(true)}>Don&apos;t press me</Button>
