@@ -23,7 +23,7 @@ radioGroupStory.add('Primary', () => {
       disabledOptions={array('Disabled', [], ', ')}
       onChange={selected => setChecked(selected)}
       isReversed={boolean('Reverse labels', false)}
-      label="Options"
+      name="Options"
     />
   );
 });

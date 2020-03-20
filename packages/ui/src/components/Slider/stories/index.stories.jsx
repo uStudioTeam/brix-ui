@@ -23,7 +23,7 @@ sliderStory.add('Primary', () => {
   return (
     <SContainer>
       <Slider
-        label="Default"
+        name="Default"
         value={value}
         isDisabled={boolean('Disabled', false)}
         min={number('Min', 0)}

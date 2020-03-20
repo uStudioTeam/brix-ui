@@ -40,7 +40,7 @@ singleSelectStory.add('Flat', () => {
       <Select
         items={items}
         value={selected}
-        label="Default select"
+        name="Default select"
         onChange={item => setSelected(item)}
         isDisabled={boolean('Disabled', false)}
       />
@@ -56,7 +56,7 @@ singleSelectStory.add('Groups', () => {
       <Select
         groups={groups}
         value={selected}
-        label="Default select"
+        name="Default select"
         onChange={item => setSelected(item)}
         isDisabled={boolean('Disabled', false)}
       />
@@ -74,7 +74,7 @@ multiSelectStory.add('Flat', () => {
       <MultiSelect
         items={items}
         value={selected}
-        label="Default select"
+        name="Default select"
         onChange={items => setSelected(items)}
         isDisabled={boolean('Disabled', false)}
       />
@@ -90,7 +90,7 @@ multiSelectStory.add('Groups', () => {
       <MultiSelect
         groups={groups}
         value={selected}
-        label="Default select"
+        name="Default select"
         onChange={items => setSelected(items)}
         isDisabled={boolean('Disabled', false)}
       />

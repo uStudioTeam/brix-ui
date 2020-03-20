@@ -26,7 +26,7 @@ inputStory.add('Text', () => {
   return (
     <SContainer>
       <TextInput
-        label="Text"
+        name="Text"
         value={textValue}
         onChange={value => setTextValue(value)}
         placeholder={text('Placeholder', 'Placeholder')}
@@ -44,7 +44,7 @@ inputStory.add('Number', () => {
   return (
     <SContainer>
       <NumberInput
-        label="Number"
+        name="Number"
         value={numberValue}
         onChange={value => setNumber(value)}
         placeholder={text('Placeholder', 'Placeholder')}
@@ -62,7 +62,7 @@ inputStory.add('TextArea', () => {
   return (
     <SContainer>
       <TextArea
-        label="Text area"
+        name="Text area"
         value={textValue}
         onChange={value => setValue(value)}
         placeholder={text('Placeholder', 'Placeholder')}
@@ -78,7 +78,7 @@ inputStory.add('File', () => {
   return (
     <SContainer>
       <FileInput
-        label="File"
+        name="File"
         buttonValue={text('Button value', 'Upload')}
         value={fileValue}
         onChange={value => setValue(value)}
