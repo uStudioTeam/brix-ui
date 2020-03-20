@@ -1,14 +1,14 @@
 import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, inputProps } from '../../../utils';
 import { props } from '../BaseInput';
 
 import { StyledFileInput as Styled } from '../styles';
 
 const FileInput = forwardRef(function FileInput(
   {
-    label,
+    id,
+    name,
     buttonValue = 'Upload',
     value,
     onChange,
@@ -40,7 +40,8 @@ const FileInput = forwardRef(function FileInput(
       <Styled.HiddenFileInput
         ref={ref}
         type="file"
-        name={label}
+        id={id}
+        name={name}
         value={fileList ?? ''}
         onChange={({ target: { files, value: fileNames } }) => {
           onChange(files);
@@ -51,7 +52,7 @@ const FileInput = forwardRef(function FileInput(
         aria-disabled={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        aria-labelledby={`${label} file input`}
+        aria-labelledby={name}
         classNames={classNames}
         {...htmlAttributes}
       />

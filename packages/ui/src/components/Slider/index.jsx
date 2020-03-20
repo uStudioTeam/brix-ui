@@ -8,7 +8,8 @@ import { sliderUtils } from './utils';
 
 const Slider = forwardRef(function Slider(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -79,7 +80,8 @@ const Slider = forwardRef(function Slider(
         <Styled.Input
           ref={ref}
           type="range"
-          name={label}
+          id={id}
+          name={name}
           value={usedValue}
           onChange={handleChange}
           step={step}
@@ -89,7 +91,7 @@ const Slider = forwardRef(function Slider(
           aria-disabled={isDisabled}
           required={isRequired}
           aria-required={isRequired}
-          aria-labelledby={label}
+          aria-labelledby={name}
           classNames={classNames}
         />
       </Styled.InputContainer>

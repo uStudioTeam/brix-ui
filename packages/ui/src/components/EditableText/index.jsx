@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { classNames, common, inputProps } from '../../utils';
 import { useKeyPressClose } from '../../hooks';
+import { BaseSelect } from '../Select/BaseSelect';
 
 import { Styled } from './styles';
 import { editableTextUtils } from './utils';
@@ -13,7 +14,8 @@ const EditableText = forwardRef(function EditableText(
     value: valueProp,
     defaultValue,
     onChange,
-    label,
+    id,
+    name,
     isDisabled = false,
     isRequired = false,
     isDefaultEditable = false,
@@ -73,6 +75,8 @@ const EditableText = forwardRef(function EditableText(
 
       <Styled.TextArea
         ref={ref}
+        id={id}
+        name={name}
         variant={variant}
         appearance={appearance}
         autoFocus={isEditing || isDefaultEditable}
@@ -88,7 +92,7 @@ const EditableText = forwardRef(function EditableText(
         aria-disabled={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        aria-labelledby={label}
+        aria-labelledby={name}
       />
 
       {icon ? (

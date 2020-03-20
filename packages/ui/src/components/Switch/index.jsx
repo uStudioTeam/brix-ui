@@ -7,7 +7,8 @@ import { Styled } from './styles';
 
 const Switch = forwardRef(function Switch(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -24,13 +25,13 @@ const Switch = forwardRef(function Switch(
       <Styled.Input
         ref={ref}
         type="checkbox"
-        id={label}
-        name={label}
+        id={id}
+        name={name}
         defaultChecked={value ?? defaultValue}
         onChange={() => onChange && onChange(!value)}
         readOnly={isDisabled}
         aria-checked={value ?? defaultValue}
-        aria-labelledby={`${label} switch`}
+        aria-labelledby={name}
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
