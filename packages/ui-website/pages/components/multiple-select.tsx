@@ -49,6 +49,9 @@ ${controlledInputDescription('Multiple select')}.`}
           }`,
           description: "Available and required if 'items' prop is not set",
         },
+        placeholder: {
+          type: '`string`',
+        },
         ...inputProps('string[]'),
       }}
       classNames={[
@@ -76,6 +79,7 @@ ${controlledInputDescription('Multiple select')}.`}
                 items={items}
                 value={valueSelected}
                 name="multi-select"
+                placeholder="Choose an item"
                 onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
               />
             </Flex>
@@ -86,6 +90,7 @@ ${controlledInputDescription('Multiple select')}.`}
                 groups={groups}
                 value={valueSelected}
                 name="group-select"
+                placeholder="Choose an item"
                 onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
               />
             </Flex>
@@ -97,6 +102,7 @@ ${controlledInputDescription('Multiple select')}.`}
                 value={valueSelected}
                 defaultValue={['4']}
                 name="disabled-select"
+                placeholder="Choose an item"
                 onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
                 isDisabled
               />
