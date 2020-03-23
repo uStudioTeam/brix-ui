@@ -23,7 +23,7 @@ switchStory.add('Primary', () => {
   return (
     <SContainer>
       <Switch
-        label="Switch"
+        name="switch"
         isDisabled={boolean('Disabled', false)}
         alternative={boolean('Alternative', false)}
         value={isOn}

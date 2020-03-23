@@ -75,7 +75,7 @@ ${controlledInputDescription('Multiple select')}.`}
               <MultiSelect
                 items={items}
                 value={valueSelected}
-                label="Multi select"
+                name="multi-select"
                 onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
               />
             </Flex>
@@ -85,7 +85,7 @@ ${controlledInputDescription('Multiple select')}.`}
               <MultiSelect
                 groups={groups}
                 value={valueSelected}
-                label="Group select"
+                name="group-select"
                 onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
               />
             </Flex>
@@ -96,7 +96,7 @@ ${controlledInputDescription('Multiple select')}.`}
                 items={items}
                 value={valueSelected}
                 defaultValue={['4']}
-                label="Disabled select"
+                name="disabled-select"
                 onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
                 isDisabled
               />

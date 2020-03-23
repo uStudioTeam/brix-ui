@@ -71,27 +71,27 @@ ${controlledInputDescription('File input')}.`}
       <ComponentInfoItem>
         <Styled.InputsContainer>
           <FileInput
-            label="Default"
+            name="default"
             onChange={(val: any) => setValues({ ...values, default: val })}
             value={values.default}
             placeholder="Placeholder"
             isRequired
           />
-          <FileInput label="Disabled" placeholder="Placeholder" isDisabled />
+          <FileInput name="disabled" placeholder="Placeholder" isDisabled />
         </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Prefix and suffix" description="Inputs can even have prefix and suffix!">
         <Styled.InputsContainer>
           <FileInput
-            label="With prefix"
+            name="with-prefix"
             onChange={(val: FileList) => setValues({ ...values, prefix: val })}
             value={values.prefix}
             prefix={<Styled.CodeIcon />}
             placeholder="Placeholder"
           />
           <FileInput
-            label="With suffix"
+            name="with-suffix"
             onChange={(val: FileList) => setValues({ ...values, suffix: val })}
             value={values.suffix}
             suffix={<Styled.CodeIcon />}
@@ -103,7 +103,7 @@ ${controlledInputDescription('File input')}.`}
       <ComponentInfoItem title="Multiple" description="Upload multiple files at once.">
         <Styled.InputsContainer>
           <FileInput
-            label="Multiple"
+            name="multiple"
             onChange={(val: FileList) => setValues({ ...values, multiple: val })}
             value={values.multiple}
             placeholder="Placeholder"

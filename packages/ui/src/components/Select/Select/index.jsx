@@ -7,7 +7,8 @@ import { BaseSelect, props } from '../BaseSelect';
 
 const Select = forwardRef(function Select(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -29,7 +30,8 @@ const Select = forwardRef(function Select(
         onChange && onChange(item.value);
         setOpen(false);
       }}
-      label={label}
+      id={id}
+      name={name}
       items={items}
       groups={groups}
       isDisabled={isDisabled}
@@ -39,7 +41,7 @@ const Select = forwardRef(function Select(
       ref={ref}
       renderSelect={({ props, icon }) => (
         <Styled.Select type="button" {...props}>
-          {selectUtils.getItemsObject({ items, groups })[value ?? defaultValue]?.label || label}
+          {selectUtils.getItemsObject({ items, groups })[value ?? defaultValue]?.label || name}
 
           {icon}
         </Styled.Select>

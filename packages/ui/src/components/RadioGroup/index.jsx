@@ -8,7 +8,8 @@ import { radioGroupUtils } from './utils';
 
 const RadioGroup = forwardRef(function RadioGroup(
   {
-    label,
+    id,
+    name,
     options,
     value,
     defaultValue,

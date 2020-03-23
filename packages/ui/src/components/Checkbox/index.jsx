@@ -7,7 +7,7 @@ import { classNames, inputProps } from '../../utils';
 import { Styled } from './styles';
 
 const Checkbox = forwardRef(function Checkbox(
-  { label, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className = '' },
+  { id, name, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className = '' },
   ref
 ) {
   return (
@@ -15,15 +15,15 @@ const Checkbox = forwardRef(function Checkbox(
       <Styled.Input
         ref={ref}
         type="checkbox"
-        id={label}
-        name={label}
+        id={id}
+        name={name}
         defaultChecked={value ?? defaultValue}
         onChange={() => {
           onChange && onChange(!value);
         }}
         readOnly={isDisabled}
         aria-checked={value ?? defaultValue}
-        aria-labelledby={`${label} checkbox`}
+        aria-labelledby={name}
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}

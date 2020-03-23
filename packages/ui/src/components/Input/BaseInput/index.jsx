@@ -7,7 +7,8 @@ import { Styled } from '../styles';
 
 const BaseInput = forwardRef(function BaseInput(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue = '',
     onChange,
@@ -27,14 +28,15 @@ const BaseInput = forwardRef(function BaseInput(
 
       <Styled.Input
         ref={ref}
-        name={label}
+        id={id}
+        name={name}
         value={value ?? defaultValue}
         onChange={onChange}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        aria-labelledby={label}
+        aria-labelledby={name}
         classNames={classNames}
         {...inputProps}
       />

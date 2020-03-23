@@ -1,7 +1,10 @@
 const tooltip = 'Must be passed directly or implicitly';
 
 export const inputProps = (valueType: string) => ({
-  label: {
+  id: {
+    type: '`string`',
+  },
+  name: {
     type: '`string`',
   },
   value: {
