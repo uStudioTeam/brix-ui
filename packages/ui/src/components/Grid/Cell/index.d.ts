@@ -1,16 +1,31 @@
+import { ReactElement } from 'react';
 import { Breakpoint } from '../../../theme/theme';
-import { Children, Offset, Size } from '../types';
+
+type Size = number;
+type Offset =
+  | {
+      before: Size;
+      after?: Size;
+    }
+  | {
+      before?: Size;
+      after: Size;
+    }
+  | {
+      before: Size;
+      after: Size;
+    };
 
 type CellBreakpointData = {
   [breakpoint in Breakpoint]?: {
     size?: Size;
     offset?: Offset;
-  }
-}
+  };
+};
 
-interface CellProps extends CellBreakpointData {
-  children: Children;
-  
+export interface CellProps extends CellBreakpointData {
+  children: ReactElement | ReactElement[];
+
   className?: string;
 }
 
