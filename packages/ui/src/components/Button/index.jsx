@@ -30,7 +30,7 @@ const Button = forwardRef(function Button(
         appearance,
         iconBefore,
         iconAfter,
-        disabled: isLoading || isDisabled,
+        disabled: isDisabled,
         isLoading,
         className,
         classNames,
