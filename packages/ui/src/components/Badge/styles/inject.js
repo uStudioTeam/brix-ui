@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-const background = (background = 'inherit') => `background: ${background}`;
+const background = (background = 'var(--g-primary)') => `background: ${background}`;
 
-const color = (color = 'inherit') => `color: ${color}`;
+const color = (color = 'var(--c-lightest)') => `color: ${color}`;
 
 const disabledStyles = isDisabled => {
   return isDisabled

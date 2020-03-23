@@ -30,6 +30,7 @@ const FlexPage = () => {
         },
         direction: {
           type: `\`'row' | 'column'\``,
+          defaultValue: '`row`',
         },
         isReversed: {
           type: '`boolean`',

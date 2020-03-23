@@ -1,35 +1,49 @@
 import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
-const _containedBorder = (disabled, isLoading) => (disabled || isLoading ? css`border-color: var(--c-light)` : '');
+const _containedBorder = ({ disabled, isLoading }) =>
+  disabled || isLoading
+    ? css`
+        border-color: var(--c-light);
+      `
+    : '';
 
-const _containedBackground = (disabled, isLoading, intent) => {
-  return css`background: ${
-    disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`
-  }`;
+const _containedBackground = ({ disabled, isLoading, intent }) => {
+  return css`
+    background: ${disabled || isLoading ? 'var(--c-light)' : `var(--g-${intent}) no-repeat, var(--c-${intent}-light)`};
+  `;
 };
 
-const _outlinedBorder = (disabled, isLoading) => (disabled || isLoading ? css`border-color: var(--c-neutral)` : '');
+const _outlinedBorder = ({ disabled, isLoading }) =>
+  disabled || isLoading
+    ? css`
+        border-color: var(--c-neutral);
+      `
+    : '';
 
-const _outlinedMobileActiveBorder = (disabled, isLoading) => {
-  return disabled || isLoading ? css`border-color: var(--c-neutral)` : '';
+const _outlinedMobileActiveBorder = ({ disabled, isLoading }) => {
+  return disabled || isLoading
+    ? css`
+        border-color: var(--c-neutral);
+      `
+    : '';
 };
 
-const _outlinedDesktopHoverBorder = (disabled, isLoading, intent) => {
-  return css`border-color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+const _outlinedDesktopHoverBorder = ({ disabled, isLoading }) => {
+  return disabled || isLoading ? 'border-color: var(--c-neutral)' : `border-color: transparent`;
 };
 
-const _outlinedDesktopHoverColor = (disabled, isLoading, intent) => {
-  return css`color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`}`;
+const _outlinedDesktopHoverColor = ({ disabled, isLoading, intent }) => {
+  return css`
+    color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+  `;
 };
-
-const _outlinedDesktopActiveOpacity = (disabled, isLoading) => css`opacity: ${disabled || isLoading ? 0 : 1}`;
 
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
   return {
     text: css`
       ${Mixin.Style.inputPadding()};
-      color: var(--c-${intent});
+      color: ${`var(--c-${intent})`};
 
       &:after {
         content: '';
@@ -39,7 +53,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
         left: 0;
         right: 0;
         border-radius: var(--border-radius);
-        background: var(--g-${intent}), var(--c-${intent}-light);
+        background: ${`var(--g-${intent}), var(--c-${intent}-light)`};
         opacity: 0;
         pointer-events: none;
         transition: var(--transition);
@@ -76,8 +90,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
     contained: css`
       ${Mixin.Style.inputPadding()};
 
-      ${_containedBorder(disabled, isLoading)};
-      ${_containedBackground(disabled, isLoading, intent)};
+      ${_containedBorder({ disabled, isLoading })};
+      ${_containedBackground({ disabled, isLoading, intent })};
 
       color: var(--c-lightest);
 
@@ -104,59 +118,40 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
     `,
     outlined: css`
       ${Mixin.Style.inputPadding()};
-      ${Mixin.Style.borderAll({ color: `var(--c-${intent})` || '' })};
+      ${Mixin.Style.borderAll({ color: `var(--c-${intent})` })};
 
-      ${_outlinedBorder(disabled, isLoading)};
+      ${_outlinedBorder({ disabled, isLoading })};
 
       background-color: transparent;
-      color: var(--c-${intent});
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: var(--border-radius);
-        background: var(--g-${intent}), var(--c-${intent}-light);
-        opacity: 0;
-        pointer-events: none;
-        transition: var(--transition);
-      }
+      color: ${`var(--c-${intent})`};
 
       ${Mixin.Device.mobile(css`
         &:active {
-          color: var(--c-${intent}-light);
+          color: ${`var(--c-${intent}-light)`};
 
-          ${_outlinedMobileActiveBorder(disabled, isLoading)}
-
-          &:after {
-            opacity: ${disabled || isLoading ? 0 : 0.1};
-          }
+          ${_outlinedMobileActiveBorder({ disabled, isLoading })};
         }
-      `)}
+      `)};
 
       ${Mixin.Device.desktop(css`
         &:hover {
-          ${_outlinedDesktopHoverBorder(disabled, isLoading, intent)};
-          ${_outlinedDesktopHoverColor(disabled, isLoading)}
+          ${_outlinedDesktopHoverBorder({ disabled, isLoading })};
+          ${_outlinedDesktopHoverColor({ disabled, isLoading, intent })};
+          box-shadow: ${`var(--s-${intent})`};
         }
 
         &:focus {
-          border-color: var(--c-${intent}-light);
-          color: var(--c-${intent}-light);
-          box-shadow: var(--s-${intent});
+          border-color: ${`var(--c-${intent}-light)`};
+          color: ${`var(--c-${intent}-light)`};
+          box-shadow: ${`var(--s-${intent})`};
         }
 
         &:active {
-          color: var(--c-${intent}-light);
-          border-color: outlinedBorder(disabled, isLoading);
-          &:after {
-            ${_outlinedDesktopActiveOpacity(disabled, isLoading)};
-          }
+          color: ${`var(--c-${intent}-light)`};
+          border-color: ${_outlinedBorder({ disabled, isLoading })};
+          box-shadow: none;
         }
-      `)}
+      `)};
     `,
   }[appearance];
 };
