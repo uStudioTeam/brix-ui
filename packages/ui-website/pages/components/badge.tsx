@@ -20,6 +20,11 @@ const BadgePage = () => {
             background?: string;
             color?: string;
           }`,
+          defaultValue: `
+          {
+            background: 'inherit',
+            color: 'inherit'
+          }`
         },
         isDisabled: {
           type: '`boolean`',
