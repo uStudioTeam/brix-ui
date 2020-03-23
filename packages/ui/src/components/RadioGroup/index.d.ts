@@ -10,12 +10,17 @@ interface Styled {
 }
 
 interface RadioGroupProps extends Input<Option>, ClassNames<Styled> {
-  options: Option[];
-  disabledOptions?: Option[];
-  direction: Direction;
+  options: Record<OptionValue, Option>;
+  direction?: Direction;
 }
 
-type Option = string | number;
+type OptionValue = string | number;
+
+interface Option {
+  value: OptionValue;
+  label?: string;
+  isDisabled?: boolean;
+}
 
 declare const RadioGroup: {
   (props: RadioGroupProps): JSX.Element;
