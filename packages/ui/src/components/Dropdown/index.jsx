@@ -57,7 +57,7 @@ Dropdown.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func,
   title: PropTypes.node.isRequired,
-  icon: PropTypes.node,
+  icon: PropTypes.element,
   isDefaultOpen: PropTypes.bool,
   isDisabled: PropTypes.bool,
   ...classNames(Object.keys(Styled)),
