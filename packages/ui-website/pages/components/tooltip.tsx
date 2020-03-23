@@ -23,7 +23,7 @@ const TooltipPage = () => {
           required: true,
         },
       }}
-      classNames={['Tooltip', 'Content']}
+      classNames={['TooltipContainer', 'Tooltip', 'Content']}
     >
       <ComponentInfoItem title="Position">
         <Tooltip value="O_o" position="left">

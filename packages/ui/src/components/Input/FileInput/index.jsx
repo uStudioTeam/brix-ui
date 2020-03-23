@@ -52,7 +52,6 @@ const FileInput = forwardRef(function FileInput(
         required={isRequired}
         aria-required={isRequired}
         aria-labelledby={`${label} file input`}
-        classNames={classNames}
         {...htmlAttributes}
       />
 
@@ -82,8 +81,10 @@ const FileInput = forwardRef(function FileInput(
 
 FileInput.displayName = 'FileInput';
 
+const { HiddenFileInput: _hfi, ...StyledFileInput } = Styled;
+
 FileInput.propTypes = {
-  ...props.propTypes({ valueType: PropTypes.object, classes: Styled }),
+  ...props.propTypes({ valueType: PropTypes.object, classes: StyledFileInput }),
   buttonValue: PropTypes.string,
   multiple: PropTypes.bool,
 };

@@ -3,7 +3,7 @@ import { Input } from '../../input';
 type SelectProps<Value> = Input<Value>;
 
 interface StyledSelect {
-  Container;
+  SelectContainer;
   Overlay;
   Label;
   Select;

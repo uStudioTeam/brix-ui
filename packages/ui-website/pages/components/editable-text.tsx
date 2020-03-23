@@ -45,7 +45,7 @@ const EditableTextPage = () => {
           description: 'Pass your custom icon that will accept internal isEditing prop for style control purposes',
         },
       }}
-      classNames={['Container', 'TextArea', 'Text', 'Icon']}
+      classNames={['EditableText', 'TextArea', 'Text', 'Icon']}
     >
       <ComponentInfoItem>
         <EditableText defaultValue="Edit me" onChange={setValue}>{value}</EditableText>

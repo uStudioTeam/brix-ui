@@ -46,7 +46,7 @@ const DrawerPage = () => {
           defaultValue: '`false`',
         },
       }}
-      classNames={['Drawer']}
+      classNames={['Drawer', 'Overlay']}
     >
       <ComponentInfoItem>
         {['left', 'right', 'top', 'bottom'].map(direction => (

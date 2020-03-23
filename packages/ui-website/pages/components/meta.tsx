@@ -22,7 +22,7 @@ const MetaPage = () => {
           type: '`ReactNode`',
         },
       }}
-      classNames={['Meta', 'Title']}
+      classNames={['Meta', 'Title', 'Value']}
     >
       <ComponentInfoItem>
         <Meta title="First Name">John</Meta>

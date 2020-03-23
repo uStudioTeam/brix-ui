@@ -20,7 +20,7 @@ const Switch = forwardRef(function Switch(
   ref
 ) {
   return (
-    <Styled.Container className={className} classNames={classNames} isDisabled={isDisabled}>
+    <Styled.SwitchContainer className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -38,7 +38,7 @@ const Switch = forwardRef(function Switch(
       />
 
       <Styled.Switch alternative={alternative} classNames={classNames} />
-    </Styled.Container>
+    </Styled.SwitchContainer>
   );
 });
 

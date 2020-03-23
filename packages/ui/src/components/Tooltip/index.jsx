@@ -25,7 +25,7 @@ Tooltip.propTypes = {
   value: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
   position: common.position.isRequired,
-  ...classNames(Object.keys(Styled)),
+  ...classNames([...Object.keys(Styled), 'Content']),
 };
 
 export default Tooltip;

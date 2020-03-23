@@ -5,14 +5,6 @@ import { Mixin } from '../../../theme';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
-const Container = styled.div(
-  ({ dataDirection }) => css`
-    display: grid;
-    grid-auto-flow: ${reverseDirection(dataDirection)};
-    grid-gap: var(--i-regular);
-  `
-);
-
 const RadioGroup = styled.ul(
   ({ dataDirection }) => css`
     flex: 1;
@@ -156,4 +148,4 @@ const Input = styled.input`
   }
 `;
 
-export const Styled = StyledComponents({ Container, RadioGroup, RadioGroupItem, Label, RadioButton, Input });
+export const Styled = StyledComponents({ RadioGroup, RadioGroupItem, Label, RadioButton, Input });

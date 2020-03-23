@@ -2,7 +2,9 @@ import { Input } from '../../input';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
-  Switch, Input, Container
+  Switch;
+  Input;
+  SwitchContainer;
 }
 
 interface SwitchProps extends Input<boolean>, ClassNames<Styled> {

@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 import { ClassNames, Position } from '../../theme/theme';
 
 interface Styled {
-  Tooltip, Content
+  TooltipContainer;
+  Tooltip;
+  Content;
 }
 
 interface TooltipProps extends ClassNames<Styled> {

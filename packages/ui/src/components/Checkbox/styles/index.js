@@ -3,7 +3,7 @@ import { Mixin } from '../../../theme';
 import { StyledComponents } from '../../../utils/styles/styled-component';
 import {inject} from "./inject.js"
 
-const Container = styled.span(
+const CheckboxContainer = styled.span(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -108,4 +108,4 @@ const Input = styled.input`
   }
 `;
 
-export const Styled = StyledComponents({ Container, Input, Checkbox });
+export const Styled = StyledComponents({ CheckboxContainer, Input, Checkbox });

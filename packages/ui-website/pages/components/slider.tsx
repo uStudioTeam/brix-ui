@@ -51,7 +51,7 @@ ${controlledInputDescription('Text input')}.`}
           }`,
         },
       }}
-      classNames={['StepContainer', 'Step', 'Container', 'InputContainer', 'HelperContainer', 'Helper', 'Line']}
+      classNames={['StepContainer', 'Step', 'SliderContainer', 'InputContainer', 'HelperContainer', 'Helper', 'Line']}
     >
       <ComponentInfoItem>
         <Styled.InputsContainer>

@@ -26,7 +26,7 @@ ${controlledInputDescription('RadioGroup')}.`}
           description: 'Controls displacement of button labels',
         },
       }}
-      classNames={['RadioGroup', 'RadioGroupItem', 'Label', 'Input', 'Radiobutton']}
+      classNames={['RadioGroup', 'RadioGroupItem', 'Label', 'Input', 'RadioButton']}
     >
       <ComponentInfoItem>
         <RadioGroup
