@@ -1,3 +1,7 @@
+![logo](public/assets/images/readme-bg.jpg)
+
+---
+
 # Installation
 
 This library is available as an [npm package](https://www.npmjs.com/package/@ustudio/ui).
