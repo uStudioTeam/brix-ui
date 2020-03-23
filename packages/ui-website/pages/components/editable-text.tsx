@@ -23,7 +23,7 @@ const EditableTextPage = () => {
           type: `\`string\``,
         },
         onChange: {
-          type: `\`(value: string => void\``,
+          type: `\`(value: string) => void\``,
           required: true,
         },
         children: {
