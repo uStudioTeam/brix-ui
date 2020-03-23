@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { classNames, common, inputProps } from '../../utils';
 import { useKeyPressClose } from '../../hooks';
-import { BaseSelect } from '../Select/BaseSelect';
 
 import { Styled } from './styles';
 import { editableTextUtils } from './utils';
