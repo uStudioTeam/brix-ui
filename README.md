@@ -1,4 +1,4 @@
-![logo](packages/ui-website/public/assets/images/readme-bg.jpg)
+![logo](banner.jpg)
 
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](link to site)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
