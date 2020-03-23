@@ -7,7 +7,8 @@ import { Styled } from './styles';
 
 const RadioGroup = forwardRef(function RadioGroup(
   {
-    label,
+    id,
+    name,
     options,
     value,
     defaultValue,
@@ -38,7 +39,8 @@ const RadioGroup = forwardRef(function RadioGroup(
             <Styled.Input
               ref={ref}
               type="radio"
-              name={label}
+              id={`${id}-${option}`}
+              name={name}
               value={option}
               defaultChecked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
               onChange={() => onChange(option)}
@@ -46,7 +48,7 @@ const RadioGroup = forwardRef(function RadioGroup(
               required={isRequired}
               aria-required={isRequired}
               aria-checked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
-              aria-labelledby={`${label} ${option} radiobutton`}
+              aria-labelledby={`${name} ${option}`}
               aria-disabled={!!disabledOptions?.includes(option)}
               classNames={classNames}
             />

@@ -70,7 +70,7 @@ ${controlledInputDescription('Single select')}.`}
             <Select
               items={items}
               value={valueSelected}
-              label="Default select"
+              name="default-select"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>
@@ -78,7 +78,7 @@ ${controlledInputDescription('Single select')}.`}
             <Select
               groups={groups}
               value={valueSelected}
-              label="Group select"
+              name="group-select"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>
@@ -87,7 +87,7 @@ ${controlledInputDescription('Single select')}.`}
               items={items}
               value={valueSelected}
               isDisabled
-              label="Disabled select"
+              name="disabled-select"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>

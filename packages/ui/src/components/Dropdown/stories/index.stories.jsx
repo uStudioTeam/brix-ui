@@ -21,32 +21,32 @@ const SContainer = styled.div`
 
 dropdownStory.add('Primary', () => (
   <SContainer>
-    <Dropdown name="Outer dropdown" isDisabled={boolean('Disabled', false)} title="Dropdown title">
+    <Dropdown name="outer-dropdown" isDisabled={boolean('Disabled', false)} title="Dropdown title">
       <>
         <Text>Dropdown content</Text>
 
-        <Dropdown name="Inner dropdown" title="Dropdown title">
+        <Dropdown name="inner-dropdown" title="Dropdown title">
           <>
             <Text>Dropdown content</Text>
             <Text>Dropdown content</Text>
           </>
         </Dropdown>
 
-        <Dropdown name="Inner dropdown" title="Dropdown title">
+        <Dropdown name="inner-dropdown" title="Dropdown title">
           <>
             <Text>Dropdown content</Text>
             <Text>Dropdown content</Text>
           </>
         </Dropdown>
 
-        <Dropdown name="Inner dropdown" title="Dropdown title">
+        <Dropdown name="inner-dropdown" title="Dropdown title">
           <>
             <Text>Dropdown content</Text>
             <Text>Dropdown content</Text>
           </>
         </Dropdown>
 
-        <Dropdown name="Inner dropdown" title="Dropdown title">
+        <Dropdown name="inner-dropdown" title="Dropdown title">
           <>
             <Text>Dropdown content</Text>
             <Text>Dropdown content</Text>
