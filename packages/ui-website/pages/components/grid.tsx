@@ -43,11 +43,8 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
           type: '`boolean`',
           description: 'Could be used to add side margins in a top-level grid',
         },
-        ...['xs', 'md', 'lg', 'xl'].reduce(
-          (props, breakpoint) =>
-            Object.assign(props, {
-              [breakpoint]: {
-                type: `\`{
+        'xs | md | lg | xl': {
+          type: `\`{
   template?: string;
   maxWidth?: number;
   direction?: 'row' | 'column';
@@ -56,10 +53,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
     [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
   };
 }\``,
-              },
-            }),
-          {}
-        ),
+        },
       }}
     >
       <ComponentInfoItem>
@@ -104,20 +98,17 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
             type: '`ReactNode[] | ReactNode`',
             required: true,
           },
-          ...['xs', 'md', 'lg', 'xl'].reduce(
-            (props, breakpoint) =>
-              Object.assign(props, {
-                [breakpoint]: {
-                  type: `\`{
-  size?: number;
-  offset?: {
-    [before | after]?: number;
+          'xs | md | lg | xl': {
+            type: `\`{
+  template?: string;
+  maxWidth?: number;
+  direction?: 'row' | 'column';
+  gap?: number;
+  alignment?: {
+    [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
   };
 }\``,
-                },
-              }),
-            {}
-          ),
+          },
         }}
       />
     </ComponentInfo>
