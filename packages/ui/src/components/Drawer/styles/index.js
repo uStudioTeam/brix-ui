@@ -7,7 +7,7 @@ const Drawer = styled(Flex)(
   ({ isOpen, position }) => css`
     position: fixed;
     ${inject.position({ position, isOpen })};
-    
+
     z-index: var(--l-top);
 
     overflow-y: scroll;
@@ -21,8 +21,8 @@ const Drawer = styled(Flex)(
     border-radius: 0;
 
     ${inject.dimensions(position)};
-
-    transition: ${position} var(--transition);
+    
+    ${inject.transition({ position, isOpen })}
   `
 );
 
