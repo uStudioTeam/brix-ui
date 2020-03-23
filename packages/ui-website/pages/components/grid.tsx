@@ -36,7 +36,7 @@ Grid's template is built using \`fr\` units.
 Make sure to not wrap \`Cell\` into other components as it will break the layout.`}
       props={{
         children: {
-          type: '`ReactNode[] | ReactNode`',
+          type: '`Cell | Cell[]`',
           required: true,
         },
         isContainer: {
@@ -95,7 +95,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         componentName="Cell"
         props={{
           children: {
-            type: '`ReactNode[] | ReactNode`',
+            type: '`ReactNode | ReactNode[]`',
             required: true,
           },
           'xs | md | lg | xl': {
