@@ -90,8 +90,8 @@ const Tab = styled.button(
         background-color: var(--c-light);
       }
     }
-    
-    ${inject.tabActiveStyles(isActive)}
+
+    ${inject.tabActiveStyles({ isActive, TabContent })}
 
     &:before {
       position: absolute;
