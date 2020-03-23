@@ -99,7 +99,7 @@ const MultiSelect = forwardRef(function MultiSelect(
                 })}
             </Styled.SelectedList>
           ) : (
-            label
+            ''
           )}
 
           {icon}

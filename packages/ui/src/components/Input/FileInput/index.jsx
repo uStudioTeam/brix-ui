@@ -31,7 +31,7 @@ const FileInput = forwardRef(function FileInput(
         ? Array.from(value)
             ?.map(file => file.name)
             .join(', ')
-        : htmlAttributes?.placeholder || label
+        : htmlAttributes?.placeholder || ''
     }`;
   };
 
