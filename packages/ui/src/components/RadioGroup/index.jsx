@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { classNames, common, inputProps } from '../../utils';
-import { BaseSelect } from '../Select/BaseSelect';
 
 import { Styled } from './styles';
 
@@ -40,7 +39,7 @@ const RadioGroup = forwardRef(function RadioGroup(
             <Styled.Input
               ref={ref}
               type="radio"
-              id={option}
+              id={`${id}-${option}`}
               name={name}
               value={option}
               defaultChecked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
