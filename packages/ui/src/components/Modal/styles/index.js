@@ -19,7 +19,7 @@ const Modal = styled(Flex)(
 
     transform: translateY(-50%) translateX(-50%);
 
-    ${inject.toggleStyles(isOpen)};
+    ${inject.toggleStyles({ isOpen, Overlay })};
   `
 );
 
