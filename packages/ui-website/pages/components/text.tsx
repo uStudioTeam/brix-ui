@@ -29,7 +29,14 @@ const TextPage = () => {
       classNames={['Text']}
     >
       <ComponentInfoItem>
-        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, gap: 32 }}>
+        <Grid
+          xs={{
+            alignment: { horizontal: 'center', vertical: 'center' },
+            gap: 16,
+            direction: 'column',
+            template: '6fr 2fr 1fr',
+          }}
+        >
           <Cell>
             <Flex direction="column">
               <Text variant="h1">h1: Heading 1</Text>
@@ -62,7 +69,7 @@ const TextPage = () => {
         description="Body accepts any variant of an 'appearance' prop."
         direction="column"
       >
-        <Grid xs={{ alignment: { horizontal: 'center' } }}>
+        <Grid xs={{ alignment: { horizontal: 'center' }, direction: 'column' }}>
           <Cell>
             <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
           </Cell>
