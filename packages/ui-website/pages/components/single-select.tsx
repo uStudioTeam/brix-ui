@@ -51,7 +51,18 @@ ${controlledInputDescription('Single select')}.`}
         },
         ...inputProps('string'),
       }}
-      classNames={['ValuesListIcon', 'Container', 'Select', 'SelectIcon', 'Dropdown', 'ValuesList', 'ValuesListTitle']}
+      classNames={[
+        'SelectContainer',
+        'Overlay',
+        'Label',
+        'Select',
+        'SelectIcon',
+        'Dropdown',
+        'ValuesList',
+        'ValuesListTitle',
+        'ValuesListItem',
+        'ValuesListIcon',
+      ]}
     >
       <ComponentInfoItem>
         <Grid xs={{ gap: 16 }}>

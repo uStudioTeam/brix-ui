@@ -52,19 +52,20 @@ ${controlledInputDescription('Multiple select')}.`}
         ...inputProps('string[]'),
       }}
       classNames={[
+        'SelectContainer',
+        'Overlay',
+        'Label',
+        'Select',
+        'SelectIcon',
+        'Dropdown',
+        'ValuesList',
+        'ValuesListTitle',
         'ValuesListItem',
         'ValuesListIcon',
-        'Container',
-        'Select',
         'SelectedList',
         'SelectedListItem',
         'SelectedListLabel',
         'SelectedListIcon',
-        'SelectIcon',
-        'Dropdown',
-        'ValuesList',
-        'ValuesList',
-        'ValuesListTitle',
       ]}
     >
       <ComponentInfoItem>

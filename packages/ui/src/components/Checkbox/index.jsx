@@ -11,7 +11,7 @@ const Checkbox = forwardRef(function Checkbox(
   ref
 ) {
   return (
-    <Styled.Container className={className} classNames={classNames} isDisabled={isDisabled}>
+    <Styled.CheckboxContainer className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -33,7 +33,7 @@ const Checkbox = forwardRef(function Checkbox(
       <Styled.Checkbox classNames={classNames}>
         <Icon name="check" />
       </Styled.Checkbox>
-    </Styled.Container>
+    </Styled.CheckboxContainer>
   );
 });
 

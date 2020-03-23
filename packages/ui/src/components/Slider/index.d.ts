@@ -2,24 +2,24 @@ import { Input } from '../../input';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
-  Container,
-  HelperContainer,
-  Helper,
-  InputContainer,
-  Input,
-  Line,
-  Value,
-  Step,
-  StepContainer,
+  SliderContainer;
+  HelperContainer;
+  Helper;
+  InputContainer;
+  Input;
+  Line;
+  Value;
+  Step;
+  StepContainer;
 }
 
 interface SliderProps extends Input<number>, ClassNames<Styled> {
   step?: number;
   stepLabels?: StepLabels;
-  
+
   displayValue?: boolean;
   displaySteps?: boolean;
-  
+
   min?: number;
   max?: number;
 }
@@ -27,13 +27,13 @@ interface SliderProps extends Input<number>, ClassNames<Styled> {
 interface StepLabels {
   [value: number]:
     | {
-    label: string;
-    isDisplayed?: boolean;
-  }
+        label: string;
+        isDisplayed?: boolean;
+      }
     | {
-    label?: string;
-    isDisplayed: boolean;
-  };
+        label?: string;
+        isDisplayed: boolean;
+      };
 }
 
 declare const Slider: {

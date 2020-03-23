@@ -26,7 +26,7 @@ const BadgePage = () => {
           defaultValue: '`false`',
         },
       }}
-      classNames={['Badge']}
+      classNames={['Badge', 'Content']}
     >
       <ComponentInfoItem>
         <Badge appearance={{ background: 'var(--c-primary)', color: 'var(--c-lightest)' }}>Badge</Badge>

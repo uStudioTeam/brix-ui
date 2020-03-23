@@ -58,7 +58,15 @@ ${controlledInputDescription('File input')}.`}
         },
         suffix: { type: '`ReactNode`' },
       }}
-      classNames={['FileInputContainer', 'Input', 'Prefix', 'Suffix']}
+      classNames={[
+        'HiddenFileInput',
+        'FileInput',
+        'FileInputButton',
+        'FileInputContainer',
+        'FileInputWrapper',
+        'Prefix',
+        'Suffix',
+      ]}
     >
       <ComponentInfoItem>
         <Styled.InputsContainer>

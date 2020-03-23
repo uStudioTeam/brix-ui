@@ -3,7 +3,6 @@ import { ClassNames } from '../../../theme/theme';
 import { InputProps } from '../types';
 
 interface StyledFileInput {
-  HiddenFileInput;
   FileInput;
   FileInputButton;
   FileInputContainer;

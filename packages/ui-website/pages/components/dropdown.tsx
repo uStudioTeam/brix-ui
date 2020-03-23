@@ -36,7 +36,7 @@ const DropdownPage = () => {
           defaultValue: '`false`',
         },
       }}
-      classNames={['Container', 'Title', 'TitleIcon', 'Dropdown', 'Content']}
+      classNames={['DropdownContainer', 'Title', 'TitleIcon', 'Dropdown', 'Content']}
     >
       <ComponentInfoItem>
         <Dropdown title="Open me >:D">
