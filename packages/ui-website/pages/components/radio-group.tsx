@@ -46,7 +46,7 @@ ${controlledInputDescription('RadioGroup')}.`}
         ...inputProps(`Option`),
         direction: {
           type: `\`'row' | 'column'\``,
-          defaultValue: '`row`',
+          defaultValue: '`column`',
         },
         isReversed: {
           type: '`boolean`',

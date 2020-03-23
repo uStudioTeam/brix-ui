@@ -98,7 +98,7 @@ const Input = styled.input`
       box-shadow: var(--s-primary);
     }
 
-    &:active + ${RadioButton} {
+    &:not([disabled]) + &:active + ${RadioButton} {
       &:after {
         background-color: var(--c-primary);
       }
