@@ -2,8 +2,14 @@ import React from 'react';
 
 import { Text, Grid, Cell, Flex } from '@ustudio/ui';
 
+import styled from 'styled-components';
 import { ComponentInfo, ComponentInfoItem } from '../../components';
 
+const Styled = {
+  Grid: styled(Grid)`
+    width: 500px;
+  `,
+};
 const TextPage = () => {
   return (
     <ComponentInfo
@@ -29,9 +35,8 @@ const TextPage = () => {
       classNames={['Text']}
     >
       <ComponentInfoItem>
-        <Grid
+        <Styled.Grid
           xs={{
-            alignment: { horizontal: 'center', vertical: 'center' },
             gap: 16,
             direction: 'column',
             template: '6fr 2fr 1fr',
@@ -61,15 +66,15 @@ const TextPage = () => {
               <Text variant="small">small: Lorem ipsum</Text>
             </Flex>
           </Cell>
-        </Grid>
+        </Styled.Grid>
       </ComponentInfoItem>
 
-      <ComponentInfoItem
-        title="Variant 'body'"
-        description="Body accepts any variant of an 'appearance' prop."
-        direction="column"
-      >
-        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, direction: 'column' }}>
+      <ComponentInfoItem title="Variant 'body'" description="Body accepts any variant of an 'appearance' prop.">
+        <Styled.Grid
+          xs={{
+            direction: 'column',
+          }}
+        >
           <Cell>
             <Flex direction="column">
               <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
@@ -78,11 +83,11 @@ const TextPage = () => {
               <Text appearance="underlined">underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
             </Flex>
           </Cell>
-        </Grid>
+        </Styled.Grid>
       </ComponentInfoItem>
 
-      <ComponentInfoItem title="Variant 'article'" description="Article can not be bold." direction="column">
-        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, direction: 'column' }}>
+      <ComponentInfoItem title="Variant 'article'" description="Article can not be bold.">
+        <Styled.Grid xs={{ direction: 'column' }}>
           <Cell>
             <Flex direction="column">
               <Text variant="article" appearance="regular">
@@ -96,7 +101,7 @@ const TextPage = () => {
               </Text>
             </Flex>
           </Cell>
-        </Grid>
+        </Styled.Grid>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Alignment" direction="column">
