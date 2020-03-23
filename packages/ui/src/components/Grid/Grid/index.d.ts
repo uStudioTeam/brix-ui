@@ -1,5 +1,6 @@
+import { ReactElement } from 'react';
 import { Alignment, Breakpoint, Direction } from '../../../theme/theme';
-import { Children } from '../types';
+import Cell, { CellProps } from '../Cell';
 
 type GridBreakpointData = {
   [breakpoint in Breakpoint]?: {
@@ -12,7 +13,7 @@ type GridBreakpointData = {
 };
 
 interface GridProps extends GridBreakpointData {
-  children: Children;
+  children: ReactElement<CellProps, Cell> | ReactElement<CellProps, Cell>[];
 
   isContainer?: boolean;
 
