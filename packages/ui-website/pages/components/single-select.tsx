@@ -50,6 +50,9 @@ ${controlledInputDescription('Single select')}.`}
           description: "Available and required if 'items' prop is not set",
         },
         ...inputProps('string'),
+        placeholder: {
+          type: '`string`',
+        },
       }}
       classNames={[
         'SelectContainer',
@@ -70,7 +73,8 @@ ${controlledInputDescription('Single select')}.`}
             <Select
               items={items}
               value={valueSelected}
-              label="Default select"
+              name="default-select"
+              placeholder="Choose an item"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>
@@ -78,7 +82,8 @@ ${controlledInputDescription('Single select')}.`}
             <Select
               groups={groups}
               value={valueSelected}
-              label="Group select"
+              name="group-select"
+              placeholder="Choose an item"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>
@@ -87,7 +92,8 @@ ${controlledInputDescription('Single select')}.`}
               items={items}
               value={valueSelected}
               isDisabled
-              label="Disabled select"
+              name="disabled-select"
+              placeholder="Choose an item"
               onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
             />
           </Cell>

@@ -30,13 +30,13 @@ const TextAreaPage = () => {
       <ComponentInfoItem>
         <Styled.InputsContainer>
           <TextArea
-            label="Text area"
+            name="text-area"
             onChange={(val: string) => setValues({ ...values, default: val })}
             value={values.default}
             placeholder="Placeholder"
             isRequired
           />
-          <TextArea label="Disabled" placeholder="Placeholder" isDisabled />
+          <TextArea name="disabled" placeholder="Placeholder" isDisabled />
         </Styled.InputsContainer>
       </ComponentInfoItem>
     </ComponentInfo>

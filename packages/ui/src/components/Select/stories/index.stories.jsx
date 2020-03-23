@@ -1,5 +1,5 @@
 import { addDecorator, addParameters, storiesOf } from '@storybook/react';
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
@@ -40,8 +40,9 @@ singleSelectStory.add('Flat', () => {
       <Select
         items={items}
         value={selected}
-        label="Default select"
+        name="default-select"
         onChange={item => setSelected(item)}
+        placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
     </SContainer>
@@ -56,8 +57,9 @@ singleSelectStory.add('Groups', () => {
       <Select
         groups={groups}
         value={selected}
-        label="Default select"
+        name="default-select"
         onChange={item => setSelected(item)}
+        placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
     </SContainer>
@@ -74,8 +76,9 @@ multiSelectStory.add('Flat', () => {
       <MultiSelect
         items={items}
         value={selected}
-        label="Default select"
+        name="default-select"
         onChange={items => setSelected(items)}
+        placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
     </SContainer>
@@ -90,8 +93,9 @@ multiSelectStory.add('Groups', () => {
       <MultiSelect
         groups={groups}
         value={selected}
-        label="Default select"
+        name="default-select"
         onChange={items => setSelected(items)}
+        placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
     </SContainer>

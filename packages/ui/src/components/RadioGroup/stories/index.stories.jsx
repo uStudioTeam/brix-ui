@@ -13,17 +13,28 @@ addParameters({ jsx: { skip: 0 } });
 const radioGroupStory = storiesOf('RadioGroup', module);
 
 radioGroupStory.add('Primary', () => {
-  const options = ['1', '2', '3', '4', '5'];
+  const options = {
+    1: {
+      value: 1,
+      label: 'One'
+    },
+    2: {
+      value: 2,
+      isDisabled: true
+    },
+    3: {
+      value: '3'
+    }
+  };
   const [checked, setChecked] = useState(options[1]);
 
   return (
     <RadioGroup
       options={options}
       value={checked}
-      disabledOptions={array('Disabled', [], ', ')}
       onChange={selected => setChecked(selected)}
       isReversed={boolean('Reverse labels', false)}
-      label="Options"
+      name="options"
     />
   );
 });

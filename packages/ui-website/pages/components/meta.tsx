@@ -38,7 +38,9 @@ const MetaPage = () => {
         </Meta>
 
         <Meta variant="large" title="Web-site">
-          <a href="https://en.wikipedia.org/wiki/John_Doe">Personal web page</a>
+          <a href="https://en.wikipedia.org/wiki/John_Doe" target="_blank" rel="noopener noreferrer">
+            Personal web page
+          </a>
         </Meta>
       </ComponentInfoItem>
     </ComponentInfo>

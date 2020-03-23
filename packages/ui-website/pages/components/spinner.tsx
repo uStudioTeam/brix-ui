@@ -18,8 +18,8 @@ const SpinnerPage = () => {
   }\``,
           defaultValue: `\`
   {
-    color?: "var(--c-primary)";
-    size?: 32;
+    color: 'var(--c-primary)';
+    size: 32;
   }\``,
         },
         delay: {

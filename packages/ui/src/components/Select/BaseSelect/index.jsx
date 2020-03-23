@@ -17,7 +17,8 @@ const BaseSelect = forwardRef(function BaseSelect(
     selected,
     renderSelect,
 
-    label,
+    id,
+    name,
     defaultValue,
     onChange,
     items,
@@ -61,8 +62,8 @@ const BaseSelect = forwardRef(function BaseSelect(
       {isOpen && <Styled.Overlay classNames={classNames} onClick={() => setOpen(false)} />}
 
       <select
-        name={label}
-        id={label}
+        id={id}
+        name={name}
         disabled={isDisabled}
         required={isRequired}
         aria-disabled={isDisabled}
@@ -134,6 +135,7 @@ const propTypes = ({ valueType, classes }) => ({
       items: itemsType.isRequired,
     })
   ),
+  placeholder: PropTypes.string,
   ...classNames(Object.keys(classes)),
 });
 

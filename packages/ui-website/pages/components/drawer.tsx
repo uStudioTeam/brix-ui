@@ -26,7 +26,6 @@ const DrawerPage = () => {
       props={{
         isOpen: {
           type: '`boolean`',
-          defaultValue: '`false`',
           required: true,
         },
         onChange: {

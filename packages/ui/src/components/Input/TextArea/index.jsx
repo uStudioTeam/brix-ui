@@ -7,7 +7,8 @@ import { Styled } from '../styles';
 
 const TextArea = forwardRef(function TextArea(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -24,7 +25,8 @@ const TextArea = forwardRef(function TextArea(
     <BaseInput
       as="textarea"
       ref={ref}
-      label={label}
+      id={id}
+      name={name}
       value={value}
       defaultValue={defaultValue}
       onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
@@ -38,7 +40,7 @@ const TextArea = forwardRef(function TextArea(
   );
 });
 
-const { Prefix: _p, Suffix: _s, TextAreaLabel: _tal, ...StyledTextArea } = Styled;
+const { Prefix: _p, Suffix: _s, ...StyledTextArea } = Styled;
 
 TextArea.displayName = 'TextArea';
 

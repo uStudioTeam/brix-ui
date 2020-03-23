@@ -38,9 +38,7 @@ const Dropdown = ({
       >
         {title}
 
-        <Styled.TitleIcon classNames={classNames}>
-          {cloneElement(icon, { angle: isOpen ? 0 : -180 })}
-        </Styled.TitleIcon>
+        <Styled.TitleIcon classNames={classNames}>{cloneElement(icon, { angle: isOpen ? 0 : -180 })}</Styled.TitleIcon>
       </Styled.Title>
 
       <Styled.Dropdown dropdownHeight={height} classNames={classNames}>
@@ -55,11 +53,11 @@ const Dropdown = ({
 Dropdown.displayName = 'Dropdown';
 
 Dropdown.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
   name: PropTypes.string,
   onChange: PropTypes.func,
   title: PropTypes.node.isRequired,
-  icon: PropTypes.node,
+  icon: PropTypes.element,
   isDefaultOpen: PropTypes.bool,
   isDisabled: PropTypes.bool,
   ...classNames(Object.keys(Styled)),

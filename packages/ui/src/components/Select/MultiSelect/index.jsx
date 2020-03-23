@@ -10,12 +10,14 @@ import { BaseSelect, props } from '../BaseSelect';
 
 const MultiSelect = forwardRef(function MultiSelect(
   {
-    label,
+    id,
+    name,
     items,
     groups,
     value,
     defaultValue,
     onChange,
+    placeholder = '',
     isDisabled = false,
     isRequired = false,
     classNames,
@@ -45,7 +47,8 @@ const MultiSelect = forwardRef(function MultiSelect(
       }}
       handleValueClick={({ item }) => (isItemSelected(item) ? handleItemRemove(item) : handleItemSelect(item))}
       multiple
-      label={label}
+      id={id}
+      name={name}
       items={items}
       groups={groups}
       isDisabled={isDisabled}
@@ -97,7 +100,7 @@ const MultiSelect = forwardRef(function MultiSelect(
                 })}
             </Styled.SelectedList>
           ) : (
-            label
+            placeholder
           )}
 
           {icon}

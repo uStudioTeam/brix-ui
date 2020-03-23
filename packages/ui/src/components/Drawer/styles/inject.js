@@ -33,5 +33,10 @@ const dimensions = position => {
 const border = position => `border-${_reversePosition(position)}: 1px solid var(--c-light);`;
 
 const position = ({ position, isOpen }) => `${position}: ${isOpen ? 0 : '-100%'}`;
+const transition = ({ position, isOpen }) => {
+  return `transition: ${position} var(--transition) ${
+    isOpen ? 'cubic-bezier(0, 1, 0, 1)' : 'cubic-bezier(1, 0, 1, 0)'
+  };`;
+};
 
-export const inject = { dimensions, border, position };
+export const inject = { dimensions, border, position, transition };

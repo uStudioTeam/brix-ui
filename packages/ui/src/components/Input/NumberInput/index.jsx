@@ -7,7 +7,8 @@ import { Styled } from '../styles';
 
 const NumberInput = forwardRef(function NumberInput(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -26,7 +27,8 @@ const NumberInput = forwardRef(function NumberInput(
     <BaseInput
       ref={ref}
       type="number"
-      label={label}
+      id={id}
+      name={name}
       value={value}
       defaultValue={defaultValue}
       onChange={({ target: { valueAsNumber: inputValue } }) => onChange(inputValue || '')}
@@ -42,14 +44,12 @@ const NumberInput = forwardRef(function NumberInput(
   );
 });
 
-const { TextAreaLabel: _tal, ...StyledNumberInput } = Styled;
-
 NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
   ...props.propTypes({
     valueType: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])]),
-    classes: StyledNumberInput,
+    classes: Styled,
   }),
 };
 

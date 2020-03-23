@@ -7,7 +7,8 @@ import { Styled } from '../styles';
 
 const TextInput = forwardRef(function TextInput(
   {
-    label,
+    id,
+    name,
     value,
     defaultValue,
     onChange,
@@ -26,7 +27,8 @@ const TextInput = forwardRef(function TextInput(
     <BaseInput
       ref={ref}
       type="text"
-      label={label}
+      id={id}
+      name={name}
       value={value}
       defaultValue={defaultValue}
       onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
@@ -42,12 +44,10 @@ const TextInput = forwardRef(function TextInput(
   );
 });
 
-const { TextAreaLabel: _tal, ...StyledTextInput } = Styled;
-
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  ...props.propTypes({ valueType: PropTypes.string, classes: StyledTextInput }),
+  ...props.propTypes({ valueType: PropTypes.string, classes: Styled }),
 };
 
 TextInput.defaultProps = {
