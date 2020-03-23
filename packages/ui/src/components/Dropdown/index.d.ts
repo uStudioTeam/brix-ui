@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
@@ -19,7 +19,7 @@ interface DropdownProps extends ClassNames<Styled> {
   isDisabled?: boolean;
   
   name?: string;
-  icon?: ReactNode;
+  icon?: ReactElement;
 }
 
 declare const Dropdown: {
