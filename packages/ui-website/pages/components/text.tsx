@@ -69,32 +69,34 @@ const TextPage = () => {
         description="Body accepts any variant of an 'appearance' prop."
         direction="column"
       >
-        <Grid xs={{ alignment: { horizontal: 'center' }, direction: 'column' }}>
+        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, direction: 'column' }}>
           <Cell>
-            <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-          <Cell>
-            <Text appearance="bold"> bold: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-          <Cell>
-            <Text appearance="italic"> italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-          <Cell>
-            <Text appearance="underlined">underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+            <Flex direction="column">
+              <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="bold"> bold: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="italic"> italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="underlined">underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+            </Flex>
           </Cell>
         </Grid>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Variant 'article'" description="Article can not be bold." direction="column">
-        <Text variant="article" appearance="regular">
-          regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text variant="article" appearance="italic">
-          italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text variant="article" appearance="underlined">
-          underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
+        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, direction: 'column' }}>
+          <Cell>
+            <Flex direction="column">
+              <Text variant="article" appearance="regular">
+                regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+              <Text variant="article" appearance="italic">
+                italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+              <Text variant="article" appearance="underlined">
+                underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+            </Flex>
+          </Cell>
+        </Grid>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Alignment" direction="column">
