@@ -20,6 +20,11 @@ const BadgePage = () => {
             background?: string;
             color?: string;
           }`,
+          defaultValue: `
+          {
+            background: 'var(--g-primary)',
+            color: 'var(--c-lightest)'
+          }`
         },
         isDisabled: {
           type: '`boolean`',

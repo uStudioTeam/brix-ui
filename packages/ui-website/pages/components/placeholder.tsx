@@ -32,9 +32,9 @@ const PlaceholderPage = () => {
 }\``,
           defaultValue: `\`
 {
-  width?: '100%' | '2rem';
-  height?: '100%' | '2rem';
-  borderRadius?: var(--border-radius);
+  width: '100%' | '2rem';
+  height: 'body' | '2rem';
+  borderRadius: 'var(--border-radius)';
 }\``,
         },
       }}
