@@ -31,7 +31,7 @@ const RadioGroup = forwardRef(function RadioGroup(
             <Styled.Input
               ref={ref}
               type="radio"
-              name={label}
+              name={name}
               value={option.value}
               defaultChecked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
               onChange={() => onChange(option)}
@@ -39,7 +39,7 @@ const RadioGroup = forwardRef(function RadioGroup(
               required={isRequired}
               aria-required={isRequired}
               aria-checked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
-              aria-labelledby={`${label} ${option} radiobutton`}
+              aria-labelledby={`${name} ${option}`}
               aria-disabled={option.isDisabled}
               classNames={classNames}
             />

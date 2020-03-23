@@ -57,7 +57,7 @@ ${controlledInputDescription('RadioGroup')}.`}
           options={options}
           value={checked}
           onChange={selected => setChecked(selected)}
-          label="Options"
+          name="options"
           direction="row"
         />
       </ComponentInfoItem>
