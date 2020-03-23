@@ -22,8 +22,8 @@ const BadgePage = () => {
           }`,
           defaultValue: `
           {
-            background: 'inherit',
-            color: 'inherit'
+            background: 'var(--g-primary)',
+            color: 'var(--c-lightest)'
           }`
         },
         isDisabled: {

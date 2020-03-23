@@ -22,7 +22,7 @@ const TagPage = () => {
           defaultValue: `
           {
             background: 'var(--g-primary)';
-            color: 'inherit';
+            color: 'var(--c-lightest)';
           }`,
         },
       }}
