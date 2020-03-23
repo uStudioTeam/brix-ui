@@ -71,7 +71,7 @@ ${controlledInputDescription('Text input')}.`}
           name="steps"
           min={0}
           max={20}
-          step={5}
+          step={2}
           displaySteps
           stepLabels={{
             10: {
