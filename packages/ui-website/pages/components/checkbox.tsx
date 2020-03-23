@@ -30,11 +30,11 @@ ${controlledInputDescription('Checkbox')}.`}
       <ComponentInfoItem>
         <Flex alignment={{ vertical: 'center' }}>
           <Styled.Text>Default</Styled.Text>
-          <Checkbox name="Default" value={value} isRequired onChange={() => setValue(!value)} />
+          <Checkbox name="default" value={value} isRequired onChange={() => setValue(!value)} />
         </Flex>
         <Flex alignment={{ vertical: 'center' }}>
           <Styled.Text>Disabled</Styled.Text>
-          <Checkbox name="Disabled" value={value} onChange={() => setValue(!value)} isDisabled />
+          <Checkbox name="disabled" value={value} onChange={() => setValue(!value)} isDisabled />
         </Flex>
       </ComponentInfoItem>
     </ComponentInfo>

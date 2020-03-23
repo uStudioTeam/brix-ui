@@ -45,28 +45,28 @@ const TextInputPage = () => {
       <ComponentInfoItem>
         <Styled.InputsContainer>
           <TextInput
-            name="Text input"
+            name="text-input"
             onChange={(val: string) => setValues({ ...values, default: val })}
             value={values.default}
             placeholder="Placeholder"
             isRequired
           />
 
-          <TextInput name="Disabled" placeholder="Disabled" isDisabled />
+          <TextInput name="disabled" placeholder="Disabled" isDisabled />
         </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Prefix and suffix" description="Inputs can even have prefix and suffix!">
         <Styled.InputsContainer>
           <TextInput
-            name="With prefix"
+            name="with-prefix"
             onChange={(val: string) => setValues({ ...values, prefix: val })}
             value={values.prefix}
             placeholder="Placeholder"
             prefix={<Styled.CodeIcon />}
           />
           <TextInput
-            name="With suffix"
+            name="with-suffix"
             onChange={(val: string) => setValues({ ...values, suffix: val })}
             value={values.suffix}
             placeholder="Placeholder"

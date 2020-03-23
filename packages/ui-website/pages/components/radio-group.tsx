@@ -34,7 +34,7 @@ ${controlledInputDescription('RadioGroup')}.`}
           value={checked}
           disabledOptions={[options[2]]}
           onChange={(selected: React.SetStateAction<string | number>) => setChecked(selected)}
-          name="Options"
+          name="options"
           direction="row"
         />
       </ComponentInfoItem>

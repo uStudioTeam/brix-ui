@@ -49,27 +49,27 @@ const NumberInputPage = () => {
       <ComponentInfoItem>
         <Styled.InputsContainer>
           <NumberInput
-            name="Number input"
+            name="number-input"
             onChange={(val: number) => setValues({ ...values, default: val })}
             value={values.default}
             placeholder="Placeholder"
             isRequired
           />
-          <NumberInput name="Disabled number input" placeholder="Placeholder" isDisabled />
+          <NumberInput name="disabled-number-input" placeholder="Placeholder" isDisabled />
         </Styled.InputsContainer>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Prefix and suffix" description="Inputs can even have prefix and suffix!">
         <Styled.InputsContainer>
           <NumberInput
-            name="With prefix"
+            name="with-prefix"
             onChange={(val: number) => setValues({ ...values, prefix: val })}
             value={values.prefix}
             placeholder="Placeholder"
             prefix={<Styled.CodeIcon />}
           />
           <NumberInput
-            name="With suffix"
+            name="with-suffix"
             onChange={(val: number) => setValues({ ...values, suffix: val })}
             value={values.suffix}
             placeholder="Placeholder"

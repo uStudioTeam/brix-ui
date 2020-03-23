@@ -26,13 +26,13 @@ ${controlledInputDescription('Switch')}.`}
     >
       <ComponentInfoItem>
         <Switch
-          name="Default"
+          name="default"
           value={defaultCheckboxValue}
           isRequired
           onChange={() => setDefaultCheckboxValue(!defaultCheckboxValue)}
         />
 
-        <Switch name="Disabled" value={defaultCheckboxValue} isDisabled />
+        <Switch name="disabled" value={defaultCheckboxValue} isDisabled />
       </ComponentInfoItem>
 
       <ComponentInfoItem
@@ -40,14 +40,14 @@ ${controlledInputDescription('Switch')}.`}
         description="Creates an alternative variant with a more rectangular look."
       >
         <Switch
-          name="Alternative"
+          name="alternative"
           value={alternativeCheckboxValue}
           isRequired
           alternative
           onChange={() => setAlternativeCheckboxValue(!alternativeCheckboxValue)}
         />
 
-        <Switch name="Disabled" value={alternativeCheckboxValue} isDisabled alternative />
+        <Switch name="disabled" value={alternativeCheckboxValue} isDisabled alternative />
       </ComponentInfoItem>
     </ComponentInfo>
   );

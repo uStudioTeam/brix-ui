@@ -24,7 +24,7 @@ checkboxStory.add('Primary', () => {
     <SContainer>
       <Checkbox
         isDisabled={boolean('Disabled', false)}
-        name="Default"
+        name="default"
         value={isChecked}
         onChange={setChecked}
       />
