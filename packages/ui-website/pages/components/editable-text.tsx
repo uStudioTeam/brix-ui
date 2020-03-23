@@ -19,6 +19,13 @@ const EditableTextPage = () => {
       description="You can edit text contained in this component."
       props={{
         ...inputProps('string'),
+        value: {
+          type: `\`string\``,
+        },
+        onChange: {
+          type: `\`(value: string => void\``,
+          required: true,
+        },
         children: {
           type: '`ReactNode`',
           required: true,
@@ -26,7 +33,7 @@ const EditableTextPage = () => {
         defaultValue: {
           type: '`string`',
           required: true,
-          description: 'This component is not intended to be empty'
+          description: 'This component is not intended to be empty',
         },
         variant: {
           type: `\`'span' | 'code' | 'small' | 'body' | 'article' | 'caption' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1'\``,
@@ -48,7 +55,9 @@ const EditableTextPage = () => {
       classNames={['EditableText', 'TextArea', 'Text', 'Icon']}
     >
       <ComponentInfoItem>
-        <EditableText defaultValue="Edit me" onChange={setValue}>{value}</EditableText>
+        <EditableText defaultValue="Edit me" onChange={setValue}>
+          {value}
+        </EditableText>
       </ComponentInfoItem>
     </ComponentInfo>
   );
