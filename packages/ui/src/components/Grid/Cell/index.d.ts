@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { Breakpoint } from '../../../theme/theme';
 
 type Size = number;
@@ -24,7 +24,7 @@ type CellBreakpointData = {
 };
 
 export interface CellProps extends CellBreakpointData {
-  children: ReactElement | ReactElement[];
+  children: ReactNode | ReactNode[];
 
   className?: string;
 }

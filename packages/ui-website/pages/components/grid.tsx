@@ -95,7 +95,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         componentName="Cell"
         props={{
           children: {
-            type: '`ReactElement | ReactElement[]`',
+            type: '`ReactNode | ReactNode[]`',
             required: true,
           },
           'xs | md | lg | xl': {

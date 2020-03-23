@@ -26,7 +26,7 @@ const Cell = ({ children, classNames, className = '', index, xs, md, lg, xl }) =
 Cell.displayName = 'Cell';
 
 Cell.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
   ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({
       size: PropTypes.number,
