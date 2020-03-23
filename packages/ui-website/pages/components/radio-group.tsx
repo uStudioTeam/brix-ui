@@ -6,8 +6,22 @@ import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
 
 const RadioGroupPage = () => {
-  const options = ['1', '2', '3', '4', '5'];
-  const [checked, setChecked] = React.useState(options[0] as string | number);
+  const options = {
+    1: {
+      value: 1,
+      label: 'One',
+    },
+    2: {
+      value: 2,
+      isDisabled: true,
+    },
+    3: {
+      value: '3',
+    },
+  };
+  const [checked, setChecked] = React.useState<{ value: number | string; label?: string; isDisabled?: boolean }>(
+    options[1]
+  );
 
   return (
     <ComponentInfo
@@ -17,8 +31,18 @@ RadioGroup allows selecting only one option from a set.
 
 ${controlledInputDescription('RadioGroup')}.`}
       props={{
-        options: { type: '`(string | number)[]`', required: true },
-        disabledOptions: { type: '`Option[]`' },
+        options: {
+          type: `
+          {
+            [value: string | number]:
+              {
+                value: string | number;
+                label?: string;
+                isDisabled?: boolean;
+              }
+          }`,
+          required: true,
+        },
         ...inputProps(`Option`),
         isReversed: {
           type: '`boolean`',
@@ -32,8 +56,7 @@ ${controlledInputDescription('RadioGroup')}.`}
         <RadioGroup
           options={options}
           value={checked}
-          disabledOptions={[options[2]]}
-          onChange={(selected: React.SetStateAction<string | number>) => setChecked(selected)}
+          onChange={selected => setChecked(selected)}
           name="options"
           direction="row"
         />

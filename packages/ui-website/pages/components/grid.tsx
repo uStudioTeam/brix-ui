@@ -36,7 +36,7 @@ Grid's template is built using \`fr\` units.
 Make sure to not wrap \`Cell\` into other components as it will break the layout.`}
       props={{
         children: {
-          type: '`ReactNode[] | ReactNode`',
+          type: '`Cell | Cell[]`',
           required: true,
         },
         isContainer: {
@@ -55,6 +55,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
 }\``,
         },
       }}
+      classNames={['Grid']}
     >
       <ComponentInfoItem>
         <Grid xs={{ gap: 16, direction: 'column' }}>
@@ -95,21 +96,19 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         componentName="Cell"
         props={{
           children: {
-            type: '`ReactNode[] | ReactNode`',
+            type: '`ReactNode | ReactNode[]`',
             required: true,
           },
           'xs | md | lg | xl': {
             type: `\`{
-  template?: string;
-  maxWidth?: number;
-  direction?: 'row' | 'column';
-  gap?: number;
-  alignment?: {
-    [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+  size?: string;
+  offset?: {
+    [before | after]?: number,
   };
 }\``,
           },
         }}
+        classNames={['Cell']}
       />
     </ComponentInfo>
   );

@@ -28,28 +28,21 @@ First of, wrap your main component in our `<ThemeProvider />` to gain access to 
 ```jsx
 import React from 'react';
 
-import { ThemeProvider } from '@ustudio/ui/theme';
+## Requirements
 
-const App = () => <ThemeProvider>...</ThemeProvider>;
-```
+### Install
 
-After that feel free to import and use all of our [components](/components) and [hooks](/docs/hooks) in your application! ;)
+- install packages only with [Yarn](https://yarnpkg.com/);
+- all installs must be from root directory.
 
-Every component can be imported in two ways: either `default` from component folder, or `named` from root:
+### Usage
 
-```jsx
-import Button from '@ustudio/ui/components/Button';
-// or
-import { Button } from '@ustudio/ui';
-```
+- Run all npm scripts from root package.json.
 
-Also, make sure to read our [theming](/docs/theming) guide to squeeze out all the power of uStudio UI Kit and achieve the best
-look and feel.
+## Available NPM scripts
 
-## Browsers support
-
-uStudio UI supports the latest, stable releases of all major browsers and platforms. It also supports Internet Explorer 11. You don't need to provide any JavaScript polyfill as it manages unsupported browser features internally and in isolation.
-
-| IE  | Edge  | Firefox | Chrome | Safari |
-| --- | ----- | ------- | ------ | ------ |
-| 11  | >= 14 | >= 52   | >= 49  | >= 10  |
+- `yarn ui:dev` - Start Storybook for development components;
+- `yarn ui:build` - Build components (to `packages/ui/lib`) for usage in website and publication;
+- `yarn ui-website:dev` - Start dev server for development documentation website (include command `ui:build`);
+- `yarn ui-website:build` - Build website (to `packages/ui-website/dist`) for deploy to production (include command `ui:build`);
+- `yarn ui-website:deploy` - Deploy website bundle to Github Pages (include commands: `ui:build`, `ui-website:build`).

@@ -17,6 +17,7 @@ const MultiSelect = forwardRef(function MultiSelect(
     value,
     defaultValue,
     onChange,
+    placeholder = '',
     isDisabled = false,
     isRequired = false,
     classNames,
@@ -99,7 +100,7 @@ const MultiSelect = forwardRef(function MultiSelect(
                 })}
             </Styled.SelectedList>
           ) : (
-            ''
+            placeholder
           )}
 
           {icon}

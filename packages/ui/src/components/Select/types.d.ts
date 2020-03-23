@@ -1,6 +1,8 @@
 import { Input } from '../../input';
 
-type SelectProps<Value> = Input<Value>;
+interface SelectProps<Value> extends Input<Value> {
+  placeholder?: string;
+}
 
 interface StyledSelect {
   SelectContainer;

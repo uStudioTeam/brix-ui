@@ -29,7 +29,7 @@ const DropdownPage = () => {
           type: '`string`',
         },
         icon: {
-          type: '`ReactNode`',
+          type: '`ReactElement`',
         },
         isDisabled: {
           type: '`boolean`',

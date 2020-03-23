@@ -1,5 +1,5 @@
 const background = (background = 'var(--g-primary)') => `background: ${background}`;
 
-const color = (color = 'inherit') => `color: ${color}`;
+const color = (color = 'var(--c-lightest)') => `color: ${color}`;
 
 export const inject = { background, color };

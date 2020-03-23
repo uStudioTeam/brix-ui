@@ -14,6 +14,7 @@ const Select = forwardRef(function Select(
     onChange,
     items,
     groups,
+    placeholder = '',
     isDisabled = false,
     isRequired = false,
     classNames,
@@ -41,7 +42,7 @@ const Select = forwardRef(function Select(
       ref={ref}
       renderSelect={({ props, icon }) => (
         <Styled.Select type="button" {...props}>
-          {selectUtils.getItemsObject({ items, groups })[value ?? defaultValue]?.label || name}
+          {selectUtils.getItemsObject({ items, groups })[value ?? defaultValue]?.label || placeholder}
 
           {icon}
         </Styled.Select>
