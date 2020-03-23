@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { classNames, common, inputProps } from '../../utils';
 
 import { Styled } from './styles';
+import { radioGroupUtils } from './utils';
 
 const RadioGroup = forwardRef(function RadioGroup(
   {
@@ -11,7 +12,6 @@ const RadioGroup = forwardRef(function RadioGroup(
     options,
     value,
     defaultValue,
-    disabledOptions,
     direction = 'column',
     isRequired = false,
     isDisabled = false,
@@ -22,37 +22,30 @@ const RadioGroup = forwardRef(function RadioGroup(
   },
   ref
 ) {
-  function isOptionSelected(option) {
-    return option === value;
-  }
-
   return (
     <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
-      {options.map(option => (
-        <Styled.RadioGroupItem key={option} classNames={classNames}>
-          <Styled.Label
-            classNames={classNames}
-            isDisabled={disabledOptions?.includes(option) || isDisabled}
-            isReversed={isReversed}
-          >
+      {Object.values(options).map(option => (
+        <Styled.RadioGroupItem key={option.value} classNames={classNames}>
+          <Styled.Label classNames={classNames} isDisabled={option.isDisabled || isDisabled} isReversed={isReversed}>
             <Styled.Input
               ref={ref}
               type="radio"
               name={label}
-              value={option}
-              defaultChecked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
+              value={option.value}
+              defaultChecked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
               onChange={() => onChange(option)}
-              disabled={disabledOptions?.includes(option) || isDisabled}
+              disabled={option.isDisabled || isDisabled}
               required={isRequired}
               aria-required={isRequired}
-              aria-checked={isOptionSelected(option) ?? isOptionSelected(defaultValue)}
+              aria-checked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
               aria-labelledby={`${label} ${option} radiobutton`}
-              aria-disabled={!!disabledOptions?.includes(option)}
+              aria-disabled={option.isDisabled}
               classNames={classNames}
             />
 
             <Styled.RadioButton classNames={classNames} />
-            {option}
+
+            {option?.label ?? option.value}
           </Styled.Label>
         </Styled.RadioGroupItem>
       ))}
@@ -62,10 +55,15 @@ const RadioGroup = forwardRef(function RadioGroup(
 
 RadioGroup.displayName = 'RadioGroup';
 
+const optionType = PropTypes.exact({
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  label: PropTypes.string,
+  isDisabled: PropTypes.bool,
+});
+
 RadioGroup.propTypes = {
-  ...inputProps(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
-  disabledOptions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ...inputProps(optionType),
+  options: PropTypes.objectOf(optionType),
   direction: common.direction,
   isReversed: PropTypes.bool,
   ...classNames(Object.keys(Styled)),
