@@ -49,6 +49,9 @@ ${controlledInputDescription('Multiple select')}.`}
           }`,
           description: "Available and required if 'items' prop is not set",
         },
+        placeholder: {
+          type: '`string`',
+        },
         ...inputProps('string[]'),
       }}
       classNames={[

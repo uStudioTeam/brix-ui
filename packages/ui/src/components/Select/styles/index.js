@@ -58,6 +58,7 @@ const Select = styled.button(
     ${Mixin.Style.inputPadding()};
 
     padding-bottom: 4px;
+    padding-right: calc(var(--i-medium) * 2 + 10px);
 
     cursor: pointer;
 
@@ -66,6 +67,7 @@ const Select = styled.button(
     align-items: center;
 
     width: 100%;
+    height: 31px;
     position: relative;
     z-index: 900;
 
@@ -79,8 +81,9 @@ const Select = styled.button(
 
 const SelectIcon = styled(Icon)(
   ({ isDisabled }) => css`
-    margin-left: var(--i-regular);
-    margin-top: 2px;
+    position: absolute;
+    right: var(--i-medium);
+    top: 10px;
 
     color: ${inject.selectIconColor(isDisabled)};
 

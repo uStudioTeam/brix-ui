@@ -135,6 +135,7 @@ const propTypes = ({ valueType, classes }) => ({
       items: itemsType.isRequired,
     })
   ),
+  placeholder: PropTypes.string,
   ...classNames(Object.keys(classes)),
 });
 
