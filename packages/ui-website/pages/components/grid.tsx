@@ -55,6 +55,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
 }\``,
         },
       }}
+      classNames={['Grid']}
     >
       <ComponentInfoItem>
         <Grid xs={{ gap: 16, direction: 'column' }}>
@@ -110,6 +111,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
 }\``,
           },
         }}
+        classNames={['Cell']}
       />
     </ComponentInfo>
   );
