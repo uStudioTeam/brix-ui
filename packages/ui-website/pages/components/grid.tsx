@@ -55,6 +55,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
 }\``,
         },
       }}
+      classNames={['Grid']}
     >
       <ComponentInfoItem>
         <Grid xs={{ gap: 16, direction: 'column' }}>
@@ -100,16 +101,14 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
           },
           'xs | md | lg | xl': {
             type: `\`{
-  template?: string;
-  maxWidth?: number;
-  direction?: 'row' | 'column';
-  gap?: number;
-  alignment?: {
-    [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+  size?: string;
+  offset?: {
+    [before | after]?: number,
   };
 }\``,
           },
         }}
+        classNames={['Cell']}
       />
     </ComponentInfo>
   );
