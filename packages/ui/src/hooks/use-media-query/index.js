@@ -7,11 +7,8 @@ function useMediaQuery(query) {
     setMatching(match.matches);
   };
 
-  useEffect(() => {
-    let match;
-
-    if (window) {
-      match = window.matchMedia(query);
+  useEffect(() => {if (window) {
+      const match = window.matchMedia(query);
 
       handleChange(match);
       /**
