@@ -157,7 +157,6 @@ const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) => {
     : css`
         ${ValuesList}, & {
           height: 0;
-          transition-delay: var(--transition);
         }
       `;
 };
