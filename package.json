@@ -3,11 +3,11 @@
   "author": "uStudio Front End Department",
   "private": true,
   "scripts": {
-    "ui:dev": "yarn --cwd packages/ui dev",
-    "ui:build": "yarn --cwd packages/ui build",
-    "ui-website:dev": "yarn ui:build && yarn --cwd packages/ui-website dev",
-    "ui-website:build": "yarn ui:build && yarn --cwd packages/ui-website build",
-    "ui-website:deploy": "yarn ui:build && yarn --cwd packages/ui-website deploy"
+    "ui:dev": "yarn --cwd packages/ustudio-ui dev",
+    "ui:build": "yarn --cwd packages/ustudio-ui build",
+    "ui-website:dev": "yarn ui:build && yarn --cwd packages/docs-website dev",
+    "ui-website:build": "yarn ui:build && yarn --cwd packages/docs-website build",
+    "ui-website:deploy": "yarn ui:build && yarn --cwd packages/docs-website deploy"
   },
   "workspaces": [
     "packages/*"
