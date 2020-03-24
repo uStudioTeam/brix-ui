@@ -31,13 +31,13 @@ const NumberInput = forwardRef(function NumberInput(
     return validatedValue ? regExp.test(validatedValue) : true;
   };
 
-  const isDivider = symbol => symbol === '.' || symbol === ',';
+  const isDivider = (string, position) => string.charAt(position) === '.' || string.charAt(position) === ',';
 
-  const transformedValue = enteredValue => {
-    if (enteredValue.length === 1 && isDivider(enteredValue.charAt(0))) {
+  const transformValue = enteredValue => {
+    if (enteredValue.length === 1 && isDivider(enteredValue, 0)) {
       return `0${enteredValue}`;
     }
-    if (enteredValue.length === 2 && enteredValue.charAt(0) === '-' && isDivider(enteredValue.charAt(1))) {
+    if (enteredValue.length === 2 && enteredValue.charAt(0) === '-' && isDivider(enteredValue, 1)) {
       return `-0${enteredValue.charAt(1)}`;
     }
 
@@ -46,8 +46,10 @@ const NumberInput = forwardRef(function NumberInput(
 
   const handleChange = ({ target: { value: inputValue } }) => {
     if (validateValue(inputValue)) {
-      setLocalValue(transformedValue(inputValue));
-      return onChange(+transformedValue(inputValue) || '');
+      const transformedValue = transformValue(inputValue);
+      setLocalValue(transformedValue);
+
+      return onChange(+transformedValue || '');
     }
     return false;
   };
