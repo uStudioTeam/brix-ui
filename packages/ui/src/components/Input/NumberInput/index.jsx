@@ -42,7 +42,8 @@ const NumberInput = forwardRef(function NumberInput(
 
   const handleChange = e => {
     if (validateValue(e.target.value)) {
-      return setLocalValue(transformedValue(e.target.value)) && onChange(+transformedValue(e.target.value) || '');
+      setLocalValue(transformedValue(e.target.value));
+      return onChange(+transformedValue(e.target.value) || '');
     }
     return false;
   };
@@ -55,7 +56,7 @@ const NumberInput = forwardRef(function NumberInput(
       name={name}
       value={localValue}
       defaultValue={defaultValue}
-      onChange={e => handleChange(e)}
+      onChange={handleChange}
       isDisabled={isDisabled}
       isRequired={isRequired}
       prefix={prefix}
