@@ -1,6 +1,7 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React, { FC, ReactElement } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Badge } from '@ustudio/ui';
 
@@ -12,14 +13,14 @@ import packageJSON from '../../../ui/package.json';
 
 const Styled = {
   Header: styled.header`
-    position: sticky;
-    top: 0;
+    position: fixed;
     z-index: 100;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    width: 100%;
     height: 54px;
 
     padding: 0 2rem;
@@ -43,14 +44,33 @@ const Styled = {
     &:after {
       content: '';
       position: absolute;
-      bottom: -0.5rem;
       left: 0;
       z-index: 100;
 
       width: 100%;
       height: 0.5rem;
-      background-image: linear-gradient(to bottom, var(--c-light), transparent);
     }
+
+    ${Mixin.Screen.xs(css`
+      bottom: 0;
+
+      &:after {
+        top: -0.5rem;
+
+        background-image: linear-gradient(to top, var(--c-light), transparent);
+      }
+    `)}
+
+    ${Mixin.Screen.lg(css`
+      top: 0;
+
+      &:after {
+        bottom: -0.5rem;
+        top: unset;
+
+        background-image: linear-gradient(to bottom, var(--c-light), transparent);
+      }
+    `)}
   `,
   LogoLink: styled.a`
     display: inline-flex;
@@ -126,11 +146,7 @@ const Header: FC = () => {
         {renderDocsLinks()}
       </Styled.Nav>
 
-      <Styled.Version
-        href="https://github.com/uStudioCompany/ustudio-ui"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
+      <Styled.Version href="https://github.com/uStudioCompany/ustudio-ui" target="_blank" rel="noreferrer noopener">
         <Styled.Badge appearance={{ background: 'var(--c-lightest)', color: 'var(--c-neutral)' }}>
           {packageJSON.version}
         </Styled.Badge>
