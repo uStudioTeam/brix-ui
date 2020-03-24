@@ -7,7 +7,8 @@ function useMediaQuery(query) {
     setMatching(match.matches);
   };
 
-  useEffect(() => {if (window) {
+  useEffect(() => {
+    if (window) {
       const match = window.matchMedia(query);
 
       handleChange(match);
@@ -20,7 +21,7 @@ function useMediaQuery(query) {
       } else {
         match.addListener(handleChange);
       }
-  
+
       return () => {
         if (match.removeEventListener) {
           match.removeEventListener('change', handleChange);
