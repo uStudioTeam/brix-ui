@@ -32,7 +32,7 @@ import Tooltip from './components/Tooltip';
 import { ThemeProvider, Mixin } from './theme';
 import { useDropdown, useKeyPressClose } from './hooks';
 
-declare module '@ustudio/ui' {
+declare module 'ustudio-ui' {
   export { default as Alert } from './components/Alert';
   export { default as Avatar } from './components/Avatar';
   export { default as Badge } from './components/Badge';
@@ -64,126 +64,126 @@ declare module '@ustudio/ui' {
   export { default as Tooltip } from './components/Tooltip';
 }
 
-declare module '@ustudio/ui/components/Alert' {
+declare module 'ustudio-ui/components/Alert' {
   export default Alert;
 }
 
-declare module '@ustudio/ui/components/Avatar' {
+declare module 'ustudio-ui/components/Avatar' {
   export default Avatar;
 }
 
-declare module '@ustudio/ui/components/Badge' {
+declare module 'ustudio-ui/components/Badge' {
   export default Badge;
 }
 
-declare module '@ustudio/ui/components/Button' {
+declare module 'ustudio-ui/components/Button' {
   export default Button;
 }
 
-declare module '@ustudio/ui/components/Checkbox' {
+declare module 'ustudio-ui/components/Checkbox' {
   export default Checkbox;
 }
 
-declare module '@ustudio/ui/components/Drawer' {
+declare module 'ustudio-ui/components/Drawer' {
   export default Drawer;
 }
 
-declare module '@ustudio/ui/components/Dropdown' {
+declare module 'ustudio-ui/components/Dropdown' {
   export default Dropdown;
 }
 
-declare module '@ustudio/ui/components/EditableText' {
+declare module 'ustudio-ui/components/EditableText' {
   export default EditableText;
 }
 
-declare module '@ustudio/ui/components/Flex' {
+declare module 'ustudio-ui/components/Flex' {
   export default Flex;
 }
 
-declare module '@ustudio/ui/components/Grid/Grid' {
+declare module 'ustudio-ui/components/Grid/Grid' {
   export default Grid;
 }
 
-declare module '@ustudio/ui/components/Grid/Cell' {
+declare module 'ustudio-ui/components/Grid/Cell' {
   export default Cell;
 }
 
-declare module '@ustudio/ui/components/Input/FileInput' {
+declare module 'ustudio-ui/components/Input/FileInput' {
   export default FileInput;
 }
 
-declare module '@ustudio/ui/components/Input/NumberInput' {
+declare module 'ustudio-ui/components/Input/NumberInput' {
   export default NumberInput;
 }
 
-declare module '@ustudio/ui/components/Input/TextArea' {
+declare module 'ustudio-ui/components/Input/TextArea' {
   export default TextArea;
 }
 
-declare module '@ustudio/ui/components/Input/TextInput' {
+declare module 'ustudio-ui/components/Input/TextInput' {
   export default TextInput;
 }
 
-declare module '@ustudio/ui/components/Meta' {
+declare module 'ustudio-ui/components/Meta' {
   export default Meta;
 }
 
-declare module '@ustudio/ui/components/Modal' {
+declare module 'ustudio-ui/components/Modal' {
   export default Modal;
 }
 
-declare module '@ustudio/ui/components/Placeholder' {
+declare module 'ustudio-ui/components/Placeholder' {
   export default Placeholder;
 }
 
-declare module '@ustudio/ui/components/Progress' {
+declare module 'ustudio-ui/components/Progress' {
   export default Progress;
 }
 
-declare module '@ustudio/ui/components/RadioGroup' {
+declare module 'ustudio-ui/components/RadioGroup' {
   export default RadioGroup;
 }
 
-declare module '@ustudio/ui/components/Select/Select' {
+declare module 'ustudio-ui/components/Select/Select' {
   export default Select;
 }
 
-declare module '@ustudio/ui/components/Select/MultiSelect' {
+declare module 'ustudio-ui/components/Select/MultiSelect' {
   export default MultiSelect;
 }
 
-declare module '@ustudio/ui/components/Slider' {
+declare module 'ustudio-ui/components/Slider' {
   export default Slider;
 }
 
-declare module '@ustudio/ui/components/Spinner' {
+declare module 'ustudio-ui/components/Spinner' {
   export default Spinner;
 }
 
-declare module '@ustudio/ui/components/Switch' {
+declare module 'ustudio-ui/components/Switch' {
   export default Switch;
 }
 
-declare module '@ustudio/ui/components/Tabs' {
+declare module 'ustudio-ui/components/Tabs' {
   export default Tabs;
 }
 
-declare module '@ustudio/ui/components/Tag' {
+declare module 'ustudio-ui/components/Tag' {
   export default Tag;
 }
 
-declare module '@ustudio/ui/components/Text' {
+declare module 'ustudio-ui/components/Text' {
   export default Text;
 }
 
-declare module '@ustudio/ui/components/Tooltip' {
+declare module 'ustudio-ui/components/Tooltip' {
   export default Tooltip;
 }
 
-declare module '@ustudio/ui/theme' {
+declare module 'ustudio-ui/theme' {
   export { ThemeProvider, Mixin } from './theme';
 }
 
-declare module '@ustudio/ui/hooks' {
+declare module 'ustudio-ui/hooks' {
   export { useDropdown, useKeyPressClose } from './hooks';
 }
