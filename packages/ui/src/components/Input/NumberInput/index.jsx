@@ -49,7 +49,7 @@ const NumberInput = forwardRef(function NumberInput(
       const transformedValue = transformValue(inputValue);
       setLocalValue(transformedValue);
 
-      return onChange(+transformedValue ?? '');
+      return onChange(+transformedValue);
     }
     return false;
   };
