@@ -1,0 +1,95 @@
+import Drawer from '@ustudio/ui/components/Drawer';
+import { Mixin } from '@ustudio/ui/theme';
+import styled, { css } from 'styled-components';
+import Aside from './Aside';
+import { ReactComponent as CubesIcon } from '../../public/assets/icons/cubes.svg';
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+
+  height: 100vh;
+  overflow-y: hidden;
+`;
+
+const IndexMain = styled.main`
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: unset;
+  flex: 1;
+  padding: calc(54px + var(--i-large)) 0 0;
+`;
+
+const ComponentsMain = styled.main`
+  flex: 1;
+
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: unset;
+  padding: var(--i-large) var(--i-large) 0;
+
+  ${Mixin.Screen.md(css`
+    flex: 0.9 1 90%;
+  `)}
+
+  ${Mixin.Screen.lg(css`
+    padding: calc(54px + var(--i-large)) var(--i-large) 0;
+    flex: 0.8 1 80%;
+  `)}
+`;
+
+const ComponentsButton = styled.button<{ isOpen: boolean }>(
+  () => css`
+    ${Mixin.Font.h5()};
+
+    position: fixed;
+    left: 50%;
+    bottom: 27px;
+    z-index: 1001;
+
+    color: var(--c-primary);
+    ${Mixin.Style.inputPadding()};
+
+    transition: var(--transition);
+
+    transform: translateX(-50%) translateY(50%);
+
+    &:active {
+      color: var(--c-primary-light);
+    }
+
+    ${Mixin.Screen.md(css`
+      display: none;
+    `)}
+  `
+);
+
+const DocsMain = styled.main`
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: unset;
+  flex: 1;
+  padding: calc(54px + var(--i-large)) calc(50% - 512px) 0;
+`;
+
+const MobileAside = styled(Aside)`
+  display: block;
+
+  ${Mixin.Screen.md(css`
+    display: none;
+  `)}
+`;
+
+const ComponentsDrawer = styled(Drawer)`
+  padding: 0;
+
+  ${Mixin.Screen.md(css`
+    display: none;
+  `)}
+`;
+
+const ComponentsIcon = styled(CubesIcon)`
+  height: 24px;
+`;
+
+export default { Container, IndexMain, ComponentsMain, ComponentsButton, DocsMain, ComponentsDrawer, ComponentsIcon, MobileAside };

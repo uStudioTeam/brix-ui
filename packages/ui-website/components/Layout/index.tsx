@@ -1,64 +1,44 @@
-import { Mixin } from '@ustudio/ui/theme';
 import React, { FC, useEffect, useState } from 'react';
 
 import { Router, useRouter } from 'next/router';
 
-import styled, { css } from 'styled-components';
+import Styled from './styles';
 
 import Header from './Header';
 import Aside from './Aside';
 import PlaceholderPage from './PlaceholderPage';
 import Footer from './Footer';
 
-const Styled = {
-  Container: styled.div`
-    position: relative;
-    display: flex;
-
-    height: 100vh;
-    overflow-y: hidden;
-  `,
-  IndexMain: styled.main`
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: unset;
-    flex: 1;
-    padding: calc(54px + var(--i-large)) 0 0;
-  `,
-  ComponentsMain: styled.main`
-    flex: 1;
-
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: unset;
-    padding: var(--i-large) var(--i-large) 0;
-
-    ${Mixin.Screen.md(css`
-      flex: 0.9 1 90%;
-    `)}
-
-    ${Mixin.Screen.lg(css`
-      padding: calc(54px + var(--i-large)) var(--i-large) 0;
-      flex: 0.8 1 80%;
-    `)}
-  `,
-  DocsMain: styled.main`
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: unset;
-    flex: 1;
-    padding: calc(54px + var(--i-large)) calc(50% - 512px) 0;
-  `,
-};
-
 const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    Router.events.on('routeChangeStart', () => {
+      setOpen(false);
+    });
+
+    return () => {
+      Router.events.off('routeChangeStart', () => {
+        setOpen(false);
+      });
+    };
+  }, []);
+
   if (/^\/components\/*/.test(pathname)) {
     return (
-      <React.Fragment>
+      <>
         <Aside />
 
+        <Styled.ComponentsButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
+          <Styled.ComponentsIcon />
+        </Styled.ComponentsButton>
+
+        <Styled.ComponentsDrawer showOverlay isOpen={isOpen} onChange={() => setOpen(false)} position="right">
+          <Styled.MobileAside />
+        </Styled.ComponentsDrawer>
+
         <Styled.ComponentsMain>{children}</Styled.ComponentsMain>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -95,11 +75,11 @@ const Layout: FC = ({ children }) => {
           {isLoading ? (
             <PlaceholderPage />
           ) : (
-            <React.Fragment>
+            <>
               {children}
 
               <Footer />
-            </React.Fragment>
+            </>
           )}
         </Main>
       </Styled.Container>

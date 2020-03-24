@@ -54,12 +54,8 @@ const Styled = {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    
-    padding: var(--i-large);h
 
-    ${Mixin.Screen.md(css`
-      padding: var(--i-large) var(--i-large) calc(54px + var(--i-large));
-    `)}
+    padding: var(--i-large) var(--i-large) calc(54px + var(--i-large));
 
     ${Mixin.Screen.lg(css`
       padding: calc(54px + var(--i-large)) var(--i-large) 4rem;
@@ -70,14 +66,31 @@ const Styled = {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 0.5rem;
+
+    text-align: right;
+
+    ${Mixin.Screen.md(css`
+      text-align: left;
+    `)}
   `,
   GroupTitle: styled(Text)`
     color: var(--c-dark);
     margin: 1rem 0 0;
     white-space: nowrap;
+
+    text-align: right;
+
+    ${Mixin.Screen.md(css`
+      text-align: left;
+    `)}
   `,
   CurrentLink: styled(Text)`
     color: var(--c-darkest);
+    text-align: right;
+
+    ${Mixin.Screen.md(css`
+      text-align: left;
+    `)}
   `,
 };
 

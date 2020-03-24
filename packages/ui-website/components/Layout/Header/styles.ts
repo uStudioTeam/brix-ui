@@ -86,10 +86,10 @@ const Burger = styled.button<{ isOpen?: boolean }>(
 
     background: linear-gradient(
         to bottom,
-        transparent calc(50% - 1px),
-        var(--c-primary) calc(50% - 1px),
-        var(--c-primary) calc(50% + 1px),
-        transparent calc(50% + 1px)
+        transparent calc(50% - 1.5px),
+        var(--c-primary) calc(50% - 1.5px),
+        var(--c-primary) calc(50% + 1.5px),
+        transparent calc(50% + 1.5px)
       )
       no-repeat;
     background-position-x: 0;
@@ -102,7 +102,7 @@ const Burger = styled.button<{ isOpen?: boolean }>(
       position: absolute;
 
       width: 24px;
-      height: 2px;
+      height: 3px;
       background-color: var(--c-primary);
 
       transform-origin: right center;
