@@ -1,3 +1,5 @@
+import { useMediaQuery } from '@ustudio/ui/hooks';
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { Text, Flex, Dropdown } from '@ustudio/ui';
@@ -7,7 +9,7 @@ import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 
 import toJSXString from 'react-element-to-jsx-string';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Link } from '../shared';
 
@@ -62,13 +64,14 @@ const Styled = {
     opacity: 0;
     transition: var(--transition);
   `,
-  Content: styled.div`
+  Content: styled(Flex)`
     width: 100%;
+    min-height: 5rem;
     margin-bottom: 2rem;
 
-    display: grid;
-    grid-gap: 1rem;
-    align-items: center;
+    ${Mixin.Screen.md(css`
+      min-height: auto;
+    `)}
   `,
   Meta: styled(Flex)`
     margin-bottom: 1.5rem;
@@ -86,6 +89,8 @@ const Styled = {
 };
 
 export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({ title, children, description }) => {
+  const isXs = useMediaQuery('screen and (min-width: 576px)');
+
   return (
     <Styled.Article>
       {(title || description) && (
@@ -106,7 +111,14 @@ export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({ title, chi
         </Styled.Meta>
       )}
 
-      <Styled.Content>{children}</Styled.Content>
+      <Styled.Content
+        direction={isXs ? 'row' : 'column'}
+        alignment={
+          isXs ? { horizontal: 'space-around', vertical: 'center' } : { vertical: 'space-around', horizontal: 'center' }
+        }
+      >
+        {children}
+      </Styled.Content>
 
       <Flex>
         <Styled.Dropdown title={<Text variant="span">Show code</Text>} icon={<Styled.CodeIcon />}>
