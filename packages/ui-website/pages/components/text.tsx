@@ -10,6 +10,9 @@ const Styled = {
     width: 500px;
   `,
 };
+
+Styled.Grid.displayName = 'Grid';
+
 const TextPage = () => {
   return (
     <ComponentInfo
