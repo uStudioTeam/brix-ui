@@ -12,6 +12,7 @@ import { transformToKebabCase } from '../../utils';
 
 const Styled = {
   Aside: styled.aside`
+    display: none;
     flex: 1;
 
     height: 100vh;
@@ -25,18 +26,27 @@ const Styled = {
       content: '';
       position: absolute;
       right: 0;
-      top: 54px;
 
       height: 100%;
       width: 0.5rem;
       background: linear-gradient(to right, var(--c-lightest), var(--c-light));
     }
 
+    ${Mixin.Screen.md(css`
+      display: block;
+      flex: 0.1 0 10%;
+
+      &:before {
+        display: block;
+        top: 0;
+      }
+    `)}
+
     ${Mixin.Screen.lg(css`
       flex: 0.2 0 20%;
 
       &:before {
-        display: block;
+        top: 54px;
       }
     `)}
   `,
@@ -44,7 +54,16 @@ const Styled = {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: calc(54px + 2rem) 2rem 4rem;
+    
+    padding: var(--i-large);h
+
+    ${Mixin.Screen.md(css`
+      padding: var(--i-large) var(--i-large) calc(54px + var(--i-large));
+    `)}
+
+    ${Mixin.Screen.lg(css`
+      padding: calc(54px + var(--i-large)) var(--i-large) 4rem;
+    `)}
   `,
 
   List: styled.ul`

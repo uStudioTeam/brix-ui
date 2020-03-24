@@ -10,8 +10,6 @@ import Aside from './Aside';
 import PlaceholderPage from './PlaceholderPage';
 import Footer from './Footer';
 
-const StyledAside = styled(Aside)``;
-
 const Styled = {
   Container: styled.div`
     position: relative;
@@ -19,16 +17,6 @@ const Styled = {
 
     height: 100vh;
     overflow-y: hidden;
-
-    ${StyledAside} {
-      display: none;
-    }
-
-    ${Mixin.Screen.lg(css`
-      ${StyledAside} {
-        display: block;
-      }
-    `)}
   `,
   IndexMain: styled.main`
     height: 100vh;
@@ -44,6 +32,10 @@ const Styled = {
     overflow-y: scroll;
     overflow-x: unset;
     padding: var(--i-large) var(--i-large) 0;
+
+    ${Mixin.Screen.md(css`
+      flex: 0.9 1 90%;
+    `)}
 
     ${Mixin.Screen.lg(css`
       padding: calc(54px + var(--i-large)) var(--i-large) 0;
@@ -63,7 +55,7 @@ const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
   if (/^\/components\/*/.test(pathname)) {
     return (
       <React.Fragment>
-        <StyledAside />
+        <Aside />
 
         <Styled.ComponentsMain>{children}</Styled.ComponentsMain>
       </React.Fragment>
