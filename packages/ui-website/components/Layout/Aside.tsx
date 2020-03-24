@@ -2,8 +2,9 @@ import React, { FC, ReactNode } from 'react';
 
 import { useRouter } from 'next/router';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Text } from '@ustudio/ui';
+import { Mixin } from '@ustudio/ui/theme';
 
 import { Link } from '../../shared';
 
@@ -12,7 +13,6 @@ import { transformToKebabCase } from '../../utils';
 const Styled = {
   Aside: styled.aside`
     height: 100vh;
-    flex: 0.2 0 20%;
 
     position: relative;
     background-color: var(--c-lightest);
@@ -27,6 +27,22 @@ const Styled = {
       width: 0.5rem;
       background: linear-gradient(to right, var(--c-lightest), var(--c-light));
     }
+
+    ${Mixin.Screen.xs(css`
+      flex: 1;
+
+      &:before {
+        display: none;
+      }
+    `)}
+
+    ${Mixin.Screen.lg(css`
+      flex: 0.2 0 20%;
+
+      &:before {
+        display: block;
+      }
+    `)}
   `,
   Container: styled.div`
     height: 100vh;

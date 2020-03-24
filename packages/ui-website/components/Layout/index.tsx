@@ -1,13 +1,16 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React, { FC, useEffect, useState } from 'react';
 
 import { Router, useRouter } from 'next/router';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Header from './Header';
 import Aside from './Aside';
 import PlaceholderPage from './PlaceholderPage';
 import Footer from './Footer';
+
+const StyledAside = styled(Aside)``;
 
 const Styled = {
   Container: styled.div`
@@ -15,8 +18,19 @@ const Styled = {
     display: flex;
 
     height: 100vh;
-    margin-top: -54px;
     overflow-y: hidden;
+
+    ${Mixin.Screen.xs(css`
+      ${StyledAside} {
+        display: none;
+      }
+    `)}
+
+    ${Mixin.Screen.lg(css`
+      ${StyledAside} {
+        display: block;
+      }
+    `)}
   `,
   IndexMain: styled.main`
     height: 100vh;
@@ -26,12 +40,20 @@ const Styled = {
     padding: calc(54px + var(--i-large)) 0 0;
   `,
   ComponentsMain: styled.main`
-    flex: 0.8 1 80%;
-
     height: 100vh;
     overflow-y: scroll;
     overflow-x: unset;
     padding: calc(54px + var(--i-large)) var(--i-large) 0;
+
+    ${Mixin.Screen.xs(css`
+      padding: var(--i-large) var(--i-large) 0;
+      flex: 1;
+    `)};
+
+    ${Mixin.Screen.lg(css`
+      padding: calc(54px + var(--i-large)) var(--i-large) 0;
+      flex: 0.8 1 80%;
+    `)}
   `,
   DocsMain: styled.main`
     height: 100vh;
@@ -46,7 +68,7 @@ const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
   if (/^\/components\/*/.test(pathname)) {
     return (
       <React.Fragment>
-        <Aside />
+        <StyledAside />
 
         <Styled.ComponentsMain>{children}</Styled.ComponentsMain>
       </React.Fragment>
