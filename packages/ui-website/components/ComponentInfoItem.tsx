@@ -65,12 +65,20 @@ const Styled = {
     transition: var(--transition);
   `,
   Content: styled(Flex)`
+    flex-wrap: wrap;
     width: 100%;
-    min-height: 5rem;
-    margin-bottom: 2rem;
+    margin: calc(var(--i-medium) * -1) 0 1.5rem;
+
+    & > * {
+      margin: var(--i-medium) 0;
+    }
 
     ${Mixin.Screen.md(css`
-      min-height: auto;
+      margin: calc(var(--i-medium) * -1) calc(var(--i-medium) * -1) 1.5rem;
+
+      & > * {
+        margin: var(--i-medium);
+      }
     `)}
   `,
   Meta: styled(Flex)`
