@@ -72,33 +72,31 @@ const Header: FC = () => {
 
   return (
     <Styled.Header>
-      {
-        isMd ? (
-          <>
-            <Styled.Nav>
-              <Logo />
-    
-              <NavContent />
-            </Styled.Nav>
-  
-            <Version />
-          </>
-        ) : (
-          <>
-            <Styled.Burger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-            
+      {isMd ? (
+        <>
+          <Styled.Nav>
             <Logo />
-  
-            <Drawer showOverlay isOpen={isOpen} onChange={() => setOpen(!isOpen)} position="bottom">
-              <Styled.MobileNav>
-                <NavContent />
-      
-                <Version />
-              </Styled.MobileNav>
-            </Drawer>
-          </>
-        )
-      }
+
+            <NavContent />
+          </Styled.Nav>
+
+          <Version />
+        </>
+      ) : (
+        <>
+          <Styled.Burger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+
+          <Logo />
+
+          <Drawer showOverlay isOpen={isOpen} onChange={() => setOpen(!isOpen)} position="bottom">
+            <Styled.MobileNav>
+              <NavContent />
+
+              <Version />
+            </Styled.MobileNav>
+          </Drawer>
+        </>
+      )}
     </Styled.Header>
   );
 };

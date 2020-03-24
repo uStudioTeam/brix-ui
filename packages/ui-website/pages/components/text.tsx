@@ -10,9 +10,13 @@ const Styled = {
     grid-gap: 1rem;
     grid-auto-flow: row;
   `,
+  AlignmentContainer: styled(Flex)`
+    width: 100%;
+  `,
 };
 
 Styled.Grid.displayName = 'Grid';
+Styled.AlignmentContainer.displayName = 'AlignmentContainer';
 
 const TextPage = () => {
   return (
@@ -109,9 +113,11 @@ const TextPage = () => {
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Alignment" direction="column">
-        <Text align="left">Lorem ipsum dolor sit amet, consectetur adipiscing left.</Text>
-        <Text align="center">Lorem ipsum dolor sit amet, consectetur adipiscing center.</Text>
-        <Text align="right">Lorem ipsum dolor sit amet, consectetur adipiscing right.</Text>
+        <Styled.AlignmentContainer direction="column">
+          <Text align="left">Lorem ipsum dolor sit amet, consectetur adipiscing left.</Text>
+          <Text align="center">Lorem ipsum dolor sit amet, consectetur adipiscing center.</Text>
+          <Text align="right">Lorem ipsum dolor sit amet, consectetur adipiscing right.</Text>
+        </Styled.AlignmentContainer>
       </ComponentInfoItem>
     </ComponentInfo>
   );
