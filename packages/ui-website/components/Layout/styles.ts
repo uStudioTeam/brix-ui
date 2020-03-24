@@ -17,7 +17,12 @@ const IndexMain = styled.main`
   overflow-y: scroll;
   overflow-x: unset;
   flex: 1;
-  padding: calc(54px + var(--i-large)) 0 0;
+
+  padding: var(--i-large) 0 calc(54px + var(--i-regular));
+
+  ${Mixin.Screen.lg(css`
+    padding: calc(54px + var(--i-large)) 0 0;
+  `)}
 `;
 
 const ComponentsMain = styled.main`
@@ -26,7 +31,7 @@ const ComponentsMain = styled.main`
   height: 100vh;
   overflow-y: scroll;
   overflow-x: unset;
-  padding: var(--i-large) var(--i-large) 0;
+  padding: var(--i-large) var(--i-large) calc(54px + var(--i-regular));
 
   ${Mixin.Screen.md(css`
     flex: 0.9 1 90%;
@@ -69,7 +74,12 @@ const DocsMain = styled.main`
   overflow-y: scroll;
   overflow-x: unset;
   flex: 1;
-  padding: calc(54px + var(--i-large)) calc(50% - 512px) 0;
+
+  padding: var(--i-large) calc(50% - 512px) calc(54px + var(--i-regular));
+
+  ${Mixin.Screen.lg(css`
+    padding: calc(54px + var(--i-large)) calc(50% - 512px) 0;
+  `)}
 `;
 
 const MobileAside = styled(Aside)`
@@ -92,4 +102,13 @@ const ComponentsIcon = styled(CubesIcon)`
   height: 24px;
 `;
 
-export default { Container, IndexMain, ComponentsMain, ComponentsButton, DocsMain, ComponentsDrawer, ComponentsIcon, MobileAside };
+export default {
+  Container,
+  IndexMain,
+  ComponentsMain,
+  ComponentsButton,
+  DocsMain,
+  ComponentsDrawer,
+  ComponentsIcon,
+  MobileAside,
+};

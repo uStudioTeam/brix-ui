@@ -1,3 +1,4 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React, { useEffect, useState } from 'react';
 import { Prism as Code } from 'react-syntax-highlighter';
 import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
@@ -41,9 +42,20 @@ const imageChange = (...opacity: [number, number, number, number]) => keyframes`
 
 const Styled = {
   Banner: styled(Grid)`
+    grid-gap: 2rem;
+    grid-template-rows: repeat(2, 1fr);
+
     max-width: 1024px;
-    margin: var(--i-large) auto 4rem;
+    margin: 0 0 4rem;
     padding: 0 var(--i-large);
+
+    ${Mixin.Screen.md(css`
+      grid-template-rows: 1fr;
+    `)}
+
+    ${Mixin.Screen.lg(css`
+      margin: var(--i-large) auto 4rem;
+    `)}
   `,
   Title: styled(Text)`
     ${appear(-1)};
@@ -92,11 +104,17 @@ const Styled = {
     color: var(--c-lightest);
   `,
   Advantages: styled(Grid)`
+    grid-gap: 2rem;
+    grid-auto-flow: row;
+
     max-width: 1024px;
     margin: var(--i-large) auto;
   `,
   AdvantageTitle: styled(Text)`
     margin-bottom: var(--i-regular);
+  `,
+  AdvantageCell: styled(Cell)`
+    justify-content: center;
   `,
   AdvantageLink: styled.a`
     color: var(--c-lightest);
@@ -137,7 +155,7 @@ const Index: NextPage = () => {
       </Head>
 
       <Flex direction="column">
-        <Styled.Banner xs={{ alignment: { horizontal: 'center' }, gap: 32 }}>
+        <Styled.Banner xs={{ direction: 'column' }} md={{ alignment: { horizontal: 'center' }, direction: 'row' }}>
           <Cell>
             <Flex direction="column" alignment={{ vertical: 'center' }}>
               <Styled.Title variant="h1">uStudio UI</Styled.Title>
@@ -195,7 +213,7 @@ const Index: NextPage = () => {
         </Styled.Banner>
 
         <Styled.AdvantagesContainer>
-          <Styled.Advantages xs={{ gap: 32 }}>
+          <Styled.Advantages xs={{ gap: 32, direction: 'column' }} md={{ direction: 'row' }}>
             {[
               <Advantage title="Minimalistic design">
                 uStudio UI components implement minimalistic design for modern applications.
@@ -214,9 +232,9 @@ const Index: NextPage = () => {
                 Type definitions are bundled alongside everything else.
               </Advantage>,
             ].map(advantage => (
-              <Cell key={advantage.props.title}>
+              <Styled.AdvantageCell key={advantage.props.title}>
                 <Flex direction="column">{advantage}</Flex>
-              </Cell>
+              </Styled.AdvantageCell>
             ))}
           </Styled.Advantages>
         </Styled.AdvantagesContainer>
