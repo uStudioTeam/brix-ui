@@ -7,7 +7,7 @@ import { animation } from './animation';
 const Placeholder = styled.div(
   ({ variant, appearance }) => css`
     cursor: wait;
-    background: linear-gradient(to right, transparent 33%, var(--c-light) 66%, transparent);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 33%, var(--c-light) 66%, rgba(255, 255, 255, 0));
     background-size: 1200px 100%;
 
     animation: ${animation.shimmer} 2s linear infinite;

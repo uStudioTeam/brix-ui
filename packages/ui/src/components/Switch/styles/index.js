@@ -101,7 +101,7 @@ const Input = styled.input`
   &[readOnly] + ${Switch} {
     border-color: var(--c-neutral);
     color: var(--c-neutral);
-    background: transparent;
+    background: rgba(255, 255, 255, 0);
 
     &:after {
       border-color: var(--c-neutral);

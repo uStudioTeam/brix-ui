@@ -43,11 +43,11 @@ const Input = styled.input(
 
     background: linear-gradient(
       to bottom,
-      transparent calc(50% - 0.5px),
+      rgba(255, 255, 255, 0) calc(50% - 0.5px),
       var(--c-neutral) calc(50% - 0.5px),
       var(--c-neutral) calc(50% + 0.5px),
-      transparent calc(50% + 0.5px),
-      transparent
+      rgba(255, 255, 255, 0) calc(50% + 0.5px),
+      rgba(255, 255, 255, 0)
     );
 
     ${Mixin.Device.mobile(css`
