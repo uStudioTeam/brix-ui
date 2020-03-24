@@ -7,7 +7,7 @@ import BadgeComponent from '@ustudio/ui/components/Badge';
 const Header = styled.header`
   position: fixed;
   bottom: 0;
-  z-index: 2000;
+  z-index: 999;
 
   display: flex;
   flex-direction: row-reverse;

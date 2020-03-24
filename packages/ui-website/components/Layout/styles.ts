@@ -50,7 +50,7 @@ const ComponentsButton = styled.button<{ isOpen: boolean }>(
     position: fixed;
     left: 50%;
     bottom: 27px;
-    z-index: 2001;
+    z-index: 999;
 
     color: var(--c-primary);
     ${Mixin.Style.inputPadding()};
@@ -84,6 +84,14 @@ const MobileAside = styled(Aside)`
 
 const ComponentsDrawer = styled(Drawer)`
   padding: 0;
+
+  & {
+    z-index: 799;
+  }
+  
+  & + button[class^='Overlay'] {
+    z-index: 798 !important;
+  }
 `;
 
 const ComponentsIcon = styled(CubesIcon)`
