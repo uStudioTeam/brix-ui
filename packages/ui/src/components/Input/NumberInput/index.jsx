@@ -25,7 +25,7 @@ const NumberInput = forwardRef(function NumberInput(
 ) {
   const [localValue, setLocalValue] = React.useState('');
   const validateValue = validatedValue => {
-    const regExp = /^(([\-]?){1})([1-9]*(\d?))[.,]?([1-9]*(\d?))$/;
+    const regExp = /^(([\-]?){1})([0-9]*(\d?))[.,]?([0-9]*(\d?))$/;
 
     return validatedValue ? regExp.test(validatedValue) : true;
   };
