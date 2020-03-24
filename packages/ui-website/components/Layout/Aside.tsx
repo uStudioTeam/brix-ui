@@ -28,7 +28,7 @@ const Styled = {
 
       height: 100%;
       width: 0.5rem;
-      background: linear-gradient(to right, var(--c-lightest), var(--c-light));
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--c-light));
     }
 
     ${Mixin.Screen.md(css`

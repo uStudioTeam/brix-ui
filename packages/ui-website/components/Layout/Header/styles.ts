@@ -45,7 +45,7 @@ const Header = styled.header`
     width: 100%;
     height: 0.5rem;
 
-    background-image: linear-gradient(to top, var(--c-light), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to top, var(--c-light), rgba(255, 255, 255, 0));
   }
 
   ${Mixin.Screen.lg(css`
@@ -56,7 +56,7 @@ const Header = styled.header`
       bottom: -0.5rem;
       top: unset;
 
-      background-image: linear-gradient(to bottom, var(--c-light), transparent);
+      background-image: linear-gradient(to bottom, var(--c-light), rgba(255, 255, 255, 0));
     }
   `)}
 `;
