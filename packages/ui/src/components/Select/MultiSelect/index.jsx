@@ -92,7 +92,7 @@ const MultiSelect = forwardRef(function MultiSelect(
                           classNames={classNames}
                           disabled={item.isDisabled || isDisabled}
                         >
-                          <Icon name="times" />
+                          <Icon name="close" />
                         </Styled.SelectedListIcon>
                       )}
                     </Styled.SelectedListItem>

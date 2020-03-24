@@ -40,7 +40,7 @@ const Modal = ({ children, isOpen, onChange, title, classNames, className = '' }
               onClick={() => onChange(false)}
               classNames={classNames}
             >
-              <Icon name="times" size="large" />
+              <Icon name="close" size="large" />
             </Styled.Icon>
           </Styled.Header>
 
