@@ -1,9 +1,25 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
-import { MultiSelect, Grid, Cell } from '@ustudio/ui';
+import { MultiSelect } from '@ustudio/ui';
+import styled, { css } from 'styled-components';
 
 import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
+
+const Styled = {
+  InputsContainer: styled.div`
+    flex: 1;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: var(--i-large);
+
+    ${Mixin.Screen.md(css`
+      grid-auto-flow: column;
+    `)}
+  `,
+};
 
 const MultipleSelectPage = () => {
   const [valueSelected, setValueSelected] = React.useState<string[]>();
@@ -72,34 +88,28 @@ ${controlledInputDescription('Multiple select')}.`}
       ]}
     >
       <ComponentInfoItem>
-        <Grid xs={{ gap: 16 }}>
-          <Cell>
-            <MultiSelect
-              items={items}
-              value={valueSelected}
-              name="multi-select"
-              onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
-            />
-          </Cell>
-          <Cell>
-            <MultiSelect
-              groups={groups}
-              value={valueSelected}
-              name="group-select"
-              onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
-            />
-          </Cell>
-          <Cell>
-            <MultiSelect
-              items={items}
-              value={valueSelected}
-              defaultValue={['4']}
-              name="disabled-select"
-              onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
-              isDisabled
-            />
-          </Cell>
-        </Grid>
+        <Styled.InputsContainer>
+          <MultiSelect
+            items={items}
+            value={valueSelected}
+            name="multi-select"
+            onChange={(options: React.SetStateAction<string[] | undefined>) => setValueSelected(options)}
+          />
+          <MultiSelect
+            groups={groups}
+            value={valueSelected}
+            name="group-select"
+            onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
+          />
+          <MultiSelect
+            items={items}
+            value={valueSelected}
+            defaultValue={['4']}
+            name="disabled-select"
+            onChange={(item: React.SetStateAction<string[] | undefined>) => setValueSelected(item)}
+            isDisabled
+          />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
     </ComponentInfo>
   );

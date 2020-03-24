@@ -1,8 +1,9 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { FileInput } from '@ustudio/ui';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
 
@@ -18,8 +19,12 @@ const Styled = {
     flex: 1;
 
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-gap: var(--i-large);
+
+    ${Mixin.Screen.md(css`
+      grid-auto-flow: column;
+    `)}
   `,
 };
 

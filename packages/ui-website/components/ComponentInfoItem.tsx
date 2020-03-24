@@ -1,3 +1,4 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { Text, Flex, Dropdown } from '@ustudio/ui';
@@ -7,7 +8,7 @@ import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 
 import toJSXString from 'react-element-to-jsx-string';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Link } from '../shared';
 
@@ -64,7 +65,16 @@ const Styled = {
   `,
   Content: styled(Flex)`
     width: 100%;
-    margin-bottom: 2rem;
+    margin: calc(var(--i-medium) * -1) calc(var(--i-medium) * -1) 1.5rem;
+    flex-direction: column;
+
+    & > * {
+      margin: var(--i-medium);
+    }
+
+    ${Mixin.Screen.md(css`
+      flex-direction: row;
+    `)}
   `,
   Meta: styled(Flex)`
     margin-bottom: 1.5rem;
