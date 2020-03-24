@@ -23,15 +23,15 @@ function useMediaQuery(query) {
       } else {
         match.addListener(handleChange);
       }
+  
+      return () => {
+        if (match.removeEventListener) {
+          match.removeEventListener('change', handleChange);
+        } else {
+          match.removeListener(handleChange);
+        }
+      };
     }
-
-    return () => {
-      if (match.removeEventListener) {
-        match.removeEventListener('change', handleChange);
-      } else {
-        match.removeListener(handleChange);
-      }
-    };
   }, []);
 
   return isMatching;
