@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@ustudio/ui/hooks';
 import React from 'react';
 
 import { Tabs } from '@ustudio/ui';
@@ -5,13 +6,21 @@ import { Tabs } from '@ustudio/ui';
 import { ComponentInfo, ComponentInfoItem } from '../../components';
 
 const TabsPage = () => {
-  const tabs = [
-    { value: 'one', children: 'One' },
-    { value: 'two', children: 'Two' },
-    { value: 'three', children: 'Three' },
-    { value: 'four', children: 'Four' },
-    { value: 'five', children: 'Five' },
-  ];
+  const isMd = useMediaQuery('screen and (min-width: 768px)');
+
+  const tabs = isMd
+    ? [
+        { value: 'one', children: 'One' },
+        { value: 'two', children: 'Two' },
+        { value: 'three', children: 'Three' },
+        { value: 'four', children: 'Four' },
+        { value: 'five', children: 'Five' },
+      ]
+    : [
+        { value: 'one', children: 'One' },
+        { value: 'two', children: 'Two' },
+        { value: 'three', children: 'Three' },
+      ];
 
   const [activeTab, setActiveTab] = React.useState(tabs[0].value);
 
@@ -52,7 +61,7 @@ const TabsPage = () => {
           tabs={tabs}
           active={activeTab}
           onChange={(tab: React.SetStateAction<string>) => setActiveTab(tab)}
-          disabledTabs={[tabs[3].value]}
+          disabledTabs={[tabs[2].value]}
         />
       </ComponentInfoItem>
     </ComponentInfo>

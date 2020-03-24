@@ -32,7 +32,7 @@ const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
               <Styled.ComponentsIcon />
             </Styled.ComponentsButton>
 
-            <Styled.ComponentsDrawer showOverlay isOpen={isOpen} onChange={() => setOpen(false)} position="right">
+            <Styled.ComponentsDrawer isOpen={isOpen} onChange={() => setOpen(false)} position="right">
               <Styled.MobileAside />
             </Styled.ComponentsDrawer>
           </>

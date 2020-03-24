@@ -9,15 +9,16 @@ import { ComponentInfo, ComponentInfoItem } from '../../components';
 const Styled = {
   Flex: styled(Flex)`
     width: 100%;
-    height: 3rem;
+    flex-direction: column;
 
     padding: 1rem;
     background-color: var(--c-lightest);
     box-shadow: var(--neumo-shadow);
     border-radius: var(--border-radius);
 
-    ${Mixin.Screen.md(css`
+    ${Mixin.Screen.lg(css`
       width: 50%;
+      flex-direction: row;
     `)}
   `,
 };

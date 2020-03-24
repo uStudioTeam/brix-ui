@@ -7,7 +7,8 @@ import { ComponentInfo, ComponentInfoItem } from '../../components';
 
 const Styled = {
   Grid: styled(Grid)`
-    width: 500px;
+    grid-gap: 1rem;
+    grid-auto-flow: row;
   `,
 };
 

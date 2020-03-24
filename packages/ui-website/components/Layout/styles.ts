@@ -84,14 +84,7 @@ const MobileAside = styled(Aside)`
 
 const ComponentsDrawer = styled(Drawer)`
   padding: 0;
-
-  & {
-    z-index: 799;
-  }
-  
-  & + button[class^='Overlay'] {
-    z-index: 798 !important;
-  }
+  z-index: 799;
 `;
 
 const ComponentsIcon = styled(CubesIcon)`

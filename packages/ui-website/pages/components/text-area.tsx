@@ -1,6 +1,5 @@
-import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { TextArea } from '@ustudio/ui';
 
@@ -10,14 +9,11 @@ import { controlledInputDescription } from '../../utils';
 const Styled = {
   InputsContainer: styled.div`
     flex: 1;
+    width: 100%;
 
     display: grid;
     grid-auto-flow: row;
     grid-gap: var(--i-large);
-
-    ${Mixin.Screen.md(css`
-      grid-auto-flow: column;
-    `)}
   `,
 };
 

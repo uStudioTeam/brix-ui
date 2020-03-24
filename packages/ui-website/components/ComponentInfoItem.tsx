@@ -1,4 +1,3 @@
-import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { Text, Flex, Dropdown } from '@ustudio/ui';
@@ -8,7 +7,7 @@ import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 
 import toJSXString from 'react-element-to-jsx-string';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Link } from '../shared';
 
@@ -63,18 +62,13 @@ const Styled = {
     opacity: 0;
     transition: var(--transition);
   `,
-  Content: styled(Flex)`
+  Content: styled.div`
     width: 100%;
-    margin: calc(var(--i-medium) * -1) calc(var(--i-medium) * -1) 1.5rem;
-    flex-direction: column;
+    margin-bottom: 2rem;
 
-    & > * {
-      margin: var(--i-medium);
-    }
-
-    ${Mixin.Screen.md(css`
-      flex-direction: row;
-    `)}
+    display: grid;
+    grid-gap: 1rem;
+    align-items: center;
   `,
   Meta: styled(Flex)`
     margin-bottom: 1.5rem;
@@ -91,12 +85,7 @@ const Styled = {
   `,
 };
 
-export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({
-  title,
-  children,
-  description,
-  direction = 'row',
-}) => {
+export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({ title, children, description }) => {
   return (
     <Styled.Article>
       {(title || description) && (
@@ -117,9 +106,7 @@ export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({
         </Styled.Meta>
       )}
 
-      <Styled.Content direction={direction} alignment={{ horizontal: 'space-around', vertical: 'center' }}>
-        {children}
-      </Styled.Content>
+      <Styled.Content>{children}</Styled.Content>
 
       <Flex>
         <Styled.Dropdown title={<Text variant="span">Show code</Text>} icon={<Styled.CodeIcon />}>
