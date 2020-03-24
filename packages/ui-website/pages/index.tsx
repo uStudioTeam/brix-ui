@@ -109,12 +109,16 @@ const Styled = {
 
     max-width: 1024px;
     margin: var(--i-large) auto;
+
+    ${Mixin.Screen.md(css`
+      grid-template-rows: 1fr;
+    `)}
   `,
   AdvantageTitle: styled(Text)`
     margin-bottom: var(--i-regular);
   `,
-  AdvantageCell: styled(Cell)`
-    justify-content: center;
+  Advantage: styled(Flex)`
+    flex: 1;
   `,
   AdvantageLink: styled.a`
     color: var(--c-lightest);
@@ -130,13 +134,13 @@ const Styled = {
 };
 
 const Advantage: React.FC<{ title: string }> = ({ title, children }) => (
-  <>
+  <Styled.Advantage direction="column">
     <Styled.AdvantageTitle align="center" variant="h4">
       {title}
     </Styled.AdvantageTitle>
 
     <Text align="center">{children}</Text>
-  </>
+  </Styled.Advantage>
 );
 
 const Index: NextPage = () => {
@@ -232,9 +236,7 @@ const Index: NextPage = () => {
                 Type definitions are bundled alongside everything else.
               </Advantage>,
             ].map(advantage => (
-              <Styled.AdvantageCell key={advantage.props.title}>
-                <Flex direction="column">{advantage}</Flex>
-              </Styled.AdvantageCell>
+              <Cell key={advantage.props.title}>{advantage}</Cell>
             ))}
           </Styled.Advantages>
         </Styled.AdvantagesContainer>
