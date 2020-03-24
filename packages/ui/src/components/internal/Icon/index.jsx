@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ReactComponent as Caret } from '../../../assets/icons/caret.svg';
 import { ReactComponent as Check } from '../../../assets/icons/check.svg';
 import { ReactComponent as Chevron } from '../../../assets/icons/chevron.svg';
-import { ReactComponent as Times } from '../../../assets/icons/times.svg';
+import { ReactComponent as Close } from '../../../assets/icons/close.svg';
 import { ReactComponent as Pen } from '../../../assets/icons/pen.svg';
 
 import { common } from '../../../utils';
@@ -16,7 +16,7 @@ function renderIcon(name) {
     caret: <Caret />,
     check: <Check />,
     chevron: <Chevron />,
-    times: <Times />,
+    close: <Close />,
     pen: <Pen />
   }[name];
 }
@@ -28,7 +28,7 @@ const Icon = ({ name, angle = 0, size = 'small', className = '' }) => (
 );
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(['caret', 'check', 'chevron', 'times', 'pen']).isRequired,
+  name: PropTypes.oneOf(['caret', 'check', 'chevron', 'close', 'pen']).isRequired,
   angle: PropTypes.number,
   size: common.size
 };

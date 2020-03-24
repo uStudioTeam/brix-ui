@@ -30,7 +30,7 @@ const _outlinedMobileActiveBorder = ({ disabled, isLoading }) => {
 };
 
 const _outlinedDesktopHoverBorder = ({ disabled, isLoading }) => {
-  return disabled || isLoading ? 'border-color: var(--c-neutral)' : `border-color: transparent`;
+  return disabled || isLoading ? 'border-color: var(--c-neutral)' : `border-color: rgba(255, 255, 255, 0)`;
 };
 
 const _outlinedDesktopHoverColor = ({ disabled, isLoading, intent }) => {
@@ -122,7 +122,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 
       ${_outlinedBorder({ disabled, isLoading })};
 
-      background-color: transparent;
+      background-color: rgba(255, 255, 255, 0);
       color: ${`var(--c-${intent})`};
 
       ${Mixin.Device.mobile(css`
@@ -159,7 +159,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 const loadingStyles = isLoading => {
   if (isLoading) {
     return css`
-      color: transparent;
+      color: rgba(255, 255, 255, 0);
       cursor: wait;
 
       &:hover {
@@ -174,7 +174,7 @@ const loadingStyles = isLoading => {
 
       &[disabled] {
         cursor: wait;
-        color: transparent;
+        color: rgba(255, 255, 255, 0);
       }
     `;
   }

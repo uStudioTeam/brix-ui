@@ -1,9 +1,21 @@
 import React from 'react';
 
-import { Grid, Cell, Select } from '@ustudio/ui';
+import { Select } from '@ustudio/ui';
+import styled from 'styled-components';
 
 import { ComponentInfo, ComponentInfoItem, inputProps } from '../../components';
 import { controlledInputDescription } from '../../utils';
+
+const Styled = {
+  InputsContainer: styled.div`
+    flex: 1;
+    width: 100%;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: var(--i-large);
+  `,
+};
 
 const SingleSelectPage = () => {
   const [valueSelected, setValueSelected] = React.useState<undefined | string>(undefined);
@@ -68,36 +80,30 @@ ${controlledInputDescription('Single select')}.`}
       ]}
     >
       <ComponentInfoItem>
-        <Grid xs={{ gap: 16 }}>
-          <Cell>
-            <Select
-              items={items}
-              value={valueSelected}
-              name="default-select"
-              placeholder="Choose an item"
-              onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
-            />
-          </Cell>
-          <Cell>
-            <Select
-              groups={groups}
-              value={valueSelected}
-              name="group-select"
-              placeholder="Choose an item"
-              onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
-            />
-          </Cell>
-          <Cell>
-            <Select
-              items={items}
-              value={valueSelected}
-              isDisabled
-              name="disabled-select"
-              placeholder="Choose an item"
-              onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
-            />
-          </Cell>
-        </Grid>
+        <Styled.InputsContainer>
+          <Select
+            items={items}
+            value={valueSelected}
+            name="default-select"
+            placeholder="Choose an item"
+            onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
+          />
+          <Select
+            groups={groups}
+            value={valueSelected}
+            name="group-select"
+            placeholder="Choose an item"
+            onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
+          />
+          <Select
+            items={items}
+            value={valueSelected}
+            isDisabled
+            name="disabled-select"
+            placeholder="Choose an item"
+            onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
+          />
+        </Styled.InputsContainer>
       </ComponentInfoItem>
     </ComponentInfo>
   );

@@ -53,8 +53,7 @@ const TooltipContainer = styled.span`
   cursor: default;
 
   ${Mixin.Device.mobile(css`
-    &:focus,
-    &:focus-within {
+    &:active {
       cursor: help;
 
       ${Tooltip} {
@@ -64,7 +63,7 @@ const TooltipContainer = styled.span`
       }
     }
   `)}
-  
+
   ${Mixin.Device.desktop(css`
     &:hover {
       cursor: help;

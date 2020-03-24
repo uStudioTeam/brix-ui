@@ -23,7 +23,7 @@ const Spinner = styled.svg(
 
       ${inject.stroke(appearance?.color)};
 
-      fill: transparent;
+      fill: rgba(255, 255, 255, 0);
     }
   `
 );

@@ -9,7 +9,7 @@ import { inject } from './inject';
 
 const SelectContainer = styled.div(
   ({ isOpen, isDisabled }) => css`
-    ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-neutral)', colorBottom: 'transparent' })};
+    ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-neutral)', colorBottom: 'rgba(255, 255, 255, 0)' })};
 
     width: 100%;
 
@@ -153,7 +153,7 @@ const Dropdown = styled.div(
     flex-direction: column;
     background-color: var(--c-lightest);
 
-    border-top-color: transparent;
+    border-top-color: rgba(255, 255, 255, 0);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
 
     transition: var(--transition);
@@ -255,7 +255,7 @@ const ValuesListItem = styled.button(
     `)}
 
     &:not([disabled]) ${ValuesListIcon} {
-      color: ${inject.toggleColor({ selected, selectedColor: 'var(--c-primary)', unselectedColor: 'transparent' })};
+      color: ${inject.toggleColor({ selected, selectedColor: 'var(--c-primary)', unselectedColor: 'rgba(255, 255, 255, 0)' })};
     }
 
     &[disabled] {
@@ -263,7 +263,7 @@ const ValuesListItem = styled.button(
       cursor: not-allowed;
 
       ${ValuesListIcon} {
-        color: ${inject.toggleColor({ selected, unselectedColor: 'transparent' })};
+        color: ${inject.toggleColor({ selected, unselectedColor: 'rgba(255, 255, 255, 0)' })};
       }
 
       &:hover,

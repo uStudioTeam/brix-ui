@@ -6,6 +6,7 @@ Inside of our inner workings we use many helpful functions. Some of them are exp
 
 - [useDropdown](#usedropdown)
 - [useKeyPressClose](#usekeypressclose)
+- [useMediaQuery](#usemediaquery)
 
 ---
 
@@ -46,4 +47,18 @@ import { useKeyPressClose } from '@ustudio/ui/hooks';
 
 // interface
 function useKeyPressClose(closeCallback: (control: boolean) => void, key?: number): void;
+```
+
+---
+
+### useMediaQuery
+
+`useMediaQuery` lets you know when supplied media query fires so you can use it for conditional rendering, for example. 
+
+```typescript
+//import
+import { useMediaQuery } from '@ustudio/ui/hooks';
+
+// interface
+function useMediaQuery(query: string): boolean;
 ```

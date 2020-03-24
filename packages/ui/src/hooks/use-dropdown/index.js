@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { timeout } from '../utils';
+import { timeout } from '../../utils';
 
 function parseDimensionValue(value) {
   if (value === null) {

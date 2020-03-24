@@ -1,3 +1,5 @@
+import { useMediaQuery } from '@ustudio/ui/hooks';
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { Text, Flex, Dropdown } from '@ustudio/ui';
@@ -7,7 +9,7 @@ import coy from 'react-syntax-highlighter/dist/cjs/styles/prism/coy';
 
 import toJSXString from 'react-element-to-jsx-string';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Link } from '../shared';
 
@@ -63,8 +65,21 @@ const Styled = {
     transition: var(--transition);
   `,
   Content: styled(Flex)`
+    flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 2rem;
+    margin: calc(var(--i-medium) * -1) 0 1.5rem;
+
+    & > * {
+      margin: var(--i-medium) 0;
+    }
+
+    ${Mixin.Screen.md(css`
+      margin: calc(var(--i-medium) * -1) calc(var(--i-medium) * -1) 1.5rem;
+
+      & > * {
+        margin: var(--i-medium);
+      }
+    `)}
   `,
   Meta: styled(Flex)`
     margin-bottom: 1.5rem;
@@ -81,12 +96,9 @@ const Styled = {
   `,
 };
 
-export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({
-  title,
-  children,
-  description,
-  direction = 'row',
-}) => {
+export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({ title, children, description }) => {
+  const isXs = useMediaQuery('screen and (min-width: 576px)');
+
   return (
     <Styled.Article>
       {(title || description) && (
@@ -107,7 +119,12 @@ export const ComponentInfoItem: React.FC<ComponentInfoItemProps> = ({
         </Styled.Meta>
       )}
 
-      <Styled.Content direction={direction} alignment={{ horizontal: 'space-around', vertical: 'center' }}>
+      <Styled.Content
+        direction={isXs ? 'row' : 'column'}
+        alignment={
+          isXs ? { horizontal: 'space-around', vertical: 'center' } : { vertical: 'space-around', horizontal: 'center' }
+        }
+      >
         {children}
       </Styled.Content>
 

@@ -16,9 +16,10 @@ const Styled = {
   `,
   InputsContainer: styled.div`
     flex: 1;
+    width: 100%;
 
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-gap: var(--i-large);
   `,
 };

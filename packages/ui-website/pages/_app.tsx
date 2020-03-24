@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 import { ThemeProvider } from '@ustudio/ui/theme';
 
@@ -22,12 +22,38 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const Styled = {
+  Overlay: styled.div(({ isLoaded }: { isLoaded: boolean }) => {
+    return css`
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9000;
+      background-color: #fff;
+      background-image: url("/assets/images/banner-logo.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 200px;
+      opacity: ${isLoaded ? 0 : 1};
+      transition: 0.4s;
+      pointer-events: none;
+    `;
+  }),
+};
+
 const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   // Bugfix order styled from styled-components in dev mode
   const [isMounted, setMounted] = useState(process.env.NODE_ENV === 'production');
+  const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
 
     return () => setMounted(false);
   }, []);
@@ -39,6 +65,7 @@ const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
       <ThemeProvider>
+        <Styled.Overlay isLoaded={isLoaded} />
         <Layout>
           <Component {...pageProps} />
         </Layout>

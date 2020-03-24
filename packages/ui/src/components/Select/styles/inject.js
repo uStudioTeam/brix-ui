@@ -25,10 +25,10 @@ const containerDisabledStyles = ({ isDisabled, Dropdown }) => {
           background-color: var(--c-light);
         }
 
-        border-color: transparent;
+        border-color: rgba(255, 255, 255, 0);
 
         ${Dropdown} {
-          border-color: transparent;
+          border-color: rgba(255, 255, 255, 0);
         }
 
         ${Mixin.Device.mobile(css`
@@ -69,7 +69,7 @@ const containerDisabledStyles = ({ isDisabled, Dropdown }) => {
             }
 
             ${Dropdown} {
-              border-top-color: transparent;
+              border-top-color: rgba(255, 255, 255, 0);
             }
           }
         `)}
@@ -110,7 +110,7 @@ const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) => {
           cursor: not-allowed;
 
           ${SelectedListIcon} {
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0);
           }
         }
 

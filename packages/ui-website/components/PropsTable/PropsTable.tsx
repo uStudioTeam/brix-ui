@@ -30,7 +30,7 @@ const Styled = {
     grid-auto-flow: row;
     grid-gap: var(--i-regular);
     padding: var(--i-regular) 0;
-    margin-top: var(--i-large);
+    margin: var(--i-large) 0;
 
     border-radius: var(--border-radius);
     box-shadow: var(--neumo-shadow);

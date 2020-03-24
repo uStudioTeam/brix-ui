@@ -1,19 +1,25 @@
+import { Mixin } from '@ustudio/ui/theme';
 import React from 'react';
 
 import { Flex } from '@ustudio/ui';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ComponentInfo, ComponentInfoItem } from '../../components';
 
 const Styled = {
   Flex: styled(Flex)`
-    width: 50%;
-    height: 3rem;
+    width: 100%;
+    flex-direction: column;
 
     padding: 1rem;
     background-color: var(--c-lightest);
     box-shadow: var(--neumo-shadow);
     border-radius: var(--border-radius);
+
+    ${Mixin.Screen.lg(css`
+      width: 50%;
+      flex-direction: row;
+    `)}
   `,
 };
 

@@ -37,7 +37,7 @@ const Alert = ({
           {children}
         </Text>
 
-        <Styled.Icon name="times" intent={intent} classNames={classNames} />
+        <Styled.Icon name="close" intent={intent} classNames={classNames} />
       </Styled.Alert>
     </Portal>
   );

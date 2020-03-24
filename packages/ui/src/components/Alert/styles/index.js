@@ -26,7 +26,7 @@ const Alert = styled.button(
 
     ${Mixin.Device.mobile(css`
       &:active {
-        ${Mixin.Style.borderWithBottom({ colorAll: 'transparent', colorBottom: `var(--c-${intent})` })};
+        ${Mixin.Style.borderWithBottom({ colorAll: 'rgba(255, 255, 255, 0)', colorBottom: `var(--c-${intent})` })};
 
         box-shadow: ${`var(--s-${intent})`};
         color: var(--c-lightest);
@@ -39,13 +39,13 @@ const Alert = styled.button(
 
     ${Mixin.Device.desktop(css`
       &:hover {
-        ${Mixin.Style.borderWithBottom({ colorAll: 'transparent', colorBottom: `var(--c-${intent})` })};
+        ${Mixin.Style.borderWithBottom({ colorAll: 'rgba(255, 255, 255, 0)', colorBottom: `var(--c-${intent})` })};
 
         box-shadow: ${`var(--s-${intent})`};
       }
 
       &:focus {
-        ${Mixin.Style.borderWithBottom({ colorAll: 'transparent', colorBottom: `var(--c-${intent})` })};
+        ${Mixin.Style.borderWithBottom({ colorAll: 'rgba(255, 255, 255, 0)', colorBottom: `var(--c-${intent})` })};
 
         box-shadow: none;
         color: var(--c-lightest);
