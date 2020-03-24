@@ -2,7 +2,16 @@ import React from 'react';
 
 import { Text, Grid, Cell, Flex } from '@ustudio/ui';
 
+import styled from 'styled-components';
 import { ComponentInfo, ComponentInfoItem } from '../../components';
+
+const Styled = {
+  Grid: styled(Grid)`
+    width: 500px;
+  `,
+};
+
+Styled.Grid.displayName = 'Grid';
 
 const TextPage = () => {
   return (
@@ -29,7 +38,13 @@ const TextPage = () => {
       classNames={['Text']}
     >
       <ComponentInfoItem>
-        <Grid xs={{ alignment: { horizontal: 'center', vertical: 'center' }, gap: 32 }}>
+        <Styled.Grid
+          xs={{
+            gap: 16,
+            direction: 'column',
+            template: '6fr 2fr 1fr',
+          }}
+        >
           <Cell>
             <Flex direction="column">
               <Text variant="h1">h1: Heading 1</Text>
@@ -54,40 +69,42 @@ const TextPage = () => {
               <Text variant="small">small: Lorem ipsum</Text>
             </Flex>
           </Cell>
-        </Grid>
+        </Styled.Grid>
       </ComponentInfoItem>
 
-      <ComponentInfoItem
-        title="Variant 'body'"
-        description="Body accepts any variant of an 'appearance' prop."
-        direction="column"
-      >
-        <Grid xs={{ alignment: { horizontal: 'center' } }}>
+      <ComponentInfoItem title="Variant 'body'" description="Body accepts any variant of an 'appearance' prop.">
+        <Styled.Grid
+          xs={{
+            direction: 'column',
+          }}
+        >
           <Cell>
-            <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+            <Flex direction="column">
+              <Text appearance="regular">regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="bold"> bold: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="italic"> italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+              <Text appearance="underlined">underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+            </Flex>
           </Cell>
-          <Cell>
-            <Text appearance="bold"> bold: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-          <Cell>
-            <Text appearance="italic"> italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-          <Cell>
-            <Text appearance="underlined">underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Cell>
-        </Grid>
+        </Styled.Grid>
       </ComponentInfoItem>
 
-      <ComponentInfoItem title="Variant 'article'" description="Article can not be bold." direction="column">
-        <Text variant="article" appearance="regular">
-          regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text variant="article" appearance="italic">
-          italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text variant="article" appearance="underlined">
-          underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
+      <ComponentInfoItem title="Variant 'article'" description="Article can not be bold.">
+        <Styled.Grid xs={{ direction: 'column' }}>
+          <Cell>
+            <Flex direction="column">
+              <Text variant="article" appearance="regular">
+                regular: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+              <Text variant="article" appearance="italic">
+                italic: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+              <Text variant="article" appearance="underlined">
+                underlined: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+            </Flex>
+          </Cell>
+        </Styled.Grid>
       </ComponentInfoItem>
 
       <ComponentInfoItem title="Alignment" direction="column">
