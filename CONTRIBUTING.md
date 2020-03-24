@@ -13,8 +13,14 @@
 
 ## Available NPM scripts
 
-- `yarn ui:dev` - Start Storybook for development components;
-- `yarn ui:build` - Build components (to `packages/ui/lib`) for usage in website and publication;
-- `yarn ui-website:dev` - Start dev server for development documentation website (include command `ui:build`);
-- `yarn ui-website:build` - Build website (to `packages/ui-website/dist`) for deploy to production (include command `ui:build`);
-- `yarn ui-website:deploy` - Deploy website bundle to Github Pages (include commands: `ui:build`, `ui-website:build`).
+- `yarn ustudio-ui:dev` - Start Storybook for development components;
+- `yarn ustudio-ui:build` - Build components (to `packages/ustudio-ui/lib`) for usage in website and publication;
+- `yarn docs-website:dev` - Start dev server for development documentation website (include command `ustudio-ui:build`);
+- `yarn docs-website:build` - Build documentation website (to `packages/docs-website/dist`) for deploy to production (include command `ustudio-ui:build`);
+- `yarn docs-website:deploy` - Deploy documentation website bundle to Github Pages (include commands: `ustudio-ui:build`, `docs-website:build`).
+
+## Documentation Website Development
+
+- all links must be used from `shared/Link.tsx`;
+- all connections of static resources from `public` folder must have path with prefix - `process.env.BASE_URL` (example - `<img src={'${process.env.BASE_URL}/assets/images/...'}> alt="..."`);
+- for deploy documentation website to Github Page you need create file `.env` in `packages/docs-website` with content like in `.env.example` with variable `BASE_URL=/YOUR_REPO_NAME`.
