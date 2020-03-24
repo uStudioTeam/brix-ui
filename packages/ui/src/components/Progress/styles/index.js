@@ -11,7 +11,7 @@ const Progress = styled.progress(
 
     width: 100%;
     height: 0.5rem;
-    background: transparent;
+    background: rgba(255, 255, 255, 0);
     border-radius: 0.5rem;
 
     position: relative;

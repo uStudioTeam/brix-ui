@@ -34,7 +34,7 @@ const sideBordersByPosition = position => {
   return sidePositions(reversePosition(position)).reduce(
     (map, pos) => css`
         ${map}
-        border-${pos}: 0.5rem solid transparent;
+        border-${pos}: 0.5rem solid rgba(255, 255, 255, 0);
       `,
     ''
   );
