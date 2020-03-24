@@ -6,6 +6,7 @@ Inside of our inner workings we use many helpful functions. Some of them are exp
 
 - [useDropdown](#usedropdown)
 - [useKeyPressClose](#usekeypressclose)
+- [useMediaQuery](#usemediaquery)
 
 ---
 
