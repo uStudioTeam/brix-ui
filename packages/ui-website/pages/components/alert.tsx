@@ -37,7 +37,7 @@ const AlertPage: React.FC = () => {
       }}
       classNames={['Alert', 'Icon', 'Content']}
     >
-      <ComponentInfoItem title="Horizontal aligment">
+      <ComponentInfoItem title="Horizontal alignment">
         {['left', 'center', 'right'].map(direction => (
           <React.Fragment key={direction}>
             <Button
@@ -59,7 +59,7 @@ const AlertPage: React.FC = () => {
         ))}
       </ComponentInfoItem>
 
-      <ComponentInfoItem title="Vertical aligment">
+      <ComponentInfoItem title="Vertical alignment">
         {['top', 'bottom'].map(direction => (
           <React.Fragment key={direction}>
             <Button
