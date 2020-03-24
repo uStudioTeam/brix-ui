@@ -130,15 +130,10 @@ const Burger = styled.button<{ isOpen?: boolean }>(
           }
         `
       : ''};
-
-    ${Mixin.Screen.md(css`
-      display: none;
-    `)}
   `
 );
 
 const Nav = styled.nav`
-  display: none;
   margin: 0 calc(var(--i-regular) * -1);
 
   & > * {
@@ -170,20 +165,6 @@ const MobileNav = styled.nav`
   }
 `;
 
-const MobileLogo = styled.span`
-  ${Mixin.Screen.md(css`
-    display: none;
-  `)}
-`;
-
-const DesktopVersion = styled.span`
-  display: none;
-
-  ${Mixin.Screen.md(css`
-    display: block;
-  `)}
-`;
-
 const Version = styled.a`
   display: inline-flex;
 
@@ -205,4 +186,4 @@ const Badge = styled(BadgeComponent)`
   }
 `;
 
-export default { Header, LogoLink, LogoImg, Burger, Nav, MobileNav, MobileLogo, DesktopVersion, Version, Badge };
+export default { Header, LogoLink, LogoImg, Burger, Nav, MobileNav, Version, Badge };

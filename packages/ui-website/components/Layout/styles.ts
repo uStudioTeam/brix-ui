@@ -62,10 +62,6 @@ const ComponentsButton = styled.button<{ isOpen: boolean }>(
     &:active {
       color: var(--c-primary-light);
     }
-
-    ${Mixin.Screen.md(css`
-      display: none;
-    `)}
   `
 );
 
@@ -84,19 +80,11 @@ const DocsMain = styled.main`
 
 const MobileAside = styled(Aside)`
   display: block;
-
-  ${Mixin.Screen.md(css`
-    display: none;
-  `)}
 `;
 
 const ComponentsDrawer = styled(Drawer)`
   padding: 0;
   z-index: 799;
-
-  ${Mixin.Screen.md(css`
-    display: none;
-  `)}
 `;
 
 const ComponentsIcon = styled(CubesIcon)`

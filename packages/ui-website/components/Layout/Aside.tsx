@@ -12,7 +12,6 @@ import { transformToKebabCase } from '../../utils';
 
 const Styled = {
   Aside: styled.aside`
-    display: none;
     flex: 1;
 
     height: 100vh;
@@ -33,7 +32,6 @@ const Styled = {
     }
 
     ${Mixin.Screen.md(css`
-      display: block;
       flex: 0.1 0 10%;
 
       &:before {

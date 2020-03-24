@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@ustudio/ui/hooks';
 import React, { FC, ReactElement, useEffect, useState } from 'react';
 
 import { Router } from 'next/router';
@@ -30,6 +31,8 @@ function renderDocsLinks(): ReactElement[] {
 
 const Header: FC = () => {
   const [isOpen, setOpen] = useState(false);
+
+  const isMd = useMediaQuery('min-width: 768px');
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => {
@@ -69,29 +72,33 @@ const Header: FC = () => {
 
   return (
     <Styled.Header>
-      <Styled.Burger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-
-      <Styled.Nav>
-        <Logo />
-
-        <NavContent />
-      </Styled.Nav>
-
-      <Drawer showOverlay isOpen={isOpen} onChange={() => setOpen(!isOpen)} position="bottom">
-        <Styled.MobileNav>
-          <NavContent />
-
-          <Version />
-        </Styled.MobileNav>
-      </Drawer>
-
-      <Styled.DesktopVersion>
-        <Version />
-      </Styled.DesktopVersion>
-
-      <Styled.MobileLogo>
-        <Logo />
-      </Styled.MobileLogo>
+      {
+        isMd ? (
+          <>
+            <Styled.Nav>
+              <Logo />
+    
+              <NavContent />
+            </Styled.Nav>
+  
+            <Version />
+          </>
+        ) : (
+          <>
+            <Styled.Burger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+            
+            <Logo />
+  
+            <Drawer showOverlay isOpen={isOpen} onChange={() => setOpen(!isOpen)} position="bottom">
+              <Styled.MobileNav>
+                <NavContent />
+      
+                <Version />
+              </Styled.MobileNav>
+            </Drawer>
+          </>
+        )
+      }
     </Styled.Header>
   );
 };
