@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { BaseInput, props } from '../BaseInput';
@@ -23,27 +23,31 @@ const NumberInput = forwardRef(function NumberInput(
   },
   ref
 ) {
-  const [localValue, setLocalValue] = React.useState('');
+  const [localValue, setLocalValue] = useState('');
+
   const validateValue = validatedValue => {
     const regExp = /^(([\-]?){1})([0-9]*(\d?))[.,]?([0-9]*(\d?))$/;
 
     return validatedValue ? regExp.test(validatedValue) : true;
   };
 
-  const transformedValue = value => {
-    if (value.length === 1 && (value.charAt(0) === '.' || value.charAt(0) === ',')) {
-      return `0${value}`;
+  const isDivider = symbol => symbol === '.' || symbol === ',';
+
+  const transformedValue = enteredValue => {
+    if (enteredValue.length === 1 && isDivider(enteredValue.charAt(0))) {
+      return `0${enteredValue}`;
     }
-    if (value.length === 2 && value.charAt(0) === '-' && (value.charAt(1) === '.' || value.charAt(1) === ',')) {
-      return `-0${value.charAt(1)}`;
+    if (enteredValue.length === 2 && enteredValue.charAt(0) === '-' && isDivider(enteredValue.charAt(1))) {
+      return `-0${enteredValue.charAt(1)}`;
     }
-    return value;
+
+    return enteredValue;
   };
 
-  const handleChange = e => {
-    if (validateValue(e.target.value)) {
-      setLocalValue(transformedValue(e.target.value));
-      return onChange(+transformedValue(e.target.value) || '');
+  const handleChange = ({ target: { value: inputValue } }) => {
+    if (validateValue(inputValue)) {
+      setLocalValue(transformedValue(inputValue));
+      return onChange(+transformedValue(inputValue) || '');
     }
     return false;
   };
