@@ -32,7 +32,7 @@ const Styled = {
       right: 0;
       z-index: 9000;
       background-color: #fff;
-      background-image: url("/assets/images/banner-logo.svg");
+      background-image: url("${process.env.BASE_URL}/assets/images/banner-logo.svg");
       background-repeat: no-repeat;
       background-position: center;
       background-size: 200px;
