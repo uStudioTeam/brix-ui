@@ -20,11 +20,9 @@ const Styled = {
     height: 100vh;
     overflow-y: hidden;
 
-    ${Mixin.Screen.xs(css`
-      ${StyledAside} {
-        display: none;
-      }
-    `)}
+    ${StyledAside} {
+      display: none;
+    }
 
     ${Mixin.Screen.lg(css`
       ${StyledAside} {
@@ -40,15 +38,12 @@ const Styled = {
     padding: calc(54px + var(--i-large)) 0 0;
   `,
   ComponentsMain: styled.main`
+    flex: 1;
+
     height: 100vh;
     overflow-y: scroll;
     overflow-x: unset;
-    padding: calc(54px + var(--i-large)) var(--i-large) 0;
-
-    ${Mixin.Screen.xs(css`
-      padding: var(--i-large) var(--i-large) 0;
-      flex: 1;
-    `)};
+    padding: var(--i-large) var(--i-large) 0;
 
     ${Mixin.Screen.lg(css`
       padding: calc(54px + var(--i-large)) var(--i-large) 0;

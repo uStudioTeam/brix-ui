@@ -12,12 +12,16 @@ import { transformToKebabCase } from '../../utils';
 
 const Styled = {
   Aside: styled.aside`
+    flex: 1;
+
     height: 100vh;
 
     position: relative;
     background-color: var(--c-lightest);
 
     &:before {
+      display: none;
+
       content: '';
       position: absolute;
       right: 0;
@@ -27,14 +31,6 @@ const Styled = {
       width: 0.5rem;
       background: linear-gradient(to right, var(--c-lightest), var(--c-light));
     }
-
-    ${Mixin.Screen.xs(css`
-      flex: 1;
-
-      &:before {
-        display: none;
-      }
-    `)}
 
     ${Mixin.Screen.lg(css`
       flex: 0.2 0 20%;

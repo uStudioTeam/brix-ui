@@ -14,6 +14,7 @@ import packageJSON from '../../../ui/package.json';
 const Styled = {
   Header: styled.header`
     position: fixed;
+    bottom: 0;
     z-index: 100;
 
     display: flex;
@@ -45,21 +46,14 @@ const Styled = {
       content: '';
       position: absolute;
       left: 0;
+      top: -0.5rem;
       z-index: 100;
 
       width: 100%;
       height: 0.5rem;
+      
+      background-image: linear-gradient(to top, var(--c-light), transparent);
     }
-
-    ${Mixin.Screen.xs(css`
-      bottom: 0;
-
-      &:after {
-        top: -0.5rem;
-
-        background-image: linear-gradient(to top, var(--c-light), transparent);
-      }
-    `)}
 
     ${Mixin.Screen.lg(css`
       top: 0;
