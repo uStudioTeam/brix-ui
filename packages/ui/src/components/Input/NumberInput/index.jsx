@@ -23,25 +23,26 @@ const NumberInput = forwardRef(function NumberInput(
   },
   ref
 ) {
+  const [localValue, setLocalValue] = React.useState('');
   const validateValue = validatedValue => {
     const regExp = /^(([\-]?){1})([1-9]*(\d?))[.,]?([1-9]*(\d?))$/;
 
     return validatedValue ? regExp.test(validatedValue) : true;
   };
 
-  const transformValue = value => {
+  const transformedValue = value => {
     if (value.length === 1 && (value.charAt(0) === '.' || value.charAt(0) === ',')) {
       return `0${value}`;
     }
     if (value.length === 2 && value.charAt(0) === '-' && (value.charAt(1) === '.' || value.charAt(1) === ',')) {
       return `-0${value.charAt(1)}`;
     }
-    return value || '';
+    return value;
   };
 
   const handleChange = e => {
     if (validateValue(e.target.value)) {
-      return onChange(transformValue(e.target.value));
+      return setLocalValue(transformedValue(e.target.value)) && onChange(+transformedValue(e.target.value) || '');
     }
     return false;
   };
@@ -52,7 +53,7 @@ const NumberInput = forwardRef(function NumberInput(
       type="text"
       id={id}
       name={name}
-      value={value}
+      value={localValue}
       defaultValue={defaultValue}
       onChange={e => handleChange(e)}
       isDisabled={isDisabled}
@@ -71,7 +72,7 @@ NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
   ...props.propTypes({
-    valueType: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([''])]),
+    valueType: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])]),
     classes: Styled,
   }),
 };
