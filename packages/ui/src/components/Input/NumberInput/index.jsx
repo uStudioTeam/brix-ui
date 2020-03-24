@@ -56,6 +56,7 @@ const NumberInput = forwardRef(function NumberInput(
     <BaseInput
       ref={ref}
       type="text"
+      inputMode="decimal"
       id={id}
       name={name}
       value={localValue}
