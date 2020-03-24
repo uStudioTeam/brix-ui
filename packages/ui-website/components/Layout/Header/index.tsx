@@ -32,7 +32,7 @@ function renderDocsLinks(): ReactElement[] {
 const Header: FC = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const isMd = useMediaQuery('min-width: 768px');
+  const isMd = useMediaQuery('screen and (min-width: 768px)');
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => {

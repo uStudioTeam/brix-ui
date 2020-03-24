@@ -7,7 +7,7 @@ import Styled from './styles';
 const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
   const [isOpen, setOpen] = useState(false);
 
-  const isMd = useMediaQuery('min-width: 768px');
+  const isMd = useMediaQuery('screen and (min-width: 768px)');
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => {

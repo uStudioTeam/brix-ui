@@ -11,14 +11,26 @@ function useMediaQuery(query) {
     let match;
 
     if (window) {
-      match = window.matchMedia(`(${query})`);
+      match = window.matchMedia(query);
 
       handleChange(match);
-      match.addEventListener('change', handleChange);
+      /**
+       * addEventListener is not yet fully supported for matchMedia in iOS Safari, so we are leaving addListener for compatibility
+       * @see https://github.com/mdn/sprints/issues/858#issuecomment-515238645
+       */
+      if (match.addEventListener) {
+        match.addEventListener('change', handleChange);
+      } else {
+        match.addListener(handleChange);
+      }
     }
 
     return () => {
-      match.removeEventListener('change', handleChange);
+      if (match.removeEventListener) {
+        match.removeEventListener('change', handleChange);
+      } else {
+        match.removeListener(handleChange);
+      }
     };
   }, []);
 
