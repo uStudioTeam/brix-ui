@@ -122,11 +122,11 @@ const Burger = styled.button<{ isOpen?: boolean }>(
           background-position-x: 48px;
 
           &:before {
-            transform: rotate(-45deg) scaleX(0.925);
+            transform: rotate(-45deg) scaleX(0.89);
           }
 
           &:after {
-            transform: rotate(45deg) scaleX(0.925);
+            transform: rotate(45deg) scaleX(0.89);
           }
         `
       : ''};
