@@ -23,7 +23,7 @@ const Styled = {
     overflow-y: scroll;
     overflow-x: unset;
     flex: 1;
-    padding: calc(54px + var(--i-large)) 0 var(--i-large);
+    padding: calc(54px + var(--i-large)) 0 0;
   `,
   ComponentsMain: styled.main`
     flex: 0.8 1 80%;
@@ -31,15 +31,33 @@ const Styled = {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: unset;
-    padding: calc(54px + var(--i-large)) var(--i-large) 4rem;
+    padding: calc(54px + var(--i-large)) var(--i-large) 0;
   `,
   DocsMain: styled.main`
     height: 100vh;
     overflow-y: scroll;
     overflow-x: unset;
     flex: 1;
-    padding: calc(54px + var(--i-large)) calc(50% - 512px) var(--i-large);
+    padding: calc(54px + var(--i-large)) calc(50% - 512px) 0;
   `,
+};
+
+const Main: React.FC<{ pathname: string }> = ({ pathname, children }) => {
+  if (/^\/components\/*/.test(pathname)) {
+    return (
+      <React.Fragment>
+        <Aside />
+
+        <Styled.ComponentsMain>{children}</Styled.ComponentsMain>
+      </React.Fragment>
+    );
+  }
+
+  if (/^\/docs\/*/.test(pathname)) {
+    return <Styled.DocsMain>{children}</Styled.DocsMain>;
+  }
+
+  return <Styled.IndexMain>{children}</Styled.IndexMain>;
 };
 
 const Layout: FC = ({ children }) => {
@@ -64,19 +82,18 @@ const Layout: FC = ({ children }) => {
     <>
       <Header />
       <Styled.Container>
-        {pathname === '/' && <Styled.IndexMain>{isLoading ? <PlaceholderPage /> : children}</Styled.IndexMain>}
+        <Main pathname={pathname}>
+          {isLoading ? (
+            <PlaceholderPage />
+          ) : (
+            <React.Fragment>
+              {children}
 
-        {/^\/docs\/*/.test(pathname) && <Styled.DocsMain>{isLoading ? <PlaceholderPage /> : children}</Styled.DocsMain>}
-
-        {/^\/components\/*/.test(pathname) && (
-          <>
-            <Aside />
-
-            <Styled.ComponentsMain>{isLoading ? <PlaceholderPage /> : children} </Styled.ComponentsMain>
-          </>
-        )}
+              <Footer />
+            </React.Fragment>
+          )}
+        </Main>
       </Styled.Container>
-      <Footer />
     </>
   );
 };
