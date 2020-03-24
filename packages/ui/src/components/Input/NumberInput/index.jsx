@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { BaseInput, props } from '../BaseInput';
@@ -23,15 +23,47 @@ const NumberInput = forwardRef(function NumberInput(
   },
   ref
 ) {
+  const [localValue, setLocalValue] = useState('');
+
+  const validateValue = validatedValue => {
+    const regExp = /^(([\-]?){1})([0-9]*(\d?))[.,]?([0-9]*(\d?))$/;
+
+    return validatedValue ? regExp.test(validatedValue) : true;
+  };
+
+  const isDivider = (string, position) => string[position] === '.' || string[position] === ',';
+
+  const transformValue = enteredValue => {
+    if (enteredValue.length === 1 && isDivider(enteredValue, 0)) {
+      return `0${enteredValue}`;
+    }
+    if (enteredValue.length === 2 && enteredValue[0] === '-' && isDivider(enteredValue, 1)) {
+      return `-0${enteredValue[1]}`;
+    }
+
+    return enteredValue;
+  };
+
+  const handleChange = ({ target: { value: inputValue } }) => {
+    if (validateValue(inputValue)) {
+      const transformedValue = transformValue(inputValue);
+      setLocalValue(transformedValue);
+
+      return onChange(+transformedValue);
+    }
+    return false;
+  };
+
   return (
     <BaseInput
       ref={ref}
-      type="number"
+      type="text"
+      inputMode="decimal"
       id={id}
       name={name}
-      value={value}
+      value={localValue}
       defaultValue={defaultValue}
-      onChange={({ target: { valueAsNumber: inputValue } }) => onChange(inputValue || '')}
+      onChange={handleChange}
       isDisabled={isDisabled}
       isRequired={isRequired}
       prefix={prefix}
