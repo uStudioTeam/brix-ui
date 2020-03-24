@@ -50,7 +50,7 @@ const ComponentsButton = styled.button<{ isOpen: boolean }>(
     position: fixed;
     left: 50%;
     bottom: 27px;
-    z-index: 1001;
+    z-index: 2001;
 
     color: var(--c-primary);
     ${Mixin.Style.inputPadding()};
@@ -84,7 +84,6 @@ const MobileAside = styled(Aside)`
 
 const ComponentsDrawer = styled(Drawer)`
   padding: 0;
-  z-index: 799;
 `;
 
 const ComponentsIcon = styled(CubesIcon)`
