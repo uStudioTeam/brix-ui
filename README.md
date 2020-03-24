@@ -9,14 +9,14 @@
 
 # Installation
 
-This library is available as an [npm package](https://www.npmjs.com/package/@ustudio/ui).
+This library is available as an [npm package](https://www.npmjs.com/package/ustudio-ui).
 
 **Important note:** `styled-components`, `react`, `react-dom` are peer dependencies, so make sure they are installed in your app.
 
 ```shell script
-$ npm i @ustudio/ui
+$ npm i ustudio-ui
 # or
-$ yarn add @ustudio/ui
+$ yarn add ustudio-ui
 ```
 
 ---
@@ -28,7 +28,7 @@ First of, wrap your main component in our `<ThemeProvider />` to gain access to 
 ```jsx
 import React from 'react';
 
-import { ThemeProvider } from '@ustudio/ui/theme';
+import { ThemeProvider } from 'ustudio-ui/theme';
 
 const App = () => <ThemeProvider>...</ThemeProvider>;
 ```
@@ -38,9 +38,9 @@ After that feel free to import and use all of our [components](/components) and 
 Every component can be imported in two ways: either `default` from component folder, or `named` from root:
 
 ```jsx
-import Button from '@ustudio/ui/components/Button';
+import Button from 'ustudio-ui/components/Button';
 // or
-import { Button } from '@ustudio/ui';
+import { Button } from 'ustudio-ui';
 ```
 
 Also, make sure to read our [theming](/docs/theming) guide to squeeze out all the power of uStudio UI Kit and achieve the best
