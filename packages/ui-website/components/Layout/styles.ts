@@ -92,6 +92,7 @@ const MobileAside = styled(Aside)`
 
 const ComponentsDrawer = styled(Drawer)`
   padding: 0;
+  z-index: 799;
 
   ${Mixin.Screen.md(css`
     display: none;
