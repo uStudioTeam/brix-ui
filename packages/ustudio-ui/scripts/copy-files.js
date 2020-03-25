@@ -7,7 +7,7 @@ const path = require('path');
 
   fs.copyFileSync(path.resolve(__dirname, filePath), path.resolve(__dirname, '../lib', fileName), error => {
     if (error) {
-      throw error;
+      console.log(error);
       process.exit(1);
     }
   });
