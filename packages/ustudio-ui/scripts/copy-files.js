@@ -5,7 +5,10 @@ const path = require('path');
   const filePathArray = filePath.split('/');
   const fileName = filePathArray[filePathArray.length - 1];
 
-  fs.copyFile(path.resolve(__dirname, filePath), path.resolve(__dirname, '../lib', fileName), error => {
-    if (error) throw error;
+  fs.copyFileSync(path.resolve(__dirname, filePath), path.resolve(__dirname, '../lib', fileName), error => {
+    if (error) {
+      process.exit(1);
+      throw error;
+    }
   });
 });
