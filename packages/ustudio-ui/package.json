@@ -12,7 +12,7 @@
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
     "build": "npm-run-all clean -p build:components build:dts",
     "copy-files": "node scripts/copy-files.js",
-    "release": "yarn build && yarn copy-files yarn publish lib"
+    "release": "yarn build && yarn copy-files && yarn publish lib"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"
