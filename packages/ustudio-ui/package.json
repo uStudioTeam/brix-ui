@@ -10,9 +10,9 @@
     "dev": "start-storybook -p 9009 -s public",
     "build:components": "babel src --out-dir lib --config-file ./.storybook/babel.config.js",
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
-    "build:package-json": "copyfiles package.json lib",
     "build": "npm-run-all clean -p build:components build:dts build:package-json",
-    "release": "yarn build && cd lib && npm publish"
+    "copy-files": "node scripts/copy-files.js",
+    "release": "yarn build && yarn copy-files yarn publish lib"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"
