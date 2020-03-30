@@ -8,6 +8,8 @@ const Flex = styled.div.withConfig({ displayName: 'Flex' })(
   ({ dataDirection: direction, isInline, isReversed, alignment }) => css`
     ${inject.displayStyle({ isInline })};
     ${inject.directionStyle({ direction, isReversed })};
+    
+    width: 100%;
 
     ${getAlignment({ direction, alignment })};
   `
