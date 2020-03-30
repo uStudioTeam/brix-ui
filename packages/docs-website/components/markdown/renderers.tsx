@@ -50,7 +50,7 @@ export const renderers = {
   link: ({ href, children }: { href: string; children: string }) => (
     <a
       href={`${href[0] === '/' ? process.env.BASE_URL : ''}${href}`}
-      target={`${href[0] !== '/' ? '_blank' : '_self'}`}
+      target={`${href[0] === '/' || href[0] === '#' ? '_self' : '_blank'}`}
     >
       {children}
     </a>
