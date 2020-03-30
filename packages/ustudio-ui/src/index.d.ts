@@ -7,7 +7,7 @@ export { default as Drawer } from './components/Drawer';
 export { default as Dropdown } from './components/Dropdown';
 export { default as EditableText } from './components/EditableText';
 export { default as Flex } from './components/Flex';
-export { default as Grid } from './components/Grid/Grid/index';
+export { default as Grid } from './components/Grid/Grid';
 export { default as Cell } from './components/Grid/Cell';
 export { default as FileInput } from './components/Input/FileInput';
 export { default as NumberInput } from './components/Input/NumberInput';
