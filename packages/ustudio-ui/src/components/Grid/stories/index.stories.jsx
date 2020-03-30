@@ -43,9 +43,11 @@ gridStory
 
         <Cell>
           <Grid xs={{ gap: 16 }}>
-            <Flex>
-              <StyledBox>1/3</StyledBox>
-            </Flex>
+            <Cell>
+              <Flex>
+                <StyledBox>1/3</StyledBox>
+              </Flex>
+            </Cell>
 
             <Cell>
               <StyledBox>1/3</StyledBox>

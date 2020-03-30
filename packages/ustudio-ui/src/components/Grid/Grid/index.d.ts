@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { Alignment, Breakpoint, Direction } from '../../../theme/theme';
 import Cell, { CellProps } from '../Cell';
 
@@ -13,7 +13,7 @@ type GridBreakpointData = {
 };
 
 interface GridProps extends GridBreakpointData {
-  children: ReactElement<CellProps, Cell> | ReactElement<CellProps, Cell>[];
+  children: ReactNode<CellProps, typeof Cell> | ReactNode<CellProps, typeof Cell>[];
 
   isContainer?: boolean;
 

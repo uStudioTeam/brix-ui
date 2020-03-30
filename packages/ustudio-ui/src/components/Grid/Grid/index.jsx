@@ -42,11 +42,11 @@ Grid.displayName = 'Grid';
 
 const cellsValidator = (props, propName, componentName) => {
   const cells = props[propName];
-  
+
   const validateCell = cell => {
-    if (cell.type.name !== 'Cell') {
+    if (cell?.type && cell.type?.name !== 'Cell') {
       throw new Error(
-        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type.name}".`
+        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type?.name}".`
       );
     }
   };
@@ -80,7 +80,7 @@ Grid.propTypes = {
       alignment: common.alignment,
     }),
   })),
-  ...classNames(['Grid'])
+  ...classNames(['Grid']),
 };
 
 Grid.defaultProps = {

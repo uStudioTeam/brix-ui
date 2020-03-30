@@ -38,7 +38,7 @@ const gridContainerStyles = ({ breakpoints }) => {
       ${styles};
 
       ${Mixin.Screen[breakpoint](css`
-        max-width: calc(${maxWidth} - ${2 * (gap && direction === 'row' ? gap : 0)}px);
+        max-width: calc(${maxWidth}px - ${2 * (gap && direction === 'row' ? gap : 0)}px);
       `)};
     `;
   }, ``);
