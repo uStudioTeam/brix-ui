@@ -34,11 +34,29 @@ const _outlinedDesktopHoverBorder = ({ disabled, isLoading }) => {
 };
 
 const _outlinedDesktopHoverColor = ({ disabled, isLoading, intent }) => {
+  const getColor = () => {
+    if (disabled) return 'var(--c-neutral)';
+    if (isLoading) return 'transparent';
+
+    return `var(--c-${intent}-light)}`;
+  };
+
   return css`
-    color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+    color: ${getColor()};
   `;
 };
 
+const _outlinedDesktopActiveFocusColor = ({ isLoading, intent }) => {
+  return css`
+    color: ${isLoading ? 'transparent' : `var(--c-${intent}-light)`};
+  `;
+};
+
+const _outlinedDesktopActiveFocusBorderColor = ({ isLoading, intent }) => {
+  return css`
+    border-color: ${isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+  `;
+};
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
   return {
     text: css`
@@ -135,20 +153,22 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 
       ${Mixin.Device.desktop(css`
         &:hover {
+          box-shadow: ${`var(--s-${intent})`};
           ${_outlinedDesktopHoverBorder({ disabled, isLoading })};
           ${_outlinedDesktopHoverColor({ disabled, isLoading, intent })};
-          box-shadow: ${`var(--s-${intent})`};
         }
 
+        &:focus,
+        &:active {
+          ${_outlinedDesktopActiveFocusBorderColor({ isLoading, intent })}
+          ${_outlinedDesktopActiveFocusColor({ isLoading, intent })};
+          box-shadow: ${`var(--s-${intent})`};
+        }
         &:focus {
-          border-color: ${`var(--c-${intent}-light)`};
-          color: ${`var(--c-${intent}-light)`};
           box-shadow: ${`var(--s-${intent})`};
         }
 
         &:active {
-          color: ${`var(--c-${intent}-light)`};
-          border-color: ${_outlinedBorder({ disabled, isLoading })};
           box-shadow: none;
         }
       `)};
