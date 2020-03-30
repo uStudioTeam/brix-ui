@@ -46,6 +46,14 @@ import { Button } from 'ustudio-ui';
 Also, make sure to read our [theming](/docs/theming) guide to squeeze out all the power of uStudio UI Kit and achieve the best
 look and feel.
 
+## Contributing
+
+Learn our [code of conduct](/CODE_OF_CONDUCT.md) to become a contributor of uStudio UI.
+
+## Bugs and offers
+
+If you find a bug in the source code or a mistake in the documentation, you can help us by submitting an issue to our [GitHub Repository](https://github.com/uStudioCompany/ustudio-ui/issues).
+
 ## Browsers support
 
 uStudio UI supports the latest, stable releases of all major browsers and platforms. It also supports Internet Explorer 11. You don't need to provide any JavaScript polyfill as it manages unsupported browser features internally and in isolation.
