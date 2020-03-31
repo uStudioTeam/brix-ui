@@ -152,6 +152,9 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
           &:focus {
             box-shadow: ${`var(--s-${intent})`};
           }
+          &:active {
+            box-shadow: none;
+          }
         }
       `)};
 
