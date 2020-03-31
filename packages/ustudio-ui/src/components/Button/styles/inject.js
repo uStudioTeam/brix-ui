@@ -167,7 +167,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
         }
 
         &:active {
-          box-shadow: ${`var(--s-${intent})`};
+          box-shadow: none;
         }
       `)};
     `,
