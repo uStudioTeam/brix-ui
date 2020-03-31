@@ -50,7 +50,7 @@ look and feel.
 
 Learn our [code of conduct](/CODE_OF_CONDUCT.md) to become a contributor of uStudio UI.
 
-## Bugs and offers
+## Bugs and proposals
 
 If you find a bug in the source code or a mistake in the documentation, you can help us by submitting an issue to our [GitHub Repository](https://github.com/uStudioCompany/ustudio-ui/issues).
 
