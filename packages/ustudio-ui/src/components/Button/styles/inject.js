@@ -148,13 +148,9 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
           color: ${`var(--c-${intent}-light)`};
 
           ${_outlinedMobileActiveBorder({ disabled, isLoading })};
-
-          &:focus {
-            box-shadow: ${`var(--s-${intent})`};
-          }
-          &:active {
-            box-shadow: none;
-          }
+        }
+        &:active {
+          box-shadow: ${`var(--s-${intent})`};
         }
       `)};
 
@@ -170,12 +166,9 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
           ${_outlinedDesktopActiveFocusBorderColor({ isLoading, intent })}
           ${_outlinedDesktopActiveFocusColor({ isLoading, intent })};
         }
-        &:focus {
-          box-shadow: ${`var(--s-${intent})`};
-        }
 
         &:active {
-          box-shadow: none;
+          box-shadow: ${`var(--s-${intent})`};
         }
       `)};
     `,
