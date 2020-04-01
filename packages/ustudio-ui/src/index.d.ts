@@ -20,7 +20,6 @@ export { default as Progress } from './components/Progress';
 export { default as RadioGroup } from './components/RadioGroup';
 export { default as MultiSelect } from './components/Select/MultiSelect';
 export { default as Select } from './components/Select/Select';
-export { default as Slider } from './components/Slider';
 export { default as Spinner } from './components/Spinner';
 export { default as Switch } from './components/Switch';
 export { default as Tabs } from './components/Tabs';
