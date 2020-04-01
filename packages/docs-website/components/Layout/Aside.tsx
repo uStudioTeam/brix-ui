@@ -135,7 +135,6 @@ const Aside: FC<{ className?: string }> = ({ className }) => {
                 'Text input',
                 'Text area',
                 'Switch',
-                'Slider',
                 'Number input',
                 'File input',
                 'Checkbox',

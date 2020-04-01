@@ -4,7 +4,7 @@ import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 import { animation } from './animation';
 
-const Progress = styled.progress(
+const Progress = styled.div(
   ({ value, max }) => css`
     appearance: none;
     overflow: hidden;

@@ -6,6 +6,7 @@
     "ustudio-ui:dev": "yarn --cwd packages/ustudio-ui dev",
     "ustudio-ui:build": "yarn --cwd packages/ustudio-ui build",
     "ustudio-ui:release": "yarn --cwd packages/ustudio-ui release",
+    "ustudio-ui:publish": "yarn --cwd packages/ustudio-ui publication",
     "docs-website:dev": "yarn ustudio-ui:build && yarn --cwd packages/docs-website dev",
     "docs-website:build": "yarn ustudio-ui:build && yarn --cwd packages/docs-website build",
     "docs-website:deploy": "yarn ustudio-ui:build && yarn --cwd packages/docs-website deploy"

@@ -29,16 +29,30 @@ const _outlinedMobileActiveBorder = ({ disabled, isLoading }) => {
     : '';
 };
 
-const _outlinedDesktopHoverBorder = ({ disabled, isLoading }) => {
-  return disabled || isLoading ? 'border-color: var(--c-neutral)' : `border-color: rgba(255, 255, 255, 0)`;
-};
-
 const _outlinedDesktopHoverColor = ({ disabled, isLoading, intent }) => {
+  const getColor = () => {
+    if (disabled) return 'var(--c-neutral)';
+    if (isLoading) return 'transparent';
+
+    return `var(--c-${intent}-light)}`;
+  };
+
   return css`
-    color: ${disabled || isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+    color: ${getColor()};
   `;
 };
 
+const _outlinedActiveFocusColor = ({ isLoading, intent }) => {
+  return css`
+    color: ${isLoading ? 'transparent' : `var(--c-${intent}-light)`};
+  `;
+};
+
+const _outlinedDesktopActiveFocusBorderColor = ({ isLoading, intent }) => {
+  return css`
+    border-color: ${isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+  `;
+};
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
   return {
     text: css`
@@ -73,7 +87,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.1};
           }
         }
-
+      `)};
+      ${Mixin.Device.desktop(css`
         &:focus {
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.2};
@@ -85,7 +100,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.3};
           }
         }
-      `)}
+      `)};
     `,
     contained: css`
       ${Mixin.Style.inputPadding()};
@@ -106,7 +121,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
         &:hover {
           background-position-y: -39px;
         }
-
+      `)};
+      ${Mixin.Device.desktop(css`
         &:focus {
           box-shadow: ${`var(--s-${intent})`};
         }
@@ -127,28 +143,31 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
 
       ${Mixin.Device.mobile(css`
         &:active {
-          color: ${`var(--c-${intent}-light)`};
+          ${_outlinedActiveFocusColor({ isLoading, intent })};
 
           ${_outlinedMobileActiveBorder({ disabled, isLoading })};
+
+          box-shadow: ${`var(--s-${intent})`};
         }
       `)};
 
       ${Mixin.Device.desktop(css`
         &:hover {
-          ${_outlinedDesktopHoverBorder({ disabled, isLoading })};
-          ${_outlinedDesktopHoverColor({ disabled, isLoading, intent })};
           box-shadow: ${`var(--s-${intent})`};
+          ${_outlinedDesktopHoverColor({ disabled, isLoading, intent })};
+        }
+      `)};
+      ${Mixin.Device.desktop(css`
+        &:focus,
+        &:active {
+          ${_outlinedDesktopActiveFocusBorderColor({ isLoading, intent })}
+          ${_outlinedActiveFocusColor({ isLoading, intent })};
         }
 
         &:focus {
-          border-color: ${`var(--c-${intent}-light)`};
-          color: ${`var(--c-${intent}-light)`};
           box-shadow: ${`var(--s-${intent})`};
         }
-
         &:active {
-          color: ${`var(--c-${intent}-light)`};
-          border-color: ${_outlinedBorder({ disabled, isLoading })};
           box-shadow: none;
         }
       `)};

@@ -30,6 +30,6 @@ const countCellsSizes = cells =>
     [breakpoint]: Children.map(_filterChildren(cells), ({ props }) => _countCellTotalSize({ ...props[breakpoint] })),
   }));
 
-const mapCells = cells => Children.map(_filterChildren(cells), (cell, index) => cloneElement(cell, { index }));
+const mapCells = cells => Children.map(cells, (cell, index) => cloneElement(cell, { index }));
 
 export const gridUtils = { countDivisions, countCellsSizes, mapCells, countCells, reduceBreakpointsToObject };

@@ -64,9 +64,6 @@ export * from './components/Select/Select';
 export { default as MultiSelect } from './components/Select/MultiSelect';
 export * from './components/Select/MultiSelect';
 
-export { default as Slider } from './components/Slider';
-export * from './components/Slider';
-
 export { default as Spinner } from './components/Spinner';
 export * from './components/Spinner';
 

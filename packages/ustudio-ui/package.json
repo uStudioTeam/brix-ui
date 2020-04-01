@@ -1,9 +1,24 @@
 {
   "name": "ustudio-ui",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "index.js",
   "types": "index.d.ts",
   "author": "uStudio Front-end Department",
+  "keywords": [
+    "react",
+    "react-component",
+    "components",
+    "ui",
+    "uStudio UI"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uStudioCompany/ustudio-ui.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "homepage": "https://ustudiocompany.github.io/ustudio-ui/",
   "scripts": {
     "create-component": "./scripts/create-component.sh",
     "clean": "rimraf lib",
@@ -12,7 +27,8 @@
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
     "build": "npm-run-all clean -p build:components build:dts",
     "copy-files": "node scripts/copy-files.js",
-    "release": "yarn build && yarn copy-files && yarn publish lib"
+    "release": "yarn build && yarn copy-files && standard-version",
+    "publication": "yarn publish lib"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"
@@ -45,6 +61,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.1",
     "rimraf": "^3.0.2",
+    "standard-version": "^7.1.0",
     "storybook-addon-jsx": "^7.1.13",
     "styled-components": "^5.0.0",
     "stylelint": "^13.0.0",
@@ -63,6 +80,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "rimraf ../../CHANGELOG.md && copyfiles CHANGELOG.md ../../"
+    },
+    "skip": {
+      "commit": true
     }
   },
   "eslintConfig": {
