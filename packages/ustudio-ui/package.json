@@ -27,6 +27,7 @@
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
     "build": "npm-run-all clean -p build:components build:dts",
     "copy-files": "node scripts/copy-files.js",
+    "pre-release": "rimraf ../../CHANGELOG.md && copyfiles CHANGELOG.md ../../ && rimraf CHANGELOG.md",
     "release": "yarn build && yarn copy-files && standard-version",
     "publication": "yarn publish lib"
   },
@@ -80,6 +81,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "pre-release"
     }
   },
   "eslintConfig": {
