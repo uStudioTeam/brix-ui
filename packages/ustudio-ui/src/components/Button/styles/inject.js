@@ -29,10 +29,6 @@ const _outlinedMobileActiveBorder = ({ disabled, isLoading }) => {
     : '';
 };
 
-const _outlinedDesktopHoverBorder = ({ disabled, isLoading }) => {
-  return disabled || isLoading ? 'border-color: var(--c-neutral)' : `border-color: rgba(255, 255, 255, 0)`;
-};
-
 const _outlinedDesktopHoverColor = ({ disabled, isLoading, intent }) => {
   const getColor = () => {
     if (disabled) return 'var(--c-neutral)';
@@ -52,9 +48,9 @@ const _outlinedActiveFocusColor = ({ isLoading, intent }) => {
   `;
 };
 
-const _outlinedDesktopActiveFocusBorderColor = ({ isLoading, intent }) => {
+const _outlinedDesktopActiveFocusBorderColor = ({ isLoading }) => {
   return css`
-    border-color: ${isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
+    border-color: ${isLoading ? 'var(--c-neutral)' : `rgba(255, 255, 255, 0)`};
   `;
 };
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
@@ -91,7 +87,9 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.1};
           }
         }
+      `)};
 
+      ${Mixin.Device.desktop(css`
         &:focus {
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.2};
@@ -124,7 +122,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
         &:hover {
           background-position-y: -39px;
         }
-
+      `)};
+      ${Mixin.Device.desktop(css`
         &:focus {
           box-shadow: ${`var(--s-${intent})`};
         }
@@ -156,16 +155,19 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
       ${Mixin.Device.desktop(css`
         &:hover {
           box-shadow: ${`var(--s-${intent})`};
-          ${_outlinedDesktopHoverBorder({ disabled, isLoading })};
           ${_outlinedDesktopHoverColor({ disabled, isLoading, intent })};
         }
-
+      `)};
+      ${Mixin.Device.desktop(css`
         &:focus,
         &:active {
           ${_outlinedDesktopActiveFocusBorderColor({ isLoading, intent })}
           ${_outlinedActiveFocusColor({ isLoading, intent })};
         }
 
+        &:focus {
+          box-shadow: ${`var(--s-${intent})`};
+        }
         &:active {
           box-shadow: none;
         }
