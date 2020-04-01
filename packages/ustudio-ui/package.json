@@ -16,7 +16,7 @@
     "url": "git://github.com/uStudioCompany/ustudio-ui.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "homepage": "https://ustudiocompany.github.io/ustudio-ui/",
   "scripts": {
