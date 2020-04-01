@@ -48,9 +48,9 @@ const _outlinedActiveFocusColor = ({ isLoading, intent }) => {
   `;
 };
 
-const _outlinedDesktopActiveFocusBorderColor = ({ isLoading }) => {
+const _outlinedDesktopActiveFocusBorderColor = ({ isLoading, intent }) => {
   return css`
-    border-color: ${isLoading ? 'var(--c-neutral)' : `rgba(255, 255, 255, 0)`};
+    border-color: ${isLoading ? 'var(--c-neutral)' : `var(--c-${intent}-light)`};
   `;
 };
 const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = 'contained' }) => {
@@ -87,7 +87,8 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.1};
           }
         }
-
+      `)};
+      ${Mixin.Device.desktop(css`
         &:focus {
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.2};
