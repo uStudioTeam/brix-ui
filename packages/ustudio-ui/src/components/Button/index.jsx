@@ -37,6 +37,7 @@ const Button = forwardRef(function Button(
         children,
         ...htmlAttributes,
       }}
+      onTouchStart={() => {}}
     >
       {iconBefore}
 

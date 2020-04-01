@@ -87,9 +87,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.1};
           }
         }
-      `)};
 
-      ${Mixin.Device.desktop(css`
         &:focus {
           &:after {
             opacity: ${disabled || isLoading ? 0 : 0.2};
@@ -101,7 +99,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
             opacity: ${disabled || isLoading ? 0 : 0.3};
           }
         }
-      `)}
+      `)};
     `,
     contained: css`
       ${Mixin.Style.inputPadding()};
