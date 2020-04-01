@@ -24,7 +24,8 @@
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
     "build": "npm-run-all clean -p build:components build:dts",
     "copy-files": "node scripts/copy-files.js",
-    "release": "yarn build && yarn copy-files && yarn publish lib"
+    "release": "yarn build && yarn copy-files && standard-version",
+    "publication": "yarn publish lib"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"
@@ -57,6 +58,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.1",
     "rimraf": "^3.0.2",
+    "standard-version": "^7.1.0",
     "storybook-addon-jsx": "^7.1.13",
     "styled-components": "^5.0.0",
     "stylelint": "^13.0.0",
