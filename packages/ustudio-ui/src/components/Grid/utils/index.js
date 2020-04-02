@@ -4,7 +4,7 @@ import { Mixin } from '../../../theme';
 const _countCellTotalSize = ({ size = 1, offset }) => size + (offset?.before || 0) + (offset?.after || 0);
 
 const _filterChildren = children => {
-  return Children.toArray(children).filter(child => child?.type.name === 'Cell');
+  return Children.toArray(children).filter(child => child?.type.name === 'Cell' || child?.type.displayName);
 };
 
 const countCells = cells => {
@@ -30,6 +30,6 @@ const countCellsSizes = cells =>
     [breakpoint]: Children.map(_filterChildren(cells), ({ props }) => _countCellTotalSize({ ...props[breakpoint] })),
   }));
 
-const mapCells = cells => Children.map(cells, (cell, index) => cloneElement(cell, { index }));
+const mapCells = cells => Children.map(_filterChildren(cells), (cell, index) => cloneElement(cell, { index }));
 
 export const gridUtils = { countDivisions, countCellsSizes, mapCells, countCells, reduceBreakpointsToObject };
