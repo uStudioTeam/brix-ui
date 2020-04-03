@@ -6,6 +6,7 @@ import { classNames, common } from '../../../utils';
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
+import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 
 const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
   const { divisions, cellsSizes, cellsCount } = useMemo(
@@ -44,7 +45,7 @@ const cellsValidator = (props, propName, componentName) => {
   const cells = props[propName];
 
   const validateCell = cell => {
-    if (gridUtils.validateCell(cell)) {
+    if (gridUtils.validateChild(cell)) {
       throw new Error(
         `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell
           .type?.name || cell?.type?.target?.name}".`
@@ -72,7 +73,7 @@ const cellsValidator = (props, propName, componentName) => {
 Grid.propTypes = {
   children: cellsValidator,
   isContainer: PropTypes.bool,
-  ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
+  ...reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({
       template: PropTypes.string,
       maxWidth: PropTypes.number,

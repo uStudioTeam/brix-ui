@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { classNames } from '../../../utils/prop-types';
 
-import { gridUtils } from '../utils';
+import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 import { GridContext } from '../utils/context';
 
 import { Styled } from '../styles';
@@ -27,7 +27,7 @@ Cell.displayName = 'Cell';
 
 Cell.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
-  ...gridUtils.reduceBreakpointsToObject(breakpoint => ({
+  ...reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({
       size: PropTypes.number,
       offset: PropTypes.exact({

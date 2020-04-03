@@ -1,32 +1,27 @@
 import { Children, cloneElement, createElement } from 'react';
-import { Mixin } from '../../../theme';
 import Cell from '../Cell';
 
-const _countCellTotalSize = ({ size = 1, offset }) => size + (offset?.before || 0) + (offset?.after || 0);
+import { reduceBreakpointsToObject } from './reduce-breakpoints';
 
 const _checkCellType = cell => {
   return typeof cell !== 'boolean' && typeof cell !== 'undefined' && cell !== null && cell !== '';
 };
 
-const validateCell = cell => {
+const validateChild = child => {
   const donor = createElement(Cell, { children: '' });
 
-  return (cell?.type?.name || cell?.type?.target?.name) !== donor?.type?.name && _checkCellType(cell);
+  return (child?.type?.name || child?.type?.target?.name) !== donor?.type?.name && _checkCellType(child);
 };
 
 const _filterChildren = children => {
-  return Children.toArray(children).filter(child => !validateCell(child));
+  return Children.toArray(children).filter(child => !validateChild(child));
 };
+
+const _countCellTotalSize = ({ size = 1, offset }) => size + (offset?.before || 0) + (offset?.after || 0);
 
 const countCells = cells => {
   return Children.count(_filterChildren(cells));
 };
-
-const reduceBreakpointsToObject = breakpointCallback =>
-  Object.keys(Mixin.Screen).reduce(
-    (destinationObject, breakpoint) => Object.assign(destinationObject, breakpointCallback(breakpoint)),
-    {}
-  );
 
 const countDivisions = cells =>
   reduceBreakpointsToObject(breakpoint => ({
@@ -44,10 +39,9 @@ const countCellsSizes = cells =>
 const mapCells = cells => Children.map(_filterChildren(cells), (cell, index) => cloneElement(cell, { index }));
 
 export const gridUtils = {
-  validateCell,
+  validateChild,
   countDivisions,
   countCellsSizes,
   mapCells,
   countCells,
-  reduceBreakpointsToObject,
 };
