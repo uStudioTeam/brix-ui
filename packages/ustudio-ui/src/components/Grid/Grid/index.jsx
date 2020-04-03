@@ -44,7 +44,7 @@ const cellsValidator = (props, propName, componentName) => {
   const cells = props[propName];
 
   const validateCell = cell => {
-    if (cell?.type && (cell.type?.name !== 'Cell' || child.type?.displayName)) {
+    if (cell?.type && (cell.type?.name !== 'Cell' || !cell.type?.displayName)) {
       throw new Error(
         `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type?.name}".`
       );
