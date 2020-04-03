@@ -1,8 +1,7 @@
-import React, { createElement, useMemo } from 'react';
+import React, {  useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../../utils';
-import Cell from '../Cell';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
