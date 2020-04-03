@@ -43,7 +43,6 @@ Grid.displayName = 'Grid';
 
 const cellsValidator = (props, propName, componentName) => {
   const cells = props[propName];
-  const donor = createElement(Cell, { children: '' });
 
   const validateCell = cell => {
     if (gridUtils.validateCell(cell)) {
