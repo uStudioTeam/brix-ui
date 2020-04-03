@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.1...v1.1.2) (2020-04-03)
+
+
+### Bug Fixes
+
+* **Grid:** fix children prop type validation, remove filtering from render function ([43f76a6](https://github.com/uStudioCompany/ustudio-ui/commit/43f76a6dbad90e7818eddad00bfce42770f12942))
+* **Grid:** update children validation logic ([6c5a9df](https://github.com/uStudioCompany/ustudio-ui/commit/6c5a9df27b806df746b946b00accf04f4095d6cd))
+
 ### [1.1.1](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.2...v1.1.1) (2020-04-02)
 
 ## 1.1.0 (2020-04-01)
