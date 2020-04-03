@@ -1,10 +1,21 @@
-import { Children, cloneElement } from 'react';
+import { Children, cloneElement, createElement } from 'react';
 import { Mixin } from '../../../theme';
+import Cell from '../Cell';
 
 const _countCellTotalSize = ({ size = 1, offset }) => size + (offset?.before || 0) + (offset?.after || 0);
 
+const _checkCellType = cell => {
+  return typeof cell !== 'boolean' && typeof cell !== 'undefined' && cell !== null && cell !== '';
+};
+
+const validateCell = cell => {
+  const donor = createElement(Cell, { children: '' });
+
+  return (cell?.type?.name || cell?.type?.target?.name) !== donor?.type?.name && _checkCellType(cell);
+};
+
 const _filterChildren = children => {
-  return Children.toArray(children).filter(child => child?.type.name === 'Cell' || child?.type.displayName);
+  return Children.toArray(children).filter(child => !validateCell(child));
 };
 
 const countCells = cells => {
@@ -30,6 +41,13 @@ const countCellsSizes = cells =>
     [breakpoint]: Children.map(_filterChildren(cells), ({ props }) => _countCellTotalSize({ ...props[breakpoint] })),
   }));
 
-const mapCells = cells => Children.map(cells, (cell, index) => cloneElement(cell, { index }));
+const mapCells = cells => Children.map(_filterChildren(cells), (cell, index) => cloneElement(cell, { index }));
 
-export const gridUtils = { countDivisions, countCellsSizes, mapCells, countCells, reduceBreakpointsToObject };
+export const gridUtils = {
+  validateCell,
+  countDivisions,
+  countCellsSizes,
+  mapCells,
+  countCells,
+  reduceBreakpointsToObject,
+};

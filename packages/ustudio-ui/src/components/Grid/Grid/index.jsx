@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { createElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { classNames, common } from '../../../utils';
+import Cell from '../Cell';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
@@ -42,11 +43,13 @@ Grid.displayName = 'Grid';
 
 const cellsValidator = (props, propName, componentName) => {
   const cells = props[propName];
+  const donor = createElement(Cell, { children: '' });
 
   const validateCell = cell => {
-    if (cell?.type && (cell.type?.name !== 'Cell' || !cell.type?.displayName)) {
+    if (gridUtils.validateCell(cell)) {
       throw new Error(
-        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell.type?.name}".`
+        `Invalid prop "${propName}" passed to "${componentName}". Expected Cell component as children but received - "${cell
+          .type?.name || cell?.type?.target?.name}".`
       );
     }
   };
