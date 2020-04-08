@@ -73,7 +73,9 @@ const gridBreakpointTemplate = ({ divisions, cellsCount, breakpoints }) => {
 
 const cellTemplate = ({ cellsSizes, index, gridBreakpoints, breakpoints, offsets }) => {
   return _getElementTemplate(
-    Object.keys(breakpoints).filter(key => breakpoints[key] || offsets?.[index - 1] !== 0),
+    Object.keys(breakpoints).filter(
+      breakpoint => breakpoints[breakpoint] || (offsets[breakpoint]?.[index - 1] || 0) !== 0
+    ),
     {
       breakpointTemplateCallback: ({ destinationTemplate, breakpoint }) => {
         const {
@@ -106,7 +108,7 @@ const cellTemplate = ({ cellsSizes, index, gridBreakpoints, breakpoints, offsets
         `;
       },
       defaultTemplate: css`
-      grid-${defaultGridDirection}: auto;
+      grid-${defaultGridDirection}: unset;
     `,
     }
   );
