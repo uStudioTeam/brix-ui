@@ -4,11 +4,13 @@ import { getAlignment, reverseDirection } from '../../../utils';
 
 const [defaultGridDirection, defaultGridTemplate, defaultGridGap] = ['row', '', 0];
 
-const _definedBreakpoints = breakpoints => Object.keys(breakpoints).filter(breakpoint => breakpoints[breakpoint]);
+const _definedBreakpoints = ({ breakpoints, divisions, cellsCount }) => {
+  return Object.keys(breakpoints).filter(breakpoint => breakpoints[breakpoint] || divisions[breakpoint] !== cellsCount);
+};
 
 const _getElementTemplate = (breakpoints, { breakpointTemplateCallback, defaultTemplate }) => {
-  if (_definedBreakpoints(breakpoints).length) {
-    return _definedBreakpoints(breakpoints).reduce(
+  if (breakpoints.length) {
+    return breakpoints.reduce(
       (destinationTemplate, breakpoint) => breakpointTemplateCallback({ destinationTemplate, breakpoint }),
       ``
     );
@@ -23,6 +25,7 @@ const _getBreakpointData = ({ breakpoints, breakpoint }) =>
 const _gridTemplate = ({ direction = defaultGridDirection, template = defaultGridTemplate, divisions }) => {
   return css`
     ${`grid-template-${reverseDirection(direction)}s: ${template || `repeat(${divisions}, 1fr)`}`};
+    ${`grid-template-${direction}s: unset;`};
   `;
 };
 
@@ -45,14 +48,10 @@ const gridContainerStyles = ({ breakpoints }) => {
 };
 
 const gridBreakpointTemplate = ({ divisions, cellsCount, breakpoints }) => {
-  return _getElementTemplate(breakpoints, {
+  return _getElementTemplate(_definedBreakpoints({ breakpoints, divisions, cellsCount }), {
     breakpointTemplateCallback: ({ destinationTemplate, breakpoint }) => {
-      const {
-        direction = defaultGridDirection,
-        template = defaultGridTemplate,
-        gap = defaultGridGap,
-        alignment,
-      } = breakpoints[breakpoint];
+      const { direction = defaultGridDirection, template = defaultGridTemplate, gap = defaultGridGap, alignment } =
+        breakpoints[breakpoint] || {};
 
       return css`
         ${destinationTemplate};
@@ -72,36 +71,45 @@ const gridBreakpointTemplate = ({ divisions, cellsCount, breakpoints }) => {
   });
 };
 
-const cellTemplate = ({ cellsSizes, index, gridBreakpoints, breakpoints }) => {
-  return _getElementTemplate(breakpoints, {
-    breakpointTemplateCallback: ({ destinationTemplate, breakpoint }) => {
-      const {
-        direction: gridDirection = defaultGridDirection,
-        template: gridTemplate = defaultGridTemplate,
-      } = _getBreakpointData({
-        breakpoints: gridBreakpoints,
-        breakpoint,
-      });
+const cellTemplate = ({ cellsSizes, index, gridBreakpoints, breakpoints, offsets }) => {
+  return _getElementTemplate(
+    Object.keys(breakpoints).filter(key => breakpoints[key] || offsets?.[index - 1] !== 0),
+    {
+      breakpointTemplateCallback: ({ destinationTemplate, breakpoint }) => {
+        const {
+          direction: gridDirection = defaultGridDirection,
+          template: gridTemplate = defaultGridTemplate,
+        } = _getBreakpointData({
+          breakpoints: gridBreakpoints,
+          breakpoint,
+        });
 
-      const { size = 1, offset } = _getBreakpointData({ breakpoints, breakpoint });
-      const { before: offsetBefore = 0 } = offset || {};
+        const { size = 1, offset } = _getBreakpointData({ breakpoints, breakpoint });
+        const { before: offsetBefore = 0 } = offset || {};
 
-      const start = cellsSizes[breakpoint].slice(0, index).reduce((allSizes, currentSize) => allSizes + currentSize, 1);
+        const start = cellsSizes[breakpoint]
+          .slice(0, index)
+          .reduce((allSizes, currentSize) => allSizes + currentSize, 1);
 
-      return css`
-        ${destinationTemplate};
+        return css`
+          ${destinationTemplate};
 
-        ${!gridTemplate
-          ? css`
-              ${Mixin.Screen[breakpoint](css`grid-${gridDirection}: ${start + offsetBefore} / span ${size}`)}
-            `
-          : ``};
-      `;
-    },
-    defaultTemplate: css`
+          ${!gridTemplate
+            ? css`
+                ${Mixin.Screen[breakpoint](
+                  css`grid-${reverseDirection(gridDirection)}: ${start +
+                    offsetBefore +
+                    (offsets?.[index - 1] || 0)} / span ${size}`
+                )}
+              `
+            : ``};
+        `;
+      },
+      defaultTemplate: css`
       grid-${defaultGridDirection}: auto;
     `,
-  });
+    }
+  );
 };
 
 export const inject = { gridBreakpointTemplate, gridContainerStyles, cellTemplate };

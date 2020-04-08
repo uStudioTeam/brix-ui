@@ -3,10 +3,10 @@ import { StyledComponents } from '../../../utils/styles/styled-component';
 import { inject } from './inject';
 
 const Cell = styled.div(
-  ({ index, cellsSizes, gridBreakpoints, breakpoints }) => css`
+  ({ index, cellsSizes, gridBreakpoints, breakpoints, offsets }) => css`
     display: flex;
 
-    ${inject.cellTemplate({ cellsSizes, index, gridBreakpoints, breakpoints })};
+    ${inject.cellTemplate({ cellsSizes, index, gridBreakpoints, breakpoints, offsets })};
   `
 );
 

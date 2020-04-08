@@ -9,11 +9,12 @@ import { GridContext } from '../utils/context';
 import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 
 const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
-  const { divisions, cellsSizes, cellsCount } = useMemo(
+  const { divisions, cellsSizes, cellsCount, offsets } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
       cellsSizes: gridUtils.countCellsSizes(cells),
       cellsCount: gridUtils.countCells(cells),
+      offsets: gridUtils.countOffsets(cells)
     }),
     [cells]
   );
@@ -31,6 +32,7 @@ const Grid = ({ children: cells, isContainer = false, classNames, className = ''
         value={{
           cellsSizes,
           gridBreakpoints: { xs, md, lg, xl },
+          offsets
         }}
       >
         {gridUtils.mapCells(cells)}

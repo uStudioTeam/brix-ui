@@ -26,22 +26,6 @@ gridStory
     return (
       <Grid isContainer xs={{ gap: 16, direction: 'column' }}>
         <Cell>
-          <StyledBox>1</StyledBox>
-        </Cell>
-
-        <Cell>
-          <Grid xs={{ gap: 16 }}>
-            <Cell>
-              <StyledBox>1/2</StyledBox>
-            </Cell>
-
-            <Cell>
-              <StyledBox>1/2</StyledBox>
-            </Cell>
-          </Grid>
-        </Cell>
-
-        <Cell>
           <Grid xs={{ gap: 16 }}>
             <Cell>
               <Flex>
@@ -49,7 +33,7 @@ gridStory
               </Flex>
             </Cell>
 
-            <Cell>
+            <Cell md={{ size: 3, offset: { before: 2, after: 1 } }}>
               <StyledBox>1/3</StyledBox>
             </Cell>
 

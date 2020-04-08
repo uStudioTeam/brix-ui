@@ -36,6 +36,12 @@ const countCellsSizes = cells =>
     [breakpoint]: Children.map(_filterChildren(cells), ({ props }) => _countCellTotalSize({ ...props[breakpoint] })),
   }));
 
+const countOffsets = cells => {
+  return reduceBreakpointsToObject(breakpoint => ({
+    [breakpoint]: Children.map(_filterChildren(cells), ({ props }) => props[breakpoint]?.offset?.after || 0),
+  }));
+};
+
 const mapCells = cells => Children.map(_filterChildren(cells), (cell, index) => cloneElement(cell, { index }));
 
 export const gridUtils = {
@@ -44,4 +50,5 @@ export const gridUtils = {
   countCellsSizes,
   mapCells,
   countCells,
+  countOffsets
 };
