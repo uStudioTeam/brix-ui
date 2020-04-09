@@ -22,10 +22,10 @@
     "dev": "start-storybook -p 9009 -s public",
     "build:components": "babel src --out-dir lib --config-file ./.storybook/babel.config.js",
     "build:dts": "copyfiles -u 1 -e src/react-app-env.d.ts -e src/typings.d.ts 'src/**/*.d.ts' lib",
-    "build": "npm-run-all clean -p build:components build:dts",
-    "copy-files": "node scripts/copy-files.js",
-    "release": "yarn build && yarn copy-files && standard-version",
-    "publication": "yarn publish lib"
+    "build:copy": "node scripts/copy-files.js",
+    "build": "npm-run-all clean -p build:components build:dts -s build:copy",
+    "release": "standard-version",
+    "publication": "yarn build && yarn publish lib"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"
