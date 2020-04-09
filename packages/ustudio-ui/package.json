@@ -15,9 +15,6 @@
     "type": "git",
     "url": "git://github.com/uStudioCompany/ustudio-ui.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "homepage": "https://ustudiocompany.github.io/ustudio-ui/",
   "scripts": {
     "create-component": "./scripts/create-component.sh",
