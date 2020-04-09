@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.2...v1.1.3) (2020-04-09)
+
+
+### Bug Fixes
+
+* **Grid:** Fix calculation of Grid and Cell templates ([925e6e1](https://github.com/uStudioCompany/ustudio-ui/commit/925e6e1b9df75e98e5e3683972f94691e5ec2301))
+* **Grid:** Fix Cell calculations ([08a0699](https://github.com/uStudioCompany/ustudio-ui/commit/08a06991a79bd5976ea20df56e2075aba264e7fa))
+
 ### [1.1.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.1...v1.1.2) (2020-04-03)
 
 
