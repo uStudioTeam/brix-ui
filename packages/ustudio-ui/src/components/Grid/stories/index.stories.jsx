@@ -64,19 +64,15 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/3</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/3</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/3</Box>
-                </Cell>
-              </Grid>
+              <Box>1/3</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/3</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/3</Box>
             </Cell>
           </Grid>
         </Cell>
@@ -84,15 +80,11 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/2</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/2</Box>
-                </Cell>
-              </Grid>
+              <Box>1/2</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/2</Box>
             </Cell>
           </Grid>
         </Cell>
@@ -105,19 +97,15 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/4</Box>
-                </Cell>
-
-                <Cell xs={{ size: 2 }}>
-                  <Box>2/4</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/4</Box>
-                </Cell>
-              </Grid>
+              <Box>1/4</Box>
+            </Cell>
+    
+            <Cell xs={{ size: 2 }}>
+              <Box>2/4</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/4</Box>
             </Cell>
           </Grid>
         </Cell>
@@ -125,19 +113,15 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/5</Box>
-                </Cell>
-
-                <Cell xs={{ size: 3 }}>
-                  <Box>2/5</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/5</Box>
-                </Cell>
-              </Grid>
+              <Box>1/5</Box>
+            </Cell>
+    
+            <Cell xs={{ size: 3 }}>
+              <Box>2/5</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/5</Box>
             </Cell>
           </Grid>
         </Cell>
@@ -150,15 +134,11 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/2</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/2</Box>
-                </Cell>
-              </Grid>
+              <Box>1/2</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/2</Box>
             </Cell>
           </Grid>
         </Cell>
@@ -166,19 +146,15 @@ gridStory
         <Cell>
           <Grid>
             <Cell>
-              <Grid>
-                <Cell>
-                  <Box>1/4</Box>
-                </Cell>
-
-                <Cell>
-                  <Box>1/4</Box>
-                </Cell>
-
-                <Cell xs={{ size: 2 }}>
-                  <Box>2/4</Box>
-                </Cell>
-              </Grid>
+              <Box>1/4</Box>
+            </Cell>
+    
+            <Cell>
+              <Box>1/4</Box>
+            </Cell>
+    
+            <Cell xs={{ size: 2 }}>
+              <Box>2/4</Box>
             </Cell>
           </Grid>
         </Cell>
