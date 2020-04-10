@@ -32,22 +32,6 @@ const _gridTemplate = ({ direction = defaultGridDirection, template = defaultGri
 };
 
 const gridContainerStyles = ({ breakpoints }) => {
-  /*return Object.keys(Mixin.Screen).reduce((styles, breakpoint) => {
-    const { maxWidth, gap = defaultGridGap, direction = defaultGridDirection } = _getBreakpointData({
-      breakpoints,
-      breakpoint,
-    });
-
-    return css`
-      ${styles};
-
-      ${Mixin.Screen[breakpoint](css`
-        max-width: calc(
-          ${maxWidth ? `${maxWidth}px` : `var(--bp-${breakpoint})`} - ${2 * (gap && direction === 'row' ? gap : 0)}px
-        );
-      `)};
-    `;
-  }, ``);*/
   return _getElementTemplate(Object.keys(breakpoints), {
     breakpointTemplateCallback: ({ destinationTemplate, breakpoint }) => {
       const { maxWidth, gap = defaultGridGap, direction = defaultGridDirection } = _getBreakpointData({
