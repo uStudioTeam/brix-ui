@@ -60,17 +60,17 @@ gridStory
   })
   .add('Auto layout', () => (
     <Container>
-      <Grid xs={{ gap: 32, direction: 'column' }}>
+      <Grid isContainer xs={{ gap: 32, direction: 'column', maxWidth: 400 }}>
         <Cell>
           <Grid>
             <Cell>
               <Box>1/3</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/3</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/3</Box>
             </Cell>
@@ -82,7 +82,7 @@ gridStory
             <Cell>
               <Box>1/2</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/2</Box>
             </Cell>
@@ -99,11 +99,11 @@ gridStory
             <Cell>
               <Box>1/4</Box>
             </Cell>
-    
+
             <Cell xs={{ size: 2 }}>
               <Box>2/4</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/4</Box>
             </Cell>
@@ -115,11 +115,11 @@ gridStory
             <Cell>
               <Box>1/5</Box>
             </Cell>
-    
+
             <Cell xs={{ size: 3 }}>
               <Box>2/5</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/5</Box>
             </Cell>
@@ -136,7 +136,7 @@ gridStory
             <Cell>
               <Box>1/2</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/2</Box>
             </Cell>
@@ -148,11 +148,11 @@ gridStory
             <Cell>
               <Box>1/4</Box>
             </Cell>
-    
+
             <Cell>
               <Box>1/4</Box>
             </Cell>
-    
+
             <Cell xs={{ size: 2 }}>
               <Box>2/4</Box>
             </Cell>
