@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.3...v1.1.4) (2020-04-10)
+
+
+### Bug Fixes
+
+* **Grid:** Fix isContainer maxWidth calculation ([5e85730](https://github.com/uStudioCompany/ustudio-ui/commit/5e8573028199ed1127baf35133f11e7aa498a1c8))
+
 ### [1.1.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.2...v1.1.3) (2020-04-09)
 
 
