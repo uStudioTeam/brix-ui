@@ -13,12 +13,13 @@ const Dropdown = ({
   onChange,
   title,
   icon = <Icon name="chevron" />,
-  isDefaultOpen = false,
+  isDefaultOpen,
   isDisabled = false,
   classNames,
   className = '',
 }) => {
-  const [isOpen, setOpen] = useState(isDefaultOpen || false);
+  const [internalIsOpen, setOpen] = useState(isDefaultOpen || false);
+  const isOpen = onChange && isDefaultOpen !== undefined ? isDefaultOpen : internalIsOpen;
 
   const { ref, height } = useDropdown(isOpen, 'height');
 
@@ -28,7 +29,17 @@ const Dropdown = ({
     <Styled.DropdownContainer isOpen={isOpen} classNames={classNames} className={className}>
       <Styled.Title
         onClick={() => {
-          onChange && onChange();
+          if (onChange && isDefaultOpen !== undefined) {
+            onChange();
+            return;
+          }
+          
+          if (onChange) {
+            onChange();
+            setOpen(!isOpen);
+            return;
+          }
+  
           setOpen(!isOpen);
         }}
         disabled={isDisabled}
@@ -64,7 +75,6 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
-  isDefaultOpen: false,
   isDisabled: false,
 };
 
