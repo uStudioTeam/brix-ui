@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.5](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.4...v1.1.5) (2020-04-15)
+
+
+### Bug Fixes
+
+* **Dropdown:** make optionally controllable Dropdown work ([cc48043](https://github.com/uStudioCompany/ustudio-ui/commit/cc48043b7aa5a05a308f41079bdb9212c757c808))
+* **Spinner:** fix Spinner delay not properly resolving ([c089fe4](https://github.com/uStudioCompany/ustudio-ui/commit/c089fe4651b472491f8204bec823d098795e1caf)), closes [#140](https://github.com/uStudioCompany/ustudio-ui/issues/140)
+
 ### [1.1.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.3...v1.1.4) (2020-04-10)
 
 
