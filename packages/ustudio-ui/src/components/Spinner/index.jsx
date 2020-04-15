@@ -6,12 +6,13 @@ import { classNames, timeout } from '../../utils';
 import { Styled } from './styles';
 
 const Spinner = ({ appearance, delay, classNames, className = '' }) => {
-  const [isMounted, setMounted] = useState( true);
+  const [isMounted, setMounted] = useState(!delay);
 
   useEffect(() => {
     if (delay ?? delay > 0) {
       setMounted(false);
-      timeout(delay, () => setMounted(true));
+
+      (async () => timeout(delay, () => setMounted(true)))();
     }
   }, [delay]);
 
