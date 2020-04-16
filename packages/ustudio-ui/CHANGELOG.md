@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.1.7](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.6...v1.1.7) (2020-04-16)
-
-
-### Bug Fixes
-
-* **RadioGroup:** add correct names to radio inputs ([cd0b55a](https://github.com/uStudioCompany/ustudio-ui/commit/cd0b55a5736e3ae20c3d2bfded208d13a85d11ad))
-
 ### [1.1.6](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.5...v1.1.6) (2020-04-16)
 
 
