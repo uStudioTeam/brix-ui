@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.5...v1.1.6) (2020-04-16)
+
+
+### Bug Fixes
+
+* **RadioGroup:** add first option as a defaultValue ([c5d87ce](https://github.com/uStudioCompany/ustudio-ui/commit/c5d87ce4bb60a621c0a6b360e9ff1a8b539b6104))
+
 ### [1.1.5](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.4...v1.1.5) (2020-04-15)
 
 
