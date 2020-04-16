@@ -1,5 +1,5 @@
 import { addDecorator, addParameters, storiesOf } from '@storybook/react';
-import { array, boolean, withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';

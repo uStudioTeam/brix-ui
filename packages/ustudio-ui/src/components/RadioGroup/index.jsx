@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { classNames, common, inputProps } from '../../utils';
@@ -23,6 +23,12 @@ const RadioGroup = forwardRef(function RadioGroup(
   },
   ref
 ) {
+  const [internalValue, setInternalValue] = useState(defaultValue ?? Object.values(options)[0]);
+
+  useEffect(() => {
+    onChange(internalValue);
+  }, []);
+
   return (
     <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
       {Object.values(options).map(option => (
@@ -33,12 +39,15 @@ const RadioGroup = forwardRef(function RadioGroup(
               type="radio"
               name={name}
               value={option.value}
-              defaultChecked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
-              onChange={() => onChange(option)}
+              defaultChecked={radioGroupUtils.isOptionSelected({ option, value: internalValue })}
+              onChange={() => {
+                setInternalValue(option);
+                onChange(option);
+              }}
               disabled={option.isDisabled || isDisabled}
               required={isRequired}
               aria-required={isRequired}
-              aria-checked={radioGroupUtils.isOptionSelected({ option, value: value ?? defaultValue })}
+              aria-checked={radioGroupUtils.isOptionSelected({ option, value: internalValue })}
               aria-labelledby={`${name} ${option}`}
               aria-disabled={option.isDisabled}
               classNames={classNames}
