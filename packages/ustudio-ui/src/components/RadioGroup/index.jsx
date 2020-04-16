@@ -29,8 +29,6 @@ const RadioGroup = forwardRef(function RadioGroup(
     onChange(internalValue);
   }, []);
 
-  console.log(internalValue, value);
-
   return (
     <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
       {Object.values(options).map(option => (
@@ -39,7 +37,8 @@ const RadioGroup = forwardRef(function RadioGroup(
             <Styled.Input
               ref={ref}
               type="radio"
-              name={name || id}
+              id={`${id || name}-${option.value}`}
+              name={name}
               value={option.value}
               defaultChecked={radioGroupUtils.isOptionSelected({ option, value: internalValue })}
               onChange={() => {
@@ -50,7 +49,7 @@ const RadioGroup = forwardRef(function RadioGroup(
               required={isRequired}
               aria-required={isRequired}
               aria-checked={radioGroupUtils.isOptionSelected({ option, value: internalValue })}
-              aria-labelledby={`${name || id} ${option.value}`}
+              aria-labelledby={`${name} ${option.value}`}
               aria-disabled={option.isDisabled}
               classNames={classNames}
             />
@@ -75,6 +74,7 @@ const optionType = PropTypes.exact({
 
 RadioGroup.propTypes = {
   ...inputProps(optionType),
+  name: PropTypes.string.isRequired,
   options: PropTypes.objectOf(optionType),
   direction: common.direction,
   isReversed: PropTypes.bool,

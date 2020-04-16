@@ -10,6 +10,7 @@ interface Styled {
 }
 
 interface RadioGroupProps extends Input<Option>, ClassNames<Styled> {
+  name: string;
   options: Record<OptionValue, Option>;
   direction?: Direction;
 }
