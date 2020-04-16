@@ -44,9 +44,14 @@ ${controlledInputDescription('RadioGroup')}.`}
           required: true,
         },
         ...inputProps(`Option`),
+        name: {
+          type: '`string`',
+          required: true,
+          description: 'Binds radio inputs to this group'
+        },
         direction: {
           type: `\`'row' | 'column'\``,
-          defaultValue: '`column`',
+          defaultValue: `\`'column'\``,
         },
         isReversed: {
           type: '`boolean`',
