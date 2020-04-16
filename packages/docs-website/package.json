@@ -18,7 +18,7 @@
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
-    "ustudio-ui": "^1.1.6",
+    "ustudio-ui": "^1.1.7",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-styled-components": "^1.10.7",
     "copyfiles": "^2.2.0",
