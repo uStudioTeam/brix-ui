@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import useDefaultValue from '../../../hooks/use-default-value';
 
 import { BaseInput, props } from '../BaseInput';
 
@@ -21,6 +22,8 @@ const TextArea = forwardRef(function TextArea(
   },
   ref
 ) {
+  useDefaultValue(onChange, { value, defaultValue });
+  
   return (
     <BaseInput
       as="textarea"

@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import useDefaultValue from '../../../hooks/use-default-value';
 
 import { BaseInput, props } from '../BaseInput';
 
@@ -23,6 +24,8 @@ const TextInput = forwardRef(function TextInput(
   },
   ref
 ) {
+  useDefaultValue(onChange, { value, defaultValue });
+
   return (
     <BaseInput
       ref={ref}

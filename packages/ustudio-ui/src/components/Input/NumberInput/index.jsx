@@ -23,7 +23,7 @@ const NumberInput = forwardRef(function NumberInput(
   },
   ref
 ) {
-  const [localValue, setLocalValue] = useState('');
+  const [localValue, setLocalValue] = useState(defaultValue !== undefined ? `${defaultValue}` : '');
 
   const validateValue = validatedValue => {
     const regExp = /^(([\-]?){1})([0-9]*(\d?))[.,]?([0-9]*(\d?))$/;

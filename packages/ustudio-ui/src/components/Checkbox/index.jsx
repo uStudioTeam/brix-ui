@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import useDefaultValue from '../../hooks/use-default-value';
 
 import Icon from '../internal/Icon';
 import { classNames, inputProps } from '../../utils';
@@ -10,6 +11,8 @@ const Checkbox = forwardRef(function Checkbox(
   { id, name, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className = '' },
   ref
 ) {
+  useDefaultValue(onChange, { value, defaultValue });
+  
   return (
     <Styled.CheckboxContainer className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
@@ -17,7 +20,7 @@ const Checkbox = forwardRef(function Checkbox(
         type="checkbox"
         id={id}
         name={name}
-        defaultChecked={value ?? defaultValue}
+        defaultChecked={value}
         onChange={() => {
           onChange && onChange(!value);
         }}

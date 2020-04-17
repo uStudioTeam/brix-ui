@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import useDefaultValue from '../../hooks/use-default-value';
 
 import { classNames, inputProps } from '../../utils';
 
@@ -20,6 +21,8 @@ const Switch = forwardRef(function Switch(
   },
   ref
 ) {
+  useDefaultValue(onChange, { value, defaultValue });
+  
   return (
     <Styled.SwitchContainer className={className} classNames={classNames} isDisabled={isDisabled}>
       <Styled.Input
