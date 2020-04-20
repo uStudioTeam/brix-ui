@@ -22,6 +22,7 @@ interface ArticleProps extends AnyTextProps {
 interface BodyProps extends AnyTextProps {
   variant?: 'body';
   appearance?: 'regular' | 'italic' | 'underlined' | 'bold';
+  color?: string;
 }
 
 export type TextProps = AnyTextProps | (BodyProps | ArticleProps);

@@ -1,5 +1,5 @@
 import { addDecorator, addParameters, storiesOf } from '@storybook/react';
-import { select, withKnobs } from '@storybook/addon-knobs';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React from 'react';
@@ -35,6 +35,8 @@ textStory.add('Primary', () => {
       <Text variant={variant} appearance={appearance} id="id" data-testid="test-id">
         {variant.slice(0, 1).toUpperCase() + variant.slice(1)}
       </Text>
+
+      <Text color={text('Color', 'var(--c-primary)')} align="center">Colored text</Text>
     </SContainer>
   );
 });
