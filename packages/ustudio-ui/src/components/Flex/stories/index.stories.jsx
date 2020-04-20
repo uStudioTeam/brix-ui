@@ -24,6 +24,16 @@ flexStory.add('Primary', () => {
     'center'
   );
 
+  const marginLeft = select('Margin Left', ['small', 'medium', 'regular', 'large'], 'small');
+  const marginRight = select('Margin Right', ['small', 'medium', 'regular', 'large'], 'small');
+  const marginTop = select('Margin Top', ['small', 'medium', 'regular', 'large'], 'small');
+  const marginBottom = select('Margin Bottom', ['small', 'medium', 'regular', 'large'], 'small');
+
+  const paddingLeft = select('Padding Left', ['small', 'medium', 'regular', 'large'], 'small');
+  const paddingRight = select('Padding Right', ['small', 'medium', 'regular', 'large'], 'small');
+  const paddingTop = select('Padding Top', ['small', 'medium', 'regular', 'large'], 'small');
+  const paddingBottom = select('Padding Bottom', ['small', 'medium', 'regular', 'large'], 'small');
+
   return (
     <Flex
       direction={direction}
@@ -32,6 +42,18 @@ flexStory.add('Primary', () => {
       alignment={{
         horizontal: horizontalAlign,
         vertical: verticalAlign,
+      }}
+      margin={{
+        left: marginLeft,
+        right: marginRight,
+        top: marginTop,
+        bottom: marginBottom,
+      }}
+      padding={{
+        left: paddingLeft,
+        right: paddingRight,
+        top: paddingTop,
+        bottom: paddingBottom,
       }}
     >
       {text('Inner content', 'Default flex box')}

@@ -12,6 +12,15 @@ export type Position = 'left' | 'right' | 'top' | 'bottom';
 
 type Align = 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
 
+type Indent = 'small' | 'medium' | 'regular' | 'large';
+
+export interface Indentation {
+  left?: Indent;
+  right?: Indent;
+  top?: Indent;
+  bottom?: Indent;
+}
+
 export interface Alignment {
   vertical?: Align;
   horizontal?: Align;
