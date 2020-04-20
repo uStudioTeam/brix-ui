@@ -24,15 +24,13 @@ flexStory.add('Primary', () => {
     'center'
   );
 
-  const marginLeft = select('Margin Left', ['small', 'medium', 'regular', 'large'], 'small');
-  const marginRight = select('Margin Right', ['small', 'medium', 'regular', 'large'], 'small');
-  const marginTop = select('Margin Top', ['small', 'medium', 'regular', 'large'], 'small');
-  const marginBottom = select('Margin Bottom', ['small', 'medium', 'regular', 'large'], 'small');
+  const indentOptions = ['small', 'medium', 'regular', 'large'];
+  const positions = ['left', 'right', 'top', 'bottom'];
 
-  const paddingLeft = select('Padding Left', ['small', 'medium', 'regular', 'large'], 'small');
-  const paddingRight = select('Padding Right', ['small', 'medium', 'regular', 'large'], 'small');
-  const paddingTop = select('Padding Top', ['small', 'medium', 'regular', 'large'], 'small');
-  const paddingBottom = select('Padding Bottom', ['small', 'medium', 'regular', 'large'], 'small');
+  const indents = type =>
+    positions.reduce((accPositions, position) => {
+      return { ...accPositions, [position]: select(`${type} ${position}`, indentOptions, 'small') };
+    }, {});
 
   return (
     <Flex
@@ -43,18 +41,8 @@ flexStory.add('Primary', () => {
         horizontal: horizontalAlign,
         vertical: verticalAlign,
       }}
-      margin={{
-        left: marginLeft,
-        right: marginRight,
-        top: marginTop,
-        bottom: marginBottom,
-      }}
-      padding={{
-        left: paddingLeft,
-        right: paddingRight,
-        top: paddingTop,
-        bottom: paddingBottom,
-      }}
+      margin={indents('Margin')}
+      padding={indents('Padding')}
     >
       {text('Inner content', 'Default flex box')}
     </Flex>

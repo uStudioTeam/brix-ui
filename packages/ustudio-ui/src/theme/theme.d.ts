@@ -15,10 +15,7 @@ type Align = 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-a
 type Indent = 'small' | 'medium' | 'regular' | 'large';
 
 export interface Indentation {
-  left?: Indent;
-  right?: Indent;
-  top?: Indent;
-  bottom?: Indent;
+  [position: Position]: Indent;
 }
 
 export interface Alignment {
