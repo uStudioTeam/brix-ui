@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {Grid, Cell, Flex} from 'ustudio-ui';
+import { Grid, Cell, Flex } from 'ustudio-ui';
 import styled from 'styled-components';
 
-import {ComponentInfo, ComponentInfoItem, PropsTable} from '../../components';
+import { ComponentInfo, ComponentInfoItem, PropsTable } from '../../components';
 
 const Styled = {
   Flex: styled(Flex)`
@@ -57,24 +57,24 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         margin: {
           type: `\`{
     [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
-}\``
+}\``,
         },
         padding: {
           type: `\`{
     [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
-}\``
+}\``,
         },
       }}
       classNames={['Grid']}
     >
       <ComponentInfoItem>
-        <Grid xs={{gap: 16, direction: 'column'}}>
+        <Grid xs={{ gap: 16, direction: 'column' }}>
           <Cell>
             <Styled.Flex>Rabbit 1</Styled.Flex>
           </Cell>
 
           <Cell>
-            <Grid xs={{gap: 16}}>
+            <Grid xs={{ gap: 16 }}>
               <Cell>
                 <Styled.Flex>Rabbit 2</Styled.Flex>
               </Cell>
@@ -84,7 +84,7 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
             </Grid>
           </Cell>
           <Cell>
-            <Grid xs={{gap: 16}}>
+            <Grid xs={{ gap: 16 }}>
               <Cell>
                 <Styled.Flex>Rabbit 4</Styled.Flex>
               </Cell>
