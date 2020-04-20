@@ -90,6 +90,9 @@ We provide a ready-to-use color scheme that is being consumed by all of our comp
 
 --c-primary-light: #1e96ff;
 --c-primary: #1a81db;
+
+--c-white: #fcfcfc;
+--c-black:  #1a1a1a;
 ```
 
 The main principle here is to not be tied to the color name but to the meaning behind it, so that if you look forward
