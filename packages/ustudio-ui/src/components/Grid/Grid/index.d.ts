@@ -19,7 +19,7 @@ interface GridProps extends GridBreakpointData {
   isContainer?: boolean;
 
   margin?: Indention;
-  padding: Indention;
+  padding?: Indention;
 
   className?: string;
 }
