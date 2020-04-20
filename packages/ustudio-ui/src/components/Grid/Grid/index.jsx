@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, common, wrapperTag } from '../../../utils';
+import { classNames, common } from '../../../utils';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
@@ -75,7 +75,7 @@ const cellsValidator = (props, propName, componentName) => {
 
 Grid.propTypes = {
   children: cellsValidator,
-  as: wrapperTag,
+  as: common.wrapperTag,
   isContainer: PropTypes.bool,
   ...reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({

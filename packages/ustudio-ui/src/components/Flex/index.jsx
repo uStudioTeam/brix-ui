@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, common, wrapperTag } from '../../utils';
+import { classNames, common } from '../../utils';
 
 import { Styled } from './styles';
 
@@ -23,7 +23,7 @@ Flex.displayName = 'Flex';
 
 Flex.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  as: wrapperTag,
+  as: common.wrapperTag,
   direction: common.direction,
   isReversed: PropTypes.bool,
   isInline: PropTypes.bool,
