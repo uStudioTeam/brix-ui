@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Alignment, Breakpoint, Direction } from '../../../theme/theme';
 import Cell, { CellProps } from '../Cell';
+import { Indention } from '../../../../lib/theme/theme';
 
 type GridBreakpointData = {
   [breakpoint in Breakpoint]?: {
@@ -16,6 +17,9 @@ interface GridProps extends GridBreakpointData {
   children: ReactNode<CellProps, typeof Cell> | ReactNode<CellProps, typeof Cell>[];
 
   isContainer?: boolean;
+
+  margin?: Indention;
+  padding: Indention;
 
   className?: string;
 }
