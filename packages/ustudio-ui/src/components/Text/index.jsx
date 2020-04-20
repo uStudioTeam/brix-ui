@@ -44,7 +44,7 @@ Text.propTypes = {
 
 Text.defaultProps = {
   variant: 'body',
-  align: 'left',
+  align: 'inherit',
   appearance: 'regular',
 };
 
