@@ -33,7 +33,7 @@ const TextPage = () => {
         },
         align: {
           type: `\`'left' | 'center' | 'right'\``,
-          defaultValue: `\`'left'\``,
+          defaultValue: `\`'inherit'\``,
         },
         appearance: {
           type: `\`'regular' | 'italic' | 'underlined' | 'bold'\``,
