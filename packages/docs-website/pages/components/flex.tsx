@@ -34,6 +34,10 @@ const FlexPage = () => {
         children: {
           type: '`ReactNode`',
         },
+        as: {
+          type: `\`'div' | 'header' | 'footer' | 'main' | 'aside' | 'section' | 'nav'\``,
+          defaultValue: '`div`',
+        },
         direction: {
           type: `\`'row' | 'column'\``,
           defaultValue: '`row`',

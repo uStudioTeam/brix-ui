@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, common } from '../../../utils';
+import { classNames, common, wrapperTag } from '../../../utils';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 
-const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
+const Grid = ({ children: cells, as = 'div', isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
   const { divisions, cellsSizes, cellsCount, offsets } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
@@ -21,6 +21,7 @@ const Grid = ({ children: cells, isContainer = false, classNames, className = ''
 
   return (
     <Styled.Grid
+      as={as}
       divisions={divisions}
       isContainer={isContainer}
       cellsCount={cellsCount}
@@ -74,6 +75,7 @@ const cellsValidator = (props, propName, componentName) => {
 
 Grid.propTypes = {
   children: cellsValidator,
+  as: wrapperTag,
   isContainer: PropTypes.bool,
   ...reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({
@@ -88,6 +90,7 @@ Grid.propTypes = {
 };
 
 Grid.defaultProps = {
+  as: 'div',
   isContainer: false,
 };
 

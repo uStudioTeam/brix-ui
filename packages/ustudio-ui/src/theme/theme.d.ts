@@ -1,3 +1,5 @@
+export type WrapperTag = 'div' | 'header' | 'footer' | 'main' | 'aside' | 'section' | 'nav';
+
 export type Color = Shadow | 'primary-light' | 'positive-light' | 'negative-light' | 'lightest';
 export type Shadow = Gradient | 'darkest' | 'dark' | 'neutral' | 'light';
 export type Gradient = 'primary' | 'positive' | 'negative';

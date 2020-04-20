@@ -38,9 +38,9 @@ gridStory
   .add('Basic', () => {
     return (
       <Container>
-        <Grid>
+        <Grid as="main">
           <Cell>
-            <Grid>
+            <Grid as="section">
               <Cell>
                 <Box>1/3</Box>
               </Cell>
