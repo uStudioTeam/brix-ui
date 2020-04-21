@@ -24,19 +24,29 @@ flexStory.add('Primary', () => {
     'center'
   );
 
+  const indentOptions = ['small', 'medium', 'regular', 'large'];
+  const positions = ['left', 'right', 'top', 'bottom'];
+
+  const indents = type =>
+    positions.reduce((accPositions, position) => {
+      return { ...accPositions, [position]: select(`${type} ${position}`, indentOptions, 'small') };
+    }, {});
+
   return (
     <>
-      <Flex
-        direction={direction}
-        isReversed={boolean('Reverse direction', false)}
-        isInline={boolean('Inline flex', false)}
-        alignment={{
-          horizontal: horizontalAlign,
-          vertical: verticalAlign,
-        }}
-      >
-        {text('Inner content', 'Default flex box')}
-      </Flex>
+    <Flex
+      direction={direction}
+      isReversed={boolean('Reverse direction', false)}
+      isInline={boolean('Inline flex', false)}
+      alignment={{
+        horizontal: horizontalAlign,
+        vertical: verticalAlign,
+      }}
+      margin={indents('Margin')}
+      padding={indents('Padding')}
+    >
+      {text('Inner content', 'Default flex box')}
+    </Flex>
 
       <Flex as="header">Header</Flex>
       <Flex as="nav">Nav</Flex>
@@ -44,6 +54,6 @@ flexStory.add('Primary', () => {
       <Flex as="section">Section</Flex>
       <Flex as="footer">Footer</Flex>
       <Flex as="aside">Aside</Flex>
-    </>
+      </>
   );
 });

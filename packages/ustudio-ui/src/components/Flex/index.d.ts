@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Alignment, ClassNames } from '../../theme/theme';
+import { Alignment, ClassNames, Indentation } from '../../theme/theme';
 import { WrapperTag } from '../../shared/types';
 
 interface Styled {
@@ -14,6 +14,9 @@ interface FlexProps extends ClassNames<Styled> {
   isInline?: boolean;
 
   alignment?: Alignment;
+
+  margin?: Indenttation;
+  padding?: Indentation;
 }
 
 declare const Flex: {

@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, common } from '../../utils';
+import { classNames, common, indentProps } from '../../utils';
 
 import { Styled } from './styles';
 
-const Flex = ({ children, as = 'div', direction = 'row', isReversed, isInline, alignment, classNames, className = '' }) => (
+const Flex = ({
+  children,
+  as = 'div',
+  direction = 'row',
+  margin,
+  padding,
+  isReversed,
+  isInline,
+  alignment,
+  classNames,
+  className = '',
+}) => (
   <Styled.Flex
     as={as}
     dataDirection={direction}
     isReversed={isReversed}
     isInline={isInline}
+    margin={margin}
+    padding={padding}
     alignment={alignment}
     classNames={classNames}
     className={className}
@@ -25,6 +38,8 @@ Flex.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   as: common.wrapperTag,
   direction: common.direction,
+  margin: indentProps(),
+  padding: indentProps(),
   isReversed: PropTypes.bool,
   isInline: PropTypes.bool,
   alignment: common.alignment,
