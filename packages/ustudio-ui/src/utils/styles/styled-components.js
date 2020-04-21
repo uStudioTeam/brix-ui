@@ -26,19 +26,3 @@ export const StyledComponents = object => {
     });
   }, {});
 };
-
-/*{
-  const className = props.classNames?.[componentKey];
-  
-  if (Array.isArray(className)) {
-    return {
-      css: css`
-                  ${className}
-                `,
-    };
-  }
-  
-  return {
-    className: `${className || ''} ${props?.className || ''}`.trim(),
-  };
-}*/
