@@ -11,8 +11,8 @@ const Placeholder = ({ variant = 'block', appearance, styled, classNames, classN
       variant={variant}
       appearance={appearance}
       className={className}
-      classNames={classNames}
-      styled={styled}
+      $classNames={classNames}
+      $styled={styled}
     />
   );
 };

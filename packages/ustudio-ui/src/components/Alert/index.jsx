@@ -30,15 +30,15 @@ const Alert = ({
         intent={intent}
         verticalPosition={verticalPosition}
         horizontalPosition={horizontalPosition}
-        classNames={classNames}
+        $classNames={classNames}
         className={className}
-        styled={styled}
+        $styled={styled}
       >
-        <Styled.Content variant="caption" classNames={classNames} styled={styled}>
+        <Styled.Content variant="caption" $classNames={classNames} $styled={styled}>
           {children}
         </Styled.Content>
 
-        <Styled.Icon name="close" intent={intent} classNames={classNames} styled={styled} />
+        <Styled.Icon name="close" intent={intent} $classNames={classNames} $styled={styled} />
       </Styled.Alert>
     </Portal>
   );

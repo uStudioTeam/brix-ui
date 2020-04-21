@@ -31,14 +31,14 @@ const RadioGroup = forwardRef(function RadioGroup(
   }, []);
 
   return (
-    <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames} styled={styled}>
+    <Styled.RadioGroup dataDirection={direction} className={className} $classNames={classNames} $styled={styled}>
       {Object.values(options).map(option => (
-        <Styled.RadioGroupItem key={option.value} classNames={classNames} styled={styled}>
+        <Styled.RadioGroupItem key={option.value} $classNames={classNames} $styled={styled}>
           <Styled.Label
-            classNames={classNames}
+            $classNames={classNames}
             isDisabled={option.isDisabled || isDisabled}
             isReversed={isReversed}
-            styled={styled}
+            $styled={styled}
           >
             <Styled.Input
               ref={ref}
@@ -57,11 +57,11 @@ const RadioGroup = forwardRef(function RadioGroup(
               aria-checked={radioGroupUtils.isOptionSelected({ option, value: internalValue })}
               aria-labelledby={`${name} ${option.value}`}
               aria-disabled={option.isDisabled}
-              classNames={classNames}
-              styled={styled}
+              $classNames={classNames}
+              $styled={styled}
             />
 
-            <Styled.RadioButton classNames={classNames} styled={styled} />
+            <Styled.RadioButton $classNames={classNames} $styled={styled} />
 
             {option?.label ?? option.value}
           </Styled.Label>

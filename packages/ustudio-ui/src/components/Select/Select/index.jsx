@@ -38,12 +38,12 @@ const Select = forwardRef(function Select(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
-      styled={styled}
-      classNames={classNames}
+      $styled={styled}
+      $classNames={classNames}
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
-        <Styled.Select type="button" styled={styled} {...props}>
+        <Styled.Select type="button" $styled={styled} {...props}>
           {selectUtils.getItemsObject({ items, groups })[value ?? defaultValue]?.label || placeholder}
 
           {icon}

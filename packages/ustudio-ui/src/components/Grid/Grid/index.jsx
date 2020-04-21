@@ -41,8 +41,8 @@ const Grid = ({
       breakpoints={{ xs, md, lg, xl }}
       margin={margin}
       padding={padding}
-      styled={styled}
-      classNames={classNames}
+      $styled={styled}
+      $classNames={classNames}
       className={className}
     >
       <GridContext.Provider

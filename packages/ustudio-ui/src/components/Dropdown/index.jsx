@@ -27,7 +27,7 @@ const Dropdown = ({
   useKeyPressClose(setOpen);
 
   return (
-    <Styled.DropdownContainer isOpen={isOpen} classNames={classNames} className={className} styled={styled}>
+    <Styled.DropdownContainer isOpen={isOpen} $classNames={classNames} className={className} $styled={styled}>
       <Styled.Title
         onClick={() => {
           if (onChange && isDefaultOpen !== undefined) {
@@ -46,18 +46,18 @@ const Dropdown = ({
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-labelledby={name}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
       >
         {title}
 
-        <Styled.TitleIcon classNames={classNames} styled={styled}>
+        <Styled.TitleIcon $classNames={classNames} $styled={styled}>
           {cloneElement(icon, { angle: isOpen ? 0 : -180 })}
         </Styled.TitleIcon>
       </Styled.Title>
 
-      <Styled.Dropdown dropdownHeight={height} classNames={classNames} styled={styled}>
-        <Styled.Content ref={ref} classNames={classNames} styled={styled}>
+      <Styled.Dropdown dropdownHeight={height} $classNames={classNames} $styled={styled}>
+        <Styled.Content ref={ref} $classNames={classNames} $styled={styled}>
           {children}
         </Styled.Content>
       </Styled.Dropdown>

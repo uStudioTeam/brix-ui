@@ -39,12 +39,12 @@ const Button = forwardRef(function Button(
         ...htmlAttributes,
       }}
       onTouchStart={() => {}}
-      styled={styled}
+      $styled={styled}
     >
       {iconBefore}
 
       {isLoading && (
-        <Styled.LoadingSpinner classNames={classNames} styled={styled}>
+        <Styled.LoadingSpinner $classNames={classNames} $styled={styled}>
           <Spinner appearance={{ color: 'var(--c-neutral)', size: 16 }} />
         </Styled.LoadingSpinner>
       )}

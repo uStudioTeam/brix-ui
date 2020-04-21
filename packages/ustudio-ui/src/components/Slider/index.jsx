@@ -43,7 +43,7 @@ const Slider = forwardRef(function Slider(
 
   const renderSteps = () => {
     return (
-      <Styled.StepContainer classNames={classNames}>
+      <Styled.StepContainer $classNames={classNames}>
         {sliderUtils.createSteps({ range, step }).map(index => {
           const currentStepLabel = stepLabels?.[index * step];
 
@@ -53,7 +53,7 @@ const Slider = forwardRef(function Slider(
               dataDisplay={currentStepLabel?.isDisplayed ?? true}
               dataLabel={currentStepLabel?.label}
               key={index * step}
-              classNames={classNames}
+              $classNames={classNames}
               style={{
                 left: `${(step / range) * index * 100}%`,
               }}
@@ -67,11 +67,11 @@ const Slider = forwardRef(function Slider(
   const handleChange = ({ currentTarget: { valueAsNumber } }) => onChange && onChange(+valueAsNumber.toFixed(2));
 
   return (
-    <Styled.SliderContainer classNames={classNames} className={className} isDisabled={isDisabled}>
-      <Styled.InputContainer classNames={classNames}>
-        <Styled.HelperContainer classNames={classNames}>
-          <Styled.Helper isDisabled={isDisabled} classNames={classNames}>
-            <Styled.Line style={{ width: `${((usedValue - min) * 100) / range}%` }} classNames={classNames} />
+    <Styled.SliderContainer $classNames={classNames} className={className} isDisabled={isDisabled}>
+      <Styled.InputContainer $classNames={classNames}>
+        <Styled.HelperContainer $classNames={classNames}>
+          <Styled.Helper isDisabled={isDisabled} $classNames={classNames}>
+            <Styled.Line style={{ width: `${((usedValue - min) * 100) / range}%` }} $classNames={classNames} />
 
             {displaySteps && renderSteps()}
           </Styled.Helper>
@@ -92,7 +92,7 @@ const Slider = forwardRef(function Slider(
           required={isRequired}
           aria-required={isRequired}
           aria-labelledby={name}
-          classNames={classNames}
+          $classNames={classNames}
         />
       </Styled.InputContainer>
 

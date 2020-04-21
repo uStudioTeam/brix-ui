@@ -25,7 +25,7 @@ const Switch = forwardRef(function Switch(
   useDefaultValue(onChange, { value, defaultValue });
 
   return (
-    <Styled.SwitchContainer className={className} classNames={classNames} isDisabled={isDisabled} styled={styled}>
+    <Styled.SwitchContainer className={className} $classNames={classNames} isDisabled={isDisabled} $styled={styled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -39,11 +39,11 @@ const Switch = forwardRef(function Switch(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
       />
 
-      <Styled.Switch alternative={alternative} classNames={classNames} styled={styled} />
+      <Styled.Switch alternative={alternative} $classNames={classNames} $styled={styled} />
     </Styled.SwitchContainer>
   );
 });

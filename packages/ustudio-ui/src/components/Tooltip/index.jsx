@@ -6,11 +6,11 @@ import { classNames, common } from '../../utils';
 import { Styled } from './styles';
 
 const Tooltip = ({ value, children, position, styled, classNames, className = '' }) => (
-  <Styled.TooltipContainer styled={styled}>
+  <Styled.TooltipContainer $styled={styled}>
     {children}
 
-    <Styled.Tooltip position={position} classNames={classNames} className={className} styled={styled}>
-      <Styled.Content variant="small" classNames={classNames} styled={styled}>
+    <Styled.Tooltip position={position} $classNames={classNames} className={className} $styled={styled}>
+      <Styled.Content variant="small" $classNames={classNames} $styled={styled}>
         {value}
       </Styled.Content>
     </Styled.Tooltip>

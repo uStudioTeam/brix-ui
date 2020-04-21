@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledComponents = object => {
-  return Object.keys(object).reduce((injectedObject, componentKey) => {
+export const StyledComponents = components => {
+  return Object.keys(components).reduce((injectedObject, componentKey) => {
     return Object.assign(injectedObject, {
-      [componentKey]: styled(object[componentKey]).attrs(props => ({
-        className: `${props.classNames?.[componentKey] || ''} ${props?.className || ''}`.trim(),
-      }))(props => {
-        const style = props.styled?.[componentKey];
+      [componentKey]: styled(components[componentKey]).attrs(props => {
+        return {
+          className: `${props['$classNames']?.[componentKey] || ''}`.trim(),
+        };
+      })(props => {
+        const style = props['$styled']?.[componentKey];
 
         if (style) {
           if (Array.isArray(style)) {
@@ -15,10 +17,12 @@ export const StyledComponents = object => {
 
           if (typeof style === 'function') {
             return style({
-              ...object,
+              ...components,
               ...props,
             });
           }
+          
+          return ``;
         }
 
         return ``;

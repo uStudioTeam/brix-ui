@@ -27,9 +27,9 @@ const Text = forwardRef(function Text(
       appearance={appearance}
       align={align}
       dataColor={color}
-      classNames={classNames}
+      $classNames={classNames}
       className={className}
-      styled={styled}
+      $styled={styled}
     >
       {children}
     </Styled.Text>

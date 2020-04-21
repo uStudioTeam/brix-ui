@@ -19,8 +19,8 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
           isOpen={isOpen}
           aria-hidden={!isOpen}
           direction="column"
-          styled={styled}
-          classNames={classNames}
+          $styled={styled}
+          $classNames={classNames}
           className={className}
         >
           <Styled.Header
@@ -28,10 +28,10 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
               horizontal: 'space-between',
               vertical: 'center',
             }}
-            classNames={classNames}
-            styled={styled}
+            $classNames={classNames}
+            $styled={styled}
           >
-            <Styled.Title variant="h3" classNames={classNames} styled={styled}>
+            <Styled.Title variant="h3" $classNames={classNames} $styled={styled}>
               {title}
             </Styled.Title>
 
@@ -39,14 +39,14 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
               type="button"
               aria-labelledby={`Close ${title}`}
               onClick={() => onChange(false)}
-              classNames={classNames}
-              styled={styled}
+              $classNames={classNames}
+              $styled={styled}
             >
               <Icon name="close" size="large" />
             </Styled.Icon>
           </Styled.Header>
 
-          <Styled.Content classNames={classNames} styled={styled}>
+          <Styled.Content $classNames={classNames} $styled={styled}>
             {children}
           </Styled.Content>
         </Styled.Modal>
@@ -55,8 +55,8 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
           aria-hidden={!isOpen}
           aria-labelledby={`${title} overlay`}
           onClick={() => onChange(false)}
-          classNames={classNames}
-          styled={styled}
+          $classNames={classNames}
+          $styled={styled}
         />
       </>
     </Portal>

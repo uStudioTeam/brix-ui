@@ -13,11 +13,11 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', styled, cl
       tabsQuantity={(1 / tabs.length) * 100}
       dataOffset={offset}
       className={className}
-      classNames={classNames}
-      styled={styled}
+      $classNames={classNames}
+      $styled={styled}
     >
       {tabs.map((tab, index) => (
-        <Styled.TabContainer key={tab.value} classNames={classNames} styled={styled}>
+        <Styled.TabContainer key={tab.value} $classNames={classNames} $styled={styled}>
           <Styled.Tab
             role="tab"
             isActive={active === tab.value}
@@ -27,10 +27,10 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', styled, cl
               setOffset((index / tabs.length) * 100);
             }}
             variant={variant}
-            classNames={classNames}
-            styled={styled}
+            $classNames={classNames}
+            $styled={styled}
           >
-            <Styled.TabContent classNames={classNames} styled={styled}>
+            <Styled.TabContent $classNames={classNames} $styled={styled}>
               {tab.children}
             </Styled.TabContent>
           </Styled.Tab>
