@@ -14,6 +14,7 @@ const Drawer = ({
   onChange,
   position = 'right',
   showOverlay = false,
+  styled,
   classNames,
   className = '',
 }) => {
@@ -21,11 +22,13 @@ const Drawer = ({
 
   return (
     <Portal>
-      <Styled.Drawer isOpen={isOpen} position={position} classNames={classNames} className={className}>
+      <Styled.Drawer isOpen={isOpen} position={position} classNames={classNames} className={className} styled={styled}>
         {children}
       </Styled.Drawer>
 
-      {showOverlay && isOpen && <Styled.Overlay onClick={() => onChange(false)} classNames={classNames} />}
+      {showOverlay && isOpen && (
+        <Styled.Overlay onClick={() => onChange(false)} classNames={classNames} styled={styled} />
+      )}
     </Portal>
   );
 };

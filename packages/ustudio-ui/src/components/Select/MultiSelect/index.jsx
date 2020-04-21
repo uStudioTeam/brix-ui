@@ -20,6 +20,7 @@ const MultiSelect = forwardRef(function MultiSelect(
     placeholder = '',
     isDisabled = false,
     isRequired = false,
+    styled,
     classNames,
     className,
   },
@@ -53,13 +54,14 @@ const MultiSelect = forwardRef(function MultiSelect(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
+      styled={styled}
       classNames={classNames}
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
-        <Styled.Select as="div" role="button" {...props}>
+        <Styled.Select as="div" role="button" styled={styled} {...props}>
           {(value ?? defaultValue)?.length ? (
-            <Styled.SelectedList classNames={classNames}>
+            <Styled.SelectedList classNames={classNames} styled={styled}>
               {(value ?? defaultValue)
                 .sort((itemA, itemB) => {
                   if (items?.[itemA].isDefault) {
@@ -80,8 +82,11 @@ const MultiSelect = forwardRef(function MultiSelect(
                       key={item.value}
                       isDisabled={isDisabled || item?.isDisabled || item?.isDefault}
                       classNames={classNames}
+                      styled={styled}
                     >
-                      <Styled.SelectedListLabel classNames={classNames}>{item.label}</Styled.SelectedListLabel>
+                      <Styled.SelectedListLabel classNames={classNames} styled={styled}>
+                        {item.label}
+                      </Styled.SelectedListLabel>
 
                       {!item.isDefault && (
                         <Styled.SelectedListIcon
@@ -90,6 +95,7 @@ const MultiSelect = forwardRef(function MultiSelect(
                             !item.isDisabled && !isDisabled && handleItemRemove(item);
                           }}
                           classNames={classNames}
+                          styled={styled}
                           disabled={item.isDisabled || isDisabled}
                         >
                           <Icon name="close" />

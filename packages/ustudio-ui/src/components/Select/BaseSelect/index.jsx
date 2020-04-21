@@ -25,6 +25,7 @@ const BaseSelect = forwardRef(function BaseSelect(
     groups,
     isDisabled = false,
     isRequired = false,
+    styled,
     classNames,
     className,
   },
@@ -46,20 +47,27 @@ const BaseSelect = forwardRef(function BaseSelect(
           onClick={() => handleValueClick({ setOpen, item })}
           classNames={classNames}
           tabIndex={isOpen ? 0 : -1}
+          styled={styled}
         >
-          <Styled.ValuesListText variant="span" classNames={{ Text: classNames?.ValuesListText || '' }}>
+          <Styled.ValuesListText variant="span" classNames={{ Text: classNames?.ValuesListText || '' }} styled={styled}>
             {item.label}
           </Styled.ValuesListText>
 
-          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} />
+          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} styled={styled} />
         </Styled.ValuesListItem>
       </li>
     ));
   };
 
   return (
-    <Styled.SelectContainer className={className} classNames={classNames} isOpen={isOpen} isDisabled={isDisabled}>
-      {isOpen && <Styled.Overlay classNames={classNames} onClick={() => setOpen(false)} />}
+    <Styled.SelectContainer
+      className={className}
+      classNames={classNames}
+      isOpen={isOpen}
+      isDisabled={isDisabled}
+      styled={styled}
+    >
+      {isOpen && <Styled.Overlay classNames={classNames} onClick={() => setOpen(false)} styled={styled} />}
 
       <select
         id={id}
@@ -93,18 +101,25 @@ const BaseSelect = forwardRef(function BaseSelect(
             size="medium"
             isDisabled={isDisabled}
             classNames={{ Icon: classNames?.SelectIcon || '' }}
+            styled={styled}
           />
         ),
       })}
 
-      <Styled.Dropdown items={itemsArray} groups={!!groups} isOpen={isOpen} classNames={classNames}>
-        {items && <Styled.ValuesList classNames={classNames}>{renderItems(items)}</Styled.ValuesList>}
+      <Styled.Dropdown items={itemsArray} groups={!!groups} isOpen={isOpen} classNames={classNames} styled={styled}>
+        {items && (
+          <Styled.ValuesList classNames={classNames} styled={styled}>
+            {renderItems(items)}
+          </Styled.ValuesList>
+        )}
 
         {groups && (
           <div>
             {groups.map(group => (
-              <Styled.ValuesList key={group.title} classNames={classNames}>
-                <Styled.ValuesListTitle classNames={classNames}>{group.title}</Styled.ValuesListTitle>
+              <Styled.ValuesList key={group.title} classNames={classNames} styled={styled}>
+                <Styled.ValuesListTitle classNames={classNames} styled={styled}>
+                  {group.title}
+                </Styled.ValuesListTitle>
 
                 {renderItems(group.items)}
               </Styled.ValuesList>

@@ -8,13 +8,13 @@ import { classNames, inputProps } from '../../utils';
 import { Styled } from './styles';
 
 const Checkbox = forwardRef(function Checkbox(
-  { id, name, value, defaultValue, onChange, isDisabled = false, isRequired = false, classNames, className = '' },
+  { id, name, value, defaultValue, onChange, isDisabled = false, isRequired = false, styled, classNames, className = '' },
   ref
 ) {
   useDefaultValue(onChange, { value, defaultValue });
   
   return (
-    <Styled.CheckboxContainer className={className} classNames={classNames} isDisabled={isDisabled}>
+    <Styled.CheckboxContainer className={className} classNames={classNames} isDisabled={isDisabled} styled={styled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -31,9 +31,10 @@ const Checkbox = forwardRef(function Checkbox(
         required={isRequired}
         aria-required={isRequired}
         classNames={classNames}
+        styled={styled}
       />
 
-      <Styled.Checkbox classNames={classNames}>
+      <Styled.Checkbox classNames={classNames} styled={styled}>
         <Icon name="check" />
       </Styled.Checkbox>
     </Styled.CheckboxContainer>

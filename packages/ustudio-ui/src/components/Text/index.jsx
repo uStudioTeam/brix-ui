@@ -15,6 +15,7 @@ const Text = forwardRef(function Text(
     color = 'inherit',
     className = '',
     classNames,
+    styled,
   },
   ref
 ) {
@@ -28,6 +29,7 @@ const Text = forwardRef(function Text(
       dataColor={color}
       classNames={classNames}
       className={className}
+      styled={styled}
     >
       {children}
     </Styled.Text>

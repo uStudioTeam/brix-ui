@@ -18,6 +18,7 @@ const EditableText = forwardRef(function EditableText(
     isDisabled = false,
     isRequired = false,
     isDefaultEditable = false,
+    styled,
     classNames,
     className = '',
     icon,
@@ -61,13 +62,20 @@ const EditableText = forwardRef(function EditableText(
   };
 
   return (
-    <Styled.EditableText classNames={classNames} className={className} isDisabled={isDisabled} isEditing={isEditing}>
+    <Styled.EditableText
+      classNames={classNames}
+      className={className}
+      isDisabled={isDisabled}
+      isEditing={isEditing}
+      styled={styled}
+    >
       <Styled.Text
         ref={textRef}
         isEditing={isEditing}
         variant={variant}
         appearance={appearance}
         classNames={classNames}
+        styled={styled}
       >
         {value}
       </Styled.Text>
@@ -87,6 +95,7 @@ const EditableText = forwardRef(function EditableText(
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         classNames={classNames}
+        styled={styled}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         required={isRequired}
@@ -97,7 +106,7 @@ const EditableText = forwardRef(function EditableText(
       {icon ? (
         cloneElement(icon, { isEditing })
       ) : (
-        <Styled.Icon name="pen" isEditing={isEditing} classNames={classNames} />
+        <Styled.Icon name="pen" isEditing={isEditing} classNames={classNames} styled={styled} />
       )}
     </Styled.EditableText>
   );

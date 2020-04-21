@@ -5,8 +5,8 @@ import { classNames } from '../../utils';
 
 import { Styled } from './styles';
 
-const Progress = ({ value, max, classNames, className = '' }) => {
-  return <Styled.Progress value={value} max={max} className={className} classNames={classNames} />;
+const Progress = ({ value, max, styled, classNames, className = '' }) => {
+  return <Styled.Progress value={value} max={max} className={className} classNames={classNames} styled={styled} />;
 };
 
 Progress.displayName = 'Progress';

@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '../Text';
-
 import { classNames, common } from '../../utils';
 
 import { Styled } from './styles';
 
-const Tooltip = ({ value, children, position, classNames, className = '' }) => (
-  <Styled.TooltipContainer>
+const Tooltip = ({ value, children, position, styled, classNames, className = '' }) => (
+  <Styled.TooltipContainer styled={styled}>
     {children}
 
-    <Styled.Tooltip position={position} classNames={classNames} className={className}>
-      <Text variant="small" classNames={{ Text: classNames?.Content }}>
+    <Styled.Tooltip position={position} classNames={classNames} className={className} styled={styled}>
+      <Styled.Content variant="small" classNames={classNames} styled={styled}>
         {value}
-      </Text>
+      </Styled.Content>
     </Styled.Tooltip>
   </Styled.TooltipContainer>
 );
@@ -25,7 +23,7 @@ Tooltip.propTypes = {
   value: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
   position: common.position.isRequired,
-  ...classNames([...Object.keys(Styled), 'Content']),
+  ...classNames(Object.keys(Styled)),
 };
 
 export default Tooltip;

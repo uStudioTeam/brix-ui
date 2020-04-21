@@ -1,3 +1,5 @@
+import { FlattenSimpleInterpolation } from 'styled-components';
+
 export type Color = Shadow | 'primary-light' | 'positive-light' | 'negative-light' | 'lightest' | 'white' | 'black';
 export type Shadow = Gradient | 'darkest' | 'dark' | 'neutral' | 'light';
 export type Gradient = 'primary' | 'positive' | 'negative';
@@ -26,6 +28,9 @@ export interface Alignment {
 export interface ClassNames<S extends Record<string, any>> {
   classNames?: Partial<Record<keyof S, string>>;
   className?: string;
+  styled?: Partial<
+    Record<keyof S, string | ((props: ClassNames<S> & Record<string, unknown>) => FlattenSimpleInterpolation)>
+  >;
 }
 
 export interface Theme {
@@ -38,6 +43,6 @@ export interface Theme {
   borderRadius?: string;
 }
 
-declare module "styled-components" {
+declare module 'styled-components' {
   interface DefaultTheme extends Required<Theme> {}
 }

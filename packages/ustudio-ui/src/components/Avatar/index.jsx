@@ -5,12 +5,13 @@ import { classNames, common } from '../../utils';
 
 import { Styled } from './styles';
 
-const Avatar = ({ children, appearance, isDisabled = false, classNames, className = '' }) => (
+const Avatar = ({ children, appearance, isDisabled = false, styled, classNames, className = '' }) => (
   <Styled.Avatar
     aria-labelledby={`${children} avatar`}
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
+    styled={styled}
     classNames={classNames}
     className={className}
   >

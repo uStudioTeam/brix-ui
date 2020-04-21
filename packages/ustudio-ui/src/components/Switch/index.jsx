@@ -16,15 +16,16 @@ const Switch = forwardRef(function Switch(
     isDisabled = false,
     isRequired = false,
     alternative,
+    styled,
     classNames,
     className = '',
   },
   ref
 ) {
   useDefaultValue(onChange, { value, defaultValue });
-  
+
   return (
-    <Styled.SwitchContainer className={className} classNames={classNames} isDisabled={isDisabled}>
+    <Styled.SwitchContainer className={className} classNames={classNames} isDisabled={isDisabled} styled={styled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -39,9 +40,10 @@ const Switch = forwardRef(function Switch(
         required={isRequired}
         aria-required={isRequired}
         classNames={classNames}
+        styled={styled}
       />
 
-      <Styled.Switch alternative={alternative} classNames={classNames} />
+      <Styled.Switch alternative={alternative} classNames={classNames} styled={styled} />
     </Styled.SwitchContainer>
   );
 });

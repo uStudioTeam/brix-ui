@@ -18,6 +18,7 @@ const RadioGroup = forwardRef(function RadioGroup(
     isDisabled = false,
     isReversed = false,
     onChange,
+    styled,
     classNames,
     className = '',
   },
@@ -30,10 +31,15 @@ const RadioGroup = forwardRef(function RadioGroup(
   }, []);
 
   return (
-    <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames}>
+    <Styled.RadioGroup dataDirection={direction} className={className} classNames={classNames} styled={styled}>
       {Object.values(options).map(option => (
-        <Styled.RadioGroupItem key={option.value} classNames={classNames}>
-          <Styled.Label classNames={classNames} isDisabled={option.isDisabled || isDisabled} isReversed={isReversed}>
+        <Styled.RadioGroupItem key={option.value} classNames={classNames} styled={styled}>
+          <Styled.Label
+            classNames={classNames}
+            isDisabled={option.isDisabled || isDisabled}
+            isReversed={isReversed}
+            styled={styled}
+          >
             <Styled.Input
               ref={ref}
               type="radio"
@@ -52,9 +58,10 @@ const RadioGroup = forwardRef(function RadioGroup(
               aria-labelledby={`${name} ${option.value}`}
               aria-disabled={option.isDisabled}
               classNames={classNames}
+              styled={styled}
             />
 
-            <Styled.RadioButton classNames={classNames} />
+            <Styled.RadioButton classNames={classNames} styled={styled} />
 
             {option?.label ?? option.value}
           </Styled.Label>

@@ -14,6 +14,7 @@ const Flex = ({
   isReversed,
   isInline,
   alignment,
+  styled,
   classNames,
   className = '',
 }) => (
@@ -27,6 +28,7 @@ const Flex = ({
     alignment={alignment}
     classNames={classNames}
     className={className}
+    styled={styled}
   >
     {children}
   </Styled.Flex>
