@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import {Alignment, Breakpoint, Direction, Indentation} from '../../../theme/theme';
+import { Alignment, Breakpoint, Direction, Indentation } from '../../../theme/theme';
 import Cell, { CellProps } from '../Cell';
 
 type GridBreakpointData = {
