@@ -7,6 +7,7 @@ import { Styled } from './styles';
 
 const Flex = ({
   children,
+  as = 'div',
   direction = 'row',
   margin,
   padding,
@@ -17,6 +18,7 @@ const Flex = ({
   className = '',
 }) => (
   <Styled.Flex
+    as={as}
     dataDirection={direction}
     isReversed={isReversed}
     isInline={isInline}
@@ -34,6 +36,7 @@ Flex.displayName = 'Flex';
 
 Flex.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  as: common.wrapperTag,
   direction: common.direction,
   margin: indentProps(),
   padding: indentProps(),
@@ -44,6 +47,7 @@ Flex.propTypes = {
 };
 
 Flex.defaultProps = {
+  as: 'div',
   direction: 'row',
 };
 

@@ -11,4 +11,5 @@ export const common = {
   text: PropTypes.oneOf(['span', 'code', 'small', 'body', 'article', 'caption', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1']),
   position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   indentSize: PropTypes.oneOf(['small', 'medium', 'regular', 'large']),
+  wrapperTag: PropTypes.oneOf(['div', 'header', 'footer', 'main', 'aside', 'section', 'nav']),
 };

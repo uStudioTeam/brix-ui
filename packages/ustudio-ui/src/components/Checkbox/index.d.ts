@@ -1,4 +1,4 @@
-import { Input } from '../../input';
+import { Input } from '../../shared/type';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {

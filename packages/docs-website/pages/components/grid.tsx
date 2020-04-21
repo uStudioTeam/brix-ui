@@ -39,6 +39,10 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
           type: '`Cell | Cell[]`',
           required: true,
         },
+        as: {
+          type: `\`'div' | 'header' | 'footer' | 'main' | 'aside' | 'section' | 'nav'\``,
+          defaultValue: '`div`',
+        },
         isContainer: {
           type: '`boolean`',
           description: 'Could be used to add side margins in a top-level grid',

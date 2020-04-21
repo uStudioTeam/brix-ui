@@ -10,6 +10,7 @@ import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 
 const Grid = ({
   children: cells,
+  as = 'div',
   isContainer = false,
   margin,
   padding,
@@ -32,6 +33,7 @@ const Grid = ({
 
   return (
     <Styled.Grid
+      as={as}
       divisions={divisions}
       isContainer={isContainer}
       cellsCount={cellsCount}
@@ -87,6 +89,7 @@ const cellsValidator = (props, propName, componentName) => {
 
 Grid.propTypes = {
   children: cellsValidator,
+  as: common.wrapperTag,
   isContainer: PropTypes.bool,
   margin: indentProps(),
   padding: indentProps(),
@@ -103,6 +106,7 @@ Grid.propTypes = {
 };
 
 Grid.defaultProps = {
+  as: 'div',
   isContainer: false,
 };
 

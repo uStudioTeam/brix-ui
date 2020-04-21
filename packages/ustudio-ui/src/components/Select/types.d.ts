@@ -1,4 +1,4 @@
-import { Input } from '../../input';
+import { Input } from '../../shared/types';
 
 interface SelectProps<Value> extends Input<Value> {
   placeholder?: string;

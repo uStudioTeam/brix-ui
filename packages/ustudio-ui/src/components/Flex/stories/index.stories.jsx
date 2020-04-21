@@ -33,6 +33,7 @@ flexStory.add('Primary', () => {
     }, {});
 
   return (
+    <>
     <Flex
       direction={direction}
       isReversed={boolean('Reverse direction', false)}
@@ -46,5 +47,13 @@ flexStory.add('Primary', () => {
     >
       {text('Inner content', 'Default flex box')}
     </Flex>
+
+      <Flex as="header">Header</Flex>
+      <Flex as="nav">Nav</Flex>
+      <Flex as="main">Main</Flex>
+      <Flex as="section">Section</Flex>
+      <Flex as="footer">Footer</Flex>
+      <Flex as="aside">Aside</Flex>
+      </>
   );
 });
