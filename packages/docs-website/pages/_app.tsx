@@ -53,7 +53,7 @@ const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
     setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 800);
 
     return () => setMounted(false);
   }, []);

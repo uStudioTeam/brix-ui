@@ -50,9 +50,9 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
         'xs | md | lg | xl': {
           type: `\`{
   template?: string;
-  maxWidth?: number;
+  maxWidth?: number (px);
   direction?: 'row' | 'column';
-  gap?: number;
+  gap?: number (rem);
   alignment?: {
     [horizontal | vertical]?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
   };
@@ -105,9 +105,9 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
           },
           'xs | md | lg | xl': {
             type: `\`{
-  size?: string;
+  size?: number (fr);
   offset?: {
-    [before | after]?: number,
+    [before | after]?: number (fr),
   };
 }\``,
           },

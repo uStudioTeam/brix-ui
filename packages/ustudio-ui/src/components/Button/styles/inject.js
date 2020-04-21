@@ -108,7 +108,7 @@ const getAppearance = ({ isDisabled: disabled, isLoading, intent, appearance = '
       ${_containedBorder({ disabled, isLoading })};
       ${_containedBackground({ disabled, isLoading, intent })};
 
-      color: var(--c-lightest);
+      color: var(--c-white);
 
       ${Mixin.Device.mobile(css`
         &:active {

@@ -1,6 +1,6 @@
 export type WrapperTag = 'div' | 'header' | 'footer' | 'main' | 'aside' | 'section' | 'nav';
 
-export type Color = Shadow | 'primary-light' | 'positive-light' | 'negative-light' | 'lightest';
+export type Color = Shadow | 'primary-light' | 'positive-light' | 'negative-light' | 'lightest' | 'white' | 'black';
 export type Shadow = Gradient | 'darkest' | 'dark' | 'neutral' | 'light';
 export type Gradient = 'primary' | 'positive' | 'negative';
 
@@ -32,4 +32,8 @@ export interface Theme {
   layer?: Partial<Record<'topmost' | 'top' | 'middle' | 'bottom', number>>;
   transition?: string;
   borderRadius?: string;
+}
+
+declare module "styled-components" {
+  interface DefaultTheme extends Required<Theme> {}
 }

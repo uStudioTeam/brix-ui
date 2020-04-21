@@ -31,13 +31,19 @@ const TextPage = () => {
           type: `\`'span' | 'code' | 'small' | 'body' | 'article' | 'caption' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1'\``,
           defaultValue: `\`'body'\``,
         },
-        align: {
-          type: `\`'left' | 'center' | 'right'\``,
-          defaultValue: `\`'left'\``,
-        },
         appearance: {
           type: `\`'regular' | 'italic' | 'underlined' | 'bold'\``,
           defaultValue: `\`'regular'\``,
+        },
+        align: {
+          type: `\`'left' | 'center' | 'right'\``,
+          defaultValue: `\`'inherit'\``,
+        },
+        color: {
+          type: `\`'string'\``,
+          defaultValue: `\`'inherit'\``,
+          description:
+            'It is possible to specify a color in any recording format (HEX, RGB, RGBA, HSL, CSS Custom properties)',
         },
       }}
       classNames={['Text']}
@@ -52,12 +58,24 @@ const TextPage = () => {
         >
           <Cell>
             <Flex direction="column">
-              <Text variant="h1">h1: Heading 1</Text>
-              <Text variant="h2">h2: Heading 2</Text>
-              <Text variant="h3">h3: Heading 3</Text>
-              <Text variant="h4">h4: Heading 4</Text>
-              <Text variant="h5">h5: Heading 5</Text>
-              <Text variant="h6">h6: Heading 6</Text>
+              <Text variant="h1" color="var(--c-primary)">
+                h1: Heading 1
+              </Text>
+              <Text variant="h2" color="var(--c-primary-light)">
+                h2: Heading 2
+              </Text>
+              <Text variant="h3" color="var(--c-positive)">
+                h3: Heading 3
+              </Text>
+              <Text variant="h4" color="var(--c-positive-light)">
+                h4: Heading 4
+              </Text>
+              <Text variant="h5" color="var(--c-negative)">
+                h5: Heading 5
+              </Text>
+              <Text variant="h6" color="var(--c-negative-light)">
+                h6: Heading 6
+              </Text>
               <Text variant="caption">caption: Lorem ipsum</Text>
             </Flex>
           </Cell>
