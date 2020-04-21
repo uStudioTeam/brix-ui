@@ -3,7 +3,7 @@ import { Mixin } from '../../../theme';
 
 const background = (background = 'var(--g-primary)') => `background: ${background}`;
 
-const color = (color = 'var(--c-lightest)') => `color: ${color}`;
+const color = (color = 'var(--c-white)') => `color: ${color}`;
 
 const avatarSize = size => {
   switch (size) {

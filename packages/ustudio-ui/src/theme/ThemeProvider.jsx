@@ -29,6 +29,8 @@ const defaultTheme = {
     positive: '#8dd419',
     'primary-light': '#1e96ff',
     primary: '#1a81db',
+    white: '#fcfcfc',
+    black: '#1a1a1a',
   },
   font: {
     body: 'Source Sans Pro',
@@ -42,7 +44,7 @@ const defaultTheme = {
     bottom: 100,
   },
   transition: '300ms',
-  borderRadius: '0.125rem'
+  borderRadius: '0.125rem',
 };
 
 export const ThemeProvider = ({ override = {}, children }) => (
@@ -83,6 +85,8 @@ ThemeProvider.propTypes = {
         'positive-light',
         'negative-light',
         'lightest',
+        'white',
+        'black',
       ].reduce((obj, color) => Object.assign(obj, { [color]: PropTypes.string }), {}),
     }),
     font: PropTypes.exact({
@@ -97,7 +101,7 @@ ThemeProvider.propTypes = {
       bottom: PropTypes.number,
     }),
     transition: PropTypes.string,
-    borderRadius: PropTypes.string
+    borderRadius: PropTypes.string,
   }),
 };
 
