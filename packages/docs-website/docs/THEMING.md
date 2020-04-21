@@ -257,7 +257,7 @@ a function which gives you all styled components used inside, a theme and props.
 
 ```typescript jsx
 <Checkbox 
-    styled={
+    styled={{
         CheckboxContainer: (({ Checkbox }) => css`
             ${Checkbox} {
                 &:hover {
@@ -268,7 +268,7 @@ a function which gives you all styled components used inside, a theme and props.
         Checkbox: css`
             border: 1px solid black;
         `
-    }
+    }}
 />
 ```
 
