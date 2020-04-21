@@ -31,3 +31,7 @@ export interface Theme {
   transition?: string;
   borderRadius?: string;
 }
+
+declare module "styled-components" {
+  interface DefaultTheme extends Required<Theme> {}
+}
