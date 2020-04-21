@@ -14,7 +14,7 @@ const SpinnerPage = () => {
           type: `\`
   {
     color?: string;
-    size?: number (px) ;
+    size?: number (px);
   }\``,
           defaultValue: `\`
   {
@@ -23,7 +23,7 @@ const SpinnerPage = () => {
   }\``,
         },
         delay: {
-          type: '`number (ms) `',
+          type: '`number (ms)`',
           description: `Lets delay Spinner's appearance to prevent unwanted flicker`,
         },
       }}
