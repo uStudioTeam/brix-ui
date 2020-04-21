@@ -11,7 +11,7 @@ const Text = forwardRef(function Text(
     children = '',
     variant = 'body',
     appearance = 'regular',
-    align = 'left',
+    align = 'inherit',
     color = 'inherit',
     className = '',
     classNames,
@@ -48,7 +48,7 @@ Text.propTypes = {
 Text.defaultProps = {
   variant: 'body',
   appearance: 'regular',
-  align: 'left',
+  align: 'inherit',
   color: 'inherit',
 };
 
