@@ -5,8 +5,16 @@ import { classNames, common } from '../../utils';
 
 import { Styled } from './styles';
 
-const Placeholder = ({ variant = 'block', appearance, classNames, className = '' }) => {
-  return <Styled.Placeholder variant={variant} appearance={appearance} className={className} classNames={classNames} />;
+const Placeholder = ({ variant = 'block', appearance, styled, classNames, className = '' }) => {
+  return (
+    <Styled.Placeholder
+      variant={variant}
+      appearance={appearance}
+      className={className}
+      classNames={classNames}
+      styled={styled}
+    />
+  );
 };
 
 Placeholder.displayName = 'Placeholder';

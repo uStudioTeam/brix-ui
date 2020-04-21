@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject';
 
 const DropdownContainer = styled.div(

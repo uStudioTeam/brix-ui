@@ -15,6 +15,7 @@ const TextArea = forwardRef(function TextArea(
     onChange,
     isDisabled = false,
     isRequired = false,
+    styled,
     classNames,
     className,
     rows = 3,
@@ -35,6 +36,7 @@ const TextArea = forwardRef(function TextArea(
       onChange={({ target: { value: inputValue } }) => onChange(inputValue)}
       isDisabled={isDisabled}
       isRequired={isRequired}
+      styled={styled}
       classNames={classNames}
       className={className}
       rows={rows}

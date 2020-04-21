@@ -17,6 +17,7 @@ const FileInput = forwardRef(function FileInput(
     isRequired = false,
     prefix,
     suffix,
+    styled,
     classNames,
     className = '',
     ...htmlAttributes
@@ -36,7 +37,7 @@ const FileInput = forwardRef(function FileInput(
   };
 
   return (
-    <Styled.FileInputWrapper className={className} classNames={classNames} isDisabled={isDisabled}>
+    <Styled.FileInputWrapper className={className} classNames={classNames} isDisabled={isDisabled} styled={styled}>
       <Styled.HiddenFileInput
         ref={ref}
         type="file"
@@ -54,17 +55,26 @@ const FileInput = forwardRef(function FileInput(
         aria-required={isRequired}
         aria-labelledby={name}
         classNames={classNames}
+        styled={styled}
         {...htmlAttributes}
       />
 
-      <Styled.FileInputContainer isDisabled={isDisabled} classNames={classNames}>
-        {prefix && <Styled.Prefix classNames={classNames}>{prefix}</Styled.Prefix>}
+      <Styled.FileInputContainer isDisabled={isDisabled} classNames={classNames} styled={styled}>
+        {prefix && (
+          <Styled.Prefix classNames={classNames} styled={styled}>
+            {prefix}
+          </Styled.Prefix>
+        )}
 
-        <Styled.FileInput as="div" value={value} classNames={classNames}>
+        <Styled.FileInput as="div" value={value} classNames={classNames} styled={styled}>
           {renderStringValue()}
         </Styled.FileInput>
 
-        {suffix && <Styled.Suffix classNames={classNames}>{suffix}</Styled.Suffix>}
+        {suffix && (
+          <Styled.Suffix classNames={classNames} styled={styled}>
+            {suffix}
+          </Styled.Suffix>
+        )}
       </Styled.FileInputContainer>
 
       <Styled.FileInputButton
@@ -73,6 +83,7 @@ const FileInput = forwardRef(function FileInput(
         appearance="contained"
         intent="primary"
         classNames={classNames}
+        styled={styled}
         isDisabled={isDisabled}
       >
         {buttonValue}

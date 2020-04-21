@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Portal from '../internal/Portal';
-import Text from '../Text';
 
 import { useKeyPressClose } from '../../hooks';
 import { classNames, common } from '../../utils';
@@ -16,6 +15,7 @@ const Alert = ({
   intent = 'primary',
   verticalPosition,
   horizontalPosition,
+  styled,
   classNames,
   className = '',
 }) => {
@@ -32,12 +32,13 @@ const Alert = ({
         horizontalPosition={horizontalPosition}
         classNames={classNames}
         className={className}
+        styled={styled}
       >
-        <Text variant="caption" classNames={{ Text: classNames?.Content }}>
+        <Styled.Content variant="caption" classNames={classNames} styled={styled}>
           {children}
-        </Text>
+        </Styled.Content>
 
-        <Styled.Icon name="close" intent={intent} classNames={classNames} />
+        <Styled.Icon name="close" intent={intent} classNames={classNames} styled={styled} />
       </Styled.Alert>
     </Portal>
   );
@@ -52,7 +53,7 @@ Alert.propTypes = {
   intent: common.intent,
   verticalPosition: PropTypes.oneOf(['top', 'bottom']).isRequired,
   horizontalPosition: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-  ...classNames([...Object.keys(Styled), 'Content']),
+  ...classNames(Object.keys(Styled)),
 };
 
 Alert.defaultProps = {

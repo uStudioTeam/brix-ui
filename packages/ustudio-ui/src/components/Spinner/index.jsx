@@ -5,7 +5,7 @@ import { classNames, timeout } from '../../utils';
 
 import { Styled } from './styles';
 
-const Spinner = ({ appearance, delay, classNames, className = '' }) => {
+const Spinner = ({ appearance, delay, styled, classNames, className = '' }) => {
   const [isMounted, setMounted] = useState(!delay);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const Spinner = ({ appearance, delay, classNames, className = '' }) => {
       appearance={appearance}
       className={className}
       classNames={classNames}
+      styled={styled}
     >
       <circle r={60} cx={80} cy={80} />
     </Styled.Spinner>

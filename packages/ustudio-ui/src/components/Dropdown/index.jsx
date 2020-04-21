@@ -15,6 +15,7 @@ const Dropdown = ({
   icon = <Icon name="chevron" />,
   isDefaultOpen,
   isDisabled = false,
+  styled,
   classNames,
   className = '',
 }) => {
@@ -26,34 +27,37 @@ const Dropdown = ({
   useKeyPressClose(setOpen);
 
   return (
-    <Styled.DropdownContainer isOpen={isOpen} classNames={classNames} className={className}>
+    <Styled.DropdownContainer isOpen={isOpen} classNames={classNames} className={className} styled={styled}>
       <Styled.Title
         onClick={() => {
           if (onChange && isDefaultOpen !== undefined) {
             onChange();
             return;
           }
-          
+
           if (onChange) {
             onChange();
             setOpen(!isOpen);
             return;
           }
-  
+
           setOpen(!isOpen);
         }}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-labelledby={name}
         classNames={classNames}
+        styled={styled}
       >
         {title}
 
-        <Styled.TitleIcon classNames={classNames}>{cloneElement(icon, { angle: isOpen ? 0 : -180 })}</Styled.TitleIcon>
+        <Styled.TitleIcon classNames={classNames} styled={styled}>
+          {cloneElement(icon, { angle: isOpen ? 0 : -180 })}
+        </Styled.TitleIcon>
       </Styled.Title>
 
-      <Styled.Dropdown dropdownHeight={height} classNames={classNames}>
-        <Styled.Content ref={ref} classNames={classNames}>
+      <Styled.Dropdown dropdownHeight={height} classNames={classNames} styled={styled}>
+        <Styled.Content ref={ref} classNames={classNames} styled={styled}>
           {children}
         </Styled.Content>
       </Styled.Dropdown>

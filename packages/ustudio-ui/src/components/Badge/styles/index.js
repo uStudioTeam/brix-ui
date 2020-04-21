@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import Text from '../../Text';
 
 import { inject } from './inject';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 
 const Badge = styled.span(
   ({ isDisabled, appearance }) => css`
@@ -19,4 +20,6 @@ const Badge = styled.span(
   `
 );
 
-export const Styled = StyledComponents({ Badge });
+const Content = styled(Text)``;
+
+export const Styled = StyledComponents({ Badge, Content });

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { inject } from './inject';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 
 const Avatar = styled.div(
   ({ isDisabled, appearance }) => css`

@@ -5,7 +5,7 @@ import { classNames, common } from '../../utils';
 
 import { Styled } from './styles';
 
-const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames, className = '' }) => {
+const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', styled, classNames, className = '' }) => {
   const [offset, setOffset] = useState(0);
 
   return (
@@ -14,9 +14,10 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames
       dataOffset={offset}
       className={className}
       classNames={classNames}
+      styled={styled}
     >
       {tabs.map((tab, index) => (
-        <Styled.TabContainer key={tab.value} classNames={classNames}>
+        <Styled.TabContainer key={tab.value} classNames={classNames} styled={styled}>
           <Styled.Tab
             role="tab"
             isActive={active === tab.value}
@@ -27,8 +28,11 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', classNames
             }}
             variant={variant}
             classNames={classNames}
+            styled={styled}
           >
-            <Styled.TabContent classNames={classNames}>{tab.children}</Styled.TabContent>
+            <Styled.TabContent classNames={classNames} styled={styled}>
+              {tab.children}
+            </Styled.TabContent>
           </Styled.Tab>
         </Styled.TabContainer>
       ))}

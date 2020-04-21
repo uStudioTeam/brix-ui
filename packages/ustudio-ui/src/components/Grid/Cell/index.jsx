@@ -7,13 +7,14 @@ import { GridContext } from '../utils/context';
 
 import { Styled } from '../styles';
 
-const Cell = ({ children, classNames, className = '', index, xs, md, lg, xl }) => {
+const Cell = ({ children, styled, classNames, className = '', index, xs, md, lg, xl }) => {
   const gridData = useContext(GridContext);
 
   return (
     <Styled.Cell
       index={index}
       breakpoints={{ xs, md, lg, xl }}
+      styled={styled}
       classNames={classNames}
       className={className}
       {...gridData}

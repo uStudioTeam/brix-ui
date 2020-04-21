@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '../../components/Text';
-
 import { classNames } from '../../utils';
 
 import { Styled } from './styles';
 
-const Badge = ({ children, isDisabled = false, appearance, classNames, className = '' }) => (
+const Badge = ({ children, isDisabled = false, appearance, styled, classNames, className = '' }) => (
   <Styled.Badge
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
+    styled={styled}
     classNames={classNames}
     className={className}
   >
-    <Text variant="caption" classNames={{ Text: classNames?.Content }}>{`${children}`}</Text>
+    <Styled.Content variant="caption" classNames={classNames} styled={styled}>{`${children}`}</Styled.Content>
   </Styled.Badge>
 );
 
@@ -28,7 +27,7 @@ Badge.propTypes = {
     background: PropTypes.string,
     color: PropTypes.string,
   }),
-  ...classNames([...Object.keys(Styled), 'Content']),
+  ...classNames(Object.keys(Styled)),
 };
 
 Badge.defaultProps = {

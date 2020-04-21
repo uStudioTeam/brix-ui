@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
+import Text from '../../Text';
 import { inject } from './inject';
 
 const Tooltip = styled.span(
@@ -76,4 +77,7 @@ const TooltipContainer = styled.span`
     }
   `)}
 `;
-export const Styled = StyledComponents({ TooltipContainer, Tooltip });
+
+const Content = styled(Text)``
+
+export const Styled = StyledComponents({ TooltipContainer, Tooltip, Content });

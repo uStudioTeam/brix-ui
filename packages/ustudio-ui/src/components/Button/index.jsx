@@ -16,6 +16,7 @@ const Button = forwardRef(function Button(
     isDisabled = false,
     isLoading = false,
     children,
+    styled,
     classNames,
     className = '',
     ...htmlAttributes
@@ -38,11 +39,12 @@ const Button = forwardRef(function Button(
         ...htmlAttributes,
       }}
       onTouchStart={() => {}}
+      styled={styled}
     >
       {iconBefore}
 
       {isLoading && (
-        <Styled.LoadingSpinner classNames={classNames}>
+        <Styled.LoadingSpinner classNames={classNames} styled={styled}>
           <Spinner appearance={{ color: 'var(--c-neutral)', size: 16 }} />
         </Styled.LoadingSpinner>
       )}

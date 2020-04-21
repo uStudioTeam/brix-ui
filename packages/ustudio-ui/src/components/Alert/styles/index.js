@@ -1,7 +1,8 @@
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import IconComponent from '../../internal/Icon';
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
+import Text from '../../Text';
 import { inject } from './inject';
 
 const Alert = styled.button(
@@ -72,7 +73,10 @@ const Icon = styled(IconComponent)(
   `
 );
 
+const Content = styled(Text)``;
+
 export const Styled = StyledComponents({
   Alert,
   Icon,
+  Content
 });

@@ -3,6 +3,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
+import { css } from 'styled-components';
 
 import Drawer from '../index';
 import Button from '../../Button';
@@ -25,6 +26,11 @@ drawerStory.add('Primary', () => {
         showOverlay={boolean('Show overlay', false)}
         position={select('Position', ['top', 'right', 'bottom', 'left'], 'right')}
         onChange={() => setOpen(!isOpen)}
+        styled={{
+          Overlay: css`
+            background-color: var(--c-darkest);
+          `,
+        }}
       >
         Drawer
       </Drawer>

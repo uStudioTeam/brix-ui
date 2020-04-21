@@ -14,6 +14,7 @@ const Grid = ({
   isContainer = false,
   margin,
   padding,
+  styled,
   classNames,
   className = '',
   xs,
@@ -40,6 +41,7 @@ const Grid = ({
       breakpoints={{ xs, md, lg, xl }}
       margin={margin}
       padding={padding}
+      styled={styled}
       classNames={classNames}
       className={className}
     >

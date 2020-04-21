@@ -1,0 +1,28 @@
+import styled from 'styled-components';
+
+export const StyledComponents = object => {
+  return Object.keys(object).reduce((injectedObject, componentKey) => {
+    return Object.assign(injectedObject, {
+      [componentKey]: styled(object[componentKey]).attrs(props => ({
+        className: `${props.classNames?.[componentKey] || ''} ${props?.className || ''}`.trim(),
+      }))(props => {
+        const style = props.styled?.[componentKey];
+
+        if (style) {
+          if (Array.isArray(style)) {
+            return style;
+          }
+
+          if (typeof style === 'function') {
+            return style({
+              ...object,
+              ...props,
+            });
+          }
+        }
+
+        return ``;
+      }),
+    });
+  }, {});
+};

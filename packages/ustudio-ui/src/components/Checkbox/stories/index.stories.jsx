@@ -3,7 +3,7 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Checkbox from '../index';
 
@@ -27,6 +27,11 @@ checkboxStory.add('Primary', () => {
         name="default"
         value={isChecked}
         onChange={setChecked}
+        styled={{
+          Checkbox: () => css`
+            border: 1px solid var(--c-positive);
+          `,
+        }}
       />
     </SContainer>
   );

@@ -17,6 +17,7 @@ const TextInput = forwardRef(function TextInput(
     isRequired = false,
     prefix,
     suffix,
+    styled,
     classNames,
     className,
     autoComplete = 'off',
@@ -39,6 +40,7 @@ const TextInput = forwardRef(function TextInput(
       isRequired={isRequired}
       prefix={prefix}
       suffix={suffix}
+      styled={styled}
       classNames={classNames}
       className={className}
       autoComplete={autoComplete}

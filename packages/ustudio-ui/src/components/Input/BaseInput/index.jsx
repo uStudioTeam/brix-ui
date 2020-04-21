@@ -16,6 +16,7 @@ const BaseInput = forwardRef(function BaseInput(
     isRequired,
     prefix,
     suffix,
+    styled,
     classNames,
     className = '',
     ...inputProps
@@ -23,8 +24,12 @@ const BaseInput = forwardRef(function BaseInput(
   ref
 ) {
   return (
-    <Styled.InputContainer isDisabled={isDisabled} className={className} classNames={classNames}>
-      {prefix && <Styled.Prefix classNames={classNames}>{prefix}</Styled.Prefix>}
+    <Styled.InputContainer isDisabled={isDisabled} className={className} classNames={classNames} styled={styled}>
+      {prefix && (
+        <Styled.Prefix classNames={classNames} styled={styled}>
+          {prefix}
+        </Styled.Prefix>
+      )}
 
       <Styled.Input
         ref={ref}
@@ -38,10 +43,15 @@ const BaseInput = forwardRef(function BaseInput(
         aria-required={isRequired}
         aria-labelledby={name}
         classNames={classNames}
+        styled={styled}
         {...inputProps}
       />
 
-      {suffix && <Styled.Suffix classNames={classNames}>{suffix}</Styled.Suffix>}
+      {suffix && (
+        <Styled.Suffix classNames={classNames} styled={styled}>
+          {suffix}
+        </Styled.Suffix>
+      )}
     </Styled.InputContainer>
   );
 });

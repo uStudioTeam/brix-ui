@@ -196,6 +196,18 @@ export const PropsTable = ({
 
               <Styled.PropType source={`\`${classNames.join(' | ')}\``} />
             </Styled.TableRow>
+  
+            <Styled.TableRow>
+              <Styled.PropMeta>
+                <Styled.PropName variant="small">styled</Styled.PropName>
+      
+                <Styled.PropDescription variant="small">
+                  List of styled components to be extended
+                </Styled.PropDescription>
+              </Styled.PropMeta>
+    
+              <Styled.PropType source={`\`${classNames.join(' | ')}\``} />
+            </Styled.TableRow>
           </>
         )}
       </Styled.Table>
