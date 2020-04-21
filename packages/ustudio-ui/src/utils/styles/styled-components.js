@@ -15,10 +15,7 @@ export const StyledComponents = object => {
 
           if (typeof style === 'function') {
             return style({
-              ...Object.keys(object).reduce(
-                (classes, classKey) => Object.assign(classes, { [classKey]: object[classKey] }),
-                {}
-              ),
+              ...object,
               ...props,
             });
           }
