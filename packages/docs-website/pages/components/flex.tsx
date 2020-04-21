@@ -53,6 +53,16 @@ const FlexPage = () => {
             vertical?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
           }`,
         },
+        margin: {
+          type: `\`{
+    [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
+}\``,
+        },
+        padding: {
+          type: `\`{
+    [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
+}\``,
+        },
       }}
       classNames={['Flex']}
     >

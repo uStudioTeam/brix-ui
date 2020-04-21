@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StyledComponents } from '../../../utils/styles/styled-component';
+import { getIndentations } from '../../../utils/get-indentations';
 import { inject } from './inject';
 
 const Cell = styled.div(
@@ -11,7 +12,7 @@ const Cell = styled.div(
 );
 
 const Grid = styled.div(
-  ({ divisions, isContainer, cellsCount, breakpoints }) => css`
+  ({ divisions, isContainer, cellsCount, breakpoints, margin, padding }) => css`
     display: grid;
     width: 100%;
 
@@ -25,6 +26,9 @@ const Grid = styled.div(
           margin-right: auto;
         `
       : ''};
+
+    ${getIndentations({ type: 'margin', indentObj: margin })}
+    ${getIndentations({ type: 'padding', indentObj: padding })}
   `
 );
 

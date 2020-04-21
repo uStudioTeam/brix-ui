@@ -12,6 +12,12 @@ export type Position = 'left' | 'right' | 'top' | 'bottom';
 
 type Align = 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around';
 
+type Indent = 'small' | 'medium' | 'regular' | 'large';
+
+export interface Indentation {
+  [position: Position]: Indent;
+}
+
 export interface Alignment {
   vertical?: Align;
   horizontal?: Align;
@@ -24,7 +30,7 @@ export interface ClassNames<S extends Record<string, any>> {
 
 export interface Theme {
   breakpoint?: Partial<Record<Breakpoint, number>>;
-  indent?: Partial<Record<'small' | 'medium' | 'regular' | 'large', string>>;
+  indent?: Partial<Record<Indent, string>>;
   palette?: Partial<Record<Color, string>>;
   font?: Partial<Record<'body' | 'code' | 'article', string>>;
   layer?: Partial<Record<'topmost' | 'top' | 'middle' | 'bottom', number>>;

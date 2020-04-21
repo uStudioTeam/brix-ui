@@ -54,6 +54,16 @@ Make sure to not wrap \`Cell\` into other components as it will break the layout
   };
 }\``,
         },
+        margin: {
+          type: `\`{
+    [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
+}\``,
+        },
+        padding: {
+          type: `\`{
+    [left | right | top | bottom]?: 'small' | 'medium' | 'regular' | 'large';
+}\``,
+        },
       }}
       classNames={['Grid']}
     >

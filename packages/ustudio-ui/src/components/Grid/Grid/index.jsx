@@ -1,20 +1,31 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { classNames, common } from '../../../utils';
+import { classNames, common, indentProps } from '../../../utils';
 
 import { Styled } from '../styles';
 import { gridUtils } from '../utils';
 import { GridContext } from '../utils/context';
 import { reduceBreakpointsToObject } from '../utils/reduce-breakpoints';
 
-const Grid = ({ children: cells, isContainer = false, classNames, className = '', xs, md, lg, xl }) => {
+const Grid = ({
+  children: cells,
+  isContainer = false,
+  margin,
+  padding,
+  classNames,
+  className = '',
+  xs,
+  md,
+  lg,
+  xl,
+}) => {
   const { divisions, cellsSizes, cellsCount, offsets } = useMemo(
     () => ({
       divisions: gridUtils.countDivisions(cells),
       cellsSizes: gridUtils.countCellsSizes(cells),
       cellsCount: gridUtils.countCells(cells),
-      offsets: gridUtils.countOffsets(cells)
+      offsets: gridUtils.countOffsets(cells),
     }),
     [cells]
   );
@@ -25,6 +36,8 @@ const Grid = ({ children: cells, isContainer = false, classNames, className = ''
       isContainer={isContainer}
       cellsCount={cellsCount}
       breakpoints={{ xs, md, lg, xl }}
+      margin={margin}
+      padding={padding}
       classNames={classNames}
       className={className}
     >
@@ -32,7 +45,7 @@ const Grid = ({ children: cells, isContainer = false, classNames, className = ''
         value={{
           cellsSizes,
           gridBreakpoints: { xs, md, lg, xl },
-          offsets
+          offsets,
         }}
       >
         {gridUtils.mapCells(cells)}
@@ -75,6 +88,8 @@ const cellsValidator = (props, propName, componentName) => {
 Grid.propTypes = {
   children: cellsValidator,
   isContainer: PropTypes.bool,
+  margin: indentProps(),
+  padding: indentProps(),
   ...reduceBreakpointsToObject(breakpoint => ({
     [breakpoint]: PropTypes.exact({
       template: PropTypes.string,
