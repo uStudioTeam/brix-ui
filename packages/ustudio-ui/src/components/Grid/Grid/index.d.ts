@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Alignment, Breakpoint, Direction, WrapperTag } from '../../../theme/theme';
+import { Alignment, Breakpoint, Direction } from '../../../theme/theme';
+import { WrapperTag } from '../../shared/types';
 import Cell, { CellProps } from '../Cell';
 
 type GridBreakpointData = {

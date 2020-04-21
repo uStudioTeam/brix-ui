@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ClassNames } from '../../theme/theme';
-import { Input } from '../../input';
+import { Input } from '../../shared/types';
 import { TextProps } from '../Text';
 
 interface Styled {

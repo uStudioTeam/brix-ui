@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Alignment, ClassNames, WrapperTag } from '../../theme/theme';
+import { Alignment, ClassNames } from '../../theme/theme';
+import { WrapperTag } from '../../shared/types';
 
 interface Styled {
   Flex;
