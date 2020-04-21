@@ -60,7 +60,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0",
     "storybook-addon-jsx": "^7.1.13",
-    "styled-components": "^5.0.0",
+    "styled-components": "^5.1.0",
     "stylelint": "^13.0.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-recommended": "^3.0.0",
