@@ -15,6 +15,7 @@ explore full potential of this ui-kit is to extend the styles we provide. Below 
   - [GlobalStyles](#globalstyles)
   - [styled(Component)](<#styled(component)>)
   - [CSS classes](#css-classes)
+  - [styled prop](#styled)
 - [Mixins](#mixins)
   - [Font](#font)
   - [Style](#style)
@@ -243,6 +244,32 @@ available `classNames`.
     Header: '...',
     /* ... */
 }
+```
+
+---
+
+### `styled` prop
+
+All components have a special `styled` prop. It is similar to `classNames`, except it
+provides a way to extend every component inside of a given one with a `css` function
+styles (imported from `styled-components`). It accepts either a plain `css` call, or
+a function which gives you all styled components used inside, a theme and props.
+
+```typescript jsx
+<Checkbox 
+    styled={
+        CheckboxContainer: (({ Checkbox }) => css`
+            ${Checkbox} {
+                &:hover {
+                    border: 1px solid grey;
+                }
+            }
+        `),
+        Checkbox: css`
+            border: 1px solid black;
+        `
+    }
+/>
 ```
 
 ---
