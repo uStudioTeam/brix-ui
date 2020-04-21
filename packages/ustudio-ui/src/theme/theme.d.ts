@@ -30,7 +30,7 @@ export interface ClassNames<S extends Record<string, any>> {
 
 export interface Theme {
   breakpoint?: Partial<Record<Breakpoint, number>>;
-  indent?: Partial<Record<'small' | 'medium' | 'regular' | 'large', string>>;
+  indent?: Partial<Record<Indent, string>>;
   palette?: Partial<Record<Color, string>>;
   font?: Partial<Record<'body' | 'code' | 'article', string>>;
   layer?: Partial<Record<'topmost' | 'top' | 'middle' | 'bottom', number>>;
