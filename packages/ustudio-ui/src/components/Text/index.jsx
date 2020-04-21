@@ -10,10 +10,11 @@ const Text = forwardRef(function Text(
   {
     children = '',
     variant = 'body',
-    align = 'inherit',
     appearance = 'regular',
+    align = 'inherit',
+    color = 'inherit',
     className = '',
-    classNames
+    classNames,
   },
   ref
 ) {
@@ -22,8 +23,9 @@ const Text = forwardRef(function Text(
       as={textUtils.renderElement({ variant, appearance })}
       ref={ref}
       variant={variant}
-      align={align}
       appearance={appearance}
+      align={align}
+      dataColor={color}
       classNames={classNames}
       className={className}
     >
@@ -37,15 +39,17 @@ Text.displayName = 'Text';
 Text.propTypes = {
   children: PropTypes.node.isRequired,
   variant: common.text,
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   appearance: PropTypes.oneOf(['regular', 'italic', 'underlined', 'bold']),
+  align: PropTypes.oneOf(['left', 'center', 'right']),
+  color: PropTypes.string,
   ...classNames(Object.keys(Styled)),
 };
 
 Text.defaultProps = {
   variant: 'body',
-  align: 'inherit',
   appearance: 'regular',
+  align: 'inherit',
+  color: 'inherit',
 };
 
 export default Text;
