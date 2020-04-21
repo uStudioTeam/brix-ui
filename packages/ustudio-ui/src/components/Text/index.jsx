@@ -42,7 +42,7 @@ Text.propTypes = {
   children: PropTypes.node.isRequired,
   variant: common.text,
   appearance: PropTypes.oneOf(['regular', 'italic', 'underlined', 'bold']),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
+  align: PropTypes.oneOf(['left', 'center', 'right', 'inherit']),
   color: PropTypes.string,
   ...classNames(Object.keys(Styled)),
 };

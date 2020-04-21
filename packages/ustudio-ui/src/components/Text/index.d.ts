@@ -9,7 +9,7 @@ interface AnyTextProps
   extends ClassNames<Styled>,
     Partial<HTMLAttributes<HTMLElement>> {
   variant?: Variant;
-  align?: 'left' | 'center' | 'right';
+  align?: 'left' | 'center' | 'right' | 'inherit';
 
   children: ReactNode;
 }

@@ -36,7 +36,7 @@ const TextPage = () => {
           defaultValue: `\`'regular'\``,
         },
         align: {
-          type: `\`'left' | 'center' | 'right'\``,
+          type: `\`'left' | 'center' | 'right' | 'inherit'\``,
           defaultValue: `\`'inherit'\``,
         },
         color: {
