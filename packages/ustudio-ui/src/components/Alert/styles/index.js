@@ -1,4 +1,4 @@
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import IconComponent from '../../internal/Icon';
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';

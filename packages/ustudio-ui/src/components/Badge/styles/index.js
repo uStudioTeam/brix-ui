@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import Text from '../../Text';
 
 import { inject } from './inject';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 
 const Badge = styled.span(
   ({ isDisabled, appearance }) => css`

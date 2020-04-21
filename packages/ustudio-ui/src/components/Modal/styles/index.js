@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import Flex from '../../Flex';
 import { Mixin } from '../../../theme';
 import Text from '../../Text';

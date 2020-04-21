@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { getAlignment } from '../../../utils';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject';
 import { getIndentations } from '../../../utils/get-indentations';
 

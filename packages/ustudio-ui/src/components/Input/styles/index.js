@@ -1,7 +1,7 @@
 import { Styled as StyledButton } from '../../../components/Button/styles'; // <button> does not work inside a <label>, so we need to import a styled component to use it as a wrapper for a "button"
 import styled, { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject';
 
 const Prefix = styled.div`

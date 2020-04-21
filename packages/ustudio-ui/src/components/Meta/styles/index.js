@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-component';
+import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject.js';
 
 const Meta = styled.div`
