@@ -16,7 +16,6 @@ const dimensions = position => {
       return css`
         width: auto;
         height: 100%;
-        top: 0;
       `;
     case 'top':
     case 'bottom':
