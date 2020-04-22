@@ -13,6 +13,7 @@ const Flex = ({
   padding,
   isReversed,
   isInline,
+  isWrap,
   alignment,
   styled,
   classNames,
@@ -23,6 +24,7 @@ const Flex = ({
     dataDirection={direction}
     isReversed={isReversed}
     isInline={isInline}
+    isWrap={isWrap}
     margin={margin}
     padding={padding}
     alignment={alignment}
@@ -44,6 +46,7 @@ Flex.propTypes = {
   padding: indentProps(),
   isReversed: PropTypes.bool,
   isInline: PropTypes.bool,
+  isWrap: PropTypes.bool,
   alignment: common.alignment,
   ...classNames(Object.keys(Styled)),
 };

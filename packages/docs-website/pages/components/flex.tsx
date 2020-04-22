@@ -50,6 +50,10 @@ const FlexPage = () => {
           type: '`boolean`',
           description: 'Displays as inline-flex',
         },
+        isWrap: {
+          type: '`boolean`',
+          description: 'Flex wrap',
+        },
         alignment: {
           type: `
           {
