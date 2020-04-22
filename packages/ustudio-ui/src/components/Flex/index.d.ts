@@ -12,6 +12,7 @@ interface FlexProps extends ClassNames<Styled> {
   direction?: 'row' | 'column';
   isReversed?: boolean;
   isInline?: boolean;
+  isWrap?: boolean;
 
   alignment?: Alignment;
 

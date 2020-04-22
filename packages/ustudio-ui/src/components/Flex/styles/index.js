@@ -6,9 +6,10 @@ import { inject } from './inject';
 import { getIndentations } from '../../../utils/get-indentations';
 
 const Flex = styled.div.withConfig({ displayName: 'Flex' })(
-  ({ dataDirection: direction, margin, padding, isInline, isReversed, alignment }) => css`
+  ({ dataDirection: direction, margin, padding, isInline, isReversed, isWrap, alignment }) => css`
     ${inject.displayStyle({ isInline })};
     ${inject.directionStyle({ direction, isReversed })};
+    ${inject.wrapStyle({ isWrap })};
 
     width: 100%;
 

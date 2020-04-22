@@ -2,4 +2,6 @@ const displayStyle = ({ isInline }) => `display: ${isInline ? 'inline-' : ''}fle
 
 const directionStyle = ({ direction, isReversed }) => `flex-direction: ${direction}${isReversed ? '-reverse' : ''}`;
 
-export const inject = { displayStyle, directionStyle };
+const wrapStyle = ({ isWrap }) => `flex-wrap: ${isWrap ? 'wrap' : 'nowrap'}`;
+
+export const inject = { displayStyle, directionStyle, wrapStyle };
