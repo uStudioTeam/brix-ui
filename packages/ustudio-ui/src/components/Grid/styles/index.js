@@ -13,7 +13,7 @@ const Cell = sc('div')(
 )('Cell');
 
 const Grid = sc('div')(
-  ({ divisions, isContainer, cellsCount, breakpoints, margin, padding }) => css`
+  ({ divisions, isContainer, cellsCount, breakpoints, $margin, $padding }) => css`
     display: grid;
     width: 100%;
 
@@ -28,8 +28,8 @@ const Grid = sc('div')(
         `
       : ''};
 
-    ${getIndentations({ type: 'margin', indentObj: margin })}
-    ${getIndentations({ type: 'padding', indentObj: padding })}
+    ${getIndentations({ type: 'margin', indentObj: $margin })}
+    ${getIndentations({ type: 'padding', indentObj: $padding })}
   `
 )('Grid');
 

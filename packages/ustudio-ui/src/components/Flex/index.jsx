@@ -21,12 +21,12 @@ const Flex = ({
 }) => (
   <Styled.Flex
     as={as}
-    dataDirection={direction}
+    $direction={direction}
     isReversed={isReversed}
     isInline={isInline}
     isWrap={isWrap}
-    margin={margin}
-    padding={padding}
+    $margin={margin}
+    $padding={padding}
     alignment={alignment}
     $classNames={classNames}
     className={className}

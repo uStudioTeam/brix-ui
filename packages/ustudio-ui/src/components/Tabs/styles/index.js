@@ -11,7 +11,7 @@ const TabContainer = sc('li')(css`
 `)('TabContainer');
 
 const Tabs = sc('ul')(
-  ({ dataOffset, tabsQuantity }) => css`
+  ({ $offset, tabsQuantity }) => css`
     position: relative;
     width: 100%;
 
@@ -28,7 +28,7 @@ const Tabs = sc('ul')(
       content: '';
       position: absolute;
       top: 0;
-      left: ${dataOffset}%;
+      left: ${$offset}%;
       z-index: 1;
 
       height: 100%;

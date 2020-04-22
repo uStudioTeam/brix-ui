@@ -31,7 +31,7 @@ const RadioGroup = forwardRef(function RadioGroup(
   }, []);
 
   return (
-    <Styled.RadioGroup dataDirection={direction} className={className} $classNames={classNames} $styled={styled}>
+    <Styled.RadioGroup $direction={direction} className={className} $classNames={classNames} $styled={styled}>
       {Object.values(options).map(option => (
         <Styled.RadioGroupItem key={option.value} $classNames={classNames} $styled={styled}>
           <Styled.Label

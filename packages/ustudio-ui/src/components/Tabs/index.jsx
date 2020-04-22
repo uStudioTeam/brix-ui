@@ -11,7 +11,7 @@ const Tabs = ({ tabs, active, disabledTabs, onChange, variant = 'h3', styled, cl
   return (
     <Styled.Tabs
       tabsQuantity={(1 / tabs.length) * 100}
-      dataOffset={offset}
+      $offset={offset}
       className={className}
       $classNames={classNames}
       $styled={styled}

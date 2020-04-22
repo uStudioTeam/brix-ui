@@ -6,10 +6,10 @@ import { Mixin } from '../../../theme';
 import { inject } from './inject';
 
 const RadioGroup = sc('ul')(
-  ({ dataDirection }) => css`
+  ({ $direction }) => css`
     flex: 1;
     display: grid;
-    grid-auto-flow: ${reverseDirection(dataDirection)};
+    grid-auto-flow: ${reverseDirection($direction)};
     grid-gap: var(--i-regular);
   `
 )('RadioGroup');

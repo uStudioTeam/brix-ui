@@ -56,7 +56,7 @@ const Dropdown = ({
         </Styled.TitleIcon>
       </Styled.Title>
 
-      <Styled.Dropdown dropdownHeight={height} $classNames={classNames} $styled={styled}>
+      <Styled.Dropdown $height={height} $classNames={classNames} $styled={styled}>
         <Styled.Content ref={ref} $classNames={classNames} $styled={styled}>
           {children}
         </Styled.Content>
