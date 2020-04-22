@@ -9,7 +9,7 @@ import { useKeyPressClose } from '../../hooks';
 
 import { Styled } from './styles';
 
-const Modal = ({ children, isOpen, onChange, title, styled, classNames, className = '' }) => {
+const Modal = ({ children, isOpen, onChange, title, footer, styled, classNames, className = '' }) => {
   useKeyPressClose(onChange);
 
   return (
@@ -31,13 +31,18 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
             $classNames={classNames}
             $styled={styled}
           >
-            <Styled.Title variant="h3" $classNames={classNames} $styled={styled}>
-              {title}
-            </Styled.Title>
+
+            {typeof title === 'string' && (
+              <Styled.Title variant="h3" $classNames={classNames} $styled={styled}>
+                {title}
+              </Styled.Title>
+            )}
+
+            {typeof title === 'object' && title}
 
             <Styled.Icon
               type="button"
-              aria-labelledby={`Close ${title}`}
+              aria-labelledby={`Close modal`}
               onClick={() => onChange(false)}
               $classNames={classNames}
               $styled={styled}
@@ -49,11 +54,17 @@ const Modal = ({ children, isOpen, onChange, title, styled, classNames, classNam
           <Styled.Content $classNames={classNames} $styled={styled}>
             {children}
           </Styled.Content>
+
+          {footer && (
+            <Styled.Footer>
+              {footer}
+            </Styled.Footer>
+          )}
         </Styled.Modal>
 
         <Styled.Overlay
           aria-hidden={!isOpen}
-          aria-labelledby={`${title} overlay`}
+          aria-labelledby={`Modal overlay`}
           onClick={() => onChange(false)}
           $classNames={classNames}
           $styled={styled}
@@ -69,7 +80,8 @@ Modal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  footer: PropTypes.element,
   ...classNames(Object.keys(Styled)),
 };
 
