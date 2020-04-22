@@ -29,7 +29,10 @@ export interface ClassNames<S extends Record<string, any>> {
   classNames?: Partial<Record<keyof S, string>>;
   className?: string;
   styled?: Partial<
-    Record<keyof S, string | ((props: ClassNames<S> & Record<string, unknown>) => FlattenSimpleInterpolation)>
+    Record<
+      keyof S,
+      FlattenSimpleInterpolation | ((props: ClassNames<S> & Record<string, unknown>) => FlattenSimpleInterpolation)
+    >
   >;
 }
 
