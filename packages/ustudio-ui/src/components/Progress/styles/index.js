@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 
-import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject';
 import { animation } from './animation';
 
-const Progress = styled.div(
+const Progress = sc('div')(
   ({ value, max }) => css`
     appearance: none;
     overflow: hidden;
@@ -42,6 +42,6 @@ const Progress = styled.div(
       background-color: var(--c-light);
     }
   `
-);
+)('Progress');
 
-export const Styled = StyledComponents({ Progress });
+export const Styled = { Progress };

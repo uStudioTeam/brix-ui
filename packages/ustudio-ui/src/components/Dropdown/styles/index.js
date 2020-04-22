@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject';
 
-const DropdownContainer = styled.div(
+const DropdownContainer = sc('div')(
   ({ isOpen }) => css`
     ${Mixin.Style.borderAll({ color: 'var(--c-light)' })};
 
@@ -30,9 +31,9 @@ const DropdownContainer = styled.div(
       }
     `)}
   `
-);
+)('DropdownContainer');
 
-const Title = styled.button`
+const Title = sc('button')(css`
   ${Mixin.Font.bodyRegular()};
   padding: var(--i-regular);
   width: 100%;
@@ -70,18 +71,18 @@ const Title = styled.button`
       color: var(--c-neutral);
     }
   }
-`;
+`)('Title');
 
-const TitleIcon = styled.span`
+const TitleIcon = sc('span')(css`
   span {
     margin-left: var(--i-regular);
     transition: var(--transition);
     transition-delay: 150ms;
     transition-property: transform;
   }
-`;
+`)('TitleIcon');
 
-const Dropdown = styled.div(
+const Dropdown = sc('div')(
   ({ dropdownHeight }) => css`
     overflow: hidden;
 
@@ -89,10 +90,10 @@ const Dropdown = styled.div(
 
     transition: var(--transition);
   `
-);
+)('Dropdown');
 
-const Content = styled.div`
+const Content = sc('div')(css`
   padding: 1rem;
-`;
+`)('Content');
 
-export const Styled = StyledComponents({ DropdownContainer, Title, TitleIcon, Dropdown, Content });
+export const Styled = { DropdownContainer, Title, TitleIcon, Dropdown, Content };

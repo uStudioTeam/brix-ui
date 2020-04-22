@@ -1,11 +1,12 @@
-import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+/*
+import { css } from 'styled-components';
+
 
 import Text from '../../Text';
 import { Mixin } from '../../../theme';
 import { inject } from './inject';
 
-const SliderContainer = styled.div(
+const SliderContainer = sc('div')
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -17,7 +18,7 @@ const SliderContainer = styled.div(
   `
 );
 
-const InputContainer = styled.div`
+const InputContainer = sc('div')
   position: relative;
 
   width: 100%;
@@ -31,7 +32,7 @@ const InputContainer = styled.div`
   cursor: pointer;
 `;
 
-const Input = styled.input(
+const Input = sc('input')
   ({ disabled }) => css`
     appearance: none;
     width: 100%;
@@ -130,7 +131,7 @@ const Value = styled(Text)`
   user-select: none;
 `;
 
-const HelperContainer = styled.div`
+const HelperContainer = sc('div')
   position: absolute;
 
   display: flex;
@@ -139,7 +140,7 @@ const HelperContainer = styled.div`
   width: 100%;
 `;
 
-const Helper = styled.div(
+const Helper = sc('div')
   ({ isDisabled }) => css`
     position: relative;
 
@@ -149,7 +150,7 @@ const Helper = styled.div(
   `
 );
 
-const Line = styled.div`
+const Line = sc('div')
   height: 1px;
 
   position: absolute;
@@ -161,7 +162,7 @@ const Line = styled.div`
   background-color: var(--c-primary);
 `;
 
-const StepContainer = styled.div`
+const StepContainer = sc('div')
   position: relative;
 
   left: 5px;
@@ -170,7 +171,7 @@ const StepContainer = styled.div`
   height: 12px;
 `;
 
-const Step = styled.span(
+const Step = sc('span')
   ({ isActive, dataLabel, dataDisplay, style }) => css`
     height: 4px;
     width: 1px;
@@ -199,7 +200,7 @@ const Step = styled.span(
   `
 );
 
-export const Styled = StyledComponents({
+export const Styled =
   SliderContainer,
   HelperContainer,
   Helper,
@@ -210,3 +211,4 @@ export const Styled = StyledComponents({
   Step,
   StepContainer,
 });
+*/

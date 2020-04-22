@@ -1,3 +1,4 @@
+export * from './styles/sc';
 export * from './timeout';
 export * from './prop-types';
 export * from './reverse-direction';

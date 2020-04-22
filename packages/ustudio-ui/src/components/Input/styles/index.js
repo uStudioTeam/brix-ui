@@ -1,10 +1,11 @@
 import { Styled as StyledButton } from '../../../components/Button/styles'; // <button> does not work inside a <label>, so we need to import a styled component to use it as a wrapper for a "button"
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject';
 
-const Prefix = styled.div`
+const Prefix = sc('div')(css`
   ${Mixin.Font.bodySmall()};
 
   display: flex;
@@ -12,14 +13,14 @@ const Prefix = styled.div`
 
   flex: 0;
   margin-right: var(--i-regular);
-`;
+`)('Prefix');
 
-const Suffix = styled(Prefix)`
+const Suffix = sc(Prefix)(css`
   margin-right: 0;
   margin-left: var(--i-regular);
-`;
+`)('Suffix');
 
-const Input = styled.input`
+const Input = sc('input')(css`
   width: 100%;
   margin-top: -1px;
 
@@ -35,9 +36,9 @@ const Input = styled.input`
     color: var(--c-neutral);
     transition: var(--transition);
   }
-`;
+`)('Input');
 
-const InputContainer = styled.div(
+const InputContainer = sc('div')(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -73,9 +74,9 @@ const InputContainer = styled.div(
 
     ${inject.inputContainerDisabledStyles({ isDisabled, Input })};
   `
-);
+)('InputContainer');
 
-const FileInput = styled(Input)(
+const FileInput = sc(Input)(
   ({ value }) => css`
     cursor: pointer;
 
@@ -87,9 +88,9 @@ const FileInput = styled(Input)(
 
     ${inject.fileInputColorToggle(value)};
   `
-);
+)('FileInput');
 
-const HiddenFileInput = styled.input`
+const HiddenFileInput = sc('input')(css`
   opacity: 0;
   width: 100%;
   height: 100%;
@@ -104,9 +105,9 @@ const HiddenFileInput = styled.input`
   &[disabled] {
     cursor: not-allowed;
   }
-`;
+`)('HiddenFileInput');
 
-const FileInputWrapper = styled.div(
+const FileInputWrapper = sc('div')(
   ({ isDisabled }) => css`
     width: 100%;
 
@@ -123,9 +124,9 @@ const FileInputWrapper = styled.div(
 
     ${inject.fileInputWrapperDisabledStyles(isDisabled)};
   `
-);
+)('FileInputWrapper');
 
-const FileInputContainer = styled(InputContainer)`
+const FileInputContainer = sc(InputContainer)(css`
   border-radius: 0;
   cursor: pointer;
   border-right: none;
@@ -142,9 +143,9 @@ const FileInputContainer = styled(InputContainer)`
       border-right: none;
     }
   `)}
-`;
+`)('FileInputContainer');
 
-const FileInputButton = styled(StyledButton.Button)`
+const FileInputButton = sc(StyledButton.Button)(css`
   cursor: pointer;
   border-radius: 0;
   border: none;
@@ -160,10 +161,10 @@ const FileInputButton = styled(StyledButton.Button)`
       box-shadow: none;
     }
   `)}
-`;
+`)('FileInputButton');
 
-export const Styled = StyledComponents({ InputContainer, Input, Prefix, Suffix });
-export const StyledFileInput = StyledComponents({
+export const Styled = { InputContainer, Input, Prefix, Suffix };
+export const StyledFileInput = {
   HiddenFileInput,
   FileInput,
   FileInputButton,
@@ -171,4 +172,4 @@ export const StyledFileInput = StyledComponents({
   FileInputWrapper,
   Prefix,
   Suffix,
-});
+};

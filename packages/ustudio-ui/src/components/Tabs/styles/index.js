@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
-import { getTextVariant } from '../../../utils';
+import { getTextVariant, sc } from '../../../utils';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+
 import { inject } from './inject';
 
-const TabContainer = styled.li`
+const TabContainer = sc('li')(css`
   display: flex;
   flex: 1;
-`;
+`)('TabContainer');
 
-const Tabs = styled.ul(
+const Tabs = sc('ul')(
   ({ dataOffset, tabsQuantity }) => css`
     position: relative;
     width: 100%;
@@ -39,9 +39,9 @@ const Tabs = styled.ul(
       transition: left var(--transition);
     }
   `
-);
+)('Tabs');
 
-const Tab = styled.button(
+const Tab = sc('button')(
   ({ isActive, variant }) => css`
     position: relative;
     flex: 1;
@@ -107,11 +107,11 @@ const Tab = styled.button(
       transition: background-color var(--transition);
     }
   `
-);
+)('Tab');
 
-const TabContent = styled.span`
+const TabContent = sc('span')(css`
   position: relative;
   z-index: 3;
-`;
+`)('TabContent');
 
-export const Styled = StyledComponents({ Tabs, TabContainer, Tab, TabContent });
+export const Styled = { Tabs, TabContainer, Tab, TabContent };

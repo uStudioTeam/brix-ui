@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 import Text from '../../Text';
 
 import { inject } from './inject';
-import { StyledComponents } from '../../../utils/styles/styled-components';
 
-const Badge = styled.span(
+const Badge = sc('span')(
   ({ isDisabled, appearance }) => css`
     display: inline-flex;
     justify-content: center;
@@ -18,8 +18,8 @@ const Badge = styled.span(
 
     ${inject.disabledStyles(isDisabled)}
   `
-);
+)('Badge');
 
-const Content = styled(Text)``;
+const Content = sc(Text)(``)('Content');
 
-export const Styled = StyledComponents({ Badge, Content });
+export const Styled = { Badge, Content };

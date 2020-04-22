@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject';
 
-const Button = styled.button(
+const Button = sc('button')(
   ({ intent, appearance, disabled, isLoading }) => css`
     position: relative;
 
@@ -33,13 +34,13 @@ const Button = styled.button(
       `)}
     }
   `
-);
+)('Button');
 
-const LoadingSpinner = styled.span`
+const LoadingSpinner = sc('span')(css`
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
-`;
+`)('LoadingSpinner');
 
-export const Styled = StyledComponents({ Button, LoadingSpinner });
+export const Styled = { Button, LoadingSpinner };

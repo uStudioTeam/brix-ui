@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 
-import { StyledComponents } from '../../../utils/styles/styled-components';
 import { inject } from './inject';
 import { animation } from './animation';
 
-const Spinner = styled.svg(
+const Spinner = sc('svg')(
   ({ appearance }) => css`
     animation: ${animation.rotate} 2s infinite linear;
     transform-origin: center center;
@@ -26,6 +26,6 @@ const Spinner = styled.svg(
       fill: rgba(255, 255, 255, 0);
     }
   `
-);
+)('Spinner');
 
-export const Styled = StyledComponents({ Spinner });
+export const Styled = { Spinner };

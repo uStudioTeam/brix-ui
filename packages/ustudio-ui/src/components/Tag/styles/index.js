@@ -1,10 +1,11 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject';
 
-const Tag = styled.span(
+const Tag = sc('span')(
   ({ appearance }) => css`
     ${Mixin.Font.bodySmall()};
 
@@ -13,6 +14,6 @@ const Tag = styled.span(
     ${inject.background(appearance?.background)};
     ${inject.color(appearance?.color)};
   `
-);
+)('Tag');
 
-export const Styled = StyledComponents({ Tag });
+export const Styled = { Tag };
