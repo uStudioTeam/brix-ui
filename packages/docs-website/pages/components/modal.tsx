@@ -13,7 +13,7 @@ const ModalPage = () => {
       description="A portal to another dimension."
       props={{
         title: {
-          type: '`string |ReactElement`',
+          type: '`string | ReactElement`',
         },
         footer: {
           type: '`ReactElement`',

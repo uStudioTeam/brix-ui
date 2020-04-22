@@ -56,7 +56,7 @@ const Modal = ({ children, isOpen, onChange, title, footer, styled, classNames, 
           </Styled.Content>
 
           {footer && (
-            <Styled.Footer>
+            <Styled.Footer $classNames={classNames} $styled={styled}>
               {footer}
             </Styled.Footer>
           )}
