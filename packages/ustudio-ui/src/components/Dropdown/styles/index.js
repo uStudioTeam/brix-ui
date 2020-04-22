@@ -83,10 +83,10 @@ const TitleIcon = sc('span')(css`
 `)('TitleIcon');
 
 const Dropdown = sc('div')(
-  ({ dropdownHeight }) => css`
+  ({ $height }) => css`
     overflow: hidden;
 
-    height: ${dropdownHeight};
+    height: ${$height};
 
     transition: var(--transition);
   `
