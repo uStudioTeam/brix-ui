@@ -8,10 +8,10 @@ import { getIndentations } from '../../../utils/get-indentations';
 const Flex = styled.div.withConfig({ displayName: 'Flex' })(
   ({ dataDirection: direction, margin, padding, isInline, isReversed, isWrap, alignment }) => css`
     ${inject.displayStyle({ isInline })};
+    ${inject.width({ isInline })};
+
     ${inject.directionStyle({ direction, isReversed })};
     ${inject.wrapStyle({ isWrap })};
-
-    width: 100%;
 
     ${getAlignment({ direction, alignment })};
 
