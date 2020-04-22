@@ -93,7 +93,7 @@ We provide a ready-to-use color scheme that is being consumed by all of our comp
 --c-primary: #1a81db;
 
 --c-white: #fcfcfc;
---c-black:  #1a1a1a;
+--c-black: #1a1a1a;
 ```
 
 The main principle here is to not be tied to the color name but to the meaning behind it, so that if you look forward
@@ -252,23 +252,15 @@ available `classNames`.
 
 All components have a special `styled` prop. It is similar to `classNames`, except it
 provides a way to extend every component inside of a given one with a `css` function
-styles (imported from `styled-components`). It accepts either a plain `css` call, or
-a function which gives you all styled components used inside, a theme and props.
+styles (imported from `styled-components`).
 
 ```typescript jsx
-<Checkbox 
-    styled={{
-        CheckboxContainer: (({ Checkbox }) => css`
-            ${Checkbox} {
-                &:hover {
-                    border: 1px solid grey;
-                }
-            }
-        `),
-        Checkbox: css`
-            border: 1px solid black;
-        `
-    }}
+<Checkbox
+  styled={{
+    Checkbox: css`
+      border: 1px solid black;
+    `,
+  }}
 />
 ```
 
