@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Drawer, Button, Text, Grid, Cell, Avatar, Flex } from 'ustudio-ui';
 
@@ -65,6 +65,11 @@ const DrawerPage = () => {
           position={position as 'left' | 'right' | 'top' | 'bottom'}
           showOverlay
           onChange={() => setIsOpen(false)}
+          styled={{
+            Drawer: css`
+              z-index: var(--l-topmost);
+            `,
+          }}
         >
           <Flex alignment={{ vertical: 'start' }}>
             <Grid xs={{ direction: 'column', gap: 16 }}>
