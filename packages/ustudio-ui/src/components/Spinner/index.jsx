@@ -9,11 +9,19 @@ const Spinner = ({ appearance, delay, styled, classNames, className = '' }) => {
   const [isMounted, setMounted] = useState(!delay);
 
   useEffect(() => {
+    let timeoutInstance;
+
     if (delay ?? delay > 0) {
       setMounted(false);
 
-      (async () => timeout(delay, () => setMounted(true)))();
+      (async () => {
+        timeoutInstance = await timeout(delay, () => setMounted(true));
+      })();
     }
+
+    return () => {
+      clearTimeout(timeoutInstance);
+    };
   }, [delay]);
 
   return isMounted ? (

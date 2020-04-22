@@ -12,9 +12,36 @@ addParameters({ jsx: { skip: 0 } });
 
 const spinnerStory = storiesOf('Spinner', module);
 
-spinnerStory.add('Primary', () => (
-  <Spinner
-    appearance={{ size: number('Size', 32), color: text('Color', 'var(--c-primary)') }}
-    delay={number('Appearance delay', 0)}
-  />
-));
+const Component = () => {
+  const [isLoading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
+  }, [])
+
+  return (
+    <span>
+      {isLoading && (
+        <Spinner
+          appearance={{ size: 32 }}
+          delay={1000}
+        />
+      )}
+    </span>
+  )
+}
+
+spinnerStory.add('Primary', () => {
+  return (
+    <div>
+      <Component />
+
+      <Spinner
+        appearance={{ size: number('Size', 32), color: text('Color', 'var(--c-primary)') }}
+        delay={number('Appearance delay', 0)}
+      />
+    </div>
+  );
+});
