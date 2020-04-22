@@ -54,14 +54,14 @@ const MultiSelect = forwardRef(function MultiSelect(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
-      styled={styled}
-      classNames={classNames}
+      $styled={styled}
+      $classNames={classNames}
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
-        <Styled.Select as="div" role="button" styled={styled} {...props}>
+        <Styled.Select as="div" role="button" $styled={styled} {...props}>
           {(value ?? defaultValue)?.length ? (
-            <Styled.SelectedList classNames={classNames} styled={styled}>
+            <Styled.SelectedList $classNames={classNames} $styled={styled}>
               {(value ?? defaultValue)
                 .sort((itemA, itemB) => {
                   if (items?.[itemA].isDefault) {
@@ -81,10 +81,10 @@ const MultiSelect = forwardRef(function MultiSelect(
                     <Styled.SelectedListItem
                       key={item.value}
                       isDisabled={isDisabled || item?.isDisabled || item?.isDefault}
-                      classNames={classNames}
-                      styled={styled}
+                      $classNames={classNames}
+                      $styled={styled}
                     >
-                      <Styled.SelectedListLabel classNames={classNames} styled={styled}>
+                      <Styled.SelectedListLabel $classNames={classNames} $styled={styled}>
                         {item.label}
                       </Styled.SelectedListLabel>
 
@@ -94,8 +94,8 @@ const MultiSelect = forwardRef(function MultiSelect(
                             event.stopPropagation();
                             !item.isDisabled && !isDisabled && handleItemRemove(item);
                           }}
-                          classNames={classNames}
-                          styled={styled}
+                          $classNames={classNames}
+                          $styled={styled}
                           disabled={item.isDisabled || isDisabled}
                         >
                           <Icon name="close" />

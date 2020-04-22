@@ -11,8 +11,8 @@ const Avatar = ({ children, appearance, isDisabled = false, styled, classNames, 
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
-    styled={styled}
-    classNames={classNames}
+    $styled={styled}
+    $classNames={classNames}
     className={className}
   >
     {children

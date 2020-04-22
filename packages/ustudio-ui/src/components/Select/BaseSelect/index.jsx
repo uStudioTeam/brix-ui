@@ -45,15 +45,15 @@ const BaseSelect = forwardRef(function BaseSelect(
           selected={isItemSelected(item)}
           disabled={item.isDisabled || item.isDefault}
           onClick={() => handleValueClick({ setOpen, item })}
-          classNames={classNames}
+          $classNames={classNames}
           tabIndex={isOpen ? 0 : -1}
-          styled={styled}
+          $styled={styled}
         >
-          <Styled.ValuesListText variant="span" classNames={{ Text: classNames?.ValuesListText || '' }} styled={styled}>
+          <Styled.ValuesListText variant="span" classNames={{ Text: classNames?.ValuesListText || '' }} $styled={styled}>
             {item.label}
           </Styled.ValuesListText>
 
-          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} styled={styled} />
+          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} $styled={styled} />
         </Styled.ValuesListItem>
       </li>
     ));
@@ -62,12 +62,12 @@ const BaseSelect = forwardRef(function BaseSelect(
   return (
     <Styled.SelectContainer
       className={className}
-      classNames={classNames}
+      $classNames={classNames}
       isOpen={isOpen}
       isDisabled={isDisabled}
-      styled={styled}
+      $styled={styled}
     >
-      {isOpen && <Styled.Overlay classNames={classNames} onClick={() => setOpen(false)} styled={styled} />}
+      {isOpen && <Styled.Overlay $classNames={classNames} onClick={() => setOpen(false)} $styled={styled} />}
 
       <select
         id={id}
@@ -101,14 +101,14 @@ const BaseSelect = forwardRef(function BaseSelect(
             size="medium"
             isDisabled={isDisabled}
             classNames={{ Icon: classNames?.SelectIcon || '' }}
-            styled={styled}
+            $styled={styled}
           />
         ),
       })}
 
-      <Styled.Dropdown items={itemsArray} groups={!!groups} isOpen={isOpen} classNames={classNames} styled={styled}>
+      <Styled.Dropdown items={itemsArray} groups={!!groups} isOpen={isOpen} $classNames={classNames} $styled={styled}>
         {items && (
-          <Styled.ValuesList classNames={classNames} styled={styled}>
+          <Styled.ValuesList $classNames={classNames} $styled={styled}>
             {renderItems(items)}
           </Styled.ValuesList>
         )}
@@ -116,8 +116,8 @@ const BaseSelect = forwardRef(function BaseSelect(
         {groups && (
           <div>
             {groups.map(group => (
-              <Styled.ValuesList key={group.title} classNames={classNames} styled={styled}>
-                <Styled.ValuesListTitle classNames={classNames} styled={styled}>
+              <Styled.ValuesList key={group.title} $classNames={classNames} $styled={styled}>
+                <Styled.ValuesListTitle $classNames={classNames} $styled={styled}>
                   {group.title}
                 </Styled.ValuesListTitle>
 

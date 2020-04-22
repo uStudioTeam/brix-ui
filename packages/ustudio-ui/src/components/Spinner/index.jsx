@@ -23,8 +23,8 @@ const Spinner = ({ appearance, delay, styled, classNames, className = '' }) => {
       viewBox="0 0 160 160"
       appearance={appearance}
       className={className}
-      classNames={classNames}
-      styled={styled}
+      $classNames={classNames}
+      $styled={styled}
     >
       <circle r={60} cx={80} cy={80} />
     </Styled.Spinner>

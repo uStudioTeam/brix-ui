@@ -14,7 +14,7 @@ const Checkbox = forwardRef(function Checkbox(
   useDefaultValue(onChange, { value, defaultValue });
   
   return (
-    <Styled.CheckboxContainer className={className} classNames={classNames} isDisabled={isDisabled} styled={styled}>
+    <Styled.CheckboxContainer className={className} $classNames={classNames} isDisabled={isDisabled} $styled={styled}>
       <Styled.Input
         ref={ref}
         type="checkbox"
@@ -30,11 +30,11 @@ const Checkbox = forwardRef(function Checkbox(
         aria-readonly={isDisabled}
         required={isRequired}
         aria-required={isRequired}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
       />
 
-      <Styled.Checkbox classNames={classNames} styled={styled}>
+      <Styled.Checkbox $classNames={classNames} $styled={styled}>
         <Icon name="check" />
       </Styled.Checkbox>
     </Styled.CheckboxContainer>

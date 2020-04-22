@@ -26,9 +26,9 @@ const Flex = ({
     margin={margin}
     padding={padding}
     alignment={alignment}
-    classNames={classNames}
+    $classNames={classNames}
     className={className}
-    styled={styled}
+    $styled={styled}
   >
     {children}
   </Styled.Flex>

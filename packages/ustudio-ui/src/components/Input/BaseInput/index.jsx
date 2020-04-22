@@ -24,9 +24,9 @@ const BaseInput = forwardRef(function BaseInput(
   ref
 ) {
   return (
-    <Styled.InputContainer isDisabled={isDisabled} className={className} classNames={classNames} styled={styled}>
+    <Styled.InputContainer isDisabled={isDisabled} className={className} $classNames={classNames} $styled={styled}>
       {prefix && (
-        <Styled.Prefix classNames={classNames} styled={styled}>
+        <Styled.Prefix $classNames={classNames} $styled={styled}>
           {prefix}
         </Styled.Prefix>
       )}
@@ -42,13 +42,13 @@ const BaseInput = forwardRef(function BaseInput(
         required={isRequired}
         aria-required={isRequired}
         aria-labelledby={name}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
         {...inputProps}
       />
 
       {suffix && (
-        <Styled.Suffix classNames={classNames} styled={styled}>
+        <Styled.Suffix $classNames={classNames} $styled={styled}>
           {suffix}
         </Styled.Suffix>
       )}

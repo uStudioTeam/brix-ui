@@ -13,7 +13,7 @@ const Tag = ({
   className = '',
 }) => {
   return (
-    <Styled.Tag appearance={appearance} classNames={classNames} className={className} styled={styled}>
+    <Styled.Tag appearance={appearance} $classNames={classNames} className={className} $styled={styled}>
       {tag}
     </Styled.Tag>
   );

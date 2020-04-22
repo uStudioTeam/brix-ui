@@ -14,8 +14,8 @@ const Cell = ({ children, styled, classNames, className = '', index, xs, md, lg,
     <Styled.Cell
       index={index}
       breakpoints={{ xs, md, lg, xl }}
-      styled={styled}
-      classNames={classNames}
+      $styled={styled}
+      $classNames={classNames}
       className={className}
       {...gridData}
     >

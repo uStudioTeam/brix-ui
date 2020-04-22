@@ -10,11 +10,11 @@ const Badge = ({ children, isDisabled = false, appearance, styled, classNames, c
     aria-disabled={isDisabled}
     isDisabled={isDisabled}
     appearance={appearance}
-    styled={styled}
-    classNames={classNames}
+    $styled={styled}
+    $classNames={classNames}
     className={className}
   >
-    <Styled.Content variant="caption" classNames={classNames} styled={styled}>{`${children}`}</Styled.Content>
+    <Styled.Content variant="caption" $classNames={classNames} $styled={styled}>{`${children}`}</Styled.Content>
   </Styled.Badge>
 );
 

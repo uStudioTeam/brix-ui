@@ -22,12 +22,18 @@ const Drawer = ({
 
   return (
     <Portal>
-      <Styled.Drawer isOpen={isOpen} position={position} classNames={classNames} className={className} styled={styled}>
+      <Styled.Drawer
+        isOpen={isOpen}
+        position={position}
+        $classNames={classNames}
+        className={className}
+        $styled={styled}
+      >
         {children}
       </Styled.Drawer>
 
       {showOverlay && isOpen && (
-        <Styled.Overlay onClick={() => onChange(false)} classNames={classNames} styled={styled} />
+        <Styled.Overlay onClick={() => onChange(false)} $classNames={classNames} $styled={styled} />
       )}
     </Portal>
   );

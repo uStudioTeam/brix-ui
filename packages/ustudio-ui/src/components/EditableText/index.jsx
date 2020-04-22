@@ -63,19 +63,19 @@ const EditableText = forwardRef(function EditableText(
 
   return (
     <Styled.EditableText
-      classNames={classNames}
+      $classNames={classNames}
       className={className}
       isDisabled={isDisabled}
       isEditing={isEditing}
-      styled={styled}
+      $styled={styled}
     >
       <Styled.Text
         ref={textRef}
         isEditing={isEditing}
         variant={variant}
         appearance={appearance}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
       >
         {value}
       </Styled.Text>
@@ -94,8 +94,8 @@ const EditableText = forwardRef(function EditableText(
         onFocus={() => setEditing(true)}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
-        classNames={classNames}
-        styled={styled}
+        $classNames={classNames}
+        $styled={styled}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         required={isRequired}
@@ -106,7 +106,7 @@ const EditableText = forwardRef(function EditableText(
       {icon ? (
         cloneElement(icon, { isEditing })
       ) : (
-        <Styled.Icon name="pen" isEditing={isEditing} classNames={classNames} styled={styled} />
+        <Styled.Icon name="pen" isEditing={isEditing} $classNames={classNames} $styled={styled} />
       )}
     </Styled.EditableText>
   );
