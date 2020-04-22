@@ -1,17 +1,18 @@
-import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
+
 import { getIndentations } from '../../../utils/get-indentations';
 import { inject } from './inject';
 
-const Cell = styled.div(
+const Cell = sc('div')(
   ({ index, cellsSizes, gridBreakpoints, breakpoints, offsets }) => css`
     display: flex;
 
     ${inject.cellTemplate({ cellsSizes, index, gridBreakpoints, breakpoints, offsets })};
   `
-);
+)('Cell');
 
-const Grid = styled.div(
+const Grid = sc('div')(
   ({ divisions, isContainer, cellsCount, breakpoints, margin, padding }) => css`
     display: grid;
     width: 100%;
@@ -30,6 +31,6 @@ const Grid = styled.div(
     ${getIndentations({ type: 'margin', indentObj: margin })}
     ${getIndentations({ type: 'padding', indentObj: padding })}
   `
-);
+)('Grid');
 
-export const Styled = StyledComponents({ Cell, Grid });
+export const Styled = { Cell, Grid };

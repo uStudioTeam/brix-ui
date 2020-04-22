@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 
 import { inject } from './inject';
-import { StyledComponents } from '../../../utils/styles/styled-components';
 
-const Avatar = styled.div(
+const Avatar = sc('div')(
   ({ isDisabled, appearance }) => css`
     display: inline-flex;
     justify-content: center;
@@ -19,5 +19,6 @@ const Avatar = styled.div(
 
     ${inject.disabledStyles(isDisabled)}
   `
-);
-export const Styled = StyledComponents({ Avatar });
+)('Avatar');
+
+export const Styled = { Avatar };

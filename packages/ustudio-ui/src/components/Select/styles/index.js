@@ -1,13 +1,12 @@
-import styled, { css } from 'styled-components';
-
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 
 import Icon from '../../internal/Icon';
 
 import { Mixin } from '../../../theme';
 import { inject } from './inject';
 
-const SelectContainer = styled.div(
+const SelectContainer = sc('div')(
   ({ isOpen, isDisabled }) => css`
     ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-neutral)', colorBottom: 'rgba(255, 255, 255, 0)' })};
 
@@ -36,9 +35,9 @@ const SelectContainer = styled.div(
       display: none;
     }
   `
-);
+)('SelectContainer');
 
-const Overlay = styled.button`
+const Overlay = sc('button')(css`
   position: fixed;
   top: 0;
   right: 0;
@@ -50,9 +49,9 @@ const Overlay = styled.button`
 
   opacity: 0;
   cursor: default;
-`;
+`)('Overlay');
 
-const Select = styled.button(
+const Select = sc('button')(
   ({ disabled, selected }) => css`
     ${Mixin.Font.bodyRegular()};
     ${Mixin.Style.inputPadding()};
@@ -77,9 +76,9 @@ const Select = styled.button(
 
     ${inject.selectDisabledStyles(disabled)};
   `
-);
+)('Select');
 
-const SelectIcon = styled(Icon)(
+const SelectIcon = sc(Icon)(
   ({ isDisabled }) => css`
     position: absolute;
     right: var(--i-medium);
@@ -91,16 +90,16 @@ const SelectIcon = styled(Icon)(
     transition-delay: var(--transition);
     transition-property: transform;
   `
-);
+)('SelectIcon');
 
-const SelectedList = styled.ul`
+const SelectedList = sc('ul')(css`
   display: flex;
   flex-wrap: wrap;
 
   margin: -4px;
-`;
+`)('SelectedList');
 
-const SelectedListItem = styled.li(
+const SelectedListItem = sc('li')(
   ({ isDisabled }) => css`
     ${Mixin.Font.bodySmall()};
 
@@ -119,13 +118,13 @@ const SelectedListItem = styled.li(
 
     ${inject.selectedItemDisabledStyles({ isDisabled, SelectedListIcon })}
   `
-);
+)('SelectedListItem');
 
-const SelectedListLabel = styled.span`
+const SelectedListLabel = sc('span')(css`
   padding: 2px var(--i-medium);
-`;
+`)('SelectedListLabel');
 
-const SelectedListIcon = styled.button`
+const SelectedListIcon = sc('button')(css`
   padding: 5px 6px 4px;
 
   transition: var(--transition);
@@ -134,9 +133,9 @@ const SelectedListIcon = styled.button`
   &:active {
     background-color: var(--c-primary-light);
   }
-`;
+`)('SelectedListIcon');
 
-const Dropdown = styled.div(
+const Dropdown = sc('div')(
   ({ groups, items, isOpen }) => css`
     ${Mixin.Style.borderAll({ color: 'var(--c-neutral)' })};
 
@@ -179,17 +178,17 @@ const Dropdown = styled.div(
 
     ${inject.dropdownToggleStyles({ isOpen, ValuesList }, { items, groups })}
   `
-);
+)('Dropdown');
 
-const ValuesList = styled.ul`
+const ValuesList = sc('ul')(css`
   display: flex;
   flex-direction: column;
   align-items: stretch;
   overflow-y: scroll;
   transition: var(--transition);
-`;
+`)('ValuesList');
 
-const ValuesListTitle = styled.li`
+const ValuesListTitle = sc('li')(css`
   ${Mixin.Font.caption()};
   ${Mixin.Style.inputPadding()};
 
@@ -198,9 +197,9 @@ const ValuesListTitle = styled.li`
   width: 100%;
   border-top: 1px solid var(--c-light);
   border-bottom: 1px solid var(--c-light);
-`;
+`)('ValuesListTitle');
 
-const ValuesListItem = styled.button(
+const ValuesListItem = sc('button')(
   ({ selected }) => css`
     ${Mixin.Font.bodyRegular()};
     ${Mixin.Style.inputPadding()};
@@ -255,7 +254,11 @@ const ValuesListItem = styled.button(
     `)}
 
     &:not([disabled]) ${ValuesListIcon} {
-      color: ${inject.toggleColor({ selected, selectedColor: 'var(--c-primary)', unselectedColor: 'rgba(255, 255, 255, 0)' })};
+      color: ${inject.toggleColor({
+        selected,
+        selectedColor: 'var(--c-primary)',
+        unselectedColor: 'rgba(255, 255, 255, 0)',
+      })};
     }
 
     &[disabled] {
@@ -280,19 +283,19 @@ const ValuesListItem = styled.button(
       }
     }
   `
-);
+)('ValuesListItem');
 
-const ValuesListText = styled.span`
+const ValuesListText = sc('span')(css`
   position: relative;
-`;
+`)('ValuesListText');
 
-const ValuesListIcon = styled(Icon)`
+const ValuesListIcon = sc(Icon)(css`
   margin-left: 1rem;
 
   transition: var(--transition);
-`;
+`)('ValuesListIcon');
 
-export const StyledSelect = StyledComponents({
+export const StyledSelect = {
   SelectContainer,
   Overlay,
   Select,
@@ -303,14 +306,12 @@ export const StyledSelect = StyledComponents({
   ValuesListItem,
   ValuesListText,
   ValuesListIcon,
-});
+};
 
 export const StyledMultiSelect = {
   ...StyledSelect,
-  ...StyledComponents({
-    SelectedList,
-    SelectedListItem,
-    SelectedListLabel,
-    SelectedListIcon,
-  }),
+  SelectedList,
+  SelectedListItem,
+  SelectedListLabel,
+  SelectedListIcon,
 };

@@ -1,8 +1,7 @@
-import { getTextAppearance, getTextVariant } from '../../../utils';
-import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { getTextAppearance, getTextVariant, sc } from '../../../utils';
+import { css } from 'styled-components';
 
-const Text = styled.p.withConfig({ displayName: 'Text' })(
+const Text = sc('p')(
   ({ variant, appearance, align, dataColor }) => css`
     color: ${dataColor};
 
@@ -11,6 +10,6 @@ const Text = styled.p.withConfig({ displayName: 'Text' })(
     ${getTextAppearance({ appearance })};
     ${getTextVariant({ variant })};
   `
-);
+)('Text');
 
-export const Styled = StyledComponents({ Text });
+export const Styled = { Text };

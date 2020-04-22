@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject';
 
-const SwitchContainer = styled.span(
+const SwitchContainer = sc('span')(
   ({ isDisabled }) => css`
     display: flex;
     align-items: center;
@@ -17,9 +18,9 @@ const SwitchContainer = styled.span(
 
     ${inject.disabledStyles(isDisabled)}
   `
-);
+)('SwitchContainer');
 
-const Switch = styled.span(
+const Switch = sc('span')(
   ({ alternative }) => css`
     ${Mixin.Style.borderAll({ color: 'var(--c-primary)' })};
 
@@ -61,9 +62,9 @@ const Switch = styled.span(
       transition-property: left, background-position;
     }
   `
-);
+)('Switch');
 
-const Input = styled.input`
+const Input = sc('input')(css`
   position: absolute;
 
   width: 100%;
@@ -116,6 +117,6 @@ const Input = styled.input`
       background: var(--c-lightest);
     }
   }
-`;
+`)('Input');
 
-export const Styled = StyledComponents({ Switch, Input, SwitchContainer });
+export const Styled = { Switch, Input, SwitchContainer };

@@ -1,11 +1,11 @@
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
 import IconComponent from '../../internal/Icon';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 import Text from '../../Text';
 import { inject } from './inject';
 
-const Alert = styled.button(
+const Alert = sc('button')(
   ({ isOpen, intent, verticalPosition, horizontalPosition }) => css`
     ${Mixin.Style.borderWithBottom({ colorAll: 'var(--c-light)', colorBottom: `var(--c-${intent})` })};
 
@@ -57,9 +57,9 @@ const Alert = styled.button(
       }
     `)}
   `
-);
+)('Alert');
 
-const Icon = styled(IconComponent)(
+const Icon = sc(IconComponent)(
   ({ intent }) => css`
     margin-left: var(--i-regular);
     margin-bottom: -2px;
@@ -71,12 +71,12 @@ const Icon = styled(IconComponent)(
       color: var(--c-lightest);
     }
   `
-);
+)('Icon');
 
-const Content = styled(Text)``;
+const Content = sc(Text)(``)('Content');
 
-export const Styled = StyledComponents({
+export const Styled = {
   Alert,
   Icon,
-  Content
-});
+  Content,
+};

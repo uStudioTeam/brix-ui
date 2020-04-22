@@ -1,15 +1,16 @@
-import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
+
 import { inject } from './inject.js';
 
-const Meta = styled.div`
+const Meta = sc('div')(css`
   display: flex;
   flex-direction: column;
 
   color: var(--c-darkest);
-`;
+`)('Meta');
 
-const Title = styled.div(
+const Title = sc('div')(
   ({ variant }) => css`
     display: inline-block;
     color: var(--c-dark);
@@ -17,14 +18,14 @@ const Title = styled.div(
     
     ${inject.titleVariant(variant)}
   `
-);
+)('Title');
 
-const Value = styled.div(
+const Value = sc('div')(
   ({ variant }) => css`
     display: inline-block;
     
     ${inject.valueVariant(variant)}
   `
-);
+)('Value');
 
-export const Styled = StyledComponents({ Meta, Title, Value });
+export const Styled = { Meta, Title, Value };

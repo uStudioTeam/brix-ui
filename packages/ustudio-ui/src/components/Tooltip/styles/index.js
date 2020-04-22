@@ -1,10 +1,11 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
+
 import Text from '../../Text';
 import { inject } from './inject';
 
-const Tooltip = styled.span(
+const Tooltip = sc('span')(
   ({ position }) => css`
   position: absolute;
   
@@ -46,9 +47,9 @@ const Tooltip = styled.span(
 
   };
 }`
-);
+)('Tooltip');
 
-const TooltipContainer = styled.span`
+const TooltipContainer = sc('span')(css`
   position: relative;
   border-bottom: 1px dotted var(--c-dark);
   cursor: default;
@@ -76,8 +77,8 @@ const TooltipContainer = styled.span`
       }
     }
   `)}
-`;
+`)('TooltipContainer');
 
-const Content = styled(Text)``
+const Content = sc(Text)(``)('Content');
 
-export const Styled = StyledComponents({ TooltipContainer, Tooltip, Content });
+export const Styled = { TooltipContainer, Tooltip, Content };

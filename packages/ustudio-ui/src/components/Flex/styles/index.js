@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
-import { getAlignment } from '../../../utils';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { getAlignment, sc } from '../../../utils';
+
 import { inject } from './inject';
 import { getIndentations } from '../../../utils/get-indentations';
 
-const Flex = styled.div.withConfig({ displayName: 'Flex' })(
+const Flex = sc('div')(
   ({ dataDirection: direction, margin, padding, isInline, isReversed, isWrap, alignment }) => css`
     ${inject.displayStyle({ isInline })};
     ${inject.width({ isInline })};
@@ -18,6 +18,6 @@ const Flex = styled.div.withConfig({ displayName: 'Flex' })(
     ${getIndentations({ type: 'margin', indentObj: margin })}
     ${getIndentations({ type: 'padding', indentObj: padding })}
   `
-);
+)('Flex');
 
-export const Styled = StyledComponents({ Flex });
+export const Styled = { Flex };

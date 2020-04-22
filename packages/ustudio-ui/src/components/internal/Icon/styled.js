@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { sc } from '../../../utils';
 
 function getSize({ size = 'small' }) {
   return {
@@ -8,7 +9,7 @@ function getSize({ size = 'small' }) {
   }[size];
 }
 
-const Icon = styled.span.withConfig({ displayName: 'Icon' })(
+const Icon = sc('span')(
   ({ size, angle }) => css`
     display: inline-block;
 
@@ -18,6 +19,6 @@ const Icon = styled.span.withConfig({ displayName: 'Icon' })(
     transform: rotate(${angle}deg);
     transform-origin: center center;
   `
-);
+)('Icon');
 
 export const Styled = { Icon };

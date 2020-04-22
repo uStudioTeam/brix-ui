@@ -1,27 +1,27 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
-import { reverseDirection } from '../../../utils';
+import { reverseDirection, sc } from '../../../utils';
 import { Mixin } from '../../../theme';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+
 import { inject } from './inject';
 
-const RadioGroup = styled.ul(
+const RadioGroup = sc('ul')(
   ({ dataDirection }) => css`
     flex: 1;
     display: grid;
     grid-auto-flow: ${reverseDirection(dataDirection)};
     grid-gap: var(--i-regular);
   `
-);
+)('RadioGroup');
 
-const RadioGroupItem = styled.li`
+const RadioGroupItem = sc('li')(css`
   position: relative;
 
   display: flex;
   align-items: center;
-`;
+`)('RadioGroupItem');
 
-const Label = styled.label(
+const Label = sc('label')(
   ({ isDisabled, isReversed }) => css`
     ${Mixin.Font.bodyRegular()};
 
@@ -42,9 +42,9 @@ const Label = styled.label(
 
     ${inject.labelDisabledStyles({ isDisabled, RadioButton })}
   `
-);
+)('Label');
 
-const RadioButton = styled.span`
+const RadioButton = sc('span')(css`
   ${Mixin.Style.borderAll({ color: 'var(--c-primary)' })};
 
   display: flex;
@@ -73,9 +73,9 @@ const RadioButton = styled.span`
 
     transition: var(--transition);
   }
-`;
+`)('RadioButton');
 
-const Input = styled.input`
+const Input = sc('input')(css`
   position: absolute;
   width: 0;
   height: 0;
@@ -146,6 +146,6 @@ const Input = styled.input`
       }
     `)}
   }
-`;
+`)('Input');
 
-export const Styled = StyledComponents({ RadioGroup, RadioGroupItem, Label, RadioButton, Input });
+export const Styled = { RadioGroup, RadioGroupItem, Label, RadioButton, Input };

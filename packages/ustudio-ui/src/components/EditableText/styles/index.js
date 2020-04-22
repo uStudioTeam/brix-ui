@@ -1,13 +1,12 @@
-import styled, { css } from 'styled-components';
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { css } from 'styled-components';
 
 import TextComponent from '../../Text';
 import IconComponent from '../../internal/Icon';
 
-import { getTextAppearance, getTextVariant } from '../../../utils';
+import { getTextAppearance, getTextVariant, sc } from '../../../utils';
 import { inject } from './inject';
 
-const TextArea = styled.textarea(
+const TextArea = sc('textarea')(
   ({ isEditing, dimensions: { width, height }, variant, appearance }) => css`
     width: ${inject.dimension(width, isEditing)};
     height: ${inject.dimension(height, isEditing)};
@@ -34,17 +33,17 @@ const TextArea = styled.textarea(
     ${getTextVariant({ variant })};
     ${getTextAppearance({ appearance })};
   `
-);
+)('TextArea');
 
-const Text = styled(TextComponent)(
+const Text = sc(TextComponent)(
   ({ isEditing }) => css`
     opacity: ${inject.opacity(!isEditing)};
 
     transition: opacity var(--transition);
   `
-);
+)('Text');
 
-const EditableText = styled.article(
+const EditableText = sc('article')(
   ({ isDisabled, isEditing }) => css`
     position: relative;
 
@@ -77,9 +76,9 @@ const EditableText = styled.article(
       ${inject.afterToggle(isEditing)};
     }
   `
-);
+)('EditableText');
 
-const Icon = styled(IconComponent)(
+const Icon = sc(IconComponent)(
   ({ isEditing }) => css`
     position: absolute;
     right: -10px;
@@ -91,6 +90,6 @@ const Icon = styled(IconComponent)(
 
     opacity: ${inject.opacity(!isEditing)};
   `
-);
+)('Icon');
 
-export const Styled = StyledComponents({ EditableText, TextArea, Text, Icon });
+export const Styled = { EditableText, TextArea, Text, Icon };

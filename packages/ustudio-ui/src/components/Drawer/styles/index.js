@@ -1,9 +1,9 @@
-import { StyledComponents } from '../../../utils/styles/styled-components';
+import { sc } from '../../../utils';
 import Flex from '../../Flex';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { inject } from './inject';
 
-const Drawer = styled(Flex)(
+const Drawer = sc(Flex)(
   ({ isOpen, position }) => css`
     position: fixed;
     ${inject.position({ position, isOpen })};
@@ -21,12 +21,12 @@ const Drawer = styled(Flex)(
     border-radius: 0;
 
     ${inject.dimensions(position)};
-    
+
     ${inject.transition({ position, isOpen })}
   `
-);
+)('Drawer');
 
-const Overlay = styled.button`
+const Overlay = sc('button')(css`
   position: fixed;
   top: 0;
   left: 0;
@@ -39,6 +39,6 @@ const Overlay = styled.button`
   opacity: 0.25;
 
   cursor: default;
-`;
+`)('Overlay');
 
-export const Styled = StyledComponents({ Drawer, Overlay });
+export const Styled = { Drawer, Overlay };
