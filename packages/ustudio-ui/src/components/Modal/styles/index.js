@@ -9,7 +9,11 @@ import { inject } from './inject';
 
 const Modal = styled(Flex)(
   ({ isOpen }) => css`
+    width: auto;
     min-width: 20%;
+    max-width: calc(100vw - 4rem);
+
+    max-height: calc(100vh - 4rem);
 
     border: 1px solid var(--c-light);
     background-color: var(--c-lightest);
@@ -29,6 +33,8 @@ const Icon = styled.button`
   align-items: center;
 
   height: 36px;
+
+  margin-left: auto;
 
   transform: rotate(0deg);
   transition: var(--transition);
@@ -71,12 +77,22 @@ const Overlay = styled.button`
 
 const Header = styled(Flex)`
   padding: calc(1rem - (0.375rem / 2)) var(--i-regular);
-`;
 
-const Content = styled(Flex)`
-  padding: var(--i-regular);
+  border-bottom: 1px solid var(--c-light);
 `;
 
 const Title = styled(Text)``;
 
-export const Styled = StyledComponents({ Modal, Header, Content, Icon, Overlay, Title });
+const Content = styled(Flex)`
+  padding: var(--i-regular);
+
+  overflow-y: auto;
+`;
+
+const Footer = styled(Flex)`
+  padding: calc(1rem - (0.375rem / 2)) var(--i-regular);
+
+  border-top: 1px solid var(--c-light);
+`
+
+export const Styled = StyledComponents({ Modal, Header, Content, Icon, Overlay, Title, Footer });

@@ -11,7 +11,8 @@ interface Styled {
 }
 
 interface ModalProps extends ClassNames<Styled> {
-  title: string;
+  title?: string | ReactElement;
+  footer?: ReactElement;
   isOpen: boolean;
   onChange: (isOpen: boolean) => void;
   children: ReactElement | ReactElement[];
