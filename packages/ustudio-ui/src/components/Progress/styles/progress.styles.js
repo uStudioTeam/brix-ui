@@ -1,7 +1,7 @@
 import { css, keyframes } from 'styled-components';
 import { sc } from '../../../utils';
 
-import { inject } from './inject';
+import { inject } from './progress.inject';
 
 const load = keyframes`
   from {

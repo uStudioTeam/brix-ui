@@ -5,7 +5,7 @@ import Flex from '../../Flex';
 import { Mixin } from '../../../theme';
 import Text from '../../Text';
 
-import { inject } from './inject';
+import { inject } from './modal.inject';
 
 const Modal = sc(Flex)(
   ({ isOpen }) => css`

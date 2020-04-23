@@ -4,7 +4,7 @@ import { sc } from '../../../utils';
 import Icon from '../../internal/Icon';
 
 import { Mixin } from '../../../theme';
-import { inject } from './inject';
+import { inject } from './select.inject';
 
 const SelectContainer = sc('div')(
   ({ isOpen, isDisabled }) => css`

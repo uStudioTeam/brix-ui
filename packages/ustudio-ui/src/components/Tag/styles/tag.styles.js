@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 import { sc } from '../../../utils';
 
-import { inject } from './inject';
+import { inject } from './tag.inject';
 
 const Tag = sc('span')(
   ({ appearance }) => css`

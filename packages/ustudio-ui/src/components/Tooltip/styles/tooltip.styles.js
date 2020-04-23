@@ -3,7 +3,7 @@ import { Mixin } from '../../../theme';
 import { sc } from '../../../utils';
 
 import Text from '../../Text';
-import { inject } from './inject';
+import { inject } from './tooltip.inject';
 
 const Tooltip = sc('span')(
   ({ position }) => css`

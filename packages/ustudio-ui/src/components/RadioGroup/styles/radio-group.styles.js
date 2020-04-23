@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { reverseDirection, sc } from '../../../utils';
 import { Mixin } from '../../../theme';
 
-import { inject } from './inject';
+import { inject } from './radio-group.inject';
 
 const RadioGroup = sc('ul')(
   ({ $direction }) => css`

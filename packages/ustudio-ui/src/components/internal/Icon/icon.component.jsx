@@ -9,7 +9,7 @@ import { ReactComponent as Pen } from '../../../assets/icons/pen.svg';
 
 import { common } from '../../../utils';
 
-import { Styled } from './styled';
+import { Styled } from './icon.styles';
 
 function renderIcon(name) {
   return {
