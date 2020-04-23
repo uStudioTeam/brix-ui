@@ -18,6 +18,7 @@ const Flex = ({
   styled,
   classNames,
   className = '',
+  ...htmlAttributes
 }) => (
   <Styled.Flex
     as={as}
@@ -31,6 +32,7 @@ const Flex = ({
     $classNames={classNames}
     className={className}
     $styled={styled}
+    {...htmlAttributes}
   >
     {children}
   </Styled.Flex>
