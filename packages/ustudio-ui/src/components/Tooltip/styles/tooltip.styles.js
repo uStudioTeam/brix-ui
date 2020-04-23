@@ -51,7 +51,6 @@ const Tooltip = sc('span')(
 
 const TooltipContainer = sc('span')(css`
   position: relative;
-  z-index: 1;
 
   opacity: 1;
 
