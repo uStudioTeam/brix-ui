@@ -1,5 +1,5 @@
 import { ClassNames } from '../../../theme/theme';
-import { Group, Item, SelectProps, StyledMultiSelect } from '../types';
+import { Group, Item, SelectProps, StyledMultiSelect } from '../select.types';
 
 interface MultiGroupSelect extends SelectProps<string[]>, ClassNames<StyledMultiSelect> {
   items?: never;

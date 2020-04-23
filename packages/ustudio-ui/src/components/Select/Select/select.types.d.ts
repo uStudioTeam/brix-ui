@@ -1,5 +1,5 @@
 import { ClassNames } from '../../../theme/theme';
-import { Group, Item, SelectProps, StyledSelect } from '../types';
+import { Group, Item, SelectProps, StyledSelect } from '../select.types';
 
 interface SingleGroupSelect extends SelectProps<string>, ClassNames<StyledSelect> {
   items?: never;
