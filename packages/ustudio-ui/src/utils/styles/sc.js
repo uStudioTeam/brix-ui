@@ -29,9 +29,7 @@ const getStyles = (styles, displayName) => props => css`
 `;
 
 export const sc = component => styles => displayName => {
-  const StyledComponent = styled(component).attrs(getAttrs(displayName))(getStyles(styles, displayName));
-
-  StyledComponent.displayName = displayName;
-
-  return StyledComponent;
+  return styled(component)
+    .withConfig({ displayName })
+    .attrs(getAttrs(displayName))(getStyles(styles, displayName));
 };
