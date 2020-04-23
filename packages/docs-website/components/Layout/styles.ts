@@ -16,6 +16,9 @@ const IndexMain = styled.main`
   height: 100vh;
   overflow-y: scroll;
   overflow-x: unset;
+
+  display: flex;
+  flex-direction: column;
   flex: 1;
 
   padding: var(--i-large) 0 calc(54px + var(--i-regular));

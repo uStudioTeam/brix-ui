@@ -99,6 +99,7 @@ const Styled = {
     `
   ),
   AdvantagesContainer: styled(Flex)`
+    margin-bottom: var(--i-large);
     padding: 3rem var(--i-large);
     background: var(--g-primary);
     color: var(--c-lightest);
