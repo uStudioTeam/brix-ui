@@ -43,6 +43,9 @@ import Button from 'ustudio-ui/components/Button';
 import { Button } from 'ustudio-ui';
 ```
 
+**Important note:** for compatibility with tree-shaking we suggest towards using `default` 
+imports rather than named. 
+
 Also, make sure to read our [theming](/docs/theming) guide to squeeze out all the power of uStudio UI Kit and achieve the best
 look and feel.
 
