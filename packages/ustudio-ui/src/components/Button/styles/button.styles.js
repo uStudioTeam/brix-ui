@@ -32,6 +32,12 @@ const Button = sc('button')(
           box-shadow: none;
         }
       `)}
+
+      ${Mixin.Device.mobile(css`
+        &:active {
+          box-shadow: none;
+        }
+      `)}
     }
   `
 )('Button');
