@@ -20,6 +20,12 @@ const Styled = {
       width: 50%;
       flex-direction: row;
     `)}
+
+    a {
+      color: var(--c-primary);
+      opacity: 1;
+      z-index: var(--l-top);
+    }
   `,
 };
 
