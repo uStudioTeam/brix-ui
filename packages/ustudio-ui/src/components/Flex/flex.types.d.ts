@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 import { Alignment, ClassNames, Indentation } from '../../theme/theme';
 import { WrapperTag } from '../../shared/types';
 
@@ -6,7 +6,7 @@ interface Styled {
   Flex;
 }
 
-interface FlexProps extends ClassNames<Styled> {
+interface FlexProps extends ClassNames<Styled>, Partial<HTMLAttributes<HTMLElement>> {
   as?: WrapperTag;
 
   direction?: 'row' | 'column';
