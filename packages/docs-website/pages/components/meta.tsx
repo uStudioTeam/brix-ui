@@ -17,6 +17,7 @@ const MetaContainer = styled(Flex).attrs<{ isXs: boolean }>(({ isXs }) => ({
     margin: var(--i-regular);
   }
 `;
+MetaContainer.displayName = 'Flex';
 
 const MetaPage = () => {
   const isXs = useMediaQuery('screen and (min-width: 576px)');
