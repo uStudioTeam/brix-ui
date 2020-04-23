@@ -66,7 +66,7 @@ const Select = sc('button')(
     align-items: center;
 
     width: 100%;
-    height: 31px;
+    min-height: 31px;
     position: relative;
     z-index: 900;
 
