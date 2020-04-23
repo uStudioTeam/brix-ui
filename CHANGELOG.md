@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.8...v1.2.0) (2020-04-23)
+
+
+### Features
+
+* **Documentation:** add a note about tree-shaking ([#176](https://github.com/uStudioCompany/ustudio-ui/issues/176)) ([5230550](https://github.com/uStudioCompany/ustudio-ui/commit/523055003347e4c655780eb4c4e6a8c769eb2784))
+* **Flex:** add isWrap prop ([#157](https://github.com/uStudioCompany/ustudio-ui/issues/157)) ([61b2246](https://github.com/uStudioCompany/ustudio-ui/commit/61b2246031def7dbdfd443f2c311d29310814efa))
+* **Flex, Grid:** add blocks margins and paddings ([#146](https://github.com/uStudioCompany/ustudio-ui/issues/146)) ([55202f3](https://github.com/uStudioCompany/ustudio-ui/commit/55202f3b6215cfdbcadea3d7700d97373a4f48d5))
+* **Flex, Grid:** added "as" prop for Flex and Grid components for render semantic tags ([#147](https://github.com/uStudioCompany/ustudio-ui/issues/147)) ([ab06995](https://github.com/uStudioCompany/ustudio-ui/commit/ab06995953b2e0bb14a9c31876bf4d868c4c57cf))
+* **Text:** change default text alignment to 'inherit' ([#145](https://github.com/uStudioCompany/ustudio-ui/issues/145)) ([c8bbf20](https://github.com/uStudioCompany/ustudio-ui/commit/c8bbf20f6c722356fbc053fb137c48280a94f070))
+* **Theme:** add white and black colors ([#149](https://github.com/uStudioCompany/ustudio-ui/issues/149)) ([a60c85b](https://github.com/uStudioCompany/ustudio-ui/commit/a60c85bfac51b68bb4b791cbae03266219af616f))
+* **Website:** added sticky bottom footer ([#177](https://github.com/uStudioCompany/ustudio-ui/issues/177)) ([ec203e2](https://github.com/uStudioCompany/ustudio-ui/commit/ec203e242b168dd9bb849bfbf147ee78c2bf970d))
+* Add new `styled` prop for beautiful extension of all styled-components ([#153](https://github.com/uStudioCompany/ustudio-ui/issues/153)) ([3736398](https://github.com/uStudioCompany/ustudio-ui/commit/37363980ea7e604ead88dad7f92603296c58427a))
+* **Text:** added "color" prop for Text ([#150](https://github.com/uStudioCompany/ustudio-ui/issues/150)) ([660e6e2](https://github.com/uStudioCompany/ustudio-ui/commit/660e6e264d9f2b49de1b3aba1f75f807e486dbe2))
+* **Theme:** added typing declaration for Theme ([#151](https://github.com/uStudioCompany/ustudio-ui/issues/151)) ([ff51a16](https://github.com/uStudioCompany/ustudio-ui/commit/ff51a1667c0aac5c9e0a52341ef3e1563626644a))
+* **Website:** add units for number values in props table ([#148](https://github.com/uStudioCompany/ustudio-ui/issues/148)) ([5f0cc05](https://github.com/uStudioCompany/ustudio-ui/commit/5f0cc05834af7d6ad6a15dd64c6feea0a953146f))
+
+
+### Bug Fixes
+
+* **Button:** fix button disable mobile styles ([#169](https://github.com/uStudioCompany/ustudio-ui/issues/169)) ([b71972a](https://github.com/uStudioCompany/ustudio-ui/commit/b71972a4d5709cc433c870769d75e4d001cd9351))
+* **Documentation:** Fix Meta examples alignment on mobile ([#171](https://github.com/uStudioCompany/ustudio-ui/issues/171)) ([fb00dfc](https://github.com/uStudioCompany/ustudio-ui/commit/fb00dfcfd63cb3b9ed245646007c474a8dc8b984))
+* **Modal:** fix modal width and add modal footer ([#159](https://github.com/uStudioCompany/ustudio-ui/issues/159)) ([9bb4551](https://github.com/uStudioCompany/ustudio-ui/commit/9bb4551515a8817f4caf44c6ab712133f01d81a7))
+* **Select:** Fix MultiSelect value container height ([#173](https://github.com/uStudioCompany/ustudio-ui/issues/173)) ([e6c95b7](https://github.com/uStudioCompany/ustudio-ui/commit/e6c95b7c7cd70bbab8660e118c26158803a3774d))
+* **Spinner:** fix warning when Spinner unmount change state ([#155](https://github.com/uStudioCompany/ustudio-ui/issues/155)) ([d773038](https://github.com/uStudioCompany/ustudio-ui/commit/d7730386b0d65afc95ff9fb6b8b465d2516cb308))
+* **Text:** Add text align inherit to props ([#154](https://github.com/uStudioCompany/ustudio-ui/issues/154)) ([a60a272](https://github.com/uStudioCompany/ustudio-ui/commit/a60a2727d9381498a24544555452cebb31dbf4d5))
+* **Text, Flex:** add html attribute ([#170](https://github.com/uStudioCompany/ustudio-ui/issues/170)) ([81ae46c](https://github.com/uStudioCompany/ustudio-ui/commit/81ae46cafd7e41290a0e67c8c440252d4791ad05))
+* **Tooltip:** fix visible tooltip on  mobile device ([#175](https://github.com/uStudioCompany/ustudio-ui/issues/175)) ([dcb7ebd](https://github.com/uStudioCompany/ustudio-ui/commit/dcb7ebd6fcf61270ae4741fd631ee0e613b97c99))
+* **Website:** fix app loader on Components page ([#152](https://github.com/uStudioCompany/ustudio-ui/issues/152)) ([efedcf8](https://github.com/uStudioCompany/ustudio-ui/commit/efedcf887f4d18ec361c37e1d801c74bfc03dba0))
+* **Website:** fix visible link on  mobile IOS ([#174](https://github.com/uStudioCompany/ustudio-ui/issues/174)) ([a8f416b](https://github.com/uStudioCompany/ustudio-ui/commit/a8f416b9b2d8dd4ec01a6901cac72a37a78fc5e9))
+* Fix displayName of styled components created by `sc` function ([#172](https://github.com/uStudioCompany/ustudio-ui/issues/172)) ([e1c7c7f](https://github.com/uStudioCompany/ustudio-ui/commit/e1c7c7fde91e130ba08019eb7cb2281ddf18ed6c))
+* Fix Drawer z-index in docs ([#158](https://github.com/uStudioCompany/ustudio-ui/issues/158)) ([796e505](https://github.com/uStudioCompany/ustudio-ui/commit/796e505a18b99ebe37c1648652999ae2e5df1105))
+
 ### [1.1.6](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.5...v1.1.6) (2020-04-16)
 
 
