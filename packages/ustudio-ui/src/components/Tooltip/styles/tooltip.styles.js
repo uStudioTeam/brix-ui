@@ -12,7 +12,7 @@ const Tooltip = sc('span')(
   ${inject.indent(position)};
 
   display: block;
-  width: max-content;
+  width: auto;
   padding: var(--i-small) var(--i-medium);
   opacity: 0;
   z-index: var(--l-bottom);
@@ -51,7 +51,14 @@ const Tooltip = sc('span')(
 
 const TooltipContainer = sc('span')(css`
   position: relative;
-  border-bottom: 1px dotted var(--c-dark);
+  z-index: 1;
+
+  opacity: 1;
+
+  border-bottom: 1px dotted currentColor;
+
+  color: inherit;
+
   cursor: default;
 
   ${Mixin.Device.mobile(css`
