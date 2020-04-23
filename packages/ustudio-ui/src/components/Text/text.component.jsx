@@ -16,6 +16,7 @@ const Text = forwardRef(function Text(
     className = '',
     classNames,
     styled,
+    ...htmlAttributes
   },
   ref
 ) {
@@ -30,6 +31,7 @@ const Text = forwardRef(function Text(
       $classNames={classNames}
       className={className}
       $styled={styled}
+      {...htmlAttributes}
     >
       {children}
     </Styled.Text>
