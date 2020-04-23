@@ -6,7 +6,7 @@ import { Text } from 'ustudio-ui';
 
 const Styled = {
   Footer: styled.footer`
-    margin-top: var(--i-large);
+    margin-top: auto;
     padding: 0.5rem 0;
 
     text-align: center;
