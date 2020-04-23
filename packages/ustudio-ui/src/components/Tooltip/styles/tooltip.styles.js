@@ -8,11 +8,11 @@ import { inject } from './tooltip.inject';
 const Tooltip = sc('span')(
   ({ position }) => css`
   position: absolute;
-  
+
   ${inject.indent(position)};
 
   display: block;
-  width: max-content;
+  width: auto;
   padding: var(--i-small) var(--i-medium);
   opacity: 0;
   z-index: var(--l-bottom);
@@ -22,7 +22,7 @@ const Tooltip = sc('span')(
   box-shadow: var(--s-light);
 
   transform: ${inject.translateByPosition(position)};
-  
+
   transition: opacity var(--transition);
   transition-delay: 5ms;
 
@@ -32,15 +32,15 @@ const Tooltip = sc('span')(
     content: '';
 
     position: absolute;
-    
+
     ${inject.reversePosition(position)}: -0.5rem;
-    
+
     // center by opposite axis
     ${inject.sidePositions(position)[0]}: 50%;
 
     // triangle from borders
     border-${position}: var(--i-medium) solid var(--c-light);
-    
+
     ${inject.sideBordersByPosition(position)};
 
     ${inject.compensateCentring(position)}
@@ -51,13 +51,17 @@ const Tooltip = sc('span')(
 
 const TooltipContainer = sc('span')(css`
   position: relative;
-  border-bottom: 1px dotted var(--c-dark);
+
+  opacity: 1;
+
+  border-bottom: 1px dotted currentColor;
+
+  color: inherit;
+
   cursor: default;
 
   ${Mixin.Device.mobile(css`
-    &:active {
-      cursor: help;
-
+    &:focus {
       ${Tooltip} {
         pointer-events: auto;
         opacity: 1;
@@ -67,7 +71,10 @@ const TooltipContainer = sc('span')(css`
   `)}
 
   ${Mixin.Device.desktop(css`
-    &:hover {
+    &:hover,
+    &:focus {
+      border-bottom-style: dashed;
+
       cursor: help;
 
       ${Tooltip} {
