@@ -11,9 +11,10 @@ import {
   countOffsets,
   mapCells,
   validateChild,
-  reduceBreakpointsToObject,
   GridContext,
 } from '../module';
+
+import { reduceBreakpointsToObject } from '../module/reduce-breakpoints';
 
 const Grid = ({
   children: cells,

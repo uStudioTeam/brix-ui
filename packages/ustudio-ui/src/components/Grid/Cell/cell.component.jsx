@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { classNames } from '../../../utils/prop-types';
 
-import { reduceBreakpointsToObject, GridContext } from '../module';
+import { GridContext } from '../module';
+import { reduceBreakpointsToObject } from '../module/reduce-breakpoints';
 
 import { Styled } from '../styles';
 

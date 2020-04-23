@@ -3,7 +3,7 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import React, { useState } from 'react';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Checkbox from './checkbox.component';
 
