@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.0...v1.2.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* **Checkbox:** fix Checkbox Container type ([76d84d7](https://github.com/uStudioCompany/ustudio-ui/commit/76d84d73561da842822931103fda522e1f6b7fad))
+* **Flex:** fix Flex autocomplete ([56f759d](https://github.com/uStudioCompany/ustudio-ui/commit/56f759d7d500ec2eaf7615d3245923f60165a870))
+* **Flex:** fix Flex margin prop type ([c8c8ebf](https://github.com/uStudioCompany/ustudio-ui/commit/c8c8ebf116cb442094b802eb4b54c4e938c0e82f))
+* **Text:** fix Text type ext ([642ffcd](https://github.com/uStudioCompany/ustudio-ui/commit/642ffcd98e932b02cae29d36d5bde05386ea0955))
+
 ## [1.2.0](https://github.com/uStudioCompany/ustudio-ui/compare/v1.1.8...v1.2.0) (2020-04-23)
 
 
