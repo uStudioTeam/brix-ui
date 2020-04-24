@@ -255,6 +255,8 @@ provides a way to extend every component inside of a given one with a `css` func
 styles (imported from `styled-components`).
 
 ```typescript jsx
+import Checkbox from 'ustudio-ui/components/Checkbox';
+
 <Checkbox
   styled={{
     Checkbox: css`
