@@ -5,9 +5,7 @@ interface Styled {
   Text;
 }
 
-interface AnyTextProps
-  extends ClassNames<Styled>,
-    Partial<HTMLAttributes<HTMLElement>> {
+interface AnyTextProps extends ClassNames<Styled>, Partial<HTMLAttributes<HTMLElement>> {
   variant?: Variant;
   align?: 'left' | 'center' | 'right' | 'inherit';
 
