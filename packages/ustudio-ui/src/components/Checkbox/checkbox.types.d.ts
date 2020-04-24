@@ -2,9 +2,9 @@ import { Input } from '../../shared/types';
 import { ClassNames } from '../../theme/theme';
 
 interface Styled {
-  Container,
-  Input,
-  Checkbox
+  CheckboxContainer;
+  Input;
+  Checkbox;
 }
 
 type CheckboxProps = Input<boolean> & ClassNames<Styled>;
