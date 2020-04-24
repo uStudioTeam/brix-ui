@@ -18,7 +18,7 @@ the dimension you want to work with.
 
 ```typescript
 // import
-import { useDropdown } from 'ustudio-ui/hooks';
+import useDropdown from 'ustudio-ui/hooks/use-dropdown';
 
 // interface
 function useDropdown<E extends HTMLElement, D extends 'width' | 'height' = 'height'>(
@@ -43,7 +43,7 @@ component closes when you press 'Escape' key.
 
 ```typescript
 // import
-import { useKeyPressClose } from 'ustudio-ui/hooks';
+import useKeyPressClose from 'ustudio-ui/hooks/use-key-press-close';
 
 // interface
 function useKeyPressClose(closeCallback: (control: boolean) => void, key?: number): void;
@@ -57,7 +57,7 @@ function useKeyPressClose(closeCallback: (control: boolean) => void, key?: numbe
 
 ```typescript
 //import
-import { useMediaQuery } from 'ustudio-ui/hooks';
+import useMediaQuery from 'ustudio-ui/hooks/use-media-query';
 
 // interface
 function useMediaQuery(query: string): boolean;
