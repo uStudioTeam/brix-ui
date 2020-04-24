@@ -16,7 +16,7 @@ interface FlexProps extends ClassNames<Styled>, Partial<HTMLAttributes<HTMLEleme
 
   alignment?: Alignment;
 
-  margin?: Indenttation;
+  margin?: Indentation;
   padding?: Indentation;
 }
 
