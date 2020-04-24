@@ -16,9 +16,9 @@ type Align = 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-a
 
 type Indent = 'small' | 'medium' | 'regular' | 'large';
 
-export interface Indentation {
-  [position: Position]: Indent;
-}
+export type Indentation = {
+  [position in Position]?: Indent;
+};
 
 export interface Alignment {
   vertical?: Align;
