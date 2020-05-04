@@ -37,9 +37,9 @@ const NumberInputPage = () => {
   return (
     <ComponentInfo
       name="NumberInput"
-      description={`${controlledInputDescription('Number input')}.`}
+      description={`${controlledInputDescription('Number input')}. Returns \`undefined\` on empty field.`}
       props={{
-        ...inputProps('number'),
+        ...inputProps('number | undefinend'),
         prefix: {
           type: '`ReactNode`',
         },
@@ -51,7 +51,7 @@ const NumberInputPage = () => {
         <Styled.InputsContainer>
           <NumberInput
             name="number-input"
-            onChange={(val: number) => setValues({ ...values, default: val })}
+            onChange={(val?: number) => setValues({ ...values, default: val })}
             value={values.default}
             placeholder="Placeholder"
             isRequired
@@ -64,14 +64,14 @@ const NumberInputPage = () => {
         <Styled.InputsContainer>
           <NumberInput
             name="with-prefix"
-            onChange={(val: number) => setValues({ ...values, prefix: val })}
+            onChange={(val?: number) => setValues({ ...values, prefix: val })}
             value={values.prefix}
             placeholder="Placeholder"
             prefix={<Styled.CodeIcon />}
           />
           <NumberInput
             name="with-suffix"
-            onChange={(val: number) => setValues({ ...values, suffix: val })}
+            onChange={(val?: number) => setValues({ ...values, suffix: val })}
             value={values.suffix}
             placeholder="Placeholder"
             suffix={<Styled.CodeIcon />}
