@@ -50,7 +50,7 @@ const NumberInput = forwardRef(function NumberInput(
       const transformedValue = transformValue(inputValue);
       setLocalValue(transformedValue);
 
-      return onChange(+transformedValue);
+      return onChange(transformedValue === '' ? undefined : +transformedValue);
     }
     return false;
   };
@@ -82,7 +82,7 @@ NumberInput.displayName = 'NumberInput';
 
 NumberInput.propTypes = {
   ...props.propTypes({
-    valueType: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([''])]),
+    valueType: PropTypes.number,
     classes: Styled,
   }),
 };
