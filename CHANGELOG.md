@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.1...v1.2.2) (2020-05-04)
+
+
+### Bug Fixes
+
+* **Select, Input:** pass proper `styled` and `classNames` props ([ca27445](https://github.com/uStudioCompany/ustudio-ui/commit/ca27445c20f85144a1d5ecce917ce13501915b35))
+
 ### [1.2.1](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.0...v1.2.1) (2020-04-24)
 
 

@@ -54,8 +54,8 @@ const MultiSelect = forwardRef(function MultiSelect(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
-      $styled={styled}
-      $classNames={classNames}
+      styled={styled}
+      classNames={classNames}
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
