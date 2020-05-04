@@ -69,8 +69,8 @@ const NumberInput = forwardRef(function NumberInput(
       isRequired={isRequired}
       prefix={prefix}
       suffix={suffix}
-      $styled={styled}
-      $classNames={classNames}
+      styled={styled}
+      classNames={classNames}
       className={className}
       autoComplete={autoComplete}
       {...htmlAttributes}

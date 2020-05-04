@@ -41,7 +41,7 @@ singleSelectStory.add('Flat', () => {
         items={items}
         value={selected}
         name="default-select"
-        onChange={item => setSelected(item)}
+        onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
@@ -58,7 +58,7 @@ singleSelectStory.add('Groups', () => {
         groups={groups}
         value={selected}
         name="default-select"
-        onChange={item => setSelected(item)}
+        onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
@@ -77,7 +77,7 @@ multiSelectStory.add('Flat', () => {
         items={items}
         value={selected}
         name="default-select"
-        onChange={items => setSelected(items)}
+        onChange={(items) => setSelected(items)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />
@@ -94,7 +94,7 @@ multiSelectStory.add('Groups', () => {
         groups={groups}
         value={selected}
         name="default-select"
-        onChange={items => setSelected(items)}
+        onChange={(items) => setSelected(items)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
       />

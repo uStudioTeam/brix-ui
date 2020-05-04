@@ -42,8 +42,8 @@ const BaseInput = forwardRef(function BaseInput(
         required={isRequired}
         aria-required={isRequired}
         aria-labelledby={name}
-        $classNames={classNames}
-        $styled={styled}
+        classNames={classNames}
+        styled={styled}
         {...inputProps}
       />
 

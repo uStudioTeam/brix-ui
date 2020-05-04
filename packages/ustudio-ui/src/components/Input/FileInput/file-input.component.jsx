@@ -54,8 +54,8 @@ const FileInput = forwardRef(function FileInput(
         required={isRequired}
         aria-required={isRequired}
         aria-labelledby={name}
-        $classNames={classNames}
-        $styled={styled}
+        classNames={classNames}
+        styled={styled}
         {...htmlAttributes}
       />
 
