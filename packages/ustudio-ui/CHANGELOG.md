@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.2...v1.2.3) (2020-05-04)
+
+
+### Bug Fixes
+
+* **NumberInput:** return `undefined` on empty field ([34ea0df](https://github.com/uStudioCompany/ustudio-ui/commit/34ea0df01d42bc477c1cb8a97bb7b8ef770985ab))
+
 ### [1.2.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.1...v1.2.2) (2020-05-04)
 
 
