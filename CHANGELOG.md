@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.3...v1.2.4) (2020-05-08)
+
+
+### Bug Fixes
+
+* **Select:** fix group Select styles ([ccded23](https://github.com/uStudioCompany/ustudio-ui/commit/ccded232f75b8eb7256b45283ec980e9631eff94))
+
 ### [1.2.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.2...v1.2.3) (2020-05-04)
 
 
