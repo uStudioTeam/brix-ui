@@ -26,7 +26,23 @@ const items = {
   9: { value: 9, label: 'Item 9' },
 };
 
-const groups = [{ title: 'Group 1', items }];
+const groups = [
+  {
+    title: 'Group 1',
+    items: { 1: { value: 1, label: 'Item 1' }, 2: { value: 2, label: 'Item 2' }, 3: { value: 3, label: 'Item 3' } },
+  },
+  {
+    title: 'Group 2',
+    items: {
+      4: { value: 4, label: 'Item 4', isDisabled: true },
+      5: { value: 5, label: 'Item 5' },
+      6: { value: 6, label: 'Item 6', isDefault: true },
+      7: { value: 7, label: 'Item 7' },
+      8: { value: 8, label: 'Item 8' },
+      9: { value: 9, label: 'Item 9' },
+    },
+  },
+];
 
 const SContainer = styled.div`
   margin: 1rem;

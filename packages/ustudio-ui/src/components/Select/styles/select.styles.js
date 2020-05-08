@@ -184,7 +184,6 @@ const ValuesList = sc('ul')(css`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow-y: scroll;
   transition: var(--transition);
 `)('ValuesList');
 

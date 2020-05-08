@@ -12,7 +12,7 @@ const toggleColor = ({ selected, selectedColor = 'var(--c-darkest)', unselectedC
 
 // Container
 
-const containerLayer = isOpen => (isOpen ? 'var(--l-bottom)' : 1);
+const containerLayer = (isOpen) => (isOpen ? 'var(--l-bottom)' : 1);
 
 const containerShadow = ({ isOpen, isDisabled }) => (isOpen && !isDisabled ? 'var(--s-light)' : 'none');
 
@@ -78,7 +78,7 @@ const containerDisabledStyles = ({ isDisabled, Dropdown }) => {
 
 // Select
 
-const selectDisabledStyles = disabled => {
+const selectDisabledStyles = (disabled) => {
   return disabled
     ? css`
         color: var(--c-neutral);
@@ -92,7 +92,7 @@ const selectDisabledStyles = disabled => {
 
 // Select Icon
 
-const selectIconColor = isDisabled => (isDisabled ? 'var(--c-neutral)' : 'var(--c-primary)');
+const selectIconColor = (isDisabled) => (isDisabled ? 'var(--c-neutral)' : 'var(--c-primary)');
 
 // Selected List Item
 
@@ -144,18 +144,20 @@ const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) => {
 
 // Dropdown
 
-const dropdownScale = isOpen => `scaleX(${isOpen ? 1 : 0})`;
+const dropdownScale = (isOpen) => `scaleX(${isOpen ? 1 : 0})`;
 
 const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) => {
+  const component = groups ? 'div' : ValuesList;
+
   return isOpen
     ? css`
-        ${ValuesList}, & {
+        ${component}, & {
           height: ${_getDropdownHeight({ items, groups })}px;
           overflow-x: hidden;
         }
       `
     : css`
-        ${ValuesList}, & {
+        ${component}, & {
           height: 0;
         }
       `;
