@@ -50,7 +50,7 @@ const NumberInput = forwardRef(function NumberInput(
       const transformedValue = transformValue(inputValue);
       setLocalValue(transformedValue);
 
-      return onChange(transformedValue === '' ? undefined : +transformedValue);
+      return onChange(transformedValue === '' ? undefined : +transformedValue.replace(',','.'));
     }
     return false;
   };
