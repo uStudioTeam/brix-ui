@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.4...v1.2.5) (2020-05-15)
+
+
+### Bug Fixes
+
+* **NumberInput:** Fix convert string value to number ([b7f9054](https://github.com/uStudioCompany/ustudio-ui/commit/b7f905479a9270504317c99b17acf9abcbc4ac13))
+
 ### [1.2.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.3...v1.2.4) (2020-05-08)
 
 
