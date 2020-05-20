@@ -12,7 +12,7 @@ const _getDropdownHeight = ({ items, groups, query }) => {
   
   const length = getLength();
 
-  return 32 * length + 2 + (groups && !items.length ? 0 : 24);
+  return 32 * length + 2 + (groups ? 24 : 0);
 };
 
 const toggleColor = ({ selected, selectedColor = 'var(--c-darkest)', unselectedColor = 'var(--c-neutral)' }) =>
