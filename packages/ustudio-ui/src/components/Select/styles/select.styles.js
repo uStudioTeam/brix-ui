@@ -4,6 +4,7 @@ import { sc } from '../../../utils';
 import Icon from '../../internal/Icon';
 
 import { Mixin } from '../../../theme';
+import Text from '../../Text';
 import { inject } from './select.inject';
 
 const SelectContainer = sc('div')(
@@ -51,7 +52,39 @@ const Overlay = sc('button')(css`
   cursor: default;
 `)('Overlay');
 
-const Select = sc('button')(
+const Autocomplete = sc('input')(
+  () => css`
+    ${Mixin.Font.bodyRegular()};
+    ${Mixin.Style.inputPadding()};
+
+    padding-bottom: 4px;
+    padding-right: calc(var(--i-medium) * 2 + 10px);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--c-darkest);
+    background-color: var(--c-lightest);
+
+    opacity: 0;
+
+    transition: opacity var(--transition);
+  `
+)('Autocomplete');
+
+const EmptyListMessage = sc(Text)(
+  () => css`
+    ${Mixin.Style.inputPadding()};
+    
+    padding-bottom: 0;
+  `
+)('EmptyListMessage');
+
+const Select = sc('div')(
   ({ disabled, selected }) => css`
     ${Mixin.Font.bodyRegular()};
     ${Mixin.Style.inputPadding()};
@@ -67,6 +100,7 @@ const Select = sc('button')(
 
     width: 100%;
     min-height: 31px;
+
     position: relative;
     z-index: 900;
 
@@ -75,6 +109,15 @@ const Select = sc('button')(
     transition: var(--transition);
 
     ${inject.selectDisabledStyles(disabled)};
+
+    &:focus-within {
+      color: transparent;
+
+      ${Autocomplete} {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
   `
 )('Select');
 
@@ -136,7 +179,7 @@ const SelectedListIcon = sc('button')(css`
 `)('SelectedListIcon');
 
 const Dropdown = sc('div')(
-  ({ groups, items, isOpen }) => css`
+  ({ groups, items, isOpen, query }) => css`
     ${Mixin.Style.borderAll({ color: 'var(--c-neutral)' })};
 
     position: absolute;
@@ -156,6 +199,8 @@ const Dropdown = sc('div')(
     border-radius: 0 0 var(--border-radius) var(--border-radius);
 
     transition: var(--transition);
+    transition-delay: ${isOpen ? 0 : 'var(--transition)'};
+    transition-property: height;
 
     &:after {
       content: '';
@@ -176,7 +221,7 @@ const Dropdown = sc('div')(
       transition-delay: ${isOpen ? 'var(--transition)' : 0};
     }
 
-    ${inject.dropdownToggleStyles({ isOpen, ValuesList }, { items, groups })}
+    ${inject.dropdownToggleStyles({ isOpen, query, ValuesList }, { items, groups })}
   `
 )('Dropdown');
 
@@ -297,6 +342,8 @@ const ValuesListIcon = sc(Icon)(css`
 export const StyledSelect = {
   SelectContainer,
   Overlay,
+  Autocomplete,
+  EmptyListMessage,
   Select,
   SelectIcon,
   Dropdown,

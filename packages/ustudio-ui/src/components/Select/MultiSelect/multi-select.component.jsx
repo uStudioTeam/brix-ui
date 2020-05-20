@@ -17,9 +17,9 @@ const MultiSelect = forwardRef(function MultiSelect(
     value,
     defaultValue,
     onChange,
-    placeholder = '',
-    isDisabled = false,
-    isRequired = false,
+    placeholder,
+    isDisabled,
+    isRequired,
     styled,
     classNames,
     className,
@@ -59,7 +59,7 @@ const MultiSelect = forwardRef(function MultiSelect(
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
-        <Styled.Select as="div" role="button" $styled={styled} {...props}>
+        <Styled.Select role="button" $styled={styled} {...props}>
           {(value ?? defaultValue)?.length ? (
             <Styled.SelectedList $classNames={classNames} $styled={styled}>
               {(value ?? defaultValue)

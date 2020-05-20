@@ -82,6 +82,24 @@ singleSelectStory.add('Groups', () => {
   );
 });
 
+singleSelectStory.add('Autocomplete', () => {
+  const [selected, setSelected] = useState(items[2].value);
+  
+  return (
+    <SContainer>
+      <Select
+        autocomplete
+        items={items}
+        value={selected}
+        name="default-select"
+        onChange={(item) => setSelected(item)}
+        placeholder={text('Placeholder', '')}
+        isDisabled={boolean('Disabled', false)}
+      />
+    </SContainer>
+  );
+});
+
 const multiSelectStory = storiesOf('Multi select', module);
 
 multiSelectStory.add('Flat', () => {

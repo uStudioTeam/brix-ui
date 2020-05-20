@@ -2,6 +2,7 @@ import { Input } from '../../shared/types';
 
 interface SelectProps<Value> extends Input<Value> {
   placeholder?: string;
+  autocomplete?: boolean;
 }
 
 interface StyledSelect {
@@ -10,6 +11,8 @@ interface StyledSelect {
   Label;
   Select;
   SelectIcon;
+  Autocomplete;
+  EmptyListMessage;
   Dropdown;
   ValuesList;
   ValuesListTitle;

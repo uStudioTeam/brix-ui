@@ -10,6 +10,8 @@ import { StyledSelect as Styled } from '../styles';
 
 export const BaseSelect = forwardRef(function BaseSelect(
   {
+    query,
+    emptyListMessage,
     isItemSelected,
     handleSelectClick,
     handleValueClick,
@@ -35,28 +37,42 @@ export const BaseSelect = forwardRef(function BaseSelect(
 
   useKeyPressClose(setOpen);
 
-  const itemsArray = getItemsArray({ items, groups });
+  const itemsArray = getItemsArray({ items, groups, query });
 
-  const renderItems = itemsToRender => {
-    return Object.values(itemsToRender).map(item => (
-      <li key={item.value}>
-        <Styled.ValuesListItem
-          type="button"
-          selected={isItemSelected(item)}
-          disabled={item.isDisabled || item.isDefault}
-          onClick={() => handleValueClick({ setOpen, item })}
-          $classNames={classNames}
-          tabIndex={isOpen ? 0 : -1}
-          $styled={styled}
-        >
-          <Styled.ValuesListText variant="span" classNames={{ Text: classNames?.ValuesListText || '' }} $styled={styled}>
-            {item.label}
-          </Styled.ValuesListText>
+  const renderItems = () => {
+    return itemsArray.length ? (
+      itemsArray.map((item) => (
+        <li key={item.value}>
+          <Styled.ValuesListItem
+            type="button"
+            selected={isItemSelected(item)}
+            disabled={item.isDisabled || item.isDefault}
+            onClick={() => handleValueClick({ setOpen, item })}
+            $classNames={classNames}
+            tabIndex={isOpen ? 0 : -1}
+            $styled={styled}
+          >
+            <Styled.ValuesListText
+              variant="span"
+              classNames={{ Text: classNames?.ValuesListText || '' }}
+              $styled={styled}
+            >
+              {item.label}
+            </Styled.ValuesListText>
 
-          <Styled.ValuesListIcon name="check" classNames={{ Icon: classNames?.ValuesListIcon || '' }} $styled={styled} />
-        </Styled.ValuesListItem>
-      </li>
-    ));
+            <Styled.ValuesListIcon
+              name="check"
+              classNames={{ Icon: classNames?.ValuesListIcon || '' }}
+              $styled={styled}
+            />
+          </Styled.ValuesListItem>
+        </li>
+      ))
+    ) : (
+      <Styled.EmptyListMessage variant="small" color="var(--c-neutral)">
+        {emptyListMessage}
+      </Styled.EmptyListMessage>
+    );
   };
 
   return (
@@ -79,7 +95,7 @@ export const BaseSelect = forwardRef(function BaseSelect(
         ref={ref}
         multiple={multiple}
       >
-        {itemsArray.map(item => (
+        {itemsArray.map((item) => (
           <option value={item.value} disabled={item.isDisabled} key={item.value}>
             {item.label}
           </option>
@@ -91,7 +107,7 @@ export const BaseSelect = forwardRef(function BaseSelect(
           disabled: isDisabled,
           'aria-disabled': isDisabled,
           selected: selected,
-          onClick: event => handleSelectClick({ isOpen, setOpen, event }),
+          onClick: (event) => handleSelectClick({ isOpen, setOpen, event }),
           classNames,
         },
         icon: (
@@ -106,22 +122,29 @@ export const BaseSelect = forwardRef(function BaseSelect(
         ),
       })}
 
-      <Styled.Dropdown items={itemsArray} groups={!!groups} isOpen={isOpen} $classNames={classNames} $styled={styled}>
+      <Styled.Dropdown
+        query={query}
+        items={itemsArray}
+        groups={!!groups}
+        isOpen={isOpen}
+        $classNames={classNames}
+        $styled={styled}
+      >
         {items && (
           <Styled.ValuesList $classNames={classNames} $styled={styled}>
-            {renderItems(items)}
+            {renderItems()}
           </Styled.ValuesList>
         )}
 
         {groups && (
           <div>
-            {groups.map(group => (
+            {groups.map((group) => (
               <Styled.ValuesList key={group.title} $classNames={classNames} $styled={styled}>
                 <Styled.ValuesListTitle $classNames={classNames} $styled={styled}>
                   {group.title}
                 </Styled.ValuesListTitle>
 
-                {renderItems(group.items)}
+                {renderItems()}
               </Styled.ValuesList>
             ))}
           </div>
@@ -151,12 +174,17 @@ const propTypes = ({ valueType, classes }) => ({
     })
   ),
   placeholder: PropTypes.string,
+  autocomplete: PropTypes.bool,
+  emptyListMessage: PropTypes.string,
   ...classNames(Object.keys(classes)),
 });
 
 const defaultProps = {
+  placeholder: '',
   isDisabled: false,
   isRequired: false,
+  autocomplete: false,
+  emptyListMessage: 'Nothing was found',
 };
 
 export const props = { valueType, propTypes, defaultProps };

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 import { getItemsObject } from '../select.module';
 
@@ -14,18 +14,24 @@ const Select = forwardRef(function Select(
     onChange,
     items,
     groups,
-    placeholder = '',
-    isDisabled = false,
-    isRequired = false,
+    placeholder,
+    isDisabled,
+    isRequired,
+    autocomplete,
+    emptyListMessage,
     styled,
     classNames,
     className,
   },
   ref
 ) {
+  const [query, setQuery] = useState('');
+
   return (
     <BaseSelect
-      isItemSelected={item => value === item.value}
+      query={query}
+      emptyListMessage={emptyListMessage}
+      isItemSelected={(item) => value === item.value}
       selected={!!(value ?? defaultValue)}
       handleSelectClick={({ isOpen, setOpen }) => setOpen(!isOpen)}
       handleValueClick={({ setOpen, item }) => {
@@ -43,8 +49,16 @@ const Select = forwardRef(function Select(
       className={className}
       ref={ref}
       renderSelect={({ props, icon }) => (
-        <Styled.Select type="button" $styled={styled} {...props}>
-          {getItemsObject({ items, groups })[value ?? defaultValue]?.label || placeholder}
+        <Styled.Select role="button" $styled={styled} {...props}>
+          {!props.selected ? (
+            query || placeholder
+          ) : (
+            <>
+              <Styled.Autocomplete value={query} onChange={({ target: { value } }) => setQuery(value)} />
+
+              {getItemsObject({ items, groups, query })[value ?? defaultValue]?.label || placeholder}
+            </>
+          )}
 
           {icon}
         </Styled.Select>

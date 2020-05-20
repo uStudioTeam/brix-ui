@@ -1,10 +1,18 @@
 import { css } from 'styled-components';
 import { Mixin } from '../../../theme';
 
-const _getDropdownHeight = ({ items, groups }) => {
-  const cutLength = () => (items.length > 5 ? 5 : items?.length);
+const _getDropdownHeight = ({ items, groups, query }) => {
+  const getLength = () => {
+    if (query && !items.length) {
+      return 0.9;
+    }
+    
+    return items.length > 5 ? 5 : items?.length;
+  };
+  
+  const length = getLength();
 
-  return groups ? 32 * cutLength() - 7 : 32 * cutLength() + 2;
+  return groups ? 32 * length - 7 : 32 * length + 2;
 };
 
 const toggleColor = ({ selected, selectedColor = 'var(--c-darkest)', unselectedColor = 'var(--c-neutral)' }) =>
@@ -146,13 +154,13 @@ const selectedItemDisabledStyles = ({ isDisabled, SelectedListIcon }) => {
 
 const dropdownScale = (isOpen) => `scaleX(${isOpen ? 1 : 0})`;
 
-const dropdownToggleStyles = ({ isOpen, ValuesList }, { items, groups }) => {
+const dropdownToggleStyles = ({ isOpen, query, ValuesList }, { items, groups }) => {
   const component = groups ? 'div' : ValuesList;
 
   return isOpen
     ? css`
         ${component}, & {
-          height: ${_getDropdownHeight({ items, groups })}px;
+          height: ${_getDropdownHeight({ items, groups, query })}px;
           overflow-x: hidden;
         }
       `
