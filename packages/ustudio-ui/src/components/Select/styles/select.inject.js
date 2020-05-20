@@ -4,7 +4,7 @@ import { Mixin } from '../../../theme';
 const _getDropdownHeight = ({ items, groups, query }) => {
   const getLength = () => {
     if (query && !items.length) {
-      return 0.9;
+      return 1;
     }
     
     return items.length > 5 ? 5 : items?.length;

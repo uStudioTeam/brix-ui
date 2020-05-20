@@ -93,7 +93,7 @@ singleSelectStory.add('Autocomplete', () => {
         value={selected}
         name="default-select"
         onChange={(item) => setSelected(item)}
-        placeholder={text('Placeholder', '')}
+        placeholder={text('Placeholder', 'Autocomplete')}
         isDisabled={boolean('Disabled', false)}
       />
     </SContainer>

@@ -18,6 +18,6 @@ export const getItemsArray = ({ items, groups, query }) => {
 
 export const getItemsObject = ({ items, groups, query }) => {
   return (
-    filterItems(items, query) ?? groups.reduce((obj, group) => Object.assign(obj, filterItems(group.items, query)), {})
+    items ?? groups.reduce((obj, group) => Object.assign(obj, group.items), {})
   );
 };

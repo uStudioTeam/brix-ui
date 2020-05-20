@@ -80,7 +80,7 @@ const EmptyListMessage = sc(Text)(
   () => css`
     ${Mixin.Style.inputPadding()};
     
-    padding-bottom: 0;
+    margin-top: 5px;
   `
 )('EmptyListMessage');
 

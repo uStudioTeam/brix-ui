@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 
 import { getItemsObject } from '../select.module';
 
@@ -27,6 +27,12 @@ const Select = forwardRef(function Select(
 ) {
   const [query, setQuery] = useState('');
 
+  useEffect(() => {
+    if (value) {
+      setQuery('');
+    }
+  }, [value]);
+
   return (
     <BaseSelect
       query={query}
@@ -52,9 +58,7 @@ const Select = forwardRef(function Select(
         <Styled.Select role="button" $styled={styled} {...props}>
           {autocomplete && <Styled.Autocomplete value={query} onChange={({ target: { value } }) => setQuery(value)} />}
 
-          {!props.selected
-            ? placeholder
-            : getItemsObject({ items, groups, query })[value ?? defaultValue]?.label || placeholder}
+          {getItemsObject({ items, groups, query })?.[value ?? defaultValue]?.label || placeholder}
 
           {icon}
         </Styled.Select>
