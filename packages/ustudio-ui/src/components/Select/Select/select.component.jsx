@@ -50,15 +50,11 @@ const Select = forwardRef(function Select(
       ref={ref}
       renderSelect={({ props, icon }) => (
         <Styled.Select role="button" $styled={styled} {...props}>
-          {!props.selected ? (
-            query || placeholder
-          ) : (
-            <>
-              <Styled.Autocomplete value={query} onChange={({ target: { value } }) => setQuery(value)} />
+          {autocomplete && <Styled.Autocomplete value={query} onChange={({ target: { value } }) => setQuery(value)} />}
 
-              {getItemsObject({ items, groups, query })[value ?? defaultValue]?.label || placeholder}
-            </>
-          )}
+          {!props.selected
+            ? placeholder
+            : getItemsObject({ items, groups, query })[value ?? defaultValue]?.label || placeholder}
 
           {icon}
         </Styled.Select>
