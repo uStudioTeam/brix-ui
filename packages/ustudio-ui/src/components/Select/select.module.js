@@ -1,23 +1,25 @@
-const filterItems = (itemsToFilter, query) => {
-  return query
-    ? Object.fromEntries(
-        Object.values(itemsToFilter)
-          .filter((item) => item.label.toLowerCase().includes(query.trim().toLowerCase()))
-          .map((item) => [item.value, item])
-      )
-    : itemsToFilter;
+const includesQuery = (string, query) => (query ? string.toLowerCase().includes(query.trim().toLowerCase()) : true);
+
+export const filterItems = (items, query) => {
+  return query ? Object.values(items).filter((item) => includesQuery(item.label, query)) : Object.values(items);
+};
+
+export const filterGroups = (groups, query) => {
+  return groups.filter((group) => filterItems(group.items, query).length);
 };
 
 export const getItemsArray = ({ items, groups, query }) => {
-  return (
-    groups?.flatMap((group) => Object.values(filterItems(group.items, query))).map((items) => items) ||
-    Object.values(filterItems(items, query) || {}) ||
-    []
-  );
+  if (groups) {
+    return filterGroups(groups, query).flatMap((group) => filterItems(group.items, query));
+  }
+
+  if (items) {
+    return filterItems(items, query);
+  }
+
+  return [];
 };
 
-export const getItemsObject = ({ items, groups, query }) => {
-  return (
-    items ?? groups.reduce((obj, group) => Object.assign(obj, group.items), {})
-  );
+export const getItemsObject = ({ items, groups }) => {
+  return items ?? groups.reduce((obj, group) => Object.assign(obj, group.items), {});
 };

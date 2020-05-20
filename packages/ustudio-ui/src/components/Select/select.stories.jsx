@@ -65,6 +65,24 @@ singleSelectStory.add('Flat', () => {
   );
 });
 
+singleSelectStory.add('Flat Autocomplete', () => {
+  const [selected, setSelected] = useState(items[2].value);
+  
+  return (
+    <SContainer>
+      <Select
+        autocomplete
+        items={items}
+        value={selected}
+        name="default-select"
+        onChange={(item) => setSelected(item)}
+        placeholder={text('Placeholder', 'Autocomplete')}
+        isDisabled={boolean('Disabled', false)}
+      />
+    </SContainer>
+  );
+});
+
 singleSelectStory.add('Groups', () => {
   const [selected, setSelected] = useState(groups[0].items[2].value);
 
@@ -82,14 +100,14 @@ singleSelectStory.add('Groups', () => {
   );
 });
 
-singleSelectStory.add('Autocomplete', () => {
-  const [selected, setSelected] = useState(items[2].value);
+singleSelectStory.add('Groups Autocomplete', () => {
+  const [selected, setSelected] = useState(groups[0].items[2].value);
   
   return (
     <SContainer>
       <Select
         autocomplete
-        items={items}
+        groups={groups}
         value={selected}
         name="default-select"
         onChange={(item) => setSelected(item)}
