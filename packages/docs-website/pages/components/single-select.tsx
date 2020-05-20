@@ -65,6 +65,10 @@ ${controlledInputDescription('Single select')}.`}
         placeholder: {
           type: '`string`',
         },
+        autocomplete: {
+          type: '`boolean`',
+          defaultValue: '`false`'
+        }
       }}
       classNames={[
         'SelectContainer',
@@ -88,6 +92,16 @@ ${controlledInputDescription('Single select')}.`}
             placeholder="Choose an item"
             onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
           />
+          
+          <Select
+            autocomplete
+            items={items}
+            value={valueSelected}
+            name="autocomplete-select"
+            placeholder="Type a query"
+            onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
+          />
+          
           <Select
             groups={groups}
             value={valueSelected}
@@ -95,6 +109,7 @@ ${controlledInputDescription('Single select')}.`}
             placeholder="Choose an item"
             onChange={(item: React.SetStateAction<string | undefined>) => setValueSelected(item)}
           />
+          
           <Select
             items={items}
             value={valueSelected}
