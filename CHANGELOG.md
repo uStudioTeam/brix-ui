@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-beta.1](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.5...v1.3.0-beta.1) (2020-05-20)
+
+
+### Features
+
+* **Select:** add autocomplete ([7afcdcf](https://github.com/uStudioCompany/ustudio-ui/commit/7afcdcfd3a9e6dc98ec1878a7784584200187f67))
+* **Select:** add proper searching through group select ([06903d2](https://github.com/uStudioCompany/ustudio-ui/commit/06903d2b5d2ee9c12fd9a092c31fb2c8de8d66ac))
+
+
+### Bug Fixes
+
+* **Select:** fix autocomplete input rendering ([fb0d603](https://github.com/uStudioCompany/ustudio-ui/commit/fb0d6036b8ef20c7e2c18c6ae32fbea6877091bf))
+* **Select:** show proper content depending on the autocomplete state ([0fc108a](https://github.com/uStudioCompany/ustudio-ui/commit/0fc108af0e5fa46f63b7eb6e2d638d2565140941))
+
 ### [1.2.5](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.4...v1.2.5) (2020-05-15)
 
 
