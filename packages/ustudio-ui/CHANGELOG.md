@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-beta.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2020-05-26)
+
+
+### Bug Fixes
+
+* **Input:** add `overflow: hidden` to the `Input` component ([c12caf4](https://github.com/uStudioCompany/ustudio-ui/commit/c12caf4a54dec169d95064570121938d62380fec))
+* **Input:** pass proper `styled` prop to the `Input` component ([a6b8aa0](https://github.com/uStudioCompany/ustudio-ui/commit/a6b8aa09ee042fa5966bc77e178d708afe986334))
+* **Select:** fix open dropdown height calculation formula ([46e64d8](https://github.com/uStudioCompany/ustudio-ui/commit/46e64d810e6932ada3e743265e4e04eb2ef41b04))
+
 ## [1.3.0-beta.1](https://github.com/uStudioCompany/ustudio-ui/compare/v1.2.5...v1.3.0-beta.1) (2020-05-20)
 
 
