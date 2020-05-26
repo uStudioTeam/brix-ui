@@ -23,6 +23,8 @@ const Suffix = sc(Prefix)(css`
 const Input = sc('input')(css`
   width: 100%;
   margin-top: -1px;
+  
+  overflow: hidden;
 
   ${Mixin.Font.bodyRegular()};
 
