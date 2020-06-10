@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-beta.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2020-06-10)
+
+
+### Bug Fixes
+
+* **Flex:** fix flex export interface ([8b3b051](https://github.com/uStudioCompany/ustudio-ui/commit/8b3b05116b67ebc8e2334346e48bf2dc5a044dfd))
+
 ## [1.3.0-beta.2](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2020-05-26)
 
 
