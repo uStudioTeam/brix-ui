@@ -6,7 +6,7 @@ interface Styled {
   Flex;
 }
 
-interface FlexProps extends ClassNames<Styled>, Partial<HTMLAttributes<HTMLElement>> {
+export interface FlexProps extends ClassNames<Styled>, Partial<HTMLAttributes<HTMLElement>> {
   as?: WrapperTag;
 
   direction?: 'row' | 'column';
