@@ -68,6 +68,10 @@ ${controlledInputDescription('Single select')}.`}
         autocomplete: {
           type: '`boolean`',
           defaultValue: '`false`'
+        },
+        isDefaultOpen: {
+          type: '`boolean`',
+          defaultValue: '`false`'
         }
       }}
       classNames={[

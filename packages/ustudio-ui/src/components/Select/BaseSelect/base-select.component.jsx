@@ -23,6 +23,7 @@ export const BaseSelect = forwardRef(function BaseSelect(
     name,
     defaultValue,
     onChange,
+    isDefaultOpen = false,
     items,
     groups,
     isDisabled = false,
@@ -33,7 +34,7 @@ export const BaseSelect = forwardRef(function BaseSelect(
   },
   ref
 ) {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(isDefaultOpen);
 
   useKeyPressClose(setOpen);
 
@@ -184,6 +185,7 @@ const propTypes = ({ valueType, classes }) => ({
       items: itemsType.isRequired,
     })
   ),
+  isDetaultOpen: PropTypes.bool,
   placeholder: PropTypes.string,
   autocomplete: PropTypes.bool,
   emptyListMessage: PropTypes.string,
@@ -196,6 +198,7 @@ const defaultProps = {
   isRequired: false,
   autocomplete: false,
   emptyListMessage: 'Nothing was found',
+  isDefaultOpen: false
 };
 
 export const props = { valueType, propTypes, defaultProps };
