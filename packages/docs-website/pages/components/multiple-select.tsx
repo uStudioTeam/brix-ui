@@ -64,6 +64,10 @@ ${controlledInputDescription('Multiple select')}.`}
         placeholder: {
           type: '`string`',
         },
+        isDefaultOpen: {
+          type: '`boolean`',
+          defaultValue: '`false`'
+        },
         ...inputProps('string[]'),
       }}
       classNames={[

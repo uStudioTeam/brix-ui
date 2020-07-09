@@ -20,6 +20,7 @@ const MultiSelect = forwardRef(function MultiSelect(
     placeholder,
     isDisabled,
     isRequired,
+    isDefaultOpen,
     styled,
     classNames,
     className,
@@ -54,6 +55,7 @@ const MultiSelect = forwardRef(function MultiSelect(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
+      isDefaultOpen={isDefaultOpen}
       styled={styled}
       classNames={classNames}
       className={className}
