@@ -12,6 +12,7 @@ const NumberInput = forwardRef(function NumberInput(
     value,
     defaultValue,
     onChange,
+    onBlur,
     isDisabled = false,
     isRequired = false,
     prefix,
@@ -26,19 +27,20 @@ const NumberInput = forwardRef(function NumberInput(
 ) {
   const [localValue, setLocalValue] = useState(defaultValue !== undefined ? `${defaultValue}` : '');
 
-  const validateValue = validatedValue => {
+  const validateValue = (validatedValue) => {
     const regExp = /^(([\-]?){1})([0-9]*(\d?))[.,]?([0-9]*(\d?))$/;
 
     return validatedValue ? regExp.test(validatedValue) : true;
   };
 
   const isDivider = (string, position) => string[position] === '.' || string[position] === ',';
+  const isMinus = (string, position) => string[position] === '-';
 
-  const transformValue = enteredValue => {
+  const transformValue = (enteredValue) => {
     if (enteredValue.length === 1 && isDivider(enteredValue, 0)) {
       return `0${enteredValue}`;
     }
-    if (enteredValue.length === 2 && enteredValue[0] === '-' && isDivider(enteredValue, 1)) {
+    if (enteredValue.length === 2 && isMinus(enteredValue, 0) && isDivider(enteredValue, 1)) {
       return `-0${enteredValue[1]}`;
     }
 
@@ -55,6 +57,13 @@ const NumberInput = forwardRef(function NumberInput(
     return false;
   };
 
+  const handleBlur = ({ target: { value: inputValue } }) => {
+    const transformedValue = inputValue.length === 1 && isMinus(inputValue, 0) ? '' : value;
+    setLocalValue(transformedValue);
+
+    return onBlur && onBlur(transformedValue);
+  };
+
   return (
     <BaseInput
       ref={ref}
@@ -65,6 +74,7 @@ const NumberInput = forwardRef(function NumberInput(
       value={localValue}
       defaultValue={defaultValue}
       onChange={handleChange}
+      onBlur={handleBlur}
       isDisabled={isDisabled}
       isRequired={isRequired}
       prefix={prefix}
