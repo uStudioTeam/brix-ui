@@ -52,16 +52,16 @@ const NumberInput = forwardRef(function NumberInput(
       const transformedValue = transformValue(inputValue);
       setLocalValue(transformedValue);
 
-      return onChange(transformedValue === '' ? undefined : +transformedValue.replace(',','.'));
+      return onChange(transformedValue === '' ? undefined : +transformedValue.replace(',', '.'));
     }
     return false;
   };
 
   const handleBlur = ({ target: { value: inputValue } }) => {
-    const transformedValue = inputValue.length === 1 && isMinus(inputValue, 0) ? '' : value;
+    const transformedValue = inputValue.length === 1 && isMinus(inputValue, 0) ? '' : inputValue;
     setLocalValue(transformedValue);
 
-    return onBlur && onBlur(transformedValue);
+    return onBlur && onBlur(transformedValue === '' ? undefined : transformedValue);
   };
 
   return (
@@ -74,6 +74,7 @@ const NumberInput = forwardRef(function NumberInput(
       value={localValue}
       defaultValue={defaultValue}
       onChange={handleChange}
+      onPaste={handleChange}
       onBlur={handleBlur}
       isDisabled={isDisabled}
       isRequired={isRequired}
