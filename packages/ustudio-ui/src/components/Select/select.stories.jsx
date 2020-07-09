@@ -60,6 +60,7 @@ singleSelectStory.add('Flat', () => {
         onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', true)}
       />
     </SContainer>
   );
@@ -67,7 +68,7 @@ singleSelectStory.add('Flat', () => {
 
 singleSelectStory.add('Flat Autocomplete', () => {
   const [selected, setSelected] = useState(items[2].value);
-  
+
   return (
     <SContainer>
       <Select
@@ -78,6 +79,7 @@ singleSelectStory.add('Flat Autocomplete', () => {
         onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', 'Autocomplete')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', false)}
       />
     </SContainer>
   );
@@ -95,6 +97,7 @@ singleSelectStory.add('Groups', () => {
         onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', false)}
       />
     </SContainer>
   );
@@ -102,7 +105,7 @@ singleSelectStory.add('Groups', () => {
 
 singleSelectStory.add('Groups Autocomplete', () => {
   const [selected, setSelected] = useState(groups[0].items[2].value);
-  
+
   return (
     <SContainer>
       <Select
@@ -113,6 +116,7 @@ singleSelectStory.add('Groups Autocomplete', () => {
         onChange={(item) => setSelected(item)}
         placeholder={text('Placeholder', 'Autocomplete')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', false)}
       />
     </SContainer>
   );
@@ -132,6 +136,7 @@ multiSelectStory.add('Flat', () => {
         onChange={(items) => setSelected(items)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', true)}
       />
     </SContainer>
   );
@@ -149,6 +154,7 @@ multiSelectStory.add('Groups', () => {
         onChange={(items) => setSelected(items)}
         placeholder={text('Placeholder', '')}
         isDisabled={boolean('Disabled', false)}
+        isDefaultOpen={boolean('Open by default', false)}
       />
     </SContainer>
   );

@@ -3,6 +3,7 @@ import { Input } from '../../shared/types';
 interface SelectProps<Value> extends Input<Value> {
   placeholder?: string;
   autocomplete?: boolean;
+  isDefaultOpen?: boolean;
 }
 
 interface StyledSelect {

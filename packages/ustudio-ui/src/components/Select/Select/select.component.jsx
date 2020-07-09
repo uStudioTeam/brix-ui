@@ -17,6 +17,7 @@ const Select = forwardRef(function Select(
     placeholder,
     isDisabled,
     isRequired,
+    isDefaultOpen,
     autocomplete,
     emptyListMessage,
     styled,
@@ -50,6 +51,7 @@ const Select = forwardRef(function Select(
       groups={groups}
       isDisabled={isDisabled}
       isRequired={isRequired}
+      isDefaultOpen={isDefaultOpen}
       styled={styled}
       classNames={classNames}
       className={className}
