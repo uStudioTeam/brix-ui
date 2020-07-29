@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@ustudio-ui/theme/*": ["./packages/theme/src/*"],
+      "@ustudio-ui/utils/*": ["./packages/utils/src/*"],
+      "@ustudio-ui/components/*": ["./packages/components/src/*"],
+      "@ustudio-ui/types/*": ["./packages/types/src/*"]
+    }
+  },
+  "types": ["./packages/theme/globals.d.ts"]
+}

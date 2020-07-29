@@ -1,0 +1,81 @@
+import React, { useCallback } from 'react';
+import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
+
+import { capitalize, objectKeys, setCssVariable } from '@ustudio-ui/utils/functions';
+import { FontVariant } from '@ustudio-ui/types/typography';
+
+import { FontsFacesMap } from './entity';
+import type { WithTheme } from '../theme';
+
+const TypographyGlobalStyles = createGlobalStyle<{
+  variables({ theme }: WithTheme): FlattenSimpleInterpolation;
+  fontFaces({ theme }: WithTheme): FlattenSimpleInterpolation;
+}>`
+  html {
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  small {
+    line-height: 1.375;
+  }
+  
+  :root {
+    ${({ variables, theme }) => variables({ theme })};
+  
+    ${({ fontFaces, theme }) => fontFaces({ theme })};
+  }
+`;
+
+const getFontName = ({ font, theme }: WithTheme<{ font: string }>): string => {
+  return theme[`font${capitalize(font)}` as keyof typeof theme];
+};
+
+const Typography = (props?: FontsFacesMap): JSX.Element => {
+  const fontFaces = useCallback(
+    ({ theme }: WithTheme) => {
+      return objectKeys(props).reduce((fontStyles, font) => {
+        return css`
+          ${fontStyles};
+
+          ${objectKeys(props?.[font]).reduce((typeStyles, type) => {
+            const { url, format = 'truetype', weight } =
+              props?.[font][type] ?? ({} as typeof props[typeof font][typeof type]);
+
+            return css`
+            ${typeStyles};
+
+            @font-face {
+              font-family: '${getFontName({ font, theme })}';
+              font-weight: ${weight};
+              
+              src: url('${url}') format('${format}');
+            }
+          `;
+          }, css``)};
+        `;
+      }, css``);
+    },
+    [props]
+  );
+
+  const variables = useCallback(({ theme }: WithTheme) => {
+    return Object.keys(FontVariant).map((key) => {
+      const font = FontVariant[key as keyof typeof FontVariant];
+
+      return css`
+        ${setCssVariable('f', font, `'${getFontName({ font, theme })}'`)};
+      `;
+    });
+  }, []);
+
+  return <TypographyGlobalStyles variables={variables} fontFaces={fontFaces} />;
+};
+
+export default Typography;
