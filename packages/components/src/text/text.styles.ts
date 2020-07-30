@@ -5,36 +5,36 @@ import { TypeVariant, FontVariant } from '@ustudio-ui/types/typography';
 
 import type { TextProps } from './text.props';
 
+const parseTextDecoration = (textDecoration: TextProps['textDecoration']): string => {
+  switch (textDecoration) {
+    case 'underline':
+    case 'line-through': {
+      return `text-decoration: ${textDecoration}`;
+    }
+    case 'italic': {
+      return 'font-variant: italic';
+    }
+    default: {
+      return '';
+    }
+  }
+};
+
 const Text = styled.p<
-  Pick<TextProps, 'variant' | 'appearance' | 'textDecoration'> & {
+  Omit<TextProps, 'color' | 'align'> & {
     $color?: TextProps['color'];
     $align?: TextProps['align'];
   }
->(({ variant = TypeVariant.P, appearance = FontVariant.Body, $color, $align, textDecoration }) => {
-  const parseTextDecoration = (): string => {
-    switch (textDecoration) {
-      case 'underline':
-      case 'line-through': {
-        return `text-decoration: ${textDecoration}`;
-      }
-      case 'italic': {
-        return 'font-variant: italic';
-      }
-      default: {
-        return '';
-      }
-    }
-  };
-
-  return css`
+>(
+  ({ variant = TypeVariant.P, appearance = FontVariant.Body, $color, $align, textDecoration }) => css`
     ${font[appearance][variant]};
 
     color: ${$color};
     text-align: ${$align};
 
-    ${parseTextDecoration()};
-  `;
-});
+    ${parseTextDecoration(textDecoration)};
+  `
+);
 
 const Styled = { Text };
 

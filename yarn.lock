@@ -2894,6 +2894,7 @@ __metadata:
   resolution: "@ustudio-ui/types@workspace:packages/types"
   dependencies:
     "@types/react": ^16.9.43
+    "@types/styled-components": ^5.1.1
     "@typescript-eslint/eslint-plugin": ^3.7.1
     "@typescript-eslint/parser": ^3.7.1
     eslint: ^7.5.0
@@ -2917,6 +2918,7 @@ __metadata:
   resolution: "@ustudio-ui/utils@workspace:packages/utils"
   dependencies:
     "@types/react": ^16.9.43
+    "@types/styled-components": ^5.1.1
     "@typescript-eslint/eslint-plugin": ^3.7.1
     "@typescript-eslint/parser": ^3.7.1
     eslint: ^7.5.0

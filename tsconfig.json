@@ -26,5 +26,5 @@
       "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"]
     }
   },
-  "types": ["./packages/theme/globals.d.ts"]
+  "types": ["./packages/theme/globals.d.ts", "./packages/components/globals.d.ts"]
 }

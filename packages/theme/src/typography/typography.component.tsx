@@ -8,8 +8,8 @@ import { FontsFacesMap } from './entity';
 import type { WithTheme } from '../theme';
 
 const TypographyGlobalStyles = createGlobalStyle<{
-  variables({ theme }: WithTheme): FlattenSimpleInterpolation;
-  fontFaces({ theme }: WithTheme): FlattenSimpleInterpolation;
+  variables(props: WithTheme): FlattenSimpleInterpolation;
+  fontFaces(props: WithTheme): FlattenSimpleInterpolation;
 }>`
   html {
     font-size: 16px;
@@ -54,6 +54,7 @@ const Typography = (props?: FontsFacesMap): JSX.Element => {
             @font-face {
               font-family: '${getFontName({ font, theme })}';
               font-weight: ${weight};
+              font-display: fallback;
               
               src: url('${url}') format('${format}');
             }

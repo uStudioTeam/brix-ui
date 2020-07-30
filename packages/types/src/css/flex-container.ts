@@ -8,4 +8,5 @@ export const FlexContainer = {
   Footer: 'footer',
   Main: 'main',
   Article: 'article',
+  Aside: 'aside',
 } as const;

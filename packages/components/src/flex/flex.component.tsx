@@ -8,12 +8,19 @@ import type { FlexProps } from './flex.props';
 import Styled from './flex.styles';
 
 const Flex: FC<FlexProps> = forwardRef(function Flex(
-  { children, as, direction = Direction.Row, align, ...props },
+  { children, as, styles, direction = Direction.Row, align, ...props },
   ref: Ref<FlexElement>
 ) {
   return (
     <DirectionProvider value={direction}>
-      <Styled.Flex ref={ref} forwardedAs={as} $direction={direction} $align={align} {...props}>
+      <Styled.Flex
+        ref={ref}
+        forwardedAs={as}
+        // css={extractStyles(styles)}
+        $direction={direction}
+        $align={align}
+        {...props}
+      >
         {children}
       </Styled.Flex>
     </DirectionProvider>

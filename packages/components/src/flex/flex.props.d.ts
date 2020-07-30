@@ -1,3 +1,5 @@
+import { FlattenSimpleInterpolation } from 'styled-components';
+
 import type { Alignable, IntrinsicComponent } from '@ustudio-ui/types/component';
 import { Direction, FlexContainer } from '@ustudio-ui/types/css';
 import type { FlexElement } from '@ustudio-ui/types/html';
@@ -7,6 +9,7 @@ import { BlockProps } from '../block';
 
 export interface FlexProps extends IntrinsicComponent<FlexElement>, Alignable, BlockProps {
   as?: Values<typeof FlexContainer>;
+  styles?: FlattenSimpleInterpolation;
 
   direction?: Values<typeof Direction>;
 

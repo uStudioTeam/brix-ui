@@ -1,7 +1,8 @@
 import type { Indent, IntrinsicComponent } from '@ustudio-ui/types/component';
+import type { HtmlTag, TextTag } from '@ustudio-ui/types/html';
 
-export interface BlockProps extends IntrinsicComponent<HTMLElement> {
-  as?: keyof JSX.IntrinsicElements;
+export interface BlockProps extends IntrinsicComponent {
+  as?: Exclude<HtmlTag, TextTag>;
 
   isInline?: boolean;
 
