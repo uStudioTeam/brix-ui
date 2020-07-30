@@ -11,7 +11,7 @@ export const parseAlignItems = (alignItems?: Values<typeof Align>): string | und
     case 'space-evenly': {
       console.warn(`Property 'align-items' does not accept '${alignItems}'. Falling back to 'initial'.`);
 
-      return 'initial';
+      return '';
     }
     default:
       return parseAlignment(alignItems);

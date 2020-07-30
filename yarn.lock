@@ -2414,13 +2414,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/copyfiles@npm:^2":
-  version: 2.2.0
-  resolution: "@types/copyfiles@npm:2.2.0"
-  checksum: 9992fbef65ccb7b3c2efe145b2d4c12e702354151793ca624dc9f8ae81ab99f1ae2ff36e120c41f2f545300e262d65eb926d86232c027e51f2992a2fa72aa381
-  languageName: node
-  linkType: hard
-
 "@types/eslint-visitor-keys@npm:^1.0.0":
   version: 1.0.0
   resolution: "@types/eslint-visitor-keys@npm:1.0.0"
@@ -2774,7 +2767,6 @@ __metadata:
     "@storybook/addon-knobs": ^5.3.19
     "@storybook/preset-typescript": ^3.0.0
     "@storybook/react": ^5.3.19
-    "@types/copyfiles": ^2
     "@types/react": ^16.9.43
     "@types/react-dom": ^16.9.8
     "@types/styled-components": ^5.1.1
@@ -2817,6 +2809,38 @@ __metadata:
     react: ^16.13.1
     react-dom: ^16.13.1
     styled-components: ^5.1.1
+  languageName: unknown
+  linkType: soft
+
+"@ustudio-ui/contexts@workspace:packages/contexts":
+  version: 0.0.0-use.local
+  resolution: "@ustudio-ui/contexts@workspace:packages/contexts"
+  dependencies:
+    "@types/react": ^16.9.43
+    "@types/react-dom": ^16.9.8
+    "@typescript-eslint/eslint-plugin": ^3.7.1
+    "@typescript-eslint/parser": ^3.7.1
+    "@ustudio-ui/types": "workspace:packages/types"
+    "@ustudio-ui/utils": "workspace:packages/utils"
+    eslint: ^7.5.0
+    eslint-config-airbnb: ^18.2.0
+    eslint-config-prettier: ^6.10.0
+    eslint-import-resolver-typescript: ^2.0.0
+    eslint-plugin-immutable: ^1.0.0
+    eslint-plugin-import: ^2.20.1
+    eslint-plugin-prettier: ^3.1.2
+    eslint-plugin-promise: ^4.2.1
+    eslint-plugin-react: ^7.20.3
+    eslint-plugin-react-hooks: ^4.0.7
+    eslint-plugin-sonarjs: ^0.5.0
+    eslint-plugin-unicorn: ^20.1.0
+    prettier: ^2.0.5
+    react: ^16.13.1
+    react-dom: ^16.13.1
+    typescript: ^3.9.7
+  peerDependencies:
+    react: ^16.13.1
+    react-dom: ^16.13.1
   languageName: unknown
   linkType: soft
 

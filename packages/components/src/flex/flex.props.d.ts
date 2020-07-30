@@ -1,13 +1,15 @@
-import { Alignable, IntrinsicComponent } from '@ustudio-ui/types/component';
+import type { Alignable, IntrinsicComponent } from '@ustudio-ui/types/component';
 import { Direction, FlexContainer } from '@ustudio-ui/types/css';
-import { Values } from '@ustudio-ui/utils/types';
+import type { FlexElement } from '@ustudio-ui/types/html';
+import type { Values } from '@ustudio-ui/utils/types';
 
-export interface FlexProps extends IntrinsicComponent, Alignable {
+import { BlockProps } from '../block';
+
+export interface FlexProps extends IntrinsicComponent<FlexElement>, Alignable, BlockProps {
   as?: Values<typeof FlexContainer>;
 
   direction?: Values<typeof Direction>;
 
   isReversed?: boolean;
-  isInline?: boolean;
   hasWrap?: boolean;
 }

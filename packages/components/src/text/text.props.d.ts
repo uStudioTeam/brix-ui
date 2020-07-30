@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 
-import { FontVariant, TypeVariant } from '@ustudio-ui/types/typography';
-import { IntrinsicComponent } from '@ustudio-ui/types/component';
-import { Values } from '@ustudio-ui/utils/types';
+import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
+import type { IntrinsicComponent } from '@ustudio-ui/types/component';
+import type { Values } from '@ustudio-ui/utils/types';
+import type { TextElement } from '@ustudio-ui/types/html';
 
-export interface TextProps extends IntrinsicComponent {
+export interface TextProps extends IntrinsicComponent<TextElement> {
   children?: ReactNode;
 
   as?: Values<typeof TypeVariant> | 'span' | 'mark' | 'pre';
@@ -12,7 +13,7 @@ export interface TextProps extends IntrinsicComponent {
   appearance?: Values<typeof FontVariant>;
 
   color?: string;
-  align?: 'left' | 'center' | 'right';
+  align?: Values<typeof TextAlign>;
 
-  textDecoration?: 'underline' | 'italic' | 'line-through';
+  textDecoration?: Values<typeof TextDecoration>;
 }

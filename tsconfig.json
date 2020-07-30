@@ -22,7 +22,8 @@
       "@ustudio-ui/theme/*": ["./packages/theme/src/*"],
       "@ustudio-ui/utils/*": ["./packages/utils/src/*"],
       "@ustudio-ui/components/*": ["./packages/components/src/*"],
-      "@ustudio-ui/types/*": ["./packages/types/src/*"]
+      "@ustudio-ui/types/*": ["./packages/types/src/*"],
+      "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"]
     }
   },
   "types": ["./packages/theme/globals.d.ts"]

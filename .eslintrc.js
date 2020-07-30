@@ -68,7 +68,7 @@ module.exports = {
     '@typescript-eslint/generic-type-naming': 'off',
     '@typescript-eslint/no-base-to-string': 'off',
     '@typescript-eslint/unbound-method': 'off',
-    // '@typescript-eslint/no-unnecessary-condition': 'warn',
+    '@typescript-eslint/no-unnecessary-condition': 'warn',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 
