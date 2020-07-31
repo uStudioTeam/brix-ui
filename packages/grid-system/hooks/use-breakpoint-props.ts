@@ -1,27 +1,11 @@
 import { useMemo } from 'react';
 
 import { useTheme } from '@ustudio-ui/theme';
-import type { Values } from '@ustudio-ui/utils/types';
+import { spread } from '@ustudio-ui/utils/functions';
 
-import type { BreakpointsMap } from './entity';
 import { useMediaQuery } from './use-media-query';
 
-const spread = <
-  _O extends Record<string, unknown> | undefined,
-  O extends Exclude<_O, undefined>,
-  R extends Record<keyof O, Values<O>>
->(
-  ...objects: _O[]
-): R => {
-  return objects.reduce((spreadObject, object) => {
-    return Object.assign(spreadObject, object || {});
-  }, {} as R);
-};
-
-export const useBreakpointProps = <
-  R extends Record<string, unknown>,
-  B extends BreakpointsMap<R> & R = BreakpointsMap<R> & R
->({
+export const useBreakpointProps = <R extends Record<string, unknown>, B extends R>({
   sm,
   md,
   lg,

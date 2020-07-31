@@ -1,3 +1,4 @@
+export * from './spread';
 export * from './capitalize';
 export * from './object-keys';
 export * from './is-undefined';
