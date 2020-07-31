@@ -1,8 +1,6 @@
 import type { Dispatch } from 'react';
 
-import type { AreaBuilderAction } from '../actions';
-
-import { MountCellAction } from './area-builder.actions';
+import { AreaBuilderAction, MountCellAction } from './area-builder.actions';
 
 export class AreaBuilderDispatcher {
   public constructor(private dispatch: Dispatch<AreaBuilderAction>) {}
