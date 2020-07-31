@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "storybook": "yarn workspace @ustudio-ui/components storybook",
-    "build": "yarn workspace @ustudio-ui/components build"
+    "storybook": "yarn workspace @ustudio-ui/core storybook",
+    "build": "yarn workspace @ustudio-ui/core build"
   },
   "dependenciesMeta": {
     "@storybook/core": {
