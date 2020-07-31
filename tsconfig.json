@@ -20,11 +20,13 @@
     "baseUrl": ".",
     "paths": {
       "@ustudio-ui/theme/*": ["./packages/theme/src/*"],
+      "@ustudio-ui/theme": ["./packages/theme/src/index.ts"],
       "@ustudio-ui/utils/*": ["./packages/utils/src/*"],
-      "@ustudio-ui/components/*": ["./packages/components/src/*"],
+      "@ustudio-ui/core/*": ["./packages/core/src/*"],
       "@ustudio-ui/types/*": ["./packages/types/src/*"],
-      "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"]
+      "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"],
+      "@ustudio-ui/grid-system/*": ["./packages/grid-system/src/*"]
     }
   },
-  "types": ["./packages/theme/globals.d.ts", "./packages/components/globals.d.ts"]
+  "types": ["./packages/theme/globals.d.ts", "./packages/core/globals.d.ts"]
 }

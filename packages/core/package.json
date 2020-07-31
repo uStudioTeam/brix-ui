@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/components",
+  "name": "@ustudio-ui/core",
   "version": "0.0.1",
   "scripts": {
     "storybook": "start-storybook -s ./.storybook/public",
@@ -10,6 +10,7 @@
     "prebuild": "rimraf lib"
   },
   "dependencies": {
+    "@ustudio-ui/contexts": "workspace:packages/contexts",
     "@ustudio-ui/theme": "workspace:packages/theme",
     "@ustudio-ui/types": "workspace:packages/types",
     "@ustudio-ui/utils": "workspace:packages/utils"
