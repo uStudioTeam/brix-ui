@@ -1,2 +1,2 @@
 export type { Theme } from './theme';
-export { default } from './theme-provider.context';
+export { default, useTheme } from './theme-provider.context';

@@ -1,8 +1,9 @@
-import { With } from '@ustudio-ui/utils/types';
+import type { With } from '@ustudio-ui/utils/types';
 
-import { FontsMap } from './typography';
+import type { FontsMap } from './typography';
+import type { BreakpointsMap } from './breakpoints';
 
-export interface Theme extends FontsMap {
+export interface Theme extends Required<FontsMap>, BreakpointsMap {
   fontBody: string;
   fontArticle: string;
   fontCode: string;
