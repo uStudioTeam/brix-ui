@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import Block from '@ustudio-ui/core/block';
 
-import type { GridProps } from './grid.props';
+import type { GridContainerProps } from './grid-container.props';
 
-const Grid = styled(Block)<{
-  $direction: GridProps['direction'];
-  $gap: GridProps['gap'];
-  template: Extract<GridProps['template'], string> | undefined;
+const GridContainer = styled(Block)<{
+  $direction: GridContainerProps['direction'];
+  $gap: GridContainerProps['gap'];
+  template: Extract<GridContainerProps['template'], string> | undefined;
   areas: string;
   fractionsCount: number;
 }>(({ $direction, $gap, areas, template, fractionsCount }) => {
@@ -19,6 +19,6 @@ const Grid = styled(Block)<{
   `;
 });
 
-const Styled = { Grid };
+const Styled = { GridContainer };
 
 export default Styled;

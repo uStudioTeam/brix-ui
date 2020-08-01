@@ -1,6 +1,6 @@
 import { Cell } from '../entity';
 
-export type AreaBuilderAction = MountCellAction;
+export type GridAction = MountCellAction;
 
 export class MountCellAction {
   public readonly type = 'mount_cell';

@@ -1,8 +1,8 @@
 import type { Reducer } from 'react';
 
-import type { AreaBuilderAction } from '../actions';
+import type { GridAction } from '../actions';
 
-import type { AreaBuilderState } from './area-builder-state';
+import type { GridState } from './grid-state';
 
 const repeat = (string: string, times: number | undefined): string[] => {
   if (!times) {
@@ -24,7 +24,7 @@ const formatSize = (area: string, size: number | undefined): string[] => {
   return [`${area}s`, ...repeat(area, size - 2), `${area}e`];
 };
 
-export const areaBuilderReducer: Reducer<AreaBuilderState, AreaBuilderAction> = (state, action) => {
+export const gridReducer: Reducer<GridState, GridAction> = (state, action) => {
   switch (action.type) {
     case 'mount_cell': {
       const { payload } = action;

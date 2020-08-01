@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 import { Direction } from '@ustudio-ui/types/css';
 import { Values } from '@ustudio-ui/utils/types';
 
-import type { AreaBuilderState } from '../area-builder/reducer';
+import type { GridState } from '../grid/reducer';
 
 import type { CellProps } from './cell.props';
 
 const Cell = styled.div<{
   area: CellProps['area'];
-  areas: AreaBuilderState['areas'];
+  areas: GridState['areas'];
   $size: CellProps['size'];
   $direction?: Values<typeof Direction>;
 }>(({ area, areas, $size, $direction }) => {

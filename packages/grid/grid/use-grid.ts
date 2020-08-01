@@ -1,10 +1,10 @@
 import { useReducer, useRef } from 'react';
 
-import { areaBuilderReducer, AreaBuilderState } from './reducer';
+import { gridReducer, GridState } from './reducer';
 import { AreaBuilderDispatcher } from './actions';
 
-export const useAreaBuilder = (): [AreaBuilderState, AreaBuilderDispatcher] => {
-  const [state, dispatch] = useReducer(areaBuilderReducer, {
+export const useGrid = (): [GridState, AreaBuilderDispatcher] => {
+  const [state, dispatch] = useReducer(gridReducer, {
     cells: {},
     areas: [],
     fractionsCount: 0
