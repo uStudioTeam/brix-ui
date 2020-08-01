@@ -5,12 +5,12 @@ import { Direction } from '@ustudio-ui/types/css';
 
 import type { BreakpointsProps } from '../entity';
 
-export interface GridBreakpointData {
+export interface GridContainerBreakpointData {
   direction?: Values<typeof Direction>;
   gap?: string;
   template?: ((fractions: number) => string) | string;
 }
 
-export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
+export type GridContainerBreakpoints = GridContainerBreakpointData & BreakpointsProps<GridContainerBreakpointData>;
 
-export interface GridProps extends IntrinsicComponent, GridBreakpoints, Omit<BlockProps, 'isInline'> {}
+export interface GridContainerProps extends IntrinsicComponent, GridContainerBreakpoints, Omit<BlockProps, 'isInline'> {}

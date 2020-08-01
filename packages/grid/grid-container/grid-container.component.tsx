@@ -1,14 +1,14 @@
 import React, { FC, useMemo } from 'react';
 import DirectionContext from '@ustudio-ui/contexts/direction';
 
-import { useAreaBuilder, AreaBuilderProvider } from '../area-builder';
+import { useGrid, GridProvider } from '../grid';
 import { useBreakpointProps } from '../hooks';
 
-import type { GridBreakpoints, GridProps } from './grid.props';
-import Styled from './grid.styles';
+import type { GridContainerBreakpoints, GridContainerProps } from './grid-container.props';
+import Styled from './grid-container.styles';
 
-const Grid: FC<GridProps> = ({ children, direction, gap, template, sm, md, lg, xl, ...props }) => {
-  const [state, dispatcher] = useAreaBuilder();
+const GridContainer: FC<GridContainerProps> = ({ children, direction, gap, template, sm, md, lg, xl, ...props }) => {
+  const [state, dispatcher] = useGrid();
 
   const areas = useMemo(() => {
     if (direction === 'row' || direction === undefined) {
@@ -26,12 +26,12 @@ const Grid: FC<GridProps> = ({ children, direction, gap, template, sm, md, lg, x
     direction,
     gap,
     template,
-  }) as GridBreakpoints;
+  }) as GridContainerBreakpoints;
 
   return (
     <DirectionContext value={direction}>
-      <AreaBuilderProvider areas={state.areas} dispatcher={dispatcher}>
-        <Styled.Grid
+      <GridProvider areas={state.areas} dispatcher={dispatcher}>
+        <Styled.GridContainer
           $direction={currentBreakpointProps.direction}
           $gap={currentBreakpointProps.gap}
           template={
@@ -44,10 +44,10 @@ const Grid: FC<GridProps> = ({ children, direction, gap, template, sm, md, lg, x
           {...props}
         >
           {children}
-        </Styled.Grid>
-      </AreaBuilderProvider>
+        </Styled.GridContainer>
+      </GridProvider>
     </DirectionContext>
   );
 };
 
-export default Grid;
+export default GridContainer;
