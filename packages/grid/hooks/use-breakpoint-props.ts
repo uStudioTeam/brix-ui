@@ -1,18 +1,23 @@
 import { useMemo } from 'react';
 
+import type { With } from '@ustudio-ui/utils/types';
 import { useTheme } from '@ustudio-ui/theme';
 import { spread } from '@ustudio-ui/utils/functions';
 
 import { useMediaQuery } from './use-media-query';
 
-export const useBreakpointProps = <R extends Record<string, unknown>, B extends R>({
+export const useBreakpointProps = <
+  R extends With<Record<string, unknown>, { currentBreakpoint: number }>,
+  A extends Omit<R, 'currentBreakpoint'>,
+  B extends R
+>({
   sm,
   md,
   lg,
   xl,
   ...rest
-}: B): R => {
-  const { sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl } = useTheme();
+}: A): R => {
+  const { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl } = useTheme();
 
   const isSm = useMediaQuery(`screen and (min-width: ${bpSm}px)`);
   const isMd = useMediaQuery(`screen and (min-width: ${bpMd}px)`);
@@ -21,21 +26,21 @@ export const useBreakpointProps = <R extends Record<string, unknown>, B extends 
 
   return useMemo(() => {
     if (isXl) {
-      return spread(rest, ...([sm, md, lg, xl] as B[])) as R;
+      return spread({ currentBreakpoint: bpXl }, rest as B, ...([sm, md, lg, xl] as B[])) as R;
     }
 
     if (isLg) {
-      return spread(rest, ...([sm, md, lg] as B[])) as R;
+      return spread({ currentBreakpoint: bpLg }, rest as B, ...([sm, md, lg] as B[])) as R;
     }
 
     if (isMd) {
-      return spread(rest, ...([sm, md] as B[])) as R;
+      return spread({ currentBreakpoint: bpMd }, rest as B, ...([sm, md] as B[])) as R;
     }
 
     if (isSm) {
-      return spread(rest, sm as B) as R;
+      return spread({ currentBreakpoint: bpSm }, rest as B, sm as B) as R;
     }
 
-    return (rest as unknown) as R;
+    return spread({ currentBreakpoint: bpXs }, rest as B) as B;
   }, [rest, isSm, sm, isMd, md, isLg, lg, isXl, xl]);
 };
