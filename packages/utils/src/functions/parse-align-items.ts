@@ -4,7 +4,7 @@ import { Values } from '../types';
 
 import { parseAlignment } from './parse-alignment';
 
-export const parseAlignItems = (alignItems?: Values<typeof Align>): string | undefined => {
+export const parseAlignItems = (alignItems?: Values<typeof Align>): string => {
   switch (alignItems) {
     case 'space-between':
     case 'space-around':

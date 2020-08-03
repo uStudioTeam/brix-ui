@@ -12,7 +12,7 @@ const reduceToStyles = <P extends string, R extends Partial<Record<P, string>>>(
   parameters: readonly P[]
 ): string => {
   return parameters.reduce((style, position) => {
-    return `${style} ${safeFallback(!isUndefined(object?.[position]), object?.[position], 0)}`;
+    return `${style} ${object?.[position] ?? 0}`;
   }, '');
 };
 
