@@ -42,11 +42,9 @@ const Flex = styled(Block)<
 >(
   ({ $direction, isReversed, isInline, hasWrap, $align, horizontalAlign, verticalAlign }) => css`
     display: ${isInline ? 'inline-flex' : 'flex'};
-    flex-direction: ${safeFallback(
-      isReversed || $direction !== Direction.Row,
-      `${$direction}${safeFallback(isReversed, '-reverse')}`
-    )};
-    flex-wrap: ${safeFallback(hasWrap, safeFallback(isReversed, 'wrap-reverse', 'wrap'))};
+    flex-direction: ${(isReversed || $direction !== Direction.Row) &&
+    `${$direction}${safeFallback(isReversed, '-reverse')}`};
+    flex-wrap: ${hasWrap && isReversed ? 'wrap-reverse' : 'wrap'};
 
     ${setAlignment({ direction: $direction, align: $align, horizontalAlign, verticalAlign })};
   `
