@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 
@@ -8,7 +8,10 @@ import { useBreakpointProps } from '../hooks';
 import type { CellBreakpointData, CellProps } from './cell.props';
 import Styled from './cell.styles';
 
-const Cell: FC<CellProps> = ({ children, area, size, offset, sm, md, lg, xl, ...props }) => {
+const Cell: FC<CellProps> = forwardRef(function Cell(
+  { children, area, size, offset, sm, md, lg, xl, ...props },
+  ref: Ref<HTMLDivElement>
+) {
   const { areas, dispatcher } = useGridContext();
 
   const currentBreakpointProps = useBreakpointProps({
@@ -33,10 +36,10 @@ const Cell: FC<CellProps> = ({ children, area, size, offset, sm, md, lg, xl, ...
   const direction = useDirection();
 
   return (
-    <Styled.Cell areas={areas} area={id} $size={size} $direction={direction} {...props}>
+    <Styled.Cell ref={ref} areas={areas} area={id} $size={size} $direction={direction} {...props}>
       {children}
     </Styled.Cell>
   );
-};
+});
 
 export default Cell;
