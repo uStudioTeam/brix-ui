@@ -8,7 +8,7 @@ import { Direction } from '@ustudio-ui/types/css';
 import { useGrid, GridProvider } from '../grid';
 import { useBreakpointProps } from '../hooks';
 
-import type { GridContainerBreakpoints, GridContainerProps } from './grid-container.props';
+import type { GridContainerBreakpointData, GridContainerProps } from './grid-container.props';
 import Styled from './grid-container.styles';
 
 const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
@@ -34,7 +34,7 @@ const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
     gap,
     template,
     maxWidth,
-  }) as With<GridContainerBreakpoints, { currentBreakpoint: number }>;
+  }) as With<GridContainerBreakpointData, { currentBreakpoint: number }>;
 
   return (
     <DirectionContext value={direction}>
