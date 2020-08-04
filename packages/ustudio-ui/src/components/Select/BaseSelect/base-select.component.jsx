@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { classNames, inputProps } from '../../../utils';
 
 import { useKeyPressClose } from '../../../hooks';
-import { filterGroups, filterItems, getItemsArray } from '../select.module';
+import { filterGroups, filterItems, getItemsArray, includesQuery } from '../select.module';
 
 import { StyledSelect as Styled } from '../styles';
 
@@ -151,8 +151,9 @@ export const BaseSelect = forwardRef(function BaseSelect(
                   <Styled.ValuesListTitle $classNames={classNames} $styled={styled}>
                     {group.title}
                   </Styled.ValuesListTitle>
-
-                  {renderItems(filterItems(group.items, query))}
+                  {renderItems(
+                    includesQuery(group.title, query) ? Object.values(group.items) : filterItems(group.items, query)
+                  )}
                 </Styled.ValuesList>
               ))}
             </div>
@@ -198,7 +199,7 @@ const defaultProps = {
   isRequired: false,
   autocomplete: false,
   emptyListMessage: 'Nothing was found',
-  isDefaultOpen: false
+  isDefaultOpen: false,
 };
 
 export const props = { valueType, propTypes, defaultProps };

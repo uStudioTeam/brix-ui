@@ -1,11 +1,12 @@
-const includesQuery = (string, query) => (query ? string.toLowerCase().includes(query.trim().toLowerCase()) : true);
+export const includesQuery = (string, query) =>
+  query ? string.toLowerCase().includes(query.trim().toLowerCase()) : true;
 
 export const filterItems = (items, query) => {
   return query ? Object.values(items).filter((item) => includesQuery(item.label, query)) : Object.values(items);
 };
 
 export const filterGroups = (groups, query) => {
-  return groups.filter((group) => filterItems(group.items, query).length);
+  return groups.filter((group) => filterItems(group.items, query).length || includesQuery(group.title, query));
 };
 
 export const getItemsArray = ({ items, groups, query }) => {
