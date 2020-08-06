@@ -5,7 +5,11 @@ import { Direction } from '@ustudio-ui/types/css';
 
 import type { GridContainerProps } from './grid-container.props';
 
-const parseGap = (gap: GridContainerProps['gap']): FlattenSimpleInterpolation => {
+const parseGap = (gap: GridContainerProps['gap']): FlattenSimpleInterpolation | undefined => {
+  if (!gap) {
+    return;
+  }
+
   if (typeof gap === 'string') {
     return css`
       grid-gap: ${gap};
@@ -32,7 +36,7 @@ const GridContainer = styled(Block)<{
     ${parseGap($gap)};
 
     grid-template-areas: ${areas};
-    ${`grid-template-${$direction === Direction.Column ? 'rows' : 'columns'}`}: ${template ||
+    ${`grid-template-${$direction === Direction.Column ? 'row' : 'column'}s`}: ${template ??
     `repeat(${fractionsCount}, 1fr)`};
 
     max-width: ${$maxWidth};

@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, MutableRefObject, useMemo } from 'react';
 
 import { polymorphicFunction } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
@@ -13,17 +13,17 @@ import Styled from './grid-container.styles';
 
 const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
   { children, as, direction, gap, template, maxWidth, sm, md, lg, xl, ...props },
-  ref: Ref<HTMLElement>
+  ref: MutableRefObject<HTMLElement>
 ) {
-  const [state, dispatcher] = useGrid();
+  const [grid, dispatcher] = useGrid();
 
   const areas = useMemo(() => {
     if (direction === Direction.Row || direction === undefined) {
-      return `'${state.areas.join('  ')}'`;
+      return `'${grid.areas.join('  ')}'`;
     }
 
-    return state.areas.map((area) => `'${area}'`).join(' ');
-  }, [state.areas]);
+    return grid.areas.map((area) => `'${area}'`).join(' ');
+  }, [grid.areas, direction]);
 
   const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps({
     sm,
@@ -38,16 +38,16 @@ const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
 
   return (
     <DirectionContext value={direction}>
-      <GridProvider areas={state.areas} dispatcher={dispatcher}>
+      <GridProvider areas={grid.areas} dispatcher={dispatcher}>
         <Styled.GridContainer
-          forwardedAs={as}
           ref={ref}
+          forwardedAs={as}
           $direction={currentBreakpointProps.direction}
           $gap={currentBreakpointProps.gap}
           $maxWidth={polymorphicFunction(currentBreakpointProps.maxWidth, currentBreakpoint)}
-          template={polymorphicFunction(currentBreakpointProps.template, state.fractionsCount)}
+          template={polymorphicFunction(currentBreakpointProps.template, grid.fractionsCount)}
           areas={areas}
-          fractionsCount={state.fractionsCount}
+          fractionsCount={grid.fractionsCount}
           {...props}
         >
           {children}

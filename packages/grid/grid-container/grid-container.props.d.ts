@@ -9,7 +9,7 @@ import type { BreakpointsProps } from '../entity';
 export interface GridContainerBreakpointData {
   direction?: Values<typeof Direction>;
   gap?: Partial<Record<Values<typeof Axis>, string>> | string;
-  template?: ((fractions: number) => string) | string;
+  template?: ((fractionsCount: number) => string) | string;
   maxWidth?: ((currentBreakpoint: number) => string) | string;
 }
 

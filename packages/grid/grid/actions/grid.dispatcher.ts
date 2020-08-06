@@ -1,8 +1,8 @@
 import type { Dispatch } from 'react';
 
-import { GridAction, MountCellAction } from './area-builder.actions';
+import { GridAction, MountCellAction } from './grid.actions';
 
-export class AreaBuilderDispatcher {
+export class GridDispatcher {
   public constructor(private dispatch: Dispatch<GridAction>) {}
 
   public mountCell(payload: MountCellAction['payload']): void {

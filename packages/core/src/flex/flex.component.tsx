@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, Ref } from 'react';
+import React, { FC, forwardRef, MutableRefObject } from 'react';
 
 import type { FlexElement } from '@ustudio-ui/types/html';
 import { Direction } from '@ustudio-ui/types/css';
@@ -9,7 +9,7 @@ import Styled from './flex.styles';
 
 const Flex: FC<FlexProps> = forwardRef(function Flex(
   { children, as, styles, direction = Direction.Row, align, ...props },
-  ref: Ref<FlexElement>
+  ref: MutableRefObject<FlexElement>
 ) {
   return (
     <DirectionProvider value={direction}>

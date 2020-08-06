@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, Ref } from 'react';
+import React, { FC, forwardRef, MutableRefObject } from 'react';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 
@@ -7,7 +7,7 @@ import Styled from './block.styles';
 
 const Block: FC<BlockProps> = forwardRef(function Block(
   { children, as, margin, padding, gap, ...props },
-  ref: Ref<HTMLElement>
+  ref: MutableRefObject<HTMLElement>
 ) {
   const direction = useDirection();
 

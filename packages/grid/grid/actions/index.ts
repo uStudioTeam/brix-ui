@@ -1,2 +1,2 @@
-export * from './area-builder.actions';
-export * from './area-builder.dispatcher';
+export * from './grid.actions';
+export * from './grid.dispatcher';
