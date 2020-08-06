@@ -17,8 +17,8 @@ const parseGap = (gap: GridProps['gap']): FlattenSimpleInterpolation | undefined
   }
 
   return css`
-    grid-row-gap: ${gap?.vertical};
-    grid-column-gap: ${gap?.horizontal};
+    grid-row-gap: ${gap.vertical};
+    grid-column-gap: ${gap.horizontal};
   `;
 };
 
