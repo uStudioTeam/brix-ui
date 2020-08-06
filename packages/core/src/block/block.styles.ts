@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { Direction, Position } from '@ustudio-ui/types/css';
-import { isUndefined, objectValues, safeFallback } from '@ustudio-ui/utils/functions';
+import { Position } from '@ustudio-ui/types/css';
+import { isUndefined, objectValues } from '@ustudio-ui/utils/functions';
 import { Axis, Indent, PositionIndent } from '@ustudio-ui/types/component';
-import type { Values } from '@ustudio-ui/utils/types';
 
 import type { BlockProps } from './block.props';
 
@@ -44,28 +43,42 @@ const parseIndent = (indent?: Indent): string => {
   return reduceToStyles(indent as PositionIndent, objectValues(Position));
 };
 
+const parseGap = (gap: BlockProps['gap']): FlattenSimpleInterpolation | undefined => {
+  if (!gap) {
+    return;
+  }
+
+  if (typeof gap === 'string') {
+    return css`
+      & > *:not(:last-child) {
+        margin-right: ${gap};
+        margin-bottom: ${gap};
+      }
+    `;
+  }
+
+  return css`
+    & > *:not(:last-child) {
+      margin-right: ${gap.horizontal};
+      margin-bottom: ${gap.vertical};
+    }
+  `;
+};
+
 const Block = styled.div<
   Omit<BlockProps, 'margin' | 'padding' | 'gap'> & {
-    $direction?: Values<typeof Direction>;
     $margin?: BlockProps['margin'];
     $padding?: BlockProps['padding'];
     $gap?: BlockProps['gap'];
   }
 >(
-  ({ isInline, $direction, $margin, $padding, $gap }) => css`
+  ({ isInline, $margin, $padding, $gap }) => css`
     display: ${isInline ? 'inline-block' : 'block'};
 
     margin: ${parseIndent($margin)};
     padding: ${parseIndent($padding)};
 
-    ${safeFallback(
-      !isUndefined($gap),
-      css`
-        & > *:not(:last-child) {
-          margin-${isUndefined($direction) || $direction === Direction.Row ? 'right' : 'bottom'}: ${$gap};
-        }
-      `
-    )};
+    ${parseGap($gap)};
   `
 );
 

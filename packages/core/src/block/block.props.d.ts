@@ -1,5 +1,6 @@
-import type { Indent, IntrinsicComponent } from '@ustudio-ui/types/component';
+import { Axis, Indent, IntrinsicComponent } from '@ustudio-ui/types/component';
 import type { HtmlTag, TextTag } from '@ustudio-ui/types/html';
+import { Values } from '@ustudio-ui/utils/types';
 
 export interface BlockProps extends IntrinsicComponent {
   as?: Exclude<HtmlTag, TextTag>;
@@ -8,5 +9,5 @@ export interface BlockProps extends IntrinsicComponent {
 
   margin?: Indent;
   padding?: Indent;
-  gap?: string;
+  gap?: Partial<Record<Values<typeof Axis>, string>> | string;
 }
