@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
+import React, { FC, forwardRef, MutableRefObject, useEffect, useMemo } from 'react';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 
@@ -10,7 +10,7 @@ import Styled from './cell.styles';
 
 const Cell: FC<CellProps> = forwardRef(function Cell(
   { children, area, size, offset, sm, md, lg, xl, ...props },
-  ref: Ref<HTMLDivElement>
+  ref: MutableRefObject<HTMLDivElement>
 ) {
   const { areas, dispatcher } = useGridContext();
 
