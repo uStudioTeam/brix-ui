@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-beta.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2020-07-09)
+
+
+### Features
+
+* **Select, MultiSelect:** add `isDefaultOpen` props ([45e8c5c](https://github.com/uStudioCompany/ustudio-ui/commit/45e8c5cdec576692c1425a515a7fd30306dd2c23))
+
+
+### Bug Fixes
+
+* **NumberInput:** Fix NaN, when input has only "-" ([382f4df](https://github.com/uStudioCompany/ustudio-ui/commit/382f4dfcd52095cf9b6a179f943162fb24f2f14a))
+* **NumberInput:** Fix uncontrolled input, add validation on paste ([7f1093e](https://github.com/uStudioCompany/ustudio-ui/commit/7f1093e9589dd16f3afaddce7c433daab395377a))
+
 ## [1.3.0-beta.3](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2020-06-10)
 
 
