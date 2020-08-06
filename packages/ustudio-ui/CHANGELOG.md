@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-beta.5](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.4...v1.3.0-beta.5) (2020-08-06)
+
+
+### Features
+
+* **Select:** add filtering by groups ([228a26e](https://github.com/uStudioCompany/ustudio-ui/commit/228a26e3019b57f16a9ff9df5dd2c4d8a300ed54))
+
 ## [1.3.0-beta.4](https://github.com/uStudioCompany/ustudio-ui/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2020-07-09)
 
 
