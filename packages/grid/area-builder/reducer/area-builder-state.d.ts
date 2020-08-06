@@ -1,6 +1,6 @@
 import type { Cell } from '../entity';
 
-export interface GridState {
+export interface AreaBuilderState {
   cells: Record<Cell['id'], Cell>;
   areas: Array<(string | Cell['id'])>;
   fractionsCount: number;

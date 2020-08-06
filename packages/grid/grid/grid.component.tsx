@@ -5,17 +5,17 @@ import type { With } from '@ustudio-ui/utils/types';
 import DirectionContext from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
 
-import { useGrid, GridProvider } from '../grid';
+import { useAreaBuilder, AreaBuilder } from '../area-builder';
 import { useBreakpointProps } from '../hooks';
 
-import type { GridContainerBreakpointData, GridContainerProps } from './grid-container.props';
-import Styled from './grid-container.styles';
+import type { GridBreakpointData, GridProps } from './grid.props';
+import Styled from './grid.styles';
 
-const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
+const Grid: FC<GridProps> = forwardRef(function Grid(
   { children, as, direction, gap, template, maxWidth, sm, md, lg, xl, ...props },
   ref: MutableRefObject<HTMLElement>
 ) {
-  const [grid, dispatcher] = useGrid();
+  const [grid, dispatcher] = useAreaBuilder();
 
   const areas = useMemo(() => {
     if (direction === Direction.Row || direction === undefined) {
@@ -34,12 +34,12 @@ const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
     gap,
     template,
     maxWidth,
-  }) as With<GridContainerBreakpointData, { currentBreakpoint: number }>;
+  }) as With<GridBreakpointData, { currentBreakpoint: number }>;
 
   return (
     <DirectionContext value={direction}>
-      <GridProvider areas={grid.areas} dispatcher={dispatcher}>
-        <Styled.GridContainer
+      <AreaBuilder areas={grid.areas} dispatcher={dispatcher}>
+        <Styled.Grid
           ref={ref}
           forwardedAs={as}
           $direction={currentBreakpointProps.direction}
@@ -51,10 +51,10 @@ const GridContainer: FC<GridContainerProps> = forwardRef(function GridContainer(
           {...props}
         >
           {children}
-        </Styled.GridContainer>
-      </GridProvider>
+        </Styled.Grid>
+      </AreaBuilder>
     </DirectionContext>
   );
 });
 
-export default GridContainer;
+export default Grid;

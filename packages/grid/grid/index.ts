@@ -1,2 +1,2 @@
-export * from './use-grid';
-export * from './grid.context';
+export { default } from './grid.component';
+export type { GridProps } from './grid.props';

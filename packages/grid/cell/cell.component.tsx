@@ -2,7 +2,7 @@ import React, { FC, forwardRef, MutableRefObject, useEffect, useMemo } from 'rea
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 
-import { useGridContext } from '../grid';
+import { useAreaBuilderContext } from '../area-builder';
 import { useBreakpointProps } from '../hooks';
 
 import type { CellBreakpointData, CellProps } from './cell.props';
@@ -12,7 +12,7 @@ const Cell: FC<CellProps> = forwardRef(function Cell(
   { children, area, size, offset, sm, md, lg, xl, ...props },
   ref: MutableRefObject<HTMLDivElement>
 ) {
-  const { areas, dispatcher } = useGridContext();
+  const { areas, dispatcher } = useAreaBuilderContext();
 
   const currentBreakpointProps = useBreakpointProps({
     sm,

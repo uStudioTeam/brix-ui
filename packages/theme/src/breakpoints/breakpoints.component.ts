@@ -10,7 +10,7 @@ const Breakpoints = createGlobalStyle<BreakpointsMap>`
     return objectValues(Breakpoint).reduce((styles, breakpoint) => {
       return css`
         ${styles};
-        ${setCssVariable('bp', breakpoint, props[breakpoint])};
+        ${setCssVariable('bp', breakpoint, `${props[breakpoint]}px`)};
       `;
     }, css``);
   }};

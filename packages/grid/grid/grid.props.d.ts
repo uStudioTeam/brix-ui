@@ -6,16 +6,16 @@ import { Direction } from '@ustudio-ui/types/css';
 
 import type { BreakpointsProps } from '../entity';
 
-export interface GridContainerBreakpointData {
+export interface GridBreakpointData {
   direction?: Values<typeof Direction>;
   gap?: Partial<Record<Values<typeof Axis>, string>> | string;
   template?: ((fractionsCount: number) => string) | string;
   maxWidth?: ((currentBreakpoint: number) => string) | string;
 }
 
-export type GridContainerBreakpoints = GridContainerBreakpointData & BreakpointsProps<GridContainerBreakpointData>;
+export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
 
-export interface GridContainerProps
+export interface GridProps
   extends IntrinsicComponent,
-    GridContainerBreakpoints,
+    GridBreakpoints,
     Omit<BlockProps, 'isInline' | 'gap'> {}
