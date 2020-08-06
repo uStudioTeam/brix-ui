@@ -3,9 +3,9 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import Block from '@ustudio-ui/core/block';
 import { Direction } from '@ustudio-ui/types/css';
 
-import type { GridContainerProps } from './grid-container.props';
+import type { GridProps } from './grid.props';
 
-const parseGap = (gap: GridContainerProps['gap']): FlattenSimpleInterpolation | undefined => {
+const parseGap = (gap: GridProps['gap']): FlattenSimpleInterpolation | undefined => {
   if (!gap) {
     return;
   }
@@ -22,11 +22,11 @@ const parseGap = (gap: GridContainerProps['gap']): FlattenSimpleInterpolation | 
   `;
 };
 
-const GridContainer = styled(Block)<{
-  $direction: GridContainerProps['direction'];
-  $gap: GridContainerProps['gap'];
-  $maxWidth: Extract<GridContainerProps['maxWidth'], string> | undefined;
-  template: Extract<GridContainerProps['template'], string> | undefined;
+const Grid = styled(Block)<{
+  $direction: GridProps['direction'];
+  $gap: GridProps['gap'];
+  $maxWidth: Extract<GridProps['maxWidth'], string> | undefined;
+  template: Extract<GridProps['template'], string> | undefined;
   areas: string;
   fractionsCount: number;
 }>(({ $direction, $gap, $maxWidth, areas, template, fractionsCount }) => {
@@ -43,6 +43,6 @@ const GridContainer = styled(Block)<{
   `;
 });
 
-const Styled = { GridContainer };
+const Styled = { Grid };
 
 export default Styled;

@@ -34,7 +34,7 @@ const TypographyGlobalStyles = createGlobalStyle<{
 `;
 
 const getFontName = ({ font, theme }: WithTheme<{ font: string }>): string => {
-  return theme[`font${capitalize(font)}` as keyof typeof theme];
+  return theme[`font${capitalize(font)}` as keyof typeof theme] as string;
 };
 
 const Typography = (props?: FontsFacesMap): JSX.Element => {
@@ -49,21 +49,21 @@ const Typography = (props?: FontsFacesMap): JSX.Element => {
               props?.[font][type] ?? ({} as typeof props[typeof font][typeof type]);
 
             return css`
-            ${typeStyles};
-
-            @font-face {
-              font-family: '${getFontName({ font, theme })}';
-              font-weight: ${weight};
-              font-display: fallback;
-              
-              src: url('${url}') format('${format}');
-            }
+              ${typeStyles};
+  
+              @font-face {
+                font-family: '${getFontName({ font, theme })}';
+                font-weight: ${weight};
+                font-display: fallback;
+                
+                src: url('${url}') format('${format}');
+              }
           `;
           }, css``)};
         `;
       }, css``);
     },
-    [props]
+    [JSON.stringify(props)]
   );
 
   const variables = useCallback(({ theme }: WithTheme) => {

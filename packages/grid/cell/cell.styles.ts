@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Direction } from '@ustudio-ui/types/css';
 import { Values } from '@ustudio-ui/utils/types';
 
-import type { GridState } from '../grid/reducer';
+import type { GridState } from '../area-builder/reducer';
 
 import type { CellProps } from './cell.props';
 
