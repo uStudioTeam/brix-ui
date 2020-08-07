@@ -1,4 +1,4 @@
-export const applyPolymorphicFunctionProp = <A, T extends string, F extends (args: A) => T>(
+export const applyPolymorphicFunctionProp = <A, T extends string, F extends (...args: A[]) => T>(
   prop: T | F | undefined,
   callWith: A
 ): T | undefined => {
