@@ -1,6 +1,6 @@
 import React, { FC, forwardRef, MutableRefObject, useMemo } from 'react';
 
-import { polymorphicFunction } from '@ustudio-ui/utils/functions';
+import { applyPolymorphicFunctionProp } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
 import DirectionContext from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
@@ -44,8 +44,8 @@ const Grid: FC<GridProps> = forwardRef(function Grid(
           forwardedAs={as}
           $direction={currentBreakpointProps.direction}
           $gap={currentBreakpointProps.gap}
-          $maxWidth={polymorphicFunction(currentBreakpointProps.maxWidth, currentBreakpoint)}
-          template={polymorphicFunction(currentBreakpointProps.template, grid.fractionsCount)}
+          $maxWidth={applyPolymorphicFunctionProp(currentBreakpointProps.maxWidth, currentBreakpoint)}
+          template={applyPolymorphicFunctionProp(currentBreakpointProps.template, grid.fractionsCount)}
           areas={areas}
           fractionsCount={grid.fractionsCount}
           {...props}
