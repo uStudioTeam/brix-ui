@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/grid-system",
+  "name": "@ustudio-ui/grid",
   "version": "0.0.1",
   "scripts": {
     "build": "npm-run-all -s prebuild -p copy build:js build:dts",
