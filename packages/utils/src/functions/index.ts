@@ -9,4 +9,4 @@ export * from './parse-alignment';
 export * from './get-css-variable';
 export * from './set-css-variable';
 export * from './parse-align-items';
-export * from './polymorphic-function';
+export * from './apply-polymorphic-function-prop';
