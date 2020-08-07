@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, MutableRefObject, useEffect, useMemo } from 'react';
+import React, { FC, forwardRef, MutableRefObject, useEffect, useMemo, useRef } from 'react';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 
@@ -23,7 +23,8 @@ const Cell: FC<CellProps> = forwardRef(function Cell(
     offset,
   }) as CellBreakpointData;
 
-  const id = useMemo(() => area || Math.random().toString(32).slice(2).replace(/\d+/, ''), [area]);
+  const { current: internalId } = useRef(Math.random().toString(32).slice(2).replace(/\d+/, ''));
+  const id = useMemo(() => area || internalId, [area]);
 
   useEffect(() => {
     dispatcher.mountCell({

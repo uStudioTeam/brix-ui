@@ -30,14 +30,15 @@ const Grid = styled(Block)<{
   areas: string;
   fractionsCount: number;
 }>(({ $direction, $gap, $maxWidth, areas, template, fractionsCount }) => {
+  const templateDirection = $direction === Direction.Column ? Direction.Row : Direction.Column;
+
   return css`
     display: grid;
 
     ${parseGap($gap)};
 
     grid-template-areas: ${areas};
-    ${`grid-template-${$direction === Direction.Column ? 'row' : 'column'}s`}: ${template ??
-    `repeat(${fractionsCount}, 1fr)`};
+    ${`grid-template-${templateDirection}s`}: ${template || `repeat(${fractionsCount}, 1fr)`};
 
     max-width: ${$maxWidth};
   `;
