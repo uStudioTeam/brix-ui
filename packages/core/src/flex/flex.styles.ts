@@ -39,16 +39,18 @@ const Flex = styled(Block)<
     $direction: FlexProps['direction'];
     $align: FlexProps['align'];
   }
->(
-  ({ $direction, isReversed, isInline, hasWrap, $align, horizontalAlign, verticalAlign }) => css`
+>(({ $direction, isReversed, isInline, hasWrap, $align, horizontalAlign, verticalAlign }) => {
+  const flexDirection =
+    (isReversed || $direction !== Direction.Row) && `${$direction}${safeFallback(isReversed, '-reverse')}`;
+
+  return css`
     display: ${isInline ? 'inline-flex' : 'flex'};
-    flex-direction: ${(isReversed || $direction !== Direction.Row) &&
-    `${$direction}${safeFallback(isReversed, '-reverse')}`};
+    flex-direction: ${flexDirection};
     flex-wrap: ${hasWrap && isReversed ? 'wrap-reverse' : 'wrap'};
 
     ${setAlignment({ direction: $direction, align: $align, horizontalAlign, verticalAlign })};
-  `
-);
+  `;
+});
 
 const Styled = { Flex };
 
