@@ -25,7 +25,8 @@
       "@ustudio-ui/core/*": ["./packages/core/src/*"],
       "@ustudio-ui/types/*": ["./packages/types/src/*"],
       "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"],
-      "@ustudio-ui/grid-system/*": ["./packages/grid-system/src/*"]
+      "@ustudio-ui/grid/*": ["./packages/grid/src/*"],
+      "@ustudio-ui/grid": ["./packages/grid/src/index.ts"]
     }
   },
   "types": ["./packages/theme/globals.d.ts", "./packages/core/globals.d.ts"]
