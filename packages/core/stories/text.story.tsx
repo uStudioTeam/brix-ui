@@ -4,7 +4,7 @@ import { select } from '@storybook/addon-knobs';
 
 import { Values } from '@ustudio-ui/utils/types';
 import { objectValues } from '@ustudio-ui/utils/functions';
-import { FontVariant, TypeVariant } from '@ustudio-ui/theme/typography';
+import { FontVariant, TypeVariant } from '@ustudio-ui/types/typography';
 
 import Text from '@ustudio-ui/core/text';
 
