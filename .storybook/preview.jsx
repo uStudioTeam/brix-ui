@@ -5,7 +5,7 @@ import { addDecorator } from '@storybook/react';
 import { jsxDecorator } from 'storybook-addon-jsx/lib';
 
 import ThemeProvider from '@ustudio-ui/theme';
-import { FontWeight } from '@ustudio-ui/theme/typography';
+import { FontWeight } from '@ustudio-ui/types/typography';
 
 import SSPBlack from './public/assets/fonts/SourceSansPro/SourceSansPro-Black.ttf';
 import SSPBold from './public/assets/fonts/SourceSansPro/SourceSansPro-Bold.ttf';

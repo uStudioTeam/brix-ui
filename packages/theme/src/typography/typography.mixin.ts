@@ -43,12 +43,12 @@ export const font: FontsCssMap = applyFontFamily({
     h4: css`
       font-weight: ${FontWeight.Light};
       font-size: ${pxToRem(16)}rem;
-      font-variant: small-caps oldstyle-nums;
+      font-variant: all-small-caps oldstyle-nums;
     `,
     h5: css`
       font-weight: ${FontWeight.SemiBold};
       font-size: ${pxToRem(12)}rem;
-      font-variant: small-caps oldstyle-nums;
+      font-variant: all-small-caps oldstyle-nums;
       letter-spacing: ${percentToEm(2)}em;
     `,
     p: css`
