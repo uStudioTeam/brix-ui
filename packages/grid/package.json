@@ -9,10 +9,10 @@
     "prebuild": "rimraf lib"
   },
   "dependencies": {
-    "@ustudio-ui/contexts": "workspace:packages/contexts",
-    "@ustudio-ui/theme": "workspace:packages/theme",
-    "@ustudio-ui/types": "workspace:packages/types",
-    "@ustudio-ui/utils": "workspace:packages/utils"
+    "@ustudio-ui/contexts": "0.0.1",
+    "@ustudio-ui/theme": "0.0.1",
+    "@ustudio-ui/types": "0.0.1",
+    "@ustudio-ui/utils": "0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

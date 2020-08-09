@@ -2,8 +2,8 @@
   "name": "@ustudio-ui/contexts",
   "version": "0.0.1",
   "dependencies": {
-    "@ustudio-ui/types": "workspace:packages/types",
-    "@ustudio-ui/utils": "workspace:packages/utils"
+    "@ustudio-ui/types": "0.0.1",
+    "@ustudio-ui/utils": "0.0.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",
