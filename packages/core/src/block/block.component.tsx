@@ -1,12 +1,11 @@
-import React, { FC, forwardRef, MutableRefObject } from 'react';
+import React from 'react';
+
+import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 
 import type { BlockProps } from './block.props';
 import Styled from './block.styles';
 
-const Block: FC<BlockProps> = forwardRef(function Block(
-  { children, as, margin, padding, gap, ...props },
-  ref: MutableRefObject<HTMLElement>
-) {
+const Block = intrinsicComponent<BlockProps>(function Block({ children, as, margin, padding, gap, ...props }, ref) {
   return (
     <Styled.Block ref={ref} forwardedAs={as} $margin={margin} $padding={padding} $gap={gap} {...props}>
       {children}
