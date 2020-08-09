@@ -1,6 +1,7 @@
-import React, { FC, forwardRef, MutableRefObject, useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
+import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 
 import { useAreaBuilderContext } from '../area-builder';
 import { useBreakpointProps } from '../hooks';
@@ -8,9 +9,9 @@ import { useBreakpointProps } from '../hooks';
 import type { CellBreakpointData, CellProps } from './cell.props';
 import Styled from './cell.styles';
 
-const Cell: FC<CellProps> = forwardRef(function Cell(
+const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
   { children, area, size, offset, sm, md, lg, xl, ...props },
-  ref: MutableRefObject<HTMLDivElement>
+  ref
 ) {
   const { areas, dispatcher } = useAreaBuilderContext();
 

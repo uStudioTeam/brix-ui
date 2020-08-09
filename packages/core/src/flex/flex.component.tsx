@@ -1,5 +1,6 @@
-import React, { FC, forwardRef, MutableRefObject } from 'react';
+import React from 'react';
 
+import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 import type { FlexElement } from '@ustudio-ui/types/html';
 import { Direction } from '@ustudio-ui/types/css';
 import DirectionProvider from '@ustudio-ui/contexts/direction';
@@ -7,9 +8,9 @@ import DirectionProvider from '@ustudio-ui/contexts/direction';
 import type { FlexProps } from './flex.props';
 import Styled from './flex.styles';
 
-const Flex: FC<FlexProps> = forwardRef(function Flex(
+const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
   { children, as, styles, direction = Direction.Row, align, ...props },
-  ref: MutableRefObject<FlexElement>
+  ref
 ) {
   return (
     <DirectionProvider value={direction}>

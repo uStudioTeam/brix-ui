@@ -8,6 +8,6 @@ export interface CellBreakpointData {
 
 export type CellBreakpoints = CellBreakpointData & BreakpointsProps<CellBreakpointData>;
 
-export interface CellProps extends IntrinsicComponent, CellBreakpoints {
+export interface CellProps extends IntrinsicComponent<HTMLDivElement>, CellBreakpoints {
   area?: string;
 }

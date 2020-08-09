@@ -1,6 +1,6 @@
-import React, { FC, forwardRef, MutableRefObject, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
-import { applyPolymorphicFunctionProp } from '@ustudio-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
 import DirectionContext from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
@@ -11,9 +11,9 @@ import { useBreakpointProps } from '../hooks';
 import type { GridBreakpointData, GridProps } from './grid.props';
 import Styled from './grid.styles';
 
-const Grid: FC<GridProps> = forwardRef(function Grid(
+const Grid = intrinsicComponent<GridProps>(function Grid(
   { children, as, direction, gap, template, maxWidth, sm, md, lg, xl, ...props },
-  ref: MutableRefObject<HTMLElement>
+  ref
 ) {
   const [grid, dispatcher] = useAreaBuilder();
 
