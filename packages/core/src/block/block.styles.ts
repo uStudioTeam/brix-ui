@@ -1,7 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { Position } from '@ustudio-ui/types/css';
-import { isUndefined, objectValues } from '@ustudio-ui/utils/functions';
+import { applyDisplayNames, isUndefined, objectValues } from '@ustudio-ui/utils/functions';
 import { Axis, Indent, PositionIndent } from '@ustudio-ui/types/component';
 
 import type { BlockProps } from './block.props';
@@ -82,6 +82,6 @@ const Block = styled.div<
   `
 );
 
-const Styled = { Block };
+const Styled = applyDisplayNames({ Block });
 
 export default Styled;

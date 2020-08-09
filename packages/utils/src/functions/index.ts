@@ -10,4 +10,5 @@ export * from './get-css-variable';
 export * from './set-css-variable';
 export * from './parse-align-items';
 export * from './intrinsic-component';
+export * from './apply-display-names';
 export * from './apply-polymorphic-function-prop';

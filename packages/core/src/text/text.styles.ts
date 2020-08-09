@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
 import { TypeVariant, FontVariant } from '@ustudio-ui/types/typography';
 
@@ -36,6 +37,6 @@ const Text = styled.p<
   `
 );
 
-const Styled = { Text };
+const Styled = applyDisplayNames({ Text });
 
 export default Styled;
