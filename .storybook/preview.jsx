@@ -28,101 +28,103 @@ addDecorator(jsxDecorator);
 addDecorator((story) => (
   <ThemeProvider
     theme={{
-      body: {
-        h1: {
-          url: SSPBlack,
-          weight: FontWeight.Black,
+      typography: {
+        body: {
+          h1: {
+            url: SSPBlack,
+            weight: FontWeight.Black,
+          },
+          h2: {
+            url: SSPBold,
+            weight: FontWeight.Bold,
+          },
+          h3: {
+            url: SSPBold,
+            weight: FontWeight.Bold,
+          },
+          h4: {
+            url: SSPLight,
+            weight: FontWeight.Light,
+          },
+          h5: {
+            url: SSPSemiBold,
+            weight: FontWeight.SemiBold,
+          },
+          p: {
+            url: SSPRegular,
+            weight: FontWeight.Regular,
+          },
+          small: {
+            url: SSPLight,
+            weight: FontWeight.Light,
+          },
         },
-        h2: {
-          url: SSPBold,
-          weight: FontWeight.Bold,
-        },
-        h3: {
-          url: SSPBold,
-          weight: FontWeight.Bold,
-        },
-        h4: {
-          url: SSPLight,
-          weight: FontWeight.Light,
-        },
-        h5: {
-          url: SSPSemiBold,
-          weight: FontWeight.SemiBold,
-        },
-        p: {
-          url: SSPRegular,
-          weight: FontWeight.Regular,
-        },
-        small: {
-          url: SSPLight,
-          weight: FontWeight.Light,
-        },
-      },
-      fontBody: 'Source Sans Pro',
+        fontBody: 'Source Sans Pro',
 
-      article: {
-        h1: {
-          url: MBlack,
-          weight: FontWeight.Black,
+        article: {
+          h1: {
+            url: MBlack,
+            weight: FontWeight.Black,
+          },
+          h2: {
+            url: MBlack,
+            weight: FontWeight.Black,
+          },
+          h3: {
+            url: MBlack,
+            weight: FontWeight.Black,
+          },
+          h4: {
+            url: MLight,
+            weight: FontWeight.Light,
+          },
+          h5: {
+            url: MBlack,
+            weight: FontWeight.Black,
+          },
+          p: {
+            url: MRegular,
+            weight: FontWeight.Regular,
+          },
+          small: {
+            url: MRegular,
+            weight: FontWeight.Regular,
+          },
         },
-        h2: {
-          url: MBlack,
-          weight: FontWeight.Black,
-        },
-        h3: {
-          url: MBlack,
-          weight: FontWeight.Black,
-        },
-        h4: {
-          url: MLight,
-          weight: FontWeight.Light,
-        },
-        h5: {
-          url: MBlack,
-          weight: FontWeight.Black,
-        },
-        p: {
-          url: MRegular,
-          weight: FontWeight.Regular,
-        },
-        small: {
-          url: MRegular,
-          weight: FontWeight.Regular,
-        },
-      },
-      fontArticle: 'Merriweather',
+        fontArticle: 'Merriweather',
 
-      code: {
-        h1: {
-          url: IExtraBold,
-          weight: FontWeight.ExtraBold,
+        code: {
+          h1: {
+            url: IExtraBold,
+            weight: FontWeight.ExtraBold,
+          },
+          h2: {
+            url: IExtraBold,
+            weight: FontWeight.ExtraBold,
+          },
+          h3: {
+            url: IExtraBold,
+            weight: FontWeight.ExtraBold,
+          },
+          h4: {
+            url: ILight,
+            weight: FontWeight.Light,
+          },
+          h5: {
+            url: IExtraBold,
+            weight: FontWeight.ExtraBold,
+          },
+          p: {
+            url: IRegular,
+            weight: FontWeight.Regular,
+          },
+          small: {
+            url: IRegular,
+            weight: FontWeight.Regular,
+          },
         },
-        h2: {
-          url: IExtraBold,
-          weight: FontWeight.ExtraBold,
-        },
-        h3: {
-          url: IExtraBold,
-          weight: FontWeight.ExtraBold,
-        },
-        h4: {
-          url: ILight,
-          weight: FontWeight.Light,
-        },
-        h5: {
-          url: IExtraBold,
-          weight: FontWeight.ExtraBold,
-        },
-        p: {
-          url: IRegular,
-          weight: FontWeight.Regular,
-        },
-        small: {
-          url: IRegular,
-          weight: FontWeight.Regular,
-        },
+        fontCode: 'Inconsolata',
       },
-      fontCode: 'Inconsolata',
     }}
   >
     {story()}

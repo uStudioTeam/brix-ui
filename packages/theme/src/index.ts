@@ -1,2 +1,3 @@
+export * from './use-theme';
 export type { Theme } from './theme';
-export { default, useTheme } from './theme-provider.context';
+export { default } from './theme-provider.context';

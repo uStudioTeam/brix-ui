@@ -34,10 +34,10 @@ const TypographyGlobalStyles = createGlobalStyle<{
 `;
 
 const getFontName = ({ font, theme }: WithTheme<{ font: string }>): string => {
-  return theme[`font${capitalize(font)}` as keyof typeof theme] as string;
+  return theme.typography[`font${capitalize(font)}` as keyof typeof theme['typography']] as string;
 };
 
-const Typography = (props?: FontsFacesMap): JSX.Element => {
+const Typography = (props: FontsFacesMap): JSX.Element => {
   const fontFaces = useCallback(
     ({ theme }: WithTheme) => {
       return objectKeys(props).reduce((fontStyles, font) => {
