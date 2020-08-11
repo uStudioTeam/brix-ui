@@ -1,12 +1,12 @@
 import type { ColorsMap } from '@ustudio-ui/theme/palette';
 import { Variable } from '@ustudio-ui/types/css';
-import { Color, ColorTuple } from '@ustudio-ui/types/palette';
+import { Color, ColorTupleNumber } from '@ustudio-ui/types/palette';
 import { getCssVariable, objectKeys } from '@ustudio-ui/utils/functions';
 import type { Keys, Values } from '@ustudio-ui/utils/types';
 
 import { ColorTransformer } from './color-transformer';
 
-type Palette<K = Keys<typeof Color>, V = ColorTuple> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
+type Palette<K = Keys<typeof Color>, V = ColorTupleNumber> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
 
 const rawToHsl = <K>(palette: Palette<K>): Palette<K, string> => {
   // TypeScript goes insane here for some reason
@@ -57,7 +57,7 @@ type PrimaryKeys =
   | 'SuccessStrong'
   | 'SuccessWeak';
 
-type PrimaryPalette<T = ColorTuple> = Palette<PrimaryKeys, T>;
+type PrimaryPalette<T = ColorTupleNumber> = Palette<PrimaryKeys, T>;
 
 const primaryPaletteRaw: PrimaryPalette = {
   [Color.BaseStrong]: [208, 15, 12],
@@ -124,7 +124,7 @@ export const secondaryPalette = rawToHsl<SecondaryKeys>(
   objectKeys(secondaryPaletteShifts).reduce((secondaryPaletteShifted, key) => {
     return Object.assign(secondaryPaletteShifted, {
       [key]: shift[key.replace(/(-u|-d)$/, '') as typeof Color[PrimaryKeys]](
-        ...(secondaryPaletteShifts[key] as ColorTuple)
+        ...(secondaryPaletteShifts[key] as ColorTupleNumber)
       ),
     });
   }, {}) as Palette<SecondaryKeys>
@@ -132,8 +132,8 @@ export const secondaryPalette = rawToHsl<SecondaryKeys>(
 
 const createFancy = (
   baseColor: Values<typeof Color>,
-  middleColor: [ColorTuple, ColorTuple],
-  topmostColor: [ColorTuple, ColorTuple]
+  middleColor: [ColorTupleNumber, ColorTupleNumber],
+  topmostColor: [ColorTupleNumber, ColorTupleNumber]
 ): string => {
   return `linear-gradient(to right, ${ColorTransformer.toHsla(topmostColor[0], 0.25)}, ${ColorTransformer.toHsla(
     topmostColor[1],

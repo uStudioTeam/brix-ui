@@ -1,1 +1,3 @@
-export type ColorTuple = [number, number, number];
+export type ColorTupleNumber = [number, number, number];
+
+export type ColorTupleString = [string, string, string];

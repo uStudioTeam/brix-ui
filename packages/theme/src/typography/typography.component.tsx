@@ -11,8 +11,18 @@ const TypographyGlobalStyles = createGlobalStyle<{
   variables(props: WithTheme): FlattenSimpleInterpolation;
   fontFaces(props: WithTheme): FlattenSimpleInterpolation;
 }>`
+  :root {
+    ${({ variables, theme }) => variables({ theme })};
+  
+    ${({ fontFaces, theme }) => fontFaces({ theme })};
+  }
+  
   html {
     font-size: 16px;
+  }
+  
+  body {
+    font-family: var(--f-body);
   }
 
   h1,
@@ -24,12 +34,6 @@ const TypographyGlobalStyles = createGlobalStyle<{
   p,
   small {
     line-height: 1.375;
-  }
-  
-  :root {
-    ${({ variables, theme }) => variables({ theme })};
-  
-    ${({ fontFaces, theme }) => fontFaces({ theme })};
   }
 `;
 
