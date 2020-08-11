@@ -1,4 +1,4 @@
-import { ColorSpace, ColorTuple } from '@ustudio-ui/types/palette';
+import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
 
 import { ColorTransformer } from './color-transformer';
 
@@ -82,7 +82,7 @@ export class ColorConverter {
       if (240 <= hue && hue < 300) return [x, 0, c];
 
       return [c, 0, x];
-    })() as ColorTuple;
+    })() as ColorTupleNumber;
 
     const coerce = (color: number) => (color + m) * 255;
 

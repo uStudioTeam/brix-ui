@@ -1,22 +1,25 @@
-import { ColorSpace, ColorTuple } from '@ustudio-ui/types/palette';
+import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
+import { ColorTupleString } from '@ustudio-ui/types/palette/color-tuple';
 import type { Values } from '@ustudio-ui/utils/types';
 
-type WithAplha = [number, number, number, number];
+type WithAplhaNumber = [number, number, number, number];
+
+type WithAplhaString = [string, string, string, number];
 
 type ApplicableColorSpace = Exclude<Values<typeof ColorSpace>, 'hsla' | 'rgba' | 'hexa'>;
 
 export class ColorTransformer {
   private static readonly regExp: Record<ApplicableColorSpace, RegExp> = {
     [ColorSpace.RGB]: /^rgb\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3})\)$/,
-    [ColorSpace.HSL]: /^hsl\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3})\)$/,
+    [ColorSpace.HSL]: /^hsl\((\d{1,3}),\s?(\d{1,3})%,\s?(\d{1,3})%\)$/,
     [ColorSpace.HEX]: /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
   };
 
-  public static applyShift(colorTuple: ColorTuple): (...shift: ColorTuple) => ColorTuple {
+  public static applyShift(colorTuple: ColorTupleNumber): (...shift: ColorTupleNumber) => ColorTupleNumber {
     return (...shift) => {
       return colorTuple.map((colorValue, index) => {
         return colorValue + shift[index];
-      }) as ColorTuple;
+      }) as ColorTupleNumber;
     };
   }
 
@@ -31,7 +34,7 @@ export class ColorTransformer {
 
     switch (colorSpace) {
       case ColorSpace.HSL: {
-        return applyValidation('hsl(0-255, 0-100, 0-100)');
+        return applyValidation('hsl(0-255, 0-100%, 0-100%)');
       }
       case ColorSpace.RGB: {
         return applyValidation('rgb(0-255, 0-255, 0-255)');
@@ -53,27 +56,38 @@ export class ColorTransformer {
     return tuple as [V, V, V];
   }
 
-  private static fromTuple(...colorTuple: ColorTuple | WithAplha): string {
+  private static fromTuple(
+    ...colorTuple: ColorTupleNumber | ColorTupleString | WithAplhaNumber | WithAplhaString
+  ): string {
     return colorTuple.join(', ');
   }
 
-  private static toColorFunction(colorSpace: Values<typeof ColorSpace>, ...colorTuple: ColorTuple | WithAplha): string {
+  private static toColorFunction(
+    colorSpace: Values<typeof ColorSpace>,
+    ...colorTuple: ColorTupleNumber | ColorTupleString | WithAplhaNumber | WithAplhaString
+  ): string {
     return `${colorSpace}(${this.fromTuple(...colorTuple)})`;
   }
 
-  public static toHsl(colorTuple: ColorTuple): string {
-    return this.toColorFunction(ColorSpace.HSL, ...colorTuple);
+  public static toHsl(colorTuple: ColorTupleNumber): string {
+    return this.toColorFunction(
+      ColorSpace.HSL,
+      ...([`${colorTuple[0]}`, ...colorTuple.slice(1).map((value) => `${value}%`)] as ColorTupleString)
+    );
   }
 
-  public static toHsla(colorTuple: ColorTuple, aplha: number): string {
-    return this.toColorFunction(ColorSpace.HSLA, ...[...colorTuple, aplha]);
+  public static toHsla(colorTuple: ColorTupleNumber, aplha: number): string {
+    return this.toColorFunction(
+      ColorSpace.HSLA,
+      ...([`${colorTuple[0]}`, ...colorTuple.slice(1).map((value) => `${value}%`), aplha] as WithAplhaString)
+    );
   }
 
-  public static toRgb(colorTuple: ColorTuple): string {
+  public static toRgb(colorTuple: ColorTupleNumber): string {
     return this.toColorFunction(ColorSpace.RGB, ...colorTuple);
   }
 
-  public static toRgba(colorTuple: ColorTuple, aplha: number): string {
+  public static toRgba(colorTuple: ColorTupleNumber, aplha: number): string {
     return this.toColorFunction(ColorSpace.RGBA, ...[...colorTuple, aplha]);
   }
 }
