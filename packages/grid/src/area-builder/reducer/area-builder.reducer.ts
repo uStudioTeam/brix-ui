@@ -29,8 +29,13 @@ export const areaBuilderReducer: Reducer<AreaBuilderState, AreaBuilderAction> = 
     case 'mount_cell': {
       const { payload } = action;
 
-      const areas = Object.keys(state.cells).reduce((areas, key) => {
-        const { size = 1, offset } = state.cells[key];
+      const cells = {
+        ...state.cells,
+        [payload.id]: payload,
+      };
+
+      const areas = Object.keys(cells).reduce((areas, key) => {
+        const { size = 1, offset } = cells[key];
         const [offsetBefore, offsetAfter] = offset || [];
 
         return [...areas, ...[...repeat('.', offsetBefore), ...formatSize(key, size), ...repeat('.', offsetAfter)]];
@@ -39,10 +44,7 @@ export const areaBuilderReducer: Reducer<AreaBuilderState, AreaBuilderAction> = 
       return {
         ...state,
         areas,
-        cells: {
-          ...state.cells,
-          [payload.id]: payload,
-        },
+        cells,
         fractionsCount: areas.length,
       };
     }
