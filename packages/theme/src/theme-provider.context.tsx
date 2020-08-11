@@ -1,30 +1,35 @@
 import React, { FC } from 'react';
-import { ThemeProvider as SCThemeProvider, useTheme as useSCTheme } from 'styled-components';
+import { ThemeProvider as SCThemeProvider } from 'styled-components';
+import merge from 'lodash.merge';
 
 import { useDestructure } from '@ustudio-ui/utils/hooks';
-import type { DeepPartial } from '@ustudio-ui/utils/types';
 
 import Breakpoints from './breakpoints';
 import Typography from './typography';
+import Palette from './palette';
 import Reset from './reset';
 
-import type { Theme, WithTheme } from './theme';
+import type { Theme, ThemeOverride } from './theme';
+import { defaultTheme } from './default-theme';
 
-const ThemeProvider: FC<DeepPartial<WithTheme>> = ({ children, theme = {} as Theme }) => {
-  const { body, article, code, xs, sm, md, lg, xl } = useDestructure(theme);
+const ThemeProvider: FC<{ theme: ThemeOverride }> = ({ children, theme }) => {
+  const finalTheme = useDestructure({ ...merge(theme, defaultTheme) }) as Theme;
+  const {
+    typography: { body, article, code },
+    breakpoints,
+  } = useDestructure(finalTheme);
 
   return (
-    <SCThemeProvider theme={theme}>
+    <SCThemeProvider theme={finalTheme}>
       {children}
 
       <Reset />
 
-      <Breakpoints xs={xs} sm={sm} md={md} lg={lg} xl={xl} />
-      <Typography body={body} article={article} code={code} />
+      <Palette override={theme?.palette} />
+      <Breakpoints {...breakpoints} />
+      <Typography {...{ body, article, code }} />
     </SCThemeProvider>
   );
 };
-
-export const useTheme = (): Theme => useSCTheme();
 
 export default ThemeProvider;
