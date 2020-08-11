@@ -17,7 +17,9 @@ export const useBreakpointProps = <
   xl,
   ...rest
 }: A): R => {
-  const { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl } = useTheme();
+  const {
+    breakpoints: { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl },
+  } = useTheme();
 
   const isSm = useMediaQuery(`screen and (min-width: ${bpSm}px)`);
   const isMd = useMediaQuery(`screen and (min-width: ${bpMd}px)`);
