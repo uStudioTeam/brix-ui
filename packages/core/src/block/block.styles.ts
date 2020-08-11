@@ -29,7 +29,7 @@ const parseIndent = (indent?: Indent): string => {
       return reduceToStyles(indent, ['vertical', 'right', 'vertical', 'left'] as const);
     }
 
-    return reduceToStyles(indent, objectValues(Axis));
+    return reduceToStyles(indent, [Axis.Vertical, Axis.Horizontal]);
   }
 
   if ('horizontal' in indent) {
@@ -37,7 +37,7 @@ const parseIndent = (indent?: Indent): string => {
       return reduceToStyles(indent, ['top', 'horizontal', 'bottom'] as const);
     }
 
-    return reduceToStyles(indent, objectValues(Axis));
+    return reduceToStyles(indent, [Axis.Vertical, Axis.Horizontal]);
   }
 
   return reduceToStyles(indent as PositionIndent, objectValues(Position));
