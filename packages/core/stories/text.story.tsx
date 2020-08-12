@@ -1,18 +1,18 @@
+import { Story } from '@storybook/react';
 import React from 'react';
-
-import { select } from '@storybook/addon-knobs';
 
 import { Values } from '@ustudio-ui/utils/types';
 import { objectValues } from '@ustudio-ui/utils/functions';
-import { FontVariant, TypeVariant } from '@ustudio-ui/types/typography';
+import { TypeVariant } from '@ustudio-ui/types/typography';
 
-import Text from '@ustudio-ui/core/text';
+import Text, { TextProps } from '@ustudio-ui/core/text';
 
 export default {
   title: 'Data/Text',
+  component: Text,
 };
 
-export const Basic = () => {
+export const BasicTemplate: Story<Omit<TextProps, 'variant' | 'css'>> = (args) => {
   const getTypeName = (typeVariant: Values<typeof TypeVariant>): string => {
     switch (typeVariant) {
       case 'h1':
@@ -29,15 +29,15 @@ export const Basic = () => {
     }
   };
 
-  return objectValues(TypeVariant).map((typeVariant) => {
-    return (
-      <Text
-        key={typeVariant}
-        variant={typeVariant}
-        appearance={select<Values<typeof FontVariant>>('Variant', objectValues(FontVariant), FontVariant.Body)}
-      >
-        {getTypeName(typeVariant)}
-      </Text>
-    );
-  });
+  return (
+    <>
+      {objectValues(TypeVariant).map((typeVariant) => {
+        return (
+          <Text key={typeVariant} variant={typeVariant} {...args}>
+            {getTypeName(typeVariant)}
+          </Text>
+        );
+      })}
+    </>
+  );
 };
