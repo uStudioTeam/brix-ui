@@ -1,4 +1,3 @@
-import * as types from 'styled-components/cssprop';
 import 'styled-components';
 
 import type { Theme } from '@ustudio-ui/theme';
