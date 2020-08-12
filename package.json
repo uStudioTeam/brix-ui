@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "storybook": "start-storybook -s ./.storybook/public",
-    "build": "yarn workspace @ustudio-ui/core build"
+    "build": "yarn --cwd ./packagescore build",
+    "test": "yarn --cwd ./packages/core test"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.0.3",
