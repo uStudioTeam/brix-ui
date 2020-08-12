@@ -57,6 +57,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
     "ts-jest": "^26.2.0",
+    "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^3.9.7"
   },
   "peerDependencies": {

@@ -1,6 +1,14 @@
+const tsconfig = require('../../tsconfig.json');
+const { paths } = tsconfig.compilerOptions;
+
+const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig);
+
 module.exports = {
   testEnvironment: 'jsdom',
-  roots: ['<rootDir>/src'],
+  rootDir: '../../',
+  roots: Object.values(paths)
+    .flatMap(([path]) => path.replace(/\/\*/, ''))
+    .filter((path) => !/index.ts$/.test(path)),
   preset: 'ts-jest',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
@@ -19,8 +27,6 @@ module.exports = {
   clearMocks: true,
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleDirectories: ['node_modules', 'src'],
-  moduleNameMapper: {
-    '^/(.*)$': '<rootDir>/src/$1',
-  },
+  moduleNameMapper,
   testPathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/node_modules/'],
 };
