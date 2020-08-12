@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "storybook": "start-storybook -s ./.storybook/public",
-    "build": "yarn --cwd ./packagescore build",
+    "build": "yarn --cwd ./packages/core build",
     "test": "yarn --cwd ./packages/core test"
   },
   "devDependencies": {
