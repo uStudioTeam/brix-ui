@@ -18,13 +18,21 @@ module.exports = {
     },
   ],
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.(ts|tsx|jsx)$/,
-      loader: require.resolve('babel-loader'),
-      options: {
-        presets: [['react-app', { flow: false, typescript: true }]],
+    config.module.rules.find((rule) => rule.test.test('.svg')).exclude = /\.inline.svg$/;
+
+    config.module.rules.push(
+      {
+        test: /\.(ts|tsx|jsx)$/,
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [['react-app', { flow: false, typescript: true }]],
+        },
       },
-    });
+      {
+        test: /\.inline.svg$/,
+        loader: require.resolve('@svgr/webpack'),
+      }
+    );
 
     config.resolve.extensions.push('.ts', '.tsx', '.jsx');
 

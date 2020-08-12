@@ -5,5 +5,5 @@
     "emitDeclarationOnly": false,
     "jsx": "preserve"
   },
-  "include": ["./stories/*"]
+  "include": ["**/stories/*"]
 }
