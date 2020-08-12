@@ -1,6 +1,6 @@
 const styledComponentsConfig = ['styled-components', { displayName: true, preprocess: false }];
 const reactConfig = '@babel/preset-react';
-const inlineSvgConfig = 'babel-plugin-inline-react-svg';
+const inlineSvgConfig = 'react-svg';
 
 const withConfig = (shouldUse, config) => (shouldUse ? [config] : []);
 
