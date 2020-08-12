@@ -8,8 +8,9 @@ import type { BlockProps } from './block.props';
 
 const blockId = 'block';
 
-const renderWithSingleProp = <P extends keyof BlockProps>(property: P) => (value: BlockProps[P]) =>
-  render(<Block data-testid={blockId} {...{ [property]: value }} />);
+const renderWithSingleProp = <P extends keyof BlockProps>(property: P) => (value: BlockProps[P]) => {
+  return render(<Block data-testid={blockId} {...{ [property]: value }} />);
+};
 
 describe('<Block />', () => {
   describe('margin', () => {
@@ -213,14 +214,15 @@ describe('<Block />', () => {
       ` as unknown) as string,
     };
 
-    const renderWithGap = (gap: BlockProps['gap']) =>
-      render(
+    const renderWithGap = (gap: BlockProps['gap']) => {
+      return render(
         <Block data-testid={blockId} gap={gap}>
           <div />
 
           <div data-testid={lastChildId} />
         </Block>
       );
+    };
 
     describe('empty value', () => {
       it('should not apply margin to children', () => {
