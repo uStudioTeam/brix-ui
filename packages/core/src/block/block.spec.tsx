@@ -228,8 +228,9 @@ describe('<Block />', () => {
       it('should not apply margin to children', () => {
         const { getByTestId } = renderWithGap('');
 
-        expect(getByTestId(blockId)).not.toHaveStyleRule('margin-right', undefined, firstChildOptions);
-        expect(getByTestId(blockId)).not.toHaveStyleRule('margin-bottom', undefined, firstChildOptions);
+        ['margin-right', 'margin-bottom'].forEach((property) => {
+          expect(getByTestId(blockId)).not.toHaveStyleRule(property, undefined, firstChildOptions);
+        });
       });
     });
 
@@ -252,8 +253,12 @@ describe('<Block />', () => {
             horizontal: '2rem',
           });
 
-          expect(getByTestId(blockId)).toHaveStyleRule('margin-bottom', '1rem', firstChildOptions);
-          expect(getByTestId(blockId)).toHaveStyleRule('margin-right', '2rem', firstChildOptions);
+          [
+            ['margin-bottom', '1rem'],
+            ['margin-right', '2rem'],
+          ].forEach(([property, value]) => {
+            expect(getByTestId(blockId)).toHaveStyleRule(property, value, firstChildOptions);
+          });
         });
       });
 
@@ -261,8 +266,9 @@ describe('<Block />', () => {
         it('should not apply properties onto css', () => {
           const { getByTestId } = renderWithGap({});
 
-          expect(getByTestId(blockId)).not.toHaveStyleRule('margin-bottom', undefined, firstChildOptions);
-          expect(getByTestId(blockId)).not.toHaveStyleRule('margin-right', undefined, firstChildOptions);
+          ['margin-bottom', 'margin-right'].forEach((property) => {
+            expect(getByTestId(blockId)).not.toHaveStyleRule(property, undefined, firstChildOptions);
+          });
         });
       });
     });
