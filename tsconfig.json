@@ -29,5 +29,5 @@
       "@ustudio-ui/grid": ["./packages/grid/src/index.ts"]
     }
   },
-  "types": ["./packages/theme/globals.d.ts", "./packages/core/globals.d.ts"]
+  "types": ["./packages/theme/src/globals.d.ts", "./packages/core/src/globals.d.ts", "./packages/grid/src/globals.d.ts"]
 }

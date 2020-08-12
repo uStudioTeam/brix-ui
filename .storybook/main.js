@@ -8,7 +8,15 @@ const {
 
 module.exports = {
   stories: ['../packages/**/*.story.tsx'],
-  addons: ['@storybook/addon-knobs/register', 'storybook-addon-jsx'],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        baskgrounds: false,
+        actions: false,
+      },
+    },
+  ],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.(ts|tsx|jsx)$/,

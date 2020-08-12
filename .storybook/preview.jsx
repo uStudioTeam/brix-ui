@@ -1,8 +1,5 @@
 import React from 'react';
-
-import { withKnobs } from '@storybook/addon-knobs';
-import { addDecorator } from '@storybook/react';
-import { jsxDecorator } from 'storybook-addon-jsx/lib';
+import { createGlobalStyle } from 'styled-components';
 
 import ThemeProvider from '@ustudio-ui/theme';
 import { FontWeight } from '@ustudio-ui/types/typography';
@@ -21,112 +18,119 @@ import IExtraBold from './public/assets/fonts/Inconsolata/Inconsolata-ExtraBold.
 import ILight from './public/assets/fonts/Inconsolata/Inconsolata-Light.ttf';
 import IRegular from './public/assets/fonts/Inconsolata/Inconsolata-Regular.ttf';
 
-addDecorator(withKnobs);
+const GlobalStyles = createGlobalStyle`
+  body {
+    color: var(--c-base-s);
+    background-color: var(--c-base-w);
+  }
+`;
 
-addDecorator(jsxDecorator);
+export const decorators = [
+  (story) => (
+    <ThemeProvider
+      theme={{
+        typography: {
+          body: {
+            h1: {
+              url: SSPBlack,
+              weight: FontWeight.Black,
+            },
+            h2: {
+              url: SSPBold,
+              weight: FontWeight.Bold,
+            },
+            h3: {
+              url: SSPBold,
+              weight: FontWeight.Bold,
+            },
+            h4: {
+              url: SSPLight,
+              weight: FontWeight.Light,
+            },
+            h5: {
+              url: SSPSemiBold,
+              weight: FontWeight.SemiBold,
+            },
+            p: {
+              url: SSPRegular,
+              weight: FontWeight.Regular,
+            },
+            small: {
+              url: SSPLight,
+              weight: FontWeight.Light,
+            },
+          },
+          fontBody: 'Source Sans Pro',
 
-addDecorator((story) => (
-  <ThemeProvider
-    theme={{
-      typography: {
-        body: {
-          h1: {
-            url: SSPBlack,
-            weight: FontWeight.Black,
+          article: {
+            h1: {
+              url: MBlack,
+              weight: FontWeight.Black,
+            },
+            h2: {
+              url: MBlack,
+              weight: FontWeight.Black,
+            },
+            h3: {
+              url: MBlack,
+              weight: FontWeight.Black,
+            },
+            h4: {
+              url: MLight,
+              weight: FontWeight.Light,
+            },
+            h5: {
+              url: MBlack,
+              weight: FontWeight.Black,
+            },
+            p: {
+              url: MRegular,
+              weight: FontWeight.Regular,
+            },
+            small: {
+              url: MRegular,
+              weight: FontWeight.Regular,
+            },
           },
-          h2: {
-            url: SSPBold,
-            weight: FontWeight.Bold,
+          fontArticle: 'Merriweather',
+
+          code: {
+            h1: {
+              url: IExtraBold,
+              weight: FontWeight.ExtraBold,
+            },
+            h2: {
+              url: IExtraBold,
+              weight: FontWeight.ExtraBold,
+            },
+            h3: {
+              url: IExtraBold,
+              weight: FontWeight.ExtraBold,
+            },
+            h4: {
+              url: ILight,
+              weight: FontWeight.Light,
+            },
+            h5: {
+              url: IExtraBold,
+              weight: FontWeight.ExtraBold,
+            },
+            p: {
+              url: IRegular,
+              weight: FontWeight.Regular,
+            },
+            small: {
+              url: IRegular,
+              weight: FontWeight.Regular,
+            },
           },
-          h3: {
-            url: SSPBold,
-            weight: FontWeight.Bold,
-          },
-          h4: {
-            url: SSPLight,
-            weight: FontWeight.Light,
-          },
-          h5: {
-            url: SSPSemiBold,
-            weight: FontWeight.SemiBold,
-          },
-          p: {
-            url: SSPRegular,
-            weight: FontWeight.Regular,
-          },
-          small: {
-            url: SSPLight,
-            weight: FontWeight.Light,
-          },
+          fontCode: 'Inconsolata',
         },
-        fontBody: 'Source Sans Pro',
+      }}
+    >
+      {story()}
 
-        article: {
-          h1: {
-            url: MBlack,
-            weight: FontWeight.Black,
-          },
-          h2: {
-            url: MBlack,
-            weight: FontWeight.Black,
-          },
-          h3: {
-            url: MBlack,
-            weight: FontWeight.Black,
-          },
-          h4: {
-            url: MLight,
-            weight: FontWeight.Light,
-          },
-          h5: {
-            url: MBlack,
-            weight: FontWeight.Black,
-          },
-          p: {
-            url: MRegular,
-            weight: FontWeight.Regular,
-          },
-          small: {
-            url: MRegular,
-            weight: FontWeight.Regular,
-          },
-        },
-        fontArticle: 'Merriweather',
-
-        code: {
-          h1: {
-            url: IExtraBold,
-            weight: FontWeight.ExtraBold,
-          },
-          h2: {
-            url: IExtraBold,
-            weight: FontWeight.ExtraBold,
-          },
-          h3: {
-            url: IExtraBold,
-            weight: FontWeight.ExtraBold,
-          },
-          h4: {
-            url: ILight,
-            weight: FontWeight.Light,
-          },
-          h5: {
-            url: IExtraBold,
-            weight: FontWeight.ExtraBold,
-          },
-          p: {
-            url: IRegular,
-            weight: FontWeight.Regular,
-          },
-          small: {
-            url: IRegular,
-            weight: FontWeight.Regular,
-          },
-        },
-        fontCode: 'Inconsolata',
-      },
-    }}
-  >
-    {story()}
-  </ThemeProvider>
-));
+      <GlobalStyles />
+    </ThemeProvider>
+  ),
+];
