@@ -15,7 +15,7 @@ export const useBreakpointProps = <
   md,
   lg,
   xl,
-  ...rest
+  ...xs
 }: A): R => {
   const {
     breakpoints: { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl },
@@ -28,21 +28,21 @@ export const useBreakpointProps = <
 
   return useMemo(() => {
     if (isXl) {
-      return spread({ currentBreakpoint: bpXl }, rest as B, ...([sm, md, lg, xl] as B[])) as R;
+      return spread({ currentBreakpoint: bpXl }, xs as B, ...([sm, md, lg, xl] as B[])) as R;
     }
 
     if (isLg) {
-      return spread({ currentBreakpoint: bpLg }, rest as B, ...([sm, md, lg] as B[])) as R;
+      return spread({ currentBreakpoint: bpLg }, xs as B, ...([sm, md, lg] as B[])) as R;
     }
 
     if (isMd) {
-      return spread({ currentBreakpoint: bpMd }, rest as B, ...([sm, md] as B[])) as R;
+      return spread({ currentBreakpoint: bpMd }, xs as B, ...([sm, md] as B[])) as R;
     }
 
     if (isSm) {
-      return spread({ currentBreakpoint: bpSm }, rest as B, sm as B) as R;
+      return spread({ currentBreakpoint: bpSm }, xs as B, sm as B) as R;
     }
 
-    return spread({ currentBreakpoint: bpXs }, rest as B) as B;
-  }, [rest, isSm, sm, isMd, md, isLg, lg, isXl, xl]);
+    return spread({ currentBreakpoint: bpXs }, xs as B) as B;
+  }, [xs, isSm, sm, isMd, md, isLg, lg, isXl, xl]);
 };
