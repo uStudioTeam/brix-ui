@@ -1,6 +1,7 @@
 import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
 import { ColorTupleString } from '@ustudio-ui/types/palette/color-tuple';
 import type { Values } from '@ustudio-ui/utils/types';
+import { ColorConverter } from '@ustudio-ui/theme/palette';
 
 type WithAplhaNumber = [number, number, number, number];
 
@@ -23,6 +24,27 @@ export class ColorTransformer {
     };
   }
 
+  public static getContrastingColor(color: string): string {
+    return this.getBrightness(color) < 140 ? '#FCFCFD' : '#1A1F23';
+  }
+
+  public static getBrightness(color: string): number {
+    const getRGB = () => {
+      switch (this.getSpace(color)) {
+        case 'hsl':
+          return ColorConverter.hslToRgb(color);
+        case 'hex':
+          return ColorConverter.hexToRgb(color);
+        default:
+          return color;
+      }
+    };
+
+    const [red, green, blue] = this.toTuple(getRGB(), 'rgb');
+
+    return Number(Math.sqrt(red ** 2 * 0.241 + green ** 2 * 0.691 + blue ** 2 * 0.068).toFixed(0));
+  }
+
   public static validate(value: string, colorSpace: ApplicableColorSpace): void {
     const applyValidation = (pattern: string) => {
       if (!this.regExp[colorSpace].test(value)) {
@@ -42,16 +64,30 @@ export class ColorTransformer {
     }
   }
 
+  public static getSpace(color: string) {
+    const foundSpace = Object.entries(this.regExp).find(([, expression]) => color.match(expression));
+    if (!foundSpace) {
+      throw new TypeError(`Invalid color ${color}  provided. `);
+    }
+
+    return foundSpace[0] as ApplicableColorSpace;
+  }
+
   public static toTuple<V = number>(
     value: string,
     colorSpace: ApplicableColorSpace,
     modifier?: (value: number) => V
   ): [V, V, V] {
-    const [, ...tuple] = (value.match(this.regExp[colorSpace]) as [string, string, string]).map((value) => {
-      const asNumber = Number(value);
+    const transformedValue = this.getSpace(value) === 'hex' ? ColorConverter.hexToHsl(value) : value;
+    const transformedSpace = this.getSpace(value) === 'hex' ? 'hsl' : colorSpace;
 
-      return modifier ? modifier(asNumber) : asNumber;
-    });
+    const [, ...tuple] = (transformedValue.match(this.regExp[transformedSpace]) as [string, string, string]).map(
+      (value) => {
+        const asNumber = Number(value);
+
+        return modifier ? modifier(asNumber) : asNumber;
+      }
+    );
 
     return tuple as [V, V, V];
   }
