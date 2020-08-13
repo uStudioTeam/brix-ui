@@ -13,14 +13,14 @@ const Cell = styled.div<{
   areas: AreaBuilderState['areas'];
   $size: CellProps['size'];
   $direction?: Values<typeof Direction>;
-}>(({ area, areas, $size, $direction }) => {
-  if (!$size || $size === 1) {
+}>(({ area, areas, $size: size, $direction: direction }) => {
+  if (!size || size === 1) {
     return css`
       grid-area: ${area};
     `;
   }
 
-  const templateDirection = $direction === Direction.Column ? Direction.Row : Direction.Column;
+  const templateDirection = direction === Direction.Column ? Direction.Row : Direction.Column;
 
   return css`
     grid-${templateDirection}: ${areas.indexOf(`${area}s`) + 1} / ${areas.indexOf(`${area}e`) + 2};
