@@ -6,8 +6,7 @@
     "build:js": "babel src --out-dir lib",
     "build:dts": "tsc -p ./tsconfig.json",
     "copy": "copyfiles package.json README.md LICENSE lib",
-    "prebuild": "rimraf lib",
-    "test": "jest"
+    "prebuild": "rimraf lib"
   },
   "dependencies": {
     "@ustudio-ui/contexts": "0.0.1",
