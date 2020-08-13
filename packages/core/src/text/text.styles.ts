@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
@@ -6,17 +6,21 @@ import { TypeVariant, FontVariant } from '@ustudio-ui/types/typography';
 
 import type { TextProps } from './text.props';
 
-const parseTextDecoration = (textDecoration: TextProps['textDecoration']): string => {
+const parseTextDecoration = (textDecoration: TextProps['textDecoration']): FlattenSimpleInterpolation => {
   switch (textDecoration) {
     case 'underline':
     case 'line-through': {
-      return `text-decoration: ${textDecoration}`;
+      return css`
+        text-decoration: ${textDecoration};
+      `;
     }
     case 'italic': {
-      return 'font-variant: italic';
+      return css`
+        font-style: italic;
+      `;
     }
     default: {
-      return '';
+      return css``;
     }
   }
 };
