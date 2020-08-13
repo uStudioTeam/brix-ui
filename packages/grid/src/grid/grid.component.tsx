@@ -18,11 +18,11 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   const [grid, dispatcher] = useAreaBuilder();
 
   const areas = useMemo(() => {
-    if (direction === Direction.Row || direction === undefined) {
-      return `'${grid.areas.join('  ')}'`;
+    if (direction === Direction.Column) {
+      return grid.areas.map((area) => `'${area}'`).join(' ');
     }
 
-    return grid.areas.map((area) => `'${area}'`).join(' ');
+    return `'${grid.areas.join('  ')}'`;
   }, [grid.areas, direction]);
 
   const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps({
