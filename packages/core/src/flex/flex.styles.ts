@@ -53,17 +53,27 @@ const Flex = styled(Block)<
     $direction: FlexProps['direction'];
     $align: FlexProps['align'];
   }
->(({ $direction = Direction.Row, isReversed, isInline, hasWrap, $align, horizontalAlign, verticalAlign }) => {
-  const flexDirection = safeFallback($direction || isReversed, `${$direction}${safeFallback(isReversed, '-reverse')}`);
+>(
+  ({
+    $direction: direction = Direction.Row,
+    isReversed,
+    isInline,
+    hasWrap,
+    $align: align,
+    horizontalAlign,
+    verticalAlign,
+  }) => {
+    const flexDirection = safeFallback(direction || isReversed, `${direction}${safeFallback(isReversed, '-reverse')}`);
 
-  return css`
-    display: ${isInline ? 'inline-flex' : 'flex'};
-    flex-direction: ${flexDirection};
-    flex-wrap: ${setWrap({ hasWrap, isReversed })};
+    return css`
+      display: ${isInline ? 'inline-flex' : 'flex'};
+      flex-direction: ${flexDirection};
+      flex-wrap: ${setWrap({ hasWrap, isReversed })};
 
-    ${setAlignment({ direction: $direction, align: $align, horizontalAlign, verticalAlign })};
-  `;
-});
+      ${setAlignment({ direction, align, horizontalAlign, verticalAlign })};
+    `;
+  }
+);
 
 const Styled = applyDisplayNames({ Flex });
 
