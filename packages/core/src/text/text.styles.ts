@@ -6,12 +6,12 @@ import { TypeVariant, FontVariant } from '@ustudio-ui/types/typography';
 
 import type { TextProps } from './text.props';
 
-const parseTextDecoration = (textDecoration: TextProps['textDecoration']): FlattenSimpleInterpolation => {
-  switch (textDecoration) {
+const parseTextDecoration = (decoration: TextProps['decoration']): FlattenSimpleInterpolation => {
+  switch (decoration) {
     case 'underline':
     case 'line-through': {
       return css`
-        text-decoration: ${textDecoration};
+        text-decoration: ${decoration};
       `;
     }
     case 'italic': {
@@ -31,13 +31,13 @@ const Text = styled.p<
     $align?: TextProps['align'];
   }
 >(
-  ({ variant = TypeVariant.P, appearance = FontVariant.Body, $color, $align, textDecoration }) => css`
+  ({ variant = TypeVariant.P, appearance = FontVariant.Body, $color, $align, decoration }) => css`
     ${font[appearance][variant]};
 
     color: ${$color};
     text-align: ${$align};
 
-    ${parseTextDecoration(textDecoration)};
+    ${parseTextDecoration(decoration)};
   `
 );
 
