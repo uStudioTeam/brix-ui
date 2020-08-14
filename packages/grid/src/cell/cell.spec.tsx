@@ -1,10 +1,8 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider, { Theme } from '@ustudio-ui/theme';
-import { defaultTheme } from '@ustudio-ui/theme/default-theme';
-import { Breakpoint } from '@ustudio-ui/types/css';
 
 import Grid from '../grid';
 import Cell from './cell.component';
@@ -97,22 +95,6 @@ describe('<Cell />', () => {
 
         expect(getByTestId(cellId)).toHaveStyleRule('grid-column', '1 / 4');
       });
-    });
-  });
-
-  describe('getting props from breakpoints', () => {
-    it('should overwrite default props with that of matched breakpoint', () => {
-      matchMedia(defaultTheme.breakpoints[Breakpoint.Md]);
-
-      const { getByTestId } = renderWithProps({
-        area: 'cell',
-        size: 1,
-        md: {
-          size: 2,
-        },
-      });
-
-      waitFor(() => expect(getByTestId(cellId)).toHaveStyleRule('grid-column', '1 / 3'));
     });
   });
 });
