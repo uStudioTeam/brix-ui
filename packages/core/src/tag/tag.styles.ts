@@ -19,10 +19,11 @@ const Tag = styled.div<
     display: inline-flex;
 
     border-radius: 2px;
+
     background-color: ${backgroundColor};
 
-    color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
     ${font.body.small};
+    color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
   `;
 });
 
@@ -41,8 +42,9 @@ const CloseIcon = styled(CloseIconComponent)`
 `;
 
 const CloseContainer = styled.button`
-  cursor: pointer;
   padding: 3px 6px 2px;
+
+  cursor: pointer;
 
   transition: all 0.5s;
 
