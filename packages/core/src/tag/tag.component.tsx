@@ -11,12 +11,10 @@ const Tag = intrinsicComponent<TagProps>(function Tag(
 ) {
   return (
     <Styled.Tag ref={ref} $color={color} $backgroundColor={backgroundColor} isInline {...props}>
-      <Styled.Content>{children}</Styled.Content>
+      <Styled.Content> {children} </Styled.Content>
 
       {onClose && (
-        <Styled.CloseContainer onClick={onClose}>
-          {closeIcon ? closeIcon : <Styled.CloseIcon />}
-        </Styled.CloseContainer>
+        <Styled.CloseContainer onClick={onClose}>{closeIcon ? closeIcon : <Styled.CloseIcon />}</Styled.CloseContainer>
       )}
     </Styled.Tag>
   );

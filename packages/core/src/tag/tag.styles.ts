@@ -27,7 +27,7 @@ const Tag = styled.div<
 });
 
 const Content = styled.div`
-  padding: 2px 6px;
+  padding: 0 6px 2px;
 
   cursor: default;
 `;
@@ -40,14 +40,9 @@ const CloseIcon = styled(CloseIconComponent)`
   opacity: 0.5;
 `;
 
-const CloseContainer = styled.div`
-  display: flex;
-  align-self: stretch;
-  align-items: center;
-
-  padding: 2px 6px;
-
+const CloseContainer = styled.button`
   cursor: pointer;
+  padding: 3px 6px 2px;
 
   transition: all 0.5s;
 
