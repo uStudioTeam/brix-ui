@@ -1,45 +1,51 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
-
+import { ColorTransformer } from '@ustudio-ui/theme/palette';
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import CloseIconComponent from '@ustudio-ui/utils/icons/close.inline.svg';
 
-import Flex from '../flex';
-
 import type { TagProps } from './tag.props';
-import { ColorTransformer } from '@ustudio-ui/theme/palette';
 
-const Tag = styled(Flex)<TagProps>(({ color, backgroundColor, theme }) => {
-  const bgColor = backgroundColor || theme.palette['faint-w'];
+const Tag = styled.div<
+  Omit<TagProps, 'color' | 'backgroundColor'> & {
+    $color: TagProps['color'];
+    $backgroundColor: TagProps['backgroundColor'];
+  }
+>(({ $color, $backgroundColor, theme }) => {
+  const backgroundColor = $backgroundColor || theme.palette['faint-w'];
 
   return css`
+    display: inline-flex;
+
     border-radius: 2px;
-    background-color: ${bgColor};
+    background-color: ${backgroundColor};
 
-    cursor: default;
-
+    color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
     ${font.body.small};
-    color: ${color || ColorTransformer.getContrastingColor(bgColor)};
   `;
 });
 
-const Content = styled(Flex)`
+const Content = styled.div`
   padding: 2px 6px;
+
+  cursor: default;
 `;
 
 const CloseIcon = styled(CloseIconComponent)`
-  width: 8px;
-  height: 8px;
+  width: 0.5rem;
+  height: 0.5rem;
 
   fill: var(--c-base-s);
-  opacity: 50%;
+  opacity: 0.5;
 `;
 
-const CloseContainer = styled(Flex)`
-  padding: 2px 6px;
+const CloseContainer = styled.div`
+  display: flex;
   align-self: stretch;
   align-items: center;
+
+  padding: 2px 6px;
 
   cursor: pointer;
 
@@ -47,20 +53,20 @@ const CloseContainer = styled(Flex)`
 
   &:hover {
     ${CloseIcon} {
-      opacity: 25%;
+      opacity: 0.25;
     }
   }
 
   &:focus {
     ${CloseIcon} {
-      opacity: 100%;
+      opacity: 1%;
     }
   }
 
   &:active {
     ${CloseIcon} {
       fill: var(--base-s-d);
-      opacity: 75%;
+      opacity: 0.75;
     }
   }
 `;
