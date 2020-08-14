@@ -1,7 +1,7 @@
 import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
 import { ColorTupleString } from '@ustudio-ui/types/palette/color-tuple';
 import type { Values } from '@ustudio-ui/utils/types';
-import { ColorConverter } from '@ustudio-ui/theme/palette';
+import { ColorConverter, defaultPalette } from '@ustudio-ui/theme/palette';
 
 type WithAplhaNumber = [number, number, number, number];
 
@@ -25,7 +25,7 @@ export class ColorTransformer {
   }
 
   public static getContrastingColor(color: string): string {
-    return this.getBrightness(color) < 140 ? '#FCFCFD' : '#1A1F23';
+    return this.getBrightness(color) < 140 ? defaultPalette['base-w'] : defaultPalette['base-s'];
   }
 
   public static getBrightness(color: string): number {
@@ -66,8 +66,9 @@ export class ColorTransformer {
 
   public static getSpace(color: string) {
     const foundSpace = Object.entries(this.regExp).find(([, expression]) => color.match(expression));
+
     if (!foundSpace) {
-      throw new TypeError(`Invalid color ${color}  provided. `);
+      throw new TypeError(`Invalid color ${color} provided.`);
     }
 
     return foundSpace[0] as ApplicableColorSpace;
@@ -78,16 +79,14 @@ export class ColorTransformer {
     colorSpace: ApplicableColorSpace,
     modifier?: (value: number) => V
   ): [V, V, V] {
-    const transformedValue = this.getSpace(value) === 'hex' ? ColorConverter.hexToHsl(value) : value;
-    const transformedSpace = this.getSpace(value) === 'hex' ? 'hsl' : colorSpace;
+    const transformedValue = this.getSpace(value) === ColorSpace.HEX ? ColorConverter.hexToHsl(value) : value;
+    const transformedSpace = this.getSpace(value) === ColorSpace.HEX ? ColorSpace.HSL : colorSpace;
 
-    const [, ...tuple] = (transformedValue.match(this.regExp[transformedSpace]) as [string, string, string]).map(
-      (value) => {
-        const asNumber = Number(value);
+    const [, ...tuple] = (transformedValue.match(this.regExp[transformedSpace]) as ColorTupleString).map((value) => {
+      const asNumber = Number(value);
 
-        return modifier ? modifier(asNumber) : asNumber;
-      }
-    );
+      return modifier ? modifier(asNumber) : asNumber;
+    });
 
     return tuple as [V, V, V];
   }
