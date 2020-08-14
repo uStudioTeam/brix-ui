@@ -9,7 +9,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'text' },
     color: { control: 'text' },
-    onClose: { control: 'boolean', description: 'Generate `closeIcon`, when passed `onClose` prop. When control is true, component has onClose function', type: 'function' },
+    onClose: {
+      control: 'boolean',
+      description:
+        'Generate `closeIcon`, when passed `onClose` prop. When control is true, component has onClose function',
+      type: 'function',
+    },
     closeIcon: {},
   },
 };
