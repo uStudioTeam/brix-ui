@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider, { Theme } from '@ustudio-ui/theme';
-import { defaultTheme } from '@ustudio-ui/theme/default-theme';
-import { Breakpoint, Direction } from '@ustudio-ui/types/css';
+import { Direction } from '@ustudio-ui/types/css';
 
 import Cell from '../cell';
 import Grid from './grid.component';
@@ -140,21 +139,6 @@ describe('<Grid />', () => {
 
         expect(getByTestId(gridId)).toHaveStyleRule('grid-template-areas', /'cell1\s+cell2'/);
       });
-    });
-  });
-
-  describe('getting props from breakpoints', () => {
-    it('should overwrite default props with that of matched breakpoint', () => {
-      matchMedia(defaultTheme.breakpoints[Breakpoint.Md]);
-
-      const { getByTestId } = renderWithProps({
-        maxWidth: '1px',
-        md: {
-          maxWidth: '2px',
-        },
-      });
-
-      waitFor(() => expect(getByTestId(gridId)).toHaveStyleRule('max-width', '2px'));
     });
   });
 });
