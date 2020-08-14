@@ -54,7 +54,7 @@ const CloseContainer = styled.button`
 
   &:focus {
     ${CloseIcon} {
-      opacity: 1%;
+      opacity: 1;
     }
   }
 
