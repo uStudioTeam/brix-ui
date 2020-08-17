@@ -9,7 +9,6 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
   { children, color, backgroundColor, value, shouldDisplay = true, ...props },
   ref
 ) {
-
   return (
     <Styled.BadgeContainer>
       {children}

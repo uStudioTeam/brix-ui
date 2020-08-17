@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
+import ThemeProvider from '@ustudio-ui/theme';
 
 import type { BadgeProps } from './badge.props';
 import Badge from './badge.component';
@@ -8,7 +9,11 @@ import Badge from './badge.component';
 const badgeId = 'badge';
 
 const renderWithProps = (props: BadgeProps = {}) => {
-  return render(<Badge data-testid={badgeId} {...props} />);
+  return render(
+    <ThemeProvider>
+      <Badge data-testid={badgeId} {...props} />
+    </ThemeProvider>
+  );
 };
 
 describe('<Badge />', () => {
