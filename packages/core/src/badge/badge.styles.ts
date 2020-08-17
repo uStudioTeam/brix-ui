@@ -29,8 +29,8 @@ const Badge = styled.div<
     $color,
     horizontalPosition = Align.End,
     verticalPosition = Align.Start,
-    horizontalOffset ,
-    verticalOffset ,
+    horizontalOffset,
+    verticalOffset,
   }) => css`
     position: absolute;
     top: ${parsePosition(verticalPosition)};
