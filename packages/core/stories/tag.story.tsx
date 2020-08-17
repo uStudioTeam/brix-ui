@@ -23,8 +23,14 @@ export const Basic = ({ onClose, ...props }: TagProps) => {
   const handleClose = () => console.log('Handle close');
 
   return (
-    <Tag {...props} onClose={onClose ? handleClose : undefined}>
-      Tag text
-    </Tag>
+    <>
+      <Tag>Default tag</Tag>
+
+      <Tag onClose={handleClose}>Closable tag</Tag>
+
+      <Tag {...props} onClose={onClose ? handleClose : undefined}>
+        Custom tag
+      </Tag>
+    </>
   );
 };
