@@ -1,14 +1,17 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { ButtonProps } from '@ustudio-ui/core/button/button.props';
+
+const faint = '--c-faint-w';
 
 export const disabledButton = {
   contained: css`
     background-color: var(--c-faint-w-u);
-    
+
     color: var(--c-faint-s);
   `,
   outlined: css`
     border: 1px solid var(--c-faint-w-u);
-    
+
     color: var(--c-faint-s);
   `,
   text: css`
@@ -16,178 +19,98 @@ export const disabledButton = {
   `,
   faint: css`
     background-color: var(--c-faint-w-u);
-    
+
     color: var(--c-faint-s);
   `,
 };
 
-export const buttons = {
+const containedMixin = (color: string) => css`
+  background-color: var(--c-${color}-s);
+
+  color: var(--c-${color}-w);
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.4);
+  }
+
+  &:active {
+    background-color: var(--c-${color}-s-d);
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.3);
+  }
+
+  &:focus {
+    background-color: var(--c-${color}-s-d);
+  }
+`;
+
+const outlinedMixin = (color: string) => css`
+  border: 1px solid var(--c-${color}-s);
+
+  color: var(--c-${color}-s);
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.25);
+  }
+
+  &:active {
+    border: 1px solid var(${color === 'base' ? `--c-faint-s` : `--c-${color}-w-u`});
+
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.15);
+
+    color: var(--c-${color}-s-d);
+  }
+
+  &:focus {
+    border: 1px solid var(--c-${color}-s-d);
+
+    color: var(--c-${color}-s-d);
+  }
+`;
+
+const textMixin = (color: string) => css`
+  color: var(--c-${color}-s);
+  
+  &:hover {
+    background-color: var(${color === 'base' ? faint : `--c-${color}-w-d`});
+  }
+`;
+
+const faintMixin = (color: string) => css`
+  background-color: var(${color === 'base' ? faint : `--c-${color}-w-d`});
+  
+  color: var(--c-${color}-s);
+  
+  &:hover {
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), ${color === 'base' ? '0.1' : '0.15'});
+  }
+  
+  &:active {
+    background-color: var(${color === 'base' ? faint : `--c-${color}-w`});
+    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), ${color === 'base' ? '0.075' : '0.15'});
+    
+    color: var(--c-${color}-s-d);
+  }
+  
+  &:focus {
+    background-color: var(${color === 'base' ? faint : `--c-${color}-w`});
+  }
+`;
+
+export const buttonsList: Record<
+  Exclude<ButtonProps['appearance'], undefined>,
+  Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>
+> = {
   contained: {
-    base: css`
-      background-color: var(--c-base-s);
-
-      color: var(--c-base-w);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.4);
-      }
-
-      &:active {
-        background-color: var(--c-base-s-d);
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.3);
-      }
-
-      &:focus {
-        background-color: var(--c-base-s-d);
-      }
-    `,
-    accent: css`
-      background-color: var(--c-accent-s);
-
-      color: var(--c-accent-w);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.4);
-      }
-
-      &:active {
-        background-color: var(--c-accent-s-d);
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.3);
-      }
-
-      &:focus {
-        background-color: var(--c-accent-s-d);
-      }
-    `,
-    critical: css`
-      background-color: avr(--c-critical-s);
-
-      color: var(--c-critical-w);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.4);
-      }
-
-      &:active {
-        background-color: var(--c-critical-s-d);
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.3);
-      }
-
-      &:focus {
-        background-color: var(--c-critical-s-d);
-      }
-    `,
-    success: css`
-      background-color: var(--c-success-s);
-
-      color: var(--c-success-w);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.4);
-      }
-
-      &:active {
-        background-color: var(--c-success-s-d);
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.3);
-      }
-
-      &:focus {
-        background-color: var(--c-success-s-d);
-      }
-    `,
+    base: containedMixin('base'),
+    accent: containedMixin('accent'),
+    critical: containedMixin('critical'),
+    success: containedMixin('success'),
   },
   outlined: {
-    base: css`
-      border: 1px solid var(--c-base-s);
-
-      color: var(--c-base-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.25);
-      }
-
-      &:active {
-        border: 1px solid var(--c-faint-s);
-
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.15);
-
-        color: var(--c-base-s-d);
-      }
-
-      &:focus {
-        border: 1px solid var(--c-base-s-d);
-
-        color: var(--c-base-s-d);
-      }
-    `,
-    accent: css`
-      border: 1px solid var(--c-accent-s);
-
-      color: var(--c-accent-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.25);
-      }
-
-      &:active {
-        border: 1px solid var(--c-accent-w-u);
-
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.15);
-
-        color: var(--c-accent-s-d);
-      }
-
-      &:focus {
-        border: 1px solid var(--c-accent-s-d);
-
-        color: var(--c-accent-s-d);
-      }
-    `,
-    critical: css`
-      border: 1px solid var(--c-critical-s);
-
-      color: var(--c-critical-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.25);
-      }
-
-      &:active {
-        border: 1px solid var(--c-critical-w-u);
-
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.15);
-
-        color: var(--c-critical-s-d);
-      }
-
-      &:focus {
-        border: 1px solid var(--c-critical-s-d);
-
-        color: var(--c-critical-s-d);
-      }
-    `,
-    success: css`
-      border: 1px solid var(--c-success-s);
-       
-      color: var(--c-success-s); 
-      
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.25);
-      }
-      
-      &:active {
-        border: 1px solid var(--c-success-w-u);
-        
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.15);
-        
-        color: var(--c-success-s-d);
-      }
-      
-      &:focus {
-        border: 1px solid var(--c-success-s-d);
-         
-        color: var(--c-success-s-d); 
-    `,
+    base: outlinedMixin('base'),
+    accent: outlinedMixin('accent'),
+    critical: outlinedMixin('critical'),
+    success: outlinedMixin('success'),
   },
   text: {
     base: css`
@@ -250,7 +173,7 @@ export const buttons = {
       &:focus {
         border-radius: 15px;
 
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.24);
+        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.25);
 
         color: var(--c-critical-s-d);
       }
@@ -280,85 +203,9 @@ export const buttons = {
     `,
   },
   faint: {
-    base: css`
-      background-color: var(--c-faint-w);
-
-      color: var(--c-base-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.1);
-      }
-
-      &:active {
-        background-color: var(--c-faint-w);
-        box-shadow: 0 2px 8px rgba(var(--c-base-s), 0.075);
-
-        color: var(--c-base-s-d);
-      }
-
-      &:focus {
-        background-color: var(--c-faint-w);
-      }
-    `,
-    accent: css`
-      background-color: var(--c-accent-w-d);
-
-      color: var(--c-accent-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.15);
-      }
-
-      &:active {
-        background-color: var(--c-accent-w);
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.15);
-
-        color: var(--c-accent-s-d);
-      }
-
-      &:focus {
-        background-color: var(--c-accent-w);
-      }
-    `,
-    critical: css`
-      background-color: var(--c-critical-w-d);
-
-      color: var(--c-critical-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.15);
-      }
-
-      &:active {
-        background-color: var(--c-critical-w);
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.15);
-
-        color: var(--c-critical-s-d);
-      }
-
-      &:focus {
-        background-color: var(--c-critical-w);
-      }
-    `,
-    success: css`
-      background-color: var(--c-success-w-d);
-
-      color: var(--c-success-s);
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.15);
-      }
-
-      &:active {
-        background-color: var(--c-success-w);
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.15);
-
-        color: var(--c-success-s-d);
-      }
-
-      &:focus {
-        background-color: var(--c-success-w);
-      }
-    `,
+    base: faintMixin('base'),
+    accent: faintMixin('accent'),
+    critical: faintMixin('critical'),
+    success: faintMixin('success'),
   },
 };

@@ -6,12 +6,18 @@ import { ButtonProps } from './button.props';
 
 import Styled from './button.styles';
 
-const Button = intrinsicComponent<ButtonProps>(function Button(
+const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button(
   { children, intent, appearance, isDisabled, ...props },
   ref
 ) {
   return (
-    <Styled.Button ref={ref} intent={intent} appearance={appearance} $isDisables={isDisabled} {...props}>
+    <Styled.Button
+      ref={ref}
+      intent={intent}
+      appearance={appearance}
+      isDisabled={isDisabled}
+      {...props}
+    >
       {children}
     </Styled.Button>
   );
