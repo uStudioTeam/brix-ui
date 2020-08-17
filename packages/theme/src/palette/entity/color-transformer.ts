@@ -65,7 +65,7 @@ export class ColorTransformer {
   }
 
   public static getSpace(color: string) {
-    const foundSpace = Object.entries(this.regExp).find(([, expression]) => color.match(expression));
+    const foundSpace = Object.entries(this.regExp).find(([, expression]) => expression.test(color));
 
     if (!foundSpace) {
       throw new TypeError(`Invalid color ${color} provided.`);

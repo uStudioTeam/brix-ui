@@ -24,6 +24,10 @@ const Tag = styled.div<
 
     ${font.body.small};
     color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   `;
 });
 
@@ -39,15 +43,14 @@ const CloseIcon = styled(CloseIconComponent)`
 
   fill: var(--c-base-s);
   opacity: 0.5;
+
+  transition: all 0.2s;
 `;
 
 const CloseContainer = styled.button`
   padding: 3px 6px 2px;
 
   cursor: pointer;
-
-  transition: all 0.5s;
-
   &:hover {
     ${CloseIcon} {
       opacity: 0.25;
