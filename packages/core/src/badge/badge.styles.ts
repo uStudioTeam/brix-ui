@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
 import { Align } from '@ustudio-ui/types/css';
+import { Color } from '@ustudio-ui/types/palette';
 
 import type { BadgeProps } from './badge.props';
 
@@ -18,6 +19,10 @@ const parsePosition = (position: BadgeProps['horizontalPosition']): string => {
   }
 };
 
+const offsetCalculation = (offset: string | undefined) => {
+  return `calc(${offset || '0px'} - 50%)`;
+};
+
 const Badge = styled.div<
   Omit<BadgeProps, 'color' | 'backgroundColor' | 'value'> & {
     $color: BadgeProps['color'];
@@ -25,12 +30,13 @@ const Badge = styled.div<
   }
 >(
   ({
-    $backgroundColor = '#F2F2F3',
+    $backgroundColor,
     $color,
     horizontalPosition = Align.End,
     verticalPosition = Align.Start,
     horizontalOffset,
     verticalOffset,
+    theme,
   }) => css`
     position: absolute;
     top: ${parsePosition(verticalPosition)};
@@ -47,12 +53,12 @@ const Badge = styled.div<
 
     border-radius: 10px;
 
-    background: ${$backgroundColor};
+    background: ${$backgroundColor || theme.palette[Color.FaintWeak]};
     color: ${$color};
 
     white-space: nowrap;
 
-    transform: translate(calc(${horizontalOffset || '0px'} - 50%), calc(${verticalOffset || '0px'} - 50%));
+    transform: translate(${offsetCalculation(horizontalOffset)}, ${offsetCalculation(verticalOffset)});
 
     ${font.body.h5};
   `

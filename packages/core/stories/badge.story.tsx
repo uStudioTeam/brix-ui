@@ -3,6 +3,8 @@ import type { Story } from '@storybook/react';
 
 import Badge, { BadgeProps } from '@ustudio-ui/core/badge';
 
+const controlArg = { type: 'inline-radio', options: ['start', 'center', 'end'] };
+
 export default {
   title: 'Data/Badge',
   component: Badge,
@@ -10,8 +12,8 @@ export default {
   argTypes: {
     color: { control: 'color' },
     backgroundColor: { control: 'color' },
-    horizontalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
-    verticalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
+    horizontalPosition: { control: controlArg },
+    verticalPosition: { control: controlArg },
     horizontalOffset: { control: 'text' },
     verticalOffset: { control: 'text' },
     shouldDisplay: { control: 'boolean' },
@@ -20,7 +22,7 @@ export default {
   args: {
     horizontalPosition: 'end',
     verticalPosition: 'start',
-    value: 'badge',
+    value: 5,
   },
 };
 
@@ -29,13 +31,11 @@ export const Basic: Story<BadgeProps> = (args) => {
     <Badge {...args}>
       <div
         style={{
-          width: '80px',
-          height: '40px',
-          background: 'purple',
+          width: '50px',
+          height: '50px',
+          background: 'grey',
         }}
-      >
-        body
-      </div>
+      ></div>
     </Badge>
   );
 };
