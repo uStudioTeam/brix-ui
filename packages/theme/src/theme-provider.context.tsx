@@ -12,7 +12,7 @@ import Reset from './reset';
 import type { Theme, ThemeOverride } from './theme';
 import { defaultTheme } from './default-theme';
 
-const ThemeProvider: FC<{ theme: ThemeOverride }> = ({ children, theme }) => {
+const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
   const finalTheme = useDestructure({ ...merge(theme, defaultTheme) }) as Theme;
   const {
     typography: { body, article, code },

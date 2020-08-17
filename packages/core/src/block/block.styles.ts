@@ -72,13 +72,13 @@ const Block = styled.div<
     $gap?: BlockProps['gap'];
   }
 >(
-  ({ isInline, $margin, $padding, $gap }) => css`
+  ({ isInline, $margin: margin, $padding: padding, $gap: gap }) => css`
     display: ${isInline ? 'inline-block' : 'block'};
 
-    margin: ${parseIndent($margin)};
-    padding: ${parseIndent($padding)};
+    margin: ${parseIndent(margin)};
+    padding: ${parseIndent(padding)};
 
-    ${parseGap($gap)};
+    ${parseGap(gap)};
   `
 );
 

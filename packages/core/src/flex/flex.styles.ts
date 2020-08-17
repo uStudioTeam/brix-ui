@@ -40,23 +40,40 @@ const setAlignment = ({
   `;
 };
 
+const setWrap = ({ hasWrap, isReversed }: Pick<FlexProps, 'hasWrap' | 'isReversed'>) => {
+  if (hasWrap) {
+    return isReversed ? 'wrap-reverse' : 'wrap';
+  }
+
+  return '';
+};
+
 const Flex = styled(Block)<
   Omit<FlexProps, 'direction' | 'align'> & {
     $direction: FlexProps['direction'];
     $align: FlexProps['align'];
   }
->(({ $direction, isReversed, isInline, hasWrap, $align, horizontalAlign, verticalAlign }) => {
-  const flexDirection =
-    (isReversed || $direction !== Direction.Row) && `${$direction}${safeFallback(isReversed, '-reverse')}`;
+>(
+  ({
+    $direction: direction = Direction.Row,
+    isReversed,
+    isInline,
+    hasWrap,
+    $align: align,
+    horizontalAlign,
+    verticalAlign,
+  }) => {
+    const flexDirection = safeFallback(direction || isReversed, `${direction}${safeFallback(isReversed, '-reverse')}`);
 
-  return css`
-    display: ${isInline ? 'inline-flex' : 'flex'};
-    flex-direction: ${flexDirection};
-    flex-wrap: ${hasWrap && isReversed ? 'wrap-reverse' : 'wrap'};
+    return css`
+      display: ${isInline ? 'inline-flex' : 'flex'};
+      flex-direction: ${flexDirection};
+      flex-wrap: ${setWrap({ hasWrap, isReversed })};
 
-    ${setAlignment({ direction: $direction, align: $align, horizontalAlign, verticalAlign })};
-  `;
-});
+      ${setAlignment({ direction, align, horizontalAlign, verticalAlign })};
+    `;
+  }
+);
 
 const Styled = applyDisplayNames({ Flex });
 

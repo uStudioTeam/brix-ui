@@ -7,7 +7,11 @@
   ],
   "scripts": {
     "storybook": "start-storybook -s ./.storybook/public",
-    "build": "yarn workspace @ustudio-ui/core build"
+    "build": "yarn --cwd ./packages/core build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.0.3",
@@ -34,12 +38,15 @@
     "eslint-plugin-react-hooks": "^4.0.7",
     "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-unicorn": "^20.1.0",
+    "jest": "^26.3.0",
     "prettier": "^2.0.5",
     "styled-components": "^5.1.1",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
+    "ts-jest": "^26.2.0",
+    "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^3.9.7"
   }
 }
