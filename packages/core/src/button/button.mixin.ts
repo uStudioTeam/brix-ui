@@ -1,5 +1,9 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-import { ButtonProps } from '@ustudio-ui/core/button/button.props';
+
+import { ButtonProps } from '@ustudio-ui/core/button';
+import { ColorTransformer } from '@ustudio-ui/theme/palette';
+import { ColorSpace } from '@ustudio-ui/types/palette';
+import { defaultTheme } from '@ustudio-ui/theme/default-theme';
 
 type IntentStyleType = (
   intent: string,
@@ -13,6 +17,10 @@ const applyIntentStyle: IntentStyleType = (intent, baseStyles, intentStyles) => 
   }
 
   return intentStyles;
+};
+
+const applyShadow = (color: string, alpha: number, theme = defaultTheme): string => {
+  return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
 };
 
 export const disabledButton = {
@@ -36,22 +44,22 @@ export const disabledButton = {
   `,
 };
 
-const containedButton = (color: string) => css`
-  background-color: var(--c-${color}-s);
+const containedButton = (intent: string) => css`
+  background-color: var(--c-${intent}-s);
 
-  color: var(--c-${color}-w);
+  color: var(--c-${intent}-w);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.4);
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.4)};
   }
 
   &:active {
-    background-color: var(--c-${color}-s-d);
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.3);
+    background-color: var(--c-${intent}-s-d);
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.3)};
   }
 
   &:focus {
-    background-color: var(--c-${color}-s-d);
+    background-color: var(--c-${intent}-s-d);
   }
 `;
 
@@ -61,13 +69,13 @@ const outlinedButton = (intent: string) => css`
   color: var(--c-${intent}-s);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.25);
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.25)};
   }
 
   &:active {
     border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
 
-    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.15);
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.15)};
 
     color: var(--c-${intent}-s-d);
   }
@@ -91,13 +99,11 @@ const textButton = (intent: string) => css`
 
     color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`,`var(--c-${intent}-s-d)`)};
 
-    text-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.3);
+    text-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.3)};
   }
 
   &:focus {
-    border-radius: 15px;
-
-    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.3', '0.25')});
+    text-shadow: 0 0 8px ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.3', '0.25')))}; 
 
     color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`, `var(--c-${intent}-s-d)`)};
   }
@@ -109,12 +115,12 @@ const faintButton = (intent: string) => css`
   color: var(--c-${intent}-s);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.1', '0.15')});
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.1', '0.15')))};
   }
 
   &:active {
     background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w)`)};
-    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.075', '0.15')});
+    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.075', '0.15')))}; 
 
     color: var(--c-${intent}-s-d);
   }
