@@ -2,8 +2,8 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { ButtonProps } from '@ustudio-ui/core/button';
 import { ColorTransformer } from '@ustudio-ui/theme/palette';
-import { ColorSpace } from '@ustudio-ui/types/palette';
-import { defaultTheme } from '@ustudio-ui/theme/default-theme';
+import { ColorSpace, Color } from '@ustudio-ui/types/palette';
+import { Values } from '@ustudio-ui/utils/types';
 
 type IntentStyleType = (
   intent: string,
@@ -19,32 +19,42 @@ const applyIntentStyle: IntentStyleType = (intent, baseStyles, intentStyles) => 
   return intentStyles;
 };
 
-const applyShadow = (color: string, alpha: number, theme = defaultTheme): string => {
-  return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
+const applyShadow = (color: Values<typeof Color>, alpha: number): FlattenSimpleInterpolation => {
+  return css`${({theme}) => {
+    return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
+  }}`
 };
 
-export const disabledButtonsList = {
-  contained: css`
-    background-color: var(--c-faint-w-u);
+  export const disabledButtonsList = {
+    contained: css`
+      border: 1px solid transparent;
+     
+      background-color: var(--c-faint-w-u);
 
-    color: var(--c-faint-s);
+      color: var(--c-faint-s);
   `,
-  outlined: css`
-    border: 1px solid var(--c-faint-w-u);
+    outlined: css`
+      border: 1px solid var(--c-faint-w-u);
 
-    color: var(--c-faint-s);
+      color: var(--c-faint-s);
   `,
-  text: css`
-    color: var(--c-faint-s);
+    text: css`
+      border: 1px solid transparent;
+      
+      color: var(--c-faint-s);
   `,
-  faint: css`
-    background-color: var(--c-faint-w-u);
+    faint: css`
+      border: 1px solid transparent;
+       
+      background-color: var(--c-faint-w-u);
 
-    color: var(--c-faint-s);
+      color: var(--c-faint-s);
   `,
-};
+  };
 
-const containedButton = (intent: string) => css`
+const containedButton = (intent: ButtonProps['intent']) => css`
+  border: 1px solid transparent;
+  
   background-color: var(--c-${intent}-s);
 
   color: var(--c-${intent}-w);
@@ -87,7 +97,9 @@ const outlinedButton = (intent: string) => css`
   }
 `;
 
-const textButton = (intent: string) => css`
+  const textButton = (intent: string) => css`
+  border: 1px solid transparent;
+  
   color: var(--c-${intent}-s);
 
   &:hover {
@@ -97,7 +109,7 @@ const textButton = (intent: string) => css`
   &:active {
     background-color: ${applyIntentStyle(intent, '--c-faint-w', `var(--c-${intent}-w-d)`)};
 
-    color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`,`var(--c-${intent}-s-d)`)};
+    color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`, `var(--c-${intent}-s-d)`)};
 
     text-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.3)};
   }
@@ -109,7 +121,9 @@ const textButton = (intent: string) => css`
   }
 `;
 
-const faintButton = (intent: string) => css`
+  const faintButton = (intent: string) => css`
+  border: 1px solid transparent;
+  
   background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
 
   color: var(--c-${intent}-s);
@@ -130,32 +144,30 @@ const faintButton = (intent: string) => css`
   }
 `;
 
-export const buttonsList: Record<
-  Exclude<ButtonProps['appearance'], undefined>,
-  Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>
-> = {
-  contained: {
-    base: containedButton('base'),
-    accent: containedButton('accent'),
-    critical: containedButton('critical'),
-    success: containedButton('success'),
-  },
-  outlined: {
-    base: outlinedButton('base'),
-    accent: outlinedButton('accent'),
-    critical: outlinedButton('critical'),
-    success: outlinedButton('success'),
-  },
-  text: {
-    base: textButton('base'),
-    accent: textButton('accent'),
-    critical: textButton('critical'),
-    success: textButton('success'),
-  },
-  faint: {
-    base: faintButton('base'),
-    accent: faintButton('accent'),
-    critical: faintButton('critical'),
-    success: faintButton('success'),
-  },
-};
+  export const buttonsList: Record<Exclude<ButtonProps['appearance'], undefined>,
+    Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>> = {
+    contained: {
+      base: containedButton('base'),
+      accent: containedButton('accent'),
+      critical: containedButton('critical'),
+      success: containedButton('success'),
+    },
+    outlined: {
+      base: outlinedButton('base'),
+      accent: outlinedButton('accent'),
+      critical: outlinedButton('critical'),
+      success: outlinedButton('success'),
+    },
+    text: {
+      base: textButton('base'),
+      accent: textButton('accent'),
+      critical: textButton('critical'),
+      success: textButton('success'),
+    },
+    faint: {
+      base: faintButton('base'),
+      accent: faintButton('accent'),
+      critical: faintButton('critical'),
+      success: faintButton('success'),
+    },
+  };

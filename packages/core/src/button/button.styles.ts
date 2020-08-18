@@ -5,23 +5,22 @@ import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { ButtonProps } from '@ustudio-ui/core/button/button.props';
 import { buttonsList, disabledButtonsList } from '@ustudio-ui/core/button/button.mixin';
 
-const Button = styled.button<
-  Omit<ButtonProps, 'disabled'> & {
-    isDisabled: ButtonProps['isDisabled'];
-  }
->(({ intent = 'base', appearance = 'contained', isDisabled }) => css`
-    ${isDisabled ? disabledButtonsList[appearance] : buttonsList[appearance][intent]};
+const Button = styled.button<Omit<ButtonProps, 'disabled'> & {
+  isDisabled: ButtonProps['isDisabled'];
+}>(({intent = 'base', appearance = 'contained', isDisabled}) => css`
+  ${isDisabled ? disabledButtonsList[appearance] : buttonsList[appearance][intent]};
+  ${isDisabled && 'cursor: not-allowed;'};
 
-    display: inline-block;
+  display: inline-block;
     
-    padding: 4px 16px;
-    margin: 10px;
-    border-radius: 2px;
+  padding: 3px 16px 4px ;
+  margin: 10px;
+  border-radius: 2px;
 
-    ${font.body.p};
-    text-align: center;
+  ${font.body.p};
+  text-align: center;
     
-    transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear, text-shadow 0.2s linear;
+  transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear, text-shadow 0.2s linear;
   `
 );
 
