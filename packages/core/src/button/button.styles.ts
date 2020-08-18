@@ -10,13 +10,15 @@ const Button = styled.button<ButtonProps>(
     ${buttonsList[appearance][intent]};
 
     display: inline-block;
+    
     padding: 4px 16px;
     margin: 10px;
-
     border-radius: 2px;
 
     ${font.body.p};
     text-align: center;
+    
+    transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear, text-shadow 0.2s linear;
   `
 );
 
