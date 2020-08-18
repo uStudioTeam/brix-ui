@@ -19,7 +19,7 @@ const Tag = styled.div<
   }
 >(({ $color, $backgroundColor, theme }) => {
   const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-  const color = $color || ColorTransformer.getContrastingColor(backgroundColor);
+  const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
 
   const isColorDark = ColorTransformer.getBrightness(color) > 140;
 

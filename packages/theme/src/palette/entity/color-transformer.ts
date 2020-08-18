@@ -1,7 +1,8 @@
-import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
+import { Color, ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
 import { ColorTupleString } from '@ustudio-ui/types/palette/color-tuple';
 import type { Values } from '@ustudio-ui/utils/types';
 import { ColorConverter, defaultPalette } from '@ustudio-ui/theme/palette';
+import type { Theme } from '@ustudio-ui/theme';
 
 type WithAplhaNumber = [number, number, number, number];
 
@@ -24,8 +25,10 @@ export class ColorTransformer {
     };
   }
 
-  public static getContrastingColor(color: string): string {
-    return this.getBrightness(color) < 140 ? defaultPalette['base-w'] : defaultPalette['base-s'];
+  public static getContrastingColor(color: string, theme?: Theme): string {
+    const palette = theme?.palette || defaultPalette;
+
+    return this.getBrightness(color) < 140 ? palette[Color.BaseWeak] : palette[Color.BaseStrong];
   }
 
   public static getBrightness(color: string): number {
