@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 import { font } from '@ustudio-ui/theme/typography';
 import { ColorTransformer } from '@ustudio-ui/theme/palette';
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { Color } from '@ustudio-ui/types/palette';
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import CloseIconComponent from '@ustudio-ui/utils/icons/close.inline.svg';
 
 import type { TagProps } from './tag.props';
