@@ -19,7 +19,7 @@ const parsePosition = (position: BadgeProps['horizontalPosition']): string => {
   }
 };
 
-const offsetCalculation = (offset: string | undefined) => {
+const offsetCalculation = (offset: BadgeProps['horizontalOffset']) => {
   return `calc(${offset || '0px'} - 50%)`;
 };
 
