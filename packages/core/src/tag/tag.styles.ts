@@ -33,26 +33,15 @@ const Tag = styled.div<
 });
 
 const Content = styled.div`
-  padding: 2px 8px 4px;
+  padding: 4px 8px 6px;
 
   cursor: default;
 `;
 
-const CloseIcon = styled(CloseIconComponent)<
-  Omit<TagProps, 'color' | 'backgroundColor'> & {
-    $color: TagProps['color'];
-    $backgroundColor: TagProps['backgroundColor'];
-  }
->(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-
-  return css`
-    width: 0.5rem;
-    height: 0.5rem;
-
-    fill: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
-  `;
-});
+const CloseIcon = styled(CloseIconComponent)`
+  width: 0.5rem;
+  height: 0.5rem;
+`;
 
 const CloseContainer = styled.button<
   Omit<TagProps, 'color' | 'backgroundColor'> & {
@@ -69,11 +58,9 @@ const CloseContainer = styled.button<
   return css`
     position: relative;
 
-    padding: 6px 8px 4px;
+    padding: 4px 8px;
 
     cursor: pointer;
-
-    transition: all 0.2s;
 
     &:after {
       content: '';
@@ -87,6 +74,8 @@ const CloseContainer = styled.button<
 
       background-color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
       opacity: 0;
+
+      transition: all 0.2s;
     }
 
     &:hover {
@@ -105,6 +94,10 @@ const CloseContainer = styled.button<
       &:after {
         opacity: ${getEffectOpacity(0.1)};
       }
+    }
+
+    ${CloseIcon} {
+      fill: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
     }
   `;
 });
