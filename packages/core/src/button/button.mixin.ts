@@ -23,7 +23,7 @@ const applyShadow = (color: string, alpha: number, theme = defaultTheme): string
   return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
 };
 
-export const disabledButton = {
+export const disabledButtonsList = {
   contained: css`
     background-color: var(--c-faint-w-u);
 

@@ -92,3 +92,22 @@ export const Faint = () => {
     </>
   );
 };
+
+export const Disabled = () => {
+  return (
+    <>
+      <Button intent="accent" appearance="contained" isDisabled>
+        Click
+      </Button>
+      <Button intent="base" appearance="outlined" isDisabled>
+        Click
+      </Button>
+      <Button intent="critical" appearance="text" isDisabled>
+        Click
+      </Button>
+      <Button intent="success" appearance="faint" isDisabled>
+        Click
+      </Button>
+    </>
+  );
+};
