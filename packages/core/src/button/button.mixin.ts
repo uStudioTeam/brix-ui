@@ -1,7 +1,19 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ButtonProps } from '@ustudio-ui/core/button/button.props';
 
-const faint = '--c-faint-w';
+type IntentStyleType = (
+  intent: string,
+  baseStyles: string,
+  intentStyles: string
+) => string;
+
+const applyIntentStyle: IntentStyleType = (intent, baseStyles, intentStyles) => {
+  if (intent === 'base') {
+    return baseStyles;
+  }
+
+  return intentStyles;
+};
 
 export const disabledButton = {
   contained: css`
@@ -24,7 +36,7 @@ export const disabledButton = {
   `,
 };
 
-const containedMixin = (color: string) => css`
+const containedButton = (color: string) => css`
   background-color: var(--c-${color}-s);
 
   color: var(--c-${color}-w);
@@ -43,56 +55,72 @@ const containedMixin = (color: string) => css`
   }
 `;
 
-const outlinedMixin = (color: string) => css`
-  border: 1px solid var(--c-${color}-s);
+const outlinedButton = (intent: string) => css`
+  border: 1px solid var(--c-${intent}-s);
 
-  color: var(--c-${color}-s);
+  color: var(--c-${intent}-s);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.25);
+    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.25);
   }
 
   &:active {
-    border: 1px solid var(${color === 'base' ? `--c-faint-s` : `--c-${color}-w-u`});
+    border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
 
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), 0.15);
+    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.15);
 
-    color: var(--c-${color}-s-d);
+    color: var(--c-${intent}-s-d);
   }
 
   &:focus {
-    border: 1px solid var(--c-${color}-s-d);
+    border: 1px solid var(--c-${intent}-s-d);
 
-    color: var(--c-${color}-s-d);
+    color: var(--c-${intent}-s-d);
   }
 `;
 
-const textMixin = (color: string) => css`
-  color: var(--c-${color}-s);
-  
-  &:hover {
-    background-color: var(${color === 'base' ? faint : `--c-${color}-w-d`});
-  }
-`;
+const textButton = (intent: string) => css`
+  color: var(--c-${intent}-s);
 
-const faintMixin = (color: string) => css`
-  background-color: var(${color === 'base' ? faint : `--c-${color}-w-d`});
-  
-  color: var(--c-${color}-s);
-  
   &:hover {
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), ${color === 'base' ? '0.1' : '0.15'});
+    background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
   }
-  
+
   &:active {
-    background-color: var(${color === 'base' ? faint : `--c-${color}-w`});
-    box-shadow: 0 2px 8px rgba(var(--c-${color}-s), ${color === 'base' ? '0.075' : '0.15'});
-    
-    color: var(--c-${color}-s-d);
+    background-color: ${applyIntentStyle(intent, '--c-faint-w', `var(--c-${intent}-w-d)`)};
+
+    color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`,`var(--c-${intent}-s-d)`)};
+
+    text-shadow: 0 2px 8px rgba(var(--c-${intent}-s), 0.3);
   }
-  
+
   &:focus {
-    background-color: var(${color === 'base' ? faint : `--c-${color}-w`});
+    border-radius: 15px;
+
+    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.3', '0.25')});
+
+    color: ${applyIntentStyle(intent, `var(--c-${intent}-s)`, `var(--c-${intent}-s-d)`)};
+  }
+`;
+
+const faintButton = (intent: string) => css`
+  background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
+
+  color: var(--c-${intent}-s);
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.1', '0.15')});
+  }
+
+  &:active {
+    background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w)`)};
+    box-shadow: 0 2px 8px rgba(var(--c-${intent}-s), ${applyIntentStyle(intent, '0.075', '0.15')});
+
+    color: var(--c-${intent}-s-d);
+  }
+
+  &:focus {
+    background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w)`)};
   }
 `;
 
@@ -101,111 +129,27 @@ export const buttonsList: Record<
   Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>
 > = {
   contained: {
-    base: containedMixin('base'),
-    accent: containedMixin('accent'),
-    critical: containedMixin('critical'),
-    success: containedMixin('success'),
+    base: containedButton('base'),
+    accent: containedButton('accent'),
+    critical: containedButton('critical'),
+    success: containedButton('success'),
   },
   outlined: {
-    base: outlinedMixin('base'),
-    accent: outlinedMixin('accent'),
-    critical: outlinedMixin('critical'),
-    success: outlinedMixin('success'),
+    base: outlinedButton('base'),
+    accent: outlinedButton('accent'),
+    critical: outlinedButton('critical'),
+    success: outlinedButton('success'),
   },
   text: {
-    base: css`
-      color: var(--c-base-s);
-
-      &:hover {
-        background-color: var(--c-faint-w);
-      }
-
-      &:active {
-        background-color: var(--c-faint-w);
-
-        text-shadow: 0 2px 8px rgba(var(--c-base-s), 0.3);
-      }
-
-      &:focus {
-        border-radius: 15px;
-
-        box-shadow: 0 2px 8px hsla(var(--c-base-s), 0.3);
-      }
-    `,
-    accent: css`
-      color: var(--c-accent-s);
-
-      &:hover {
-        background-color: var(--c-accent-w-d);
-      }
-
-      &:active {
-        color: var(--c-accent-s-d);
-
-        background-color: var(--c-accent-w-d);
-
-        text-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.3);
-      }
-
-      &:focus {
-        border-radius: 15px;
-
-        box-shadow: 0 2px 8px rgba(var(--c-accent-s), 0.25);
-
-        color: var(--c-accent-s-d);
-      }
-    `,
-    critical: css`
-      color: var(--c-critical-s);
-
-      &:hover {
-        background-color: var(--c-critical-w-d);
-      }
-
-      &:active {
-        color: var(--c-critical-s-d);
-
-        background-color: var(--c-critical-w-d);
-
-        text-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.3);
-      }
-
-      &:focus {
-        border-radius: 15px;
-
-        box-shadow: 0 2px 8px rgba(var(--c-critical-s), 0.25);
-
-        color: var(--c-critical-s-d);
-      }
-    `,
-    success: css`
-      color: var(--c-success-s);
-
-      &:hover {
-        background-color: var(--c-success-w-d);
-      }
-
-      &:active {
-        background-color: var(--c-success-w-d);
-
-        color: var(--c-success-s-d);
-
-        text-shadow: 0 2px 8px rgba(var(--c-success-s), 0.3);
-      }
-
-      &:focus {
-        border-radius: 15px;
-
-        box-shadow: 0 2px 8px rgba(var(--c-success-s), 0.25);
-
-        color: var(--c-success-s-d);
-      }
-    `,
+    base: textButton('base'),
+    accent: textButton('accent'),
+    critical: textButton('critical'),
+    success: textButton('success'),
   },
   faint: {
-    base: faintMixin('base'),
-    accent: faintMixin('accent'),
-    critical: faintMixin('critical'),
-    success: faintMixin('success'),
+    base: faintButton('base'),
+    accent: faintButton('accent'),
+    critical: faintButton('critical'),
+    success: faintButton('success'),
   },
 };
