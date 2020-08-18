@@ -8,6 +8,10 @@ import CloseIconComponent from '@ustudio-ui/utils/icons/close.inline.svg';
 
 import type { TagProps } from './tag.props';
 
+const getEffectOpacity = (baseValue: number, isColorDark: boolean) => {
+  return baseValue * (isColorDark ? 4 : 1);
+};
+
 const Tag = styled.div<
   Omit<TagProps, 'color' | 'backgroundColor'> & {
     $color: TagProps['color'];
@@ -15,6 +19,9 @@ const Tag = styled.div<
   }
 >(({ $color, $backgroundColor, theme }) => {
   const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
+  const color = $color || ColorTransformer.getContrastingColor(backgroundColor);
+
+  const isColorDark = ColorTransformer.getBrightness(color) > 140;
 
   return css`
     display: inline-flex;
@@ -24,10 +31,38 @@ const Tag = styled.div<
     background-color: ${backgroundColor};
 
     ${font.body.small};
-    color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
+    color: ${color};
 
     &:not(:last-child) {
       margin-right: 0.5rem;
+    }
+
+    ${CloseContainer} {
+      &:after {
+        background-color: ${color};
+      }
+
+      &:hover {
+        &:after {
+          opacity: ${getEffectOpacity(0.03, isColorDark)};
+        }
+      }
+
+      &:focus {
+        &:after {
+          opacity: ${getEffectOpacity(0.05, isColorDark)};
+        }
+      }
+
+      &:active {
+        &:after {
+          opacity: ${getEffectOpacity(0.1, isColorDark)};
+        }
+      }
+
+      ${CloseIcon} {
+        fill: ${color};
+      }
     }
   `;
 });
@@ -43,64 +78,28 @@ const CloseIcon = styled(CloseIconComponent)`
   height: 0.5rem;
 `;
 
-const CloseContainer = styled.button<
-  Omit<TagProps, 'color' | 'backgroundColor'> & {
-    $color: TagProps['color'];
-    $backgroundColor: TagProps['backgroundColor'];
+const CloseContainer = styled.button`
+  position: relative;
+
+  padding: 4px 8px;
+
+  cursor: pointer;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    transition: all 0.2s;
   }
->(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-
-  const isDark = ColorTransformer.getBrightness($color || ColorTransformer.getContrastingColor(backgroundColor)) > 140;
-
-  const getEffectOpacity = (coefficient: number) => coefficient * (isDark ? 5 : 1);
-
-  return css`
-    position: relative;
-
-    padding: 4px 8px;
-
-    cursor: pointer;
-
-    &:after {
-      content: '';
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      background-color: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
-      opacity: 0;
-
-      transition: all 0.2s;
-    }
-
-    &:hover {
-      &:after {
-        opacity: ${getEffectOpacity(0.03)};
-      }
-    }
-
-    &:focus {
-      &:after {
-        opacity: ${getEffectOpacity(0.05)};
-      }
-    }
-
-    &:active {
-      &:after {
-        opacity: ${getEffectOpacity(0.1)};
-      }
-    }
-
-    ${CloseIcon} {
-      fill: ${$color || ColorTransformer.getContrastingColor(backgroundColor)};
-    }
-  `;
-});
+`;
 
 const Styled = applyDisplayNames({ Tag, Content, CloseContainer, CloseIcon });
 
