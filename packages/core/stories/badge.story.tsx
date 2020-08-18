@@ -3,7 +3,7 @@ import type { Story } from '@storybook/react';
 
 import Badge, { BadgeProps } from '@ustudio-ui/core/badge';
 
-const controlArg = { type: 'inline-radio', options: ['start', 'center', 'end'] };
+const positionControl = { type: 'inline-radio', options: ['start', 'center', 'end'] };
 
 export default {
   title: 'Data/Badge',
@@ -12,8 +12,8 @@ export default {
   argTypes: {
     color: { control: 'color' },
     backgroundColor: { control: 'color' },
-    horizontalPosition: { control: controlArg },
-    verticalPosition: { control: controlArg },
+    horizontalPosition: { control: positionControl },
+    verticalPosition: { control: positionControl },
     horizontalOffset: { control: 'text' },
     verticalOffset: { control: 'text' },
     shouldDisplay: { control: 'boolean' },

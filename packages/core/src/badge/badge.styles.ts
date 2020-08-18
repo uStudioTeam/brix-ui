@@ -19,7 +19,7 @@ const parsePosition = (position: BadgeProps['horizontalPosition']): string => {
   }
 };
 
-const offsetCalculation = (offset: BadgeProps['horizontalOffset']) => {
+const calculateTranslation = (offset: BadgeProps['horizontalOffset']): string => {
   return `calc(${offset || '0px'} - 50%)`;
 };
 
@@ -58,7 +58,7 @@ const Badge = styled.div<
 
     white-space: nowrap;
 
-    transform: translate(${offsetCalculation(horizontalOffset)}, ${offsetCalculation(verticalOffset)});
+    transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
 
     ${font.body.h5};
   `
