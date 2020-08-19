@@ -5,11 +5,11 @@ import { ColorTransformer } from './color-transformer';
 
 export class ColorConverter {
   public static rgbToHsl(rgb: string): string {
-    ColorTransformer.validate(rgb, ColorSpace.RGB);
+    const [red, green, blue, alpha] = ColorTransformer.toTuple(rgb, ColorSpace.RGB, (value) => value / 255);
 
-    const transformedRGB = ColorTransformer.toTuple(rgb, ColorSpace.RGB, (value) => value / 255);
-
-    return ColorTransformer.toHsl(converter.rgb.hsl(transformedRGB));
+    return alpha
+      ? ColorTransformer.toHsla([red, green, blue], alpha)
+      : ColorTransformer.toHsl(converter.rgb.hsl([red, green, blue]));
   }
 
   public static rgbToHex(rgb: string): string {
@@ -21,11 +21,13 @@ export class ColorConverter {
   }
 
   public static hslToRgb(hsl: string): string {
-    ColorTransformer.validate(hsl, ColorSpace.HSL);
+    const colorSpace = ColorTransformer.getSpace(hsl);
 
-    const transformedHSL = ColorTransformer.toTuple(hsl, ColorSpace.HSL);
+    const [hue, saturation, lightness, alpha] = ColorTransformer.toTuple(hsl, colorSpace);
 
-    return ColorTransformer.toRgb(converter.hsl.rgb(transformedHSL));
+    const rgbTuple = converter.hsl.rgb([hue, saturation, lightness]);
+
+    return alpha ? ColorTransformer.toRgba(rgbTuple, alpha) : ColorTransformer.toRgb(rgbTuple);
   }
 
   public static hslToHex(hsl: string): string {
