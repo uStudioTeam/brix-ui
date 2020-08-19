@@ -33,10 +33,6 @@ const Tag = styled.div<
     ${font.body.small};
     color: ${color};
 
-    &:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-
     ${CloseContainer} {
       &:after {
         background-color: ${color};
