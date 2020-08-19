@@ -8,13 +8,16 @@ type WithAplhaNumber = [number, number, number, number];
 
 type WithAplhaString = [string, string, string, number];
 
-type ApplicableColorSpace = Exclude<Values<typeof ColorSpace>, 'hsla' | 'rgba' | 'hexa'>;
+type ApplicableColorSpace = Values<typeof ColorSpace>;
 
 export class ColorTransformer {
   private static readonly regExp: Record<ApplicableColorSpace, RegExp> = {
     [ColorSpace.RGB]: /^rgb\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3})\)$/,
+    [ColorSpace.RGBA]: /^rgba\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3}),\s?(0(\.\d+)?|1(\.0+)?)\)$/,
     [ColorSpace.HSL]: /^hsl\((\d{1,3}),\s?(\d{1,3})%,\s?(\d{1,3})%\)$/,
+    [ColorSpace.HSLA]: /^hsla\((\d{1,3}),\s?(\d{1,3})%,\s?(\d{1,3})%,\s?(0(\.\d+)?|1(\.0+)?)\)$/,
     [ColorSpace.HEX]: /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
+    [ColorSpace.HEXA]: /^#[A-Fa-f0-9]{8}$/,
   };
 
   public static applyShift(colorTuple: ColorTupleNumber): (...shift: ColorTupleNumber) => ColorTupleNumber {
@@ -35,6 +38,7 @@ export class ColorTransformer {
     const getRGB = () => {
       switch (this.getSpace(color)) {
         case 'hsl':
+        case 'hsla':
           return ColorConverter.hslToRgb(color);
         case 'hex':
           return ColorConverter.hexToRgb(color);
@@ -43,7 +47,7 @@ export class ColorTransformer {
       }
     };
 
-    const [red, green, blue] = this.toTuple(getRGB(), 'rgb');
+    const [red, green, blue] = this.toTuple(getRGB(), this.getSpace(getRGB()));
 
     return Number(Math.sqrt(red ** 2 * 0.241 + green ** 2 * 0.691 + blue ** 2 * 0.068).toFixed(0));
   }
@@ -51,9 +55,7 @@ export class ColorTransformer {
   public static validate(value: string, colorSpace: ApplicableColorSpace): void {
     const applyValidation = (pattern: string) => {
       if (!this.regExp[colorSpace].test(value)) {
-        throw new TypeError(
-          `Invalid ${colorSpace.toUpperCase()} value provided. Must satisfy the pattern \`${pattern}\`.`
-        );
+        console.error(`Invalid ${colorSpace.toUpperCase()} value provided. Must satisfy the pattern \`${pattern}\`.`);
       }
     };
 
@@ -61,8 +63,14 @@ export class ColorTransformer {
       case ColorSpace.HSL: {
         return applyValidation('hsl(0-255, 0-100%, 0-100%)');
       }
+      case ColorSpace.HSLA: {
+        return applyValidation('hsl(0-255, 0-100%, 0-100%, 0-1)');
+      }
       case ColorSpace.RGB: {
         return applyValidation('rgb(0-255, 0-255, 0-255)');
+      }
+      case ColorSpace.RGBA: {
+        return applyValidation('rgb(0-255, 0-255, 0-255, 0-1)');
       }
     }
   }
@@ -71,17 +79,17 @@ export class ColorTransformer {
     const foundSpace = Object.entries(this.regExp).find(([, expression]) => expression.test(color));
 
     if (!foundSpace) {
-      throw new TypeError(`Invalid color ${color} provided.`);
+      console.error(`Invalid color ${color} provided.`);
     }
 
-    return foundSpace[0] as ApplicableColorSpace;
+    return foundSpace?.[0] as ApplicableColorSpace;
   }
 
   public static toTuple<V = number>(
     value: string,
     colorSpace: ApplicableColorSpace,
     modifier?: (value: number) => V
-  ): [V, V, V] {
+  ): [V, V, V, V?] {
     const transformedValue = this.getSpace(value) === ColorSpace.HEX ? ColorConverter.hexToHsl(value) : value;
     const transformedSpace = this.getSpace(value) === ColorSpace.HEX ? ColorSpace.HSL : colorSpace;
 
@@ -91,7 +99,7 @@ export class ColorTransformer {
       return modifier ? modifier(asNumber) : asNumber;
     });
 
-    return tuple as [V, V, V];
+    return tuple as [V, V, V, V?];
   }
 
   private static fromTuple(
