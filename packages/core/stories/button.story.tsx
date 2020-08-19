@@ -7,107 +7,33 @@ export default {
   component: Button,
 
   argTypes: {
-    intent: { control: 'text' },
-    appearance: { control: 'text' },
+    intent: {
+      control: {
+        type: 'inline-radio',
+        options: ['base', 'accent', 'critical', 'success'],
+      },
+    },
+    appearance: {
+      control: {
+        type: 'inline-radio',
+        options: ['contained', 'outlined', 'faint', 'text'],
+      },
+    },
     isDisabled: {
       control: 'boolean',
       description: 'Disables button',
       type: 'function',
     },
+    args: {
+      intent: 'base',
+      appearance: 'contained',
+      isDisabled: false,
+    },
   },
 };
 
-export const Contained = () => {
+export const Basic = (args) => {
   return (
-    <>
-      <Button intent="accent" appearance="contained">
-        Click
-      </Button>
-      <Button intent="base" appearance="contained">
-        Click
-      </Button>
-      <Button intent="critical" appearance="contained">
-        Click
-      </Button>
-      <Button intent="success" appearance="contained">
-        Click
-      </Button>
-    </>
-  );
-};
-
-export const Outlined = () => {
-  return (
-    <>
-      <Button intent="accent" appearance="outlined">
-        Click
-      </Button>
-      <Button intent="base" appearance="outlined">
-        Click
-      </Button>
-      <Button intent="critical" appearance="outlined">
-        Click
-      </Button>
-      <Button intent="success" appearance="outlined">
-        Click
-      </Button>
-    </>
-  );
-};
-
-export const Text = () => {
-  return (
-    <>
-      <Button intent="accent" appearance="text">
-        Click
-      </Button>
-      <Button intent="base" appearance="text">
-        Click
-      </Button>
-      <Button intent="critical" appearance="text">
-        Click
-      </Button>
-      <Button intent="success" appearance="text">
-        Click
-      </Button>
-    </>
-  );
-};
-
-export const Faint = () => {
-  return (
-    <>
-      <Button intent="accent" appearance="faint">
-        Click
-      </Button>
-      <Button intent="base" appearance="faint">
-        Click
-      </Button>
-      <Button intent="critical" appearance="faint">
-        Click
-      </Button>
-      <Button intent="success" appearance="faint">
-        Click
-      </Button>
-    </>
-  );
-};
-
-export const Disabled = () => {
-  return (
-    <>
-      <Button intent="accent" appearance="contained" isDisabled>
-        Click
-      </Button>
-      <Button intent="base" appearance="outlined" isDisabled>
-        Click
-      </Button>
-      <Button intent="critical" appearance="text" isDisabled>
-        Click
-      </Button>
-      <Button intent="success" appearance="faint" isDisabled>
-        Click
-      </Button>
-    </>
+    <Button {...args}>Click</Button>
   );
 };

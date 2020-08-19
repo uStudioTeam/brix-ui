@@ -14,7 +14,6 @@ const Button = styled.button<Omit<ButtonProps, 'disabled'> & {
   display: inline-block;
     
   padding: 3px 16px 4px ;
-  margin: 10px;
   border-radius: 2px;
 
   ${font.body.p};
