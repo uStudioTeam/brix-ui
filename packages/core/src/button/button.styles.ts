@@ -19,7 +19,7 @@ const Button = styled.button<Omit<ButtonProps, 'disabled'> & {
   ${font.body.p};
   text-align: center;
     
-  transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear, text-shadow 0.2s linear;
+  transition: all 0.2s;
   `
 );
 

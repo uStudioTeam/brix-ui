@@ -20,37 +20,39 @@ const applyIntentStyle: IntentStyleType = (intent, baseStyles, intentStyles) => 
 };
 
 const applyShadow = (color: Values<typeof Color>, alpha: number): FlattenSimpleInterpolation => {
-  return css`${({theme}) => {
-    return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
-  }}`
+  return css`
+    box-shadow: 0 2px 8px ${({theme}) => {
+      return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
+    }};
+`
 };
 
 export const disabledButtonsList = {
   contained: css`
     border: 1px solid transparent;
    
-      background-color: var(--c-faint-w-u);
+    background-color: var(--c-faint-w-u);
 
-      color: var(--c-faint-s);
+    color: var(--c-faint-s);
   `,
-    outlined: css`
-      border: 1px solid var(--c-faint-w-u);
+  outlined: css`
+    border: 1px solid var(--c-faint-w-u);
 
-      color: var(--c-faint-s);
+    color: var(--c-faint-s);
   `,
-    text: css`
-      border: 1px solid transparent;
+  text: css`
+    border: 1px solid transparent;
       
-      color: var(--c-faint-s);
+    color: var(--c-faint-s);
   `,
-    faint: css`
-      border: 1px solid transparent;
+  faint: css`
+    border: 1px solid transparent;
        
-      background-color: var(--c-faint-w-u);
+    background-color: var(--c-faint-w-u);
 
-      color: var(--c-faint-s);
+    color: var(--c-faint-s);
   `,
-  };
+};
 
 const containedButton = (intent: ButtonProps['intent']) => css`
   border: 1px solid transparent;
@@ -123,7 +125,7 @@ const faintButton = (intent: string) => css`
   }
 `;
 
-  const textButton = (intent: string) => css`
+const textButton = (intent: string) => css`
   border: 1px solid transparent;
   
   color: var(--c-${intent}-s);
@@ -149,28 +151,28 @@ const faintButton = (intent: string) => css`
 
 export const buttonsList: Record<Exclude<ButtonProps['appearance'], undefined>,
   Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>> = {
-    contained: {
-      base: containedButton('base'),
-      accent: containedButton('accent'),
-      critical: containedButton('critical'),
-      success: containedButton('success'),
-    },
-    outlined: {
-      base: outlinedButton('base'),
-      accent: outlinedButton('accent'),
-      critical: outlinedButton('critical'),
-      success: outlinedButton('success'),
-    },
-    text: {
-      base: textButton('base'),
-      accent: textButton('accent'),
-      critical: textButton('critical'),
-      success: textButton('success'),
-    },
-    faint: {
-      base: faintButton('base'),
-      accent: faintButton('accent'),
-      critical: faintButton('critical'),
-      success: faintButton('success'),
-    },
-  };
+  contained: {
+    base: containedButton('base'),
+    accent: containedButton('accent'),
+    critical: containedButton('critical'),
+    success: containedButton('success'),
+  },
+  outlined: {
+    base: outlinedButton('base'),
+    accent: outlinedButton('accent'),
+    critical: outlinedButton('critical'),
+    success: outlinedButton('success'),
+  },
+  text: {
+    base: textButton('base'),
+    accent: textButton('accent'),
+    critical: textButton('critical'),
+    success: textButton('success'),
+  },
+  faint: {
+    base: faintButton('base'),
+    accent: faintButton('accent'),
+    critical: faintButton('critical'),
+    success: faintButton('success'),
+  },
+};
