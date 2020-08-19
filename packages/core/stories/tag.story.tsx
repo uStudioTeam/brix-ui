@@ -8,8 +8,8 @@ export default {
   component: Tag,
 
   argTypes: {
-    backgroundColor: { control: 'text' },
-    color: { control: 'text' },
+    backgroundColor: { control: 'color' },
+    color: { control: 'color' },
     onClose: {
       control: 'boolean',
       description:
