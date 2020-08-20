@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
+import { ColorTransformer } from '@ustudio-ui/theme/palette';
 import { Align } from '@ustudio-ui/types/css';
 import { Color } from '@ustudio-ui/types/palette';
 
@@ -37,31 +38,36 @@ const Badge = styled.div<
     horizontalOffset,
     verticalOffset,
     theme,
-  }) => css`
-    position: absolute;
-    top: ${parsePosition(verticalPosition)};
-    left: ${parsePosition(horizontalPosition)};
+  }) => {
+    const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
+    const color = $color || ColorTransformer.getContrastingColor(backgroundColor);
 
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
+    return css`
+      position: absolute;
+      top: ${parsePosition(verticalPosition)};
+      left: ${parsePosition(horizontalPosition)};
 
-    min-width: 12px;
-    min-height: 12px;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
 
-    padding: 0 0.375rem 0.125rem;
+      min-width: 12px;
+      min-height: 12px;
 
-    border-radius: 10px;
+      padding: 0 0.375rem 0.125rem;
 
-    background: ${$backgroundColor || theme.palette[Color.FaintWeak]};
-    color: ${$color};
+      border-radius: 10px;
 
-    white-space: nowrap;
+      background: ${backgroundColor};
+      color: ${color};
 
-    transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
+      white-space: nowrap;
 
-    ${font.body.h5};
-  `
+      transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
+
+      ${font.body.h5};
+    `;
+  }
 );
 
 const BadgeContainer = styled.div(
