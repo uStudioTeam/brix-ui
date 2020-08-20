@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
-import DirectionContext from '@ustudio-ui/contexts/direction';
+import DirectionProvider from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
@@ -18,11 +18,11 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   const [grid, dispatcher] = useAreaBuilder();
 
   const areas = useMemo(() => {
-    if (direction === Direction.Row || direction === undefined) {
-      return `'${grid.areas.join('  ')}'`;
+    if (direction === Direction.Column) {
+      return grid.areas.map((area) => `'${area}'`).join(' ');
     }
 
-    return grid.areas.map((area) => `'${area}'`).join(' ');
+    return `'${grid.areas.join('  ')}'`;
   }, [grid.areas, direction]);
 
   const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps({
@@ -37,7 +37,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   }) as With<GridBreakpointData, { currentBreakpoint: number }>;
 
   return (
-    <DirectionContext value={direction}>
+    <DirectionProvider value={direction}>
       <AreaBuilder areas={grid.areas} dispatcher={dispatcher}>
         <Styled.Grid
           ref={ref}
@@ -53,7 +53,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
           {children}
         </Styled.Grid>
       </AreaBuilder>
-    </DirectionContext>
+    </DirectionProvider>
   );
 });
 

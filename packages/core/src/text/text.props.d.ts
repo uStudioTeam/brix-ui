@@ -15,5 +15,5 @@ export interface TextProps extends IntrinsicComponent<TextElement> {
   color?: string;
   align?: Values<typeof TextAlign>;
 
-  textDecoration?: Values<typeof TextDecoration>;
+  decoration?: Values<typeof TextDecoration>;
 }
