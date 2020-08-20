@@ -48,11 +48,11 @@ const Badge = styled.div<
       left: ${parsePosition(horizontalPosition)};
 
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: center;
 
-      min-width: 12px;
-      min-height: 12px;
+      min-width: 16px;
+      min-height: 16px;
 
       padding: 0 0.375rem 0.125rem;
 
@@ -66,6 +66,8 @@ const Badge = styled.div<
       transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
 
       ${font.body.h5};
+
+      line-height: 1;
     `;
   }
 );
