@@ -5,9 +5,9 @@ import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 import { ButtonProps } from './button.props';
 import Styled from './button.styles';
 
-const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button({ children, ...props }, ref) {
+const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button({ children, isDisabled, ...props }, ref) {
   return (
-    <Styled.Button ref={ref} {...props}>
+    <Styled.Button ref={ref} disabled={isDisabled} isDisabled={isDisabled} {...props}>
       {children}
     </Styled.Button>
   );

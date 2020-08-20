@@ -54,7 +54,7 @@ const Palette: FC<{ override?: Partial<Theme['palette']> }> = ({ override }) => 
               override?.[variable.replace(/(-u|-d)$/, '') as keyof typeof override] ||
                 palette[variable.replace(/(-u|-d)$/, '') as keyof typeof palette],
               ColorSpace.HSL
-            )
+            ) as [number, number, number]
           )(...(secondaryPaletteShifts[variable as keyof typeof secondaryPaletteShifts] as ColorTupleNumber))
         );
       }

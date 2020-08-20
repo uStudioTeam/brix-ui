@@ -17,7 +17,7 @@ const applyIntentStyle = (color: string, baseStyles: string, intentStyles: strin
 const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
   return css`0 2px 8px
       ${ColorTransformer.toHsla(
-        ColorTransformer.toTuple(theme.palette[color as Values<typeof Color>], ColorSpace.HSL),
+        ColorTransformer.toTuple(theme.palette[color as Values<typeof Color>], ColorSpace.HSL) as [number, number, number],
         alpha
       )};
   `;
