@@ -1,36 +1,32 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { ButtonProps } from '@ustudio-ui/core/button';
+import { WithTheme } from '@ustudio-ui/theme/theme';
 import { ColorTransformer } from '@ustudio-ui/theme/palette';
 import { ColorSpace, Color } from '@ustudio-ui/types/palette';
 import { Values } from '@ustudio-ui/utils/types';
 
-type IntentStyleType = (
-  intent: string,
-  baseStyles: string,
-  intentStyles: string
-) => string;
-
-const applyIntentStyle: IntentStyleType = (intent, baseStyles, intentStyles) => {
-  if (intent === 'base') {
+const applyIntentStyle = (color: string, baseStyles: string, intentStyles: string): string => {
+  if (color === 'base') {
     return baseStyles;
   }
 
   return intentStyles;
 };
 
-const applyShadow = (color: Values<typeof Color>, alpha: number): FlattenSimpleInterpolation => {
-  return css`
-    box-shadow: 0 2px 8px ${({theme}) => {
-      return ColorTransformer.toHsla(ColorTransformer.toTuple(theme.palette[color], ColorSpace.HSL), alpha);
-    }};
-`
+const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
+  return css`0 2px 8px
+      ${ColorTransformer.toHsla(
+        ColorTransformer.toTuple(theme.palette[color as Values<typeof Color>], ColorSpace.HSL),
+        alpha
+      )};
+  `;
 };
 
-export const disabledButtonsList = {
+export const disabledButtonMixin = {
   contained: css`
     border: 1px solid transparent;
-   
+
     background-color: var(--c-faint-w-u);
 
     color: var(--c-faint-s);
@@ -42,137 +38,131 @@ export const disabledButtonsList = {
   `,
   text: css`
     border: 1px solid transparent;
-      
+
     color: var(--c-faint-s);
   `,
   faint: css`
     border: 1px solid transparent;
-       
+
     background-color: var(--c-faint-w-u);
 
     color: var(--c-faint-s);
   `,
 };
 
-const containedButton = (intent: ButtonProps['intent']) => css`
-  border: 1px solid transparent;
-  
-  background-color: var(--c-${intent}-s);
+const containedButton = (intent: NonNullable<ButtonProps['intent']>) =>
+  css`
+    border: 1px solid transparent;
 
-  color: var(--c-base-w);
+    background-color: ${`var(--c-${intent}-s)`};
 
-  &:hover {
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.4)};
-  }
-  
-  &:focus {
-    background-color: var(--c-${intent}-s-d);
-  }
+    color: var(--c-base-w);
 
-  &:active {
-    background-color: var(--c-${intent}-s-d);
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.3)};
-    
-    color: ${applyIntentStyle(intent, `var(--c-faint-s)`, `var(--c-${intent}-w-u)`)};
-  }
-`;
+    &:hover {
+      box-shadow: ${applyShadow(`${intent}-s`, 0.4)};
+    }
 
-const outlinedButton = (intent: string) => css`
-  border: 1px solid var(--c-${intent}-s);
-  background-color: var(--c-base-w);
+    &:focus {
+      background-color: ${`var(--c-${intent}-s-d)`};
+    }
 
-  color: var(--c-${intent}-s);
+    &:active {
+      background-color: ${`var(--c-${intent}-s-d)`};
+      box-shadow: ${applyShadow(`${intent}-s`, 0.3)};
 
-  &:hover {
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.25)};
-  }
-  
-  &:focus {
-    border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)}; var(--c-${intent}-s-d);
+      color: ${applyIntentStyle(intent, `var(--c-faint-s)`, `var(--c-${intent}-w-u)`)};
+    }
+  ` as FlattenSimpleInterpolation;
 
-    color: var(--c-${intent}-s-d);
-  }
+const outlinedButton = (intent: NonNullable<ButtonProps['intent']>) =>
+  css`
+    border: 1px solid ${`var(--c-${intent}-s)`};
+    background-color: var(--c-base-w);
 
-  &:active {
-    border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
+    color: ${`var(--c-${intent}-s)`};
 
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.15)};
+    &:hover {
+      box-shadow: ${applyShadow(`${intent}-s`, 0.25)};
+    }
 
-    color: var(--c-${intent}-s-d);
-  }
-`;
+    &:focus {
+      border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
 
-const faintButton = (intent: string) => css`
-  border: 1px solid transparent;
-  
-  background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
+      color: ${`var(--c-${intent}-s-d)`};
+    }
 
-  color: var(--c-${intent}-s);
+    &:active {
+      border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
 
-  &:hover {
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.1', '0.15')))};
-  }
-  
-  &:focus {
-    background-color: ${applyIntentStyle(intent, `var(--c-faint-w-u)`, `var(--c-${intent}-w)`)};
-  }
+      box-shadow: ${applyShadow(`${intent}-s`, 0.15)};
 
-  &:active {
-    background-color: ${applyIntentStyle(intent, 'var(--c-faint-w-u)', `var(--c-${intent}-w)`)};
-    box-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.075', '0.15')))}; 
+      color: ${`var(--c-${intent}-s-d)`};
+    }
+  ` as FlattenSimpleInterpolation;
 
-    color: var(--c-${intent}-s-d);
-  }
-`;
+const faintButton = (intent: NonNullable<ButtonProps['intent']>) =>
+  css`
+    border: 1px solid transparent;
 
-const textButton = (intent: string) => css`
-  border: 1px solid transparent;
-  
-  color: var(--c-${intent}-s);
-
-  &:hover {
     background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
-  }
-  
-  &:focus {
-    text-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.5)}; 
 
-    color: var(--c-${intent}-s-d);
-  }
+    color: ${`var(--c-${intent}-s)`};
 
-  &:active {
-    background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w-d)`)};
+    &:hover {
+      box-shadow: ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.1', '0.15')))};
+    }
 
-    color: var(--c-${intent}-s-d);
+    &:focus {
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-w-u)`, `var(--c-${intent}-w)`)};
+    }
 
-    text-shadow: 0 2px 8px ${applyShadow(`${intent}-s`, 0.5)};
-  }
-`;
+    &:active {
+      background-color: ${applyIntentStyle(intent, 'var(--c-faint-w-u)', `var(--c-${intent}-w)`)};
+      box-shadow: ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, '0.075', '0.15')))};
 
-export const buttonsList: Record<Exclude<ButtonProps['appearance'], undefined>,
-  Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>> = {
-  contained: {
-    base: containedButton('base'),
-    accent: containedButton('accent'),
-    critical: containedButton('critical'),
-    success: containedButton('success'),
-  },
-  outlined: {
-    base: outlinedButton('base'),
-    accent: outlinedButton('accent'),
-    critical: outlinedButton('critical'),
-    success: outlinedButton('success'),
-  },
-  text: {
-    base: textButton('base'),
-    accent: textButton('accent'),
-    critical: textButton('critical'),
-    success: textButton('success'),
-  },
-  faint: {
-    base: faintButton('base'),
-    accent: faintButton('accent'),
-    critical: faintButton('critical'),
-    success: faintButton('success'),
-  },
+      color: ${`var(--c-${intent}-s-d)`};
+    }
+  ` as FlattenSimpleInterpolation;
+
+const textButton = (intent: NonNullable<ButtonProps['intent']>) =>
+  css`
+    border: 1px solid transparent;
+
+    color: ${`var(--c-${intent}-s)`};
+
+    &:hover {
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
+    }
+
+    &:focus {
+      text-shadow: ${applyShadow(`${intent}-s`, 0.5)};
+
+      color: ${`var(--c-${intent}-s-d)`};
+    }
+
+    &:active {
+      background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w-d)`)};
+
+      color: ${`var(--c-${intent}-s-d)`};
+
+      text-shadow: ${applyShadow(`${intent}-s`, 0.5)};
+    }
+  ` as FlattenSimpleInterpolation;
+
+const applyStyle = (
+  mixin: (intent: NonNullable<ButtonProps['intent']>) => FlattenSimpleInterpolation
+): Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation> => {
+  return ['base', 'accent', 'critical', 'success'].reduce((accumulator, key) => {
+    return Object.assign(accumulator, { [key]: mixin(key as NonNullable<ButtonProps['intent']>) });
+  }, {} as Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>);
+};
+
+export const buttonMixin: Record<
+  Exclude<ButtonProps['appearance'], undefined>,
+  Record<Exclude<ButtonProps['intent'], undefined>, FlattenSimpleInterpolation>
+> = {
+  contained: applyStyle(containedButton),
+  outlined: applyStyle(outlinedButton),
+  faint: applyStyle(faintButton),
+  text: applyStyle(textButton),
 };
