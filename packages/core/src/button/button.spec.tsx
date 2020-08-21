@@ -31,9 +31,7 @@ describe('<Button />', () => {
     describe('when isDisabled: true;', () => {
       it('should become disabled', () => {
         const { getByTestId } = renderWithProps({ isDisabled: true });
-        // expect(getByTestId(buttonId)?.closest('button')?.disabled).toBeTruthy();
-        // expect(getByTestId('buttonId')).toHave
-        console.log(getByTestId(buttonId).getAttribute('disabled'));
+
         expect(getByTestId(buttonId).hasAttribute('disabled')).toBe(true);
       });
 
