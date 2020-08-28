@@ -113,4 +113,12 @@ module.exports = {
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
   },
+  overrides: [
+    {
+      files: ['*.story.tsx'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+  ],
 };
