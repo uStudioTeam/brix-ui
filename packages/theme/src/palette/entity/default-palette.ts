@@ -103,7 +103,7 @@ export const secondaryPaletteShifts: Palette<SecondaryKeys> = {
   [Color.AccentStrongDown]: [0, 1, 8],
 
   [Color.AccentWeakUp]: [0, -6, -13],
-  [Color.AccentWeakDown]: [0, -26, 1],
+  [Color.AccentWeakDown]: [0, -26, 5],
 
   [Color.CriticalStrongUp]: [0, 7, -5],
   [Color.CriticalStrongDown]: [0, 0, 8],
