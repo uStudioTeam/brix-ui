@@ -13,19 +13,25 @@ export default {
         type: 'inline-radio',
         options: ['base', 'accent', 'critical', 'success'],
       },
-      description: 'Variant of the button color',
+      defaultValue: {
+        summary: `'base'`,
+      },
     },
     appearance: {
       control: {
         type: 'inline-radio',
         options: ['contained', 'outlined', 'faint', 'text'],
       },
-      description: 'Variant of the button look',
+      defaultValue: {
+        summary: `'contained'`,
+      },
     },
     isDisabled: {
       control: 'boolean',
-      description: 'Disables button',
       type: 'function',
+      defaultValue: {
+        summary: 'false',
+      },
     },
   },
 
@@ -36,8 +42,12 @@ export default {
   },
 } as Meta;
 
+const capitalize = (string: string): string => `${string[0].toUpperCase()}${string.slice(1)}`;
+
 export const Basic: Story<ButtonProps> = (args) => {
   return (
-    <Button {...args}>Click</Button>
+    <Button {...args}>
+      {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
+    </Button>
   );
 };
