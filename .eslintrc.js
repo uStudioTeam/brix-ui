@@ -79,6 +79,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-cycle': 'error',
     'import/no-named-as-default': 'off',
+    'import/no-extraneous-dependencies': 'off',
 
     'prettier/prettier': 'warn',
 
@@ -118,6 +119,12 @@ module.exports = {
       files: ['*.story.tsx'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['*.spec.tsx'],
+      rules: {
+        'sonarjs/no-duplicate-string': 'off',
       },
     },
   ],

@@ -8,9 +8,37 @@ import CloseIconComponent from '@ustudio-ui/utils/icons/close.inline.svg';
 
 import type { TagProps } from './tag.props';
 
-const getEffectOpacity = (baseValue: number, isColorDark: boolean) => {
-  return baseValue * (isColorDark ? 4 : 1);
-};
+const CloseIcon = styled(CloseIconComponent)`
+  width: 0.5rem;
+  height: 0.5rem;
+`;
+
+const CloseContainer = styled.button`
+  position: relative;
+
+  padding: 4px 8px;
+
+  cursor: pointer;
+
+  transition: all 0.2s;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    border-radius: 2px;
+
+    transition: all 0.2s;
+  }
+`;
 
 const Tag = styled.div<
   Omit<TagProps, 'color' | 'backgroundColor'> & {
@@ -20,8 +48,6 @@ const Tag = styled.div<
 >(({ $color, $backgroundColor, theme }) => {
   const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
   const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
-
-  const isColorDark = ColorTransformer.getBrightness(color) > 140;
 
   return css`
     display: inline-flex;
@@ -40,20 +66,18 @@ const Tag = styled.div<
 
       &:hover {
         &:after {
-          opacity: ${getEffectOpacity(0.03, isColorDark)};
+          opacity: 0.12;
         }
       }
 
       &:focus {
         &:after {
-          opacity: ${getEffectOpacity(0.05, isColorDark)};
+          opacity: 0.2;
         }
       }
 
       &:active {
-        &:after {
-          opacity: ${getEffectOpacity(0.1, isColorDark)};
-        }
+        transform: scale(0.95);
       }
 
       ${CloseIcon} {
@@ -67,34 +91,6 @@ const Content = styled.div`
   padding: 4px 8px 6px;
 
   cursor: default;
-`;
-
-const CloseIcon = styled(CloseIconComponent)`
-  width: 0.5rem;
-  height: 0.5rem;
-`;
-
-const CloseContainer = styled.button`
-  position: relative;
-
-  padding: 4px 8px;
-
-  cursor: pointer;
-
-  &:after {
-    content: '';
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-
-    transition: all 0.2s;
-  }
 `;
 
 const Styled = applyDisplayNames({ Tag, Content, CloseContainer, CloseIcon });

@@ -1,10 +1,13 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { ButtonProps } from '@ustudio-ui/core/button';
-import { WithTheme } from '@ustudio-ui/theme/theme';
+import type { WithTheme } from '@ustudio-ui/theme/theme';
 import { ColorTransformer } from '@ustudio-ui/theme/palette';
-import { ColorSpace, Color } from '@ustudio-ui/types/palette';
-import { Values } from '@ustudio-ui/utils/types';
+import { Color } from '@ustudio-ui/types/palette';
+import type { Values } from '@ustudio-ui/utils/types';
+import { Variable } from '@ustudio-ui/types/css';
+import { getCssVariable } from '@ustudio-ui/utils/functions';
+
+import type { ButtonProps } from './button.props';
 
 type Intent = NonNullable<ButtonProps['intent']>;
 
@@ -20,109 +23,111 @@ const applyIntentStyle = <S>(intent: Intent, baseStyles: S, intentStyles: S): S 
 
 const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
   return css`0 2px 8px
-      ${ColorTransformer.toHsla(
-        ColorTransformer.toTuple(theme.palette[color as Values<typeof Color>], ColorSpace.HSL) as [
-          number,
-          number,
-          number
-        ],
-        alpha
-      )};
+      ${ColorTransformer.applyAlpha(theme.palette[color as Values<typeof Color>], alpha)};
   `;
 };
 
 export const disabledButtonMixin = {
   contained: css`
-    background-color: var(--c-faint-w-u);
+    background-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
 
-    color: var(--c-faint-s);
+    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
   `,
   outlined: css`
-    border: 1px solid var(--c-faint-w-u);
+    border: 1px solid ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
 
-    color: var(--c-faint-s);
+    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
   `,
   text: css`
-    color: var(--c-faint-s);
+    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
   `,
   faint: css`
-    background-color: var(--c-faint-w);
+    background-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
 
-    color: var(--c-faint-s);
+    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
   `,
 };
 
 const containedButtonMixin: IntentMixin = (intent) => {
   return css`
-    color: var(--c-base-w);
+    color: var(--c-base-weak);
 
     &,
     &:active:focus,
     &:hover:focus {
-      background-color: ${`var(--c-${intent}-s)`};
+      background-color: ${`var(--c-${intent}-strong)`};
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-s`, 0.4)};
+      box-shadow: ${applyShadow(`${intent}-strong`, 0.4)};
     }
 
     &:focus {
-      background-color: ${`var(--c-${intent}-s-d)`};
+      background-color: ${`var(--c-${intent}-strong-down)`};
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-s`, 0.25)};
+      box-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
     }
   ` as FlattenSimpleInterpolation;
 };
 
 const outlinedButtonMixin: IntentMixin = (intent) => {
   return css`
-    background-color: var(--c-base-w);
+    background-color: var(--c-base-weak);
 
     &,
     &:active:focus,
     &:hover:focus {
-      border: 1px solid ${`var(--c-${intent}-s)`};
-      color: ${`var(--c-${intent}-s)`};
+      border: 1px solid ${`var(--c-${intent}-strong)`};
+      color: ${`var(--c-${intent}-strong)`};
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-s`, 0.25)};
+      box-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
     }
 
     &:focus {
-      border: 1px solid ${applyIntentStyle(intent, 'var(--c-faint-s)', `var(--c-${intent}-w-u)`)};
+      border: 1px solid
+        ${applyIntentStyle(
+          intent,
+          `${getCssVariable(Variable.Color, Color.FaintStrong)}`,
+          `var(--c-${intent}-weak-up)`
+        )};
 
-      color: ${`var(--c-${intent}-s-d)`};
+      color: ${`var(--c-${intent}-strong-down)`};
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-s`, 0.15)};
+      box-shadow: ${applyShadow(`${intent}-strong`, 0.15)};
     }
   ` as FlattenSimpleInterpolation;
 };
 
 const faintButtonMixin: IntentMixin = (intent) => {
   return css`
-    color: ${`var(--c-${intent}-s)`};
+    color: ${`var(--c-${intent}-strong)`};
 
     &,
     &:active:focus,
     &:hover:focus {
-      background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
+      background-color: ${applyIntentStyle(
+        intent,
+        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
+        `var(--c-${intent}-weak-down)`
+      )};
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-s`, Number(applyIntentStyle(intent, 0.1, 0.125)))};
+      box-shadow: ${applyShadow(`${intent}-strong`, Number(applyIntentStyle(intent, 0.1, 0.125)))};
     }
 
     &:focus {
-      background-color: ${applyIntentStyle(intent, `var(--c-faint-s-d)`, `var(--c-${intent}-w)`)};
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-strong-down)`, `var(--c-${intent}-weak)`)};
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-s`, 0.075)};
+      box-shadow: ${applyShadow(`${intent}-strong`, 0.075)};
 
       transform: scale(0.99);
     }
@@ -131,28 +136,36 @@ const faintButtonMixin: IntentMixin = (intent) => {
 
 const textButtonMixin: IntentMixin = (intent) => {
   return css`
-    color: ${`var(--c-${intent}-s)`};
+    color: ${`var(--c-${intent}-strong)`};
 
     &,
     &:active:focus,
     &:hover:focus {
-      color: ${`var(--c-${intent}-s)`};
+      color: ${`var(--c-${intent}-strong)`};
     }
 
     &:hover {
-      background-color: ${applyIntentStyle(intent, `var(--c-faint-w)`, `var(--c-${intent}-w-d)`)};
+      background-color: ${applyIntentStyle(
+        intent,
+        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
+        `var(--c-${intent}-weak-down)`
+      )};
     }
 
     &:focus {
-      text-shadow: ${applyShadow(`${intent}-s`, 0.5)};
+      text-shadow: ${applyShadow(`${intent}-strong`, 0.5)};
 
-      color: ${`var(--c-${intent}-s-d)`};
+      color: ${`var(--c-${intent}-strong-down)`};
     }
 
     &:active {
-      background-color: ${applyIntentStyle(intent, 'var(--c-faint-w)', `var(--c-${intent}-w-d)`)};
+      background-color: ${applyIntentStyle(
+        intent,
+        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
+        `var(--c-${intent}-weak-down)`
+      )};
 
-      text-shadow: ${applyShadow(`${intent}-s`, 0.25)};
+      text-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
 
       transform: scale(0.99);
     }
