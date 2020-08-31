@@ -1,4 +1,4 @@
-import { getLuminance, hsla, lighten, parseToHsl, readableColor } from 'polished';
+import { darken, getLuminance, hsla, parseToHsl, readableColor } from 'polished';
 
 import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import type { Theme } from '@ustudio-ui/theme';
@@ -47,8 +47,8 @@ export class ColorTransformer {
   public static flattenAlpha(color: string, theme: Theme): string {
     // `alpha` can be undefined
     // @ts-ignore
-    const { alpha: amount = 1 } = parseToHsl(this.parseColor(color, theme));
+    const { alpha: amount = 0 } = parseToHsl(this.parseColor(color, theme));
 
-    return lighten(1 - amount, color);
+    return darken(amount, color);
   }
 }
