@@ -48,7 +48,7 @@ const Typography = (props: FontsFacesMap): JSX.Element => {
         return css`
           ${fontStyles};
 
-          ${objectKeys(props?.[font]).reduce((typeStyles, type) => {
+          ${objectKeys(props?.[font] || {}).reduce((typeStyles, type) => {
             const { url, format = 'truetype', weight } =
               props?.[font][type] ?? ({} as typeof props[typeof font][typeof type]);
 
