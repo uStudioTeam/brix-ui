@@ -12,7 +12,8 @@
     "@ustudio-ui/contexts": "0.0.1",
     "@ustudio-ui/theme": "0.0.1",
     "@ustudio-ui/types": "0.0.1",
-    "@ustudio-ui/utils": "0.0.1"
+    "@ustudio-ui/utils": "0.0.1",
+    "polished": "^3.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

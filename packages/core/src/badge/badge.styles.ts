@@ -11,12 +11,12 @@ import type { BadgeProps } from './badge.props';
 const parsePosition = (position: BadgeProps['horizontalPosition']): string => {
   switch (position) {
     case Align.Center:
-      return `50%`;
+      return '50%';
     case Align.End:
-      return `100%`;
+      return '100%';
     case Align.Start:
     default:
-      return `0`;
+      return '0';
   }
 };
 
@@ -40,7 +40,7 @@ const Badge = styled.div<
     theme,
   }) => {
     const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-    const color = $color || ColorTransformer.getContrastingColor(backgroundColor);
+    const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
 
     return css`
       position: absolute;
@@ -54,7 +54,7 @@ const Badge = styled.div<
       min-width: 16px;
       min-height: 16px;
 
-      padding: 0 0.375rem 0.125rem;
+      padding: 0 4px 2px;
 
       border-radius: 10px;
 
