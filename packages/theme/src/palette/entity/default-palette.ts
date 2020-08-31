@@ -1,19 +1,19 @@
-import type { ColorsMap } from '@ustudio-ui/theme/palette';
 import { Variable } from '@ustudio-ui/types/css';
-import { Color, ColorTupleNumber } from '@ustudio-ui/types/palette';
+import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import { getCssVariable, objectKeys } from '@ustudio-ui/utils/functions';
 import type { Keys, Values } from '@ustudio-ui/utils/types';
 
 import { ColorTransformer } from './color-transformer';
+import type { ColorsMap } from './colors-map';
 
-type Palette<K = Keys<typeof Color>, V = ColorTupleNumber> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
+type Palette<K = Keys<typeof Color>, V = ColorTuple> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
 
 const rawToHsl = <K>(palette: Palette<K>): Palette<K, string> => {
   // TypeScript goes insane here for some reason
   // @ts-ignore
   return objectKeys(palette).reduce((hslPalette, key) => {
     return Object.assign(hslPalette, {
-      [key]: ColorTransformer.toHsl(palette[key]),
+      [key]: ColorTransformer.tupleToColor(palette[key]),
     });
   }, {} as Palette<K, string>);
 };
@@ -57,7 +57,7 @@ type PrimaryKeys =
   | 'SuccessStrong'
   | 'SuccessWeak';
 
-type PrimaryPalette<T = ColorTupleNumber> = Palette<PrimaryKeys, T>;
+type PrimaryPalette<T = ColorTuple> = Palette<PrimaryKeys, T>;
 
 const primaryPaletteRaw: PrimaryPalette = {
   [Color.BaseStrong]: [208, 15, 12],
@@ -103,7 +103,7 @@ export const secondaryPaletteShifts: Palette<SecondaryKeys> = {
   [Color.AccentStrongDown]: [0, 1, 8],
 
   [Color.AccentWeakUp]: [0, -6, -13],
-  [Color.AccentWeakDown]: [0, -26, 1],
+  [Color.AccentWeakDown]: [0, -26, 5],
 
   [Color.CriticalStrongUp]: [0, 7, -5],
   [Color.CriticalStrongDown]: [0, 0, 8],
@@ -123,8 +123,8 @@ export const secondaryPaletteShifts: Palette<SecondaryKeys> = {
 export const secondaryPalette = rawToHsl<SecondaryKeys>(
   objectKeys(secondaryPaletteShifts).reduce((secondaryPaletteShifted, key) => {
     return Object.assign(secondaryPaletteShifted, {
-      [key]: shift[key.replace(/(-u|-d)$/, '') as typeof Color[PrimaryKeys]](
-        ...(secondaryPaletteShifts[key] as ColorTupleNumber)
+      [key]: shift[key.replace(/(-up|-down)$/, '') as typeof Color[PrimaryKeys]](
+        ...(secondaryPaletteShifts[key] as ColorTuple)
       ),
     });
   }, {}) as Palette<SecondaryKeys>
@@ -132,14 +132,14 @@ export const secondaryPalette = rawToHsl<SecondaryKeys>(
 
 const createFancy = (
   baseColor: Values<typeof Color>,
-  middleColor: [ColorTupleNumber, ColorTupleNumber],
-  topmostColor: [ColorTupleNumber, ColorTupleNumber]
+  middleColor: [ColorTuple, ColorTuple],
+  topmostColor: [ColorTuple, ColorTuple]
 ): string => {
-  return `linear-gradient(to right, ${ColorTransformer.toHsla(topmostColor[0], 0.25)}, ${ColorTransformer.toHsla(
-    topmostColor[1],
+  return `linear-gradient(to right, ${ColorTransformer.tupleToColor(
+    topmostColor[0],
     0.25
-  )}),
-    linear-gradient(to right, ${ColorTransformer.toHsla(middleColor[0], 0.5)}, ${ColorTransformer.toHsla(
+  )}, ${ColorTransformer.tupleToColor(topmostColor[1], 0.25)}),
+    linear-gradient(to right, ${ColorTransformer.tupleToColor(middleColor[0], 0.5)}, ${ColorTransformer.tupleToColor(
     middleColor[1],
     0.5
   )}),

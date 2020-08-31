@@ -3,10 +3,16 @@ import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider, { Theme } from '@ustudio-ui/theme';
+import { Values } from '@ustudio-ui/utils/types';
+import { Color } from '@ustudio-ui/types/palette';
+import { getCssVariable } from '@ustudio-ui/utils/functions';
+import { Variable } from '@ustudio-ui/types/css';
+
 import type { ButtonProps } from './button.props';
 import Button from './button.component';
 
 const buttonId = 'button';
+const getColorVariable = (color: Values<typeof Color>): string => getCssVariable(Variable.Color, color);
 
 const renderWithProps = (props: ButtonProps) => {
   return render(
@@ -29,6 +35,10 @@ const renderWithProps = (props: ButtonProps) => {
 describe('<Button />', () => {
   describe('isDisabled', () => {
     describe('when isDisabled: true;', () => {
+      const modifier = {
+        modifier: ':disabled',
+      };
+
       it('should become disabled', () => {
         const { getByTestId } = renderWithProps({ isDisabled: true });
 
@@ -40,11 +50,11 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'contained' });
 
           [
-            ['background-color', 'var(--c-faint-w-u)'],
-            ['color', 'var(--c-faint-s)'],
+            ['background-color', getColorVariable(Color.FaintWeakUp)],
+            ['color', getColorVariable(Color.FaintStrong)],
             ['cursor', 'not-allowed'],
           ].forEach(([property, value]) => {
-            expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
           });
         });
       });
@@ -54,44 +64,47 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'outlined' });
 
           [
-            ['color', 'var(--c-faint-s)'],
-            ['border', '1px solid var(--c-faint-w-u)'],
+            ['color', getColorVariable(Color.FaintStrong)],
+            ['border', `1px solid ${getColorVariable(Color.FaintWeakUp)}`],
             ['cursor', 'not-allowed'],
           ].forEach(([property, value]) => {
-            expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
+          });
+        });
+      });
+
+      describe('when appearance is text', () => {
+        it('should have text disabled styles', () => {
+          const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'text' });
+
+          [
+            ['color', getColorVariable(Color.FaintStrong)],
+            ['cursor', 'not-allowed'],
+          ].forEach(([property, value]) => {
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
+          });
+        });
+      });
+
+      describe('when appearance is faint', () => {
+        it('should have faint disabled styles', () => {
+          const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'faint' });
+
+          [
+            ['background-color', getColorVariable(Color.FaintWeakUp)],
+            ['color', getColorVariable(Color.FaintStrong)],
+            ['cursor', 'not-allowed'],
+          ].forEach(([property, value]) => {
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
           });
         });
       });
     });
-
-    describe('when appearance is text', () => {
-      it('should have text disabled styles', () => {
-        const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'text' });
-
-        [
-          ['color', 'var(--c-faint-s)'],
-          ['border', '1px solid transparent'],
-          ['cursor', 'not-allowed'],
-        ].forEach(([property, value]) => {
-          expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
-        });
-      });
-    });
-
-    describe('when appearance is faint', () => {
-      it('should have faint disabled styles', () => {
-        const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'faint' });
-
-        [
-          ['background-color', 'var(--c-faint-w-u)'],
-          ['color', 'var(--c-faint-s)'],
-          ['cursor', 'not-allowed'],
-        ].forEach(([property, value]) => {
-          expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
-        });
-      });
-    });
   });
+
+  const modifier = {
+    modifier: ':not(:disabled)',
+  };
 
   describe('not disabled', () => {
     describe('when appearance is contained', () => {
@@ -100,10 +113,10 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ appearance: 'contained', intent: 'accent' });
 
           [
-            ['background-color', 'var(--c-accent-s)'],
-            ['color', 'var(--c-base-w)'],
+            ['background-color', getColorVariable(Color.AccentStrong)],
+            ['color', getColorVariable(Color.BaseWeak)],
           ].forEach(([property, value]) => {
-            expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
           });
         });
 
@@ -114,10 +127,10 @@ describe('<Button />', () => {
             fireEvent.click(getByTestId(buttonId));
 
             [
-              ['background-color', 'var(--c-accent-s-d)'],
-              ['color', 'var(--c-accent-w-u)'],
+              ['background-color', getColorVariable(Color.AccentStrong)],
+              ['color', getColorVariable(Color.BaseWeak)],
             ].forEach(([property, value]) => {
-              expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
+              expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
             });
           });
         });
@@ -129,8 +142,8 @@ describe('<Button />', () => {
     it('should render button with default styles - contained appearance, base intent, isDisables: false', () => {
       const { getByTestId } = renderWithProps({});
 
-      expect(getByTestId(buttonId)).toHaveStyleRule('color', 'var(--c-base-w)');
-      expect(getByTestId(buttonId)).toHaveStyleRule('background-color', 'var(--c-base-s)');
+      expect(getByTestId(buttonId)).toHaveStyleRule('color', getColorVariable(Color.BaseWeak), modifier);
+      expect(getByTestId(buttonId)).toHaveStyleRule('background-color', getColorVariable(Color.BaseStrong), modifier);
       expect(getByTestId(buttonId).hasAttribute('disabled')).toBe(false);
     });
   });

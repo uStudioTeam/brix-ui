@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { Variable } from '@ustudio-ui/types/css';
-import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
+import { ColorTuple } from '@ustudio-ui/types/palette';
 
 import type { Theme } from '../theme';
 
@@ -48,14 +48,13 @@ const Palette: FC<{ override?: Partial<Theme['palette']> }> = ({ override }) => 
     prefix: Variable.Color,
     getValue: ({ palette, variable }) => {
       if (override?.[variable]) {
-        return ColorTransformer.toHsl(
+        return ColorTransformer.tupleToColor(
           ColorTransformer.applyShift(
             ColorTransformer.toTuple(
-              override?.[variable.replace(/(-u|-d)$/, '') as keyof typeof override] ||
-                palette[variable.replace(/(-u|-d)$/, '') as keyof typeof palette],
-              ColorSpace.HSL
-            ) as [number, number, number]
-          )(...(secondaryPaletteShifts[variable as keyof typeof secondaryPaletteShifts] as ColorTupleNumber))
+              override?.[variable.replace(/(-up|-down)$/, '') as keyof typeof override] ||
+                palette[variable.replace(/(-up|-down)$/, '') as keyof typeof palette]
+            )
+          )(...(secondaryPaletteShifts[variable as keyof typeof secondaryPaletteShifts] as ColorTuple))
         );
       }
 
