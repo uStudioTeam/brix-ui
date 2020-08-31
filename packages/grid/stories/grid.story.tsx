@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Story } from '@storybook/react';
 
@@ -14,36 +14,59 @@ const Box = styled(Flex).attrs(() => ({
   padding: '1rem',
   align: 'center',
 }))`
-  color: var(--c-base-s);
-  background-color: var(--c-faint-w);
+  color: var(--c-base-strong);
+  background-color: var(--c-faint-weak);
 
-  border: 1px solid var(--c-faint-s-d);
+  border: 1px solid var(--c-faint-strong-down);
 `;
 
-const mapCells = (count: number, content?: (index: number) => ReactNode): ReactElement[] => {
-  return [...new Array(count).keys()].map((_, index) => {
-    return (
-      // eslint-disable-next-line react/no-array-index-key
-      <Cell key={index}>
-        <Box>{content ? content(index) : `One of ${count} columns`}</Box>
-      </Cell>
-    );
-  });
-};
-
 export const Basic: Story = () => {
-  return <Grid>{mapCells(3)}</Grid>;
+  return (
+    <Grid>
+      <Cell>
+        <Box>One of three columns</Box>
+      </Cell>
+
+      <Cell>
+        <Box>One of three columns</Box>
+      </Cell>
+
+      <Cell>
+        <Box>One of three columns</Box>
+      </Cell>
+    </Grid>
+  );
 };
 
 export const MultipleRows: Story = () => {
   return (
     <Grid direction="column" gap="1rem">
       <Cell>
-        <Grid>{mapCells(2)}</Grid>
+        <Grid>
+          <Cell>
+            <Box>One of two columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of two columns</Box>
+          </Cell>
+        </Grid>
       </Cell>
 
       <Cell>
-        <Grid>{mapCells(3)}</Grid>
+        <Grid>
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+        </Grid>
       </Cell>
     </Grid>
   );
@@ -71,11 +94,31 @@ export const Gaps: Story = () => {
   return (
     <Grid direction="column" gap="1rem">
       <Cell>
-        <Grid gap="2rem">{mapCells(3)}</Grid>
+        <Grid gap="2rem">
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of three columns</Box>
+          </Cell>
+        </Grid>
       </Cell>
 
       <Cell>
-        <Grid gap="2rem">{mapCells(2)}</Grid>
+        <Grid gap="2rem">
+          <Cell>
+            <Box>One of two columns</Box>
+          </Cell>
+
+          <Cell>
+            <Box>One of two columns</Box>
+          </Cell>
+        </Grid>
       </Cell>
     </Grid>
   );
@@ -103,11 +146,11 @@ export const Offsets: Story = () => {
       <Cell offset={[1]}>
         <Grid gap="2rem">
           <Cell>
-            <Box>One of three columns</Box>
+            <Box>One of two columns</Box>
           </Cell>
 
           <Cell offset={[2]}>
-            <Box>One of three columns</Box>
+            <Box>One of two columns</Box>
           </Cell>
         </Grid>
       </Cell>
@@ -127,7 +170,15 @@ export const Nesting: Story = () => {
         >
           <Text variant="h3">One of two rows</Text>
 
-          <Grid>{mapCells(2)}</Grid>
+          <Grid>
+            <Cell>
+              <Box>One of two columns</Box>
+            </Cell>
+
+            <Cell>
+              <Box>One of two columns</Box>
+            </Cell>
+          </Grid>
         </Box>
       </Cell>
 
@@ -140,7 +191,15 @@ export const Nesting: Story = () => {
         >
           <Text variant="h3">One of two rows</Text>
 
-          <Grid>{mapCells(2)}</Grid>
+          <Grid>
+            <Cell>
+              <Box>One of two columns</Box>
+            </Cell>
+
+            <Cell>
+              <Box>One of two columns</Box>
+            </Cell>
+          </Grid>
         </Box>
       </Cell>
     </Grid>

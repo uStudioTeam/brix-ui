@@ -18,6 +18,9 @@ export default {
     },
     closeIcon: {},
   },
+  args: {
+    onClose: false,
+  },
 };
 
 export const Basic = ({ onClose, ...props }: TagProps) => {

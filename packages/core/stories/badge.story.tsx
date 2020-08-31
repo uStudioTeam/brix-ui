@@ -35,11 +35,11 @@ export const Basic: Story<BadgeProps> = (args) => {
           height: '50px',
           background: 'grey',
         }}
-      ></div>
+      />
     </Badge>
   );
 };
 
 export const Standalone: Story<BadgeProps> = (args) => {
-  return <Badge {...args} />;
+  return <Badge backgroundColor="accent-strong" {...args} />;
 };

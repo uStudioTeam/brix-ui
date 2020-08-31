@@ -20,8 +20,8 @@ import IRegular from './public/assets/fonts/Inconsolata/Inconsolata-Regular.ttf'
 
 const GlobalStyles = createGlobalStyle`
   body {
-    color: var(--c-base-s);
-    background-color: var(--c-base-w);
+    color: var(--c-base-strong);
+    background-color: var(--c-base-weak);
   }
 `;
 
