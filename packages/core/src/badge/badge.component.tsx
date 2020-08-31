@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 
@@ -14,7 +14,13 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
       {children}
 
       {shouldDisplay && (
-        <Styled.Badge ref={ref} $color={color} $backgroundColor={backgroundColor} {...props}>
+        <Styled.Badge
+          ref={ref}
+          hasChildren={isValidElement(children)}
+          $color={color}
+          $backgroundColor={backgroundColor}
+          {...props}
+        >
           {value}
         </Styled.Badge>
       )}
