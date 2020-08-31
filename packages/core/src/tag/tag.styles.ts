@@ -34,6 +34,8 @@ const CloseContainer = styled.button`
 
     opacity: 0;
 
+    border-radius: 0 2px 2px 0;
+
     transition: all 0.2s;
   }
 `;
