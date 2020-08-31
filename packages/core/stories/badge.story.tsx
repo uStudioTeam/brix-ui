@@ -39,3 +39,7 @@ export const Basic: Story<BadgeProps> = (args) => {
     </Badge>
   );
 };
+
+export const Standalone: Story<BadgeProps> = (args) => {
+  return <Badge {...args} />;
+};

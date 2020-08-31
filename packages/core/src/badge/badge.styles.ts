@@ -28,6 +28,7 @@ const Badge = styled.div<
   Omit<BadgeProps, 'color' | 'backgroundColor' | 'value'> & {
     $color: BadgeProps['color'];
     $backgroundColor: BadgeProps['backgroundColor'];
+    hasChildren: boolean;
   }
 >(
   ({
@@ -37,16 +38,13 @@ const Badge = styled.div<
     verticalPosition = Align.Start,
     horizontalOffset,
     verticalOffset,
+    hasChildren,
     theme,
   }) => {
     const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
     const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
 
     return css`
-      position: absolute;
-      top: ${parsePosition(verticalPosition)};
-      left: ${parsePosition(horizontalPosition)};
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,11 +61,18 @@ const Badge = styled.div<
 
       white-space: nowrap;
 
-      transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
-
       ${font.body.h5};
 
       line-height: 1;
+
+      ${hasChildren &&
+      css`
+        position: absolute;
+        top: ${parsePosition(verticalPosition)};
+        left: ${parsePosition(horizontalPosition)};
+
+        transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
+      `}
     `;
   }
 );

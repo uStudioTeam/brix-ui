@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import ThemeProvider from '@ustudio-ui/theme';
@@ -8,15 +8,39 @@ import Badge from './badge.component';
 
 const badgeId = 'badge';
 
-const renderWithProps = (props: BadgeProps = {}) => {
+const renderWithProps = (props: BadgeProps = {}, children: ReactNode = <div />) => {
   return render(
     <ThemeProvider>
-      <Badge data-testid={badgeId} {...props} />
+      <Badge data-testid={badgeId} {...props}>
+        {children}
+      </Badge>
     </ThemeProvider>
   );
 };
 
 describe('<Badge />', () => {
+  describe('standalone', () => {
+    describe('when children are supplied', () => {
+      it('should render as absolutely positioned element around children', () => {
+        const { getByTestId } = renderWithProps();
+
+        ['position', 'top', 'left', 'transform'].forEach((property) => {
+          expect(getByTestId(badgeId)).toHaveStyleRule(property, expect.any(String));
+        });
+      });
+    });
+
+    describe('when children are missing', () => {
+      it('should render as a standalone element', () => {
+        const { getByTestId } = renderWithProps({}, null);
+
+        ['position', 'top', 'left', 'transform'].forEach((property) => {
+          expect(getByTestId(badgeId)).not.toHaveStyleRule(property);
+        });
+      });
+    });
+  });
+
   describe('position', () => {
     describe('when horizontalPosition value is "start"', () => {
       it('should have property left with value of 0', () => {
@@ -44,7 +68,7 @@ describe('<Badge />', () => {
 
     describe('when horizontalPosition is undefined', () => {
       it('should have property left with value of 100%', () => {
-        const { getByTestId } = renderWithProps({});
+        const { getByTestId } = renderWithProps();
 
         expect(getByTestId(badgeId)).toHaveStyleRule('left', '100%');
       });
