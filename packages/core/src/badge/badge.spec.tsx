@@ -18,6 +18,7 @@ const renderWithProps = (props: BadgeProps = {}, children: ReactNode = <div />) 
   );
 };
 
+// @ToDo: add `transform: translate` into position tests
 describe('<Badge />', () => {
   describe('standalone', () => {
     describe('when children are supplied', () => {
