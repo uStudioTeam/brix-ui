@@ -43,18 +43,18 @@ export const Color = {
   BackgroundBaseInverse: 'bg-base-inverse',
 
   BackgroundFaint: 'bg-faint',
-  BackgroundFaintInverse: 'bg-faint-text-inverse',
+  BackgroundFaintInverse: 'bg-faint-inverse',
 
   TextBase: 'text-base',
   TextBaseInverse: 'text-base-inverse',
 
   TextFaint: 'text-faint',
-  TextFaintInverse: 'text-faint-text-inverse',
+  TextFaintInverse: 'text-faint-inverse',
 
   LineFaint: 'line-faint',
-  LineFaintInverse: 'line-faint-text-inverse',
+  LineFaintInverse: 'line-faint-inverse',
 
   FancyAccent: 'fancy-accent',
   FancyCritical: 'fancy-critical',
-  FancySuccess: 'fancy-stronguccess',
+  FancySuccess: 'fancy-success',
 } as const;

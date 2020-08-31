@@ -13,7 +13,7 @@ import type { Theme, ThemeOverride } from './theme';
 import { defaultTheme } from './default-theme';
 
 const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
-  const finalTheme = useDestructure({ ...merge(theme, defaultTheme) }) as Theme;
+  const finalTheme = { ...merge({ ...defaultTheme }, { ...theme }) } as Theme;
   const {
     typography: { body, article, code },
     breakpoints,
@@ -25,7 +25,7 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
 
       <Reset />
 
-      <Palette override={theme?.palette} />
+      <Palette />
       <Breakpoints {...breakpoints} />
       <Typography {...{ body, article, code }} />
     </SCThemeProvider>

@@ -2,19 +2,8 @@ import React, { FC } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { Variable } from '@ustudio-ui/types/css';
-import { ColorTuple } from '@ustudio-ui/types/palette';
 
-import type { Theme } from '../theme';
-
-import {
-  primaryPalette,
-  secondaryPalette,
-  secondaryPaletteShifts,
-  auxillaryPalette,
-  gradientPalette,
-  ColorsMap,
-  ColorTransformer,
-} from './entity';
+import { primaryPalette, secondaryPalette, auxillaryPalette, gradientPalette, ColorsMap } from './entity';
 import { useVariables } from './use-variables';
 
 const PaletteGlobalStyles = createGlobalStyle<{
@@ -27,7 +16,7 @@ const PaletteGlobalStyles = createGlobalStyle<{
   `};
 `;
 
-const Palette: FC<{ override?: Partial<Theme['palette']> }> = ({ override }) => {
+const Palette: FC = () => {
   const gradientVariables = useVariables({
     from: gradientPalette as ColorsMap,
     prefix: Variable.Gradient,
@@ -46,20 +35,6 @@ const Palette: FC<{ override?: Partial<Theme['palette']> }> = ({ override }) => 
   const secondaryVariables = useVariables({
     from: secondaryPalette as ColorsMap,
     prefix: Variable.Color,
-    getValue: ({ palette, variable }) => {
-      if (override?.[variable]) {
-        return ColorTransformer.tupleToColor(
-          ColorTransformer.applyShift(
-            ColorTransformer.toTuple(
-              override?.[variable.replace(/(-up|-down)$/, '') as keyof typeof override] ||
-                palette[variable.replace(/(-up|-down)$/, '') as keyof typeof palette]
-            )
-          )(...(secondaryPaletteShifts[variable as keyof typeof secondaryPaletteShifts] as ColorTuple))
-        );
-      }
-
-      return palette[variable];
-    },
   });
 
   return (

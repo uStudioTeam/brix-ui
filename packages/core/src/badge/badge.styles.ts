@@ -41,8 +41,12 @@ const Badge = styled.div<
     hasChildren,
     theme,
   }) => {
-    const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-    const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
+    const backgroundColor = ColorTransformer.parseColor(theme, $backgroundColor, Color.FaintWeak);
+    const color = ColorTransformer.parseColor(
+      theme,
+      $color,
+      ColorTransformer.getContrastingColor(theme, backgroundColor)
+    );
 
     return css`
       display: flex;

@@ -1,50 +1,50 @@
-import { darken, getLuminance, hsla, parseToHsl } from 'polished';
+import { darken, getLuminance, hsl, hsla, parseToHsl } from 'polished';
 
 import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import type { Theme } from '@ustudio-ui/theme';
+import { minMax } from '@ustudio-ui/utils/functions';
 
 export class ColorTransformer {
-  public static parseColor(color: string, theme: Theme): string {
-    // `color` can be missing from palette
-    // @ts-ignore
-    return this.stringToColor(theme.palette[color] || color);
+  public static normalizeColor(theme: Theme, color: string): string {
+    // @ts-expect-error
+    return hsla({ alpha: 1, ...parseToHsl(theme.palette[color] || color) });
   }
 
-  public static applyShift(colorTuple: ColorTuple): (...shift: ColorTuple) => ColorTuple {
+  public static parseColor(theme: Theme, color: string | undefined, fallback?: string): string {
+    const normalizedColor = this.normalizeColor(theme, (color || fallback) as string);
+
+    return hsl(parseToHsl(normalizedColor));
+  }
+
+  public static applyShift([hue, saturation, lightness]: ColorTuple): (...shift: ColorTuple) => ColorTuple {
     return (...shift) => {
-      return colorTuple.map((colorValue, index) => {
-        return colorValue + shift[index];
-      }) as ColorTuple;
+      return [
+        [hue, 360],
+        [saturation, 100],
+        [lightness, 100],
+      ].map(([value, max], index) => minMax(0, value + shift[index], max)) as ColorTuple;
     };
   }
 
-  public static getContrastingColor(color: string, theme: Theme): string {
-    return this.isBrightColor(color, theme) ? theme.palette[Color.BaseStrong] : theme.palette[Color.BaseWeak];
-  }
+  public static flattenAlpha(theme: Theme, color: string): string {
+    const normalizedColor = this.normalizeColor(theme, color);
 
-  public static isBrightColor(color: string, theme: Theme): boolean {
-    return getLuminance(this.flattenAlpha(color, theme)) > 0.46;
-  }
-
-  public static toTuple(color: string): ColorTuple {
-    const { hue, saturation, lightness } = parseToHsl(color);
-
-    return [hue, saturation, lightness];
-  }
-
-  public static tupleToColor([hue, saturation, lightness]: ColorTuple, alpha = 1): string {
-    return hsla(hue, saturation / 100, lightness / 100, alpha);
-  }
-
-  public static stringToColor(color: string): string {
-    return hsla({ alpha: 1, ...parseToHsl(color) });
-  }
-
-  public static flattenAlpha(color: string, theme: Theme): string {
     // `alpha` can be undefined
     // @ts-ignore
-    const { alpha: amount = 0 } = parseToHsl(this.parseColor(color, theme));
+    const { alpha: amount = 0 } = parseToHsl(this.parseColor(theme, normalizedColor));
 
-    return darken(amount, color);
+    return darken(amount, normalizedColor);
+  }
+
+  public static getContrastingColor(theme: Theme, color: string): string {
+    const normalizedColor = this.normalizeColor(theme, color);
+
+    return this.isBrightColor(theme, normalizedColor) ? theme.palette[Color.BaseStrong] : theme.palette[Color.BaseWeak];
+  }
+
+  public static isBrightColor(theme: Theme, color: string): boolean {
+    const normalizedColor = this.normalizeColor(theme, color);
+
+    return getLuminance(this.flattenAlpha(theme, normalizedColor)) > 0.46;
   }
 }

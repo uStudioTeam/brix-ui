@@ -1,3 +1,4 @@
+import { hsla } from 'polished';
 import { Variable } from '@ustudio-ui/types/css';
 import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import { getCssVariable, objectKeys } from '@ustudio-ui/utils/functions';
@@ -8,12 +9,16 @@ import type { ColorsMap } from './colors-map';
 
 type Palette<K = Keys<typeof Color>, V = ColorTuple> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
 
+const tupleToColor = ([hue, saturation, lightness]: ColorTuple, alpha = 1): string => {
+  return hsla(hue, saturation / 100, lightness / 100, alpha);
+};
+
 const rawToHsl = <K>(palette: Palette<K>): Palette<K, string> => {
   // TypeScript goes insane here for some reason
   // @ts-ignore
   return objectKeys(palette).reduce((hslPalette, key) => {
     return Object.assign(hslPalette, {
-      [key]: ColorTransformer.tupleToColor(palette[key]),
+      [key]: tupleToColor(palette[key]),
     });
   }, {} as Palette<K, string>);
 };
@@ -132,17 +137,11 @@ export const secondaryPalette = rawToHsl<SecondaryKeys>(
 
 const createFancy = (
   baseColor: Values<typeof Color>,
-  middleColor: [ColorTuple, ColorTuple],
-  topmostColor: [ColorTuple, ColorTuple]
+  [middleFrom, middleTo]: [ColorTuple, ColorTuple],
+  [topmostFrom, topmostTo]: [ColorTuple, ColorTuple]
 ): string => {
-  return `linear-gradient(to right, ${ColorTransformer.tupleToColor(
-    topmostColor[0],
-    0.25
-  )}, ${ColorTransformer.tupleToColor(topmostColor[1], 0.25)}),
-    linear-gradient(to right, ${ColorTransformer.tupleToColor(middleColor[0], 0.5)}, ${ColorTransformer.tupleToColor(
-    middleColor[1],
-    0.5
-  )}),
+  return `linear-gradient(to right, ${tupleToColor(topmostFrom, 0.25)}, ${tupleToColor(topmostTo, 0.25)}),
+    linear-gradient(to right, ${tupleToColor(middleFrom, 0.5)}, ${tupleToColor(middleTo, 0.5)}),
   ${getCssVariable(Variable.Color, baseColor)}`;
 };
 

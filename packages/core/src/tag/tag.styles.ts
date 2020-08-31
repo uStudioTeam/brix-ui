@@ -16,7 +16,7 @@ const CloseIcon = styled(CloseIconComponent)`
 const CloseContainer = styled.button`
   position: relative;
 
-  padding: 4px 8px;
+  padding: 5px 8px 4px;
 
   cursor: pointer;
 
@@ -46,8 +46,12 @@ const Tag = styled.div<
     $backgroundColor: TagProps['backgroundColor'];
   }
 >(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-  const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
+  const backgroundColor = ColorTransformer.parseColor(theme, $backgroundColor, Color.FaintWeak);
+  const color = ColorTransformer.parseColor(
+    theme,
+    $color,
+    ColorTransformer.getContrastingColor(theme, backgroundColor)
+  );
 
   return css`
     display: inline-flex;
@@ -88,7 +92,8 @@ const Tag = styled.div<
 });
 
 const Content = styled.div`
-  padding: 4px 8px 6px;
+  padding: 6px 8px;
+  line-height: 1;
 
   cursor: default;
 `;
