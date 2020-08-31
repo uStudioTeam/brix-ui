@@ -1,139 +1,50 @@
-import { Color, ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
-import { ColorTupleString } from '@ustudio-ui/types/palette/color-tuple';
-import type { Values } from '@ustudio-ui/utils/types';
-import { ColorConverter, defaultPalette } from '@ustudio-ui/theme/palette';
+import { darken, getLuminance, hsla, parseToHsl } from 'polished';
+
+import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import type { Theme } from '@ustudio-ui/theme';
 
-type WithAplhaNumber = [number, number, number, number];
-
-type WithAplhaString = [string, string, string, number];
-
-type ApplicableColorSpace = Values<typeof ColorSpace>;
-
 export class ColorTransformer {
-  private static readonly regExp: Record<ApplicableColorSpace, RegExp> = {
-    [ColorSpace.RGB]: /^rgb\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3})\)$/,
-    [ColorSpace.RGBA]: /^rgba\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3}),\s?(0(\.\d+)?|1(\.0+)?)\)$/,
-    [ColorSpace.HSL]: /^hsl\((\d{1,3}),\s?(\d{1,3})%,\s?(\d{1,3})%\)$/,
-    [ColorSpace.HSLA]: /^hsla\((\d{1,3}),\s?(\d{1,3})%,\s?(\d{1,3})%,\s?(0(\.\d+)?|1(\.0+)?)\)$/,
-    [ColorSpace.HEX]: /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
-    [ColorSpace.HEXA]: /^#[A-Fa-f0-9]{8}$/,
-  };
+  public static parseColor(color: string, theme: Theme): string {
+    // `color` can be missing from palette
+    // @ts-ignore
+    return this.stringToColor(theme.palette[color] || color);
+  }
 
-  public static applyShift(colorTuple: ColorTupleNumber): (...shift: ColorTupleNumber) => ColorTupleNumber {
+  public static applyShift(colorTuple: ColorTuple): (...shift: ColorTuple) => ColorTuple {
     return (...shift) => {
       return colorTuple.map((colorValue, index) => {
         return colorValue + shift[index];
-      }) as ColorTupleNumber;
+      }) as ColorTuple;
     };
   }
 
-  public static getContrastingColor(color: string, theme?: Theme): string {
-    const palette = theme?.palette || defaultPalette;
-
-    return this.getBrightness(color) < 140 ? palette[Color.BaseWeak] : palette[Color.BaseStrong];
+  public static getContrastingColor(color: string, theme: Theme): string {
+    return this.isBrightColor(color, theme) ? theme.palette[Color.BaseStrong] : theme.palette[Color.BaseWeak];
   }
 
-  public static getBrightness(color: string): number {
-    const getRGB = () => {
-      switch (this.getSpace(color)) {
-        case 'hsl':
-        case 'hsla':
-          return ColorConverter.hslToRgb(color);
-        case 'hex':
-          return ColorConverter.hexToRgb(color);
-        default:
-          return color;
-      }
-    };
-
-    const [red, green, blue] = this.toTuple(getRGB(), this.getSpace(getRGB()));
-
-    return Number(Math.sqrt(red ** 2 * 0.241 + green ** 2 * 0.691 + blue ** 2 * 0.068).toFixed(0));
+  public static isBrightColor(color: string, theme: Theme): boolean {
+    return getLuminance(this.flattenAlpha(color, theme)) > 0.46;
   }
 
-  public static validate(value: string, colorSpace: ApplicableColorSpace): void {
-    const applyValidation = (pattern: string) => {
-      if (!this.regExp[colorSpace].test(value)) {
-        console.error(`Invalid ${colorSpace.toUpperCase()} value provided. Must satisfy the pattern \`${pattern}\`.`);
-      }
-    };
+  public static toTuple(color: string): ColorTuple {
+    const { hue, saturation, lightness } = parseToHsl(color);
 
-    switch (colorSpace) {
-      case ColorSpace.HSL: {
-        return applyValidation('hsl(0-255, 0-100%, 0-100%)');
-      }
-      case ColorSpace.HSLA: {
-        return applyValidation('hsl(0-255, 0-100%, 0-100%, 0-1)');
-      }
-      case ColorSpace.RGB: {
-        return applyValidation('rgb(0-255, 0-255, 0-255)');
-      }
-      case ColorSpace.RGBA: {
-        return applyValidation('rgb(0-255, 0-255, 0-255, 0-1)');
-      }
-    }
+    return [hue, saturation, lightness];
   }
 
-  public static getSpace(color: string) {
-    const foundSpace = Object.entries(this.regExp).find(([, expression]) => expression.test(color));
-
-    if (!foundSpace) {
-      console.error(`Invalid color ${color} provided.`);
-    }
-
-    return foundSpace?.[0] as ApplicableColorSpace;
+  public static tupleToColor([hue, saturation, lightness]: ColorTuple, alpha = 1): string {
+    return hsla(hue, saturation / 100, lightness / 100, alpha);
   }
 
-  public static toTuple<V = number>(
-    value: string,
-    colorSpace: ApplicableColorSpace,
-    modifier?: (value: number) => V
-  ): [V, V, V, V?] {
-    const transformedValue = this.getSpace(value) === ColorSpace.HEX ? ColorConverter.hexToHsl(value) : value;
-    const transformedSpace = this.getSpace(value) === ColorSpace.HEX ? ColorSpace.HSL : colorSpace;
-
-    const [, ...tuple] = (transformedValue.match(this.regExp[transformedSpace]) as ColorTupleString).map((value) => {
-      const asNumber = Number(value);
-
-      return modifier ? modifier(asNumber) : asNumber;
-    });
-
-    return tuple as [V, V, V, V?];
+  public static stringToColor(color: string): string {
+    return hsla({ alpha: 1, ...parseToHsl(color) });
   }
 
-  private static fromTuple(
-    ...colorTuple: ColorTupleNumber | ColorTupleString | WithAplhaNumber | WithAplhaString
-  ): string {
-    return colorTuple.join(', ');
-  }
+  public static flattenAlpha(color: string, theme: Theme): string {
+    // `alpha` can be undefined
+    // @ts-ignore
+    const { alpha: amount = 0 } = parseToHsl(this.parseColor(color, theme));
 
-  private static toColorFunction(
-    colorSpace: Values<typeof ColorSpace>,
-    ...colorTuple: ColorTupleNumber | ColorTupleString | WithAplhaNumber | WithAplhaString
-  ): string {
-    return `${colorSpace}(${this.fromTuple(...colorTuple)})`;
-  }
-
-  public static toHsl(colorTuple: ColorTupleNumber): string {
-    return this.toColorFunction(
-      ColorSpace.HSL,
-      ...([`${colorTuple[0]}`, ...colorTuple.slice(1).map((value) => `${value}%`)] as ColorTupleString)
-    );
-  }
-
-  public static toHsla(colorTuple: ColorTupleNumber, aplha: number): string {
-    return this.toColorFunction(
-      ColorSpace.HSLA,
-      ...([`${colorTuple[0]}`, ...colorTuple.slice(1).map((value) => `${value}%`), aplha] as WithAplhaString)
-    );
-  }
-
-  public static toRgb(colorTuple: ColorTupleNumber): string {
-    return this.toColorFunction(ColorSpace.RGB, ...colorTuple);
-  }
-
-  public static toRgba(colorTuple: ColorTupleNumber, aplha: number): string {
-    return this.toColorFunction(ColorSpace.RGBA, ...[...colorTuple, aplha]);
+    return darken(amount, color);
   }
 }
