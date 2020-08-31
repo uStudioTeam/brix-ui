@@ -1,4 +1,4 @@
-import { darken, getLuminance, hsla, parseToHsl, readableColor } from 'polished';
+import { darken, getLuminance, hsla, parseToHsl } from 'polished';
 
 import { Color, ColorTuple } from '@ustudio-ui/types/palette';
 import type { Theme } from '@ustudio-ui/theme';
@@ -19,15 +19,11 @@ export class ColorTransformer {
   }
 
   public static getContrastingColor(color: string, theme: Theme): string {
-    return readableColor(
-      this.flattenAlpha(color, theme),
-      theme.palette[Color.BaseStrong],
-      theme.palette[Color.BaseWeak]
-    );
+    return this.isBrightColor(color, theme) ? theme.palette[Color.BaseStrong] : theme.palette[Color.BaseWeak];
   }
 
   public static isBrightColor(color: string, theme: Theme): boolean {
-    return getLuminance(this.flattenAlpha(color, theme)) > 0.45;
+    return getLuminance(this.flattenAlpha(color, theme)) > 0.46;
   }
 
   public static toTuple(color: string): ColorTuple {
