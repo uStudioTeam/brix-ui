@@ -22,6 +22,11 @@ html {
 }
 
 body {
+  color: var(--c-text-base);
+  background-color: var(--c-background-base);
+  
+  transition: background-color 200ms, color 200ms;
+  
   display: flex;
   flex-direction: column;
   min-height: 100%;

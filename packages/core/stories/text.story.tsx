@@ -12,7 +12,7 @@ export default {
   component: Text,
 };
 
-export const BasicTemplate: Story<Omit<TextProps, 'variant' | 'css'>> = (args) => {
+export const Basic: Story<Omit<TextProps, 'variant' | 'css'>> = (args) => {
   const getTypeName = (typeVariant: Values<typeof TypeVariant>): string => {
     switch (typeVariant) {
       case 'h1':
