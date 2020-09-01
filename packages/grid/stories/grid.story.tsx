@@ -14,10 +14,10 @@ const Box = styled(Flex).attrs(() => ({
   padding: '1rem',
   align: 'center',
 }))`
-  color: var(--c-base-s);
-  background-color: var(--c-faint-w);
+  color: var(--c-base-strong);
+  background-color: var(--c-faint-weak);
 
-  border: 1px solid var(--c-faint-s-d);
+  border: 1px solid var(--c-faint-strong-down);
 `;
 
 const mapCells = (count: number, content?: (index: number) => ReactNode): ReactElement[] => {

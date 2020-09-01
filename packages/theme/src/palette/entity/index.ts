@@ -1,3 +1,3 @@
 export * from './default-palette';
-export * from './color-transformer';
+export * from './color-helper';
 export type { ColorsMap } from './colors-map';

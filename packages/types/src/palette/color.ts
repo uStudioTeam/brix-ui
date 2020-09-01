@@ -3,11 +3,11 @@ export const Color = {
   BaseStrong: 'base-strong',
   BaseStrongDown: 'base-strong-down',
 
-  // BaseWeakUp: 'base-weak-up',
+  BaseWeakUp: 'base-weak-up',
   BaseWeak: 'base-weak',
   BaseWeakDown: 'base-weak-down',
 
-  // FaintStrongUp: 'faint-strong-up',
+  FaintStrongUp: 'faint-strong-up',
   FaintStrong: 'faint-strong',
   FaintStrongDown: 'faint-strong-down',
 
@@ -39,22 +39,9 @@ export const Color = {
   SuccessWeak: 'success-weak',
   SuccessWeakDown: 'success-weak-down',
 
-  BackgroundBase: 'bg-base',
-  BackgroundBaseInverse: 'bg-base-inverse',
-
-  BackgroundFaint: 'bg-faint',
-  BackgroundFaintInverse: 'bg-faint-text-inverse',
+  BackgroundBase: 'background-base',
+  BackgroundFaint: 'background-faint',
 
   TextBase: 'text-base',
-  TextBaseInverse: 'text-base-inverse',
-
   TextFaint: 'text-faint',
-  TextFaintInverse: 'text-faint-text-inverse',
-
-  LineFaint: 'line-faint',
-  LineFaintInverse: 'line-faint-text-inverse',
-
-  FancyAccent: 'fancy-accent',
-  FancyCritical: 'fancy-critical',
-  FancySuccess: 'fancy-stronguccess',
 } as const;

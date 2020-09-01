@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { font } from '@ustudio-ui/theme/typography';
-import { ColorTransformer } from '@ustudio-ui/theme/palette';
 import { Align } from '@ustudio-ui/types/css';
 import { Color } from '@ustudio-ui/types/palette';
 
@@ -41,8 +40,8 @@ const Badge = styled.div<
     hasChildren,
     theme,
   }) => {
-    const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-    const color = $color || ColorTransformer.getContrastingColor(backgroundColor, theme);
+    const backgroundColor = $backgroundColor || theme.palette[Color.BackgroundFaint];
+    const color = $color || theme.colorHelper.getContrastingColor(backgroundColor);
 
     return css`
       display: flex;
