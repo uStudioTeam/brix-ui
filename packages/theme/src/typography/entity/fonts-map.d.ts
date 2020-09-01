@@ -6,9 +6,9 @@ import { FontVariant, FontWeight, TypeVariant } from '@ustudio-ui/types/typograp
 type FontsMap<T = string> = Record<Values<typeof FontVariant>, Record<Values<typeof TypeVariant>, T>>;
 
 export type FontsFacesMap = FontsMap<{
-  url: string;
-  weight: Values<typeof FontWeight>;
-  format?: string;
+  readonly url: string;
+  readonly weight: Values<typeof FontWeight>;
+  readonly format?: string;
 }>;
 
 export type FontsCssMap = Required<FontsMap<FlattenSimpleInterpolation>>;

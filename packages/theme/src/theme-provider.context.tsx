@@ -1,23 +1,49 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
 
-import { useDestructure } from '@ustudio-ui/utils/hooks';
+import type { Values } from '@ustudio-ui/utils/types';
 
 import Breakpoints from './breakpoints';
 import Typography from './typography';
-import Palette from './palette';
+import Palette, { ColorHelper, defaultPalette } from './palette';
 import Reset from './reset';
 
-import type { Theme, ThemeOverride } from './theme';
-import { defaultTheme } from './default-theme';
+import { ThemeMode, defaultTheme, Theme, ThemeOverride } from './entity';
 
 const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
-  const finalTheme = useDestructure({ ...merge(theme, defaultTheme) }) as Theme;
+  const [themeMode, setThemeMode] = useState<Values<typeof ThemeMode>>(theme.mode || ThemeMode.Light);
+
+  const switchMode = useCallback<Theme['switchMode']>(
+    (mode) => {
+      if (mode) {
+        setThemeMode(mode);
+      } else {
+        setThemeMode(themeMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
+      }
+    },
+    [themeMode]
+  );
+
+  const overriddenTheme = {
+    ...merge(
+      { ...defaultTheme, palette: defaultPalette[themeMode] },
+      { ...theme, palette: theme.palette?.[themeMode], mode: themeMode }
+    ),
+  } as Omit<Theme, 'colorHelper' | 'switchMode'>;
+
+  const colorHelper = new ColorHelper(overriddenTheme.palette);
+
+  const finalTheme = {
+    ...overriddenTheme,
+    colorHelper,
+    switchMode,
+  };
+
   const {
     typography: { body, article, code },
     breakpoints,
-  } = useDestructure(finalTheme);
+  } = finalTheme;
 
   return (
     <SCThemeProvider theme={finalTheme}>
@@ -25,7 +51,7 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
 
       <Reset />
 
-      <Palette override={theme?.palette} />
+      <Palette palette={finalTheme.palette} />
       <Breakpoints {...breakpoints} />
       <Typography {...{ body, article, code }} />
     </SCThemeProvider>
