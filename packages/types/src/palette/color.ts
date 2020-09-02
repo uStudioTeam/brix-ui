@@ -39,9 +39,6 @@ export const Color = {
   SuccessWeak: 'success-weak',
   SuccessWeakDown: 'success-weak-down',
 
-  BackgroundBase: 'background-base',
-  BackgroundFaint: 'background-faint',
-
-  TextBase: 'text-base',
-  TextFaint: 'text-faint',
+  TextBaseStrong: 'text-base-strong',
+  TextBaseWeak: 'text-base-weak',
 } as const;

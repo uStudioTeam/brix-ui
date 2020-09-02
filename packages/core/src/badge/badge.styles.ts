@@ -27,12 +27,14 @@ const Badge = styled.div<
   Omit<BadgeProps, 'color' | 'backgroundColor' | 'value'> & {
     $color: BadgeProps['color'];
     $backgroundColor: BadgeProps['backgroundColor'];
+    $value: BadgeProps['value'];
     hasChildren: boolean;
   }
 >(
   ({
     $backgroundColor,
     $color,
+    $value: value = '',
     horizontalPosition = Align.End,
     verticalPosition = Align.Start,
     horizontalOffset,
@@ -40,7 +42,7 @@ const Badge = styled.div<
     hasChildren,
     theme,
   }) => {
-    const backgroundColor = $backgroundColor || theme.palette[Color.BackgroundFaint];
+    const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
     const color = $color || theme.colorHelper.getContrastingColor(backgroundColor);
 
     return css`
@@ -51,7 +53,7 @@ const Badge = styled.div<
       min-width: 16px;
       min-height: 16px;
 
-      padding: 0 4px 2px;
+      padding: 0 ${`${value}`.length > 1 ? 6 : 4}px 2px;
 
       border-radius: 10px;
 

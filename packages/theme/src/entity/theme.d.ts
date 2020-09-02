@@ -2,7 +2,7 @@ import type { Values, With } from '@ustudio-ui/utils/types';
 
 import type { FontsFacesMap } from '../typography';
 import type { BreakpointsMap } from '../breakpoints';
-import { ColorsMap, ColorHelper } from '../palette';
+import type { ColorsMap, ColorHelper } from '../palette';
 
 import { ThemeMode } from './theme-mode';
 
@@ -19,8 +19,8 @@ export interface Theme {
 
   readonly colorHelper: ColorHelper;
 
-  readonly mode: Values<typeof ThemeMode>;
-  switchMode(mode?: Theme['mode']): void;
+  readonly mode: boolean;
+  switchMode(mode?: Values<typeof ThemeMode>): void;
 }
 
 export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'switch'> {
@@ -30,7 +30,7 @@ export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'swi
 
   readonly palette?: Partial<Record<Values<typeof ThemeMode>, Partial<Theme['palette']>>>;
 
-  readonly mode?: Theme['mode'];
+  readonly mode?: Values<typeof ThemeMode>;
 }
 
 export type WithTheme<T = undefined> = With<T, { theme: Theme }>;

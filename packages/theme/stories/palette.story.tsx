@@ -1,10 +1,9 @@
 import React, { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { transparentize } from 'polished';
+import { getLuminance, transparentize } from 'polished';
 import { Story } from '@storybook/react';
 
 import { capitalize, getCssVariable } from '@ustudio-ui/utils/functions';
-
 import { Variable } from '@ustudio-ui/types/css';
 import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
@@ -19,8 +18,9 @@ const Styled = {
     size: 'small' | 'large';
     $color: string;
   }>(({ size, $color: color, theme }) => {
-    const isBright =
-      theme.mode === 'light' ? theme.colorHelper.isBrightColor(color) : !theme.colorHelper.isBrightColor(color);
+    const isBright = theme.mode
+      ? getLuminance(theme.palette[color as keyof typeof theme['palette']]) > 0.91
+      : getLuminance(theme.palette[color as keyof typeof theme['palette']]) < 0.02;
 
     return css`
       position: relative;
@@ -28,7 +28,7 @@ const Styled = {
       background-color: ${getCssVariable(Variable.Color, color)};
 
       border-radius: 2px;
-      border: ${`1px solid ${isBright ? `var(--c-background-faint)` : 'transparent'}`};
+      border: ${`1px solid ${isBright ? `var(--c-faint-weak-up)` : 'transparent'}`};
 
       transition: all 200ms;
 
@@ -58,7 +58,7 @@ const Styled = {
       bottom: calc(100% + 4px);
       left: 50%;
 
-      background-color: var(--c-background-faint);
+      background-color: var(--c-faint-weak);
       border-radius: 2px;
 
       opacity: ${Number(isShown)};

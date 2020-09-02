@@ -46,7 +46,7 @@ const Tag = styled.div<
     $backgroundColor: TagProps['backgroundColor'];
   }
 >(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.BackgroundFaint];
+  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
   const color = $color || theme.colorHelper.getContrastingColor(backgroundColor);
 
   return css`

@@ -2,6 +2,7 @@ import React from 'react';
 import type { Story } from '@storybook/react';
 
 import Badge, { BadgeProps } from '@ustudio-ui/core/badge';
+import Flex from '@ustudio-ui/core/flex';
 
 const positionControl = { type: 'inline-radio', options: ['start', 'center', 'end'] };
 
@@ -28,18 +29,25 @@ export default {
 
 export const Basic: Story<BadgeProps> = (args) => {
   return (
-    <Badge {...args}>
-      <div
-        style={{
-          width: '50px',
-          height: '50px',
-          background: 'grey',
-        }}
-      ></div>
-    </Badge>
+    <Flex>
+      <Badge {...args}>
+        <div
+          style={{
+            width: '32px',
+            height: '32px',
+            background: 'var(--c-accent-strong)',
+            borderRadius: '2px',
+          }}
+        />
+      </Badge>
+    </Flex>
   );
 };
 
 export const Standalone: Story<BadgeProps> = (args) => {
-  return <Badge {...args} />;
+  return (
+    <Flex>
+      <Badge {...args} />
+    </Flex>
+  );
 };

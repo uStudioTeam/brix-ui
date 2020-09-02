@@ -1,17 +1,17 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { transparentize } from 'polished';
 
-import type { WithTheme } from '@ustudio-ui/theme/theme';
-import { ColorTransformer } from '@ustudio-ui/theme/palette';
 import { Color } from '@ustudio-ui/types/palette';
 import type { Values } from '@ustudio-ui/utils/types';
 import { Variable } from '@ustudio-ui/types/css';
 import { getCssVariable } from '@ustudio-ui/utils/functions';
+import type { WithTheme } from '@ustudio-ui/theme/entity';
 
 import type { ButtonProps } from './button.props';
 
 type Intent = NonNullable<ButtonProps['intent']>;
 
-type IntentMixin = (intent: Intent) => FlattenSimpleInterpolation;
+type IntentMixin = (intent: Intent) => (props: WithTheme) => FlattenSimpleInterpolation;
 
 const applyIntentStyle = <S>(intent: Intent, baseStyles: S, intentStyles: S): S => {
   if (intent === 'base') {
@@ -23,7 +23,7 @@ const applyIntentStyle = <S>(intent: Intent, baseStyles: S, intentStyles: S): S 
 
 const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
   return css`0 2px 8px
-      ${ColorTransformer.applyAlpha(theme.palette[color as Values<typeof Color>], alpha)};
+      ${transparentize(1 - alpha, theme.palette[color as Values<typeof Color>])};
   `;
 };
 
@@ -48,9 +48,9 @@ export const disabledButtonMixin = {
   `,
 };
 
-const containedButtonMixin: IntentMixin = (intent) => {
+const containedButtonMixin: IntentMixin = (intent) => () => {
   return css`
-    color: var(--c-base-weak);
+    color: ${applyIntentStyle(intent, 'var(--c-base-weak)', 'var(--c-text-base-weak)')};
 
     &,
     &:active:focus,
@@ -72,7 +72,7 @@ const containedButtonMixin: IntentMixin = (intent) => {
   ` as FlattenSimpleInterpolation;
 };
 
-const outlinedButtonMixin: IntentMixin = (intent) => {
+const outlinedButtonMixin: IntentMixin = (intent) => () => {
   return css`
     background-color: var(--c-base-weak);
 
@@ -104,7 +104,7 @@ const outlinedButtonMixin: IntentMixin = (intent) => {
   ` as FlattenSimpleInterpolation;
 };
 
-const faintButtonMixin: IntentMixin = (intent) => {
+const faintButtonMixin: IntentMixin = (intent) => () => {
   return css`
     color: ${`var(--c-${intent}-strong)`};
 
@@ -123,7 +123,7 @@ const faintButtonMixin: IntentMixin = (intent) => {
     }
 
     &:focus {
-      background-color: ${applyIntentStyle(intent, `var(--c-faint-strong-down)`, `var(--c-${intent}-weak)`)};
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-weak-up)`, `var(--c-${intent}-weak)`)};
     }
 
     &:active {
@@ -134,7 +134,7 @@ const faintButtonMixin: IntentMixin = (intent) => {
   ` as FlattenSimpleInterpolation;
 };
 
-const textButtonMixin: IntentMixin = (intent) => {
+const textButtonMixin: IntentMixin = (intent) => () => {
   return css`
     color: ${`var(--c-${intent}-strong)`};
 
@@ -172,9 +172,7 @@ const textButtonMixin: IntentMixin = (intent) => {
   ` as FlattenSimpleInterpolation;
 };
 
-const mapIntentStyles = (
-  mixin: (intent: Intent) => FlattenSimpleInterpolation
-): Record<Intent, FlattenSimpleInterpolation> => {
+const mapIntentStyles = (mixin: IntentMixin): Record<Intent, FlattenSimpleInterpolation> => {
   return (['base', 'accent', 'critical', 'success'] as Intent[]).reduce((accumulator, key) => {
     return Object.assign(accumulator, { [key]: mixin(key) });
   }, {} as Record<Intent, FlattenSimpleInterpolation>);
