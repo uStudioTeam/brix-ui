@@ -13,7 +13,7 @@ export class ColorHelper {
   }
 
   public getContrastingColor(color: string): string {
-    return this.isBrightColor(color) ? this.palette[Color.BaseStrong] : this.palette[Color.BaseWeak];
+    return this.isBrightColor(color) ? this.palette[Color.TextBaseStrong] : this.palette[Color.TextBaseWeak];
   }
 
   public isBrightColor(color: string): boolean {

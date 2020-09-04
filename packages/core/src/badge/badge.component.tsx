@@ -19,6 +19,7 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
           hasChildren={isValidElement(children)}
           $color={color}
           $backgroundColor={backgroundColor}
+          $value={value}
           {...props}
         >
           {value}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import ThemeProvider, { useTheme } from '@ustudio-ui/theme';
 import { ThemeMode } from '@ustudio-ui/theme/entity';
+import fonts from '@ustudio-ui/fonts';
 
 export const globalTypes = {
   theme: {
@@ -27,7 +28,11 @@ const ThemeSwitcher = ({ context }) => {
 export const decorators = [
   (story, context) => {
     return (
-      <ThemeProvider>
+      <ThemeProvider
+        theme={{
+          typography: fonts,
+        }}
+      >
         {story()}
 
         <ThemeSwitcher context={context} />

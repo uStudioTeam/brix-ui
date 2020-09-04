@@ -1,59 +1,57 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
-
-import type { Values } from '@ustudio-ui/utils/types';
 
 import Breakpoints from './breakpoints';
 import Typography from './typography';
 import Palette, { ColorHelper, defaultPalette } from './palette';
 import Reset from './reset';
 
-import { ThemeMode, defaultTheme, Theme, ThemeOverride } from './entity';
+import { defaultTheme, Theme, ThemeMode, ThemeOverride } from './entity';
+import { useThemeMode } from './hooks';
 
 const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
-  const [themeMode, setThemeMode] = useState<Values<typeof ThemeMode>>(theme.mode || ThemeMode.Light);
+  const [themeMode, switchMode] = useThemeMode(theme);
 
-  const switchMode = useCallback<Theme['switchMode']>(
-    (mode) => {
-      if (mode) {
-        setThemeMode(mode);
-      } else {
-        setThemeMode(themeMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
-      }
-    },
-    [themeMode]
-  );
+  const { typography: overrideTypography = {}, palette: overridePalette = {}, ...override } = theme;
 
-  const overriddenTheme = {
-    ...merge(
-      { ...defaultTheme, palette: defaultPalette[themeMode] },
-      { ...theme, palette: theme.palette?.[themeMode], mode: themeMode }
-    ),
-  } as Omit<Theme, 'colorHelper' | 'switchMode'>;
+  const finalTheme = useMemo<Theme>(() => {
+    if (themeMode !== undefined) {
+      const overriddenTheme = {
+        ...merge(
+          { ...defaultTheme },
+          {
+            ...override,
+            palette: {
+              ...defaultPalette[themeMode],
+              ...(overridePalette[themeMode] || {}),
+            },
+            mode: themeMode === ThemeMode.Light,
+          }
+        ),
+      } as Omit<Theme, 'colorHelper' | 'switchMode'>;
 
-  const colorHelper = new ColorHelper(overriddenTheme.palette);
+      const colorHelper = new ColorHelper(overriddenTheme.palette);
 
-  const finalTheme = {
-    ...overriddenTheme,
-    colorHelper,
-    switchMode,
-  };
+      return {
+        ...overriddenTheme,
+        colorHelper,
+        switchMode,
+      };
+    }
 
-  const {
-    typography: { body, article, code },
-    breakpoints,
-  } = finalTheme;
+    return {} as Theme;
+  }, [themeMode, JSON.stringify(theme)]);
 
-  return (
+  return themeMode === undefined ? null : (
     <SCThemeProvider theme={finalTheme}>
       {children}
 
       <Reset />
 
       <Palette palette={finalTheme.palette} />
-      <Breakpoints {...breakpoints} />
-      <Typography {...{ body, article, code }} />
+      <Breakpoints {...finalTheme.breakpoints} />
+      <Typography {...overrideTypography} />
     </SCThemeProvider>
   );
 };

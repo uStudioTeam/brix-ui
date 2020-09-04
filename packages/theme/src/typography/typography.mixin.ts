@@ -15,7 +15,7 @@ const applyFontFamily = (fontVariants: FontsCssMap): FontsCssMap => {
       [font]: objectKeys(fontVariants[font]).reduce((types, type) => {
         return Object.assign(types, {
           [type]: css`
-            font-family: ${`var(--f-${font})`};
+            font-family: '${`var(--f-${font})`}';
             ${fontVariants[font][type]};
           `,
         });

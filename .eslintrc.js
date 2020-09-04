@@ -71,6 +71,7 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-condition': 'warn',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
 
     'immutable/no-let': 'error',
     'immutable/no-mutation': 'warn',
@@ -113,5 +114,26 @@ module.exports = {
     'no-useless-constructor': 'off',
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
+    'global-require': 'off',
   },
+  overrides: [
+    {
+      files: ['*.story.tsx'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['*.spec.tsx'],
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off',
+
+        'unicorn/consistent-function-scoping': 'off',
+
+        'sonarjs/no-duplicate-string': 'off',
+
+        'immutable/no-let': 'off',
+      },
+    },
+  ],
 };

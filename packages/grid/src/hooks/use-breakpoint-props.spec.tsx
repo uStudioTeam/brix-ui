@@ -1,15 +1,16 @@
 import React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import ThemeProvider, { Theme } from '@ustudio-ui/theme';
-import { defaultTheme } from '@ustudio-ui/theme/default-theme';
+import ThemeProvider from '@ustudio-ui/theme';
+import { defaultTheme } from '@ustudio-ui/theme/entity';
 
 import { useBreakpointProps } from './use-breakpoint-props';
 
-const matchMedia = (minWidth: number = 0) => {
+const matchMedia = (minWidth = 0) => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: (query: any) => {
+      // eslint-disable-next-line unicorn/consistent-function-scoping, @typescript-eslint/no-empty-function
       const mock = () => {};
 
       return {
@@ -45,19 +46,7 @@ const props = {
 const render = () => {
   return renderHook(() => (useBreakpointProps(props) as unknown) as { color: string; currentBreakpoint: number }, {
     wrapper: ({ children }) => {
-      return (
-        <ThemeProvider
-          theme={{
-            typography: {
-              body: {},
-              code: {},
-              article: {},
-            } as Theme['typography'],
-          }}
-        >
-          {children}
-        </ThemeProvider>
-      );
+      return <ThemeProvider>{children}</ThemeProvider>;
     },
   });
 };

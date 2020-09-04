@@ -16,4 +16,6 @@ export interface TextProps extends IntrinsicComponent<TextElement> {
   align?: Values<typeof TextAlign>;
 
   decoration?: Values<typeof TextDecoration>;
+
+  lineHeightCompensation?: boolean | ((variant: NonNullable<TextProps['variant']>) => number);
 }

@@ -46,7 +46,7 @@ const Tag = styled.div<
     $backgroundColor: TagProps['backgroundColor'];
   }
 >(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.BackgroundFaint];
+  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
   const color = $color || theme.colorHelper.getContrastingColor(backgroundColor);
 
   return css`
@@ -88,9 +88,14 @@ const Tag = styled.div<
 });
 
 const Content = styled.div`
-  padding: 4px 8px 6px;
+  padding: 6px 8px;
 
   cursor: default;
+
+  &,
+  & > * {
+    line-height: 1;
+  }
 `;
 
 const Styled = applyDisplayNames({ Tag, Content, CloseContainer, CloseIcon });

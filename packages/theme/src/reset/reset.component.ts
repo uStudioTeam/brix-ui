@@ -22,8 +22,8 @@ html {
 }
 
 body {
-  color: var(--c-text-base);
-  background-color: var(--c-background-base);
+  color: var(--c-base-strong);
+  background-color: var(--c-base-weak);
   
   transition: background-color 200ms, color 200ms;
   
