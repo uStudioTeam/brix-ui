@@ -88,9 +88,14 @@ const Tag = styled.div<
 });
 
 const Content = styled.div`
-  padding: 4px 8px 6px;
+  padding: 6px 8px;
 
   cursor: default;
+
+  &,
+  & > * {
+    line-height: 1;
+  }
 `;
 
 const Styled = applyDisplayNames({ Tag, Content, CloseContainer, CloseIcon });
