@@ -7,7 +7,7 @@ import Text from '@ustudio-ui/core/text';
 import { Grid, Cell } from '@ustudio-ui/grid';
 
 export default {
-  title: 'Data/Grid',
+  title: 'General/Grid',
 };
 
 const Box = styled(Flex).attrs(() => ({

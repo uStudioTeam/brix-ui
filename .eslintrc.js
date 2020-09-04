@@ -115,6 +115,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
     'global-require': 'off',
+    'consistent-return': 'warn',
   },
   overrides: [
     {

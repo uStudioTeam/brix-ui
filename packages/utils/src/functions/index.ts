@@ -1,5 +1,6 @@
 export * from './spread';
 export * from './min-max';
+export * from './try-call';
 export * from './capitalize';
 export * from './object-keys';
 export * from './is-undefined';
