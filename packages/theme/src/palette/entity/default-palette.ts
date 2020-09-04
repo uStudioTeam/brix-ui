@@ -72,13 +72,13 @@ const primaryPalette = {
     [Color.AccentWeak]: '#0C3B64',
     [Color.AccentWeakDown]: '#092B49',
 
-    [Color.SuccessStrongUp]: '#57D039',
-    [Color.SuccessStrong]: '#3BC918',
-    [Color.SuccessStrongDown]: '#33AD15',
+    [Color.SuccessStrongUp]: '#54C837',
+    [Color.SuccessStrong]: '#3CBA1C',
+    [Color.SuccessStrongDown]: '#33A018',
 
-    [Color.SuccessWeakUp]: '#23760E',
-    [Color.SuccessWeak]: '#1E640C',
-    [Color.SuccessWeakDown]: '#164909',
+    [Color.SuccessWeakUp]: '#1E640C',
+    [Color.SuccessWeak]: '#18520A',
+    [Color.SuccessWeakDown]: '#103607',
 
     [Color.CriticalStrongUp]: '#EA8053',
     [Color.CriticalStrong]: '#E6652D',
