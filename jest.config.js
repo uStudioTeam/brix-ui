@@ -1,7 +1,8 @@
 const tsconfig = require('./tsconfig.json');
-const { paths } = tsconfig.compilerOptions;
-
+// eslint-disable-next-line import/order
 const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig);
+
+const { paths } = tsconfig.compilerOptions;
 
 module.exports = {
   testEnvironment: 'jsdom',

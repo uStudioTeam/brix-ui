@@ -19,6 +19,7 @@
     "@svgr/webpack": "^5.4.0",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-react-svg": "^3.0.3",
     "babel-plugin-styled-components": "^1.11.1",

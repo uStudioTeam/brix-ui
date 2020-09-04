@@ -40,11 +40,13 @@ module.exports = {
 
     Object.assign(
       config.resolve.alias,
-      Object.keys(paths).reduce((aliases, path) => {
-        return Object.assign(aliases, {
-          [path.slice(0, -2)]: resolve(__dirname, `../${paths[path][0].slice(2, -2)}`),
-        });
-      }, {})
+      Object.keys(paths)
+        .filter((path) => path.indexOf('*') !== -1)
+        .reduce((aliases, path) => {
+          return Object.assign(aliases, {
+            [path.slice(0, -2)]: resolve(__dirname, `../${paths[path][0].slice(2, -2)}`),
+          });
+        }, {})
     );
 
     return config;

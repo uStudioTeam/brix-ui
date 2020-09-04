@@ -29,21 +29,21 @@ const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): Fl
 
 export const disabledButtonMixin = {
   contained: css`
-    background-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
+    background-color: ${getCssVariable(Variable.Color, Color.FaintWeak)};
 
-    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
+    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
   `,
   outlined: css`
-    border: 1px solid ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
+    border-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
 
-    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
-  `,
-  text: css`
-    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
+    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
   `,
   faint: css`
-    background-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
+    background-color: ${getCssVariable(Variable.Color, Color.FaintWeak)};
 
+    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
+  `,
+  text: css`
     color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
   `,
 };

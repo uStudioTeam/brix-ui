@@ -2,46 +2,19 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider, { Theme } from '@ustudio-ui/theme';
+import ThemeProvider from '@ustudio-ui/theme';
 import { Direction } from '@ustudio-ui/types/css';
+import { matchMedia } from '@ustudio-ui/utils/tests';
 
 import Cell from '../cell';
 import Grid from './grid.component';
 import type { GridProps } from './grid.props';
 
-const matchMedia = (minWidth: number = 0) => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: (query: any) => {
-      const mock = () => {};
-
-      return {
-        matches: query === `screen and (min-width: ${minWidth}px)`,
-        media: query,
-        onchange: null,
-        addListener: mock,
-        removeListener: mock,
-        addEventListener: mock,
-        removeEventListener: mock,
-        dispatchEvent: mock,
-      };
-    },
-  });
-};
-
 const gridId = 'grid';
 
 const renderWithProps = <P extends Partial<GridProps>>(props: P = {} as P) => {
   return render(
-    <ThemeProvider
-      theme={{
-        typography: {
-          body: {},
-          code: {},
-          article: {},
-        } as Theme['typography'],
-      }}
-    >
+    <ThemeProvider>
       <Grid data-testid={gridId} {...props}>
         <Cell />
       </Grid>
@@ -50,9 +23,7 @@ const renderWithProps = <P extends Partial<GridProps>>(props: P = {} as P) => {
 };
 
 describe('<Grid />', () => {
-  beforeEach(() => {
-    matchMedia();
-  });
+  matchMedia();
 
   describe('gap', () => {
     describe('empty value', () => {
@@ -107,15 +78,7 @@ describe('<Grid />', () => {
   describe('areas formatting by direction', () => {
     const renderWithMultipleCells = (direction: GridProps['direction']) => {
       return render(
-        <ThemeProvider
-          theme={{
-            typography: {
-              body: {},
-              code: {},
-              article: {},
-            } as Theme['typography'],
-          }}
-        >
+        <ThemeProvider>
           <Grid data-testid={gridId} direction={direction}>
             <Cell area="cell1" />
 

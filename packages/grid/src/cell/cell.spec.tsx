@@ -2,45 +2,18 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider, { Theme } from '@ustudio-ui/theme';
+import ThemeProvider from '@ustudio-ui/theme';
+import { matchMedia } from '@ustudio-ui/utils/tests';
 
 import Grid from '../grid';
 import Cell from './cell.component';
 import { CellProps } from './cell.props';
 
-const matchMedia = (minWidth: number = 0) => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: (query: any) => {
-      const mock = () => {};
-
-      return {
-        matches: query === `screen and (min-width: ${minWidth}px)`,
-        media: query,
-        onchange: null,
-        addListener: mock,
-        removeListener: mock,
-        addEventListener: mock,
-        removeEventListener: mock,
-        dispatchEvent: mock,
-      };
-    },
-  });
-};
-
 const cellId = 'cell';
 
 const renderWithProps = <P extends Partial<CellProps>>(props: P = {} as P) => {
   return render(
-    <ThemeProvider
-      theme={{
-        typography: {
-          body: {},
-          code: {},
-          article: {},
-        } as Theme['typography'],
-      }}
-    >
+    <ThemeProvider>
       <Grid>
         <Cell data-testid={cellId} {...props} />
       </Grid>
@@ -49,9 +22,7 @@ const renderWithProps = <P extends Partial<CellProps>>(props: P = {} as P) => {
 };
 
 describe('<Cell />', () => {
-  beforeEach(() => {
-    matchMedia();
-  });
+  matchMedia();
 
   describe('template formation', () => {
     describe('size is empty', () => {

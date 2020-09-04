@@ -13,16 +13,18 @@ import { useThemeMode } from './hooks';
 const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
   const [themeMode, switchMode] = useThemeMode(theme);
 
+  const { typography: overrideTypography = {}, palette: overridePalette = {}, ...override } = theme;
+
   const finalTheme = useMemo<Theme>(() => {
     if (themeMode !== undefined) {
       const overriddenTheme = {
         ...merge(
           { ...defaultTheme },
           {
-            ...theme,
+            ...override,
             palette: {
               ...defaultPalette[themeMode],
-              ...(theme.palette?.[themeMode] || {}),
+              ...(overridePalette[themeMode] || {}),
             },
             mode: themeMode === ThemeMode.Light,
           }
@@ -49,7 +51,7 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
 
       <Palette palette={finalTheme.palette} />
       <Breakpoints {...finalTheme.breakpoints} />
-      <Typography {...finalTheme.typography} />
+      <Typography {...overrideTypography} />
     </SCThemeProvider>
   );
 };

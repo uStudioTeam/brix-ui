@@ -28,7 +28,7 @@ const primaryPalette = {
     [Color.AccentStrongDown]: '#409AE8',
 
     [Color.AccentWeakUp]: '#7FBBF0',
-    [Color.AccentWeak]: '#B6D8F6',
+    [Color.AccentWeak]: '#BFDDF7',
     [Color.AccentWeakDown]: '#DBECFB',
 
     [Color.SuccessStrongUp]: '#34B215',
@@ -37,14 +37,14 @@ const primaryPalette = {
 
     [Color.SuccessWeakUp]: '#96F07F',
     [Color.SuccessWeak]: '#C3F6B6',
-    [Color.SuccessWeakDown]: '#E1FBDB',
+    [Color.SuccessWeakDown]: '#D9FAD1',
 
     [Color.CriticalStrongUp]: '#C44B17',
     [Color.CriticalStrong]: '#DB541A',
     [Color.CriticalStrongDown]: '#E87240',
 
     [Color.CriticalWeakUp]: '#F0A17F',
-    [Color.CriticalWeak]: '#F6C9B6',
+    [Color.CriticalWeak]: '#F7D0BF',
     [Color.CriticalWeakDown]: '#FBE4DB',
   },
   dark: {
@@ -64,24 +64,24 @@ const primaryPalette = {
     [Color.FaintWeak]: '#292E32',
     [Color.FaintWeakDown]: '#202427',
 
-    [Color.AccentStrongUp]: '#4DA1EA',
-    [Color.AccentStrong]: '#248BE5',
+    [Color.AccentStrongUp]: '#52A4EA',
+    [Color.AccentStrong]: '#2D90E6',
     [Color.AccentStrongDown]: '#1876C9',
 
     [Color.AccentWeakUp]: '#0E4677',
     [Color.AccentWeak]: '#0C3B64',
     [Color.AccentWeakDown]: '#092B49',
 
-    [Color.SuccessStrongUp]: '#5EE73B',
-    [Color.SuccessStrong]: '#41DB1A',
-    [Color.SuccessStrongDown]: '#36B616',
+    [Color.SuccessStrongUp]: '#57D039',
+    [Color.SuccessStrong]: '#3BC918',
+    [Color.SuccessStrongDown]: '#33AD15',
 
     [Color.SuccessWeakUp]: '#23760E',
     [Color.SuccessWeak]: '#1E640C',
     [Color.SuccessWeakDown]: '#164909',
 
-    [Color.CriticalStrongUp]: '#E97D4E',
-    [Color.CriticalStrong]: '#E55E24',
+    [Color.CriticalStrongUp]: '#EA8053',
+    [Color.CriticalStrong]: '#E6652D',
     [Color.CriticalStrongDown]: '#C94D18',
 
     [Color.CriticalWeakUp]: '#762D0E',

@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
+
 import ThemeProvider from '@ustudio-ui/theme';
+import { matchMedia } from '@ustudio-ui/utils/tests';
 
 import type { BadgeProps } from './badge.props';
 import Badge from './badge.component';
@@ -20,6 +22,8 @@ const renderWithProps = (props: BadgeProps = {}, children: ReactNode = <div />) 
 
 // @ToDo: add `transform: translate` into position tests
 describe('<Badge />', () => {
+  matchMedia();
+
   describe('standalone', () => {
     describe('when children are supplied', () => {
       it('should render as absolutely positioned element around children', () => {

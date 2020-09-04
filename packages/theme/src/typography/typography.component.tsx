@@ -1,21 +1,24 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { capitalize, objectKeys, setCssVariable } from '@ustudio-ui/utils/functions';
+import { capitalize, getCssVariable, objectKeys, objectValues, setCssVariable } from '@ustudio-ui/utils/functions';
+import type { Keys, Values } from '@ustudio-ui/utils/types';
 import { FontVariant } from '@ustudio-ui/types/typography';
+import { Variable } from '@ustudio-ui/types/css';
 
-import { FontsFacesMap } from './entity';
-import type { WithTheme } from '../theme';
+import type { ThemeOverride } from '../entity';
+
+import type { FontFamilyMap } from './entity';
 
 const TypographyGlobalStyles = createGlobalStyle<{
-  variables(props: WithTheme): FlattenSimpleInterpolation;
-  fontFaces(props: WithTheme): FlattenSimpleInterpolation;
+  variables(): FlattenSimpleInterpolation;
+  fontFaces(): FlattenSimpleInterpolation;
 }>`
   :root {
-    ${({ variables, theme }) => variables({ theme })};
-  
-    ${({ fontFaces, theme }) => fontFaces({ theme })};
+    ${({ variables }) => variables()};
   }
+  
+    ${({ fontFaces }) => fontFaces()};
   
   html {
     font-size: 16px;
@@ -37,45 +40,72 @@ const TypographyGlobalStyles = createGlobalStyle<{
   }
 `;
 
-const getFontName = ({ font, theme }: WithTheme<{ font: string }>): string => {
-  return theme.typography[`font${capitalize(font)}` as keyof typeof theme['typography']] as string;
+const getFontName = (variant: Values<typeof FontVariant>): Keys<FontFamilyMap> => {
+  return `font${capitalize(variant)}` as Keys<FontFamilyMap>;
 };
 
-const Typography = (props: FontsFacesMap): JSX.Element => {
-  const fontFaces = useCallback(
-    ({ theme }: WithTheme) => {
-      return objectKeys(props).reduce((fontStyles, font) => {
-        return css`
-          ${fontStyles};
+const Typography = (props: ThemeOverride['typography']): JSX.Element => {
+  const { current: fallbackFonts } = useRef<Record<Values<typeof FontVariant>, string>>({
+    body: 'Sans-Serif',
+    article: 'Serif',
+    code: 'Monotype',
+  });
 
-          ${objectKeys(props?.[font] || {}).reduce((typeStyles, type) => {
-            const { url, format = 'truetype', weight } =
-              props?.[font][type] ?? ({} as typeof props[typeof font][typeof type]);
+  const { current: defaultFonts } = useRef<FontFamilyMap>({
+    fontBody: `'Source Sans Pro'`,
+    fontArticle: `Merriweather`,
+    fontCode: `Inconsolata`,
+  });
 
-            return css`
-              ${typeStyles};
-  
-              @font-face {
-                font-family: '${getFontName({ font, theme })}';
-                font-weight: ${weight};
-                font-display: fallback;
-                
-                src: url('${url}') format('${format}');
+  const fontsNames = useMemo(() => {
+    return objectValues(FontVariant).reduce((names, key) => {
+      return Object.assign(names, {
+        [key]: `${props?.[getFontName(key)] || defaultFonts[getFontName(key)]}, ${fallbackFonts[key]}`,
+      });
+    }, {} as Record<Values<typeof FontVariant>, string>);
+  }, []);
+
+  const fontFaces = useCallback(() => {
+    if (props) {
+      return objectValues(FontVariant).reduce((fontStyles, fontVariant) => {
+        if (props[fontVariant]) {
+          return css`
+            ${fontStyles};
+
+            ${objectKeys(props[fontVariant]).reduce((typeStyles, typeVariant) => {
+              if (props[fontVariant]?.[typeVariant]) {
+                const { url, format = 'truetype', weight } =
+                  props[fontVariant]?.[typeVariant] || ({} as typeof props[typeof fontVariant][typeof typeVariant]);
+
+                return css`
+                  ${typeStyles};
+      
+                  @font-face {
+                    font-family: '${getCssVariable(Variable.Font, fontVariant)}';
+                    font-weight: ${weight};
+                    font-display: fallback;
+                    
+                    src: url('${url}') format('${format}');
+                  }
+                `;
               }
+
+              return typeStyles;
+            }, css``)};
           `;
-          }, css``)};
-        `;
+        }
+
+        return fontStyles;
       }, css``);
-    },
-    [JSON.stringify(props)]
-  );
+    }
 
-  const variables = useCallback(({ theme }: WithTheme) => {
-    return Object.keys(FontVariant).map((key) => {
-      const font = FontVariant[key as keyof typeof FontVariant];
+    return css``;
+  }, [JSON.stringify(props)]);
 
+  const variables = useCallback(() => {
+    return objectValues(FontVariant).map((key) => {
       return css`
-        ${setCssVariable('f', font, `'${getFontName({ font, theme })}'`)};
+        ${setCssVariable('f', key, fontsNames[key])};
       `;
     });
   }, []);

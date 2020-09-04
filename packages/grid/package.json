@@ -27,6 +27,7 @@
     "@types/styled-components": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "babel-jest": "^26.3.0",
     "babel-plugin-styled-components": "^1.10.7",
     "copyfiles": "^2.3.0",
     "eslint": "^7.5.0",

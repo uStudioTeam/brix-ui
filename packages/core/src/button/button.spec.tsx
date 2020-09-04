@@ -2,11 +2,12 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider, { Theme } from '@ustudio-ui/theme';
-import { Values } from '@ustudio-ui/utils/types';
+import ThemeProvider from '@ustudio-ui/theme';
+import type { Values } from '@ustudio-ui/utils/types';
 import { Color } from '@ustudio-ui/types/palette';
 import { getCssVariable } from '@ustudio-ui/utils/functions';
 import { Variable } from '@ustudio-ui/types/css';
+import { matchMedia } from '@ustudio-ui/utils/tests';
 
 import type { ButtonProps } from './button.props';
 import Button from './button.component';
@@ -16,15 +17,7 @@ const getColorVariable = (color: Values<typeof Color>): string => getCssVariable
 
 const renderWithProps = (props: ButtonProps) => {
   return render(
-    <ThemeProvider
-      theme={{
-        typography: {
-          body: {},
-          code: {},
-          article: {},
-        } as Theme['typography'],
-      }}
-    >
+    <ThemeProvider>
       <Button data-testid={buttonId} {...props}>
         Click
       </Button>
@@ -33,6 +26,8 @@ const renderWithProps = (props: ButtonProps) => {
 };
 
 describe('<Button />', () => {
+  matchMedia();
+
   describe('isDisabled', () => {
     describe('when isDisabled: true;', () => {
       const modifier = {
@@ -50,8 +45,8 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'contained' });
 
           [
-            ['background-color', getColorVariable(Color.FaintWeakUp)],
-            ['color', getColorVariable(Color.FaintStrong)],
+            ['background-color', getColorVariable(Color.FaintWeak)],
+            ['color', getColorVariable(Color.FaintStrongDown)],
             ['cursor', 'not-allowed'],
           ].forEach(([property, value]) => {
             expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
@@ -64,8 +59,8 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'outlined' });
 
           [
-            ['color', getColorVariable(Color.FaintStrong)],
-            ['border', `1px solid ${getColorVariable(Color.FaintWeakUp)}`],
+            ['color', getColorVariable(Color.FaintStrongDown)],
+            ['border-color', getColorVariable(Color.FaintWeakUp)],
             ['cursor', 'not-allowed'],
           ].forEach(([property, value]) => {
             expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
@@ -91,8 +86,8 @@ describe('<Button />', () => {
           const { getByTestId } = renderWithProps({ isDisabled: true, appearance: 'faint' });
 
           [
-            ['background-color', getColorVariable(Color.FaintWeakUp)],
-            ['color', getColorVariable(Color.FaintStrong)],
+            ['background-color', getColorVariable(Color.FaintWeak)],
+            ['color', getColorVariable(Color.FaintStrongDown)],
             ['cursor', 'not-allowed'],
           ].forEach(([property, value]) => {
             expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
@@ -114,7 +109,7 @@ describe('<Button />', () => {
 
           [
             ['background-color', getColorVariable(Color.AccentStrong)],
-            ['color', getColorVariable(Color.BaseWeak)],
+            ['color', getColorVariable(Color.TextBaseWeak)],
           ].forEach(([property, value]) => {
             expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
           });
@@ -128,7 +123,7 @@ describe('<Button />', () => {
 
             [
               ['background-color', getColorVariable(Color.AccentStrong)],
-              ['color', getColorVariable(Color.BaseWeak)],
+              ['color', getColorVariable(Color.TextBaseWeak)],
             ].forEach(([property, value]) => {
               expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
             });

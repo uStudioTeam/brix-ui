@@ -1,18 +1,12 @@
 import type { Values, With } from '@ustudio-ui/utils/types';
 
-import type { FontsFacesMap } from '../typography';
 import type { BreakpointsMap } from '../breakpoints';
 import type { ColorsMap, ColorHelper } from '../palette';
+import type { FontsFacesMap, FontFamilyMap } from '../typography';
 
 import { ThemeMode } from './theme-mode';
 
 export interface Theme {
-  readonly typography: {
-    readonly fontBody: string;
-    readonly fontArticle: string;
-    readonly fontCode: string;
-  } & FontsFacesMap;
-
   readonly breakpoints: BreakpointsMap;
 
   readonly palette: ColorsMap;
@@ -24,7 +18,7 @@ export interface Theme {
 }
 
 export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'switch'> {
-  readonly typography?: Partial<Theme['typography']>;
+  readonly typography?: Partial<FontFamilyMap & Partial<FontsFacesMap>>;
 
   readonly breakpoints?: Partial<Theme['breakpoints']>;
 
