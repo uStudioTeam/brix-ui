@@ -6,7 +6,7 @@ import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
 
 export default {
-  title: 'Data/Button',
+  title: 'Form/Button',
   component: Button,
 
   argTypes: {

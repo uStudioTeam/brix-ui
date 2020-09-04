@@ -13,6 +13,7 @@
     "@ustudio-ui/theme": "0.0.1",
     "@ustudio-ui/types": "0.0.1",
     "@ustudio-ui/utils": "0.0.1",
+    "honks": "^0.4.0",
     "polished": "^3.6.5"
   },
   "devDependencies": {

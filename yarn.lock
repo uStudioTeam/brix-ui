@@ -7029,6 +7029,11 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
+honks@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/honks/-/honks-0.4.0.tgz#44119940bc6da78a372f04747887e35d37562daa"
+  integrity sha512-f7EvfFN36vAQ7PKYMMMSAr5tfKjaAIHA7nDV3vU8ppNawCGWGGBGLaWbnYasdDOemtY0k6KbbDy41I4a23u0BA==
+
 hosted-git-info@^2.1.4:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
