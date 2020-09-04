@@ -2,6 +2,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import Button, { ButtonProps } from '@ustudio-ui/core/button';
+import Flex from '@ustudio-ui/core/flex';
+import Text from '@ustudio-ui/core/text';
 
 export default {
   title: 'Data/Button',
@@ -56,8 +58,17 @@ const capitalize = (string: string): string => `${string[0].toUpperCase()}${stri
 
 export const Basic: Story<ButtonProps> = (args) => {
   return (
-    <Button {...args}>
-      {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
-    </Button>
+    <Flex
+      gap={{
+        horizontal: '1rem',
+      }}
+      verticalAlign="center"
+    >
+      <Button {...args}>
+        <Text compensatingLineHeight variant="p">
+          {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
+        </Text>
+      </Button>
+    </Flex>
   );
 };

@@ -12,15 +12,24 @@ const Button = styled.button<
   }
 >(
   ({ intent = 'base', appearance = 'contained', $borderRadius: borderRadius = 'small' }) => css`
-    padding: 2px 16px 4px;
+    padding: 6px 16px;
 
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 
     border-radius: ${borderRadius === 'small' ? 2 : 16}px;
     border: 1px solid transparent;
 
     ${font.body.p};
-    text-align: center;
+    
+    &,
+    & > * {
+      line-height: 1;
+    }
+    
+    & > *:not(:last-child) {
+      margin-right: 12px;
+    }
 
     transition: all 0.2s;
 
