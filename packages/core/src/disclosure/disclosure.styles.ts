@@ -61,6 +61,10 @@ const Summary = styled.button<{
 
     cursor: pointer;
 
+    opacity: 1;
+
+    transition: all 200ms;
+
     &:disabled {
       background-color: var(--c-faint-weak);
 
@@ -72,10 +76,16 @@ const Summary = styled.button<{
       }
     }
 
-    transition: all 200ms;
-
     &:last-child {
       margin-left: 1rem;
+    }
+
+    &:focus {
+      background-color: var(--c-faint-weak-down);
+    }
+
+    &:active {
+      opacity: 0.75;
     }
 
     ${isOpen
