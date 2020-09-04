@@ -26,6 +26,15 @@ export default {
         summary: `'contained'`,
       },
     },
+    borderRadius: {
+      control: {
+        type: 'inline-radio',
+        options: ['small', 'large'],
+      },
+      defaultValue: {
+        summary: `'small'`,
+      },
+    },
     isDisabled: {
       control: 'boolean',
       type: 'function',
@@ -38,6 +47,7 @@ export default {
   args: {
     intent: 'base',
     appearance: 'contained',
+    borderRadius: 'small',
     isDisabled: false,
   },
 } as Meta;

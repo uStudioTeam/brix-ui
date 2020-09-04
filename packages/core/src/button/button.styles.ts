@@ -6,13 +6,17 @@ import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';
 
-const Button = styled.button<ButtonProps>(
-  ({ intent = 'base', appearance = 'contained' }) => css`
-    padding: 3px 16px 4px;
+const Button = styled.button<
+  Omit<ButtonProps, 'borderRadius'> & {
+    $borderRadius: ButtonProps['borderRadius'];
+  }
+>(
+  ({ intent = 'base', appearance = 'contained', $borderRadius: borderRadius = 'small' }) => css`
+    padding: 2px 16px 4px;
 
     display: inline-block;
 
-    border-radius: 2px;
+    border-radius: ${borderRadius === 'small' ? 2 : 16}px;
     border: 1px solid transparent;
 
     ${font.body.p};
