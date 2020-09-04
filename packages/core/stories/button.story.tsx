@@ -65,7 +65,7 @@ export const Basic: Story<ButtonProps> = (args) => {
       verticalAlign="center"
     >
       <Button {...args}>
-        <Text compensatingLineHeight variant="p">
+        <Text lineHeightCompensation variant="p">
           {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
         </Text>
       </Button>

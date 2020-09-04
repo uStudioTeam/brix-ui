@@ -54,7 +54,7 @@ const Text = styled.p<
     $color: color,
     $align: align,
     decoration,
-    compensatingLineHeight,
+    lineHeightCompensation,
   }) => css`
     ${font[appearance][variant]};
 
@@ -63,7 +63,9 @@ const Text = styled.p<
 
     ${parseTextDecoration(decoration)};
 
-    margin-top: ${compensatingLineHeight && `${compensateLineHeight(variant)}px`};
+    margin-top: ${typeof lineHeightCompensation === 'function'
+      ? `${lineHeightCompensation(variant)}px`
+      : lineHeightCompensation && `${compensateLineHeight(variant)}px`};
   `
 );
 
