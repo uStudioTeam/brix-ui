@@ -3,13 +3,37 @@ import React from 'react';
 
 import { Values } from '@ustudio-ui/utils/types';
 import { objectValues } from '@ustudio-ui/utils/functions';
-import { TypeVariant } from '@ustudio-ui/types/typography';
+import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
 
 import Text, { TextProps } from '@ustudio-ui/core/text';
 
 export default {
   title: 'Data/Text',
   component: Text,
+
+  argTypes: {
+    appearance: {
+      control: { type: 'inline-radio', options: objectValues(FontVariant) },
+      description: 'Context of text appearance',
+      defaultValue: {
+        summary: `'${FontVariant.Body}'`,
+      },
+    },
+    align: {
+      control: { type: 'inline-radio', options: objectValues(TextAlign) },
+    },
+    decoration: {
+      control: { type: 'inline-radio', options: objectValues(TextDecoration) },
+    },
+    color: {
+      control: 'color',
+    },
+  },
+
+  args: {
+    appearance: FontVariant.Body,
+    align: TextAlign.Left,
+  },
 };
 
 export const Basic: Story<Omit<TextProps, 'variant' | 'css'>> = (args) => {
