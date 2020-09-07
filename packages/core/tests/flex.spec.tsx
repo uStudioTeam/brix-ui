@@ -4,8 +4,7 @@ import 'jest-styled-components';
 
 import { Align, Direction } from '@ustudio-ui/types/css';
 
-import Flex from './flex.component';
-import { FlexProps } from './flex.props';
+import Flex, { FlexProps } from '../src/flex';
 
 const flexId = 'flex';
 

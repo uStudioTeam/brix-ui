@@ -5,8 +5,7 @@ import 'jest-styled-components';
 import ThemeProvider from '@ustudio-ui/theme';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import Disclosure from './disclosure.component';
-import type { DisclosureProps } from './disclosure.props';
+import Disclosure, { DisclosureProps } from '../src/disclosure';
 
 const disclosureId = 'disclosure';
 

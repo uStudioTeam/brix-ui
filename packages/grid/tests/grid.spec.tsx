@@ -6,9 +6,8 @@ import ThemeProvider from '@ustudio-ui/theme';
 import { Direction } from '@ustudio-ui/types/css';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import Cell from '../cell';
-import Grid from './grid.component';
-import type { GridProps } from './grid.props';
+import Cell from '../src/cell';
+import Grid, { GridProps } from '../src/grid';
 
 const gridId = 'grid';
 

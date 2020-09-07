@@ -9,8 +9,7 @@ import { getCssVariable } from '@ustudio-ui/utils/functions';
 import { Variable } from '@ustudio-ui/types/css';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import type { ButtonProps } from './button.props';
-import Button from './button.component';
+import Button, { ButtonProps } from '../src/button';
 
 const buttonId = 'button';
 const getColorVariable = (color: Values<typeof Color>): string => getCssVariable(Variable.Color, color);

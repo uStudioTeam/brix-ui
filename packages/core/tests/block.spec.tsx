@@ -3,8 +3,7 @@ import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import { css } from 'styled-components';
 
-import Block from './block.component';
-import type { BlockProps } from './block.props';
+import Block, { BlockProps } from '../src/block';
 
 const blockId = 'block';
 

@@ -5,9 +5,8 @@ import 'jest-styled-components';
 import ThemeProvider from '@ustudio-ui/theme';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import Grid from '../grid';
-import Cell from './cell.component';
-import { CellProps } from './cell.props';
+import Grid from '../src/grid';
+import Cell, { CellProps } from '../src/cell';
 
 const cellId = 'cell';
 
