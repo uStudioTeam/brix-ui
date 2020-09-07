@@ -7,7 +7,7 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose },
+  { children, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
@@ -20,13 +20,9 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   }, [isOpen]);
 
   useEffect(() => {
-    if (!internalIsOpen) {
-      tryCall(onOpen);
-    } else {
-      tryCall(onClose);
-    }
+    tryCall(internalIsOpen ? onOpen : onClose);
 
-    tryCall(onChange, !internalIsOpen);
+    tryCall(onChange, internalIsOpen);
   }, [internalIsOpen]);
 
   const [detailsRef, detailsHeight] = useAutoTransition<HTMLDivElement>(
@@ -37,7 +33,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   );
 
   return (
-    <Styled.Disclosure ref={ref} isOpen={internalIsOpen} isDisabled={isDisabled}>
+    <Styled.Disclosure ref={ref} isOpen={internalIsOpen} isDisabled={isDisabled} {...props}>
       <Styled.Summary
         type="button"
         isOpen={internalIsOpen}
