@@ -11,7 +11,7 @@ const primaryPalette = {
     [Color.BaseStrong]: '#131F2B',
     [Color.BaseStrongDown]: '#172735',
 
-    [Color.BaseWeakUp]: '#EEF3F7',
+    [Color.BaseWeakUp]: '#F5F8FA',
     [Color.BaseWeak]: '#F8FAFB',
     [Color.BaseWeakDown]: '#FFFFFF',
 
@@ -19,9 +19,9 @@ const primaryPalette = {
     [Color.FaintStrong]: '#687C8D',
     [Color.FaintStrongDown]: '#8495A4',
 
-    [Color.FaintWeakUp]: '#C8D2DA',
-    [Color.FaintWeak]: '#E0E6EB',
-    [Color.FaintWeakDown]: '#EBF0F4',
+    [Color.FaintWeakUp]: '#DAE1E7',
+    [Color.FaintWeak]: '#E9EDF1',
+    [Color.FaintWeakDown]: '#EEF2F6',
 
     [Color.AccentStrongUp]: '#1773C4',
     [Color.AccentStrong]: '#1A81DB',
