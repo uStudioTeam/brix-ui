@@ -1,17 +1,26 @@
-const styledComponentsConfig = ['styled-components', { displayName: true, preprocess: false }];
-const reactConfig = '@babel/preset-react';
-const inlineSvgConfig = 'react-svg';
-const polishedConfig = 'polished';
+const presets = {
+  env: '@babel/preset-env',
+  react: '@babel/preset-react',
+};
+
+const plugins = {
+  styledComponents: ['styled-components', { displayName: true, preprocess: false }],
+  polished: 'polished',
+  inlineSvg: 'inline-react-svg',
+  runtime: '@babel/plugin-transform-runtime',
+};
 
 const withConfig = (shouldUse, config) => (shouldUse ? [config] : []);
 
-const babelConfig = ({ styledComponents, react, inlineSvg, polished }) => ({
-  presets: [...withConfig(react, reactConfig), '@babel/preset-typescript'],
-  plugins: [
-    ...withConfig(styledComponents, styledComponentsConfig),
-    ...withConfig(inlineSvg, inlineSvgConfig),
-    ...withConfig(polished, polishedConfig),
-  ],
+const applyConfigs = (object, options) => {
+  return Object.keys(object).reduce((configs, key) => {
+    return [...configs, ...withConfig(options[key], object[key])];
+  }, []);
+};
+
+const babelConfig = ({ styledComponents, react, env, inlineSvg, polished, runtime }) => ({
+  presets: [...applyConfigs(presets, { react, env }), '@babel/preset-typescript'],
+  plugins: applyConfigs(plugins, { styledComponents, inlineSvg, polished, runtime }),
 });
 
 module.exports = babelConfig;

@@ -10,10 +10,14 @@ module.exports = {
   roots: Object.values(paths)
     .flatMap(([path]) => path.replace(/\/\*/, ''))
     .filter((path) => !/index.ts$/.test(path)),
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+  preset: 'ts-jest/presets/js-with-babel',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.json',
+      babelConfig: '<rootDir>/babel.config.js',
+    },
   },
+  transformIgnorePatterns: ['node_modules/(?!(honks)/)'],
   testRegex: '.*\\.spec.tsx?$',
   coveragePathIgnorePatterns: ['/node_modules/'],
   coverageThreshold: {
@@ -28,6 +32,9 @@ module.exports = {
   clearMocks: true,
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleDirectories: ['node_modules', '**/node_modules', '**/src'],
-  moduleNameMapper,
+  moduleNameMapper: {
+    ...moduleNameMapper,
+    '\\.(svg)$': '<rootDir>/mocks/empty-module.js',
+  },
   testPathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/node_modules/'],
 };
