@@ -7,7 +7,10 @@
   ],
   "scripts": {
     "storybook": "start-storybook -s ./.storybook/public",
-    "build": "yarn --cwd ./packages/core build",
+    "build": "tsc -b",
+    "format": "prettier --check \"packages/**/*.{ts,tsx}\"",
+    "lint": "eslint --quiet \"packages/**/*.{ts,tsx}\"",
+    "typecheck": "tsc -p ./tsconfig.ci.json",
     "test": "jest"
   },
   "dependencies": {
