@@ -1,23 +1,19 @@
 {
   "name": "@ustudio-ui/types",
   "version": "0.0.1",
+  "scripts": {
+    "tsconfig": "node ../../scripts/typescript.js",
+    "package": "node ../../scripts/package.js",
+    "prebuild": "copyfiles lib",
+    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",
-    "@typescript-eslint/eslint-plugin": "^3.7.1",
-    "@typescript-eslint/parser": "^3.7.1",
-    "eslint": "^7.5.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-immutable": "^1.0.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react-hooks": "^4.0.7",
-    "eslint-plugin-sonarjs": "^0.5.0",
-    "eslint-plugin-unicorn": "^20.1.0",
-    "prettier": "^2.0.5",
     "typescript": "^3.9.7"
   }
 }

@@ -6,6 +6,7 @@
     "target": "esnext",
     "moduleResolution": "node",
     "lib": ["esnext", "dom"],
+    "types": ["jest"],
     "jsx": "react",
     "rootDir": ".",
     "baseUrl": ".",
