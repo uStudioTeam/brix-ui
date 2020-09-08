@@ -10,7 +10,7 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@ustudio-ui/types": "0.0.1"
+    "@ustudio-ui/types": "*"
   },
   "devDependencies": {
     "copyfiles": "^2.3.0",

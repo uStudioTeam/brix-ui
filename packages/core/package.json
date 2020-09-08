@@ -17,10 +17,10 @@
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
   },
   "dependencies": {
-    "@ustudio-ui/contexts": "0.0.1",
-    "@ustudio-ui/theme": "0.0.1",
-    "@ustudio-ui/types": "0.0.1",
-    "@ustudio-ui/utils": "0.0.1",
+    "@ustudio-ui/contexts": "*",
+    "@ustudio-ui/theme": "*",
+    "@ustudio-ui/types": "*",
+    "@ustudio-ui/utils": "*",
     "honks": "^0.4.0"
   },
   "devDependencies": {

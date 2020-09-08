@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@ustudio-ui/types": "0.0.1"
+    "@ustudio-ui/types": "*"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",
