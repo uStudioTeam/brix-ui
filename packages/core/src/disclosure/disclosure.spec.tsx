@@ -5,7 +5,8 @@ import 'jest-styled-components';
 import ThemeProvider from '@ustudio-ui/theme';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import Disclosure, { DisclosureProps } from '../src/disclosure';
+import Disclosure from './disclosure.component';
+import type { DisclosureProps } from './disclosure.props';
 
 const disclosureId = 'disclosure';
 
@@ -68,7 +69,6 @@ describe('<Disclosure />', () => {
     });
   });
 
-  /* These fail due to empty JSDOM rendering
   describe('state change callbacks', () => {
     describe('onChange', () => {
       it('should call `onChange` on each open state change', () => {
@@ -127,5 +127,5 @@ describe('<Disclosure />', () => {
         });
       });
     });
-  }); */
+  });
 });
