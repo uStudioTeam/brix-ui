@@ -1,6 +1,8 @@
 {
   "name": "@ustudio-ui/fonts",
   "version": "0.0.1",
+  "description": "Default fonts acceptable by @ustudio-ui theme",
+  "keywords": ["fonts", "ttf", "ui", "typography", "font-face"],
   "scripts": {
     "tsconfig": "node ../../scripts/typescript.js",
     "package": "node ../../scripts/package.js",

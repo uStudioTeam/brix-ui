@@ -1,6 +1,15 @@
 {
   "name": "@ustudio-ui/core",
   "version": "0.0.1",
+  "description": "React UI components library by uStudio Company",
+  "keywords": [
+    "library",
+    "components",
+    "ui",
+    "styled-components",
+    "design",
+    "design system"
+  ],
   "scripts": {
     "tsconfig": "node ../../scripts/typescript.js",
     "package": "node ../../scripts/package.js",

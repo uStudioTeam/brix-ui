@@ -1,6 +1,8 @@
 {
   "name": "@ustudio-ui/theme",
   "version": "0.0.1",
+  "description": "Theme package providing light and dark modes as well as css/js variables and helpers used in theming",
+  "keywords": ["theme", "ui", "light mode", "dark mode", "css", "styled-components", "css-in-js"],
   "scripts": {
     "tsconfig": "node ../../scripts/typescript.js",
     "package": "node ../../scripts/package.js",

@@ -1,6 +1,8 @@
 {
   "name": "@ustudio-ui/grid",
   "version": "0.0.1",
+  "description": "React grid system based on CSS-Grid module",
+  "keywords": ["css-grid", "grid"],
   "scripts": {
     "tsconfig": "node ../../scripts/typescript.js",
     "package": "node ../../scripts/package.js",
