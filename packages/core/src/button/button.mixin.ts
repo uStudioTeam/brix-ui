@@ -22,9 +22,7 @@ const applyIntentStyle = <S>(intent: Intent, baseStyles: S, intentStyles: S): S 
 };
 
 const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
-  return css`0 2px 8px
-      ${transparentize(1 - alpha, theme.palette[color as Values<typeof Color>])};
-  `;
+  return css`0 2px 8px ${transparentize(1 - alpha, theme.palette[color as Values<typeof Color>])};`;
 };
 
 export const disabledButtonMixin = {
