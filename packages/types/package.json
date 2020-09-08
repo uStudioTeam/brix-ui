@@ -1,7 +1,6 @@
 {
   "name": "@ustudio-ui/types",
   "version": "0.0.1",
-  "private": true,
   "devDependencies": {
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",

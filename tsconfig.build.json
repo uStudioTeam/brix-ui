@@ -27,10 +27,10 @@
       "path": "packages/theme/tsconfig.build.json"
     },
     {
-      "path": "packages/types"
+      "path": "packages/types/tsconfig.build.json"
     },
     {
-      "path": "packages/utils"
+      "path": "packages/utils/tsconfig.build.json"
     }
   ]
 }

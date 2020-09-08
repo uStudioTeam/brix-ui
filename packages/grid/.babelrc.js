@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('../../babel')({ classProperties: true }),
+  ...require('../../scripts/babel')({ classProperties: true }),
 };

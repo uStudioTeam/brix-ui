@@ -17,10 +17,10 @@
       "path": "../theme/tsconfig.build.json"
     },
     {
-      "path": "../types"
+      "path": "../types/tsconfig.build.json"
     },
     {
-      "path": "../utils"
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }
