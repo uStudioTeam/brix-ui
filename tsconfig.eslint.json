@@ -5,5 +5,5 @@
     "declaration": false,
     "emitDeclarationOnly": false
   },
-  "include": ["*.js", "./packages/theme/globals.d.ts"]
+  "include": ["*.js"]
 }
