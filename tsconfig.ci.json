@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.json",
+  "exclude": ["packages/*/lib"],
   "compilerOptions": {
     "noEmit": true
   }
