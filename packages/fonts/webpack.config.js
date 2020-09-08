@@ -1,11 +1,12 @@
-const path = require('path');
+const { resolve } = require('path');
+const pathsToWebpackAlias = require('../../scripts/paths-to-webpack-alias');
 
 module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'lib'),
+    path: resolve(__dirname, 'lib'),
   },
   module: {
     rules: [
@@ -25,5 +26,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts'],
+    alias: pathsToWebpackAlias(),
   },
 };

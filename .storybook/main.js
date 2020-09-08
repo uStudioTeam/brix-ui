@@ -1,10 +1,4 @@
-const { resolve } = require('path');
-
-const tsconfig = require('../tsconfig.json');
-
-const {
-  compilerOptions: { paths },
-} = tsconfig;
+const pathsToWebpackAlias = require('../scripts/paths-to-webpack-alias');
 
 module.exports = {
   stories: ['../packages/**/*.story.tsx'],
@@ -38,16 +32,7 @@ module.exports = {
 
     config.resolve.modules = ['node_modules'];
 
-    Object.assign(
-      config.resolve.alias,
-      Object.keys(paths)
-        .filter((path) => path.indexOf('*') !== -1)
-        .reduce((aliases, path) => {
-          return Object.assign(aliases, {
-            [path.slice(0, -2)]: resolve(__dirname, `../${paths[path][0].slice(2, -2)}`),
-          });
-        }, {})
-    );
+    Object.assign(config.resolve.alias, pathsToWebpackAlias());
 
     return config;
   },
