@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "storybook": "start-storybook -s ./.storybook/public",
+    "start": "start-storybook -s ./.storybook/public",
     "format": "prettier --check \"packages/**/*.{ts,tsx}\"",
     "lint": "eslint --quiet --color \"packages/**/*.{ts,tsx}\"",
     "typecheck": "tsc -p ./tsconfig.ci.json",

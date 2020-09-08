@@ -1,16 +1,8 @@
 {
   "name": "@ustudio-ui/types",
   "version": "0.0.1",
-  "scripts": {
-    "tsconfig": "node ../../scripts/typescript.js",
-    "prebuild": "copyfiles lib",
-    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
-  },
+  "private": true,
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-typescript": "^7.10.4",
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",
     "typescript": "^3.9.7"

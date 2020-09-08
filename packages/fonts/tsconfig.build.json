@@ -8,7 +8,7 @@
   },
   "references": [
     {
-      "path": "../types/tsconfig.build.json"
+      "path": "../types"
     }
   ]
 }
