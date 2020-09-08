@@ -19,7 +19,7 @@ const applyConfigs = (object, options) => {
   }, []);
 };
 
-const babelConfig = (options = {}) => {
+module.exports = (options = {}) => {
   const {
     styledComponents = true,
     react = true,
@@ -36,5 +36,3 @@ const babelConfig = (options = {}) => {
     ignore: ['src/**/*.d.ts'],
   };
 };
-
-module.exports = babelConfig;
