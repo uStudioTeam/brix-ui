@@ -4,6 +4,9 @@
   "scripts": {
     "build": "webpack"
   },
+  "dependencies": {
+    "@ustudio-ui/types": "0.0.1"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",

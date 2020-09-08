@@ -1,22 +1,23 @@
 {
   "extends": "../../tsconfig.build.json",
+  "include": ["src", "assets/index.d.ts"],
   "compilerOptions": {
+    "rootDir": "src",
     "declarationDir": "lib",
-    "rootDir": "src"
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
   },
-  "include": ["src"],
   "references": [
     {
-      "path": "../contexts"
+      "path": "../contexts/tsconfig.build.json"
     },
     {
-      "path": "../theme"
+      "path": "../theme/tsconfig.build.json"
     },
     {
-      "path": "../types"
+      "path": "../types/tsconfig.build.json"
     },
     {
-      "path": "../utils"
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

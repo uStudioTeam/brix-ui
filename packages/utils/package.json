@@ -1,6 +1,9 @@
 {
   "name": "@ustudio-ui/utils",
   "version": "0.0.1",
+  "dependencies": {
+    "@ustudio-ui/types": "0.0.1"
+  },
   "devDependencies": {
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",

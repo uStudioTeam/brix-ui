@@ -1,22 +1,26 @@
 {
   "extends": "../../tsconfig.build.json",
-  "compilerOptions": {
-    "declarationDir": "lib",
-    "rootDir": "src"
-  },
   "include": ["src"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "declarationDir": "lib",
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
+  },
   "references": [
     {
-      "path": "../contexts"
+      "path": "../contexts/tsconfig.build.json"
     },
     {
-      "path": "../theme"
+      "path": "../core/tsconfig.build.json"
     },
     {
-      "path": "../types"
+      "path": "../theme/tsconfig.build.json"
     },
     {
-      "path": "../utils"
+      "path": "../types/tsconfig.build.json"
+    },
+    {
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

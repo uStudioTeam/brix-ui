@@ -1,11 +1,14 @@
 {
+  "include": ["packages/**/*"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES2019",
+    "target": "esnext",
     "moduleResolution": "node",
     "lib": ["esnext", "dom"],
-    "declaration": true,
-    "emitDeclarationOnly": true,
+    "jsx": "react",
+    "rootDir": ".",
+    "baseUrl": ".",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,10 +19,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": false,
-    "composite": true,
-    "jsx": "react",
-    "baseUrl": ".",
     "paths": {
       "@ustudio-ui/theme/*": ["packages/theme/src/*"],
       "@ustudio-ui/theme": ["packages/theme/src/index.ts"],
@@ -32,6 +31,5 @@
       "@ustudio-ui/fonts/*": ["packages/fonts/src/*"],
       "@ustudio-ui/fonts": ["packages/fonts/src/index.ts"]
     }
-  },
-  "exclude": ["node_modules", "lib"]
+  }
 }

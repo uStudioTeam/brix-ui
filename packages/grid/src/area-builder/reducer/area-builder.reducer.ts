@@ -1,7 +1,8 @@
 import type { Reducer } from 'react';
 
-import type { AreaBuilderAction } from '../actions';
+import { objectKeys } from '@ustudio-ui/utils/functions';
 
+import type { AreaBuilderAction } from '../actions';
 import type { AreaBuilderState } from './area-builder-state';
 
 const repeat = (string: string, times: number | undefined): string[] => {
@@ -9,7 +10,7 @@ const repeat = (string: string, times: number | undefined): string[] => {
     return [];
   }
 
-  return Array.from(Array(times).keys()).map(() => string);
+  return [...new Array(times).keys()].map(() => string);
 };
 
 const formatSize = (area: string, size: number | undefined): string[] => {
@@ -25,31 +26,27 @@ const formatSize = (area: string, size: number | undefined): string[] => {
 };
 
 export const areaBuilderReducer: Reducer<AreaBuilderState, AreaBuilderAction> = (state, action) => {
-  switch (action.type) {
-    case 'mount_cell': {
-      const { payload } = action;
+  const { payload } = action;
 
-      const cells = {
-        ...state.cells,
-        [payload.id]: payload,
-      };
+  const cells = {
+    ...state.cells,
+    [payload.id]: payload,
+  };
 
-      const areas = Object.keys(cells).reduce((areas, key) => {
-        const { size = 1, offset } = cells[key];
-        const [offsetBefore, offsetAfter] = offset || [];
+  const areas = objectKeys(cells).reduce((nextAreas, key) => {
+    const { size = 1, offset } = cells[key];
+    const [offsetBefore, offsetAfter] = offset || [];
 
-        return [...areas, ...[...repeat('.', offsetBefore), ...formatSize(key, size), ...repeat('.', offsetAfter)]];
-      }, [] as string[]);
+    return [
+      ...nextAreas,
+      ...[...repeat('.', offsetBefore), ...formatSize(key as string, size), ...repeat('.', offsetAfter)],
+    ];
+  }, [] as string[]);
 
-      return {
-        ...state,
-        areas,
-        cells,
-        fractionsCount: areas.length,
-      };
-    }
-    default: {
-      return state;
-    }
-  }
+  return {
+    ...state,
+    areas,
+    cells,
+    fractionsCount: areas.length,
+  };
 };

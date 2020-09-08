@@ -8,7 +8,15 @@ module.exports = {
   testEnvironment: 'jsdom',
   rootDir: './',
   roots: Object.values(paths)
-    .flatMap(([path]) => path.replace(/\/\*/, ''))
+    .flatMap(([prevPath]) => {
+      const path = prevPath.replace(/\/\*/, '');
+
+      if (['core', 'grid'].includes(path.split('/')[1])) {
+        return [path, path.replace(/src/, 'tests')];
+      }
+
+      return path;
+    })
     .filter((path) => !/index.ts$/.test(path)),
   preset: 'ts-jest/presets/js-with-babel',
   globals: {

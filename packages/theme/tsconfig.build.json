@@ -1,16 +1,17 @@
 {
   "extends": "../../tsconfig.build.json",
+  "include": ["src", "../../globals.d.ts"],
   "compilerOptions": {
+    "rootDir": "src",
     "declarationDir": "lib",
-    "rootDir": "src"
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
   },
-  "include": ["src"],
   "references": [
     {
-      "path": "../types"
+      "path": "../types/tsconfig.build.json"
     },
     {
-      "path": "../utils"
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

@@ -2,7 +2,6 @@
   "name": "@ustudio-ui/core",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "rimraf lib",
     "copy": "copyfiles package.json README.md LICENSE lib",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files",
     "build": "npm-run-all -p copy build:js"
