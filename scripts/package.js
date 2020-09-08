@@ -9,6 +9,17 @@ const meta = {
   license: 'MIT',
 };
 
+const engineInfo = {
+  browserslist: {
+    production: ['edge >= 14', 'firefox >= 52', 'chrome >= 49', 'safari >= 10'],
+    development: ['last 1 chrome version', 'last 1 firefox version', 'last 1 safari version'],
+    ssr: ['node >= 12'],
+  },
+  engines: {
+    node: '>=12',
+  },
+};
+
 fromTemplate(
   fileName,
   ({ scripts: _s, name, version, keywords = [], ...template }) => {
@@ -18,6 +29,7 @@ fromTemplate(
       ...meta,
       keywords: ['react', 'typescript', ...keywords],
       ...template,
+      ...engineInfo,
     };
   },
   fileName
