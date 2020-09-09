@@ -35,6 +35,9 @@ module.exports = () => {
           keywords: ['react', 'typescript', ...keywords],
           ...packageJson,
           ...engineInfo,
+          publishConfig: {
+            access: 'public',
+          },
         },
         null,
         2
