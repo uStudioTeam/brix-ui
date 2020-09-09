@@ -37,7 +37,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
-        directory: resolve(__dirname, 'tsconfig.json'),
+        project: resolve(__dirname, 'tsconfig.json'),
       },
       alias: {
         extensions: ['.ts', '.tsx'],
@@ -84,6 +84,7 @@ module.exports = {
 
     'prettier/prettier': 'warn',
 
+    'unicorn/consistent-function-scoping': 'warn',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',
@@ -105,6 +106,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'warn',
     'react/default-props-match-prop-types': 'warn',
+
+    'sonarjs/no-duplicate-string': 'warn',
 
     'no-process-env': 'off',
     'id-length': ['warn', { exceptions: ['_'] }],

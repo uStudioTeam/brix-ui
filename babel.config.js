@@ -1,8 +1,4 @@
-module.exports = require('./babel')({
-  styledComponents: true,
-  react: true,
-  env: true,
+module.exports = require('./scripts/babel')({
   inlineSvg: true,
-  polished: true,
   runtime: true,
 });

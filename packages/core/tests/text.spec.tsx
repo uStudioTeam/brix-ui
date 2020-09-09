@@ -4,8 +4,7 @@ import 'jest-styled-components';
 
 import { TextDecoration } from '@ustudio-ui/types/typography';
 
-import Text from './text.component';
-import type { TextProps } from './text.props';
+import Text, { TextProps } from '../src/text';
 
 const textId = 'text';
 

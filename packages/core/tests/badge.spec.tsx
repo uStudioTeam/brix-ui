@@ -5,8 +5,7 @@ import 'jest-styled-components';
 import ThemeProvider from '@ustudio-ui/theme';
 import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import type { BadgeProps } from './badge.props';
-import Badge from './badge.component';
+import Badge, { BadgeProps } from '../src/badge';
 
 const badgeId = 'badge';
 

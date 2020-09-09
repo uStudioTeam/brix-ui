@@ -1,0 +1,36 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [],
+  "compilerOptions": {
+    "declarationDir": "lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "composite": true,
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
+  },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.story.tsx"],
+  "include": [],
+  "references": [
+    {
+      "path": "packages/contexts/tsconfig.build.json"
+    },
+    {
+      "path": "packages/core/tsconfig.build.json"
+    },
+    {
+      "path": "packages/fonts/tsconfig.build.json"
+    },
+    {
+      "path": "packages/grid/tsconfig.build.json"
+    },
+    {
+      "path": "packages/theme/tsconfig.build.json"
+    },
+    {
+      "path": "packages/types/tsconfig.build.json"
+    },
+    {
+      "path": "packages/utils/tsconfig.build.json"
+    }
+  ]
+}

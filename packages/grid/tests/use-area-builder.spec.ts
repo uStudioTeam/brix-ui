@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useAreaBuilder } from './use-area-builder';
+import { useAreaBuilder } from '../src/area-builder';
 
 describe('useAreaBuilder', () => {
   describe('mount_cell', () => {

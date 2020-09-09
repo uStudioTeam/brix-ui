@@ -1,11 +1,15 @@
 {
+  "include": ["packages/**/*"],
+  "exclude": ["node_modules", "packages/*/lib"],
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES2019",
+    "target": "esnext",
     "moduleResolution": "node",
     "lib": ["esnext", "dom"],
-    "declaration": true,
-    "emitDeclarationOnly": true,
+    "types": ["jest"],
+    "jsx": "react",
+    "rootDir": ".",
+    "baseUrl": ".",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,21 +20,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": false,
-    "jsx": "react",
-    "baseUrl": ".",
     "paths": {
-      "@ustudio-ui/theme/*": ["./packages/theme/src/*"],
-      "@ustudio-ui/theme": ["./packages/theme/src/index.ts"],
-      "@ustudio-ui/utils/*": ["./packages/utils/src/*"],
-      "@ustudio-ui/core/*": ["./packages/core/src/*"],
-      "@ustudio-ui/types/*": ["./packages/types/src/*"],
-      "@ustudio-ui/contexts/*": ["./packages/contexts/src/*"],
-      "@ustudio-ui/grid/*": ["./packages/grid/src/*"],
-      "@ustudio-ui/grid": ["./packages/grid/src/index.ts"],
-      "@ustudio-ui/fonts/*": ["./packages/fonts/src/*"],
-      "@ustudio-ui/fonts": ["./packages/fonts/src/index.ts"]
+      "@ustudio-ui/theme/*": ["packages/theme/src/*"],
+      "@ustudio-ui/theme": ["packages/theme/src/index.ts"],
+      "@ustudio-ui/utils/*": ["packages/utils/src/*"],
+      "@ustudio-ui/core/*": ["packages/core/src/*"],
+      "@ustudio-ui/types/*": ["packages/types/src/*"],
+      "@ustudio-ui/contexts/*": ["packages/contexts/src/*"],
+      "@ustudio-ui/grid/*": ["packages/grid/src/*"],
+      "@ustudio-ui/grid": ["packages/grid/src/index.ts"],
+      "@ustudio-ui/fonts/*": ["packages/fonts/src/*"],
+      "@ustudio-ui/fonts": ["packages/fonts/src/index.ts"]
     }
-  },
-  "include": ["./packages/**/*"]
+  }
 }

@@ -44,6 +44,8 @@ const Icon = styled(ChevronIcon)`
   width: 10px;
   height: 6px;
 
+  justify-self: flex-end;
+
   transition: transform 200ms;
 `;
 
@@ -108,12 +110,8 @@ const Summary = styled.button<{
   `
 );
 
-const Details = styled.div<{
-  $height: string;
-}>(
-  ({ $height: height }) => css`
-    height: ${height};
-
+const Details = styled.div(
+  () => css`
     background-color: var(--c-base-weak);
 
     overflow-y: hidden;

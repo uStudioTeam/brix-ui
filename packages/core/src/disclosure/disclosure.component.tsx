@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useAutoTransition from 'honks/use-auto-transition';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
@@ -11,18 +11,23 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   ref
 ) {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
+  const hasChanged = useRef(false);
 
   // @ToDo: this should become smth like `useControlled`
   useEffect(() => {
     if (isOpen !== undefined) {
-      setOpen(!internalIsOpen);
+      hasChanged.current = true;
+
+      setOpen(isOpen);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    tryCall(internalIsOpen ? onOpen : onClose);
+    if (hasChanged.current) {
+      tryCall(internalIsOpen ? onOpen : onClose);
 
-    tryCall(onChange, internalIsOpen);
+      tryCall(onChange, internalIsOpen);
+    }
   }, [internalIsOpen]);
 
   const [detailsRef, detailsHeight] = useAutoTransition<HTMLDivElement>(
@@ -40,6 +45,8 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         disabled={isDisabled}
         aria-disabled={isDisabled}
         onClick={() => {
+          hasChanged.current = true;
+
           setOpen(!internalIsOpen);
         }}
       >
@@ -48,7 +55,11 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         {applyPolymorphicFunctionProp(icon, { isOpen: !internalIsOpen, isDisabled }) || <Styled.Icon />}
       </Styled.Summary>
 
-      <Styled.Details $height={detailsHeight}>
+      <Styled.Details
+        style={{
+          height: detailsHeight,
+        }}
+      >
         <div ref={detailsRef}>{children}</div>
       </Styled.Details>
     </Styled.Disclosure>

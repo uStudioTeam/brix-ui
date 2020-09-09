@@ -3,29 +3,9 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import ThemeProvider from '@ustudio-ui/theme';
 import { defaultTheme } from '@ustudio-ui/theme/entity';
+import { matchMedia } from '@ustudio-ui/utils/tests';
 
-import { useBreakpointProps } from './use-breakpoint-props';
-
-const matchMedia = (minWidth = 0) => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: (query: any) => {
-      // eslint-disable-next-line unicorn/consistent-function-scoping, @typescript-eslint/no-empty-function
-      const mock = () => {};
-
-      return {
-        matches: query === `screen and (min-width: ${minWidth}px)`,
-        media: query,
-        onchange: null,
-        addListener: mock,
-        removeListener: mock,
-        addEventListener: mock,
-        removeEventListener: mock,
-        dispatchEvent: mock,
-      };
-    },
-  });
-};
+import { useBreakpointProps } from '../src/hooks';
 
 const props = {
   color: 'red',
@@ -52,9 +32,7 @@ const render = () => {
 };
 
 describe('useBreakpointProps', () => {
-  beforeEach(() => {
-    matchMedia();
-  });
+  matchMedia();
 
   describe('when no breakpoints match', () => {
     let result: ReturnType<typeof render>['result'];

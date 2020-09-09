@@ -6,6 +6,6 @@ export interface TagProps extends IntrinsicComponent<HTMLDivElement> {
   backgroundColor?: string;
   color?: string;
 
-  onClose?(): void;
   closeIcon?: ReactElement;
+  onClose?(): void;
 }
