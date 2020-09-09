@@ -1,6 +1,6 @@
 {
   "include": ["packages/**/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "packages/*/lib"],
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",

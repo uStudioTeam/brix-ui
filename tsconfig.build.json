@@ -8,7 +8,7 @@
     "composite": true,
     "tsBuildInfoFile": "tsconfig.tsbuildinfo"
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.story.tsx", "lib"],
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.story.tsx"],
   "include": [],
   "references": [
     {
