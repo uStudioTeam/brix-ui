@@ -4,9 +4,7 @@
   "description": "Theme package providing light and dark modes as well as css/js variables and helpers used in theming",
   "keywords": ["theme", "ui", "light mode", "dark mode", "css", "styled-components", "css-in-js"],
   "scripts": {
-    "tsconfig": "node ../../scripts/typescript.js",
-    "package": "node ../../scripts/package.js",
-    "prebuild": "copyfiles README.md LICENSE lib",
+    "prebuild": "copyfiles README.md lib",
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
   },
   "dependencies": {

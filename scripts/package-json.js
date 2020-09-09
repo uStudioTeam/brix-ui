@@ -1,6 +1,5 @@
+const { resolve } = require('path');
 const fromTemplate = require('./from-template');
-
-const fileName = 'package.json';
 
 const meta = {
   author: 'uStudio Company <toberead@ustudio.company> (http://ustudio.company)',
@@ -20,17 +19,26 @@ const engineInfo = {
   },
 };
 
-fromTemplate(
-  fileName,
-  ({ scripts: _s, name, version, keywords = [], ...template }) => {
-    return {
-      name,
-      version,
-      ...meta,
-      keywords: ['react', 'typescript', ...keywords],
-      ...template,
-      ...engineInfo,
-    };
-  },
-  fileName
-);
+module.exports = () => {
+  fromTemplate(
+    (directoryPath) => {
+      const templateName = 'package.json';
+
+      return [templateName, require(resolve(directoryPath, templateName))];
+    },
+    (_, { scripts: _s, name, version, keywords = [], ...packageJson }) => {
+      return JSON.stringify(
+        {
+          name,
+          version,
+          ...meta,
+          keywords: ['react', 'typescript', ...keywords],
+          ...packageJson,
+          ...engineInfo,
+        },
+        null,
+        2
+      );
+    }
+  );
+};

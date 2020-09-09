@@ -1,6 +1,10 @@
 {
   "name": "@ustudio-ui/utils",
   "version": "0.0.1",
+  "scripts": {
+    "prebuild": "copyfiles README.md lib",
+    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
+  },
   "dependencies": {
     "@ustudio-ui/types": "*"
   },

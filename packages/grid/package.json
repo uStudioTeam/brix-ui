@@ -4,9 +4,7 @@
   "description": "React grid system based on CSS-Grid module",
   "keywords": ["css-grid", "grid"],
   "scripts": {
-    "tsconfig": "node ../../scripts/typescript.js",
-    "package": "node ../../scripts/package.js",
-    "prebuild": "copyfiles README.md LICENSE lib",
+    "prebuild": "copyfiles README.md lib",
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
   },
   "dependencies": {

@@ -4,9 +4,7 @@
   "description": "Default fonts acceptable by @ustudio-ui theme",
   "keywords": ["fonts", "ttf", "ui", "typography", "font-face"],
   "scripts": {
-    "tsconfig": "node ../../scripts/typescript.js",
-    "package": "node ../../scripts/package.js",
-    "prebuild": "copyfiles fonts.d.ts README.md LICENSE lib",
+    "prebuild": "copyfiles fonts.d.ts README.md lib",
     "build": "webpack"
   },
   "dependencies": {
