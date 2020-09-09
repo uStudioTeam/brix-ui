@@ -2,5 +2,14 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*"]
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "allowBranch": ["master"],
+      "ignoreChanges": ["**/*.spec.{ts,tsx}", "**/*.story.tsx", "**/*.md"]
+    },
+    "version": {
+      "message": "chore(release): %s"
+    }
+  }
 }
