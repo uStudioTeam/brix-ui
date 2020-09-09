@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "start-storybook -s ./.storybook/public",
+    "start": "start-storybook",
     "format": "prettier --check \"packages/**/*.{ts,tsx}\"",
     "lint": "eslint --quiet --color \"packages/**/*.{ts,tsx}\"",
     "typecheck": "tsc -p ./tsconfig.ci.json",
@@ -17,7 +17,11 @@
     "build:js": "lerna run build",
     "build": "npm-run-all -s build:dts build:js",
     "test": "jest",
-    "ci": "npm-run-all format lint typecheck -s build test"
+    "ci": "npm-run-all format lint typecheck -s build test",
+    "release": "lerna version --yes --conventional-commits --create-release github",
+    "prepublishOnly": "yarn build",
+    "publish": "lerna publish --yes --contents lib",
+    "deploy": "storybook-to-ghpages --ci"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -25,6 +29,7 @@
     "@babel/preset-env": "^7.11.5",
     "@storybook/addon-essentials": "^6.0.3",
     "@storybook/react": "^6.0.3",
+    "@storybook/storybook-deployer": "^2.8.6",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/react": "^10.4.8",
     "@testing-library/react-hooks": "^3.4.1",
