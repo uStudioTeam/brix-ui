@@ -9,7 +9,6 @@ module.exports = () => {
       return [fileName, require(resolve(__dirname, `../${fileName}`))];
     },
     (directoryPath, template) => {
-      const { include: _include, exclude: _exclude } = template;
       const {
         paths: _paths,
         types: _types,
