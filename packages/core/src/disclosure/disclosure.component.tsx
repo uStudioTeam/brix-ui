@@ -7,7 +7,7 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
+  { children, styled, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
@@ -38,8 +38,16 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   );
 
   return (
-    <Styled.Disclosure ref={ref} isOpen={internalIsOpen} isDisabled={isDisabled} {...props}>
+    <Styled.Container
+      ref={ref}
+      as={styled?.Container}
+      direction="column"
+      isOpen={internalIsOpen}
+      isDisabled={isDisabled}
+      {...props}
+    >
       <Styled.Summary
+        as={styled?.Summary}
         type="button"
         isOpen={internalIsOpen}
         disabled={isDisabled}
@@ -52,17 +60,20 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       >
         {summary}
 
-        {applyPolymorphicFunctionProp(icon, { isOpen: !internalIsOpen, isDisabled }) || <Styled.Icon />}
+        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
+          <Styled.Icon as={styled?.Icon} />
+        )}
       </Styled.Summary>
 
       <Styled.Details
+        as={styled?.Details}
         style={{
           height: detailsHeight,
         }}
       >
         <div ref={detailsRef}>{children}</div>
       </Styled.Details>
-    </Styled.Disclosure>
+    </Styled.Container>
   );
 });
 
