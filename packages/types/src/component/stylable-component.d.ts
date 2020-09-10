@@ -1,9 +1,9 @@
 import type { StyledComponent } from 'styled-components';
 
-export type StylableComponent<S extends Record<string, StyledComponent<any, any>> = undefined> = (S extends undefined // eslint-disable-next-line @typescript-eslint/ban-types
+export type StylableComponent<S extends Record<string, StyledComponent<any, any>> = undefined> = (S extends undefined
   ? {}
   : {
-      styled?: Partial<S>;
+      styles?: Partial<S>;
     }) & {
   className?: string;
 };

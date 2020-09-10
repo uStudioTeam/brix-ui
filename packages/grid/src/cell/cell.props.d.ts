@@ -1,6 +1,4 @@
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
-
-import type { BreakpointsProps } from '../entity';
+import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@ustudio-ui/types/component';
 
 export interface CellBreakpointData {
   size?: number;
