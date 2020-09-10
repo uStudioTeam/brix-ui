@@ -6,15 +6,16 @@ import type { BadgeProps } from './badge.props';
 import Styled from './badge.styles';
 
 const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
-  { children, color, backgroundColor, value, shouldDisplay = true, ...props },
+  { children, styled, color, backgroundColor, value, shouldDisplay = true, ...props },
   ref
 ) {
   return (
-    <Styled.BadgeContainer>
+    <Styled.BadgeContainer as={styled?.BadgeContainer}>
       {children}
 
       {shouldDisplay && (
         <Styled.Badge
+          as={styled?.Badge}
           ref={ref}
           hasChildren={isValidElement(children)}
           $color={color}
