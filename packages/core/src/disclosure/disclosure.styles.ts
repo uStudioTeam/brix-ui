@@ -10,9 +10,7 @@ import ChevronIcon from '../../assets/icons/chevron.inline.svg';
 
 import type { DisclosureProps } from './disclosure.props';
 
-const Container = styled(Flex).attrs(() => ({
-  direction: 'column',
-}))<{
+const Container = styled(Flex)<{
   isOpen: DisclosureProps['isOpen'];
   isDisabled: DisclosureProps['isDisabled'];
 }>(
