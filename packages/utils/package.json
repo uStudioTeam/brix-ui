@@ -9,6 +9,7 @@
     "@ustudio-ui/types": "*"
   },
   "devDependencies": {
+    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",
     "react": "^16.13.1",
