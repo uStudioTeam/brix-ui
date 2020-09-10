@@ -38,7 +38,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   );
 
   return (
-    <Styled.Disclosure ref={ref} as={styled?.Disclosure} isOpen={internalIsOpen} isDisabled={isDisabled} {...props}>
+    <Styled.Container ref={ref} as={styled?.Container} isOpen={internalIsOpen} isDisabled={isDisabled} {...props}>
       <Styled.Summary
         as={styled?.Summary}
         type="button"
@@ -66,7 +66,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       >
         <div ref={detailsRef}>{children}</div>
       </Styled.Details>
-    </Styled.Disclosure>
+    </Styled.Container>
   );
 });
 

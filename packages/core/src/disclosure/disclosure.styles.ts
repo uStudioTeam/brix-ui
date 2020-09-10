@@ -10,7 +10,7 @@ import ChevronIcon from '../../assets/icons/chevron.inline.svg';
 
 import type { DisclosureProps } from './disclosure.props';
 
-const Disclosure = styled(Flex).attrs(() => ({
+const Container = styled(Flex).attrs(() => ({
   direction: 'column',
 }))<{
   isOpen: DisclosureProps['isOpen'];
@@ -23,6 +23,12 @@ const Disclosure = styled(Flex).attrs(() => ({
     border-radius: 2px;
 
     ${font.body.p};
+
+    overflow: hidden;
+
+    &:active {
+      transform: scale(0.9985);
+    }
 
     transition: all 200ms;
 
@@ -86,10 +92,6 @@ const Summary = styled.button<{
       background-color: var(--c-faint-weak-down);
     }
 
-    &:active {
-      opacity: 0.75;
-    }
-
     ${isOpen
       ? css`
           background-color: var(--c-faint-weak-down);
@@ -124,6 +126,6 @@ const Details = styled.div(
   `
 );
 
-const Styled = applyDisplayNames({ Disclosure, Icon, Summary, Details });
+const Styled = applyDisplayNames({ Container, Icon, Summary, Details });
 
 export default Styled;
