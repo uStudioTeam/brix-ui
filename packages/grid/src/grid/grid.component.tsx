@@ -1,9 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, WeakValidationMap } from 'react';
+import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
+import { extract } from '@ustudio-ui/utils/prop-types';
 import DirectionProvider from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
+import { breakpointProps, stylableComponent } from '@ustudio-ui/types/prop-types';
+import Block from '@ustudio-ui/core/block';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
 import { useBreakpointProps } from '../hooks';
@@ -56,5 +60,21 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
     </DirectionProvider>
   );
 });
+
+const { gap, isInline: _, ...blockPropTypes } = extract(Block);
+
+const gridBreakpointData = {
+  gap,
+  direction: PT.oneOf(objectValues(Direction)),
+  template: PT.oneOfType([PT.string, PT.func]),
+  maxWidth: PT.oneOfType([PT.string, PT.func]),
+};
+
+Grid.propTypes = {
+  ...breakpointProps(gridBreakpointData),
+  ...blockPropTypes,
+
+  ...stylableComponent(),
+} as WeakValidationMap<GridProps>;
 
 export default Grid;

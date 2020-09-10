@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import PT from 'prop-types';
 import useAutoTransition from 'honks/use-auto-transition';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
+import { stylableComponent } from '@ustudio-ui/types/prop-types';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, styled, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
+  { children, styles, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
@@ -40,14 +42,14 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   return (
     <Styled.Container
       ref={ref}
-      as={styled?.Container}
+      as={styles?.Container}
       direction="column"
       isOpen={internalIsOpen}
       isDisabled={isDisabled}
       {...props}
     >
       <Styled.Summary
-        as={styled?.Summary}
+        as={styles?.Summary}
         type="button"
         isOpen={internalIsOpen}
         disabled={isDisabled}
@@ -61,12 +63,12 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         {summary}
 
         {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
-          <Styled.Icon as={styled?.Icon} />
+          <Styled.Icon as={styles?.Icon} />
         )}
       </Styled.Summary>
 
       <Styled.Details
-        as={styled?.Details}
+        as={styles?.Details}
         style={{
           height: detailsHeight,
         }}
@@ -76,5 +78,19 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
     </Styled.Container>
   );
 });
+
+Disclosure.propTypes = {
+  isOpen: PT.bool,
+  summary: PT.node,
+  icon: PT.oneOfType([PT.node, PT.func]),
+
+  isDisabled: PT.bool,
+
+  onOpen: PT.func,
+  onChange: PT.func,
+  onClose: PT.func,
+
+  ...stylableComponent(Styled),
+};
 
 export default Disclosure;

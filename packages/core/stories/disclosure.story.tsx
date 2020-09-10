@@ -62,7 +62,7 @@ export const Stylable: Story<DisclosureProps> = (args) => {
   return (
     <Disclosure
       {...args}
-      styled={{
+      styles={{
         Container,
         Summary,
         Icon,
