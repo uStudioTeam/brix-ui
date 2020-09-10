@@ -53,7 +53,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       >
         {summary}
 
-        {applyPolymorphicFunctionProp(icon, { isOpen: !internalIsOpen, isDisabled }) || (
+        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
           <Styled.Icon as={styled?.Icon} />
         )}
       </Styled.Summary>
