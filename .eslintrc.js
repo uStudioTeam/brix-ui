@@ -72,6 +72,14 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          '{}': false,
+        },
+      },
+    ],
 
     'immutable/no-let': 'error',
     'immutable/no-mutation': 'warn',
@@ -104,8 +112,8 @@ module.exports = {
     'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-handler-names': 'off',
     'react/prop-types': 'off',
-    'react/require-default-props': 'warn',
     'react/default-props-match-prop-types': 'warn',
+    'react/require-default-props': 'off',
 
     'sonarjs/no-duplicate-string': 'warn',
 

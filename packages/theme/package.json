@@ -2,7 +2,15 @@
   "name": "@ustudio-ui/theme",
   "version": "0.0.1",
   "description": "Theme package providing light and dark modes as well as css/js variables and helpers used in theming",
-  "keywords": ["theme", "ui", "light mode", "dark mode", "css", "styled-components", "css-in-js"],
+  "keywords": [
+    "theme",
+    "ui",
+    "light mode",
+    "dark mode",
+    "css",
+    "styled-components",
+    "css-in-js"
+  ],
   "scripts": {
     "prebuild": "copyfiles README.md lib",
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
@@ -19,16 +27,18 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "@types/lodash.merge": "^4.6.6",
+    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.1",
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "polished": "^3.6.6",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "peerDependencies": {
     "react": "^16.13.1",
