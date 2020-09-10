@@ -1,7 +1,9 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, WeakValidationMap } from 'react';
+import PT, { Requireable } from 'prop-types';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { breakpointProps, stylableComponent } from '@ustudio-ui/types/prop-types';
 
 import { useAreaBuilderContext } from '../area-builder';
 import { useBreakpointProps } from '../hooks';
@@ -43,5 +45,17 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
     </Styled.Cell>
   );
 });
+
+const cellBreakpointData: WeakValidationMap<CellBreakpointData> = {
+  size: PT.number,
+  offset: PT.arrayOf(PT.number) as Requireable<CellBreakpointData['offset']>,
+};
+
+Cell.propTypes = {
+  area: PT.string,
+  ...breakpointProps(cellBreakpointData),
+
+  ...stylableComponent(),
+} as WeakValidationMap<CellProps>;
 
 export default Cell;

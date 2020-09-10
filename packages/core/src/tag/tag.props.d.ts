@@ -4,8 +4,8 @@ import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/co
 import Styled from './tag.styles';
 
 export interface TagProps extends IntrinsicComponent<HTMLDivElement>, StylableComponent<typeof Styled> {
-  backgroundColor?: string;
   color?: string;
+  backgroundColor?: string;
 
   closeIcon?: ReactElement;
   onClose?(): void;
