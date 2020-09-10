@@ -38,7 +38,14 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   );
 
   return (
-    <Styled.Container ref={ref} as={styled?.Container} isOpen={internalIsOpen} isDisabled={isDisabled} {...props}>
+    <Styled.Container
+      ref={ref}
+      as={styled?.Container}
+      direction="column"
+      isOpen={internalIsOpen}
+      isDisabled={isDisabled}
+      {...props}
+    >
       <Styled.Summary
         as={styled?.Summary}
         type="button"

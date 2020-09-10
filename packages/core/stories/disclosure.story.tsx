@@ -29,9 +29,7 @@ export const Basic: Story<DisclosureProps> = (args) => {
   return <Disclosure {...args}>Disclosed!</Disclosure>;
 };
 
-const Container = styled(Flex).attrs(() => ({
-  direction: 'column',
-}))`
+const Container = styled(Flex)`
   border-color: var(--c-accent-weak);
 `;
 
