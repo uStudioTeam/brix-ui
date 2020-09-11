@@ -23,7 +23,7 @@ const calculateTranslation = (offset: BadgeProps['horizontalOffset']): string =>
   return `calc(${offset || '0px'} - 50%)`;
 };
 
-const Badge = styled.div<
+export const Badge = styled.div<
   Omit<BadgeProps, 'color' | 'backgroundColor' | 'value'> & {
     $color: BadgeProps['color'];
     $backgroundColor: BadgeProps['backgroundColor'];
@@ -78,7 +78,7 @@ const Badge = styled.div<
   }
 );
 
-const BadgeContainer = styled.div(
+export const BadgeContainer = styled.div(
   () => css`
     position: relative;
     display: inline-block;

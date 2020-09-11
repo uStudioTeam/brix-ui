@@ -6,11 +6,11 @@ import { Color } from '@ustudio-ui/types/palette';
 import { font } from '@ustudio-ui/theme/typography';
 
 import Flex from '../flex';
-import ChevronIcon from '../../assets/icons/chevron.inline.svg';
+import Chevron from '../../assets/icons/chevron.inline.svg';
 
 import type { DisclosureProps } from './disclosure.props';
 
-const Container = styled(Flex)<{
+export const Container = styled(Flex)<{
   isOpen: DisclosureProps['isOpen'];
   isDisabled: DisclosureProps['isDisabled'];
 }>(
@@ -44,7 +44,7 @@ const Container = styled(Flex)<{
   `
 );
 
-const Icon = styled(ChevronIcon)`
+export const Icon = styled(Chevron)`
   width: 10px;
   height: 6px;
 
@@ -53,7 +53,7 @@ const Icon = styled(ChevronIcon)`
   transition: transform 200ms;
 `;
 
-const Summary = styled.button<{
+export const Summary = styled.button<{
   isOpen: NonNullable<DisclosureProps['isOpen']>;
 }>(
   ({ isOpen }) => css`
@@ -110,7 +110,7 @@ const Summary = styled.button<{
   `
 );
 
-const Details = styled.div(
+export const Details = styled.div(
   () => css`
     background-color: var(--c-base-weak);
 

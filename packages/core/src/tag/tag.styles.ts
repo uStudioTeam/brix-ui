@@ -4,16 +4,16 @@ import { font } from '@ustudio-ui/theme/typography';
 import { Color } from '@ustudio-ui/types/palette';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 
-import CloseIconComponent from '../../assets/icons/close.inline.svg';
+import Close from '../../assets/icons/close.inline.svg';
 
 import type { TagProps } from './tag.props';
 
-const CloseIcon = styled(CloseIconComponent)`
+export const CloseIcon = styled(Close)`
   width: 0.5rem;
   height: 0.5rem;
 `;
 
-const CloseContainer = styled.button`
+export const CloseButton = styled.button`
   position: relative;
 
   padding: 4px 8px;
@@ -40,7 +40,7 @@ const CloseContainer = styled.button`
   }
 `;
 
-const Tag = styled.div<
+export const Container = styled.div<
   Omit<TagProps, 'color' | 'backgroundColor'> & {
     $color: TagProps['color'];
     $backgroundColor: TagProps['backgroundColor'];
@@ -59,7 +59,7 @@ const Tag = styled.div<
     ${font.body.small};
     color: ${color};
 
-    ${CloseContainer} {
+    ${CloseButton} {
       &:after {
         background-color: ${color};
       }
@@ -87,7 +87,7 @@ const Tag = styled.div<
   `;
 });
 
-const Content = styled.div`
+export const Content = styled.div`
   padding: 6px 8px;
 
   cursor: default;
@@ -98,6 +98,6 @@ const Content = styled.div`
   }
 `;
 
-const Styled = applyDisplayNames({ Tag, Content, CloseContainer, CloseIcon });
+const Styled = applyDisplayNames({ Container, Content, CloseButton, CloseIcon });
 
 export default Styled;
