@@ -1,15 +1,14 @@
 {
   "name": "@ustudio-ui/types",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "prebuild": "copyfiles README.md lib",
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",
-    "prop-types": "^15.7.2",
     "typescript": "^4.0.2"
   }
 }

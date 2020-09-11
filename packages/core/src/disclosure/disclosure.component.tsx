@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import useAutoTransition from 'honks/use-auto-transition';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
-import { stylableComponent } from '@ustudio-ui/types/prop-types';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';

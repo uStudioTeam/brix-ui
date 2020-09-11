@@ -3,7 +3,7 @@ import PT, { Requireable } from 'prop-types';
 
 import { useDirection } from '@ustudio-ui/contexts/direction';
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { breakpointProps, stylableComponent } from '@ustudio-ui/types/prop-types';
+import { breakpointProps, stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import { useAreaBuilderContext } from '../area-builder';
 import { useBreakpointProps } from '../hooks';

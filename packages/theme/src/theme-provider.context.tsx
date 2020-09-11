@@ -3,7 +3,7 @@ import PT, { Validator } from 'prop-types';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
 
-import { record } from '@ustudio-ui/utils/prop-types';
+import { record } from '@ustudio-ui/prop-types/utils';
 import { objectValues } from '@ustudio-ui/utils/functions';
 import { Breakpoint } from '@ustudio-ui/types/css';
 import { Color } from '@ustudio-ui/types/palette';

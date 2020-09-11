@@ -3,7 +3,7 @@ import PT, { Requireable } from 'prop-types';
 
 import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
 import type { TextElement } from '@ustudio-ui/types/html';
-import { stylableComponent } from '@ustudio-ui/types/prop-types';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
 
 import Styled from './text.styles';

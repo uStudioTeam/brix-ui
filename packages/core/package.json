@@ -19,6 +19,7 @@
     "@ustudio-ui/theme": "*",
     "@ustudio-ui/types": "*",
     "@ustudio-ui/utils": "*",
+    "@ustudio-ui/prop-types": "*",
     "honks": "^0.4.0"
   },
   "devDependencies": {

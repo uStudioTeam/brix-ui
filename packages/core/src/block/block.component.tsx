@@ -2,8 +2,8 @@ import React from 'react';
 import PT, { Requireable } from 'prop-types';
 
 import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
-import { indent, stylableComponent } from '@ustudio-ui/types/prop-types';
-import { record } from '@ustudio-ui/utils/prop-types';
+import { indent, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { record } from '@ustudio-ui/prop-types/utils';
 import { Axis } from '@ustudio-ui/types/component';
 
 import type { BlockProps } from './block.props';

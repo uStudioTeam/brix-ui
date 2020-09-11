@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/utils",
+  "name": "@ustudio-ui/prop-types",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,15 +7,13 @@
     "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*"
+    "@ustudio-ui/types": "*",
+    "@ustudio-ui/utils": "*"
   },
   "devDependencies": {
+    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
-    "@types/styled-components": "^5.1.1",
-    "react": "^16.13.1",
+    "prop-types": "^15.7.2",
     "typescript": "^4.0.2"
-  },
-  "peerDependencies": {
-    "react": "^16.13.1"
   }
 }

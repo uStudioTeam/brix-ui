@@ -4,8 +4,8 @@ import PT from 'prop-types';
 import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
 import type { FlexElement } from '@ustudio-ui/types/html';
 import { Direction, FlexContainer } from '@ustudio-ui/types/css';
-import { alignable, stylableComponent } from '@ustudio-ui/types/prop-types';
-import { extract } from '@ustudio-ui/utils/prop-types';
+import { alignable, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { extract } from '@ustudio-ui/prop-types/utils';
 import DirectionProvider from '@ustudio-ui/contexts/direction';
 
 import Block from '../block';

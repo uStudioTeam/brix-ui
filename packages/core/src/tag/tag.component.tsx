@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { stylableComponent } from '@ustudio-ui/types/prop-types';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import type { TagProps } from './tag.props';
 import Styled from './tag.styles';

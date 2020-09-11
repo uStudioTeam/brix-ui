@@ -21,6 +21,9 @@
     },
     {
       "path": "../utils/tsconfig.build.json"
+    },
+    {
+      "path": "../prop-types/tsconfig.build.json"
     }
   ]
 }

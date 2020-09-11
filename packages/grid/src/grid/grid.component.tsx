@@ -3,10 +3,10 @@ import PT from 'prop-types';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
 import type { With } from '@ustudio-ui/utils/types';
-import { extract } from '@ustudio-ui/utils/prop-types';
+import { extract } from '@ustudio-ui/prop-types/utils';
+import { breakpointProps, stylableComponent } from '@ustudio-ui/prop-types/common';
 import DirectionProvider from '@ustudio-ui/contexts/direction';
 import { Direction } from '@ustudio-ui/types/css';
-import { breakpointProps, stylableComponent } from '@ustudio-ui/types/prop-types';
 import Block from '@ustudio-ui/core/block';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
