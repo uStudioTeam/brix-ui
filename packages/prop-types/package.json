@@ -1,7 +1,6 @@
 {
   "name": "@ustudio-ui/prop-types",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },
