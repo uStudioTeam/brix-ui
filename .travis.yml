@@ -13,9 +13,7 @@ before_deploy: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
 
 deploy:
   provider: script
-  script: >-
-    yarn publish &&
-    yarn deploy
+  script: yarn cd
   skip_cleanup: true
   on:
     tags: true
