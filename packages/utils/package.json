@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prebuild": "copyfiles README.md lib",
-    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
+    "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
     "@ustudio-ui/types": "*"

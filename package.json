@@ -2,19 +2,24 @@
   "name": "ustudio-ui",
   "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
     "start": "start-storybook",
     "format": "prettier --check \"packages/**/*.{ts,tsx}\"",
     "lint": "eslint --quiet --color \"packages/**/*.{ts,tsx}\"",
     "typecheck": "tsc -p ./tsconfig.ci.json",
-    "prebuild": "rimraf packages/*/{lib,*.tsbuildinfo}",
+    "prebuild:root": "rimraf packages/*/{lib,*.tsbuildinfo}",
+    "prebuild:local": "lerna run prebuild",
+    "prebuild": "npm-run-all -p prebuild:root prebuild:local",
     "prepack": "node scripts/create-meta-files.js",
     "build:dts": "tsc -b tsconfig.build.json",
-    "build:js": "lerna run build",
-    "build": "npm-run-all -s build:dts build:js",
+    "build:babel": "lerna exec --ignore @ustudio-ui/fonts -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
+    "build:webpack": "lerna exec --scope @ustudio-ui/fonts -- webpack",
+    "build": "npm-run-all -s build:dts -p build:babel build:webpack",
     "test": "jest",
     "ci": "npm-run-all format lint typecheck -s build test",
     "release": "lerna version --yes --conventional-commits --create-release github",
@@ -23,7 +28,9 @@
     "deploy": "storybook-to-ghpages --ci"
   },
   "devDependencies": {
+    "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@storybook/addon-essentials": "^6.0.3",
@@ -38,6 +45,7 @@
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
+    "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "babel-preset-react-app": "^9.1.2",
     "eslint": "^7.5.0",

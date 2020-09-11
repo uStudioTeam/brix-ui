@@ -7,8 +7,7 @@
     "grid"
   ],
   "scripts": {
-    "prebuild": "copyfiles README.md lib",
-    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
+    "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
     "@ustudio-ui/contexts": "*",
@@ -18,17 +17,10 @@
     "@ustudio-ui/prop-types": "*"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.1",
-    "babel-plugin-styled-components": "^1.10.7",
     "copyfiles": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
