@@ -79,12 +79,12 @@ const Typography = (props: ThemeOverride['typography']): JSX.Element => {
 
                 return css`
                   ${typeStyles};
-      
+
                   @font-face {
                     font-family: '${getCssVariable(Variable.Font, fontVariant)}';
                     font-weight: ${weight};
                     font-display: fallback;
-                    
+
                     src: url('${url}') format('${format}');
                   }
                 `;

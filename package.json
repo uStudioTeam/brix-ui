@@ -15,7 +15,6 @@
     "prebuild:root": "rimraf packages/*/{lib,*.tsbuildinfo}",
     "prebuild:local": "lerna run prebuild",
     "prebuild": "npm-run-all -p prebuild:root prebuild:local",
-    "prepack": "node scripts/create-meta-files.js",
     "build:dts": "tsc -b tsconfig.build.json",
     "build:babel": "lerna exec --ignore @ustudio-ui/fonts -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
     "build:webpack": "lerna exec --scope @ustudio-ui/fonts -- webpack",
@@ -24,6 +23,7 @@
     "ci": "npm-run-all format lint typecheck -s build test",
     "release": "lerna version --yes --conventional-commits --create-release github",
     "prepublishOnly": "yarn build",
+    "prepack": "node scripts/create-meta-files.js",
     "publish": "lerna publish --yes --contents lib",
     "deploy": "storybook-to-ghpages --ci"
   },
