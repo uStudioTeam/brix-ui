@@ -24,6 +24,9 @@
       "path": "packages/grid/tsconfig.build.json"
     },
     {
+      "path": "packages/prop-types/tsconfig.build.json"
+    },
+    {
       "path": "packages/theme/tsconfig.build.json"
     },
     {

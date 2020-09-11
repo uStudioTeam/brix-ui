@@ -18,6 +18,7 @@
   "dependencies": {
     "@ustudio-ui/types": "*",
     "@ustudio-ui/utils": "*",
+    "@ustudio-ui/prop-types": "*",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {

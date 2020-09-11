@@ -14,7 +14,8 @@
     "@ustudio-ui/contexts": "*",
     "@ustudio-ui/theme": "*",
     "@ustudio-ui/types": "*",
-    "@ustudio-ui/utils": "*"
+    "@ustudio-ui/utils": "*",
+    "@ustudio-ui/prop-types": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -1,10 +1,10 @@
 import PT, { Requireable } from 'prop-types';
 
 import { objectValues } from '@ustudio-ui/utils/functions';
-import { record } from '@ustudio-ui/utils/prop-types';
+import { Position } from '@ustudio-ui/types/css';
+import { Indent, Axis } from '@ustudio-ui/types/component';
 
-import { Position } from '../css';
-import { Indent, Axis } from '../component';
+import { record } from '../utils';
 
 export const indent = (): Requireable<Indent> => {
   return PT.oneOfType([
