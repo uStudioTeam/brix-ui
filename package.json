@@ -25,7 +25,8 @@
     "prepublishOnly": "yarn build",
     "prepack": "node scripts/create-meta-files.js",
     "publish": "lerna publish --yes --contents lib",
-    "deploy": "storybook-to-ghpages --ci"
+    "deploy": "storybook-to-ghpages --ci",
+    "cd": "npm-run-all -p publish deploy"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
