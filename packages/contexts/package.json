@@ -2,8 +2,7 @@
   "name": "@ustudio-ui/contexts",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "copyfiles README.md lib",
-    "build": "babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files"
+    "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
     "@ustudio-ui/types": "*",
@@ -11,11 +10,6 @@
     "@ustudio-ui/prop-types": "*"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
