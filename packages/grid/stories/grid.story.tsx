@@ -4,7 +4,8 @@ import { Story } from '@storybook/react';
 
 import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
-import { Grid, Cell } from '@ustudio-ui/grid';
+
+import { Grid, Cell } from '../src';
 
 export default {
   title: 'General/Grid',

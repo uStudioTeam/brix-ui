@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import Button, { ButtonProps } from '@ustudio-ui/core/button';
 import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
+
+import Button, { ButtonProps } from '../src/button';
 
 export default {
   title: 'Form/Button',

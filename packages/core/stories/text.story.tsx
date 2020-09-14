@@ -5,7 +5,7 @@ import { Values } from '@ustudio-ui/utils/types';
 import { objectValues } from '@ustudio-ui/utils/functions';
 import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
 
-import Text, { TextProps } from '@ustudio-ui/core/text';
+import Text, { TextProps } from '../src/text';
 
 export default {
   title: 'Data/Text',
