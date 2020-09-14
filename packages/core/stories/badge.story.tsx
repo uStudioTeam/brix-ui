@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Story } from '@storybook/react';
 
-import Flex from '@ustudio-ui/core/flex';
-
+import Flex from '../src/flex';
 import Badge, { BadgeProps } from '../src/badge';
 
 const positionControl = { type: 'inline-radio', options: ['start', 'center', 'end'] };

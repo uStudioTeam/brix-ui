@@ -1,11 +1,10 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import type { Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 
-import Flex from '@ustudio-ui/core/flex';
-import Text from '@ustudio-ui/core/text';
 import Chevron from '../assets/icons/chevron.inline.svg';
-
+import Flex from '../src/flex';
+import Text from '../src/text';
 import Disclosure, { DisclosureProps } from '../src/disclosure';
 
 export default {

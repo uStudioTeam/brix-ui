@@ -1,9 +1,8 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import Flex from '@ustudio-ui/core/flex';
-import Text from '@ustudio-ui/core/text';
-
+import Flex from '../src/flex';
+import Text from '../src/text';
 import Button, { ButtonProps } from '../src/button';
 
 export default {

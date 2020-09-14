@@ -7,7 +7,8 @@ import { capitalize, getCssVariable } from '@ustudio-ui/utils/functions';
 import { Variable } from '@ustudio-ui/types/css';
 import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
-import { useTheme } from '@ustudio-ui/theme';
+
+import { useTheme } from '../src/use-theme';
 
 export default {
   title: 'Theme/Palette',
