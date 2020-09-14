@@ -1,7 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
+import PT, { Requireable } from 'prop-types';
 import { Keyframes, keyframes } from 'styled-components';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import { useDelay } from './use-delay';
 import Styled from './spinner.styles';
@@ -102,5 +104,25 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
     </Styled.Spinner>
   ) : null;
 });
+
+Spinner.propTypes = {
+  blades: PT.number,
+  bladeSize: PT.oneOfType([
+    PT.string,
+    PT.exact({
+      width: PT.string,
+      height: PT.string,
+    }),
+  ]) as Requireable<SpinnerProps['bladeSize']>,
+  speed: PT.number,
+  color: PT.string,
+  property: PT.string,
+  range: PT.arrayOf(PT.oneOfType([PT.number, PT.string])) as Requireable<SpinnerProps['range']>,
+  swirl: PT.bool,
+  spread: PT.number,
+  delay: PT.number,
+
+  ...stylableComponent(Styled),
+};
 
 export default Spinner;

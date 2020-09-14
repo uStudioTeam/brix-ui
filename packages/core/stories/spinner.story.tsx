@@ -67,7 +67,7 @@ export default {
       defaultValue: {
         summary: `1`,
       },
-      description: "Blades' distancing from the center",
+      description: "Blades' coefficient of distancing from the center",
     },
     delay: {
       control: {
