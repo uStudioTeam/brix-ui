@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Story } from '@storybook/react';
 
 import Spinner, { SpinnerProps } from '../src/spinner';
@@ -17,16 +16,11 @@ export default {
       defaultValue: {
         summary: `9`,
       },
+      description: 'Number of blades arount the circle',
     },
     bladeSize: {
       control: 'object',
-    },
-    speed: {
-      control: 'number',
-      defaultValue: {
-        summary: `150`,
-        details: 'ms',
-      },
+      description: 'Width and height of each individual blade',
     },
     color: {
       control: 'color',
@@ -39,12 +33,22 @@ export default {
       defaultValue: {
         summary: `[0.25, 1]`,
       },
+      description: 'Opacity values to transition between',
+    },
+    speed: {
+      control: 'number',
+      defaultValue: {
+        summary: `150`,
+        details: 'ms',
+      },
+      description: 'Speed of transitioning',
     },
     swirl: {
       control: 'boolean',
       defaultValue: {
         summary: `false`,
       },
+      description: 'Rotate each blade slightly to create a swirl effect',
     },
     spread: {
       control: {
@@ -55,6 +59,14 @@ export default {
       defaultValue: {
         summary: `1`,
       },
+      description: "Blades' distancing from the center",
+    },
+    delay: {
+      control: {
+        type: 'number',
+        max: 5000,
+      },
+      description: 'Postpone the appearance of a Spinner',
     },
   },
   args: {
@@ -68,20 +80,10 @@ export default {
     opacity: [0.25, 1],
     swirl: false,
     spread: 1,
+    delay: undefined,
   },
 };
 
-const Container = styled.main`
-  width: 100%;
-  height: 100%;
-
-  padding: 5rem 0;
-`;
-
 export const Basic: Story<SpinnerProps> = (args) => {
-  return (
-    <Container>
-      <Spinner {...args} />
-    </Container>
-  );
+  return <Spinner {...args} />;
 };
