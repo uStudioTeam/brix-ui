@@ -21,15 +21,16 @@ export const Blade = styled.div<{
 }>(({ theme, $width, $height, $color = 'faint-strong', animation, animationDuration }) => {
   const color = theme.colorHelper.parseColor($color);
 
+  // `width` and `height` are swapped to represent themselves more intuitively to the user
   return css`
-    width: ${$width};
-    height: ${$height};
+    width: ${$height};
+    height: ${$width};
 
     position: absolute;
     left: 50%;
     top: 50%;
 
-    border-radius: ${Number.parseFloat($height) / 2}px;
+    border-radius: ${Math.min(Number.parseFloat($width), Number.parseFloat($height)) / 2}px;
     background-color: ${color};
 
     animation: ${animation} ${animationDuration}ms infinite;

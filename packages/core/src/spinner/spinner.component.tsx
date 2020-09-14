@@ -18,21 +18,33 @@ const parseBladeSize = (
   }
 
   return {
-    width: bladeSize?.width || '10px',
-    height: bladeSize?.height || '4px',
+    width: bladeSize?.width || '4px',
+    height: bladeSize?.height || '10px',
   };
 };
 
 const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinner(
-  { blades = 9, bladeSize, speed = 150, color, opacity, swirl, spread = 1, delay, className, styles },
+  {
+    blades = 9,
+    bladeSize,
+    speed = 150,
+    color,
+    property = 'opacity',
+    range,
+    swirl,
+    spread = 1,
+    delay,
+    className,
+    styles,
+  },
   ref
 ) {
-  const [opacityFrom, opacityTo] = [opacity?.[0] || 0.25, opacity?.[1] || 1];
+  const [rangeFrom, rangeTo] = [range?.[0] || 0.25, range?.[1] || 1];
   const animationDuration = useMemo(() => blades * speed, [blades, speed]);
   const timingShift = useMemo(() => 100 / blades, [blades]);
   const { width, height } = useMemo(() => parseBladeSize(bladeSize), [JSON.stringify(bladeSize)]);
 
-  const animations = useCallback(
+  const animation = useCallback(
     (index: number): Keyframes => {
       // Maximum point, %
       const extremumMax = (index / blades) * 100;
@@ -45,14 +57,14 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
       return keyframes`
         ${extremumMinStartChomped}%,
         ${extremumMinEndChomped}% {
-          opacity: ${opacityFrom};
+          ${property}: ${rangeFrom};
         }
     
         ${extremumMax}% {
-          opacity: ${opacityTo};
+          ${property}: ${rangeTo};
       }`;
     },
-    [blades, opacityFrom, opacityTo, timingShift]
+    [blades, rangeFrom, rangeTo, timingShift]
   );
 
   const transform = useCallback(
@@ -75,14 +87,14 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
             as={styles?.Blade}
             // eslint-disable-next-line react/no-array-index-key
             key={index}
-            animation={animations(index)}
+            animation={animation(index)}
             animationDuration={animationDuration}
             $width={width}
             $height={height}
             $color={color}
             style={{
               transform: transform(index),
-              opacity: index ? opacityFrom : opacityTo,
+              [property]: index ? rangeFrom : rangeTo,
             }}
           />
         );

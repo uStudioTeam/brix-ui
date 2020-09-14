@@ -29,7 +29,14 @@ export default {
         summary: `'faint-weak'`,
       },
     },
-    opacity: {
+    property: {
+      control: 'text',
+      defaultValue: {
+        summary: `'opacity'`,
+      },
+      description: 'Property to animate',
+    },
+    range: {
       control: 'array',
       defaultValue: {
         summary: `[0.25, 1]`,
@@ -73,12 +80,13 @@ export default {
   args: {
     blades: 9,
     bladeSize: {
-      width: '10px',
-      height: '4px',
+      width: '4px',
+      height: '10px',
     },
     color: undefined,
     speed: 150,
-    opacity: [0.25, 1],
+    property: 'opacity',
+    range: [0.25, 1],
     swirl: false,
     spread: 1,
     delay: undefined,
