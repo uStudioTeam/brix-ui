@@ -17,8 +17,8 @@ export default {
     verticalPosition: { control: positionControl },
     horizontalOffset: { control: 'text' },
     verticalOffset: { control: 'text' },
-    shouldDisplay: { control: 'boolean' },
-    value: { control: 'text' },
+    shouldDisplay: { control: 'boolean', description: 'Hide/show the `Badge` but leave children intact' },
+    value: { control: 'text', description: 'The content of the `Badge` itself' },
   },
   args: {
     horizontalPosition: 'end',

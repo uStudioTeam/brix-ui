@@ -12,12 +12,20 @@ export default {
   component: Disclosure,
 
   argTypes: {
+    isOpen: {
+      control: 'boolean',
+    },
+    icon: {},
     summary: {
       control: 'text',
+      description: 'Content to be displayed inside the button',
     },
     isDisabled: {
       control: 'boolean',
     },
+    onOpen: {},
+    onChange: {},
+    onClose: {},
   },
   args: {
     summary: 'Disclosure summary',
