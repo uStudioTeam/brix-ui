@@ -3,8 +3,9 @@ import { Keyframes, keyframes } from 'styled-components';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
 
-import type { SpinnerProps } from './spinner.props';
+import { useDelay } from './use-delay';
 import Styled from './spinner.styles';
+import type { SpinnerProps } from './spinner.props';
 
 const parseBladeSize = (
   bladeSize: SpinnerProps['bladeSize']
@@ -23,7 +24,7 @@ const parseBladeSize = (
 };
 
 const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinner(
-  { blades = 9, bladeSize, speed = 150, color, opacity, swirl, spread = 1, className, styles },
+  { blades = 9, bladeSize, speed = 150, color, opacity, swirl, spread = 1, delay, className, styles },
   ref
 ) {
   const [opacityFrom, opacityTo] = [opacity?.[0] || 0.25, opacity?.[1] || 1];
@@ -64,7 +65,9 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
     [blades, spread, swirl]
   );
 
-  return (
+  const shouldRender = useDelay(delay);
+
+  return shouldRender ? (
     <Styled.Spinner as={styles?.Spinner} ref={ref} className={className}>
       {[...new Array(blades).keys()].map((_, index) => {
         return (
@@ -85,7 +88,7 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
         );
       })}
     </Styled.Spinner>
-  );
+  ) : null;
 });
 
 export default Spinner;
