@@ -7,8 +7,6 @@ import { stylableComponent } from '@ustudio-ui/prop-types/common';
 import type { TagProps } from './tag.props';
 import Styled from './tag.styles';
 
-// @ToDo: Add <Tag /> tests
-
 const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
   { children, styles, color, backgroundColor, onClose, closeIcon, ...props },
   ref
