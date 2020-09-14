@@ -41,7 +41,7 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
   },
   ref
 ) {
-  const [rangeFrom, rangeTo] = [range?.[0] || 0.25, range?.[1] || 1];
+  const [rangeFrom, rangeTo] = useMemo(() => [range?.[0] || 0.25, range?.[1] || 1], [JSON.stringify(range)]);
   const animationDuration = useMemo(() => blades * speed, [blades, speed]);
   const timingShift = useMemo(() => 100 / blades, [blades]);
   const { width, height } = useMemo(() => parseBladeSize(bladeSize), [JSON.stringify(bladeSize)]);
