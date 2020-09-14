@@ -40,3 +40,14 @@ export const decorators = [
     );
   },
 ];
+
+export const parameters = {
+  controls: {
+    expanded: true,
+  },
+  previewTabs: {
+    'storybook/docs/panel': {
+      hidden: true,
+    },
+  },
+};
