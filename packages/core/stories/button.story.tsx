@@ -18,6 +18,7 @@ export default {
       defaultValue: {
         summary: `'base'`,
       },
+      description: 'Color scheme of the `Button`',
     },
     appearance: {
       control: {
@@ -27,6 +28,7 @@ export default {
       defaultValue: {
         summary: `'contained'`,
       },
+      description: 'Appearance preset',
     },
     borderRadius: {
       control: {
@@ -39,7 +41,6 @@ export default {
     },
     isDisabled: {
       control: 'boolean',
-      type: 'function',
       defaultValue: {
         summary: 'false',
       },

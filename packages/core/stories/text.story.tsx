@@ -12,6 +12,12 @@ export default {
   component: Text,
 
   argTypes: {
+    as: {
+      description: 'Semantic element of the component',
+    },
+    variant: {
+      description: 'Style of the corresponding semantic element',
+    },
     appearance: {
       control: { type: 'inline-radio', options: objectValues(FontVariant) },
       description: 'Context of text appearance',
@@ -27,6 +33,9 @@ export default {
     },
     color: {
       control: 'color',
+    },
+    lineHeightCompensation: {
+      description: "Compensate text's `line-height` by adding a slight negative `margin-top`",
     },
   },
 
