@@ -29,7 +29,7 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
   {
     blades = 9,
     bladeSize,
-    speed = 150,
+    speed = 100,
     color,
     property = 'opacity',
     range,

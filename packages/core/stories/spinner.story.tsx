@@ -41,12 +41,12 @@ export default {
       defaultValue: {
         summary: `[0.25, 1]`,
       },
-      description: 'Opacity values to transition between',
+      description: 'Values to transition between',
     },
     speed: {
       control: 'number',
       defaultValue: {
-        summary: `150`,
+        summary: `100`,
         details: 'ms',
       },
       description: 'Speed of transitioning',
@@ -84,7 +84,7 @@ export default {
       height: '10px',
     },
     color: undefined,
-    speed: 150,
+    speed: 100,
     property: 'opacity',
     range: [0.25, 1],
     swirl: false,
