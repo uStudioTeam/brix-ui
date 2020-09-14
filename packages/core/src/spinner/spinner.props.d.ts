@@ -20,4 +20,5 @@ export interface SpinnerProps extends IntrinsicComponent<HTMLDivElement>, Stylab
   opacity?: [opacityFrom?: number, opacityTo?: number];
   swirl?: boolean;
   spread?: number;
+  delay?: number;
 }
