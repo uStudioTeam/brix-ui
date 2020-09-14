@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Story } from '@storybook/react';
 
 import Spinner, { SpinnerProps } from '../src/spinner';
@@ -84,6 +85,23 @@ export default {
   },
 };
 
+const Container = styled.main`
+  width: 100%;
+  height: 100%;
+
+  padding: 5rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--c-base-weak);
+`;
+
 export const Basic: Story<SpinnerProps> = (args) => {
-  return <Spinner {...args} />;
+  return (
+    <Container>
+      <Spinner {...args} />
+    </Container>
+  );
 };

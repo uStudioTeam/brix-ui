@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Tag, { TagProps } from '@ustudio-ui/core/tag';
 import Block from '@ustudio-ui/core/block';
+
+import Tag, { TagProps } from '../src/tag';
 
 export default {
   title: 'Data/Tag',

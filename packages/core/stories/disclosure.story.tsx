@@ -2,10 +2,11 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 
-import Disclosure, { DisclosureProps } from '@ustudio-ui/core/disclosure';
-
 import Flex from '@ustudio-ui/core/flex';
+import Text from '@ustudio-ui/core/text';
 import Chevron from '../assets/icons/chevron.inline.svg';
+
+import Disclosure, { DisclosureProps } from '../src/disclosure';
 
 export default {
   title: 'Widgets/Disclosure',
@@ -20,13 +21,17 @@ export default {
     },
   },
   args: {
-    summary: 'Summary',
+    summary: 'Disclosure summary',
     isDisabled: false,
   },
 };
 
-export const Basic: Story<DisclosureProps> = (args) => {
-  return <Disclosure {...args}>Disclosed!</Disclosure>;
+export const Basic: Story<DisclosureProps> = ({ summary, ...args }) => {
+  return (
+    <Disclosure {...args} summary={<Text lineHeightCompensation>{summary}</Text>}>
+      Disclosed!
+    </Disclosure>
+  );
 };
 
 const Container = styled(Flex)`
@@ -58,10 +63,11 @@ const Summary = styled.button<{
   `
 );
 
-export const Stylable: Story<DisclosureProps> = (args) => {
+export const Stylable: Story<DisclosureProps> = ({ summary, ...args }) => {
   return (
     <Disclosure
       {...args}
+      summary={<Text lineHeightCompensation>{summary}</Text>}
       styles={{
         Container,
         Summary,
