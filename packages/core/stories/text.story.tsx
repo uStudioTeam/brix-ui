@@ -1,5 +1,5 @@
-import { Story } from '@storybook/react';
 import React from 'react';
+import type { Story } from '@storybook/react';
 
 import { Values } from '@ustudio-ui/utils/types';
 import { objectValues } from '@ustudio-ui/utils/functions';
@@ -36,7 +36,7 @@ export default {
   },
 };
 
-export const Basic: Story<Omit<TextProps, 'variant' | 'css'>> = (args) => {
+export const Basic: Story<Omit<TextProps, 'variant'>> = (args) => {
   const getTypeName = (typeVariant: Values<typeof TypeVariant>): string => {
     switch (typeVariant) {
       case 'h1':

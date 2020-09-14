@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Story } from '@storybook/react';
+import type { Story } from '@storybook/react';
 
 import Spinner, { SpinnerProps } from '../src/spinner';
 

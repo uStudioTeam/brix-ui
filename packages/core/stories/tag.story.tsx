@@ -1,7 +1,7 @@
 import React from 'react';
+import type { Story } from '@storybook/react';
 
-import Block from '@ustudio-ui/core/block';
-
+import Block from '../src/block';
 import Tag, { TagProps } from '../src/tag';
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
 };
 
-export const Basic = ({ onClose, ...props }: TagProps) => {
+export const Basic: Story<TagProps> = ({ onClose, ...props }) => {
   const handleClose = () => console.log('Handle close');
 
   return (
