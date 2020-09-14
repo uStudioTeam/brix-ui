@@ -18,7 +18,7 @@ export const Container = styled(Flex)<{
     color: var(--c-base-strong);
 
     border: 1px solid var(--c-faint-weak-up);
-    border-radius: 2px;
+    border-radius: 4px;
 
     ${font.body.p};
 
@@ -82,7 +82,7 @@ export const Summary = styled.button<{
       }
     }
 
-    &:last-child {
+    & > *:last-child {
       margin-left: 1rem;
     }
 
