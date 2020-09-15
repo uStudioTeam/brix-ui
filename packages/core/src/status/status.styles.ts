@@ -49,45 +49,84 @@ const parseBorderColor = (intent: StatusProps['intent'], isWeak: StatusProps['is
   }
 };
 
+const parseAnimation = (animation: StatusProps['animation']): string => {
+  switch (animation) {
+    case 'pulsing':
+      return ` -webkit-animation: pulsing 2s infinite;
+                animation: pulsing 2s infinite;
+                
+                @-webkit-keyframes pulsing {   
+                    0% {     
+                -webkit-transform: scale(0.5, 0.5);     
+                transform: scale(1.3, 1.3);
+                     }
+                    50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+                     }
+                    100% {
+                -webkit-transform: scale(0.5, 0.5);
+                transform: scale(1.3, 1.3);
+                    }
+                }
+                
+                @keyframes pulsing {
+                     0% {
+                -webkit-transform: scale(0.5, 0.5);
+                transform: scale(1.3, 1.3);
+                    }
+                    50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+                    }
+                    100% {
+                -webkit-transform: scale(0.5, 0.5);
+                transform: scale(1.3, 1.3);
+                    }
+                }`;
+
+    case 'saturating':
+      return `-webkit-animation: saturating 1s infinite;
+                animation: saturating 1s infinite;
+                
+                @-webkit-keyframes saturating {   
+                    0% {     
+                opacity: 1;
+                     }
+                    50% {
+                opacity: 0.5;
+                     }
+                    100% {
+                opacity: 1;
+                    }
+                }
+                
+                @keyframes saturating {
+                     0% {
+                 opacity: 1;
+                    }
+                    50% {
+                 opacity: 0.5;
+                    }
+                    100% {
+                 opacity: 1;
+                    }
+                }`;
+
+    case 'none':
+    default:
+      return '';
+  }
+};
+
 const Status = styled.div<StatusProps>(
-  ({ intent = 'accent', isWeak }) => css`
+  ({ intent = 'accent', isWeak, animation = 'none' }) => css`
     width: 10px;
     height: 10px;
     background: ${parseBackgroundColor(intent, isWeak)};
     border-radius: 10px;
     border: 2px solid ${parseBorderColor(intent, isWeak)};
-    -webkit-animation: pulsing 2s infinite;
-    animation: pulsing 2s infinite;
-
-    @-webkit-keyframes pulsing {
-      0% {
-        -webkit-transform: scale(0.5, 0.5);
-        transform: scale(1.2, 1.2);
-      }
-      50% {
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-      }
-      100% {
-        -webkit-transform: scale(0.5, 0.5);
-        transform: scale(1.2, 1.2);
-      }
-    }
-
-    @keyframes pulsing {
-      0% {
-        -webkit-transform: scale(0.5, 0.5);
-        transform: scale(1.2, 1.2);
-      }
-      50% {
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-      }
-      100% {
-        -webkit-transform: scale(0.5, 0.5);
-        transform: scale(1.2, 1.2);
-      }
-    }
+    ${parseAnimation(animation)}
   `
 );
 

@@ -10,6 +10,7 @@ export default {
   argTypes: {
     intent: { control: { type: 'inline-radio', options: ['success', 'critical', 'accent'] } },
     isWeak: { control: 'boolean' },
+    animation: {control: { type: 'inline-radio', options: ['pulsing', 'saturating', 'none']}}
   },
   args: {
     intent: 'accent',
