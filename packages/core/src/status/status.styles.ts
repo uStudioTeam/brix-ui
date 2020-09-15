@@ -56,6 +56,38 @@ const Status = styled.div<StatusProps>(
     background: ${parseBackgroundColor(intent, isWeak)};
     border-radius: 10px;
     border: 2px solid ${parseBorderColor(intent, isWeak)};
+    -webkit-animation: pulsing 2s infinite;
+    animation: pulsing 2s infinite;
+
+    @-webkit-keyframes pulsing {
+      0% {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      50% {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+      }
+      100% {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+    }
+
+    @keyframes pulsing {
+      0% {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      50% {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+      }
+      100% {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+    }
   `
 );
 
