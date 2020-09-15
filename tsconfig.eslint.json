@@ -5,5 +5,5 @@
     "declaration": false,
     "emitDeclarationOnly": false
   },
-  "include": [".eslintrc.js"]
+  "include": ["*.js"]
 }

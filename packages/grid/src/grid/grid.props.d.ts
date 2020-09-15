@@ -1,9 +1,7 @@
 import type { BlockProps } from '@ustudio-ui/core/block';
-import type { IntrinsicComponent } from '@ustudio-ui/types/component';
+import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@ustudio-ui/types/component';
 import type { Values } from '@ustudio-ui/utils/types';
 import { Direction } from '@ustudio-ui/types/css';
-
-import type { BreakpointsProps } from '../entity';
 
 export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
   direction?: Values<typeof Direction>;
@@ -13,4 +11,8 @@ export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
 
 export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
 
-export interface GridProps extends IntrinsicComponent, GridBreakpoints, Omit<BlockProps, 'isInline' | 'gap'> {}
+export interface GridProps
+  extends IntrinsicComponent,
+    StylableComponent,
+    GridBreakpoints,
+    Omit<BlockProps, 'isInline' | 'gap'> {}

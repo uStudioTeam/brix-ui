@@ -1,6 +1,6 @@
-export const applyPolymorphicFunctionProp = <A, T extends string, F extends (...args: A[]) => T>(
-  prop: T | F | undefined,
-  callWith: A
-): T | undefined => {
-  return typeof prop === 'function' ? (prop as F)(callWith) : prop;
+export const applyPolymorphicFunctionProp = <T, F extends (...args: any[]) => T>(
+  prop: F | T | undefined,
+  ...args: Parameters<F>
+): Exclude<typeof prop, F> => {
+  return (typeof prop === 'function' ? (prop as F)(...args) : prop) as Exclude<typeof prop, F>;
 };

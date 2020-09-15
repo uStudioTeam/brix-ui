@@ -1,8 +1,8 @@
-import { Axis, Indent, IntrinsicComponent } from '@ustudio-ui/types/component';
+import { Axis, Indent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
 import type { HtmlTag, TextTag } from '@ustudio-ui/types/html';
-import { Values } from '@ustudio-ui/utils/types';
+import type { Values } from '@ustudio-ui/utils/types';
 
-export interface BlockProps extends IntrinsicComponent {
+export interface BlockProps extends IntrinsicComponent, StylableComponent {
   as?: Exclude<HtmlTag, TextTag>;
 
   isInline?: boolean;

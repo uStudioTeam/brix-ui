@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "types": ["globals.d.ts"]
+  "exclude": ["lib"]
 }

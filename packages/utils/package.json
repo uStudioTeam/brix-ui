@@ -1,25 +1,17 @@
 {
   "name": "@ustudio-ui/utils",
   "version": "0.0.1",
+  "scripts": {
+    "prebuild": "copyfiles README.md lib"
+  },
+  "dependencies": {
+    "@ustudio-ui/types": "*"
+  },
   "devDependencies": {
     "@types/react": "^16.9.43",
     "@types/styled-components": "^5.1.1",
-    "@typescript-eslint/eslint-plugin": "^3.7.1",
-    "@typescript-eslint/parser": "^3.7.1",
-    "eslint": "^7.5.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-immutable": "^1.0.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react-hooks": "^4.0.7",
-    "eslint-plugin-sonarjs": "^0.5.0",
-    "eslint-plugin-unicorn": "^20.1.0",
-    "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "peerDependencies": {
     "react": "^16.13.1"

@@ -37,7 +37,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
-        directory: resolve(__dirname, 'tsconfig.json'),
+        project: resolve(__dirname, 'tsconfig.json'),
       },
       alias: {
         extensions: ['.ts', '.tsx'],
@@ -71,6 +71,15 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-condition': 'warn',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          '{}': false,
+        },
+      },
+    ],
 
     'immutable/no-let': 'error',
     'immutable/no-mutation': 'warn',
@@ -79,9 +88,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-cycle': 'error',
     'import/no-named-as-default': 'off',
+    'import/no-extraneous-dependencies': 'off',
 
     'prettier/prettier': 'warn',
 
+    'unicorn/consistent-function-scoping': 'warn',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',
@@ -101,8 +112,10 @@ module.exports = {
     'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-handler-names': 'off',
     'react/prop-types': 'off',
-    'react/require-default-props': 'warn',
     'react/default-props-match-prop-types': 'warn',
+    'react/require-default-props': 'off',
+
+    'sonarjs/no-duplicate-string': 'warn',
 
     'no-process-env': 'off',
     'id-length': ['warn', { exceptions: ['_'] }],
@@ -112,5 +125,27 @@ module.exports = {
     'no-useless-constructor': 'off',
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
+    'global-require': 'off',
+    'consistent-return': 'warn',
   },
+  overrides: [
+    {
+      files: ['*.story.tsx'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['*.spec.tsx'],
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off',
+
+        'unicorn/consistent-function-scoping': 'off',
+
+        'sonarjs/no-duplicate-string': 'off',
+
+        'immutable/no-let': 'off',
+      },
+    },
+  ],
 };

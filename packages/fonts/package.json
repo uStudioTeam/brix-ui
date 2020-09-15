@@ -1,0 +1,20 @@
+{
+  "name": "@ustudio-ui/fonts",
+  "version": "0.0.1",
+  "description": "Default fonts acceptable by @ustudio-ui theme",
+  "keywords": ["fonts", "ttf", "ui", "typography", "font-face"],
+  "scripts": {
+    "prebuild": "copyfiles fonts.d.ts README.md lib"
+  },
+  "dependencies": {
+    "@ustudio-ui/types": "*"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.3.0",
+    "file-loader": "^6.1.0",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}

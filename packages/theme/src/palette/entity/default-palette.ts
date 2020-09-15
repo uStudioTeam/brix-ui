@@ -1,174 +1,107 @@
-import type { ColorsMap } from '@ustudio-ui/theme/palette';
-import { Variable } from '@ustudio-ui/types/css';
-import { Color, ColorTupleNumber } from '@ustudio-ui/types/palette';
-import { getCssVariable, objectKeys } from '@ustudio-ui/utils/functions';
-import type { Keys, Values } from '@ustudio-ui/utils/types';
+import { Color } from '@ustudio-ui/types/palette';
+import type { Values } from '@ustudio-ui/utils/types';
 
-import { ColorTransformer } from './color-transformer';
+import { ThemeMode } from '../../entity';
 
-type Palette<K = Keys<typeof Color>, V = ColorTupleNumber> = Record<typeof Color[Extract<Keys<typeof Color>, K>], V>;
+import type { ColorsMap } from './colors-map';
 
-const rawToHsl = <K>(palette: Palette<K>): Palette<K, string> => {
-  // TypeScript goes insane here for some reason
-  // @ts-ignore
-  return objectKeys(palette).reduce((hslPalette, key) => {
-    return Object.assign(hslPalette, {
-      [key]: ColorTransformer.toHsl(palette[key]),
-    });
-  }, {} as Palette<K, string>);
-};
+const primaryPalette = {
+  light: {
+    [Color.BaseStrongUp]: '#0E1820',
+    [Color.BaseStrong]: '#131F2B',
+    [Color.BaseStrongDown]: '#172735',
 
-type AuxillaryKeys =
-  | 'BackgroundBase'
-  | 'BackgroundBaseInverse'
-  | 'BackgroundFaint'
-  | 'BackgroundFaintInverse'
-  | 'TextBase'
-  | 'TextBaseInverse'
-  | 'TextFaint'
-  | 'TextFaintInverse'
-  | 'LineFaint'
-  | 'LineFaintInverse';
+    [Color.BaseWeakUp]: '#F5F8FA',
+    [Color.BaseWeak]: '#F8FAFB',
+    [Color.BaseWeakDown]: '#FFFFFF',
 
-const auxillaryPaletteRaw: Palette<AuxillaryKeys> = {
-  [Color.BackgroundBase]: [240, 20, 99],
-  [Color.BackgroundBaseInverse]: [207, 15, 12],
-  [Color.BackgroundFaint]: [207, 0, 96],
-  [Color.BackgroundFaintInverse]: [207, 2, 17],
-  [Color.TextBase]: [207, 15, 12],
-  [Color.TextBaseInverse]: [240, 20, 99],
-  [Color.TextFaint]: [207, 5, 76],
-  [Color.TextFaintInverse]: [207, 0, 71],
-  [Color.LineFaint]: [200, 5, 76],
-  [Color.LineFaintInverse]: [207, 2, 27],
-};
+    [Color.FaintStrongUp]: '#4E6274',
+    [Color.FaintStrong]: '#687C8D',
+    [Color.FaintStrongDown]: '#8495A4',
 
-export const auxillaryPalette = rawToHsl<AuxillaryKeys>(auxillaryPaletteRaw);
+    [Color.FaintWeakUp]: '#DAE1E7',
+    [Color.FaintWeak]: '#E9EDF1',
+    [Color.FaintWeakDown]: '#EEF2F6',
 
-type PrimaryKeys =
-  | 'BaseStrong'
-  | 'BaseWeak'
-  | 'FaintStrong'
-  | 'FaintWeak'
-  | 'AccentStrong'
-  | 'AccentWeak'
-  | 'CriticalStrong'
-  | 'CriticalWeak'
-  | 'SuccessStrong'
-  | 'SuccessWeak';
+    [Color.AccentStrongUp]: '#1773C4',
+    [Color.AccentStrong]: '#1A81DB',
+    [Color.AccentStrongDown]: '#409AE8',
 
-type PrimaryPalette<T = ColorTupleNumber> = Palette<PrimaryKeys, T>;
+    [Color.AccentWeakUp]: '#7FBBF0',
+    [Color.AccentWeak]: '#BFDDF7',
+    [Color.AccentWeakDown]: '#DBECFB',
 
-const primaryPaletteRaw: PrimaryPalette = {
-  [Color.BaseStrong]: [208, 15, 12],
-  [Color.BaseWeak]: [208, 5, 99],
+    [Color.SuccessStrongUp]: '#34B215',
+    [Color.SuccessStrong]: '#3BC918',
+    [Color.SuccessStrongDown]: '#41DB1A',
 
-  [Color.FaintStrong]: [207, 5, 76],
-  [Color.FaintWeak]: [207, 5, 95],
+    [Color.SuccessWeakUp]: '#96F07F',
+    [Color.SuccessWeak]: '#C3F6B6',
+    [Color.SuccessWeakDown]: '#D9FAD1',
 
-  [Color.AccentStrong]: [208, 79, 48],
-  [Color.AccentWeak]: [210, 79, 91],
+    [Color.CriticalStrongUp]: '#C44B17',
+    [Color.CriticalStrong]: '#DB541A',
+    [Color.CriticalStrongDown]: '#E87240',
 
-  [Color.CriticalStrong]: [18, 63, 53],
-  [Color.CriticalWeak]: [41, 91, 89],
-
-  [Color.SuccessStrong]: [151, 76, 33],
-  [Color.SuccessWeak]: [102, 62, 92],
-};
-
-export const primaryPalette = rawToHsl<PrimaryKeys>(primaryPaletteRaw);
-
-const shift: PrimaryPalette<ReturnType<typeof ColorTransformer.applyShift>> = objectKeys(primaryPaletteRaw).reduce(
-  (shiftObject, key) => {
-    return Object.assign(shiftObject, { [key]: ColorTransformer.applyShift(primaryPaletteRaw[key]) });
+    [Color.CriticalWeakUp]: '#F0A17F',
+    [Color.CriticalWeak]: '#F7D0BF',
+    [Color.CriticalWeakDown]: '#FBE4DB',
   },
-  {} as PrimaryPalette<ReturnType<typeof ColorTransformer.applyShift>>
-);
+  dark: {
+    [Color.BaseStrongUp]: '#FCFCFC',
+    [Color.BaseStrong]: '#F7F7F7',
+    [Color.BaseStrongDown]: '#DCDEE0',
 
-type SecondaryKeys = Exclude<Keys<typeof Color>, PrimaryKeys | AuxillaryKeys | FancyKeys>;
+    [Color.BaseWeakUp]: '#23262A',
+    [Color.BaseWeak]: '#1C1F21',
+    [Color.BaseWeakDown]: '#151719',
 
-// These values show corresponding shift values from the base color
-export const secondaryPaletteShifts: Palette<SecondaryKeys> = {
-  [Color.BaseStrongUp]: [0, 10, -9],
-  [Color.BaseStrongDown]: [0, -10, 13],
+    [Color.FaintStrongUp]: '#8C949B',
+    [Color.FaintStrong]: '#747B81',
+    [Color.FaintStrongDown]: '#5C6166',
 
-  [Color.BaseWeakDown]: [0, 0, 1],
+    [Color.FaintWeakUp]: '#32383E',
+    [Color.FaintWeak]: '#292E32',
+    [Color.FaintWeakDown]: '#202427',
 
-  [Color.FaintStrongDown]: [0, 0, 5],
+    [Color.AccentStrongUp]: '#52A4EA',
+    [Color.AccentStrong]: '#2D90E6',
+    [Color.AccentStrongDown]: '#1876C9',
 
-  [Color.FaintWeakUp]: [0, 0, -2],
-  [Color.FaintWeakDown]: [0, 0, 2],
+    [Color.AccentWeakUp]: '#0E4677',
+    [Color.AccentWeak]: '#0C3B64',
+    [Color.AccentWeakDown]: '#092B49',
 
-  [Color.AccentStrongUp]: [0, 5, -5],
-  [Color.AccentStrongDown]: [0, 1, 8],
+    [Color.SuccessStrongUp]: '#54C837',
+    [Color.SuccessStrong]: '#3CBA1C',
+    [Color.SuccessStrongDown]: '#33A018',
 
-  [Color.AccentWeakUp]: [0, -6, -13],
-  [Color.AccentWeakDown]: [0, -26, 1],
+    [Color.SuccessWeakUp]: '#1E640C',
+    [Color.SuccessWeak]: '#18520A',
+    [Color.SuccessWeakDown]: '#103607',
 
-  [Color.CriticalStrongUp]: [0, 7, -5],
-  [Color.CriticalStrongDown]: [0, 0, 8],
+    [Color.CriticalStrongUp]: '#EA8053',
+    [Color.CriticalStrong]: '#E6652D',
+    [Color.CriticalStrongDown]: '#C94D18',
 
-  [Color.CriticalWeakUp]: [0, 1, -13],
-  [Color.CriticalWeakDown]: [0, -18, 5],
-
-  [Color.SuccessStrongUp]: [0, 10, -6],
-  [Color.SuccessStrongDown]: [0, -15, 11],
-
-  [Color.SuccessWeakUp]: [0, 8, -17],
-  [Color.SuccessWeakDown]: [0, -18, 4],
+    [Color.CriticalWeakUp]: '#762D0E',
+    [Color.CriticalWeak]: '#64260C',
+    [Color.CriticalWeakDown]: '#491C09',
+  },
 };
 
-// Here we create `hsl` colors for `secondary` group
-// applying shifts from `secondaryPaletteShifts`
-export const secondaryPalette = rawToHsl<SecondaryKeys>(
-  objectKeys(secondaryPaletteShifts).reduce((secondaryPaletteShifted, key) => {
-    return Object.assign(secondaryPaletteShifted, {
-      [key]: shift[key.replace(/(-u|-d)$/, '') as typeof Color[PrimaryKeys]](
-        ...(secondaryPaletteShifts[key] as ColorTupleNumber)
-      ),
-    });
-  }, {}) as Palette<SecondaryKeys>
-);
-
-const createFancy = (
-  baseColor: Values<typeof Color>,
-  middleColor: [ColorTupleNumber, ColorTupleNumber],
-  topmostColor: [ColorTupleNumber, ColorTupleNumber]
-): string => {
-  return `linear-gradient(to right, ${ColorTransformer.toHsla(topmostColor[0], 0.25)}, ${ColorTransformer.toHsla(
-    topmostColor[1],
-    0.25
-  )}),
-    linear-gradient(to right, ${ColorTransformer.toHsla(middleColor[0], 0.5)}, ${ColorTransformer.toHsla(
-    middleColor[1],
-    0.5
-  )}),
-  ${getCssVariable(Variable.Color, baseColor)}`;
+const textPalette = {
+  [Color.TextBaseStrong]: primaryPalette.light[Color.BaseStrong],
+  [Color.TextBaseWeak]: primaryPalette.light[Color.BaseWeak],
 };
 
-type FancyKeys = 'FancyAccent' | 'FancyCritical' | 'FancySuccess';
-
-export const gradientPalette: Palette<FancyKeys, string> = {
-  [Color.FancyAccent]: createFancy(
-    Color.AccentStrong,
-    [shift[Color.SuccessWeak](0, -5, -8), shift[Color.SuccessStrong](0, 1, 11)],
-    [shift[Color.AccentWeak](0, 6, 13), shift[Color.AccentStrong](0, 1, -8)]
-  ),
-  [Color.FancyCritical]: createFancy(
-    Color.BaseWeak,
-    [shift[Color.CriticalStrong](0, 0, 8), primaryPaletteRaw[Color.CriticalStrong]],
-    [[41, 0, 96], shift[Color.CriticalWeak](0, 1, -13)]
-  ),
-  [Color.FancySuccess]: createFancy(
-    Color.BaseWeak,
-    [shift[Color.SuccessWeak](0, -5, -8), primaryPaletteRaw[Color.SuccessStrong]],
-    [shift[Color.SuccessStrong](0, 1, 77), shift[Color.SuccessStrong](0, 1, 11)]
-  ),
-};
-
-export const defaultPalette: ColorsMap = {
-  ...primaryPalette,
-  ...secondaryPalette,
-  ...auxillaryPalette,
-  ...gradientPalette,
+export const defaultPalette: Record<Values<typeof ThemeMode>, ColorsMap> = {
+  light: {
+    ...primaryPalette.light,
+    ...textPalette,
+  },
+  dark: {
+    ...primaryPalette.dark,
+    ...textPalette,
+  },
 };

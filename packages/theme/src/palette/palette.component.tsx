@@ -1,21 +1,9 @@
 import React, { FC } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
+import { Theme } from '@ustudio-ui/theme';
+import { objectKeys, setCssVariable } from '@ustudio-ui/utils/functions';
 import { Variable } from '@ustudio-ui/types/css';
-import { ColorSpace, ColorTupleNumber } from '@ustudio-ui/types/palette';
-
-import type { Theme } from '../theme';
-
-import {
-  primaryPalette,
-  secondaryPalette,
-  secondaryPaletteShifts,
-  auxillaryPalette,
-  gradientPalette,
-  ColorsMap,
-  ColorTransformer,
-} from './entity';
-import { useVariables } from './use-variables';
 
 const PaletteGlobalStyles = createGlobalStyle<{
   variables: FlattenSimpleInterpolation;
@@ -27,52 +15,16 @@ const PaletteGlobalStyles = createGlobalStyle<{
   `};
 `;
 
-const Palette: FC<{ override?: Partial<Theme['palette']> }> = ({ override }) => {
-  const gradientVariables = useVariables({
-    from: gradientPalette as ColorsMap,
-    prefix: Variable.Gradient,
-  });
-
-  const auxillaryVariables = useVariables({
-    from: auxillaryPalette as ColorsMap,
-    prefix: Variable.Color,
-  });
-
-  const primaryVariables = useVariables({
-    from: primaryPalette as ColorsMap,
-    prefix: Variable.Color,
-  });
-
-  const secondaryVariables = useVariables({
-    from: secondaryPalette as ColorsMap,
-    prefix: Variable.Color,
-    getValue: ({ palette, variable }) => {
-      if (override?.[variable]) {
-        return ColorTransformer.toHsl(
-          ColorTransformer.applyShift(
-            ColorTransformer.toTuple(
-              override?.[variable.replace(/(-u|-d)$/, '') as keyof typeof override] ||
-                palette[variable.replace(/(-u|-d)$/, '') as keyof typeof palette],
-              ColorSpace.HSL
-            )
-          )(...(secondaryPaletteShifts[variable as keyof typeof secondaryPaletteShifts] as ColorTupleNumber))
-        );
-      }
-
-      return palette[variable];
-    },
-  });
-
+const Palette: FC<{ palette: Theme['palette'] }> = ({ palette }) => {
   return (
     <PaletteGlobalStyles
       variables={css`
-        ${primaryVariables};
-
-        ${secondaryVariables};
-
-        ${auxillaryVariables};
-
-        ${gradientVariables};
+        ${objectKeys(palette).reduce((variables, key) => {
+          return css`
+            ${variables};
+            ${setCssVariable(Variable.Color, key, palette[key])}
+          `;
+        }, css``)};
       `}
     />
   );

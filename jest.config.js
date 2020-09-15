@@ -1,18 +1,31 @@
 const tsconfig = require('./tsconfig.json');
-const { paths } = tsconfig.compilerOptions;
-
+// eslint-disable-next-line import/order
 const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig);
+
+const { paths } = tsconfig.compilerOptions;
 
 module.exports = {
   testEnvironment: 'jsdom',
   rootDir: './',
   roots: Object.values(paths)
-    .flatMap(([path]) => path.replace(/\/\*/, ''))
+    .flatMap(([prevPath]) => {
+      const path = prevPath.replace(/\/\*/, '');
+
+      if (['core', 'grid'].includes(path.split('/')[1])) {
+        return [path, path.replace(/src/, 'tests')];
+      }
+
+      return path;
+    })
     .filter((path) => !/index.ts$/.test(path)),
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+  preset: 'ts-jest/presets/js-with-babel',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.json',
+      babelConfig: '<rootDir>/babel.config.js',
+    },
   },
+  transformIgnorePatterns: ['node_modules/(?!(honks)/)'],
   testRegex: '.*\\.spec.tsx?$',
   coveragePathIgnorePatterns: ['/node_modules/'],
   coverageThreshold: {
@@ -27,6 +40,9 @@ module.exports = {
   clearMocks: true,
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleDirectories: ['node_modules', '**/node_modules', '**/src'],
-  moduleNameMapper,
+  moduleNameMapper: {
+    ...moduleNameMapper,
+    '\\.(svg)$': '<rootDir>/mocks/empty-module.js',
+  },
   testPathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/node_modules/'],
 };
