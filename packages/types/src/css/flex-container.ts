@@ -9,4 +9,5 @@ export const FlexContainer = {
   Main: 'main',
   Article: 'article',
   Aside: 'aside',
+  Label: 'label',
 } as const;

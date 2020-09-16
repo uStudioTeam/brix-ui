@@ -1,1 +1,1 @@
-export type FlexElement = HTMLDivElement | HTMLOListElement | HTMLUListElement | HTMLElement;
+export type FlexElement = HTMLDivElement | HTMLOListElement | HTMLUListElement | HTMLLabelElement | HTMLElement;
