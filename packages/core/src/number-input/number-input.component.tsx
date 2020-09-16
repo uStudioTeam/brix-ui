@@ -1,13 +1,15 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import Input from '../_internal/input';
 
 import type { NumberInputProps } from './number-input.props';
 
 const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(function NumberInput(
-  { type, ...props },
+  { type = 'decimal', ...props },
   ref
 ) {
   return (
@@ -20,5 +22,11 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
     />
   );
 });
+
+NumberInput.propTypes = {
+  type: PT.oneOf(['tel', 'decimal', 'numeric']),
+
+  ...stylableComponent(),
+};
 
 export default NumberInput;

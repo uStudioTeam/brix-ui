@@ -1,5 +1,5 @@
 import type { InputProps } from '../_internal/input';
 
 export interface TextInputProps extends InputProps<string> {
-  type: 'text' | 'password' | 'email' | 'url' | 'search';
+  type?: 'text' | 'password' | 'email' | 'url' | 'search';
 }
