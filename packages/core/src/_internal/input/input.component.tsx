@@ -17,11 +17,12 @@ const Input = intrinsicComponent<
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
-      setInternalValue(getValue(event));
+      const nextValue = getValue(event);
 
-      tryCall(onChange, internalValue, event);
+      setInternalValue(nextValue);
+      tryCall(onChange, nextValue, event);
     },
-    [onChange, internalValue]
+    [onChange]
   );
 
   return (
@@ -30,8 +31,12 @@ const Input = intrinsicComponent<
       value={internalValue}
       onChange={handleChange}
       disabled={isDisabled}
+      aria-disabled={isDisabled}
       required={isRequired}
+      aria-required={isRequired}
       readOnly={isReadonly}
+      aria-readonly={isReadonly}
+      aria-invalid={props.isInvalid}
       {...props}
     />
   );
