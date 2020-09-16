@@ -1,4 +1,4 @@
-import { InputProps } from '@ustudio-ui/core/_internal/input';
+import { InputProps } from '../_internal/input';
 
 export interface NumberInputProps extends InputProps<number> {
   type: 'numeric' | 'decimal' | 'tel';

@@ -1,4 +1,4 @@
-import type { InputProps } from '../../modules/input';
+import type { InputProps } from '../_internal/input';
 
 export interface TextInputProps extends InputProps<string> {
   type: 'text' | 'password' | 'email' | 'url' | 'search';

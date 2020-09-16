@@ -12,10 +12,7 @@ const Input = intrinsicComponent<
     getValue(event: ChangeEvent<HTMLInputElement>): string | number;
   },
   HTMLInputElement
->(function Input(
-  { getValue, className, value, defaultValue, isDisabled, isRequired, isReadonly, onChange, ...props },
-  ref
-) {
+>(function Input({ getValue, value, defaultValue, isDisabled, isRequired, isReadonly, onChange, ...props }, ref) {
   const [internalValue, setInternalValue] = useValue(value, defaultValue ?? '');
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
