@@ -16,7 +16,7 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
       {...props}
       getValue={({ target: { valueAsNumber } }) => (Number.isNaN(valueAsNumber) ? '' : valueAsNumber)}
       type={type === 'tel' ? type : 'number'}
-      inputMode={type}
+      inputMode={props.inputMode ?? type}
     />
   );
 });

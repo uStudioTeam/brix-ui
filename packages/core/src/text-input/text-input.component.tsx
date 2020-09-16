@@ -13,7 +13,7 @@ const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function 
       {...props}
       getValue={({ target: { value } }) => value}
       type={type}
-      inputMode={type === 'password' ? 'text' : type}
+      inputMode={props.inputMode ?? type === 'password' ? 'text' : type}
     />
   );
 });
