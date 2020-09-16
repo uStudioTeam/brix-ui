@@ -17,9 +17,9 @@ const primaryPalette = {
 
     [Color.FaintStrongUp]: '#4E6274',
     [Color.FaintStrong]: '#687C8D',
-    [Color.FaintStrongDown]: '#8495A4',
+    [Color.FaintStrongDown]: '#909FAD',
 
-    [Color.FaintWeakUp]: '#DAE1E7',
+    [Color.FaintWeakUp]: '#D4DCE2',
     [Color.FaintWeak]: '#E9EDF1',
     [Color.FaintWeakDown]: '#EEF2F6',
 
