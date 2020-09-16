@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '@ustudio-ui/theme/typography';
+import { font } from '@ustudio-ui/theme/mixin';
 import { Color } from '@ustudio-ui/types/palette';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 
@@ -16,7 +16,12 @@ export const CloseIcon = styled(Close)`
 export const CloseButton = styled.button`
   position: relative;
 
-  padding: 4px 8px;
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   cursor: pointer;
 
@@ -56,7 +61,6 @@ export const Container = styled.div<
 
     background-color: ${backgroundColor};
 
-    ${font.body.small};
     color: ${color};
 
     ${CloseButton} {
@@ -89,6 +93,8 @@ export const Container = styled.div<
 
 export const Content = styled.div`
   padding: 6px 8px;
+
+  ${font.body.small};
 
   cursor: default;
 
