@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.build.json",
-  "include": ["src", "assets/index.d.ts"],
+  "include": ["src", "assets/index.d.ts", "../../globals.d.ts"],
   "compilerOptions": {
     "rootDir": "src",
     "declarationDir": "lib",
@@ -21,6 +21,9 @@
     },
     {
       "path": "../prop-types/tsconfig.build.json"
+    },
+    {
+      "path": "../hooks/tsconfig.build.json"
     }
   ]
 }
