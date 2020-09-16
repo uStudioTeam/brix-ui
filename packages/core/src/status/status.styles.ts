@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, Keyframes, keyframes } from 'styled-components';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 
 import type { StatusProps } from './status.props';
@@ -7,22 +7,22 @@ const parseBackgroundColor = (intent: StatusProps['intent'], isWeak: StatusProps
   if (isWeak) {
     switch (intent) {
       case 'success':
-        return '#ADEC93';
+        return 'success-weak-up';
       case 'critical':
-        return '#FAD789';
+        return 'critical-weak-up';
       case 'accent':
       default:
-        return '#9CC6F0';
+        return 'accent-weak-up';
     }
   }
   switch (intent) {
     case 'success':
-      return '#149657';
+      return 'success-strong-up';
     case 'critical':
-      return '#D36A3D';
+      return 'critical-strong-up';
     case 'accent':
     default:
-      return '#1a81db';
+      return 'accent-strong-up';
   }
 };
 
@@ -30,105 +30,76 @@ const parseBorderColor = (intent: StatusProps['intent'], isWeak: StatusProps['is
   if (isWeak) {
     switch (intent) {
       case 'success':
-        return '#F3F9F0';
+        return 'success-weak-down';
       case 'critical':
-        return '#FBF4E5';
+        return 'critical-weak-down';
       case 'accent':
       default:
-        return '#EFF5FA';
+        return 'accent-weak-down';
     }
   }
   switch (intent) {
     case 'success':
-      return '#E6F7DF';
+      return 'success-weak-up';
     case 'critical':
-      return '#FCEDCA';
+      return 'critical-weak-up';
     case 'accent':
     default:
-      return '#D4E7FA';
+      return 'accent-weak-up';
   }
 };
 
-const parseAnimation = (animation: StatusProps['animation']): string => {
+const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
   switch (animation) {
     case 'pulsing':
-      return ` -webkit-animation: pulsing 2s infinite;
-                animation: pulsing 2s infinite;
-                
-                @-webkit-keyframes pulsing {   
-                    0% {     
-                -webkit-transform: scale(0.5, 0.5);     
-                transform: scale(1.3, 1.3);
-                     }
-                    50% {
-                -webkit-transform: scale(1, 1);
-                transform: scale(1, 1);
-                     }
-                    100% {
-                -webkit-transform: scale(0.5, 0.5);
-                transform: scale(1.3, 1.3);
-                    }
+      return keyframes`
+                0% {
+                   transform: scale(1);
                 }
-                
-                @keyframes pulsing {
-                     0% {
-                -webkit-transform: scale(0.5, 0.5);
-                transform: scale(1.3, 1.3);
-                    }
-                    50% {
-                -webkit-transform: scale(1, 1);
-                transform: scale(1, 1);
-                    }
-                    100% {
-                -webkit-transform: scale(0.5, 0.5);
-                transform: scale(1.3, 1.3);
-                    }
+                50% {
+                  transform: scale(1.3);
+                  border-width: 0
+                }
+                100% {
+                  transform: scale(1);
                 }`;
 
     case 'saturating':
-      return `-webkit-animation: saturating 1s infinite;
-                animation: saturating 1s infinite;
-                
-                @-webkit-keyframes saturating {   
-                    0% {     
-                opacity: 1;
-                     }
-                    50% {
-                opacity: 0.5;
-                     }
-                    100% {
-                opacity: 1;
-                    }
+      return keyframes`
+                0% {
+                  opacity: 1;
                 }
-                
-                @keyframes saturating {
-                     0% {
-                 opacity: 1;
-                    }
-                    50% {
-                 opacity: 0.5;
-                    }
-                    100% {
-                 opacity: 1;
-                    }
+                50% {
+                  opacity: 0.5;
+                }
+                100% {
+                  opacity: 1;
                 }`;
-
     case 'none':
     default:
-      return '';
+      return keyframes``;
   }
 };
 
-const Status = styled.div<StatusProps>(
-  ({ intent = 'accent', isWeak, animation = 'none' }) => css`
+const Status = styled.div<StatusProps>(({ theme, intent = 'accent', isWeak, animation = 'none' }) => {
+  const parseBackground = parseBackgroundColor(intent, isWeak);
+  const parseBorder = parseBorderColor(intent, isWeak);
+
+  const color = theme.colorHelper.parseColor(parseBackground);
+  const borderColor = theme.colorHelper.parseColor(parseBorder);
+
+  return css`
     width: 10px;
     height: 10px;
-    background: ${parseBackgroundColor(intent, isWeak)};
+
+    background: ${color};
+
+    border: 2px solid ${borderColor};
     border-radius: 10px;
-    border: 2px solid ${parseBorderColor(intent, isWeak)};
-    ${parseAnimation(animation)}
-  `
-);
+
+    animation: ${parseAnimation(animation)} 2s infinite;
+  `;
+});
 
 const Styled = applyDisplayNames({ Status });
 
