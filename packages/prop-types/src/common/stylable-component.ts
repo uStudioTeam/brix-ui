@@ -13,6 +13,6 @@ export const stylableComponent = <S extends Record<string, any> = { className?: 
         [key]: PT.func,
       });
     },
-    ({ className: PT.string } as unknown) as WeakValidationMap<StylableComponent<S>>
-  );
+    { className: PT.string } as unknown
+  ) as WeakValidationMap<StylableComponent<S>>;
 };

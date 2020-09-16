@@ -1,4 +1,6 @@
-import { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { HTMLAttributes } from 'react';
+
+import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
 
 import { Spinner, Blade } from './spinner.styles';
 
@@ -7,7 +9,7 @@ interface Styled {
   Blade: typeof Blade;
 }
 
-export interface SpinnerProps extends IntrinsicComponent<HTMLDivElement>, StylableComponent<Styled> {
+export interface SpinnerProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent<Styled> {
   blades?: number;
   bladeSize?:
     | string

@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from 'react';
+
 import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@ustudio-ui/types/component';
 
 export interface CellBreakpointData {
@@ -7,6 +9,6 @@ export interface CellBreakpointData {
 
 export type CellBreakpoints = CellBreakpointData & BreakpointsProps<CellBreakpointData>;
 
-export interface CellProps extends IntrinsicComponent<HTMLDivElement>, StylableComponent, CellBreakpoints {
+export interface CellProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent, CellBreakpoints {
   area?: string;
 }
