@@ -1,6 +1,8 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import Input from '../_internal/input';
 
@@ -17,5 +19,11 @@ const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function 
     />
   );
 });
+
+TextInput.propTypes = {
+  type: PT.oneOf(['text', 'password', 'email', 'url', 'search']),
+
+  ...stylableComponent(),
+};
 
 export default TextInput;
