@@ -9,7 +9,7 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, styles, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
+  { children, styles, className, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
@@ -46,6 +46,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       direction="column"
       isOpen={internalIsOpen}
       isDisabled={isDisabled}
+      className={className}
       {...props}
     >
       <Styled.Summary
