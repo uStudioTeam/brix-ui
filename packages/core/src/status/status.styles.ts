@@ -54,7 +54,7 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
     case 'pulsing':
       return keyframes`
                 0% {
-                   transform: scale(1);
+                  transform: scale(1);
                 }
                 50% {
                   transform: scale(1.3);
@@ -81,25 +81,27 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
   }
 };
 
-const Status = styled.div<StatusProps>(({ theme, intent = 'accent', isWeak, animation = 'none' }) => {
-  const parseBackground = parseBackgroundColor(intent, isWeak);
-  const parseBorder = parseBorderColor(intent, isWeak);
+const Status = styled.div<Omit<StatusProps, 'animation'> & { $animation: StatusProps['animation'] }>(
+  ({ theme, intent = 'accent', isWeak, $animation = 'none' }) => {
+    const parseBackground = parseBackgroundColor(intent, isWeak);
+    const parseBorder = parseBorderColor(intent, isWeak);
 
-  const color = theme.colorHelper.parseColor(parseBackground);
-  const borderColor = theme.colorHelper.parseColor(parseBorder);
+    const color = theme.colorHelper.parseColor(parseBackground);
+    const borderColor = theme.colorHelper.parseColor(parseBorder);
 
-  return css`
-    width: 10px;
-    height: 10px;
+    return css`
+      width: 10px;
+      height: 10px;
 
-    background: ${color};
+      background: ${color};
 
-    border: 2px solid ${borderColor};
-    border-radius: 10px;
+      border: 2px solid ${borderColor};
+      border-radius: 10px;
 
-    animation: ${parseAnimation(animation)} 2s infinite;
-  `;
-});
+      animation: ${parseAnimation($animation)} 2s infinite;
+    `;
+  }
+);
 
 const Styled = applyDisplayNames({ Status });
 
