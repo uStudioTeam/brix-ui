@@ -9,7 +9,7 @@ import type { BadgeProps } from './badge.props';
 import Styled from './badge.styles';
 
 const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
-  { children, styles, color, backgroundColor, value, shouldDisplay = true, ...props },
+  { children, styles, className, color, backgroundColor, value, shouldDisplay = true, ...props },
   ref
 ) {
   return (
@@ -24,6 +24,7 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
           $color={color}
           $backgroundColor={backgroundColor}
           $value={value}
+          className={className}
           {...props}
         >
           {value}

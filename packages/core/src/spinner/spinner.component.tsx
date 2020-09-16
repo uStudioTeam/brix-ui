@@ -27,6 +27,8 @@ const parseBladeSize = (
 
 const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinner(
   {
+    styles,
+    className,
     blades = 9,
     bladeSize,
     speed = 100,
@@ -36,8 +38,6 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
     swirl,
     spread = 1,
     delay,
-    className,
-    styles,
   },
   ref
 ) {

@@ -8,11 +8,18 @@ import type { TagProps } from './tag.props';
 import Styled from './tag.styles';
 
 const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
-  { children, styles, color, backgroundColor, onClose, closeIcon, ...props },
+  { children, styles, className, color, backgroundColor, onClose, closeIcon, ...props },
   ref
 ) {
   return (
-    <Styled.Container ref={ref} as={styles?.Container} $color={color} $backgroundColor={backgroundColor} {...props}>
+    <Styled.Container
+      ref={ref}
+      as={styles?.Container}
+      $color={color}
+      $backgroundColor={backgroundColor}
+      className={className}
+      {...props}
+    >
       <Styled.Content as={styles?.Content}>{children}</Styled.Content>
 
       {onClose && (
