@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from 'react';
+
 import type { BlockProps } from '@ustudio-ui/core/block';
 import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@ustudio-ui/types/component';
 import type { Values } from '@ustudio-ui/utils/types';
@@ -12,7 +14,7 @@ export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
 export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
 
 export interface GridProps
-  extends IntrinsicComponent,
+  extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
     StylableComponent,
     GridBreakpoints,
     Omit<BlockProps, 'isInline' | 'gap'> {}

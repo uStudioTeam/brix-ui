@@ -1,4 +1,5 @@
-import { ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+
 import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
 
 import { Container, Content, CloseButton, CloseIcon } from './tag.styles';
@@ -10,7 +11,7 @@ interface Styled {
   CloseIcon: typeof CloseIcon;
 }
 
-export interface TagProps extends IntrinsicComponent<HTMLDivElement>, StylableComponent<Styled> {
+export interface TagProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent<Styled> {
   color?: string;
   backgroundColor?: string;
 

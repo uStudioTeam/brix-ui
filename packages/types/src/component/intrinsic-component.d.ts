@@ -1,3 +1,1 @@
-import type { HTMLAttributes } from 'react';
-
-export type IntrinsicComponent<E = HTMLElement> = Omit<HTMLAttributes<E>, 'style'>;
+export type IntrinsicComponent<E> = Omit<Partial<E>, 'style'>;

@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+
 import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
 
 import { Container, Icon, Summary, Details } from './disclosure.styles';
@@ -10,7 +11,7 @@ interface Styled {
   Details: typeof Details;
 }
 
-export interface DisclosureProps extends IntrinsicComponent<HTMLDivElement>, StylableComponent<Styled> {
+export interface DisclosureProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent<Styled> {
   isOpen?: boolean;
   summary?: ReactNode;
   icon?: ReactNode | ((props: Pick<DisclosureProps, 'isOpen' | 'isDisabled'>) => ReactNode);
