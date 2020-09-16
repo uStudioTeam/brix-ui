@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { objectKeys } from '@ustudio-ui/utils/functions';
 import { FontWeight } from '@ustudio-ui/types/typography';
 
-import { FontsCssMap } from './entity';
+import type { FontsCssMap } from '../typography/entity';
 
 const pxToRem = (value: number): number => value / 16;
 

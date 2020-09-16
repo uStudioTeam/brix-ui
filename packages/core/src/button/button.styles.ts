@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '@ustudio-ui/theme/typography';
+import { font } from '@ustudio-ui/theme/mixin';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 
 import type { ButtonProps } from './button.props';

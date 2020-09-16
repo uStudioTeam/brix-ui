@@ -1,9 +1,10 @@
+import type { DefaultTheme } from 'styled-components';
 import type { Values, With } from '@ustudio-ui/utils/types';
 
 import type { BreakpointsMap } from '../breakpoints';
 import type { ColorsMap, ColorHelper } from '../palette';
-import type { FontsFacesMap, FontFamilyMap } from '../typography';
 
+import type { FontsFacesMap, FontFamilyMap } from '../typography';
 import { ThemeMode } from './theme-mode';
 
 export interface Theme {
@@ -27,4 +28,4 @@ export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'swi
   readonly mode?: Values<typeof ThemeMode>;
 }
 
-export type WithTheme<T = undefined> = With<T, { theme: Theme }>;
+export type WithTheme<T = undefined> = With<T, { theme: DefaultTheme }>;

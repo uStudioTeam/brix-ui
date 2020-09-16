@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
-import { transparentize } from 'polished';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { Color } from '@ustudio-ui/types/palette';
-import { font } from '@ustudio-ui/theme/typography';
+import { font, shadow } from '@ustudio-ui/theme/mixin';
 
 import Flex from '../flex';
 import Chevron from '../../assets/icons/chevron.inline.svg';
@@ -14,7 +12,7 @@ export const Container = styled(Flex)<{
   isOpen: DisclosureProps['isOpen'];
   isDisabled: DisclosureProps['isDisabled'];
 }>(
-  ({ isOpen, isDisabled, theme }) => css`
+  ({ isOpen, isDisabled }) => css`
     color: var(--c-base-strong);
 
     border: 1px solid var(--c-faint-weak-up);
@@ -33,13 +31,13 @@ export const Container = styled(Flex)<{
     ${!isDisabled &&
     css`
       &:hover {
-        box-shadow: 0 2px 8px 0 ${transparentize(0.9, theme.palette[Color.BaseStrong])};
+        box-shadow: ${shadow('base-strong', 0.1)};
       }
     `}
 
     ${isOpen &&
     css`
-      box-shadow: 0 2px 8px 0 ${transparentize(0.85, theme.palette[Color.AccentStrong])};
+      box-shadow: ${shadow('accent-strong', 0.15)};
     `}
   `
 );

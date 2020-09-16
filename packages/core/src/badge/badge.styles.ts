@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { font } from '@ustudio-ui/theme/typography';
+import { font } from '@ustudio-ui/theme/mixin';
 import { Align } from '@ustudio-ui/types/css';
 import { Color } from '@ustudio-ui/types/palette';
 

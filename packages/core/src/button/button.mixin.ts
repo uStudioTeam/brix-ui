@@ -1,11 +1,7 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-import { transparentize } from 'polished';
 
-import { Color } from '@ustudio-ui/types/palette';
-import type { Values } from '@ustudio-ui/utils/types';
-import { Variable } from '@ustudio-ui/types/css';
-import { getCssVariable } from '@ustudio-ui/utils/functions';
 import type { WithTheme } from '@ustudio-ui/theme/entity';
+import { shadow } from '@ustudio-ui/theme/mixin';
 
 import type { ButtonProps } from './button.props';
 
@@ -21,28 +17,24 @@ const applyIntentStyle = <S>(intent: Intent, baseStyles: S, intentStyles: S): S 
   return intentStyles;
 };
 
-const applyShadow = (color: string, alpha: number) => ({ theme }: WithTheme): FlattenSimpleInterpolation => {
-  return css`0 2px 8px ${transparentize(1 - alpha, theme.palette[color as Values<typeof Color>])};`;
-};
-
 export const disabledButtonMixin = {
   contained: css`
-    background-color: ${getCssVariable(Variable.Color, Color.FaintWeak)};
+    background-color: var(--c-faint-weak);
 
-    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
+    color: var(--c-faint-strong-down);
   `,
   outlined: css`
-    border-color: ${getCssVariable(Variable.Color, Color.FaintWeakUp)};
+    border-color: var(--c-faint-weak-up);
 
-    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
+    color: var(--c-faint-strong-down);
   `,
   faint: css`
-    background-color: ${getCssVariable(Variable.Color, Color.FaintWeak)};
+    background-color: var(--c-faint-weak);
 
-    color: ${getCssVariable(Variable.Color, Color.FaintStrongDown)};
+    color: var(--c-faint-strong-down);
   `,
   text: css`
-    color: ${getCssVariable(Variable.Color, Color.FaintStrong)};
+    color: var(--c-faint-strong);
   `,
 };
 
@@ -57,7 +49,7 @@ const containedButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-strong`, 0.4)};
+      box-shadow: ${shadow(`${intent}-strong`, 0.4)};
     }
 
     &:focus {
@@ -65,7 +57,7 @@ const containedButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
+      box-shadow: ${shadow(`${intent}-strong`, 0.25)};
     }
   ` as FlattenSimpleInterpolation;
 };
@@ -82,22 +74,17 @@ const outlinedButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
+      box-shadow: ${shadow(`${intent}-strong`, 0.25)};
     }
 
     &:focus {
-      border: 1px solid
-        ${applyIntentStyle(
-          intent,
-          `${getCssVariable(Variable.Color, Color.FaintStrong)}`,
-          `var(--c-${intent}-weak-up)`
-        )};
+      border: 1px solid ${applyIntentStyle(intent, `var(--c-faint-strong)`, `var(--c-${intent}-weak-up)`)};
 
       color: ${`var(--c-${intent}-strong-down)`};
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-strong`, 0.15)};
+      box-shadow: ${shadow(`${intent}-strong`, 0.15)};
     }
   ` as FlattenSimpleInterpolation;
 };
@@ -109,15 +96,11 @@ const faintButtonMixin: IntentMixin = (intent) => () => {
     &,
     &:active:focus,
     &:hover:focus {
-      background-color: ${applyIntentStyle(
-        intent,
-        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
-        `var(--c-${intent}-weak-down)`
-      )};
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-weak)`, `var(--c-${intent}-weak-down)`)};
     }
 
     &:hover {
-      box-shadow: ${applyShadow(`${intent}-strong`, Number(applyIntentStyle(intent, 0.1, 0.125)))};
+      box-shadow: ${shadow(`${intent}-strong`, Number(applyIntentStyle(intent, 0.1, 0.125)))};
     }
 
     &:focus {
@@ -125,7 +108,7 @@ const faintButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:active {
-      box-shadow: ${applyShadow(`${intent}-strong`, 0.075)};
+      box-shadow: ${shadow(`${intent}-strong`, 0.075)};
 
       transform: scale(0.99);
     }
@@ -143,27 +126,19 @@ const textButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:hover {
-      background-color: ${applyIntentStyle(
-        intent,
-        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
-        `var(--c-${intent}-weak-down)`
-      )};
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-weak)`, `var(--c-${intent}-weak-down)`)};
     }
 
     &:focus {
-      text-shadow: ${applyShadow(`${intent}-strong`, 0.5)};
+      text-shadow: ${shadow(`${intent}-strong`, 0.5)};
 
       color: ${`var(--c-${intent}-strong-down)`};
     }
 
     &:active {
-      background-color: ${applyIntentStyle(
-        intent,
-        `${getCssVariable(Variable.Color, Color.FaintWeak)}`,
-        `var(--c-${intent}-weak-down)`
-      )};
+      background-color: ${applyIntentStyle(intent, `var(--c-faint-weak)`, `var(--c-${intent}-weak-down)`)};
 
-      text-shadow: ${applyShadow(`${intent}-strong`, 0.25)};
+      text-shadow: ${shadow(`${intent}-strong`, 0.25)};
 
       transform: scale(0.99);
     }
