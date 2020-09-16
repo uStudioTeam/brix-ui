@@ -19,7 +19,7 @@ export const Input = styled.input<Pick<InputProps<string | number>, 'isInvalid'>
     height: 28px;
     width: 100%;
 
-    padding: 2px 8px 3px;
+    padding: 1px 8px 4px;
 
     display: flex;
     justify-content: space-between;
@@ -76,6 +76,8 @@ export const Input = styled.input<Pick<InputProps<string | number>, 'isInvalid'>
 
     &::placeholder {
       color: var(--c-faint-strong-down);
+
+      transition: opacity 200ms;
     }
 
     &::-webkit-inner-spin-button,
