@@ -4,18 +4,29 @@ import { shadow, font } from '@ustudio-ui/theme/mixin';
 
 import type { InputProps } from './input.props';
 
-const invalidState = css`
-  &:not(:read-only) {
-    border-color: var(--c-critical-strong);
+export const Input = styled.input(
+  () => css`
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
 
-    &:focus {
-      border-color: var(--c-critical-weak-up);
+    width: 100%;
+
+    &::placeholder {
+      color: var(--c-faint-strong-down);
+
+      transition: opacity 200ms;
     }
-  }
-`;
 
-export const Input = styled.input<Pick<InputProps<string | number>, 'isInvalid'>>(
-  ({ isInvalid }) => css`
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  `
+);
+
+export const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 'isReadonly' | 'isInvalid'>>(
+  ({ isDisabled, isReadonly, isInvalid }) => css`
     height: 28px;
     width: 100%;
 
@@ -33,61 +44,57 @@ export const Input = styled.input<Pick<InputProps<string | number>, 'isInvalid'>
 
     ${font.body.p};
 
-    transition: all 200ms;
+    cursor: text;
 
-    -moz-appearance: textfield;
-    -webkit-appearance: none;
+    transition: all 200ms;
 
     &:hover {
       box-shadow: ${shadow('base-strong', 0.1)};
     }
 
-    &:focus {
+    &:focus-within {
       border-color: var(--c-accent-strong);
     }
 
-    &:read-only {
+    ${isReadonly &&
+    css`
       color: var(--c-faint-strong-up);
       border-color: var(--c-faint-weak-up);
 
-      &::placeholder {
+      ${Input}::placeholder {
         opacity: 1;
       }
-    }
+    `}
 
-    &:disabled {
+    ${isDisabled &&
+    css`
       color: var(--c-faint-strong-down);
       background-color: var(--c-faint-weak-down);
       border-color: var(--c-faint-weak-up);
+
+      cursor: not-allowed;
 
       &:hover {
         box-shadow: none;
       }
 
-      &::placeholder {
+      ${Input}::placeholder {
         color: var(--c-faint-weak-up);
       }
-    }
+    `}
 
-    ${isInvalid && invalidState};
-    &:user-invalid {
-      ${invalidState};
-    }
+    ${isInvalid &&
+    !isDisabled &&
+    css`
+      border-color: var(--c-critical-strong);
 
-    &::placeholder {
-      color: var(--c-faint-strong-down);
-
-      transition: opacity 200ms;
-    }
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+      &:focus-within {
+        border-color: var(--c-critical-weak-up);
+      }
+    `};
   `
 );
 
-const Styled = { Input };
+const Styled = { Container, Input };
 
 export default Styled;

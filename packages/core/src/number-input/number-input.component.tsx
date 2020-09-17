@@ -9,7 +9,7 @@ import Input from '../_internal/input';
 import type { NumberInputProps } from './number-input.props';
 
 const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(function NumberInput(
-  { type = 'decimal', ...props },
+  { type = 'decimal', inputMode, min, max, step, ...props },
   ref
 ) {
   return (
@@ -18,13 +18,15 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
       {...props}
       getValue={({ target: { valueAsNumber } }) => (Number.isNaN(valueAsNumber) ? '' : valueAsNumber)}
       type={type === 'tel' ? type : 'number'}
-      inputMode={props.inputMode ?? type}
+      inputMode={inputMode ?? type}
+      inputProps={{ min, max, step }}
     />
   );
 });
 
 NumberInput.propTypes = {
   type: PT.oneOf(['tel', 'decimal', 'numeric']),
+  inputMode: PT.oneOf(['tel', 'decimal', 'numeric']),
 
   ...stylableComponent(),
 };

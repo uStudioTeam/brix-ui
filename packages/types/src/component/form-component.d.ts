@@ -1,12 +1,6 @@
-import type { ChangeEvent, HTMLAttributes } from 'react';
+import type { ChangeEvent } from 'react';
 
-import type { IntrinsicComponent } from './intrinsic-component';
-
-export interface FormComponent<P, E extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, V>
-  extends Omit<
-    IntrinsicComponent<HTMLAttributes<P<E>>>,
-    'disabled' | 'readOnly' | 'required' | 'invalid' | 'value' | 'defaultValue' | 'onChange'
-  > {
+export interface FormComponent<E extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, V> {
   value?: V;
   defaultValue?: V;
 
