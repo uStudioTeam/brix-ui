@@ -20,12 +20,22 @@ const renderWithProps = (props: StatusProps = { intent: 'accent' }) => {
 describe('<Status />', () => {
   matchMedia();
 
-  describe('success', () => {
+  describe('intent', () => {
     describe('when intent value is "success"', () => {
-      it('should have property intent with value of "#54c837"', () => {
+      it('should have property border with value of "2px solid var(--c-success-weak-up)"', () => {
         const { getByTestId } = renderWithProps({ intent: 'success' });
 
-        expect(getByTestId(statusId)).toHaveStyleRule('background', '#54c837');
+        expect(getByTestId(statusId)).toHaveStyleRule('border', '2px solid var(--c-success-weak-up)');
+      });
+    });
+  });
+
+  describe('animation', () => {
+    describe('when animation value is pulsing', () => {
+      it('should have property animation with value of "cRIjZl 2s infinite"', () => {
+        const { getByTestId } = renderWithProps({ intent: 'success', animation: 'pulsing' });
+
+        expect(getByTestId(statusId)).toHaveStyleRule('animation', 'cRIjZl 2s infinite');
       });
     });
   });
