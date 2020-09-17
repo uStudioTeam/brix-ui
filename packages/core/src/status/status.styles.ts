@@ -4,49 +4,11 @@ import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import type { StatusProps } from './status.props';
 
 const parseBackgroundColor = (intent: StatusProps['intent'], isWeak: StatusProps['isWeak']): string => {
-  if (isWeak) {
-    switch (intent) {
-      case 'success':
-        return 'success-weak-up';
-      case 'critical':
-        return 'critical-weak-up';
-      case 'accent':
-      default:
-        return 'accent-weak-up';
-    }
-  }
-  switch (intent) {
-    case 'success':
-      return 'success-strong-up';
-    case 'critical':
-      return 'critical-strong-up';
-    case 'accent':
-    default:
-      return 'accent-strong-up';
-  }
+  return `${intent}-${isWeak ? 'weak' : 'strong'}-up`;
 };
 
 const parseBorderColor = (intent: StatusProps['intent'], isWeak: StatusProps['isWeak']): string => {
-  if (isWeak) {
-    switch (intent) {
-      case 'success':
-        return 'success-weak-down';
-      case 'critical':
-        return 'critical-weak-down';
-      case 'accent':
-      default:
-        return 'accent-weak-down';
-    }
-  }
-  switch (intent) {
-    case 'success':
-      return 'success-weak-up';
-    case 'critical':
-      return 'critical-weak-up';
-    case 'accent':
-    default:
-      return 'accent-weak-up';
-  }
+  return `${intent}-weak-${isWeak ? 'down' : 'up'}`;
 };
 
 const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
@@ -58,7 +20,7 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
                 }
                 50% {
                   transform: scale(1.3);
-                  border-width: 0
+                  border-width: 0;
                 }
                 100% {
                   transform: scale(1);
@@ -82,25 +44,17 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
 };
 
 const Status = styled.div<Omit<StatusProps, 'animation'> & { $animation: StatusProps['animation'] }>(
-  ({ theme, intent = 'accent', isWeak, $animation = 'none' }) => {
-    const parseBackground = parseBackgroundColor(intent, isWeak);
-    const parseBorder = parseBorderColor(intent, isWeak);
+  ({ intent = 'accent', isWeak, $animation = 'none' }) => css`
+    width: 10px;
+    height: 10px;
 
-    const color = theme.colorHelper.parseColor(parseBackground);
-    const borderColor = theme.colorHelper.parseColor(parseBorder);
+    background: var(--c-${parseBackgroundColor(intent, isWeak)});
 
-    return css`
-      width: 10px;
-      height: 10px;
+    border: 2px solid var(--c-${parseBorderColor(intent, isWeak)});
+    border-radius: 10px;
 
-      background: ${color};
-
-      border: 2px solid ${borderColor};
-      border-radius: 10px;
-
-      animation: ${parseAnimation($animation)} 2s infinite;
-    `;
-  }
+    animation: ${parseAnimation($animation)} 2s infinite;
+  `
 );
 
 const Styled = applyDisplayNames({ Status });

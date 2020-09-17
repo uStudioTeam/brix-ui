@@ -6,8 +6,8 @@ import { StatusProps } from './status.props';
 
 import Styled from './status.styles';
 
-const Status = intrinsicComponent<StatusProps, HTMLDivElement>(function Status(props, ref) {
-  return <Styled.Status ref={ref} {...props} />;
+const Status = intrinsicComponent<StatusProps, HTMLDivElement>(function Status({ animation, ...props }, ref) {
+  return <Styled.Status ref={ref} $animation={animation} {...props} />;
 });
 
 export default Status;
