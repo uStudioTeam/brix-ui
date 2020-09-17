@@ -13,17 +13,43 @@ export default {
         type: 'inline-radio',
         options: ['success', 'critical', 'accent'],
       },
+      description: 'Color variants',
+      defaultValue: {
+        summary: 'accent',
+      },
     },
-    isWeak: { control: 'boolean' },
+    isWeak: {
+      control: 'boolean',
+      description: 'Weak color variant',
+      defaultValue: {
+        summary: false,
+      },
+    },
     animation: {
       control: {
         type: 'inline-radio',
         options: ['pulsing', 'saturating', 'none'],
       },
+      description: 'Animation variants',
+      defaultValue: {
+        summary: 'none',
+      },
+    },
+    animationDuration: {
+      control: {
+        type: 'number',
+      },
+      description: 'animation duration in ms',
+      defaultValue: {
+        summary: '500',
+      },
     },
   },
   args: {
     intent: 'accent',
+    isWeak: false,
+    animation: 'none',
+    animationDuration: 500,
   },
 };
 
