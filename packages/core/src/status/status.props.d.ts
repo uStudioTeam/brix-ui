@@ -5,4 +5,5 @@ export interface StatusProps {
   intent: Values<typeof Intent>;
   isWeak?: boolean;
   animation?: 'pulsing' | 'saturating' | 'none';
+  animationDuration?: number;
 }

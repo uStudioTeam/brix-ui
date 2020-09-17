@@ -19,7 +19,7 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
                   transform: scale(1);
                 }
                 50% {
-                  transform: scale(1.3);
+                  transform: scale(1.2);
                   border-width: 0;
                 }
                 100% {
@@ -44,7 +44,7 @@ const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
 };
 
 const Status = styled.div<Omit<StatusProps, 'animation'> & { $animation: StatusProps['animation'] }>(
-  ({ intent = 'accent', isWeak, $animation = 'none' }) => css`
+  ({ intent = 'accent', isWeak, $animation = 'none', animationDuration = 500 }) => css`
     width: 10px;
     height: 10px;
 
@@ -53,7 +53,7 @@ const Status = styled.div<Omit<StatusProps, 'animation'> & { $animation: StatusP
     border: 2px solid var(--c-${parseBorderColor(intent, isWeak)});
     border-radius: 10px;
 
-    animation: ${parseAnimation($animation)} 2s infinite;
+    animation: ${parseAnimation($animation)} ${animationDuration}ms infinite;
   `
 );
 
