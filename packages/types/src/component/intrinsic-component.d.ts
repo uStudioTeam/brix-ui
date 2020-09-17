@@ -1,1 +1,1 @@
-export type IntrinsicComponent<E> = Omit<Partial<E>, 'style'>;
+export type IntrinsicComponent<P> = Omit<P, 'style'>;

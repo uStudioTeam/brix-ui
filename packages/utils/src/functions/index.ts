@@ -4,6 +4,7 @@ export * from './try-call';
 export * from './capitalize';
 export * from './object-keys';
 export * from './is-undefined';
+export * from './filter-object';
 export * from './object-values';
 export * from './safe-fallback';
 export * from './extract-styles';
