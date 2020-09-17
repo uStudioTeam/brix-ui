@@ -30,12 +30,12 @@ describe('<Status />', () => {
     });
   });
 
-  describe('animation', () => {
-    describe('when animation value is pulsing', () => {
-      it('should have property animation with value of "cRIjZl 2s infinite"', () => {
-        const { getByTestId } = renderWithProps({ intent: 'success', animation: 'pulsing' });
+  describe('intent', () => {
+    describe('when intent value is "critical"', () => {
+      it('should have property background with value of "var(--c-critical-strong-up)"', () => {
+        const { getByTestId } = renderWithProps({ intent: 'critical' });
 
-        expect(getByTestId(statusId)).toHaveStyleRule('animation', 'cRIjZl 2s infinite');
+        expect(getByTestId(statusId)).toHaveStyleRule('background', 'var(--c-critical-strong-up)');
       });
     });
   });
