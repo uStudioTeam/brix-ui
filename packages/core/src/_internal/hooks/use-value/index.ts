@@ -1,1 +1,1 @@
-export { default } from './use-value';
+export * from './use-value';

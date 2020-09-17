@@ -66,6 +66,15 @@ export const Container = styled.label<Pick<InputProps<string | number>, 'isDisab
       }
     `}
 
+    ${isInvalid &&
+    css`
+      border-color: var(--c-critical-strong);
+
+      &:focus-within {
+        border-color: var(--c-critical-weak-up);
+      }
+    `};
+
     ${isDisabled &&
     css`
       color: var(--c-faint-strong-down);
@@ -82,16 +91,6 @@ export const Container = styled.label<Pick<InputProps<string | number>, 'isDisab
         color: var(--c-faint-weak-up);
       }
     `}
-
-    ${isInvalid &&
-    !isDisabled &&
-    css`
-      border-color: var(--c-critical-strong);
-
-      &:focus-within {
-        border-color: var(--c-critical-weak-up);
-      }
-    `};
   `
 );
 

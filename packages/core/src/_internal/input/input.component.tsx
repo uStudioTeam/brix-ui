@@ -1,8 +1,8 @@
 import React, { ChangeEvent, ChangeEventHandler, InputHTMLAttributes, useCallback } from 'react';
 
-import { filterObject, intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
 
-import useValue from '../hooks/use-value';
+import { useAriaProps, useValue } from '../hooks';
 import Affix from '../affix';
 
 import type { InputProps } from './input.props';
@@ -57,11 +57,7 @@ const Input = intrinsicComponent<
     [onChange]
   );
 
-  // Another misunderstanding on the type of object
-  // @ts-ignore
-  const ariaAttributes = filterObject(props, (key) => key.startsWith('aria-'));
-  // @ts-ignore
-  const propsWithoutAriaAttributes = filterObject(props, (key) => !key.startsWith('aria-'));
+  const { propsWithAria, propsWithoutAria } = useAriaProps(props);
 
   return (
     <Styled.Container
@@ -71,7 +67,7 @@ const Input = intrinsicComponent<
       isDisabled={isDisabled}
       isReadonly={isReadonly}
       isInvalid={isInvalid}
-      {...propsWithoutAriaAttributes}
+      {...propsWithoutAria}
     >
       {prefix && <Affix>{prefix}</Affix>}
 
@@ -79,6 +75,8 @@ const Input = intrinsicComponent<
         ref={ref}
         type={type}
         inputMode={inputMode}
+        name={name}
+        id={id}
         value={internalValue}
         onChange={handleChange}
         disabled={isDisabled}
@@ -90,12 +88,10 @@ const Input = intrinsicComponent<
         aria-invalid={isInvalid}
         maxLength={maxLength}
         minLength={minLength}
-        name={name}
-        id={id}
         pattern={pattern}
         placeholder={placeholder}
         {...inputProps}
-        {...ariaAttributes}
+        {...propsWithAria}
       />
 
       {suffix && <Affix>{suffix}</Affix>}
