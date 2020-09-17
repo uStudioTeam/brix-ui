@@ -4,11 +4,11 @@ import { font } from '@ustudio-ui/theme/mixin';
 import { Color } from '@ustudio-ui/types/palette';
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 
-import Close from '../../assets/icons/close.inline.svg';
+import Times from '../../assets/icons/times.inline.svg';
 
 import type { TagProps } from './tag.props';
 
-export const CloseIcon = styled(Close)`
+export const CloseIcon = styled(Times)`
   width: 0.5rem;
   height: 0.5rem;
 `;
