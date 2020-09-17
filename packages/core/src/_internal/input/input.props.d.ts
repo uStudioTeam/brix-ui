@@ -16,5 +16,5 @@ export interface InputProps<V extends string | number>
     StylableComponent<Styled> {
   type: HTMLInputElement['type'] | undefined;
 
-  containerRef?: Ref<HTMLDivElement>;
+  containerRef?: Ref<HTMLLabelElement>;
 }
