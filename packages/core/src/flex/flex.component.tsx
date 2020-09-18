@@ -4,7 +4,7 @@ import PT from 'prop-types';
 import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
 import type { FlexElement } from '@ustudio-ui/types/html';
 import { Direction, FlexContainer } from '@ustudio-ui/types/css';
-import { alignable, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { alignable, stylableComponent, taggable } from '@ustudio-ui/prop-types/common';
 import { extract } from '@ustudio-ui/prop-types/utils';
 import DirectionProvider from '@ustudio-ui/contexts/direction';
 
@@ -27,14 +27,14 @@ const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
 });
 
 Flex.propTypes = {
-  ...extract(Block),
-  as: PT.oneOf(objectValues(FlexContainer)),
+  ...extract([Block]),
 
   direction: PT.oneOf(objectValues(Direction)),
 
   isReversed: PT.bool,
   hasWrap: PT.bool,
 
+  ...taggable(objectValues(FlexContainer)),
   ...alignable(),
   ...stylableComponent(),
 };
