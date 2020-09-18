@@ -1,3 +1,4 @@
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import React from 'react';
 import styled from 'styled-components';
 import type { Story } from '@storybook/react';
@@ -106,10 +107,12 @@ const Container = styled.main`
   background-color: var(--c-base-weak);
 `;
 
+const Styled = applyDisplayNames({ Container });
+
 export const Basic: Story<SpinnerProps> = (args) => {
   return (
-    <Container>
+    <Styled.Container>
       <Spinner {...args} />
-    </Container>
+    </Styled.Container>
   );
 };

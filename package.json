@@ -70,6 +70,7 @@
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
+    "storybook-addon-jsx": "^7.3.4",
     "styled-components": "^5.1.1",
     "ts-jest": "^26.2.0",
     "tsconfig-paths-jest": "^0.0.1",

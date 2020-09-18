@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import type { Story } from '@storybook/react';
 
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+
 import NumberInput, { NumberInputProps } from '../src/number-input';
 
 export default {
@@ -32,10 +34,12 @@ const Container = styled.div`
   width: 33%;
 `;
 
+const Styled = applyDisplayNames({ Container });
+
 export const Basic: Story<NumberInputProps> = (args) => {
   return (
-    <Container>
+    <Styled.Container>
       <NumberInput {...args} />
-    </Container>
+    </Styled.Container>
   );
 };

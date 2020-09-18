@@ -20,7 +20,17 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier/react',
   ],
-  plugins: ['import', 'sonarjs', 'promise', 'unicorn', 'immutable', 'react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  plugins: [
+    'import',
+    'sonarjs',
+    'promise',
+    'unicorn',
+    'immutable',
+    'react',
+    'react-hooks',
+    '@typescript-eslint',
+    'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
@@ -77,6 +87,7 @@ module.exports = {
       {
         types: {
           '{}': false,
+          object: false,
         },
       },
     ],
