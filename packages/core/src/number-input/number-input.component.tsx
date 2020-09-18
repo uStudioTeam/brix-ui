@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { stylableComponent } from '@ustudio-ui/prop-types/common';
+import { refProp, stylableComponent } from '@ustudio-ui/prop-types/common';
 
 import Input from '../_internal/input';
 
@@ -27,6 +27,8 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
 NumberInput.propTypes = {
   type: PT.oneOf(['tel', 'decimal', 'numeric']),
   inputMode: PT.oneOf(['tel', 'decimal', 'numeric']),
+
+  containerRef: refProp<HTMLLabelElement>(),
 
   ...stylableComponent(),
 };

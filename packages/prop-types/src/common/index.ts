@@ -1,3 +1,4 @@
+export * from './ref-prop';
 export * from './indent';
 export * from './taggable';
 export * from './alignable';
