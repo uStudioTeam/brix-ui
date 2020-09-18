@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta, Story } from '@storybook/react';
 
-import Flex from '../src/flex';
 import Text from '../src/text';
 import Button, { ButtonProps } from '../src/button';
 
@@ -59,17 +58,10 @@ const capitalize = (string: string): string => `${string[0].toUpperCase()}${stri
 
 export const Basic: Story<ButtonProps> = (args) => {
   return (
-    <Flex
-      gap={{
-        horizontal: '1rem',
-      }}
-      verticalAlign="center"
-    >
-      <Button {...args}>
-        <Text lineHeightCompensation variant="p">
-          {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
-        </Text>
-      </Button>
-    </Flex>
+    <Button {...args}>
+      <Text lineHeightCompensation variant="p">
+        {capitalize(args.intent as string)} {capitalize(args.appearance as string)}
+      </Text>
+    </Button>
   );
 };

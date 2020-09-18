@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { jsxDecorator } from 'storybook-addon-jsx';
 
 import ThemeProvider, { useTheme } from '@ustudio-ui/theme';
 import { ThemeMode } from '@ustudio-ui/theme/entity';
@@ -26,6 +27,7 @@ const ThemeSwitcher = ({ context }) => {
 };
 
 export const decorators = [
+  jsxDecorator,
   (story, context) => {
     return (
       <ThemeProvider

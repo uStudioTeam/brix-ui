@@ -10,6 +10,7 @@ module.exports = {
         actions: false,
       },
     },
+    'storybook-addon-jsx',
   ],
   webpackFinal: async (config) => {
     config.module.rules.find((rule) => rule.test.test('.svg')).exclude = /\.inline.svg$/;
