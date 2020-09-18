@@ -1,5 +1,6 @@
 export * from './axis';
 export * from './intent';
+export type { Taggable } from './taggable';
 export type { Affixable } from './affixable';
 export type { Alignable } from './alignable';
 export type { FormComponent } from './form-component';
