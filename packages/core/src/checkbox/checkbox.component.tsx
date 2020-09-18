@@ -1,4 +1,6 @@
+import { refProp, stylableComponent } from '@ustudio-ui/prop-types/common';
 import React, { ChangeEventHandler, useCallback } from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
 
@@ -46,6 +48,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
       value={internalValue}
       isDisabled={isDisabled}
       isInvalid={isInvalid}
+      aria-hidden
       {...propsWithoutAria}
     >
       <Styled.CheckIcon as={styles?.CheckIcon} />
@@ -69,5 +72,15 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
     </Styled.Checkbox>
   );
 });
+
+Checkbox.propTypes = {
+  isDisabled: PT.bool,
+  isRequired: PT.bool,
+  isInvalid: PT.bool,
+
+  containerRef: refProp<HTMLLabelElement>(),
+
+  ...stylableComponent(Styled),
+};
 
 export default Checkbox;

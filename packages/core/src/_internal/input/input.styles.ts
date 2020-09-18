@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
 import { shadow, font } from '@ustudio-ui/theme/mixin';
 
 import type { InputProps } from './input.props';
@@ -94,6 +95,6 @@ export const Container = styled.label<Pick<InputProps<string | number>, 'isDisab
   `
 );
 
-const Styled = { Container, Input };
+const Styled = applyDisplayNames({ Container, Input });
 
 export default Styled;

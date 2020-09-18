@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { shadow } from '@ustudio-ui/theme/mixin';
+import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { hidden, shadow } from '@ustudio-ui/theme/mixin';
 
 import Check from '../../assets/icons/check.inline.svg';
 
@@ -14,10 +15,7 @@ export const CheckIcon = styled(Check)`
 `;
 
 const Input = styled.input`
-  position: absolute;
-  z-index: -1;
-
-  opacity: 0;
+  ${hidden};
 `;
 
 // Did not specify ReturnType due to `styled-components` typing inconsistency
@@ -57,8 +55,6 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
     align-items: center;
     justify-content: center;
 
-    color: var(--c-base-weak);
-
     border-width: 1px;
     border-style: solid;
     border-radius: 2px;
@@ -80,6 +76,8 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
     ${value
       ? // Checked
         css`
+          color: var(--c-text-base-weak);
+
           ${checkedValidity('accent')};
 
           ${isInvalid &&
@@ -101,6 +99,7 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
         `
       : // Unchecked
         css`
+          color: var(--c-base-weak);
           background-color: var(--c-base-weak);
           border-color: var(--c-faint-strong-down);
 
@@ -149,6 +148,6 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
   `
 );
 
-const Styled = { CheckIcon, Input, Checkbox };
+const Styled = applyDisplayNames({ CheckIcon, Input, Checkbox });
 
 export default Styled;
