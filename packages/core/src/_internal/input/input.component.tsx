@@ -90,6 +90,8 @@ const Input = intrinsicComponent<
         minLength={minLength}
         pattern={pattern}
         placeholder={placeholder}
+        aria-valuemin={Number(inputProps.min)}
+        aria-valuemax={Number(inputProps.max)}
         {...inputProps}
         {...propsWithAria}
       />
