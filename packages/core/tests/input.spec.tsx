@@ -14,7 +14,7 @@ let getValue: (event: ChangeEvent<HTMLInputElement>) => string | number;
 const renderWithProps = <V extends string | number>(props: Partial<InputProps<V>> = {} as Partial<InputProps<V>>) => {
   return render(
     <ThemeProvider>
-      <Input getValue={getValue} data-testid={inputId} {...props} />
+      <Input type="text" inputProps={{}} getValue={getValue} data-testid={inputId} {...props} />
     </ThemeProvider>
   );
 };
