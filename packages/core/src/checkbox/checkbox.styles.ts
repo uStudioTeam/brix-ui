@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { hidden, shadow } from '@ustudio-ui/theme/mixin';
+import { hidden, shadow, size } from '@ustudio-ui/theme/mixin';
 
 import Check from '../../assets/icons/check.inline.svg';
 
@@ -28,18 +28,26 @@ const checkedShapeColor = (color: string) => {
 
 const checkedValidity = (color: 'accent' | 'critical') => {
   return css`
-    ${checkedShapeColor(`${color}-strong`)}
+    &:before {
+      ${checkedShapeColor(`${color}-strong`)};
+    }
 
     &:hover {
-      box-shadow: ${shadow(`${color}-strong`, 0.25)};
+      &:before {
+        box-shadow: ${shadow(`${color}-strong`, 0.25)};
+      }
     }
 
     &:focus-within {
-      ${checkedShapeColor(`${color}-strong-down`)}
+      &:before {
+        ${checkedShapeColor(`${color}-strong-down`)};
+      }
     }
 
     &:active {
-      ${checkedShapeColor(`${color}-weak-up`)}
+      &:before {
+        ${checkedShapeColor(`${color}-weak-up`)};
+      }
     }
   `;
 };
@@ -48,20 +56,31 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
   ({ value, isDisabled, isInvalid }) => css`
     position: relative;
 
-    width: 16px;
-    height: 16px;
+    ${size('28px')};
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
-
-    transition: all 200ms;
-
     cursor: pointer;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      ${size('16px')};
+
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 2px;
+
+      transform: translate(-50%, -50%);
+
+      transition: all 200ms;
+    }
 
     ${isDisabled
       ? css`
@@ -88,28 +107,39 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
           ${isDisabled &&
           css`
             &:hover {
-              box-shadow: none;
+              &:before {
+                box-shadow: none;
+              }
             }
 
             &,
             &:active {
-              ${checkedShapeColor('faint-weak-up')}
+              &:before {
+                ${checkedShapeColor('faint-weak-up')}
+              }
             }
           `}
         `
       : // Unchecked
         css`
           color: var(--c-base-weak);
-          background-color: var(--c-base-weak);
-          border-color: var(--c-faint-strong-down);
+
+          &:before {
+            background-color: var(--c-base-weak);
+            border-color: var(--c-faint-strong-down);
+          }
 
           &:hover {
-            box-shadow: ${shadow('base-strong', 0.15)};
+            &:before {
+              box-shadow: ${shadow('base-strong', 0.15)};
+            }
           }
 
           &:focus-within,
           &:active {
-            border-color: var(--c-accent-strong);
+            &:before {
+              border-color: var(--c-accent-strong);
+            }
           }
 
           &:active {
@@ -118,11 +148,15 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
 
           ${isInvalid &&
           css`
-            border-color: var(--c-critical-strong);
+            &:before {
+              border-color: var(--c-critical-strong);
+            }
 
             &:focus-within,
             &:active {
-              border-color: var(--c-critical-weak-up);
+              &:before {
+                border-color: var(--c-critical-weak-up);
+              }
             }
 
             &:active {
@@ -132,16 +166,23 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
 
           ${isDisabled &&
           css`
-            background-color: var(--c-faint-weak-down);
+            &:before {
+              background-color: var(--c-faint-weak-down);
+            }
 
             &:hover {
-              box-shadow: none;
+              &:before {
+                box-shadow: none;
+              }
             }
 
             &,
             &:active {
               color: var(--c-faint-weak-down);
-              border-color: var(--c-faint-weak-up);
+
+              &:before {
+                border-color: var(--c-faint-weak-up);
+              }
             }
           `}
         `}
