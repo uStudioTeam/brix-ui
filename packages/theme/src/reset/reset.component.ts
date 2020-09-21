@@ -155,8 +155,6 @@ sup {
 
 button,
 input,
-optgroup,
-select,
 textarea {
   padding: 0;
   margin: 0;
@@ -174,8 +172,7 @@ input {
   overflow: visible;
 }
 
-button,
-select {
+button {
   text-align: left;
   text-transform: none;
 }
@@ -237,16 +234,6 @@ legend {
   display: block;
   padding: 0;
   white-space: normal;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-select::-ms-expand {
-  display: none;
 }
 
 ::-webkit-input-placeholder {
@@ -313,10 +300,9 @@ svg {
   -webkit-text-fill-color: currentColor;
 }
 
-// @ToDo: add colors from theme
 ::selection {
-  color: #fff;
-  background-color: #004fe4;
+  color: var(--c-base-strong);
+  background-color: var(--c-accent-weak);
 }
 `;
 
