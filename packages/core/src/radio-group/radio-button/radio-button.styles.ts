@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { hidden, shadow, size } from '@ustudio-ui/theme/mixin';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { hidden, shadow, size } from '@brix-ui/theme/mixin';
 
 import type { RadioGroupProps } from '../radio-group.props';
 

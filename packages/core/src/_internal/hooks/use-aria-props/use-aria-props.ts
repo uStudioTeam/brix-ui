@@ -1,4 +1,4 @@
-import { filterObject } from '@ustudio-ui/utils/functions';
+import { filterObject } from '@brix-ui/utils/functions';
 import { useMemo } from 'react';
 
 const isAriaKey = (key: string): boolean => key.startsWith('aria-');

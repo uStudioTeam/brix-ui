@@ -2,8 +2,8 @@ import React, { ChangeEvent } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider from '@ustudio-ui/theme';
-import { matchMedia } from '@ustudio-ui/utils/tests';
+import ThemeProvider from '@brix-ui/theme';
+import { matchMedia } from '@brix-ui/utils/tests';
 
 import Input, { InputProps } from '../src/_internal/input';
 

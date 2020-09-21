@@ -3,11 +3,11 @@ import PT, { Validator } from 'prop-types';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
 
-import { record } from '@ustudio-ui/prop-types/utils';
-import { objectValues } from '@ustudio-ui/utils/functions';
-import { Breakpoint } from '@ustudio-ui/types/css';
-import { Color } from '@ustudio-ui/types/palette';
-import { FontVariant, FontWeight, TypeVariant } from '@ustudio-ui/types/typography';
+import { record } from '@brix-ui/prop-types/utils';
+import { objectValues } from '@brix-ui/utils/functions';
+import { Breakpoint } from '@brix-ui/types/css';
+import { Color } from '@brix-ui/types/palette';
+import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
 
 import Breakpoints from './breakpoints';
 import Typography from './typography';

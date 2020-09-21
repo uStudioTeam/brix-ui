@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { jsxDecorator } from 'storybook-addon-jsx';
 
-import ThemeProvider, { useTheme } from '@ustudio-ui/theme';
-import { ThemeMode } from '@ustudio-ui/theme/entity';
-import fonts from '@ustudio-ui/fonts';
+import ThemeProvider, { useTheme } from '@brix-ui/theme';
+import { ThemeMode } from '@brix-ui/theme/entity';
+import fonts from '@brix-ui/fonts';
 
 export const globalTypes = {
   theme: {

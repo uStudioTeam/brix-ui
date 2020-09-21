@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 import { Container, Icon, Summary, Details } from './disclosure.styles';
 

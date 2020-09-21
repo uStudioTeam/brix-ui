@@ -1,12 +1,12 @@
 {
-  "name": "@ustudio-ui/prop-types",
+  "name": "@brix-ui/prop-types",
   "version": "0.0.1",
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*",
-    "@ustudio-ui/utils": "*"
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",

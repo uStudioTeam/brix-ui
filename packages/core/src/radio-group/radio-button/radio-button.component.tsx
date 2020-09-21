@@ -1,8 +1,8 @@
-import { refProp, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 import React, { LabelHTMLAttributes, useEffect } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import { useAriaProps } from '../../_internal/hooks';
 import { useRadioGroup } from '../radio-group.context';

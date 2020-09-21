@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { SpinnerProps } from './spinner.props';
 

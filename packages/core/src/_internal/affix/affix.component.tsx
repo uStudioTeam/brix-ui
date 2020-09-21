@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import type { AffixProps } from './affix.props';
 import Styled from './affix.styles';

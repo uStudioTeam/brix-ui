@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import type { Story } from '@storybook/react';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import NumberInput, { NumberInputProps } from '../src/number-input';
 

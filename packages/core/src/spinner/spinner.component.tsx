@@ -2,8 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 import PT, { Requireable } from 'prop-types';
 import { Keyframes, keyframes } from 'styled-components';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { stylableComponent } from '@ustudio-ui/prop-types/common';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import { useDelay } from './use-delay';
 import Styled from './spinner.styles';

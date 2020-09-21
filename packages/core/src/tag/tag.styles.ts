@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '@ustudio-ui/theme/mixin';
-import { Color } from '@ustudio-ui/types/palette';
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { font } from '@brix-ui/theme/mixin';
+import { Color } from '@brix-ui/types/palette';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import Times from '../../assets/icons/times.inline.svg';
 

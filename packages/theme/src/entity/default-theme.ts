@@ -1,4 +1,4 @@
-import { Breakpoint } from '@ustudio-ui/types/css';
+import { Breakpoint } from '@brix-ui/types/css';
 
 export const defaultTheme = {
   breakpoints: {

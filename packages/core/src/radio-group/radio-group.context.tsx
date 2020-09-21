@@ -1,7 +1,7 @@
 import React, { createContext, FC, useCallback, useContext, useEffect, useReducer, useRef } from 'react';
 import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, tryCall } from '@ustudio-ui/utils/functions';
+import { applyPolymorphicFunctionProp, tryCall } from '@brix-ui/utils/functions';
 
 import { RadioGroupDispatcher } from './actions';
 import { radioGroupReducer } from './reducer';

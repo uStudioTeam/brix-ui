@@ -1,6 +1,6 @@
 import type { Reducer } from 'react';
 
-import { objectKeys } from '@ustudio-ui/utils/functions';
+import { objectKeys } from '@brix-ui/utils/functions';
 
 import type { AreaBuilderAction } from '../actions';
 import type { AreaBuilderState } from './area-builder-state';

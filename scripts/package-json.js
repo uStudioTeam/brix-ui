@@ -3,8 +3,8 @@ const fromTemplate = require('./from-template');
 
 const meta = {
   author: 'uStudio Company <toberead@ustudio.company> (http://ustudio.company)',
-  repository: 'github:uStudioCompany/ustudio-ui',
-  homepage: 'https://github.com/uStudioCompany/ustudio-ui/blob/master/README.md',
+  repository: 'github:uStudioCompany/brix-ui',
+  homepage: 'https://github.com/uStudioCompany/brix-ui/blob/master/README.md',
   license: 'MIT',
 };
 

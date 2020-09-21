@@ -1,8 +1,8 @@
 import PT, { Requireable } from 'prop-types';
 
-import { objectValues } from '@ustudio-ui/utils/functions';
-import { Position } from '@ustudio-ui/types/css';
-import { Indent, Axis } from '@ustudio-ui/types/component';
+import { objectValues } from '@brix-ui/utils/functions';
+import { Position } from '@brix-ui/types/css';
+import { Indent, Axis } from '@brix-ui/types/component';
 
 import { record } from '../utils';
 

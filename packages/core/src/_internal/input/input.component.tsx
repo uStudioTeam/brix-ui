@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ChangeEventHandler, InputHTMLAttributes, useCallback } from 'react';
 
-import { intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
 
 import { useAriaProps, useValue } from '../hooks';
 import Affix from '../affix';

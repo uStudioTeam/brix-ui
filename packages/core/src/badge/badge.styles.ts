@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { font } from '@ustudio-ui/theme/mixin';
-import { Align } from '@ustudio-ui/types/css';
-import { Color } from '@ustudio-ui/types/palette';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { font } from '@brix-ui/theme/mixin';
+import { Align } from '@brix-ui/types/css';
+import { Color } from '@brix-ui/types/palette';
 
 import type { BadgeProps } from './badge.props';
 

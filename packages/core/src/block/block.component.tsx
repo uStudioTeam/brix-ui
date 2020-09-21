@@ -1,10 +1,10 @@
 import React from 'react';
 import PT, { Requireable } from 'prop-types';
 
-import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
-import { indent, stylableComponent, taggable } from '@ustudio-ui/prop-types/common';
-import { record } from '@ustudio-ui/prop-types/utils';
-import { Axis } from '@ustudio-ui/types/component';
+import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import { indent, stylableComponent, taggable } from '@brix-ui/prop-types/common';
+import { record } from '@brix-ui/prop-types/utils';
+import { Axis } from '@brix-ui/types/component';
 
 import type { BlockProps } from './block.props';
 import Styled from './block.styles';

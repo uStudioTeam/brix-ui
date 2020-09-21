@@ -1,4 +1,4 @@
-import { Variable } from '@ustudio-ui/types/css';
+import { Variable } from '@brix-ui/types/css';
 
 import type { Values } from '../types';
 

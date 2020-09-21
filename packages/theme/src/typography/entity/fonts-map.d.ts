@@ -1,7 +1,7 @@
-import { Values } from '@ustudio-ui/utils/types';
+import { Values } from '@brix-ui/utils/types';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
-import { FontVariant, FontWeight, TypeVariant } from '@ustudio-ui/types/typography';
+import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
 
 type FontsMap<T = string> = Record<Values<typeof FontVariant>, Record<Values<typeof TypeVariant>, T>>;
 

@@ -1,1 +1,1 @@
-# @ustudio-ui/fonts
+# @brix-ui/fonts

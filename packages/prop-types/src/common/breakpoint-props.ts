@@ -1,7 +1,7 @@
 import PT, { Requireable } from 'prop-types';
 
-import type { BreakpointsProps } from '@ustudio-ui/types/component';
-import { Breakpoint } from '@ustudio-ui/types/css';
+import type { BreakpointsProps } from '@brix-ui/types/component';
+import { Breakpoint } from '@brix-ui/types/css';
 
 export const breakpointProps = <P>(props: P): P & BreakpointsProps<Requireable<P>> => {
   return {

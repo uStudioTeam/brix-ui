@@ -1,9 +1,9 @@
 import React, { isValidElement } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { stylableComponent } from '@ustudio-ui/prop-types/common';
-import { Align } from '@ustudio-ui/types/css';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { stylableComponent } from '@brix-ui/prop-types/common';
+import { Align } from '@brix-ui/types/css';
 
 import type { BadgeProps } from './badge.props';
 import Styled from './badge.styles';

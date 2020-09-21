@@ -1,5 +1,5 @@
-import type { Values } from '@ustudio-ui/utils/types';
-import { TypeVariant } from '@ustudio-ui/types/typography';
+import type { Values } from '@brix-ui/utils/types';
+import { TypeVariant } from '@brix-ui/types/typography';
 
 export const compensateLineHeight = (variant: Values<typeof TypeVariant>): number => {
   switch (variant) {

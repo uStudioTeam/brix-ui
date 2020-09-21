@@ -1,8 +1,8 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { refProp, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
 import Input from '../_internal/input';
 

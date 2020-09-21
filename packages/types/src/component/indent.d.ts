@@ -1,4 +1,4 @@
-import { Values } from '@ustudio-ui/utils/types';
+import { Values } from '@brix-ui/utils/types';
 
 import { Position } from '../css';
 import { Axis } from './axis';

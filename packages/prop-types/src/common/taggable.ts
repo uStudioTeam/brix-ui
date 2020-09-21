@@ -1,7 +1,7 @@
 import type { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import type { Taggable } from '@ustudio-ui/types/component';
+import type { Taggable } from '@brix-ui/types/component';
 
 export const taggable = <T extends string, P extends Taggable<T>>(tags?: T[]): WeakValidationMap<P> => {
   return ({

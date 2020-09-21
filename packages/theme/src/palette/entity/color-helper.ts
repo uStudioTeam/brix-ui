@@ -1,7 +1,7 @@
 import { darken, getLuminance, hsla, parseToHsl } from 'polished';
 
-import { Color } from '@ustudio-ui/types/palette';
-import type { Theme } from '@ustudio-ui/theme';
+import { Color } from '@brix-ui/types/palette';
+import type { Theme } from '@brix-ui/theme';
 
 export class ColorHelper {
   public constructor(private readonly palette: Theme['palette']) {}

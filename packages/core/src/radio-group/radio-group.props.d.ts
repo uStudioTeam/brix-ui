@@ -1,6 +1,6 @@
 import type { ChangeEvent, ReactNode } from 'react';
 
-import type { FormComponent } from '@ustudio-ui/types/component';
+import type { FormComponent } from '@brix-ui/types/component';
 
 import type { RadioGroupDispatcher } from './actions';
 import type { RadioGroupState } from './reducer';

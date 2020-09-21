@@ -2,8 +2,8 @@ import React, { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 import { Story } from '@storybook/react';
 
-import Flex from '@ustudio-ui/core/flex';
-import Text from '@ustudio-ui/core/text';
+import Flex from '@brix-ui/core/flex';
+import Text from '@brix-ui/core/text';
 
 import { Grid, Cell } from '../src';
 

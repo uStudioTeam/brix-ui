@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { Theme } from '@ustudio-ui/theme';
-import { objectKeys, setCssVariable } from '@ustudio-ui/utils/functions';
-import { Variable } from '@ustudio-ui/types/css';
+import { Theme } from '@brix-ui/theme';
+import { objectKeys, setCssVariable } from '@brix-ui/utils/functions';
+import { Variable } from '@brix-ui/types/css';
 
 const PaletteGlobalStyles = createGlobalStyle<{
   variables: FlattenSimpleInterpolation;

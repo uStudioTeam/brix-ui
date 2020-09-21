@@ -1,8 +1,8 @@
 import { HTMLAttributes } from 'react';
 
-import { Axis, Indent, IntrinsicComponent, StylableComponent, Taggable } from '@ustudio-ui/types/component';
-import type { HtmlTag, TextTag } from '@ustudio-ui/types/html';
-import type { Values } from '@ustudio-ui/utils/types';
+import { Axis, Indent, IntrinsicComponent, StylableComponent, Taggable } from '@brix-ui/types/component';
+import type { HtmlTag, TextTag } from '@brix-ui/types/html';
+import type { Values } from '@brix-ui/utils/types';
 
 export interface BlockProps
   extends IntrinsicComponent<HTMLAttributes<HTMLElement>>,

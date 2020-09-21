@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider from '@ustudio-ui/theme';
-import { Direction } from '@ustudio-ui/types/css';
-import { matchMedia } from '@ustudio-ui/utils/tests';
+import ThemeProvider from '@brix-ui/theme';
+import { Direction } from '@brix-ui/types/css';
+import { matchMedia } from '@brix-ui/utils/tests';
 
 import Cell from '../src/cell';
 import Grid, { GridProps } from '../src/grid';

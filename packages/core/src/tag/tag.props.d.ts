@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactElement } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 import { Container, Content, CloseButton, CloseIcon } from './tag.styles';
 

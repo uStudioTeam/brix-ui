@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-import type { With } from '@ustudio-ui/utils/types';
-import { useTheme } from '@ustudio-ui/theme';
-import { spread } from '@ustudio-ui/utils/functions';
+import type { With } from '@brix-ui/utils/types';
+import { useTheme } from '@brix-ui/theme';
+import { spread } from '@brix-ui/utils/functions';
 
 import { useMediaQuery } from './use-media-query';
 

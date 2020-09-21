@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { shadow, font } from '@ustudio-ui/theme/mixin';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { shadow, font } from '@brix-ui/theme/mixin';
 
 import type { InputProps } from './input.props';
 

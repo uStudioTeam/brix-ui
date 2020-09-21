@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { TextDecoration } from '@ustudio-ui/types/typography';
+import { TextDecoration } from '@brix-ui/types/typography';
 
 import Text, { TextProps } from '../src/text';
 

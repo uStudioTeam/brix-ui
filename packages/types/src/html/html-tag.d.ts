@@ -1,4 +1,4 @@
-import { TextTag } from '@ustudio-ui/types/html/text-tag';
+import { TextTag } from '@brix-ui/types/html/text-tag';
 
 export type HtmlTag = Extract<
   keyof JSX.IntrinsicElements,

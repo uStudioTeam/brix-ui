@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, Ref } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 export interface RadioButtonProps
   extends Omit<

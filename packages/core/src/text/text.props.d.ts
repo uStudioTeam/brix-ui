@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 
-import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
-import type { Values } from '@ustudio-ui/utils/types';
-import type { TextElement, TextTag } from '@ustudio-ui/types/html';
+import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@brix-ui/types/typography';
+import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Values } from '@brix-ui/utils/types';
+import type { TextElement, TextTag } from '@brix-ui/types/html';
 
 export interface TextProps extends IntrinsicComponent<HTMLAttributes<TextElement>>, StylableComponent {
   as?: TextTag;

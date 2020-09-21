@@ -1,13 +1,13 @@
 {
-  "name": "@ustudio-ui/contexts",
+  "name": "@brix-ui/contexts",
   "version": "0.0.1",
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*",
-    "@ustudio-ui/utils": "*",
-    "@ustudio-ui/prop-types": "*"
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*",
+    "@brix-ui/prop-types": "*"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",

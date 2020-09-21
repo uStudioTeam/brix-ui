@@ -1,9 +1,9 @@
 import React, { createContext, FC, useContext } from 'react';
 import PT from 'prop-types';
 
-import { Values } from '@ustudio-ui/utils/types';
-import { Direction } from '@ustudio-ui/types/css';
-import { objectValues } from '@ustudio-ui/utils/functions';
+import { Values } from '@brix-ui/utils/types';
+import { Direction } from '@brix-ui/types/css';
+import { objectValues } from '@brix-ui/utils/functions';
 
 type DirectionContextValue = Values<typeof Direction> | undefined;
 

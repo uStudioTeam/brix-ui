@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, WeakValidationMap } from 'react';
 import PT, { Requireable } from 'prop-types';
 
-import { useDirection } from '@ustudio-ui/contexts/direction';
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
-import { breakpointProps, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { useDirection } from '@brix-ui/contexts/direction';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 
 import { useAreaBuilderContext } from '../area-builder';
 import { useBreakpointProps } from '../hooks';

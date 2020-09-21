@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
-import type { Values } from '@ustudio-ui/utils/types';
+import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Values } from '@brix-ui/utils/types';
 
-import { Align } from '@ustudio-ui/types/css';
+import { Align } from '@brix-ui/types/css';
 import { Badge, BadgeContainer } from './badge.styles';
 
 interface Styled {
