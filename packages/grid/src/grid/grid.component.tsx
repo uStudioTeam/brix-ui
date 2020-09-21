@@ -61,7 +61,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   );
 });
 
-const { gap, isInline: _, ...blockPropTypes } = extract(Block);
+const { gap, isInline: _, ...blockPropTypes } = extract([Block]);
 
 const gridBreakpointData = {
   gap,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
@@ -28,6 +28,7 @@ const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
 
 Flex.propTypes = {
   ...extract([Block]),
+  ...taggable(objectValues(FlexContainer)),
 
   direction: PT.oneOf(objectValues(Direction)),
 
@@ -37,6 +38,6 @@ Flex.propTypes = {
   ...taggable(objectValues(FlexContainer)),
   ...alignable(),
   ...stylableComponent(),
-};
+} as WeakValidationMap<FlexProps>;
 
 export default Flex;
