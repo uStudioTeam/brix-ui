@@ -1,4 +1,4 @@
-import { Values, With } from '@ustudio-ui/utils/types';
+import { Values, With } from '@brix-ui/utils/types';
 
 export const Direction = {
   Row: 'row',

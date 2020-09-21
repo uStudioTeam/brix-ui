@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-import { objectKeys } from '@ustudio-ui/utils/functions';
-import { FontWeight } from '@ustudio-ui/types/typography';
+import { objectKeys } from '@brix-ui/utils/functions';
+import { FontWeight } from '@brix-ui/types/typography';
 
 import type { FontsCssMap } from '../typography/entity';
 

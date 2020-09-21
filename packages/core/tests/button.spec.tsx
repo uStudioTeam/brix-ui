@@ -2,12 +2,12 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
-import ThemeProvider from '@ustudio-ui/theme';
-import type { Values } from '@ustudio-ui/utils/types';
-import { Color } from '@ustudio-ui/types/palette';
-import { getCssVariable } from '@ustudio-ui/utils/functions';
-import { Variable } from '@ustudio-ui/types/css';
-import { matchMedia } from '@ustudio-ui/utils/tests';
+import ThemeProvider from '@brix-ui/theme';
+import type { Values } from '@brix-ui/utils/types';
+import { Color } from '@brix-ui/types/palette';
+import { getCssVariable } from '@brix-ui/utils/functions';
+import { Variable } from '@brix-ui/types/css';
+import { matchMedia } from '@brix-ui/utils/tests';
 
 import Button, { ButtonProps } from '../src/button';
 

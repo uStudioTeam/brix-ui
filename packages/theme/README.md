@@ -1,1 +1,1 @@
-# @ustudio-ui/theme
+# @brix-ui/theme

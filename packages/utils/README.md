@@ -1,1 +1,1 @@
-# @ustudio-ui/utils
+# @brix-ui/utils

@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import { createGlobalStyle, css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { capitalize, getCssVariable, objectKeys, objectValues, setCssVariable } from '@ustudio-ui/utils/functions';
-import type { Keys, Values } from '@ustudio-ui/utils/types';
-import { FontVariant } from '@ustudio-ui/types/typography';
-import { Variable } from '@ustudio-ui/types/css';
+import { capitalize, getCssVariable, objectKeys, objectValues, setCssVariable } from '@brix-ui/utils/functions';
+import type { Keys, Values } from '@brix-ui/utils/types';
+import { FontVariant } from '@brix-ui/types/typography';
+import { Variable } from '@brix-ui/types/css';
 
 import type { ThemeOverride } from '../entity';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import PT, { Requireable } from 'prop-types';
 
-import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
-import type { TextElement } from '@ustudio-ui/types/html';
-import { stylableComponent } from '@ustudio-ui/prop-types/common';
-import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
+import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import type { TextElement } from '@brix-ui/types/html';
+import { stylableComponent } from '@brix-ui/prop-types/common';
+import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@brix-ui/types/typography';
 
 import Styled from './text.styles';
 import type { TextProps } from './text.props';

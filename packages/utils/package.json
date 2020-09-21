@@ -1,11 +1,11 @@
 {
-  "name": "@ustudio-ui/utils",
+  "name": "@brix-ui/utils",
   "version": "0.0.1",
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*"
+    "@brix-ui/types": "*"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",

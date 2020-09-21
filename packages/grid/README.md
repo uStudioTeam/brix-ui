@@ -1,1 +1,1 @@
-# @ustudio-ui/grid
+# @brix-ui/grid

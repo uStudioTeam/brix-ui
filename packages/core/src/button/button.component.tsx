@@ -1,9 +1,9 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
-import { Intent } from '@ustudio-ui/types/component';
-import { stylableComponent } from '@ustudio-ui/prop-types/common';
+import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import { Intent } from '@brix-ui/types/component';
+import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import { ButtonProps } from './button.props';
 import Styled from './button.styles';

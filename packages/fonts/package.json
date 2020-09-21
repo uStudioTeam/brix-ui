@@ -1,13 +1,13 @@
 {
-  "name": "@ustudio-ui/fonts",
+  "name": "@brix-ui/fonts",
   "version": "0.0.1",
-  "description": "Default fonts acceptable by @ustudio-ui theme",
+  "description": "Default fonts acceptable by @brix-ui theme",
   "keywords": ["fonts", "ttf", "ui", "typography", "font-face"],
   "scripts": {
     "prebuild": "copyfiles fonts.d.ts README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*"
+    "@brix-ui/types": "*"
   },
   "devDependencies": {
     "copyfiles": "^2.3.0",

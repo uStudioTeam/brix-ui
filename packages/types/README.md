@@ -1,1 +1,1 @@
-# @ustudio-ui/types
+# @brix-ui/types

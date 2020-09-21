@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 
-import type { BlockProps } from '@ustudio-ui/core/block';
-import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@ustudio-ui/types/component';
-import type { Values } from '@ustudio-ui/utils/types';
-import { Direction } from '@ustudio-ui/types/css';
+import type { BlockProps } from '@brix-ui/core/block';
+import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@brix-ui/types/component';
+import type { Values } from '@brix-ui/utils/types';
+import { Direction } from '@brix-ui/types/css';
 
 export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
   direction?: Values<typeof Direction>;

@@ -1,6 +1,6 @@
 import type { Ref, InputHTMLAttributes } from 'react';
 
-import type { Affixable, FormComponent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { Affixable, FormComponent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 import { Container, Input } from './input.styles';
 

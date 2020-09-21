@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import type { Values } from '@ustudio-ui/utils/types';
+import type { Values } from '@brix-ui/utils/types';
 
 import { Theme, ThemeMode, ThemeOverride } from '../entity';
 
@@ -22,7 +22,7 @@ export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | 
 
   const isModeLight = useMediaQuery('(prefers-color-scheme: light)');
 
-  const { current: localStorageKey } = useRef('ustudio-ui-theme-mode');
+  const { current: localStorageKey } = useRef('brix-ui-theme-mode');
 
   useEffect(() => {
     const storedMode = localStorage.getItem(localStorageKey) as Values<typeof ThemeMode> | null;

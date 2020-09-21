@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/core",
+  "name": "@brix-ui/core",
   "version": "0.0.1",
   "description": "React UI components library by uStudio Company",
   "keywords": [
@@ -14,11 +14,11 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/contexts": "*",
-    "@ustudio-ui/theme": "*",
-    "@ustudio-ui/types": "*",
-    "@ustudio-ui/utils": "*",
-    "@ustudio-ui/prop-types": "*",
+    "@brix-ui/contexts": "*",
+    "@brix-ui/theme": "*",
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*",
+    "@brix-ui/prop-types": "*",
     "honks": "^0.4.0"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { FontWeight } from '@ustudio-ui/types/typography';
+import { FontWeight } from '@brix-ui/types/typography';
 
 import SSPBlack from './SourceSansPro/SourceSansPro-Black.ttf';
 import SSPBold from './SourceSansPro/SourceSansPro-Bold.ttf';

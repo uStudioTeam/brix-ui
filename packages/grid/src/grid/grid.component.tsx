@@ -1,13 +1,13 @@
 import React, { useMemo, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@ustudio-ui/utils/functions';
-import type { With } from '@ustudio-ui/utils/types';
-import { extract } from '@ustudio-ui/prop-types/utils';
-import { breakpointProps, stylableComponent } from '@ustudio-ui/prop-types/common';
-import DirectionProvider from '@ustudio-ui/contexts/direction';
-import { Direction } from '@ustudio-ui/types/css';
-import Block from '@ustudio-ui/core/block';
+import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import type { With } from '@brix-ui/utils/types';
+import { extract } from '@brix-ui/prop-types/utils';
+import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
+import DirectionProvider from '@brix-ui/contexts/direction';
+import { Direction } from '@brix-ui/types/css';
+import Block from '@brix-ui/core/block';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
 import { useBreakpointProps } from '../hooks';

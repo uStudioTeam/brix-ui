@@ -21,17 +21,17 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@ustudio-ui/contexts/*": ["packages/contexts/src/*"],
-      "@ustudio-ui/core/*": ["packages/core/src/*"],
-      "@ustudio-ui/fonts/*": ["packages/fonts/src/*"],
-      "@ustudio-ui/fonts": ["packages/fonts/src/index.ts"],
-      "@ustudio-ui/grid/*": ["packages/grid/src/*"],
-      "@ustudio-ui/grid": ["packages/grid/src/index.ts"],
-      "@ustudio-ui/prop-types/*": ["packages/prop-types/src/*"],
-      "@ustudio-ui/theme/*": ["packages/theme/src/*"],
-      "@ustudio-ui/theme": ["packages/theme/src/index.ts"],
-      "@ustudio-ui/types/*": ["packages/types/src/*"],
-      "@ustudio-ui/utils/*": ["packages/utils/src/*"]
+      "@brix-ui/contexts/*": ["packages/contexts/src/*"],
+      "@brix-ui/core/*": ["packages/core/src/*"],
+      "@brix-ui/fonts/*": ["packages/fonts/src/*"],
+      "@brix-ui/fonts": ["packages/fonts/src/index.ts"],
+      "@brix-ui/grid/*": ["packages/grid/src/*"],
+      "@brix-ui/grid": ["packages/grid/src/index.ts"],
+      "@brix-ui/prop-types/*": ["packages/prop-types/src/*"],
+      "@brix-ui/theme/*": ["packages/theme/src/*"],
+      "@brix-ui/theme": ["packages/theme/src/index.ts"],
+      "@brix-ui/types/*": ["packages/types/src/*"],
+      "@brix-ui/utils/*": ["packages/utils/src/*"]
     }
   }
 }

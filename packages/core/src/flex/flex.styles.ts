@@ -1,14 +1,14 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { Direction, WithDirection } from '@ustudio-ui/types/css';
-import type { Alignable } from '@ustudio-ui/types/component';
+import { Direction, WithDirection } from '@brix-ui/types/css';
+import type { Alignable } from '@brix-ui/types/component';
 import {
   applyDisplayNames,
   isUndefined,
   parseAlignItems,
   parseAlignment,
   safeFallback,
-} from '@ustudio-ui/utils/functions';
+} from '@brix-ui/utils/functions';
 
 import Block from '../block';
 

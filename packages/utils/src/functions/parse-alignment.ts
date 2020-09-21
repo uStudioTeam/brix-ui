@@ -1,4 +1,4 @@
-import { Align } from '@ustudio-ui/types/css';
+import { Align } from '@brix-ui/types/css';
 
 import { Values } from '../types';
 

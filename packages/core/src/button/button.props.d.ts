@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 
-import { Intent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
-import type { Values } from '@ustudio-ui/utils/types';
+import { Intent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Values } from '@brix-ui/utils/types';
 
 export interface ButtonProps
   extends Omit<IntrinsicComponent<ButtonHTMLAttributes<HTMLButtonElement>>, 'disabled'>,

@@ -1,5 +1,5 @@
-import { Color } from '@ustudio-ui/types/palette';
-import type { Values } from '@ustudio-ui/utils/types';
+import { Color } from '@brix-ui/types/palette';
+import type { Values } from '@brix-ui/utils/types';
 
 import { ThemeMode } from '../../entity';
 

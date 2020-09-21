@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, Ref } from 'react';
 
-import type { FormComponent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { FormComponent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 import { Checkbox, CheckIcon } from './checkbox.styles';
 

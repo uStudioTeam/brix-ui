@@ -1,7 +1,7 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import type { WithTheme } from '@ustudio-ui/theme/entity';
-import { shadow } from '@ustudio-ui/theme/mixin';
+import type { WithTheme } from '@brix-ui/theme/entity';
+import { shadow } from '@brix-ui/theme/mixin';
 
 import type { ButtonProps } from './button.props';
 

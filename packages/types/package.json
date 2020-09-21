@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/types",
+  "name": "@brix-ui/types",
   "version": "0.0.1",
   "scripts": {
     "prebuild": "copyfiles README.md lib"

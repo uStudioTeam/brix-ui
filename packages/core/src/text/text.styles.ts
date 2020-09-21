@@ -1,8 +1,8 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { compensateLineHeight, font } from '@ustudio-ui/theme/mixin';
-import { TypeVariant, FontVariant } from '@ustudio-ui/types/typography';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { compensateLineHeight, font } from '@brix-ui/theme/mixin';
+import { TypeVariant, FontVariant } from '@brix-ui/types/typography';
 
 import type { TextProps } from './text.props';
 

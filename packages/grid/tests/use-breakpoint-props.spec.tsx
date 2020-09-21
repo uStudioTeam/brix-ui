@@ -1,9 +1,9 @@
 import React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import ThemeProvider from '@ustudio-ui/theme';
-import { defaultTheme } from '@ustudio-ui/theme/entity';
-import { matchMedia } from '@ustudio-ui/utils/tests';
+import ThemeProvider from '@brix-ui/theme';
+import { defaultTheme } from '@brix-ui/theme/entity';
+import { matchMedia } from '@brix-ui/utils/tests';
 
 import { useBreakpointProps } from '../src/hooks';
 

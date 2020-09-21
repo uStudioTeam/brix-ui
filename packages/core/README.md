@@ -1,1 +1,1 @@
-# @ustudio-ui/core
+# @brix-ui/core

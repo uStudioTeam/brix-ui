@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { Direction } from '@ustudio-ui/types/css';
-import { Values } from '@ustudio-ui/utils/types';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { Direction } from '@brix-ui/types/css';
+import { Values } from '@brix-ui/utils/types';
 
 import type { AreaBuilderState } from '../area-builder/reducer';
 

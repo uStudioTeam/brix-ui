@@ -1,5 +1,5 @@
 {
-  "name": "@ustudio-ui/theme",
+  "name": "@brix-ui/theme",
   "version": "0.0.1",
   "description": "Theme package providing light and dark modes as well as css/js variables and helpers used in theming",
   "keywords": [
@@ -15,9 +15,9 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@ustudio-ui/types": "*",
-    "@ustudio-ui/utils": "*",
-    "@ustudio-ui/prop-types": "*",
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*",
+    "@brix-ui/prop-types": "*",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {

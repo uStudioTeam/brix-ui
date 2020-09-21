@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '@ustudio-ui/theme/mixin';
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { font } from '@brix-ui/theme/mixin';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';

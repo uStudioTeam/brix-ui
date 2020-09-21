@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { Align, Direction } from '@ustudio-ui/types/css';
+import { Align, Direction } from '@brix-ui/types/css';
 
 import Flex, { FlexProps } from '../src/flex';
 

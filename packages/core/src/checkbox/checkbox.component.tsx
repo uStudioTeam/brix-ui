@@ -1,8 +1,8 @@
-import { refProp, stylableComponent } from '@ustudio-ui/prop-types/common';
+import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 import React, { ChangeEventHandler, useCallback } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
 
 import { useAriaProps, useValue } from '../_internal/hooks';
 

@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
 
-import { intrinsicComponent, tryCall } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
 
 import Affix from '../_internal/affix';
 import { useAriaProps, useValue } from '../_internal/hooks';

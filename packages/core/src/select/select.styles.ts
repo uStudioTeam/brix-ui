@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { font, shadow } from '@ustudio-ui/theme/mixin';
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import { font, shadow } from '@brix-ui/theme/mixin';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import Chevron from '../../assets/icons/chevron.inline.svg';
 

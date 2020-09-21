@@ -1,4 +1,4 @@
-import type { Values } from '@ustudio-ui/utils/types';
+import type { Values } from '@brix-ui/utils/types';
 
 export const spread = <
   _O extends Record<string, unknown> | undefined,

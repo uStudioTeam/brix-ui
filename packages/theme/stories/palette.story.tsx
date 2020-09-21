@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import { getLuminance, transparentize } from 'polished';
 import { Story } from '@storybook/react';
 
-import { capitalize, objectValues } from '@ustudio-ui/utils/functions';
-import { Color } from '@ustudio-ui/types/palette';
-import { defaultPalette } from '@ustudio-ui/theme/palette';
-import { Values } from '@ustudio-ui/utils/types';
+import { capitalize, objectValues } from '@brix-ui/utils/functions';
+import { Color } from '@brix-ui/types/palette';
+import { defaultPalette } from '@brix-ui/theme/palette';
+import { Values } from '@brix-ui/utils/types';
 
-import Flex from '@ustudio-ui/core/flex';
-import Text from '@ustudio-ui/core/text';
+import Flex from '@brix-ui/core/flex';
+import Text from '@brix-ui/core/text';
 
 import { useTheme } from '../src/use-theme';
 

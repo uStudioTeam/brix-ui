@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Story } from '@storybook/react';
 
-import { Values } from '@ustudio-ui/utils/types';
-import { objectValues } from '@ustudio-ui/utils/functions';
-import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@ustudio-ui/types/typography';
+import { Values } from '@brix-ui/utils/types';
+import { objectValues } from '@brix-ui/utils/functions';
+import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@brix-ui/types/typography';
 
 import Text, { TextProps } from '../src/text';
 

@@ -1,8 +1,8 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { Position } from '@ustudio-ui/types/css';
-import { applyDisplayNames, isUndefined, objectValues } from '@ustudio-ui/utils/functions';
-import { Axis, Indent, PositionIndent } from '@ustudio-ui/types/component';
+import { Position } from '@brix-ui/types/css';
+import { applyDisplayNames, isUndefined, objectValues } from '@brix-ui/utils/functions';
+import { Axis, Indent, PositionIndent } from '@brix-ui/types/component';
 
 import type { BlockProps } from './block.props';
 

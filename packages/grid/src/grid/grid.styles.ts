@@ -1,8 +1,8 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import Block from '@ustudio-ui/core/block';
-import { Direction } from '@ustudio-ui/types/css';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import Block from '@brix-ui/core/block';
+import { Direction } from '@brix-ui/types/css';
 
 import type { GridProps } from './grid.props';
 
