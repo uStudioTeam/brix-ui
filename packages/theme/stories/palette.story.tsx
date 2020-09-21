@@ -3,8 +3,11 @@ import styled, { css } from 'styled-components';
 import { getLuminance, transparentize } from 'polished';
 import { Story } from '@storybook/react';
 
-import { capitalize, getCssVariable } from '@ustudio-ui/utils/functions';
-import { Variable } from '@ustudio-ui/types/css';
+import { capitalize, objectValues } from '@ustudio-ui/utils/functions';
+import { Color } from '@ustudio-ui/types/palette';
+import { defaultPalette } from '@ustudio-ui/theme/palette';
+import { Values } from '@ustudio-ui/utils/types';
+
 import Flex from '@ustudio-ui/core/flex';
 import Text from '@ustudio-ui/core/text';
 
@@ -12,21 +15,35 @@ import { useTheme } from '../src/use-theme';
 
 export default {
   title: 'Theme/Palette',
+
+  argTypes: objectValues(Color).reduce((argTypes, color) => {
+    return Object.assign(argTypes, {
+      [color]: {
+        control: 'color',
+      },
+    });
+  }, {}),
+  args: objectValues(Color).reduce((args, color) => {
+    return Object.assign(args, {
+      [color]: defaultPalette.light[color as keyof typeof defaultPalette[keyof typeof defaultPalette]],
+    });
+  }, {}),
 };
+
+type PaletteProps = Record<Values<typeof Color>, string>;
 
 const Styled = {
   Shade: styled.button<{
     size: 'small' | 'large';
     $color: string;
-  }>(({ size, $color: color, theme }) => {
-    const isBright = theme.mode
-      ? getLuminance(theme.palette[color as keyof typeof theme['palette']]) > 0.91
-      : getLuminance(theme.palette[color as keyof typeof theme['palette']]) < 0.02;
+  }>(({ size, $color, theme }) => {
+    const color = theme.colorHelper.parseColor($color);
+    const isBright = theme.mode ? getLuminance(color) > 0.91 : getLuminance(color) < 0.02;
 
     return css`
       position: relative;
 
-      background-color: ${getCssVariable(Variable.Color, color)};
+      background-color: ${color};
 
       border-radius: 2px;
       border: ${`1px solid ${isBright ? `var(--c-faint-weak-up)` : 'transparent'}`};
@@ -34,7 +51,7 @@ const Styled = {
       transition: all 200ms;
 
       &:hover {
-        box-shadow: 0 2px 8px 0 ${transparentize(0.7, theme.colorHelper.parseColor(color))};
+        box-shadow: 0 2px 8px 0 ${transparentize(0.7, color)};
       }
 
       ${size === 'small'
@@ -100,7 +117,8 @@ const Shade: FC<{
 
 const Family: FC<{
   name: string;
-}> = ({ name }) => {
+  colors: PaletteProps;
+}> = ({ name, colors }) => {
   return (
     <Flex
       direction="column"
@@ -136,11 +154,13 @@ const Family: FC<{
                 }}
               >
                 {['up', '', 'down'].map((shade) => {
+                  const color = `${name}-${member}${shade ? `-${shade}` : ''}`;
+
                   return (
                     <Shade
                       key={shade}
                       size={shade ? 'small' : 'large'}
-                      color={`${name}-${member}${shade ? `-${shade}` : ''}`}
+                      color={colors[color as keyof PaletteProps] || color}
                     />
                   );
                 })}
@@ -153,7 +173,7 @@ const Family: FC<{
   );
 };
 
-export const Colors: Story = () => {
+export const Colors: Story<PaletteProps> = (args) => {
   return (
     <Flex
       align="center"
@@ -162,7 +182,7 @@ export const Colors: Story = () => {
       }}
     >
       {['base', 'faint', 'accent', 'critical', 'success'].map((family) => (
-        <Family key={family} name={family} />
+        <Family key={family} name={family} colors={args} />
       ))}
     </Flex>
   );
