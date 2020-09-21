@@ -1,3 +1,4 @@
+export * from './size';
 export * from './font';
 export * from './shadow';
 export * from './hidden';
