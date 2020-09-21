@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@ustudio-ui/utils/functions';
-import { hidden, shadow } from '@ustudio-ui/theme/mixin';
+import { hidden, shadow, size } from '@ustudio-ui/theme/mixin';
 
 import type { RadioGroupProps } from '../radio-group.props';
 
@@ -10,33 +10,31 @@ const scale = (factor: number) => css`
 `;
 
 const checkedValidity = (color: string) => css`
-  border-color: var(--c-${color}-strong);
-
   &:before {
+    border-color: var(--c-${color}-strong);
     background-color: var(--c-${color}-strong);
   }
 
-  &:before,
   &:after {
     ${scale(1)};
   }
 
   &:hover {
-    box-shadow: ${shadow(`${color}-strong`, 0.25)};
+    &:before {
+      box-shadow: ${shadow(`${color}-strong`, 0.25)};
+    }
   }
 
   &:focus-within {
-    border-color: var(--c-${color}-strong-down);
-
     &:before {
+      border-color: var(--c-${color}-weak-up);
       background-color: var(--c-${color}-weak-up);
     }
   }
 
   &:active {
-    border-color: var(--c-${color}-weak-up);
-
     &:before {
+      border-color: var(--c-${color}-weak-up);
       background-color: var(--c-${color}-weak-up);
     }
   }
@@ -46,13 +44,9 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
   ({ value, isDisabled, isInvalid }) => css`
     position: relative;
 
-    width: 16px;
-    height: 16px;
+    ${size('28px')};
 
     display: block;
-
-    border-width: 1px;
-    border-style: solid;
 
     ${isDisabled
       ? css`
@@ -82,13 +76,16 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
     }
 
     &:before {
-      width: 16px;
-      height: 16px;
+      ${size('16px')};
+
+      border-width: 1px;
+      border-style: solid;
+
+      transform: translate(-50%, -50%);
     }
 
     &:after {
-      width: 8px;
-      height: 8px;
+      ${size('8px')};
     }
 
     ${value
@@ -104,39 +101,54 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
           ${isDisabled &&
           css`
-            &,
-            &:focus-within,
-            &:active {
+            &:before {
               border-color: var(--c-faint-weak-up);
 
+              background-color: var(--c-faint-weak-up);
+            }
+
+            &:focus-within,
+            &:active {
               &:before {
+                border-color: var(--c-faint-weak-up);
+
                 background-color: var(--c-faint-weak-up);
               }
             }
 
             &:hover {
-              box-shadow: none;
+              &:before {
+                box-shadow: none;
+              }
             }
           `}
         `
       : // Unchecked
         css`
-          border-color: var(--c-faint-strong);
+          &:before {
+            border-color: var(--c-faint-strong);
+          }
 
           &:before,
           &:after {
-            ${scale(0)};
-
             background-color: var(--c-base-weak);
           }
 
           &:hover {
-            box-shadow: ${shadow('base-strong', 0.15)};
+            &:before {
+              box-shadow: ${shadow('base-strong', 0.15)};
+            }
           }
 
           &:focus-within,
           &:active {
-            border-color: var(--c-accent-strong);
+            &:before {
+              border-color: var(--c-accent-strong);
+            }
+          }
+
+          &:after {
+            ${scale(0)};
           }
 
           &:active {
@@ -147,7 +159,9 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
           ${isInvalid &&
           css`
-            border-color: var(--c-critical-strong);
+            &:before {
+              border-color: var(--c-critical-strong);
+            }
 
             &:after {
               background-color: var(--c-critical-weak-up);
@@ -155,13 +169,14 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
             &:focus-within,
             &:active {
-              border-color: var(--c-critical-weak-up);
+              &:before {
+                border-color: var(--c-critical-weak-up);
+              }
             }
           `}
 
           ${isDisabled &&
           css`
-            &:before,
             &:after {
               ${scale(0)};
             }
@@ -169,8 +184,10 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
             &,
             &:focus-within,
             &:active {
-              border-color: var(--c-faint-weak-up);
-              background-color: var(--c-faint-weak);
+              &:before {
+                border-color: var(--c-faint-weak-up);
+                background-color: var(--c-faint-weak-down);
+              }
             }
 
             &:active {
@@ -180,7 +197,9 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
             }
 
             &:hover {
-              box-shadow: none;
+              &:before {
+                box-shadow: none;
+              }
             }
           `}
         `}
