@@ -66,7 +66,7 @@ export const Basic: Story<Omit<TextProps, 'variant'>> = (args) => {
     <>
       {objectValues(TypeVariant).map((typeVariant) => {
         return (
-          <Text key={typeVariant} variant={typeVariant} {...args}>
+          <Text as={typeVariant} key={typeVariant} {...args}>
             {getTypeName(typeVariant)}
           </Text>
         );
