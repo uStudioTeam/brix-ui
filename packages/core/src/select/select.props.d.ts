@@ -1,6 +1,6 @@
 import type { ChangeEvent, Ref, SelectHTMLAttributes } from 'react';
 
-import type { FormComponent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
+import type { Affixable, FormComponent, IntrinsicComponent, StylableComponent } from '@ustudio-ui/types/component';
 
 import { Select, Icon } from './select.styles';
 
@@ -21,6 +21,7 @@ export interface SelectGroup {
 
 export interface SelectProps
   extends Omit<FormComponent<HTMLSelectElement, string>, 'isReadonly' | 'onChange'>,
+    Affixable,
     Omit<
       IntrinsicComponent<SelectHTMLAttributes<HTMLSelectElement>>,
       'disabled' | 'required' | 'readonly' | 'multiple' | 'size'

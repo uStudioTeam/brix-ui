@@ -20,6 +20,7 @@ const argTypes = {
   },
   disabledOptions: {
     control: 'array',
+    description: 'Values of options to be disabled',
   },
 };
 
@@ -71,7 +72,11 @@ Groups.argTypes = {
     control: 'object',
   },
   disabledGroups: {
-    control: 'array',
+    control: {
+      type: 'inline-check',
+      options: [0, 1],
+    },
+    description: 'Indices of groups to be disabled',
   },
 };
 Groups.args = {
