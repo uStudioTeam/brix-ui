@@ -29,14 +29,8 @@ export default {
       },
       description: 'Appearance preset',
     },
-    borderRadius: {
-      control: {
-        type: 'inline-radio',
-        options: ['small', 'large'],
-      },
-      defaultValue: {
-        summary: `'small'`,
-      },
+    isRounded: {
+      control: 'boolean',
     },
     isDisabled: {
       control: 'boolean',
@@ -49,7 +43,7 @@ export default {
   args: {
     intent: 'base',
     appearance: 'contained',
-    borderRadius: 'small',
+    isRounded: false,
     isDisabled: false,
   },
 } as Meta;
