@@ -6,18 +6,15 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';
 
-const Button = styled.button<
-  Omit<ButtonProps, 'borderRadius'> & {
-    $borderRadius: ButtonProps['borderRadius'];
-  }
->(
-  ({ intent = 'base', appearance = 'contained', $borderRadius: borderRadius = 'small' }) => css`
+const Button = styled.button<ButtonProps>(
+  ({ intent = 'base', appearance = 'contained', isRounded }) => css`
+    height: 28px;
     padding: 6px 16px;
 
     display: inline-flex;
     align-items: center;
 
-    border-radius: ${borderRadius === 'small' ? 2 : 16}px;
+    border-radius: ${isRounded ? 16 : 2}px;
     border: 1px solid transparent;
 
     ${font.body.p};

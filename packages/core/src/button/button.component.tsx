@@ -9,11 +9,11 @@ import { ButtonProps } from './button.props';
 import Styled from './button.styles';
 
 const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button(
-  { children, isDisabled, borderRadius, ...props },
+  { children, isDisabled, ...props },
   ref
 ) {
   return (
-    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} $borderRadius={borderRadius} {...props}>
+    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} {...props}>
       {children}
     </Styled.Button>
   );
@@ -22,7 +22,7 @@ const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Butto
 Button.propTypes = {
   intent: PT.oneOf(objectValues(Intent)),
   appearance: PT.oneOf(['contained', 'outlined', 'text', 'faint']),
-  borderRadius: PT.oneOf(['small', 'large']),
+  isRounded: PT.bool,
   isDisabled: PT.bool,
 
   ...stylableComponent(),
