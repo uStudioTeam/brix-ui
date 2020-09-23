@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Disclosable, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
 import { Container, Icon, Summary, Details } from './disclosure.styles';
 
@@ -11,14 +11,12 @@ interface Styled {
   Details: typeof Details;
 }
 
-export interface DisclosureProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent<Styled> {
-  isOpen?: boolean;
+export interface DisclosureProps
+  extends Disclosable,
+    IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
+    StylableComponent<Styled> {
   summary?: ReactNode;
   icon?: ReactNode | ((props: Pick<DisclosureProps, 'isOpen' | 'isDisabled'>) => ReactNode);
 
   isDisabled?: boolean;
-
-  onOpen?(): void;
-  onChange?(isOpen: boolean): void;
-  onClose?(): void;
 }

@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import useAutoTransition from 'honks/use-auto-transition';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
-import { stylableComponent } from '@brix-ui/prop-types/common';
+import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
+import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
+
+import { useDisclose } from '../_internal/hooks';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
@@ -12,25 +14,12 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   { children, styles, className, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
-  const [internalIsOpen, setOpen] = useState(isOpen ?? false);
-  const hasChanged = useRef(false);
-
-  // @ToDo: this should become smth like `useControlled`
-  useEffect(() => {
-    if (isOpen !== undefined) {
-      hasChanged.current = true;
-
-      setOpen(isOpen);
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (hasChanged.current) {
-      tryCall(internalIsOpen ? onOpen : onClose);
-
-      tryCall(onChange, internalIsOpen);
-    }
-  }, [internalIsOpen]);
+  const [internalIsOpen, setOpen] = useDisclose({
+    isOpen,
+    onOpen,
+    onChange,
+    onClose,
+  });
 
   const [detailsRef, detailsHeight] = useAutoTransition<HTMLDivElement>(
     (element) => {
@@ -56,8 +45,6 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         disabled={isDisabled}
         aria-disabled={isDisabled}
         onClick={() => {
-          hasChanged.current = true;
-
           setOpen(!internalIsOpen);
         }}
       >
@@ -81,16 +68,12 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
 });
 
 Disclosure.propTypes = {
-  isOpen: PT.bool,
   summary: PT.node,
   icon: PT.oneOfType([PT.node, PT.func]),
 
   isDisabled: PT.bool,
 
-  onOpen: PT.func,
-  onChange: PT.func,
-  onClose: PT.func,
-
+  ...disclosable,
   ...stylableComponent(Styled),
 };
 
