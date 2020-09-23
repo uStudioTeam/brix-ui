@@ -6,7 +6,7 @@ import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 
 import { useDisclose, useUnmountOnExit } from '../_internal/hooks';
-import Portal from '../_internal/portal';
+import Portal from '../portal';
 
 import type { DrawerProps } from './drawer.props';
 import Styled from './drawer.styles';
