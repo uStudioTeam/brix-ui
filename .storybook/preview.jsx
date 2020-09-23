@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { jsxDecorator } from 'storybook-addon-jsx';
+import { createGlobalStyle } from 'styled-components';
 
 import ThemeProvider, { useTheme } from '@brix-ui/theme';
 import { ThemeMode } from '@brix-ui/theme/entity';
@@ -26,6 +27,17 @@ const ThemeSwitcher = ({ context }) => {
   return null;
 };
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+`;
+
 export const decorators = [
   jsxDecorator,
   (story, context) => {
@@ -35,8 +47,9 @@ export const decorators = [
           typography: fonts,
         }}
       >
-        {story()}
+        <main>{story()}</main>
 
+        <GlobalStyle />
         <ThemeSwitcher context={context} />
       </ThemeProvider>
     );
