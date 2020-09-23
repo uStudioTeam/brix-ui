@@ -3,6 +3,7 @@ export * from './intent';
 export type { Taggable } from './taggable';
 export type { Affixable } from './affixable';
 export type { Alignable } from './alignable';
+export type { Disclosable } from './disclosable';
 export type { FormComponent } from './form-component';
 export type { BreakpointsProps } from './breakpoints-props';
 export type { StylableComponent } from './stylable-component';
