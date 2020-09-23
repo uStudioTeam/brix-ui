@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 
 const Portal: FC = ({ children }) => {
   const [shouldMount, setMount] = useState(false);
-  // eslint-disable-next-line immutable/no-let
   const containerRef = useRef<HTMLBodyElement>();
 
   useEffect(() => {
