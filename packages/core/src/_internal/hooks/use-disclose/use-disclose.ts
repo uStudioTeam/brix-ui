@@ -10,19 +10,18 @@ export const useDisclose = ({
   onClose,
 }: Disclosable): [internalIsOpen: boolean, setOpen: (isOpen: boolean) => void] => {
   const [internalIsOpen, setOpen] = useState(isOpen ?? false);
-  // eslint-disable-next-line immutable/no-let
-  let { current: hasChanged } = useRef(false);
+  const hasChangedRef = useRef(false);
 
   useEffect(() => {
     if (isOpen !== undefined) {
-      hasChanged = true;
+      hasChangedRef.current = true;
 
       setOpen(isOpen);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    if (hasChanged) {
+    if (hasChangedRef.current) {
       tryCall(internalIsOpen ? onOpen : onClose);
 
       tryCall(onChange, internalIsOpen);
