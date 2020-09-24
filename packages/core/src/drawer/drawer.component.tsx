@@ -24,7 +24,7 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(
 
     return shouldMount ? (
       <Portal>
-        <Styled.Drawer ref={ref} isOpen={shouldBeOpen} $position={position} {...props}>
+        <Styled.Drawer ref={ref} isOpen={shouldBeOpen} $position={position} aria-expanded={shouldBeOpen} {...props}>
           {children}
         </Styled.Drawer>
       </Portal>

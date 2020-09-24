@@ -57,6 +57,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
 
       <Styled.Details
         as={styles?.Details}
+        aria-expanded={internalIsOpen}
         style={{
           height: detailsHeight,
         }}
