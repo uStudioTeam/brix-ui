@@ -1,3 +1,4 @@
+import { Values } from '@brix-ui/utils/types';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
@@ -32,24 +33,29 @@ const Text = styled.p<
   }
 >(
   ({
-    variant = TypeVariant.P,
+    as = TypeVariant.P,
+    variant,
     appearance = FontVariant.Body,
     $color: color,
     $align: align,
     decoration,
     lineHeightCompensation,
-  }) => css`
-    ${font[appearance][variant]};
+  }) => {
+    const defaultVariant = variant || TypeVariant.P;
 
-    color: ${color};
-    text-align: ${align};
+    return css`
+      ${font[appearance][variant || (as as Values<typeof TypeVariant>)] || font[appearance].p};
 
-    ${parseTextDecoration(decoration)};
+      color: ${color};
+      text-align: ${align};
 
-    margin-top: ${typeof lineHeightCompensation === 'function'
-      ? `${lineHeightCompensation(variant)}px`
-      : lineHeightCompensation && `${compensateLineHeight(variant)}px`};
-  `
+      ${parseTextDecoration(decoration)};
+
+      margin-top: ${typeof lineHeightCompensation === 'function'
+        ? `${lineHeightCompensation(defaultVariant)}px`
+        : lineHeightCompensation && `${compensateLineHeight(defaultVariant)}px`};
+    `;
+  }
 );
 
 const Styled = applyDisplayNames({ Text });
