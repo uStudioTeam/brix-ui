@@ -22,8 +22,6 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
     isDisabled,
     isRequired,
     isInvalid,
-    color,
-    background,
     containerRef,
     ...props
   },
@@ -44,8 +42,6 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       value={internalValue}
       isDisabled={isDisabled}
       isInvalid={isInvalid}
-      $color={color}
-      $background={background}
       aria-hidden
       {...(propsWithoutAria as HTMLAttributes<HTMLLabelElement>)}
     >

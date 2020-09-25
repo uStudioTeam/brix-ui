@@ -1,14 +1,10 @@
-import { tryCall } from '@brix-ui/utils/functions';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
 
 import type { SwitchProps } from './switch.props';
 
-type Props = Pick<SwitchProps, 'value' | 'isDisabled' | 'isInvalid'> & {
-  $color: SwitchProps['color'];
-  $background: SwitchProps['background'];
-};
+type Props = Pick<SwitchProps, 'value' | 'isDisabled' | 'isInvalid'>;
 
 const Input = styled.input`
   ${hidden};
@@ -41,8 +37,6 @@ const Children = styled.span<Pick<SwitchProps, 'value' | 'isDisabled' | 'isInval
         css`
           left: ${start};
 
-          color: var(--c-text-base-weak);
-
           ${isDisabled &&
           css`
             color: var(--c-faint-strong-down);
@@ -51,8 +45,6 @@ const Children = styled.span<Pick<SwitchProps, 'value' | 'isDisabled' | 'isInval
       : // Unchecked
         css`
           left: ${end};
-
-          color: var(--c-accent-strong);
 
           ${isInvalid &&
           css`
@@ -74,16 +66,7 @@ const shapeColor = (color: string): FlattenSimpleInterpolation => {
   `;
 };
 
-const Track = ({
-  value,
-  isDisabled,
-  isInvalid,
-  color,
-  background,
-}: Omit<Props, '$color' | '$background'> & {
-  color: string | undefined;
-  background: string | undefined;
-}): FlattenSimpleInterpolation => {
+const Track = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolation => {
   return css`
     &:before {
       content: '';
@@ -106,8 +89,8 @@ const Track = ({
       ${value
         ? // Checked
           css`
-            background-color: ${background || 'var(--c-accent-strong)'};
-            border-color: ${background || 'var(--c-accent-strong)'};
+            background-color: var(--c-accent-strong);
+            border-color: var(--c-accent-strong);
 
             ${isInvalid &&
             css`
@@ -121,8 +104,8 @@ const Track = ({
           `
         : // Unchecked
           css`
-            background-color: ${background || 'var(--c-base-weak)'};
-            border-color: ${color || 'var(--c-accent-strong)'};
+            background-color: var(--c-base-weak);
+            border-color: var(--c-accent-strong);
 
             ${isInvalid &&
             css`
@@ -139,14 +122,7 @@ const Track = ({
   `;
 };
 
-const Thumb = ({
-  value,
-  isDisabled,
-  isInvalid,
-  color,
-}: Omit<Props, '$color' | '$background'> & {
-  color: string | undefined;
-}): FlattenSimpleInterpolation => {
+const Thumb = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolation => {
   return css`
     &:after {
       content: '';
@@ -165,7 +141,7 @@ const Thumb = ({
           css`
             left: ${end};
 
-            background-color: ${color || 'var(--c-text-base-weak)'};
+            background-color: var(--c-text-base-weak);
 
             ${isDisabled &&
             css`
@@ -176,7 +152,7 @@ const Thumb = ({
           css`
             left: ${start};
 
-            background-color: ${color || 'var(--c-accent-strong)'};
+            background-color: var(--c-accent-strong);
 
             ${isInvalid &&
             css`
@@ -192,13 +168,7 @@ const Thumb = ({
   `;
 };
 
-const Switch = styled.label<Props>(({ value, isDisabled, isInvalid, $color, $background, theme }) => {
-  const colorOverwrite = tryCall($color, Boolean(value));
-  const color = (colorOverwrite && theme.colorHelper.parseColor(colorOverwrite)) as string | undefined;
-
-  const backgroundOverwrite = tryCall($background, Boolean(value));
-  const background = (backgroundOverwrite && theme.colorHelper.parseColor(backgroundOverwrite)) as string | undefined;
-
+const Switch = styled.label<Props>(({ value, isDisabled, isInvalid }) => {
   return css`
     --track-height: 16px;
     --track-width: 32px;
@@ -221,8 +191,8 @@ const Switch = styled.label<Props>(({ value, isDisabled, isInvalid, $color, $bac
 
     cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
 
-    ${Track({ value, isDisabled, isInvalid, color, background })}
-    ${Thumb({ value, isDisabled, isInvalid, color })}
+    ${Track({ value, isDisabled, isInvalid })}
+    ${Thumb({ value, isDisabled, isInvalid })}
 
     &:active {
       transform: scale(0.975);
@@ -235,6 +205,10 @@ const Switch = styled.label<Props>(({ value, isDisabled, isInvalid, $color, $bac
     ${value
       ? // Checked
         css`
+          ${Children} {
+            color: var(--c-text-base-weak);
+          }
+
           &:hover {
             &:before {
               box-shadow: ${shadow('accent-strong', 0.25)};
@@ -298,6 +272,10 @@ const Switch = styled.label<Props>(({ value, isDisabled, isInvalid, $color, $bac
         `
       : // Unchecked
         css`
+          ${Children} {
+            color: var(--c-accent-strong);
+          }
+
           &:hover {
             &:before {
               box-shadow: ${shadow('base-strong', 0.1)};
