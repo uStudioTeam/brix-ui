@@ -75,7 +75,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
 
   const isGroupSelect = useMemo(() => 'options' in options[0], [options[0]]);
 
-  const hasValue = useMemo(() => internalValue !== placeholder, [internalValue, placeholder]);
+  const hasValue = useMemo(() => internalValue !== undefined, [internalValue]);
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
 
@@ -91,7 +91,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
 
       <Styled.Input
         ref={ref}
-        value={internalValue}
+        value={internalValue ?? placeholder}
         onChange={handleChange}
         disabled={isDisabled}
         aria-disabled={isDisabled || undefined}
