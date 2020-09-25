@@ -1,6 +1,6 @@
-import React, { ChangeEventHandler, LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
+import React, { LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
 
-import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import Affix from '../_internal/affix';
 import { useAriaProps, useValue } from '../_internal/hooks';
@@ -57,16 +57,10 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
   },
   ref
 ) {
-  const [internalValue, setInternalValue] = useValue(value, defaultValue ?? placeholder);
-
-  const handleChange = useCallback<ChangeEventHandler<HTMLSelectElement>>(
-    (event) => {
-      const nextValue = event.target.value;
-
-      setInternalValue(nextValue);
-      tryCall(onChange, nextValue, event);
-    },
-    [onChange]
+  const [internalValue, handleChange] = useValue(
+    value === undefined ? defaultValue : value,
+    onChange,
+    (event) => event.target.value
   );
 
   const isOptionSelected = useCallback((optionValue: string) => optionValue === internalValue, [internalValue]);

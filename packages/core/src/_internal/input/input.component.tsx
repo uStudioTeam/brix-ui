@@ -1,6 +1,6 @@
-import React, { ChangeEvent, ChangeEventHandler, InputHTMLAttributes, useCallback } from 'react';
+import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 
-import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import { useAriaProps, useValue } from '../hooks';
 import Affix from '../affix';
@@ -45,17 +45,7 @@ const Input = intrinsicComponent<
   },
   ref
 ) {
-  const [internalValue, setInternalValue] = useValue(value, defaultValue ?? '');
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
-    (event) => {
-      const nextValue = getValue(event);
-
-      setInternalValue(nextValue);
-      tryCall(onChange, nextValue, event);
-    },
-    [onChange]
-  );
+  const [internalValue, handleChange] = useValue(value === undefined ? defaultValue : value, onChange, getValue);
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
 
