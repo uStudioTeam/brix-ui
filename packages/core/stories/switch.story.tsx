@@ -1,22 +1,29 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Story } from '@storybook/react';
 
-import styled from 'styled-components';
-import { useTheme } from '@brix-ui/theme';
-
 import Switch, { SwitchProps } from '../src/switch';
-import Text from '../src/text';
-import Flex from '../src/flex';
 
 export default {
   title: 'Form/Switch',
   component: Switch,
+
+  argTypes: {
+    isDisabled: {
+      control: 'boolean',
+    },
+    isInvalid: {
+      control: 'boolean',
+    },
+  },
 };
 
 export const Basic: Story<SwitchProps> = (args) => {
   return <Switch {...args} />;
 };
 
+/**
+ * Commented out until the issue with story rerendering / getting the context is resolved
+ * @see .storybook/preview.jsx
 const Emoji = styled(Text).attrs(() => ({
   role: 'img',
 }))`
@@ -50,3 +57,4 @@ export const WithChildren: Story<SwitchProps> = (args) => {
     </Label>
   );
 };
+*/
