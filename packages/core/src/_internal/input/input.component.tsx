@@ -45,7 +45,11 @@ const Input = intrinsicComponent<
   },
   ref
 ) {
-  const [internalValue, handleChange] = useValue(value === undefined ? defaultValue : value, onChange, getValue);
+  const [internalValue, handleChange] = useValue(
+    (value === undefined ? defaultValue : value) ?? '',
+    onChange,
+    getValue
+  );
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
 
@@ -80,8 +84,8 @@ const Input = intrinsicComponent<
         minLength={minLength}
         pattern={pattern}
         placeholder={placeholder}
-        aria-valuemin={Number(inputProps.min)}
-        aria-valuemax={Number(inputProps.max)}
+        aria-valuemin={Number.isNaN(Number(inputProps.min)) ? undefined : Number(inputProps.min)}
+        aria-valuemax={Number.isNaN(Number(inputProps.max)) ? undefined : Number(inputProps.max)}
         {...inputProps}
         {...propsWithAria}
       />

@@ -19,56 +19,49 @@ const renderWithProps = <V extends string | number>(props: Partial<InputProps<V>
   );
 };
 
-const change = <V extends string | number>(value: V, element: HTMLInputElement): void => {
-  fireEvent.change(element, { target: { value } });
+const change = <V extends string | number>(value: V, element: HTMLLabelElement): void => {
+  fireEvent.change(element.querySelector('input') as HTMLInputElement, { target: { value } });
 };
 
 describe('<Input />', () => {
   matchMedia();
 
-  describe('uncontrolled state', () => {
-    beforeEach(() => {
-      getValue = ({ target: { value } }) => value;
-    });
+  beforeEach(() => {
+    getValue = ({ target: { value } }) => value;
+  });
 
+  describe('uncontrolled state', () => {
     it('should update local value without external props', () => {
       const { getByTestId } = renderWithProps();
-      const input = getByTestId(inputId) as HTMLInputElement;
+      const label = getByTestId(inputId) as HTMLLabelElement;
+      const input = label.querySelector('input') as HTMLInputElement;
 
-      change('123', input);
+      change('123', label);
 
       expect(input.value).toBe('123');
     });
   });
 
   describe('controlled state', () => {
-    beforeEach(() => {
-      getValue = ({ target: { value } }) => value;
-    });
-
     it('should set value according to the passed prop', () => {
       const { getByTestId } = renderWithProps({
         value: '123',
       });
-      const input = getByTestId(inputId) as HTMLInputElement;
+      const input = getByTestId(inputId).querySelector('input') as HTMLInputElement;
 
       expect(input.value).toBe('123');
     });
   });
 
   describe('onChange', () => {
-    beforeEach(() => {
-      getValue = ({ target: { value } }) => value;
-    });
-
     it('should call `onChange` whenever the value changes', () => {
       const onChange = jest.fn();
       const { getByTestId } = renderWithProps({
         onChange,
       });
-      const input = getByTestId(inputId) as HTMLInputElement;
+      const label = getByTestId(inputId) as HTMLLabelElement;
 
-      change('123', input);
+      change('123', label);
 
       expect(onChange).toHaveBeenCalledWith('123', expect.any(Object));
     });
