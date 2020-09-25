@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Story } from '@storybook/react';
 
 import styled from 'styled-components';
@@ -35,7 +35,10 @@ const Label = styled(Flex).attrs(() => ({
 `;
 
 export const WithChildren: Story<SwitchProps> = (args) => {
-  const { switchMode, mode } = useTheme();
+  const { switchMode: _switchMode, mode } = useTheme();
+
+  // This prevents ugly rendering inside `addon-jsx`
+  const switchMode = useCallback<typeof _switchMode>((value) => _switchMode(value), [_switchMode]);
 
   return (
     <Label>
