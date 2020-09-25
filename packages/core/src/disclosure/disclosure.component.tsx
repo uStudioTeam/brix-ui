@@ -14,7 +14,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   { children, styles, className, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
   ref
 ) {
-  const [internalIsOpen, setOpen] = useDisclose({
+  const [internalIsOpen, toggle] = useDisclose({
     isOpen,
     onOpen,
     onChange,
@@ -44,9 +44,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         isOpen={internalIsOpen}
         disabled={isDisabled}
         aria-disabled={isDisabled}
-        onClick={() => {
-          setOpen(!internalIsOpen);
-        }}
+        onClick={() => toggle()}
       >
         {summary}
 
