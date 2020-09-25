@@ -1,8 +1,8 @@
 import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
-import React, { ChangeEventHandler, useCallback } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import { useAriaProps, useValue } from '../_internal/hooks';
 
@@ -26,16 +26,10 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
   },
   ref
 ) {
-  const [internalValue, setInternalValue] = useValue(value, defaultValue ?? false);
-
-  const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    (event) => {
-      const nextValue = event.target.checked;
-
-      setInternalValue(nextValue);
-      tryCall(onChange, nextValue, event);
-    },
-    [onChange]
+  const [internalValue, handleChange] = useValue(
+    value === undefined ? defaultValue : value,
+    onChange,
+    (event) => event.target.checked
   );
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
