@@ -15,7 +15,7 @@ export const useUnmountOnExit = (
   useEffect(() => {
     if (shouldUnmount) {
       // eslint-disable-next-line immutable/no-let
-      let timeoutId: NodeJS.Timeout;
+      let timeoutId: ReturnType<typeof setTimeout>;
 
       if (isOpen) {
         setMount(true);
@@ -28,9 +28,9 @@ export const useUnmountOnExit = (
       }
 
       return () => clearTimeout(timeoutId);
-    } else {
-      setOpenControl(isOpen);
     }
+
+    setOpenControl(isOpen);
   }, [isOpen, shouldUnmount]);
 
   return [openControl, shouldMount];
