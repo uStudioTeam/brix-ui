@@ -15,7 +15,7 @@ export interface Theme {
   readonly colorHelper: ColorHelper;
 
   readonly mode: boolean;
-  switchMode(mode?: Values<typeof ThemeMode>): void;
+  switchMode(mode?: boolean): void;
 }
 
 export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'switch'> {
