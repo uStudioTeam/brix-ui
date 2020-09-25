@@ -11,26 +11,27 @@ import Portal from '../portal';
 import type { DrawerProps } from './drawer.props';
 import Styled from './drawer.styles';
 
-const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(
-  ({ children, position, unmountOnExit, isOpen, onOpen, onChange, onClose, ...props }, ref) => {
-    const [internalIsOpen] = useDisclose({
-      isOpen,
-      onOpen,
-      onChange,
-      onClose,
-    });
+const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
+  { children, position, unmountOnExit, isOpen, onOpen, onChange, onClose, ...props },
+  ref
+) {
+  const [internalIsOpen] = useDisclose({
+    isOpen,
+    onOpen,
+    onChange,
+    onClose,
+  });
 
-    const [shouldBeOpen, shouldMount] = useUnmountOnExit(internalIsOpen, unmountOnExit);
+  const [shouldBeOpen, shouldMount] = useUnmountOnExit(internalIsOpen, unmountOnExit);
 
-    return shouldMount ? (
-      <Portal>
-        <Styled.Drawer ref={ref} isOpen={shouldBeOpen} $position={position} {...props}>
-          {children}
-        </Styled.Drawer>
-      </Portal>
-    ) : null;
-  }
-);
+  return shouldMount ? (
+    <Portal>
+      <Styled.Drawer ref={ref} isOpen={shouldBeOpen} $position={position} aria-expanded={shouldBeOpen} {...props}>
+        {children}
+      </Styled.Drawer>
+    </Portal>
+  ) : null;
+});
 
 Drawer.propTypes = {
   ...disclosable,

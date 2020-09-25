@@ -3,9 +3,10 @@ import PT, { Requireable } from 'prop-types';
 import { Keyframes, keyframes } from 'styled-components';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
-import { stylableComponent } from '@brix-ui/prop-types/common';
+import { delayable, stylableComponent } from '@brix-ui/prop-types/common';
 
-import { useDelay } from './use-delay';
+import { useDelay } from '../_internal/hooks';
+
 import Styled from './spinner.styles';
 import type { SpinnerProps } from './spinner.props';
 
@@ -82,7 +83,14 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
   const shouldRender = useDelay(delay);
 
   return shouldRender ? (
-    <Styled.Spinner as={styles?.Spinner} ref={ref} className={className}>
+    <Styled.Spinner
+      as={styles?.Spinner}
+      ref={ref}
+      className={className}
+      role="status"
+      aria-busy="true"
+      aria-live="polite"
+    >
       {[...new Array(blades).keys()].map((_, index) => {
         return (
           <Styled.Blade
@@ -120,8 +128,8 @@ Spinner.propTypes = {
   range: PT.arrayOf(PT.oneOfType([PT.number, PT.string])) as Requireable<SpinnerProps['range']>,
   swirl: PT.bool,
   spread: PT.number,
-  delay: PT.number,
 
+  ...delayable,
   ...stylableComponent(Styled),
 };
 

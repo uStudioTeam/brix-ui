@@ -1,4 +1,5 @@
 export * from './spread';
+export * from './random';
 export * from './min-max';
 export * from './try-call';
 export * from './capitalize';
