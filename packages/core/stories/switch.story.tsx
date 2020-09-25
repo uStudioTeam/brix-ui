@@ -1,7 +1,10 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import styled from 'styled-components';
 
 import Switch, { SwitchProps } from '../src/switch';
+import Flex from '../src/flex';
+import Text from '../src/text';
 
 export default {
   title: 'Form/Switch',
@@ -21,9 +24,6 @@ export const Basic: Story<SwitchProps> = (args) => {
   return <Switch {...args} />;
 };
 
-/**
- * Commented out until the issue with story rerendering / getting the context is resolved
- * @see .storybook/preview.jsx
 const Emoji = styled(Text).attrs(() => ({
   role: 'img',
 }))`
@@ -42,19 +42,13 @@ const Label = styled(Flex).attrs(() => ({
 `;
 
 export const WithChildren: Story<SwitchProps> = (args) => {
-  const { switchMode: _switchMode, mode } = useTheme();
-
-  // This prevents ugly rendering inside `addon-jsx`
-  const switchMode = useCallback<typeof _switchMode>((value) => _switchMode(value), [_switchMode]);
-
   return (
     <Label>
       <Text lineHeightCompensation>Dark Theme</Text>
 
-      <Switch {...args} value={!mode} onChange={switchMode}>
+      <Switch {...args}>
         {({ value }) => <Emoji aria-label={value ? 'moon' : 'sun'}>{value ? '🌚' : '🌞'}</Emoji>}
       </Switch>
     </Label>
   );
 };
-*/
