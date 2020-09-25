@@ -21,7 +21,7 @@ const ThemeSwitcher = ({ context }) => {
   const { switchMode } = useTheme();
 
   useEffect(() => {
-    switchMode(context.globals.theme);
+    switchMode(context.globals.theme === ThemeMode.Light);
   }, [context.globals.theme]);
 
   return null;
@@ -47,9 +47,7 @@ export const decorators = [
           typography: fonts,
         }}
       >
-        <main>
-          <StoryFn />
-        </main>
+        <main>{StoryFn()}</main>
 
         <GlobalStyle />
         <ThemeSwitcher context={context} />

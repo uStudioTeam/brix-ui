@@ -59,7 +59,7 @@ const Author = styled(Flex).attrs(() => ({
 
 export const Layout: Story<SkeletonProps> = ({ isStatic }) => {
   return (
-    <Flex as="section" direction="column" gap="1rem">
+    <Flex as="section" direction="column" gap={{ vertical: '1rem' }}>
       {[...new Array(3).keys()].map((key) => {
         return (
           <Card forwardedAs="article" key={key}>
