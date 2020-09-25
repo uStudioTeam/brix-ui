@@ -40,14 +40,16 @@ const GlobalStyle = createGlobalStyle`
 
 export const decorators = [
   jsxDecorator,
-  (story, context) => {
+  (StoryFn, context) => {
     return (
       <ThemeProvider
         theme={{
           typography: fonts,
         }}
       >
-        <main>{story()}</main>
+        <main>
+          <StoryFn />
+        </main>
 
         <GlobalStyle />
         <ThemeSwitcher context={context} />
