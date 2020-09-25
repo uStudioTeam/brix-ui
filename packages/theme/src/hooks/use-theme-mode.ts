@@ -11,8 +11,8 @@ export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | 
 
   const switchMode = useCallback<Theme['switchMode']>(
     (mode) => {
-      if (mode) {
-        setThemeMode(mode);
+      if (mode !== undefined) {
+        setThemeMode(mode ? ThemeMode.Light : ThemeMode.Dark);
       } else {
         setThemeMode(themeMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
       }
@@ -27,12 +27,12 @@ export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | 
   useEffect(() => {
     const storedMode = localStorage.getItem(localStorageKey) as Values<typeof ThemeMode> | null;
 
-    if (theme.mode) {
-      switchMode(theme.mode);
+    if (theme.mode !== undefined) {
+      switchMode(theme.mode === ThemeMode.Light);
     } else if (storedMode) {
-      switchMode(storedMode);
+      switchMode(storedMode === ThemeMode.Light);
     } else {
-      switchMode(isModeLight ? ThemeMode.Light : ThemeMode.Dark);
+      switchMode(isModeLight);
     }
   }, []);
 
