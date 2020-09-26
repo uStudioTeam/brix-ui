@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 
 import type { Disclosable, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
@@ -13,7 +13,7 @@ interface Styled {
 
 export interface DisclosureProps
   extends Disclosable,
-    IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
+    PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
     StylableComponent<Styled> {
   summary?: ReactNode;
   icon?: ReactNode | ((props: Pick<DisclosureProps, 'isOpen' | 'isDisabled'>) => ReactNode);
