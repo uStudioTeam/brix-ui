@@ -3,6 +3,7 @@ import PT from 'prop-types';
 
 import { extract } from '@brix-ui/prop-types/utils';
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import { useAriaProps, useValue } from '../_internal/hooks';
 import Checkbox from '../checkbox';
@@ -19,7 +20,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
     onChange,
     name,
     id,
-    isDisabled,
+    isDisabled: _isDisabled,
     isRequired,
     isInvalid,
     containerRef,
@@ -27,6 +28,8 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   },
   ref
 ) {
+  const isDisabled = useDisabled(_isDisabled);
+
   const [internalValue, handleChange] = useValue(
     value === undefined ? defaultValue : value,
     onChange,

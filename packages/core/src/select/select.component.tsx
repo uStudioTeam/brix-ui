@@ -1,6 +1,7 @@
 import React, { LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import Affix from '../_internal/affix';
 import { useAriaProps, useValue } from '../_internal/hooks';
@@ -45,7 +46,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
     value,
     defaultValue,
     onChange,
-    isDisabled,
+    isDisabled: _isDisabled,
     isRequired,
     isInvalid,
     disabledOptions,
@@ -57,6 +58,8 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
   },
   ref
 ) {
+  const isDisabled = useDisabled(_isDisabled);
+
   const [internalValue, handleChange] = useValue(
     value === undefined ? defaultValue : value,
     onChange,

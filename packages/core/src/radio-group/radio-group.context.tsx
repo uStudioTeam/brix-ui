@@ -2,6 +2,7 @@ import React, { createContext, FC, useCallback, useContext, useEffect, useReduce
 import PT from 'prop-types';
 
 import { applyPolymorphicFunctionProp, tryCall } from '@brix-ui/utils/functions';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import { RadioGroupDispatcher } from './actions';
 import { radioGroupReducer } from './reducer';
@@ -15,10 +16,12 @@ const RadioGroup: FC<RadioGroupProps> = ({
   defaultValue,
   onChange,
   name,
-  isDisabled,
+  isDisabled: _isDisabled,
   isRequired,
   isInvalid,
 }) => {
+  const isDisabled = useDisabled(_isDisabled);
+
   const [state, dispatch] = useReducer(radioGroupReducer, {
     value: value ?? defaultValue ?? '',
     options: new Set<string>(),
