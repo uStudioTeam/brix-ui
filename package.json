@@ -45,7 +45,6 @@
     "@typescript-eslint/parser": "^3.7.1",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
-    "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "babel-preset-react-app": "^9.1.2",

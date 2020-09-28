@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { font, shadow } from '@brix-ui/theme/mixin';
+import Chevron from '@brix-ui/icons/chevron';
 
 import Flex from '../flex';
-import Chevron from '../../assets/icons/chevron.inline.svg';
 
 import type { DisclosureProps } from './disclosure.props';
 

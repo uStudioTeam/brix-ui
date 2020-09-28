@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
-
-import Check from '../../assets/icons/check.inline.svg';
+import Check from '@brix-ui/icons/check';
 
 import type { CheckboxProps } from './checkbox.props';
 

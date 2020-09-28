@@ -33,12 +33,14 @@ const FlatTemplate: Story<SelectProps> = (args) => {
 };
 
 export const Flat = FlatTemplate.bind({});
+
 Flat.argTypes = {
   ...argTypes,
   options: {
     control: 'array',
   },
 };
+
 Flat.args = {
   ...defaultArgs,
   options: [
@@ -66,6 +68,7 @@ const GroupsTemplate: Story<SelectProps> = (args) => {
 };
 
 export const Groups = GroupsTemplate.bind({});
+
 Groups.argTypes = {
   ...argTypes,
   options: {
@@ -79,6 +82,7 @@ Groups.argTypes = {
     description: 'Indices of groups to be disabled',
   },
 };
+
 Groups.args = {
   ...defaultArgs,
   options: [
