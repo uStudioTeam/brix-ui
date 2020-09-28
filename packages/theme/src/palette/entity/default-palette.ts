@@ -9,7 +9,7 @@ const primaryPalette = {
   light: {
     [Color.BaseStrongUp]: '#0E1820',
     [Color.BaseStrong]: '#131F2B',
-    [Color.BaseStrongDown]: '#172735',
+    [Color.BaseStrongDown]: '#2D3C49',
 
     [Color.BaseWeakUp]: '#F5F8FA',
     [Color.BaseWeak]: '#F8FAFB',
