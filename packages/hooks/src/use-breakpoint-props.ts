@@ -1,25 +1,16 @@
 import { useMemo } from 'react';
 
 import type { With } from '@brix-ui/utils/types';
-import { useTheme } from '@brix-ui/theme';
 import { spread } from '@brix-ui/utils/functions';
 
-import { useMediaQuery } from './use-media-query';
+import useMediaQuery from './use-media-query';
 
-export const useBreakpointProps = <
+export default function useBreakpointProps<
   R extends With<Record<string, unknown>, { currentBreakpoint: number }>,
   A extends Omit<R, 'currentBreakpoint'>,
   B extends R
->({
-  sm,
-  md,
-  lg,
-  xl,
-  ...xs
-}: A): R => {
-  const {
-    breakpoints: { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl },
-  } = useTheme();
+>({ sm, md, lg, xl, ...xs }: A, breakpoints: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', number>): R {
+  const { xs: bpXs, sm: bpSm, md: bpMd, lg: bpLg, xl: bpXl } = breakpoints;
 
   const isSm = useMediaQuery(`screen and (min-width: ${bpSm}px)`);
   const isMd = useMediaQuery(`screen and (min-width: ${bpMd}px)`);
@@ -45,4 +36,4 @@ export const useBreakpointProps = <
 
     return spread({ currentBreakpoint: bpXs }, xs as B) as B;
   }, [xs, isSm, sm, isMd, md, isLg, lg, isXl, xl]);
-};
+}

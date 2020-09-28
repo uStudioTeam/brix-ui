@@ -4,8 +4,7 @@ import { Keyframes, keyframes } from 'styled-components';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { delayable, stylableComponent } from '@brix-ui/prop-types/common';
-
-import { useDelay } from '../_internal/hooks';
+import useDelay from '@brix-ui/hooks/use-delay';
 
 import Styled from './spinner.styles';
 import type { SpinnerProps } from './spinner.props';

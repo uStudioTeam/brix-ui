@@ -3,12 +3,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { tryCall } from '@brix-ui/utils/functions';
 import type { Disclosable } from '@brix-ui/types/component';
 
-export const useDisclose = ({
+export default function useDisclose({
   isOpen,
   onOpen,
   onChange,
   onClose,
-}: Disclosable): [internalIsOpen: boolean, toggle: (isOpen?: boolean) => void] => {
+}: Disclosable): [internalIsOpen: boolean, toggle: (isOpen?: boolean) => void] {
   const [internalIsOpen, setInternalOpen] = useState(isOpen ?? false);
   const hasChangedRef = useRef(false);
 
@@ -36,4 +36,4 @@ export const useDisclose = ({
   }, [internalIsOpen]);
 
   return useMemo(() => [internalIsOpen, toggle], [internalIsOpen, toggle]);
-};
+}

@@ -1,3 +1,4 @@
+import { useTheme } from '@brix-ui/theme';
 import React, { useMemo, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
@@ -8,9 +9,9 @@ import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 import Direction from '@brix-ui/contexts/direction';
 import { Direction as DirectionType } from '@brix-ui/types/css';
 import Block from '@brix-ui/core/block';
+import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
-import { useBreakpointProps } from '../hooks';
 
 import type { GridBreakpointData, GridProps } from './grid.props';
 import Styled from './grid.styles';
@@ -29,16 +30,21 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
     return `'${grid.areas.join('  ')}'`;
   }, [grid.areas, direction]);
 
-  const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps({
-    sm,
-    md,
-    lg,
-    xl,
-    direction,
-    gap,
-    template,
-    maxWidth,
-  }) as With<GridBreakpointData, { currentBreakpoint: number }>;
+  const { breakpoints } = useTheme();
+
+  const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps(
+    {
+      sm,
+      md,
+      lg,
+      xl,
+      direction,
+      gap,
+      template,
+      maxWidth,
+    },
+    breakpoints
+  ) as With<GridBreakpointData, { currentBreakpoint: number }>;
 
   return (
     <Direction value={direction}>

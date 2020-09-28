@@ -1,12 +1,13 @@
+import { useTheme } from '@brix-ui/theme';
 import React, { useEffect, useMemo, useRef, WeakValidationMap } from 'react';
 import PT, { Requireable } from 'prop-types';
 
 import { useDirection } from '@brix-ui/contexts/direction';
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
+import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 
 import { useAreaBuilderContext } from '../area-builder';
-import { useBreakpointProps } from '../hooks';
 
 import type { CellBreakpointData, CellProps } from './cell.props';
 import Styled from './cell.styles';
@@ -17,14 +18,19 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
 ) {
   const { areas, dispatcher } = useAreaBuilderContext();
 
-  const currentBreakpointProps = useBreakpointProps({
-    sm,
-    md,
-    lg,
-    xl,
-    size,
-    offset,
-  }) as CellBreakpointData;
+  const { breakpoints } = useTheme();
+
+  const currentBreakpointProps = useBreakpointProps(
+    {
+      sm,
+      md,
+      lg,
+      xl,
+      size,
+      offset,
+    },
+    breakpoints
+  ) as CellBreakpointData;
 
   const { current: internalId } = useRef(Math.random().toString(32).slice(2).replace(/\d+/, ''));
   const id = useMemo(() => area || internalId, [area]);

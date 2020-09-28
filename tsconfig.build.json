@@ -24,6 +24,9 @@
       "path": "packages/grid/tsconfig.build.json"
     },
     {
+      "path": "packages/hooks/tsconfig.build.json"
+    },
+    {
       "path": "packages/icons/tsconfig.build.json"
     },
     {

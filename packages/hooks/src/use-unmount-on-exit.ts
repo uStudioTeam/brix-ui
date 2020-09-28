@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-export const useUnmountOnExit = (
+export default function useUnmountOnExit(
   isOpen: boolean,
   unmountOnExit?: boolean
-): [shouldBeOpen: boolean, shouldMount: boolean] => {
+): [shouldBeOpen: boolean, shouldMount: boolean] {
   const [shouldUnmount, setUnmount] = useState(unmountOnExit);
   const [shouldMount, setMount] = useState(!unmountOnExit);
   const [openControl, setOpenControl] = useState(isOpen && shouldMount);
@@ -34,4 +34,4 @@ export const useUnmountOnExit = (
   }, [isOpen, shouldUnmount]);
 
   return [openControl, shouldMount];
-};
+}

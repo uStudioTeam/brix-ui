@@ -4,8 +4,9 @@ import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
+import useAriaProps from '@brix-ui/hooks/use-aria-props';
 
-import { useAriaProps, useValue } from '../_internal/hooks';
+import { useValue } from '../_internal/hooks';
 
 import Styled from './checkbox.styles';
 import type { CheckboxProps } from './checkbox.props';

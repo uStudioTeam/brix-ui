@@ -2,9 +2,10 @@ import React, { LabelHTMLAttributes, ReactElement, useCallback, useMemo } from '
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
+import useAriaProps from '@brix-ui/hooks/use-aria-props';
 
 import Affix from '../_internal/affix';
-import { useAriaProps, useValue } from '../_internal/hooks';
+import { useValue } from '../_internal/hooks';
 
 import type { SelectGroup, SelectOption, SelectProps } from './select.props';
 import Styled from './select.styles';
