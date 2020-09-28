@@ -90,21 +90,9 @@ const Body = createGlobalStyle`
 export const WithOverlay: Story<DrawerProps> = (args) => {
   return (
     <>
-      <Drawer {...args}>
-        <Flex direction="column" padding={{ horizontal: '2rem' }} margin={{ bottom: '-30px' }} align="center">
-          <Cookie src="https://i.imgur.com/rIcuh40.png" alt="Imagine a cookie here" />
+      <Basic {...args} />
 
-          <Copy>
-            Here, take a cookie{' '}
-            <span role="img" aria-label="smile">
-              🙂
-            </span>
-          </Copy>
-        </Flex>
-
-        <Styled.Overlay isActive={args.isOpen} />
-      </Drawer>
-
+      <Styled.Overlay isActive={args.isOpen} />
       <Body />
     </>
   );
