@@ -13,6 +13,8 @@ export const Container = styled(Flex)<{
   isDisabled: DisclosureProps['isDisabled'];
 }>(
   ({ isOpen, isDisabled }) => css`
+    --icon-indent: 1rem;
+
     color: var(--c-base-strong);
 
     border: 1px solid var(--c-faint-weak-up);
@@ -81,7 +83,7 @@ export const Summary = styled.button<{
     }
 
     & > *:last-child {
-      margin-left: 1rem;
+      margin-left: var(--icon-indent);
     }
 
     &:focus {

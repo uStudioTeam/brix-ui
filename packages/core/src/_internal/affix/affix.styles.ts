@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const Affix = styled.span`
   &:first-child {
-    margin-right: 8px;
+    margin-right: var(--affix-indent);
   }
 
   &:last-child {
-    margin-left: 8px;
+    margin-left: var(--affix-indent);
   }
 `;
 

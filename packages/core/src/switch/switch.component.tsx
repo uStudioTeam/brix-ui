@@ -54,6 +54,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       <Styled.Input
         ref={ref}
         type="checkbox"
+        role="switch"
         name={name}
         id={id}
         defaultChecked={internalValue}
