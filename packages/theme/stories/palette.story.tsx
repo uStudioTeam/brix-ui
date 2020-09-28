@@ -11,8 +11,6 @@ import { Values } from '@brix-ui/utils/types';
 import Flex from '@brix-ui/core/flex';
 import Text from '@brix-ui/core/text';
 
-import { useTheme } from '../src/use-theme';
-
 export default {
   title: 'Theme/Palette',
 
@@ -96,7 +94,6 @@ const Shade: FC<{
   color: string;
 }> = ({ size, color }) => {
   const [isTooltipShown, setTooltipShown] = useState(false);
-  const { palette } = useTheme();
 
   return (
     <Styled.Shade
@@ -105,11 +102,11 @@ const Shade: FC<{
       onMouseOver={() => setTooltipShown(true)}
       onMouseOut={() => setTooltipShown(false)}
       onClick={() => {
-        navigator.clipboard.writeText(palette[color as keyof typeof palette]);
+        navigator.clipboard.writeText(color);
       }}
     >
       <Styled.Tooltip isShown={isTooltipShown}>
-        <Text variant="small">{palette[color as keyof typeof palette]}</Text>
+        <Text variant="small">{color}</Text>
       </Styled.Tooltip>
     </Styled.Shade>
   );

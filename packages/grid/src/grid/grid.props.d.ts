@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, PropsWithChildren } from 'react';
 
 import type { BlockProps } from '@brix-ui/core/block';
 import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@brix-ui/types/component';
@@ -14,7 +14,7 @@ export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
 export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
 
 export interface GridProps
-  extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
+  extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
     StylableComponent,
     GridBreakpoints,
     Omit<BlockProps, 'isInline' | 'gap'> {}

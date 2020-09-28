@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { HTMLAttributes, PropsWithChildren, ReactElement } from 'react';
 
 import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
@@ -11,7 +11,9 @@ interface Styled {
   CloseIcon: typeof CloseIcon;
 }
 
-export interface TagProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent<Styled> {
+export interface TagProps
+  extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
+    StylableComponent<Styled> {
   color?: string;
   backgroundColor?: string;
 
