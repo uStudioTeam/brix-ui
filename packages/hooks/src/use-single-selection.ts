@@ -1,0 +1,57 @@
+import { useCallback, useState } from 'react';
+
+export interface SingleSelection<V> {
+  value: V | undefined;
+  options: Set<V>;
+  dispatch: {
+    setValue(value: V): void;
+    addOption(option: V): void;
+    removeOption(option: V): void;
+  };
+}
+
+type Dispatch<V> = SingleSelection<V>['dispatch'];
+
+export default function useSingleSelection<V>(defaultValue?: V): SingleSelection<V> {
+  const [options, setOptions] = useState(new Set<V>());
+  const [internalValue, setInternalValue] = useState(defaultValue);
+
+  const setValue = useCallback<Dispatch<V>['setValue']>(
+    (value) => {
+      setInternalValue(value);
+    },
+    [setInternalValue]
+  );
+
+  const addOption = useCallback<Dispatch<V>['addOption']>(
+    (option) => {
+      setOptions((prevOptions) => {
+        return new Set([...prevOptions, option]);
+      });
+    },
+    [setOptions]
+  );
+
+  const removeOption = useCallback<Dispatch<V>['setValue']>(
+    (option) => {
+      setOptions((prevOptions) => {
+        const nextOptions = new Set([...prevOptions]);
+
+        nextOptions.delete(option);
+
+        return nextOptions;
+      });
+    },
+    [setOptions]
+  );
+
+  return {
+    value: internalValue,
+    options,
+    dispatch: {
+      setValue,
+      addOption,
+      removeOption,
+    },
+  };
+}

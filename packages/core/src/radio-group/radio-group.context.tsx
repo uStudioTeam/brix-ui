@@ -1,11 +1,11 @@
-import React, { createContext, FC, useCallback, useContext, useEffect, useReducer, useRef } from 'react';
+import React, { createContext, FC, useCallback, useContext } from 'react';
 import PT from 'prop-types';
 
 import { applyPolymorphicFunctionProp, tryCall } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
+import useSingleSelection from '@brix-ui/hooks/use-single-selection';
+import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 
-import { RadioGroupDispatcher } from './actions';
-import { radioGroupReducer } from './reducer';
 import type { RadioGroupProps, RadioGroupValue } from './radio-group.props';
 
 const RadioGroupContext = createContext<RadioGroupValue | undefined>(undefined);
@@ -17,38 +17,34 @@ const RadioGroup: FC<RadioGroupProps> = ({
   onChange,
   name,
   isDisabled: _isDisabled,
-  isRequired,
-  isInvalid,
+  isRequired: _isRequired,
+  isInvalid: _isInvalid,
 }) => {
   const isDisabled = useDisabled(_isDisabled);
+  const [isRequired] = useUpdatedState(_isRequired);
+  const [isInvalid] = useUpdatedState(_isInvalid);
 
-  const [state, dispatch] = useReducer(radioGroupReducer, {
-    value: value ?? defaultValue ?? '',
-    options: new Set<string>(),
-    isDisabled,
-    isRequired,
-    isInvalid,
-  });
-  const { current: dispatcher } = useRef(new RadioGroupDispatcher(dispatch));
+  const { dispatch: dispatcher, ...state } = useSingleSelection(value ?? defaultValue ?? '');
 
   const handleChange = useCallback<RadioGroupValue['handleChange']>((optionValue, event) => {
-    dispatch({
-      type: 'set_value',
-      payload: {
-        value: optionValue,
-      },
-    });
+    dispatcher.setValue(optionValue);
 
     tryCall(onChange, optionValue, event);
   }, []);
 
-  useEffect(() => dispatcher.setDisabled(isDisabled as boolean), [isDisabled]);
-  useEffect(() => dispatcher.setRequired(isRequired as boolean), [isRequired]);
-  useEffect(() => dispatcher.setInvalid(isInvalid as boolean), [isInvalid]);
+  const props = {
+    name,
+    dispatcher,
+    handleChange,
+    isDisabled,
+    isRequired,
+    isInvalid,
+    ...state,
+  };
 
   return (
-    <RadioGroupContext.Provider value={{ name, dispatcher, handleChange, ...state }}>
-      {applyPolymorphicFunctionProp(children, { name, dispatcher, handleChange, ...state })}
+    <RadioGroupContext.Provider value={props}>
+      {applyPolymorphicFunctionProp(children, props)}
     </RadioGroupContext.Provider>
   );
 };
@@ -68,7 +64,7 @@ export const useRadioGroup = (): RadioGroupValue => {
   const context = useContext(RadioGroupContext);
 
   if (context === undefined) {
-    throw new ReferenceError('Make sure `RadioButton` is rendered inside `RadioGroup`');
+    throw new ReferenceError('Make sure radio button is rendered inside `RadioGroup`');
   }
 
   return context;
