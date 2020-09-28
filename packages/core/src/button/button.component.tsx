@@ -4,14 +4,17 @@ import PT from 'prop-types';
 import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import { Intent } from '@brix-ui/types/component';
 import { stylableComponent } from '@brix-ui/prop-types/common';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import { ButtonProps } from './button.props';
 import Styled from './button.styles';
 
 const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button(
-  { children, isDisabled, ...props },
+  { children, isDisabled: _isDisabled, ...props },
   ref
 ) {
+  const isDisabled = useDisabled(_isDisabled);
+
   return (
     <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} {...props}>
       {children}

@@ -4,6 +4,7 @@ import useAutoTransition from 'honks/use-auto-transition';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import { useDisclose } from '../_internal/hooks';
 
@@ -11,9 +12,11 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, styles, className, isOpen, summary, icon, isDisabled, onOpen, onChange, onClose, ...props },
+  { children, styles, className, isOpen, summary, icon, onOpen, onChange, onClose, isDisabled: _isDisabled, ...props },
   ref
 ) {
+  const isDisabled = useDisabled(_isDisabled);
+
   const [internalIsOpen, toggle] = useDisclose({
     isOpen,
     onOpen,

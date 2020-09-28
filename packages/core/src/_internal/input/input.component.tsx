@@ -1,6 +1,7 @@
 import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { useDisabled } from '@brix-ui/contexts/disabled';
 
 import { useAriaProps, useValue } from '../hooks';
 import Affix from '../affix';
@@ -26,7 +27,7 @@ const Input = intrinsicComponent<
     suffix,
     value,
     defaultValue,
-    isDisabled,
+    isDisabled: _isDisabled,
     isRequired,
     isReadonly,
     isInvalid,
@@ -45,6 +46,8 @@ const Input = intrinsicComponent<
   },
   ref
 ) {
+  const isDisabled = useDisabled(_isDisabled);
+
   const [internalValue, handleChange] = useValue(
     (value === undefined ? defaultValue : value) ?? '',
     onChange,
