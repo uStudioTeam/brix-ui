@@ -5,8 +5,8 @@ import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '
 import type { With } from '@brix-ui/utils/types';
 import { extract } from '@brix-ui/prop-types/utils';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
-import DirectionProvider from '@brix-ui/contexts/direction';
-import { Direction } from '@brix-ui/types/css';
+import Direction from '@brix-ui/contexts/direction';
+import { Direction as DirectionType } from '@brix-ui/types/css';
 import Block from '@brix-ui/core/block';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
@@ -22,7 +22,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   const [grid, dispatcher] = useAreaBuilder();
 
   const areas = useMemo(() => {
-    if (direction === Direction.Column) {
+    if (direction === DirectionType.Column) {
       return grid.areas.map((area) => `'${area}'`).join(' ');
     }
 
@@ -41,7 +41,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
   }) as With<GridBreakpointData, { currentBreakpoint: number }>;
 
   return (
-    <DirectionProvider value={direction}>
+    <Direction value={direction}>
       <AreaBuilder areas={grid.areas} dispatcher={dispatcher}>
         <Styled.Grid
           ref={ref}
@@ -57,7 +57,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
           {children}
         </Styled.Grid>
       </AreaBuilder>
-    </DirectionProvider>
+    </Direction>
   );
 });
 
@@ -65,7 +65,7 @@ const { gap, isInline: _, ...blockPropTypes } = extract([Block]);
 
 const gridBreakpointData = {
   gap,
-  direction: PT.oneOf(objectValues(Direction)),
+  direction: PT.oneOf(objectValues(DirectionType)),
   template: PT.oneOfType([PT.string, PT.func]),
   maxWidth: PT.oneOfType([PT.string, PT.func]),
 };

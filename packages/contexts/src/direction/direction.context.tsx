@@ -2,21 +2,21 @@ import React, { createContext, FC, useContext } from 'react';
 import PT from 'prop-types';
 
 import { Values } from '@brix-ui/utils/types';
-import { Direction } from '@brix-ui/types/css';
+import { Direction as DirectionType } from '@brix-ui/types/css';
 import { objectValues } from '@brix-ui/utils/functions';
 
-type DirectionContextValue = Values<typeof Direction> | undefined;
+type DirectionContextValue = Values<typeof DirectionType> | undefined;
 
 const DirectionContext = createContext<DirectionContextValue>(undefined);
 
-const DirectionProvider: FC<{ value: DirectionContextValue }> = ({ children, value }) => {
-  return <DirectionContext.Provider value={value}>{children}</DirectionContext.Provider>;
+const Direction: FC<{ value: DirectionContextValue }> = (props) => {
+  return <DirectionContext.Provider {...props} />;
+};
+
+Direction.propTypes = {
+  value: PT.oneOf(objectValues(DirectionType)),
 };
 
 export const useDirection = (): DirectionContextValue => useContext(DirectionContext);
 
-DirectionProvider.propTypes = {
-  value: PT.oneOf(objectValues(Direction)),
-};
-
-export default DirectionProvider;
+export default Direction;
