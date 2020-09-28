@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import useUpdatedState from './use-updated-state';
+
 export default function useUnmountOnExit(
   isOpen: boolean,
   unmountOnExit?: boolean
 ): [shouldBeOpen: boolean, shouldMount: boolean] {
-  const [shouldUnmount, setUnmount] = useState(unmountOnExit);
+  const [shouldUnmount] = useUpdatedState(unmountOnExit);
   const [shouldMount, setMount] = useState(!unmountOnExit);
   const [openControl, setOpenControl] = useState(isOpen && shouldMount);
-
-  useEffect(() => {
-    setUnmount(unmountOnExit);
-  }, [unmountOnExit]);
 
   useEffect(() => {
     if (shouldUnmount) {
