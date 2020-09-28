@@ -4,11 +4,12 @@ import { Story } from '@storybook/react';
 
 import { Position } from '@brix-ui/types/css';
 import { objectValues } from '@brix-ui/utils/functions';
-import styled from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 import Drawer, { DrawerProps } from '../src/drawer';
 import Flex from '../src/flex';
 import Text from '../src/text';
+import Overlay from '../src/overlay';
 
 export default {
   title: 'Widgets/Drawer',
@@ -64,5 +65,47 @@ export const Basic: Story<DrawerProps> = (args) => {
         </Copy>
       </Flex>
     </Drawer>
+  );
+};
+
+const Styled = {
+  Overlay: styled(Overlay)(() => {
+    return css`
+      --opacity: 0.7;
+
+      background-color: var(--c-base-strong);
+
+      backdrop-filter: blur(5px);
+    `;
+  }),
+};
+
+const Body = createGlobalStyle`
+  body {
+    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-ms-fields-cookies-024-1544735513.jpg");
+    background-size: 100%;
+  }
+`;
+
+export const WithOverlay: Story<DrawerProps> = (args) => {
+  return (
+    <>
+      <Drawer {...args}>
+        <Flex direction="column" padding={{ horizontal: '2rem' }} margin={{ bottom: '-30px' }} align="center">
+          <Cookie src="https://i.imgur.com/rIcuh40.png" alt="Imagine a cookie here" />
+
+          <Copy>
+            Here, take a cookie{' '}
+            <span role="img" aria-label="smile">
+              🙂
+            </span>
+          </Copy>
+        </Flex>
+
+        <Styled.Overlay isActive={args.isOpen} />
+      </Drawer>
+
+      <Body />
+    </>
   );
 };
