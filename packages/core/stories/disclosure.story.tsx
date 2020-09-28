@@ -2,7 +2,8 @@ import React from 'react';
 import type { Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 
-import Chevron from '../assets/icons/chevron.inline.svg';
+import Chevron from '@brix-ui/icons/chevron';
+
 import Flex from '../src/flex';
 import Text from '../src/text';
 import Disclosure, { DisclosureProps } from '../src/disclosure';

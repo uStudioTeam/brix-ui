@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { font, shadow } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
-
-import Chevron from '../../assets/icons/chevron.inline.svg';
+import Chevron from '@brix-ui/icons/chevron';
 
 import type { SelectProps } from './select.props';
 

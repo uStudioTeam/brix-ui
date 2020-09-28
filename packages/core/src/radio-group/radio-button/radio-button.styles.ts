@@ -48,12 +48,18 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
     display: block;
 
+    transition: all 200ms;
+
     ${isDisabled
       ? css`
           cursor: not-allowed;
         `
       : css`
           cursor: pointer;
+
+          &:active {
+            transform: scale(0.925);
+          }
         `}
 
     &,

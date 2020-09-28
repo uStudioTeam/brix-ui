@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('../../scripts/babel')({ inlineSvg: true, classProperties: true }),
+  ...require('../../scripts/babel')({ classProperties: true }),
 };

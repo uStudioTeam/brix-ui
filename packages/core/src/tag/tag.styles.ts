@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components';
 import { font } from '@brix-ui/theme/mixin';
 import { Color } from '@brix-ui/types/palette';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
-
-import Times from '../../assets/icons/times.inline.svg';
+import Times from '@brix-ui/icons/times';
 
 import type { TagProps } from './tag.props';
 

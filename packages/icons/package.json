@@ -1,0 +1,32 @@
+{
+  "name": "@brix-ui/icons",
+  "version": "0.0.1",
+  "description": "SVG icons as React components",
+  "keywords": [
+    "library",
+    "components",
+    "ui",
+    "icons",
+    "svg",
+    "vector",
+    "design"
+  ],
+  "scripts": {
+    "prebuild": "copyfiles README.md lib"
+  },
+  "dependencies": {
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
