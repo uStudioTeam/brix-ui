@@ -5,6 +5,8 @@ import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 import { Align } from '@brix-ui/types/css';
 
+import Text from '../text';
+
 import type { BadgeProps } from './badge.props';
 import Styled from './badge.styles';
 
@@ -27,7 +29,9 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
           className={className}
           {...props}
         >
-          {value}
+          <Text variant="h5" as="span" lineHeightCompensation>
+            {value}
+          </Text>
         </Styled.Badge>
       )}
     </Styled.BadgeContainer>

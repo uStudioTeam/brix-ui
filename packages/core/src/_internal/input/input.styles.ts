@@ -28,6 +28,8 @@ export const Input = styled.input(
 
 export const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 'isReadonly' | 'isInvalid'>>(
   ({ isDisabled, isReadonly, isInvalid }) => css`
+    --affix-indent: 8px;
+
     height: 28px;
     width: 100%;
 

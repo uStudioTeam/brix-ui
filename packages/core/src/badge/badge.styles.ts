@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
-import { font } from '@brix-ui/theme/mixin';
 import { Align } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
 
@@ -53,7 +52,7 @@ export const Badge = styled.div<
       min-width: 16px;
       min-height: 16px;
 
-      padding: 0 ${`${value}`.length > 1 ? 6 : 4}px 2px;
+      padding: 0 ${`${value}`.length > 1 ? 6 : 4}px 0;
 
       border-radius: 10px;
 
@@ -61,8 +60,6 @@ export const Badge = styled.div<
       color: ${color};
 
       white-space: nowrap;
-
-      ${font.body.h5};
 
       line-height: 1;
 
