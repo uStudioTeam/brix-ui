@@ -5,8 +5,8 @@ import { intrinsicComponent, objectValues, random } from '@brix-ui/utils/functio
 import { delayable, stylableComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
 import { TypeVariant } from '@brix-ui/types/typography';
+import useDelay from '@brix-ui/hooks/use-delay';
 
-import { useDelay } from '../_internal/hooks';
 import Block from '../block';
 
 import type { SkeletonProps, SkeletonSize } from './skeleton.props';

@@ -5,8 +5,7 @@ import useAutoTransition from 'honks/use-auto-transition';
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
-
-import { useDisclose } from '../_internal/hooks';
+import useDisclose from '@brix-ui/hooks/use-disclose';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';

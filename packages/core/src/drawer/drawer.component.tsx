@@ -4,8 +4,9 @@ import PT from 'prop-types';
 import { Position } from '@brix-ui/types/css';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import useDisclose from '@brix-ui/hooks/use-disclose';
+import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
 
-import { useDisclose, useUnmountOnExit } from '../_internal/hooks';
 import Portal from '../portal';
 
 import type { DrawerProps } from './drawer.props';

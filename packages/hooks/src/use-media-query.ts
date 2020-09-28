@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useMediaQuery = (query: string) => {
+export default function useMediaQuery(query: string): boolean {
   const [isMatching, setMatching] = useState(false);
 
   const handleChange = <M extends MediaQueryListEvent | MediaQueryList>(match: M) => {
@@ -14,7 +14,7 @@ export const useMediaQuery = (query: string) => {
       handleChange(match);
       /**
        * addEventListener is not yet fully supported for matchMedia in iOS Safari, so we are leaving addListener for compatibility
-       * @see https://github.com/mdn/sprints/issues/858#issuecomment-515238645
+       * @see (https://github.com/mdn/sprints/issues/858#issuecomment-515238645)[]
        */
       if (match.addEventListener) {
         match.addEventListener('change', handleChange);
@@ -33,4 +33,4 @@ export const useMediaQuery = (query: string) => {
   }, []);
 
   return isMatching;
-};
+}

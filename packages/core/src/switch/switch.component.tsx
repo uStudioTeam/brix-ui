@@ -4,8 +4,9 @@ import PT from 'prop-types';
 import { extract } from '@brix-ui/prop-types/utils';
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
+import useAriaProps from '@brix-ui/hooks/use-aria-props';
 
-import { useAriaProps, useValue } from '../_internal/hooks';
+import { useValue } from '../_internal/hooks';
 import Checkbox from '../checkbox';
 
 import type { SwitchProps } from './switch.props';

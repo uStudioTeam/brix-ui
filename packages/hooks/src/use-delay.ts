@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import useMount from 'honks/use-mount';
 
-export const useDelay = (delay: number | undefined): boolean => {
+export default function useDelay(delay: number | undefined): boolean {
   const hasMounted = useMount();
 
   const [shouldRender, setRender] = useState(delay === undefined);
@@ -25,4 +26,4 @@ export const useDelay = (delay: number | undefined): boolean => {
   }, [delay]);
 
   return shouldRender;
-};
+}

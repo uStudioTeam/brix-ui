@@ -2,8 +2,9 @@ import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
+import useAriaProps from '@brix-ui/hooks/use-aria-props';
 
-import { useAriaProps, useValue } from '../hooks';
+import { useValue } from '../hooks';
 import Affix from '../affix';
 
 import type { InputProps } from './input.props';
