@@ -17,6 +17,7 @@
   "dependencies": {
     "@brix-ui/types": "*",
     "@brix-ui/utils": "*",
+    "@brix-ui/hooks": "*",
     "@brix-ui/prop-types": "*",
     "lodash.merge": "^4.6.2"
   },

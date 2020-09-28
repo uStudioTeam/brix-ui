@@ -5,7 +5,7 @@ import ThemeProvider from '@brix-ui/theme';
 import { defaultTheme } from '@brix-ui/theme/entity';
 import { matchMedia } from '@brix-ui/utils/tests';
 
-import { useBreakpointProps } from '../src/hooks';
+import useBreakpointProps from '../src/use-breakpoint-props';
 
 const props = {
   color: 'red',
@@ -24,11 +24,21 @@ const props = {
 };
 
 const render = () => {
-  return renderHook(() => (useBreakpointProps(props) as unknown) as { color: string; currentBreakpoint: number }, {
-    wrapper: ({ children }) => {
-      return <ThemeProvider>{children}</ThemeProvider>;
-    },
-  });
+  return renderHook(
+    () =>
+      (useBreakpointProps(props, {
+        xs: 1,
+        sm: 2,
+        md: 3,
+        lg: 4,
+        xl: 5,
+      }) as unknown) as { color: string; currentBreakpoint: number },
+    {
+      wrapper: ({ children }) => {
+        return <ThemeProvider>{children}</ThemeProvider>;
+      },
+    }
+  );
 };
 
 describe('useBreakpointProps', () => {

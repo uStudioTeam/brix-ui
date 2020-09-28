@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { Values } from '@brix-ui/utils/types';
+import useMediaQuery from '@brix-ui/hooks/use-media-query';
 
 import { Theme, ThemeMode, ThemeOverride } from '../entity';
-
-import { useMediaQuery } from './use-media-query';
 
 export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | undefined, Theme['switchMode']] => {
   const [themeMode, setThemeMode] = useState<Values<typeof ThemeMode> | undefined>();

@@ -20,7 +20,7 @@
     "build:webpack": "lerna exec --scope @brix-ui/fonts -- webpack",
     "build": "npm-run-all -s build:dts -p build:babel build:webpack",
     "test": "jest",
-    "ci": "npm-run-all format lint typecheck -s build test",
+    "ci": "npm-run-all -p format lint typecheck -s build test",
     "release": "lerna version --yes --conventional-commits --create-release github",
     "prepublishOnly": "yarn build",
     "prepack": "node scripts/create-meta-files.js",

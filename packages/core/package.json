@@ -18,6 +18,8 @@
     "@brix-ui/theme": "*",
     "@brix-ui/types": "*",
     "@brix-ui/utils": "*",
+    "@brix-ui/hooks": "*",
+    "@brix-ui/icons": "*",
     "@brix-ui/prop-types": "*",
     "honks": "^0.4.0"
   },

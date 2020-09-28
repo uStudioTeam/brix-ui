@@ -15,6 +15,9 @@
     },
     {
       "path": "../prop-types/tsconfig.build.json"
+    },
+    {
+      "path": "../hooks/tsconfig.build.json"
     }
   ]
 }
