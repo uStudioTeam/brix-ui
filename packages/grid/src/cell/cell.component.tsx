@@ -9,7 +9,7 @@ import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 
 import { useAreaBuilderContext } from '../area-builder';
 
-import type { CellBreakpointData, CellProps } from './cell.props';
+import type { CellBreakpointProps, CellProps } from './cell.props';
 import Styled from './cell.styles';
 
 const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
@@ -30,7 +30,7 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
       offset,
     },
     breakpoints
-  ) as CellBreakpointData;
+  ) as CellBreakpointProps;
 
   const { current: internalId } = useRef(Math.random().toString(32).slice(2).replace(/\d+/, ''));
   const id = useMemo(() => area || internalId, [area]);
@@ -52,9 +52,9 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
   );
 });
 
-const cellBreakpointData: WeakValidationMap<CellBreakpointData> = {
+const cellBreakpointData: WeakValidationMap<CellBreakpointProps> = {
   size: PT.number,
-  offset: PT.arrayOf(PT.number) as Requireable<CellBreakpointData['offset']>,
+  offset: PT.arrayOf(PT.number) as Requireable<CellBreakpointProps['offset']>,
 };
 
 Cell.propTypes = {

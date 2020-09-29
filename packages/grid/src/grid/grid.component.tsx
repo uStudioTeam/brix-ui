@@ -13,7 +13,7 @@ import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
 
-import type { GridBreakpointData, GridProps } from './grid.props';
+import type { GridBreakpointProps, GridProps } from './grid.props';
 import Styled from './grid.styles';
 
 const Grid = intrinsicComponent<GridProps>(function Grid(
@@ -44,7 +44,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
       maxWidth,
     },
     breakpoints
-  ) as With<GridBreakpointData, { currentBreakpoint: number }>;
+  ) as With<GridBreakpointProps, { currentBreakpoint: number }>;
 
   return (
     <Direction value={direction}>
