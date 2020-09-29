@@ -1,15 +1,15 @@
-import { useTheme } from '@brix-ui/theme';
 import React, { useMemo, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import type { With } from '@brix-ui/utils/types';
 import { extract } from '@brix-ui/prop-types/utils';
-import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
+import { breakpointProps, stylableComponent, polymorphicBreakpointProp } from '@brix-ui/prop-types/common';
 import Direction from '@brix-ui/contexts/direction';
 import { Direction as DirectionType } from '@brix-ui/types/css';
 import Block from '@brix-ui/core/block';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
+import { useTheme } from '@brix-ui/theme';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
 
@@ -72,8 +72,8 @@ const { gap, isInline: _, ...blockPropTypes } = extract([Block]);
 const gridBreakpointData = {
   gap,
   direction: PT.oneOf(objectValues(DirectionType)),
-  template: PT.oneOfType([PT.string, PT.func]),
-  maxWidth: PT.oneOfType([PT.string, PT.func]),
+  template: polymorphicBreakpointProp(),
+  maxWidth: polymorphicBreakpointProp(),
 };
 
 Grid.propTypes = {

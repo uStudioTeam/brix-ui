@@ -7,3 +7,4 @@ export * from './unmountable';
 export * from './disclosable';
 export * from './breakpoint-props';
 export * from './stylable-component';
+export * from './polymorphic-breakpoint-prop';
