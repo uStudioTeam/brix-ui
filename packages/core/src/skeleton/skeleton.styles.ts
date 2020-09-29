@@ -2,6 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 import { TypeVariant } from '@brix-ui/types/typography';
 import type { Values } from '@brix-ui/utils/types';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import Block from '../block';
 
@@ -97,6 +98,6 @@ const Skeleton = styled(Block)<
   `
 );
 
-const Styled = { Skeleton };
+const Styled = applyDisplayNames({ Skeleton });
 
 export default Styled;
