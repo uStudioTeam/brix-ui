@@ -1,8 +1,10 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
+import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Portal from '../portal';
 
@@ -35,5 +37,12 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
     </Portal>
   ) : null;
 });
+
+Overlay.propTypes = {
+  isActive: PT.bool.isRequired,
+  onClose: PT.func,
+
+  ...stylableComponent(),
+};
 
 export default Overlay;
