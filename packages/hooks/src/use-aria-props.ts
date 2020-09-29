@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { filterObject } from '@brix-ui/utils/functions';
 
-const isAriaKey = (key: string): boolean => key.startsWith('aria-');
+const isAriaKey = <P>(key: keyof P): boolean => (key as string).startsWith('aria-');
 
 export default function useAriaProps<P extends Record<string, any>>(
   props: P

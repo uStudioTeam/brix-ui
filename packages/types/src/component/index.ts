@@ -4,6 +4,7 @@ export type { Taggable } from './taggable';
 export type { Delayable } from './delayable';
 export type { Affixable } from './affixable';
 export type { Alignable } from './alignable';
+export type { Unmountable } from './unmountable';
 export type { Disclosable } from './disclosable';
 export type { FormComponent } from './form-component';
 export type { BreakpointsProps } from './breakpoints-props';
