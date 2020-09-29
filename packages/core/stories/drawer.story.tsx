@@ -1,11 +1,12 @@
-import { transparentize } from 'polished';
 import React from 'react';
 import { Story } from '@storybook/react';
+import styled, { createGlobalStyle, css } from 'styled-components';
+import { transparentize } from 'polished';
 
 import { Position } from '@brix-ui/types/css';
 import { objectValues } from '@brix-ui/utils/functions';
-import styled, { createGlobalStyle, css } from 'styled-components';
 
+import Modal from '@brix-ui/contexts/modal';
 import Drawer, { DrawerProps } from '../src/drawer';
 import Flex from '../src/flex';
 import Text from '../src/text';
@@ -51,20 +52,22 @@ const Copy = styled(Text)`
   transform: translateY(-200%);
 `;
 
-export const Basic: Story<DrawerProps> = (args) => {
+export const Basic: Story<DrawerProps> = ({ position, ...args }) => {
   return (
-    <Drawer {...args}>
-      <Flex direction="column" padding={{ horizontal: '2rem' }} margin={{ bottom: '-30px' }} align="center">
-        <Cookie src="https://i.imgur.com/rIcuh40.png" alt="Imagine a cookie here" />
+    <Modal {...args}>
+      <Drawer position={position}>
+        <Flex direction="column" padding={{ horizontal: '2rem' }} margin={{ bottom: '-30px' }} align="center">
+          <Cookie src="https://i.imgur.com/rIcuh40.png" alt="Imagine a cookie here" />
 
-        <Copy>
-          Here, take a cookie{' '}
-          <span role="img" aria-label="smile">
-            🙂
-          </span>
-        </Copy>
-      </Flex>
-    </Drawer>
+          <Copy>
+            Here, take a cookie{' '}
+            <span role="img" aria-label="smile">
+              🙂
+            </span>
+          </Copy>
+        </Flex>
+      </Drawer>
+    </Modal>
   );
 };
 
@@ -90,9 +93,12 @@ const Body = createGlobalStyle`
 export const WithOverlay: Story<DrawerProps> = (args) => {
   return (
     <>
-      <Basic {...args} />
+      <Modal {...args}>
+        <Basic position={args.position} />
 
-      <Styled.Overlay isActive={args.isOpen} />
+        <Styled.Overlay />
+      </Modal>
+
       <Body />
     </>
   );
