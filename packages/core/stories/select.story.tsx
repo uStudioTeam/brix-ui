@@ -1,12 +1,19 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import styled from 'styled-components';
+import type { Meta, Story } from '@storybook/react';
 
 import Select, { SelectProps } from '../src/select';
+
+const Container = styled.div`
+  width: 33%;
+`;
 
 export default {
   title: 'Form/Select',
   component: Select,
-};
+
+  decorators: [(StoryFn) => <Container>{StoryFn()}</Container>],
+} as Meta;
 
 const argTypes = {
   placeholder: {
