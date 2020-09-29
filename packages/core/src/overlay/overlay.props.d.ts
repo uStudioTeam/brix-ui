@@ -1,9 +1,8 @@
 import type { HTMLAttributes } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Disclosable, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
-export interface OverlayProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent {
-  isActive: boolean;
-
-  onClose?(): void;
-}
+export interface OverlayProps
+  extends Disclosable,
+    IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
+    StylableComponent {}

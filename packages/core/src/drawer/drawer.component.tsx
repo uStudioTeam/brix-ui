@@ -1,8 +1,9 @@
+import { useModal } from '@brix-ui/contexts/modal';
 import React from 'react';
 import PT from 'prop-types';
 
 import { Position } from '@brix-ui/types/css';
-import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
+import { disclosable, stylableComponent, unmountable } from '@brix-ui/prop-types/common';
 import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import useDisclose from '@brix-ui/hooks/use-disclose';
 import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
@@ -23,7 +24,12 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
     onClose,
   });
 
-  const [shouldBeOpen, shouldMount] = useUnmountOnExit(internalIsOpen, unmountOnExit);
+  const useUnmountOnExitResult = useUnmountOnExit(internalIsOpen, unmountOnExit);
+
+  const { shouldMount, shouldBeOpen } = useModal({
+    ...useUnmountOnExitResult,
+    unmountOnExit,
+  });
 
   return shouldMount ? (
     <Portal>
@@ -35,12 +41,10 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
 });
 
 Drawer.propTypes = {
-  ...disclosable,
-  isOpen: PT.bool.isRequired,
   position: PT.oneOf(objectValues(Position)).isRequired,
 
-  unmountOnExit: PT.bool,
-
+  ...disclosable,
+  ...unmountable,
   ...stylableComponent(),
 };
 
