@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+
 import type { OverlayProps } from './overlay.props';
 
 const Overlay = styled.div<OverlayProps>(
@@ -21,6 +23,6 @@ const Overlay = styled.div<OverlayProps>(
   `
 );
 
-const Styled = { Overlay };
+const Styled = applyDisplayNames({ Overlay });
 
 export default Styled;

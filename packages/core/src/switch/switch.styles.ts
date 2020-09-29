@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
+import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { SwitchProps } from './switch.props';
 
@@ -345,6 +346,6 @@ const Switch = styled.label<Props>(({ value, isDisabled, isInvalid }) => {
   `;
 });
 
-const Styled = { Switch, Input, Children };
+const Styled = applyDisplayNames({ Switch, Input, Children });
 
 export default Styled;
