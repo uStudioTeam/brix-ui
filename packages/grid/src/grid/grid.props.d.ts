@@ -5,16 +5,14 @@ import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@b
 import type { Values } from '@brix-ui/utils/types';
 import { Direction } from '@brix-ui/types/css';
 
-export interface GridBreakpointData extends Pick<BlockProps, 'gap'> {
+export interface GridBreakpointProps extends Pick<BlockProps, 'gap'> {
   direction?: Values<typeof Direction>;
   template?: ((fractionsCount: number) => string) | string;
   maxWidth?: ((currentBreakpoint: number) => string) | string;
 }
 
-export type GridBreakpoints = GridBreakpointData & BreakpointsProps<GridBreakpointData>;
-
 export interface GridProps
-  extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
+  extends BreakpointsProps<GridBreakpointProps>,
+    PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
     StylableComponent,
-    GridBreakpoints,
     Omit<BlockProps, 'isInline' | 'gap'> {}

@@ -1,4 +1,3 @@
-import { useModal } from '@brix-ui/contexts/modal';
 import React from 'react';
 import PT from 'prop-types';
 
@@ -7,6 +6,7 @@ import { disclosable, stylableComponent, unmountable } from '@brix-ui/prop-types
 import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import useDisclose from '@brix-ui/hooks/use-disclose';
 import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
+import { useModal } from '@brix-ui/contexts/modal';
 
 import Portal from '../portal';
 
