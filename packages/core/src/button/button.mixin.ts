@@ -100,7 +100,7 @@ const faintButtonMixin: IntentMixin = (intent) => () => {
     }
 
     &:hover {
-      box-shadow: ${shadow(`${intent}-strong`, Number(applyIntentStyle(intent, 0.1, 0.125)))};
+      box-shadow: ${shadow(`${intent}-strong`, Number(applyIntentStyle(intent, 0.05, 0.1)))};
     }
 
     &:focus {
