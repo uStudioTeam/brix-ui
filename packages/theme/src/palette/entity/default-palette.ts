@@ -91,17 +91,23 @@ const primaryPalette = {
 };
 
 const textPalette = {
-  [Color.TextBaseStrong]: primaryPalette.light[Color.BaseStrong],
-  [Color.TextBaseWeak]: primaryPalette.light[Color.BaseWeak],
+  light: {
+    [Color.TextBaseStrong]: primaryPalette.light[Color.BaseStrong],
+    [Color.TextBaseWeak]: primaryPalette.light[Color.BaseWeak],
+  },
+  dark: {
+    [Color.TextBaseStrong]: primaryPalette.dark[Color.BaseWeak],
+    [Color.TextBaseWeak]: primaryPalette.dark[Color.BaseStrong],
+  },
 };
 
 export const defaultPalette: Record<Values<typeof ThemeMode>, ColorsMap> = {
   light: {
     ...primaryPalette.light,
-    ...textPalette,
+    ...textPalette.light,
   },
   dark: {
     ...primaryPalette.dark,
-    ...textPalette,
+    ...textPalette.dark,
   },
 };
