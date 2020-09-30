@@ -1,0 +1,82 @@
+import Modal from '@brix-ui/contexts/modal';
+import Button from '@brix-ui/core/button';
+import Flex from '@brix-ui/core/flex';
+import Overlay from '@brix-ui/core/overlay';
+import Text from '@brix-ui/core/text';
+import TextInput from '@brix-ui/core/text-input';
+import { Story } from '@storybook/react';
+import React from 'react';
+import styled from 'styled-components';
+
+import Dialog, { DialogProps } from '../src/dialog';
+
+export default {
+  title: 'Widgets/Dialog',
+  component: Dialog,
+
+  argTypes: {
+    isOpen: {
+      control: 'boolean',
+    },
+    title: {
+      control: 'text',
+    },
+    titleAlign: {
+      control: {
+        type: 'inline-radio',
+        options: ['left', 'center'],
+      },
+    },
+  },
+
+  args: {
+    title: 'Confirm password reset',
+  },
+};
+
+const Styled = {
+  Overlay: styled(Overlay)`
+    background-color: var(--c-text-base-strong);
+  `,
+  Strong: styled(Text).attrs(() => ({
+    forwardedAs: 'strong',
+  }))`
+    font-weight: 700;
+  `,
+};
+
+export const Basic: Story<DialogProps> = ({ title, titleAlign, ...args }) => {
+  const dialogProps = { title, titleAlign };
+
+  return (
+    <Modal {...args} unmountOnExit>
+      {({ toggle }) => {
+        return (
+          <>
+            <Dialog {...dialogProps}>
+              <Flex direction="column" gap={{ vertical: '0.75rem' }}>
+                <Text as="label" htmlFor="confirm_password">
+                  Are you sure you want to <Styled.Strong>reset your password?</Styled.Strong>
+                </Text>
+
+                <TextInput id="confirm_password" type="password" isReadonly placeholder="Confirm password" />
+              </Flex>
+
+              <Flex margin={{ top: '1.5rem' }} gap={{ horizontal: '1rem' }} horizontalAlign="end">
+                <Button type="reset" appearance="faint" onClick={() => toggle(false)}>
+                  Cancel
+                </Button>
+
+                <Button type="submit" intent="critical" onClick={() => toggle(false)}>
+                  Reset
+                </Button>
+              </Flex>
+            </Dialog>
+
+            <Styled.Overlay />
+          </>
+        );
+      }}
+    </Modal>
+  );
+};

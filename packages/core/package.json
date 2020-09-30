@@ -15,13 +15,14 @@
   },
   "dependencies": {
     "@brix-ui/contexts": "*",
-    "@brix-ui/theme": "*",
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
     "@brix-ui/hooks": "*",
     "@brix-ui/icons": "*",
     "@brix-ui/prop-types": "*",
-    "honks": "^0.4.0"
+    "@brix-ui/theme": "*",
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*",
+    "honks": "^0.4.0",
+    "react-focus-lock": "^2.4.1"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",
