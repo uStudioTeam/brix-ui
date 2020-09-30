@@ -1,1 +1,6 @@
-export type TextElement = HTMLHeadingElement | HTMLParagraphElement | HTMLSpanElement | HTMLPreElement;
+export type TextElement =
+  | HTMLHeadingElement
+  | HTMLParagraphElement
+  | HTMLSpanElement
+  | HTMLPreElement
+  | HTMLLabelElement;
