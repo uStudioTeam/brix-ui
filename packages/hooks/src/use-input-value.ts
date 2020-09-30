@@ -3,11 +3,11 @@ import { ChangeEvent, ChangeEventHandler, useCallback } from 'react';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import { tryCall } from '@brix-ui/utils/functions';
 
-export const useValue = <V, E extends HTMLElement>(
+export default function useInputValue<V, E extends HTMLInputElement | HTMLSelectElement>(
   value: V,
   onChange: ((value: V, event: ChangeEvent<E>) => void) | undefined,
   getValue: (event: ChangeEvent<E>) => V
-): [internalValue: V, handleChange: ChangeEventHandler<E>] => {
+): [internalValue: V, handleChange: ChangeEventHandler<E>] {
   const [internalValue, setInternalValue] = useUpdatedState(value);
 
   const handleChange = useCallback<ChangeEventHandler<E>>(
