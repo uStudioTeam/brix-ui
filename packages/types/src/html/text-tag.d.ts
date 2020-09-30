@@ -3,5 +3,5 @@ import { Values } from '@brix-ui/utils/types';
 
 export type TextTag = Extract<
   keyof JSX.IntrinsicElements,
-  'code' | 'em' | Values<typeof TypeVariant> | 'h6' | 'mark' | 'pre' | 'span' | 'strong' | 'sub' | 'sup'
+  'code' | 'em' | Values<typeof TypeVariant> | 'h6' | 'mark' | 'pre' | 'span' | 'strong' | 'sub' | 'sup' | 'label'
 >;
