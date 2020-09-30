@@ -5,6 +5,7 @@ import { spread } from '@brix-ui/utils/functions';
 
 import useMediaQuery from './use-media-query';
 
+// @TODO [Dmytro Vasylkivskyi]: fix typing
 export default function useBreakpointProps<
   R extends With<Record<string, unknown>, { currentBreakpoint: number }>,
   A extends Omit<R, 'currentBreakpoint'>,
