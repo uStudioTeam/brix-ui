@@ -30,7 +30,7 @@ describe('<Input />', () => {
     getValue = ({ target: { value } }) => value;
   });
 
-  describe('uncontrolled state', () => {
+  describe('when uncontrolled', () => {
     it('should update local value without external props', () => {
       const { getByTestId } = renderWithProps();
       const label = getByTestId(inputId) as HTMLLabelElement;
@@ -42,7 +42,7 @@ describe('<Input />', () => {
     });
   });
 
-  describe('controlled state', () => {
+  describe('when controlled', () => {
     it('should set value according to the passed prop', () => {
       const { getByTestId } = renderWithProps({
         value: '123',
@@ -56,9 +56,11 @@ describe('<Input />', () => {
   describe('onChange', () => {
     it('should call `onChange` whenever the value changes', () => {
       const onChange = jest.fn();
+
       const { getByTestId } = renderWithProps({
         onChange,
       });
+
       const label = getByTestId(inputId) as HTMLLabelElement;
 
       change('123', label);
