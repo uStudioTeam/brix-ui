@@ -33,7 +33,7 @@ export const Container = styled.label<Pick<InputProps<string | number>, 'isDisab
     height: 28px;
     width: 100%;
 
-    padding: 1px 8px 4px;
+    padding: 2px 8px 4px;
 
     display: flex;
     justify-content: space-between;

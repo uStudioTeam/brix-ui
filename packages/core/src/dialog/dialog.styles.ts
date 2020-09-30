@@ -16,8 +16,6 @@ export const Dialog = styled(FocusLock)<{
   $maxHeight: string;
 }>(
   ({ isOpen, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
-    --height: fit-content;
-    --width: fit-content;
     --margin: ${margin};
     --padding: 1rem;
     --title-color: var(--c-faint-strong);
@@ -29,9 +27,10 @@ export const Dialog = styled(FocusLock)<{
 
     overflow: hidden;
 
-    height: var(--height);
+    height: fit-content;
     max-height: ${maxHeight};
-    width: var(--width);
+    width: fit-content;
+    width: -moz-fit-content;
     max-width: ${maxWidth};
 
     margin: 0 var(--margin);
@@ -140,7 +139,7 @@ export const CloseContainer = styled(Flex).attrs(() => ({
 `;
 
 export const CloseIcon = styled(Times)`
-  ${size('6px')};
+  ${size('8px')};
 
   transition: all 200ms;
 `;
