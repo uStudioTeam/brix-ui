@@ -30,6 +30,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
     unmountOnExit,
     title,
     titleAlign,
+    top,
     margin,
     maxWidth,
     maxHeight,
@@ -49,6 +50,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
       md,
       lg,
       xl,
+      top,
       margin,
       maxWidth,
       maxHeight,
@@ -65,6 +67,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
         ref={ref}
         isOpen={shouldBeOpen}
         open={shouldBeOpen}
+        $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}
         $margin={applyPolymorphicFunctionProp(currentBreakpointProps.margin, currentBreakpoint) || '2rem'}
         $maxWidth={
           applyPolymorphicFunctionProp(currentBreakpointProps.maxWidth, currentBreakpoint) || `${currentBreakpoint}px`
@@ -83,7 +86,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           )}
 
           <Styled.CloseContainer>
-            <Styled.CloseButton type="button" onClick={() => toggle()}>
+            <Styled.CloseButton type="button" onClick={() => toggle(false)}>
               <Styled.CloseIcon />
             </Styled.CloseButton>
           </Styled.CloseContainer>

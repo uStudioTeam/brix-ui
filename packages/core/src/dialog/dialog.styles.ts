@@ -11,17 +11,18 @@ import Text from '../text';
 
 export const Dialog = styled(FocusLock)<{
   isOpen: boolean;
+  $top: string;
   $margin: string;
   $maxWidth: string;
   $maxHeight: string;
 }>(
-  ({ isOpen, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
+  ({ isOpen, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
     --margin: ${margin};
     --padding: 1rem;
     --title-color: var(--c-faint-strong);
 
     position: fixed;
-    top: 50%;
+    top: ${top};
     left: 50%;
     z-index: 1000;
 

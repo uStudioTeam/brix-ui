@@ -24,6 +24,7 @@ interface Styled {
 }
 
 export interface DialogBreakpointProps {
+  top?: PolymorphicBreakpointProp;
   margin?: PolymorphicBreakpointProp;
   maxWidth?: PolymorphicBreakpointProp;
   maxHeight?: PolymorphicBreakpointProp;
