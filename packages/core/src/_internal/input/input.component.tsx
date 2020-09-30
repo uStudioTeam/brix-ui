@@ -65,6 +65,7 @@ const Input = intrinsicComponent<
       isDisabled={isDisabled}
       isReadonly={isReadonly}
       isInvalid={isInvalid}
+      aria-hidden
       {...propsWithoutAria}
     >
       {prefix && <Affix>{prefix}</Affix>}
