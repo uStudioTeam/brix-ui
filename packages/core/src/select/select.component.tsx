@@ -89,6 +89,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
       hasValue={hasValue}
       isInvalid={isInvalid}
       isDisabled={isDisabled}
+      aria-hidden
       {...(propsWithoutAria as LabelHTMLAttributes<HTMLLabelElement>)}
     >
       {prefix && <Affix>{prefix}</Affix>}
