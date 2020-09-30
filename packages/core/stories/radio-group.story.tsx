@@ -20,7 +20,11 @@ export default {
   },
 };
 
-const Label = styled(Flex)<
+const Label = styled(Flex).attrs(() => ({
+  forwardedAs: 'label',
+  gap: { horizontal: '16px' },
+  verticalAlign: 'center',
+}))<
   {
     isDisabled?: boolean;
     isInvalid?: boolean;
@@ -66,14 +70,7 @@ export const Basic: Story<RadioGroupProps> = (args) => {
           >
             {['One', 'Two', 'Three'].map((option) => {
               return (
-                <Label
-                  forwardedAs="label"
-                  isDisabled={isDisabled}
-                  isInvalid={isInvalid}
-                  gap={{ horizontal: '16px' }}
-                  verticalAlign="center"
-                  key={option}
-                >
+                <Label isDisabled={isDisabled} isInvalid={isInvalid} key={option}>
                   <RadioButton id={option} value={option} />
 
                   <Text lineHeightCompensation>{option}</Text>
