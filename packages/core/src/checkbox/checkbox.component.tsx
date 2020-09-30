@@ -5,8 +5,7 @@ import PT from 'prop-types';
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
-
-import { useValue } from '../_internal/hooks';
+import useInputValue from '@brix-ui/hooks/use-input-value';
 
 import Styled from './checkbox.styles';
 import type { CheckboxProps } from './checkbox.props';
@@ -30,7 +29,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
 ) {
   const isDisabled = useDisabled(_isDisabled);
 
-  const [internalValue, handleChange] = useValue(
+  const [internalValue, handleChange] = useInputValue(
     value === undefined ? defaultValue : value,
     onChange,
     (event) => event.target.checked
