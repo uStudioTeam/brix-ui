@@ -25,7 +25,7 @@ export default function useDisclose({
     if (isOpen !== undefined) {
       toggle(isOpen);
     }
-  }, [isOpen]);
+  }, [isOpen, toggle]);
 
   useEffect(() => {
     if (hasChangedRef.current) {
@@ -33,7 +33,7 @@ export default function useDisclose({
 
       tryCall(onChange, internalIsOpen);
     }
-  }, [internalIsOpen]);
+  }, [internalIsOpen, onOpen, onChange, onClose]);
 
   return useMemo(() => [internalIsOpen, toggle], [internalIsOpen, toggle]);
 }

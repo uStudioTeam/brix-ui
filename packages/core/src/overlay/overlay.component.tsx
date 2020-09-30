@@ -3,8 +3,6 @@ import React from 'react';
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useModal } from '@brix-ui/contexts/modal';
-import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
-import useDisclose from '@brix-ui/hooks/use-disclose';
 
 import Portal from '../portal';
 
@@ -15,19 +13,7 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
   { isOpen, onOpen, onChange, onClose, onClick, ...props },
   ref
 ) {
-  const [internalIsOpen, toggle] = useDisclose({
-    isOpen,
-    onOpen,
-    onChange,
-    onClose,
-  });
-
-  const useUnmountOnExitResult = useUnmountOnExit(internalIsOpen, true);
-
-  const { shouldMount, shouldBeOpen } = useModal({
-    ...useUnmountOnExitResult,
-    unmountOnExit: true,
-  });
+  const { shouldBeOpen, shouldMount, toggle } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit: true });
 
   return shouldMount ? (
     <Portal>
