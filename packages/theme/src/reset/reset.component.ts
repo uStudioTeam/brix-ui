@@ -34,7 +34,7 @@ body {
   text-rendering: optimizeLegibility;
   text-decoration-skip: objects;
   -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -webkit-tap-highlight-color: transparent;
 }
 
