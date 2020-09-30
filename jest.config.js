@@ -11,7 +11,7 @@ module.exports = {
     .flatMap(([prevPath]) => {
       const path = prevPath.replace(/\/\*/, '');
 
-      if (['core', 'grid'].includes(path.split('/')[1])) {
+      if (['core', 'grid', 'hooks'].includes(path.split('/')[1])) {
         return [path, path.replace(/src/, 'tests')];
       }
 
