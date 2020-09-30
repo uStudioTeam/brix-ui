@@ -31,6 +31,7 @@ export default {
 
   args: {
     title: 'Confirm password reset',
+    titleAlign: 'left',
   },
 };
 
@@ -43,6 +44,11 @@ const Styled = {
   }))`
     font-weight: 700;
   `,
+  Input: styled(TextInput)`
+    width: 75%;
+
+    align-self: center;
+  `,
 };
 
 export const Basic: Story<DialogProps> = ({ title, titleAlign, ...args }) => {
@@ -50,33 +56,27 @@ export const Basic: Story<DialogProps> = ({ title, titleAlign, ...args }) => {
 
   return (
     <Modal {...args} unmountOnExit>
-      {({ toggle }) => {
-        return (
-          <>
-            <Dialog {...dialogProps}>
-              <Flex direction="column" gap={{ vertical: '0.75rem' }}>
-                <Text as="label" htmlFor="confirm_password">
-                  Are you sure you want to <Styled.Strong>reset your password?</Styled.Strong>
-                </Text>
+      <Dialog {...dialogProps}>
+        <Flex direction="column" gap={{ vertical: '0.75rem' }}>
+          <Text as="label" htmlFor="confirm_password">
+            Are you sure you want to <Styled.Strong>reset your password?</Styled.Strong>
+          </Text>
 
-                <TextInput id="confirm_password" type="password" isReadonly placeholder="Confirm password" />
-              </Flex>
+          <Styled.Input id="confirm_password" type="password" isReadonly placeholder="Confirm password" />
+        </Flex>
 
-              <Flex margin={{ top: '1.5rem' }} gap={{ horizontal: '1rem' }} horizontalAlign="end">
-                <Button type="reset" appearance="faint" onClick={() => toggle(false)}>
-                  Cancel
-                </Button>
+        <Flex as="footer" margin={{ top: '1.5rem' }} gap={{ horizontal: '1rem' }} horizontalAlign="end">
+          <Button type="reset" appearance="faint">
+            Cancel
+          </Button>
 
-                <Button type="submit" intent="critical" onClick={() => toggle(false)}>
-                  Reset
-                </Button>
-              </Flex>
-            </Dialog>
+          <Button type="submit" intent="critical">
+            Reset
+          </Button>
+        </Flex>
+      </Dialog>
 
-            <Styled.Overlay />
-          </>
-        );
-      }}
+      <Styled.Overlay />
     </Modal>
   );
 };
