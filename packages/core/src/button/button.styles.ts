@@ -11,7 +11,7 @@ const Button = styled.button<ButtonProps>(
     --height: 28px;
 
     height: var(--height);
-    padding: 6px 16px;
+    padding: 5px 16px 6px;
 
     display: inline-flex;
     align-items: center;
@@ -20,6 +20,8 @@ const Button = styled.button<ButtonProps>(
     border: 1px solid transparent;
 
     ${font.body.p};
+    
+    transform-origin: center;
     
     &,
     & > * {
@@ -33,7 +35,7 @@ const Button = styled.button<ButtonProps>(
     transition: all 0.2s;
 
     &:active {
-      transform: scale(0.995);
+      transform: scale(0.975);
     }
     
     &:not(:disabled) {

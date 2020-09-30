@@ -109,8 +109,6 @@ const faintButtonMixin: IntentMixin = (intent) => () => {
 
     &:active {
       box-shadow: ${shadow(`${intent}-strong`, 0.075)};
-
-      transform: scale(0.99);
     }
   ` as FlattenSimpleInterpolation;
 };
@@ -139,8 +137,6 @@ const textButtonMixin: IntentMixin = (intent) => () => {
       background-color: ${applyIntentStyle(intent, `var(--c-faint-weak)`, `var(--c-${intent}-weak-down)`)};
 
       text-shadow: ${shadow(`${intent}-strong`, 0.25)};
-
-      transform: scale(0.99);
     }
   ` as FlattenSimpleInterpolation;
 };
