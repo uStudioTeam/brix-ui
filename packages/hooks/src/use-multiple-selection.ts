@@ -4,8 +4,7 @@ export interface MultipleSelection<V> {
   value: Set<V>;
   options: Set<V>;
   dispatch: {
-    addValue(option: V): void;
-    removeValue(option: V): void;
+    updateValue(value: V): void;
     clearValue(): void;
     addOption(option: V): void;
     removeOption(option: V): void;
@@ -15,26 +14,21 @@ export interface MultipleSelection<V> {
 type Dispatch<V> = MultipleSelection<V>['dispatch'];
 
 export default function useMultipleSelection<V>(defaultValue = new Set<V>()): MultipleSelection<V> {
-  const [options, setOptions] = useState(new Set<V>());
+  const [options, setOptions] = useState(defaultValue);
   const [internalValue, setInternalValue] = useState(defaultValue);
 
-  const addValue = useCallback<Dispatch<V>['addValue']>(
-    (option) => {
-      setInternalValue((prevValue) => {
-        return new Set([...prevValue, option]);
-      });
-    },
-    [setInternalValue]
-  );
-
-  const removeValue = useCallback<Dispatch<V>['removeValue']>(
+  const updateValue = useCallback<Dispatch<V>['updateValue']>(
     (option) => {
       setInternalValue((prevValue) => {
         const nextValue = new Set([...prevValue]);
 
-        nextValue.delete(option);
+        if (nextValue.has(option)) {
+          nextValue.delete(option);
 
-        return nextValue;
+          return nextValue;
+        }
+
+        return nextValue.add(option);
       });
     },
     [setInternalValue]
@@ -70,8 +64,7 @@ export default function useMultipleSelection<V>(defaultValue = new Set<V>()): Mu
     value: internalValue,
     options,
     dispatch: {
-      addValue,
-      removeValue,
+      updateValue,
       clearValue,
       addOption,
       removeOption,
