@@ -41,7 +41,7 @@ export default function useMultipleSelection<V>(defaultValue = new Set<V>()): Mu
   const addOption = useCallback<Dispatch<V>['addOption']>(
     (option) => {
       setOptions((prevOptions) => {
-        return new Set([...prevOptions, option]);
+        return prevOptions.add(option);
       });
     },
     [setOptions]
