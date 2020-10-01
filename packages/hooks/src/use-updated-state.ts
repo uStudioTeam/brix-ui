@@ -4,7 +4,13 @@ export default function useUpdatedState<S>(updatedState: S): [state: S, setState
   const [state, setState] = useState(updatedState);
 
   useEffect(() => {
-    setState(updatedState);
+    setState((prevState) => {
+      if (prevState !== updatedState) {
+        return updatedState;
+      }
+
+      return prevState;
+    });
   }, [updatedState, setState]);
 
   return [state, setState];
