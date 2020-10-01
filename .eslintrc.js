@@ -147,7 +147,7 @@ module.exports = {
       },
     },
     {
-      files: ['*.spec.tsx'],
+      files: ['*.spec.{ts,tsx}'],
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
 
