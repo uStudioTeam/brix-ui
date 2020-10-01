@@ -13,7 +13,9 @@ export interface SingleSelection<V> {
 type Dispatch<V> = SingleSelection<V>['dispatch'];
 
 export default function useSingleSelection<V>(defaultValue?: V): SingleSelection<V> {
-  const [options, setOptions] = useState(new Set<V>());
+  const [options, setOptions] = useState(
+    defaultValue !== undefined ? new Set<V>([defaultValue]) : new Set<V>()
+  );
   const [internalValue, setInternalValue] = useState(defaultValue);
 
   const setValue = useCallback<Dispatch<V>['setValue']>(
@@ -26,7 +28,7 @@ export default function useSingleSelection<V>(defaultValue?: V): SingleSelection
   const addOption = useCallback<Dispatch<V>['addOption']>(
     (option) => {
       setOptions((prevOptions) => {
-        return new Set([...prevOptions, option]);
+        return prevOptions.add(option);
       });
     },
     [setOptions]
