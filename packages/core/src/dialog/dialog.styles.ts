@@ -1,6 +1,7 @@
 import Times from '@brix-ui/icons/times';
 import styled, { css } from 'styled-components';
 import FocusLock from 'react-focus-lock';
+import type { ReactFocusLockProps } from 'react-focus-lock/interfaces';
 
 import { font, shadow, size } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
@@ -9,13 +10,15 @@ import Button from '../button';
 import Flex from '../flex';
 import Text from '../text';
 
-export const Dialog = styled(FocusLock)<{
-  isOpen: boolean;
-  $top: string;
-  $margin: string;
-  $maxWidth: string;
-  $maxHeight: string;
-}>(
+export const Dialog = styled(FocusLock)<
+  {
+    isOpen: boolean;
+    $top: string;
+    $margin: string;
+    $maxWidth: string;
+    $maxHeight: string;
+  } & ReactFocusLockProps
+>(
   ({ isOpen, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
     --margin: ${margin};
     --padding: 1rem;
@@ -44,23 +47,6 @@ export const Dialog = styled(FocusLock)<{
     transform: translate(calc(-50% - var(--margin)), -50%);
 
     transition: all 200ms;
-
-    /* Reset */
-    padding: 0;
-
-    &,
-    &:not([open]) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    color: inherit;
-    background: none;
-
-    border-width: unset;
-    border-style: unset;
-    border-color: unset;
-    border-image: unset;
   `
 );
 

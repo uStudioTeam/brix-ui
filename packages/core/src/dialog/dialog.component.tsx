@@ -1,9 +1,10 @@
 import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
 import { useModal } from '@brix-ui/contexts/modal';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
+import useKeyPressHandle from '@brix-ui/hooks/use-key-press-handle';
 import { useTheme } from '@brix-ui/theme';
 import type { With } from '@brix-ui/utils/types';
 import {
@@ -60,23 +61,32 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
 
   const { shouldBeOpen, shouldMount, toggle } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit });
 
+  const handleClose = useKeyPressHandle<HTMLDialogElement>((event) => {
+    tryCall(props.onKeyUp, event);
+
+    toggle(false);
+  }, 'Escape');
+
   return shouldMount ? (
     <Portal>
       <Styled.Dialog
         forwardedAs="dialog"
         ref={ref}
         isOpen={shouldBeOpen}
-        open={shouldBeOpen}
         $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}
         $margin={applyPolymorphicFunctionProp(currentBreakpointProps.margin, currentBreakpoint) || '2rem'}
         $maxWidth={
           applyPolymorphicFunctionProp(currentBreakpointProps.maxWidth, currentBreakpoint) || `${currentBreakpoint}px`
         }
         $maxHeight={applyPolymorphicFunctionProp(currentBreakpointProps.maxHeight, currentBreakpoint) || 'fit-content'}
-        aria-modal="true"
-        aria-labelledby={title ? 'dialog_title' : undefined}
-        aria-describedby={title ? 'dialog_title' : undefined}
-        {...props}
+        lockProps={{
+          open: shouldBeOpen,
+          'aria-modal': 'true',
+          'aria-labelledby': title ? 'dialog_title' : undefined,
+          'aria-describedby': title ? 'dialog_title' : undefined,
+          onKeyUp: handleClose,
+          ...props,
+        }}
       >
         <Styled.Header $titleAlign={titleAlign}>
           {title && (

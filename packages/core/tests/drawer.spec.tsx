@@ -22,52 +22,6 @@ const withProps = (props = {} as DrawerProps): ReactElement => {
 describe('<Drawer />', () => {
   matchMedia();
 
-  describe('unmountOnExit', () => {
-    describe('when set to `true`', () => {
-      const props = (isOpen: boolean): DrawerProps => ({
-        position: 'left',
-        unmountOnExit: true,
-        isOpen,
-      });
-
-      it('should unmount when closed', () => {
-        const { getByTestId, container, rerender } = render(withProps(props(false)));
-
-        expect(container.childElementCount).toBe(0);
-
-        rerender(withProps(props(true)));
-
-        expect(getByTestId(drawerId)).not.toBe(null);
-
-        rerender(withProps(props(false)));
-
-        expect(container.childElementCount).toBe(0);
-      });
-    });
-
-    describe('when set to `false`', () => {
-      const props = (isOpen: boolean): DrawerProps => ({
-        position: 'left',
-        unmountOnExit: false,
-        isOpen,
-      });
-
-      it('should stay mounted independent of the open state', () => {
-        const { getByTestId, rerender } = render(withProps(props(false)));
-
-        expect(getByTestId(drawerId)).not.toBe(null);
-
-        rerender(withProps(props(true)));
-
-        expect(getByTestId(drawerId)).not.toBe(null);
-
-        rerender(withProps(props(false)));
-
-        expect(getByTestId(drawerId)).not.toBe(null);
-      });
-    });
-  });
-
   describe('position styles', () => {
     describe('position axis', () => {
       const props = (position: DrawerProps['position']): DrawerProps => ({

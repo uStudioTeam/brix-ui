@@ -21,4 +21,4 @@ export default function useInputValue<V, E extends HTMLInputElement | HTMLSelect
   );
 
   return [internalValue, handleChange];
-};
+}

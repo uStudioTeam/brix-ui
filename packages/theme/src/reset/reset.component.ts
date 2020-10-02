@@ -283,6 +283,24 @@ svg {
   fill: currentColor;
 }
 
+dialog {
+  padding: 0;
+
+  &,
+  &:not([open]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  color: inherit;
+  background: none;
+
+  border-width: unset;
+  border-style: unset;
+  border-color: unset;
+  border-image: unset;
+}
+
 [hidden] {
   display: none;
 }
