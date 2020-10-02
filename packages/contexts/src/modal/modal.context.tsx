@@ -23,7 +23,7 @@ export const useModal = ({
     onClose,
   });
 
-  const [shouldBeOpen, shouldMount] = useUnmountOnExit(internalIsOpen, unmountOnExit);
+  const [shouldBeOpen, shouldMount] = useUnmountOnExit(internalIsOpen, unmountOnExit, 200);
 
   return useContext(ModalContext) || { shouldBeOpen, shouldMount, toggle };
 };
