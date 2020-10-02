@@ -1,13 +1,13 @@
 import { renderHook, act, HookResult } from '@testing-library/react-hooks';
 
-import useMultipleSelection, { MultipleSelection } from '../src/use-multiple-selection';
+import sut, { MultipleSelection } from '../src/use-multiple-selection';
 
 describe('useMultipleSelection', () => {
   describe('defaultValue', () => {
     it('should contain `defaultValue` both in options and value', () => {
       const defaultValue = new Set(['a', 'b']);
 
-      const { result } = renderHook(() => useMultipleSelection(defaultValue));
+      const { result } = renderHook(() => sut(defaultValue));
 
       ['value', 'options'].forEach((property) => {
         expect(result.current[property as keyof MultipleSelection<string>]).toStrictEqual(defaultValue);
@@ -19,7 +19,7 @@ describe('useMultipleSelection', () => {
     let result: HookResult<MultipleSelection<string>>;
 
     beforeEach(() => {
-      result = renderHook(() => useMultipleSelection<string>()).result;
+      result = renderHook(() => sut<string>()).result;
 
       act(() => {
         result.current.dispatch.updateValue('a');
@@ -45,7 +45,7 @@ describe('useMultipleSelection', () => {
 
   describe('clearValue', () => {
     it('should empty the set of values when called', () => {
-      const { result } = renderHook(() => useMultipleSelection(new Set(['a', 'b', 'c'])));
+      const { result } = renderHook(() => sut(new Set(['a', 'b', 'c'])));
 
       act(() => {
         result.current.dispatch.clearValue();
@@ -59,7 +59,7 @@ describe('useMultipleSelection', () => {
     let result: HookResult<MultipleSelection<string>>;
 
     beforeEach(() => {
-      result = renderHook(() => useMultipleSelection<string>()).result;
+      result = renderHook(() => sut<string>()).result;
 
       act(() => {
         result.current.dispatch.addOption('a');

@@ -2,10 +2,10 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import type { Disclosable } from '@brix-ui/types/component';
 
-import useDisclose from '../src/use-disclose';
+import sut from '../src/use-disclose';
 
 const render = (props = {} as Disclosable) => {
-  return renderHook((initialProps) => useDisclose({ ...props, ...initialProps }), {
+  return renderHook((initialProps) => sut({ ...props, ...initialProps }), {
     initialProps: { isOpen: false, ...props },
   });
 };

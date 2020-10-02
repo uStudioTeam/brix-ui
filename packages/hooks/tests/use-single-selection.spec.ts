@@ -1,13 +1,13 @@
 import { renderHook, act, HookResult } from '@testing-library/react-hooks';
 
-import useSingleSelection, { SingleSelection } from '../src/use-single-selection';
+import sut, { SingleSelection } from '../src/use-single-selection';
 
 describe('useSingleSelection', () => {
   describe('defaultValue', () => {
     it('should create a set of options containing defaultValue and set value to the defaultValue', () => {
       const defaultValue = 'a';
 
-      const { result } = renderHook(() => useSingleSelection(defaultValue));
+      const { result } = renderHook(() => sut(defaultValue));
 
       expect(result.current.options.has(defaultValue)).toBe(true);
       expect(result.current.value).toBe(defaultValue);
@@ -16,7 +16,7 @@ describe('useSingleSelection', () => {
 
   describe('setValue', () => {
     it('should set value to the `setValue` argument', () => {
-      const { result } = renderHook(useSingleSelection);
+      const { result } = renderHook(sut);
 
       act(() => {
         result.current.dispatch.setValue('a');
@@ -30,7 +30,7 @@ describe('useSingleSelection', () => {
     let result: HookResult<SingleSelection<string>>;
 
     beforeEach(() => {
-      result = renderHook(() => useSingleSelection<string>()).result;
+      result = renderHook(() => sut<string>()).result;
 
       act(() => {
         result.current.dispatch.addOption('a');

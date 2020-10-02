@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import useUnmountOnExit from '../src/use-unmount-on-exit';
+import sut from '../src/use-unmount-on-exit';
 
 const render = (handle: boolean, unmountOnExit = true) => {
-  return renderHook((props?: [Parameters<typeof useUnmountOnExit>[0], Parameters<typeof useUnmountOnExit>[1]?]) =>
-    useUnmountOnExit(props?.[0] ?? handle, props?.[1] ?? unmountOnExit, 200)
+  return renderHook((props?: [Parameters<typeof sut>[0], Parameters<typeof sut>[1]?]) =>
+    sut(props?.[0] ?? handle, props?.[1] ?? unmountOnExit, 200)
   );
 };
 
