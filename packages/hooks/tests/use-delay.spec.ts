@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useDelay from '../src/use-delay';
+import sut from '../src/use-delay';
 
 const render = (delay: number | undefined) => {
-  return renderHook(() => useDelay(delay));
+  return renderHook(() => sut(delay));
 };
 
 jest.useFakeTimers();
