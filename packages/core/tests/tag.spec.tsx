@@ -18,7 +18,9 @@ const renderWithProps = (props: Partial<TagProps> = {}) => {
 };
 
 describe('<Tag />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('onClose', () => {
     describe('when not specified', () => {

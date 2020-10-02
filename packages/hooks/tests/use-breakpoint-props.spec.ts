@@ -34,7 +34,9 @@ const render = () => {
 };
 
 describe('useBreakpointProps', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('when no breakpoints match', () => {
     let result: ReturnType<typeof render>['result'];
@@ -60,23 +62,17 @@ describe('useBreakpointProps', () => {
     let hook: ReturnType<typeof render>;
 
     beforeEach(() => {
-      hook = render();
-
       matchMedia(3);
 
-      hook.rerender();
+      hook = render();
     });
 
-    it('should return props from that breakpoint', async () => {
-      await hook.waitFor(() => {
-        expect(hook.result.current.color).toBe(props.md.color);
-      });
+    it('should return props from matched breakpoint', () => {
+      expect(hook.result.current.color).toBe(props.md.color);
     });
 
-    it('should match `currentBreakpoint` to the value of a matched breakpoint', async () => {
-      await hook.waitFor(() => {
-        expect(hook.result.current.currentBreakpoint).toBe(3);
-      });
+    it('should match `currentBreakpoint` to the value of a matched breakpoint', () => {
+      expect(hook.result.current.currentBreakpoint).toBe(3);
     });
   });
 });

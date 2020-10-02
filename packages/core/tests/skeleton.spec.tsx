@@ -18,7 +18,9 @@ const renderWithProps = (props = {} as SkeletonProps) => {
 };
 
 describe('<Skeleton />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('size', () => {
     describe('when both size and width/height are specified', () => {

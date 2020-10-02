@@ -22,7 +22,9 @@ const getSelect = (container: HTMLElement): HTMLSelectElement => {
 };
 
 describe('<Select />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('disabledOptions', () => {
     it('should disable options with specified values', () => {

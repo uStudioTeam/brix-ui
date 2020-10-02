@@ -20,7 +20,9 @@ const withProps = (props = {} as DrawerProps): ReactElement => {
 };
 
 describe('<Drawer />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('position styles', () => {
     describe('position axis', () => {

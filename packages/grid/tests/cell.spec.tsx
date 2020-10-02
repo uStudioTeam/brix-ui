@@ -21,7 +21,9 @@ const renderWithProps = <P extends Partial<CellProps>>(props: P = {} as P) => {
 };
 
 describe('<Cell />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('template formation', () => {
     describe('size is empty', () => {
