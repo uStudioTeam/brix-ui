@@ -40,7 +40,9 @@ describe('<Switch /> & <Checkbox />', () => {
     };
 
     describe(name, () => {
-      matchMedia();
+      beforeEach(() => {
+        matchMedia();
+      });
 
       describe('when uncontrolled', () => {
         it('should internally control value change', async () => {

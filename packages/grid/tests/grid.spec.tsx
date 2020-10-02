@@ -22,7 +22,9 @@ const renderWithProps = <P extends Partial<GridProps>>(props: P = {} as P) => {
 };
 
 describe('<Grid />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('gap', () => {
     describe('empty value', () => {

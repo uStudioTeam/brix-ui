@@ -25,7 +25,9 @@ const renderWithProps = (props: ButtonProps) => {
 };
 
 describe('<Button />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('isDisabled', () => {
     describe('when isDisabled: true;', () => {

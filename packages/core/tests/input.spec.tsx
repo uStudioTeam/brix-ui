@@ -24,7 +24,9 @@ const change = <V extends string | number>(value: V, element: HTMLLabelElement):
 };
 
 describe('<Input />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   beforeEach(() => {
     getValue = ({ target: { value } }) => value;

@@ -21,7 +21,9 @@ const renderWithProps = (props: BadgeProps = {}, children: ReactNode = <div />) 
 
 // @ToDo: add `transform: translate` into position tests
 describe('<Badge />', () => {
-  matchMedia();
+  beforeEach(() => {
+    matchMedia();
+  });
 
   describe('standalone', () => {
     describe('when children are supplied', () => {
