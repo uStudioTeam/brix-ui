@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { transparentize } from 'polished';
 import FocusLock from 'react-focus-lock';
+import type { ReactFocusLockProps } from 'react-focus-lock/interfaces';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
@@ -56,7 +57,9 @@ const translate = ({ position, isOpen }: Pick<DrawerProps, 'position' | 'isOpen'
 
 const isHorizontal = (position: DrawerProps['position']): boolean => position === 'left' || position === 'right';
 
-const Drawer = styled(FocusLock)<Omit<DrawerProps, 'position'> & { $position: DrawerProps['position'] }>(
+const Drawer = styled(FocusLock)<
+  Omit<DrawerProps, 'position'> & { $position: DrawerProps['position'] } & ReactFocusLockProps
+>(
   ({ isOpen, $position: position, theme }) => css`
     --border-radius: 2px;
     --overflow: auto;

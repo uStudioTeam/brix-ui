@@ -3,8 +3,9 @@ import PT from 'prop-types';
 
 import { Position } from '@brix-ui/types/css';
 import { disclosable, stylableComponent, unmountable } from '@brix-ui/prop-types/common';
-import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import { intrinsicComponent, objectValues, tryCall } from '@brix-ui/utils/functions';
 import { useModal } from '@brix-ui/contexts/modal';
+import useKeyPressHandle from '@brix-ui/hooks/use-key-press-handle';
 
 import Portal from '../portal';
 
@@ -15,7 +16,13 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
   { children, position, unmountOnExit, isOpen, onOpen, onChange, onClose, ...props },
   ref
 ) {
-  const { shouldBeOpen, shouldMount } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit });
+  const { shouldBeOpen, shouldMount, toggle } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit });
+
+  const handleClose = useKeyPressHandle<HTMLDivElement>((event) => {
+    tryCall(props.onKeyUp, event);
+
+    toggle(false);
+  }, 'Escape');
 
   return shouldMount ? (
     <Portal>
@@ -24,8 +31,7 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
         ref={ref}
         isOpen={shouldBeOpen}
         $position={position}
-        aria-expanded={shouldBeOpen}
-        {...props}
+        lockProps={{ 'aria-modal': true, 'aria-expanded': shouldBeOpen, onKeyUp: handleClose, ...props }}
       >
         {children}
       </Styled.Drawer>
