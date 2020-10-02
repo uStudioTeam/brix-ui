@@ -34,7 +34,6 @@ export const Dialog = styled(FocusLock)<
     height: fit-content;
     max-height: ${maxHeight};
     width: fit-content;
-    width: -moz-fit-content;
     max-width: ${maxWidth};
 
     margin: 0 var(--margin);
