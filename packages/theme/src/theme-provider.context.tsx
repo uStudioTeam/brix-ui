@@ -13,6 +13,7 @@ import Breakpoints from './breakpoints';
 import Typography from './typography';
 import Palette, { ColorHelper, defaultPalette } from './palette';
 import Reset from './reset';
+import Miscelaneous from './miscelaneous';
 
 import { defaultTheme, Theme, ThemeMode, ThemeOverride } from './entity';
 import { useThemeMode } from './hooks';
@@ -56,6 +57,7 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
 
       <Reset />
 
+      <Miscelaneous transition={finalTheme.transition} />
       <Palette palette={finalTheme.palette} />
       <Breakpoints {...finalTheme.breakpoints} />
       <Typography {...overrideTypography} />
