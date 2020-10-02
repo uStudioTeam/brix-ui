@@ -13,13 +13,14 @@ import Text from '../text';
 export const Dialog = styled(FocusLock)<
   {
     isOpen: boolean;
+    transitionSpeed?: number;
     $top: string;
     $margin: string;
     $maxWidth: string;
     $maxHeight: string;
   } & ReactFocusLockProps
 >(
-  ({ isOpen, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
+  ({ isOpen, transitionSpeed, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
     --margin: ${margin};
     --padding: 1rem;
     --title-color: var(--c-faint-strong);
@@ -45,7 +46,7 @@ export const Dialog = styled(FocusLock)<
 
     transform: translate(calc(-50% - var(--margin)), -50%);
 
-    transition: all 200ms;
+    transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : `var(--transition-long)`};
   `
 );
 
@@ -73,7 +74,7 @@ export const Header = styled(Flex).attrs<{
     white-space: nowrap;
     overflow: hidden;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
   `
 );
 
@@ -84,7 +85,7 @@ export const Title = styled(Text).attrs(() => ({
 }))`
   color: var(--title-color);
 
-  transition: all 200ms;
+  transition: all var(--transition-short);
 `;
 
 export const CloseButton = styled(Button).attrs(() => ({
@@ -100,7 +101,7 @@ export const CloseButton = styled(Button).attrs(() => ({
   align-items: center;
   justify-content: center;
 
-  transition: all 200ms;
+  transition: all var(--transition-short);
 `;
 
 export const CloseContainer = styled(Flex).attrs(() => ({
@@ -113,7 +114,7 @@ export const CloseContainer = styled(Flex).attrs(() => ({
 
   ${size('28px')};
 
-  transition: all 200ms;
+  transition: all var(--transition-short);
 
   cursor: pointer;
 
@@ -127,7 +128,7 @@ export const CloseContainer = styled(Flex).attrs(() => ({
 export const CloseIcon = styled(Times)`
   ${size('8px')};
 
-  transition: all 200ms;
+  transition: all var(--transition-short);
 `;
 
 export const Body = styled(Flex).attrs(() => ({
@@ -142,7 +143,7 @@ export const Body = styled(Flex).attrs(() => ({
   color: var(--c-base-strong);
   background-color: var(--c-base-weak);
 
-  transition: all 200ms;
+  transition: all var(--transition-short);
 `;
 
 const Styled = applyDisplayNames({ Dialog, Header, Title, CloseContainer, CloseButton, CloseIcon, Body });

@@ -13,7 +13,7 @@ export const Icon = styled(Chevron)(
 
     cursor: pointer;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
   `
 );
 
@@ -28,7 +28,7 @@ const Input = styled.select(
 
     display: inline-block;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     cursor: pointer;
 
@@ -58,7 +58,7 @@ export const Select = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'>
 
     ${font.body.p};
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     ${Input} {
       color: ${hasValue ? 'var(--c-base-strong)' : 'var(--c-faint-strong)'};

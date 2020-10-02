@@ -6,12 +6,26 @@ import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useDisclose from '@brix-ui/hooks/use-disclose';
+import { useTheme } from '@brix-ui/theme';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, styles, className, isOpen, summary, icon, onOpen, onChange, onClose, isDisabled: _isDisabled, ...props },
+  {
+    children,
+    styles,
+    className,
+    isOpen,
+    transitionSpeed,
+    summary,
+    icon,
+    onOpen,
+    onChange,
+    onClose,
+    isDisabled: _isDisabled,
+    ...props
+  },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -23,11 +37,14 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
     onClose,
   });
 
+  const { transition } = useTheme();
+
   const [detailsRef, detailsHeight] = useAutoTransition<HTMLDivElement>(
     (element) => {
       return element.getBoundingClientRect().height;
     },
-    [internalIsOpen, 200]
+    // @TODO [Dmytro Vasylkivskyi]: maybe change transition speed depending on the detailsHeight
+    [internalIsOpen, transitionSpeed ?? transition.long]
   );
 
   return (
@@ -57,6 +74,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
 
       <Styled.Details
         as={styles?.Details}
+        transitionSpeed={transitionSpeed}
         aria-expanded={internalIsOpen}
         style={{
           height: detailsHeight,

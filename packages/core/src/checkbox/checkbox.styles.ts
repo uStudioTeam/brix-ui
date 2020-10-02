@@ -78,7 +78,7 @@ export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' 
 
       transform: translate(-50%, -50%);
 
-      transition: all 200ms;
+      transition: all var(--transition-short);
     }
 
     ${isDisabled

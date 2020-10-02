@@ -48,7 +48,7 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
     display: block;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     ${isDisabled
       ? css`
@@ -78,7 +78,7 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
       transform-origin: center center;
 
-      transition: 200ms;
+      transition: var(--transition-short);
     }
 
     &:before {

@@ -1,35 +1,60 @@
-import { useState } from 'react';
+import { EffectCallback, useState } from 'react';
 
 import useUpdateEffect from './use-update-effect';
 import useUpdatedState from './use-updated-state';
+
+const withTimeout = (callback: EffectCallback, timeout: number): (() => void) => {
+  const timeoutId = setTimeout(callback, timeout);
+
+  return () => {
+    clearTimeout(timeoutId);
+  };
+};
 
 export default function useUnmountOnExit(
   handle: boolean,
   unmountOnExit: boolean | undefined,
   transitionSpeed: number
 ): [internalHandle: boolean, shouldMount: boolean] {
-  const [shouldUnmount] = useUpdatedState(!handle && unmountOnExit);
+  const [shouldUnmount] = useUpdatedState(unmountOnExit);
   const [shouldMount, setMount] = useState(handle || !unmountOnExit);
-  const [internalHandle, setInternalHandle] = useUpdatedState(handle && shouldMount);
+  const [internalHandle, setInternalHandle] = useState(handle && shouldMount);
 
-  useUpdateEffect(() => {
-    if (shouldUnmount) {
-      // eslint-disable-next-line immutable/no-let
-      let timeoutId: ReturnType<typeof setTimeout>;
+  useUpdateEffect(
+    function updateMountState() {
+      if (shouldUnmount) {
+        if (shouldMount && !handle) {
+          withTimeout(() => {
+            setMount(false);
+          }, transitionSpeed);
+        }
 
-      if (handle) {
-        setMount(true);
-
-        timeoutId = setTimeout(() => setInternalHandle(true), 0);
+        // Backup for unresolved timeout
+        if (!shouldMount && handle) {
+          setMount(true);
+        }
       } else {
-        setInternalHandle(false);
+        setMount(!shouldUnmount);
+      }
+    },
+    [handle, shouldMount, shouldUnmount]
+  );
 
-        timeoutId = setTimeout(() => setMount(false), transitionSpeed);
+  useUpdateEffect(
+    function updateOpenState() {
+      if (handle && !internalHandle) {
+        withTimeout(() => {
+          setInternalHandle(true);
+        }, 0);
       }
 
-      return () => clearTimeout(timeoutId);
-    }
-  }, [handle, shouldUnmount]);
+      // Backup for unresolved timeout
+      if (internalHandle && !handle) {
+        setInternalHandle(false);
+      }
+    },
+    [handle, internalHandle]
+  );
 
   return [internalHandle, shouldMount];
 }

@@ -10,10 +10,17 @@ import type { OverlayProps } from './overlay.props';
 import Styled from './overlay.styles';
 
 const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overlay(
-  { isOpen, onOpen, onChange, onClose, onClick, ...props },
+  { isOpen, transitionSpeed, onOpen, onChange, onClose, onClick, ...props },
   ref
 ) {
-  const { shouldBeOpen, shouldMount, toggle } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit: true });
+  const { shouldBeOpen, shouldMount, toggle } = useModal({
+    isOpen,
+    onOpen,
+    onChange,
+    onClose,
+    unmountOnExit: true,
+    transitionSpeed,
+  });
 
   return shouldMount ? (
     <Portal>
@@ -21,6 +28,7 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
         ref={ref}
         role="button"
         isOpen={shouldBeOpen}
+        transitionSpeed={transitionSpeed}
         onClose={onClose}
         onClick={() => toggle(false)}
         {...props}
