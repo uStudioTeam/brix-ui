@@ -28,7 +28,7 @@ export const Container = styled(Flex)<{
       transform: scale(0.9985);
     }
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     ${!isDisabled &&
     css`
@@ -50,7 +50,7 @@ export const Icon = styled(Chevron)`
 
   justify-self: flex-end;
 
-  transition: transform 200ms;
+  transition: transform var(--transition-short);
 `;
 
 export const Summary = styled.button<{
@@ -69,7 +69,7 @@ export const Summary = styled.button<{
 
     opacity: 1;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     &:disabled {
       background-color: var(--c-faint-weak);
@@ -110,13 +110,15 @@ export const Summary = styled.button<{
   `
 );
 
-export const Details = styled.div(
-  () => css`
+export const Details = styled.div<{
+  transitionSpeed?: number;
+}>(
+  ({ transitionSpeed }) => css`
     background-color: var(--c-base-weak);
 
     overflow-y: hidden;
 
-    transition: all 200ms;
+    transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : 'var(--transition-long)'};
 
     div {
       padding: 12px 16px;

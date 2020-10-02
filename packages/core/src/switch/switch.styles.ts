@@ -31,7 +31,7 @@ const Children = styled.span<Pick<SwitchProps, 'value' | 'isDisabled' | 'isInval
 
     user-select: none;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     ${value
       ? // Checked
@@ -85,7 +85,7 @@ const Track = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolat
 
       transform: translate(-50%, -50%);
 
-      transition: all 200ms;
+      transition: all var(--transition-short);
 
       ${value
         ? // Checked
@@ -135,7 +135,7 @@ const Thumb = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolat
 
       border-radius: calc(var(--thumb-size) / 2);
 
-      transition: all 200ms;
+      transition: all var(--transition-short);
 
       ${value
         ? // Checked

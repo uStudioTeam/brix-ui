@@ -1,12 +1,13 @@
+import React from 'react';
+import styled from 'styled-components';
+import { Story } from '@storybook/react';
+
 import Modal from '@brix-ui/contexts/modal';
 import Button from '@brix-ui/core/button';
 import Flex from '@brix-ui/core/flex';
 import Overlay from '@brix-ui/core/overlay';
 import Text from '@brix-ui/core/text';
 import TextInput from '@brix-ui/core/text-input';
-import { Story } from '@storybook/react';
-import React from 'react';
-import styled from 'styled-components';
 
 import Dialog, { DialogProps } from '../src/dialog';
 

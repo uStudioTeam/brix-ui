@@ -29,6 +29,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
     onChange,
     onClose,
     unmountOnExit,
+    transitionSpeed,
     title,
     titleAlign,
     top,
@@ -59,7 +60,14 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
     breakpoints
   ) as With<DialogBreakpointProps, { currentBreakpoint: number }>;
 
-  const { shouldBeOpen, shouldMount, toggle } = useModal({ isOpen, onOpen, onChange, onClose, unmountOnExit });
+  const { shouldBeOpen, shouldMount, toggle } = useModal({
+    isOpen,
+    onOpen,
+    onChange,
+    onClose,
+    unmountOnExit,
+    transitionSpeed,
+  });
 
   const handleClose = useKeyPressHandle<HTMLDialogElement>((event) => {
     tryCall(props.onKeyUp, event);
@@ -73,6 +81,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
         forwardedAs="dialog"
         ref={ref}
         isOpen={shouldBeOpen}
+        transitionSpeed={transitionSpeed}
         $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}
         $margin={applyPolymorphicFunctionProp(currentBreakpointProps.margin, currentBreakpoint) || '2rem'}
         $maxWidth={

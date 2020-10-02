@@ -36,7 +36,7 @@ export const Blade = styled.div<{
     animation: ${animation} ${animationDuration}ms infinite;
 
     transform-origin: left top;
-    transition: all 200ms;
+    transition: all var(--transition-short);
   `;
 });
 

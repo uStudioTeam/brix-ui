@@ -60,7 +60,7 @@ const isHorizontal = (position: DrawerProps['position']): boolean => position ==
 const Drawer = styled(FocusLock)<
   Omit<DrawerProps, 'position'> & { $position: DrawerProps['position'] } & ReactFocusLockProps
 >(
-  ({ isOpen, $position: position, theme }) => css`
+  ({ isOpen, transitionSpeed, $position: position, theme }) => css`
     --border-radius: 2px;
     --overflow: auto;
 
@@ -81,7 +81,7 @@ const Drawer = styled(FocusLock)<
 
     transform: ${translate({ position, isOpen })};
 
-    transition: transform 200ms;
+    transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : 'var(--transition-long)'};
   `
 );
 

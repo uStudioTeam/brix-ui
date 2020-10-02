@@ -15,7 +15,7 @@ export const Input = styled.input(
     &::placeholder {
       color: var(--c-faint-strong-down);
 
-      transition: opacity 200ms;
+      transition: opacity var(--transition-short);
     }
 
     &::-webkit-inner-spin-button,
@@ -49,7 +49,7 @@ export const Container = styled.label<Pick<InputProps<string | number>, 'isDisab
 
     cursor: text;
 
-    transition: all 200ms;
+    transition: all var(--transition-short);
 
     &:hover {
       box-shadow: ${shadow('base-strong', 0.1)};

@@ -5,7 +5,7 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 import type { OverlayProps } from './overlay.props';
 
 const Overlay = styled.div<OverlayProps>(
-  ({ onClose, isOpen }) => css`
+  ({ onClose, isOpen, transitionSpeed }) => css`
     --opacity: 0.5;
 
     position: fixed;
@@ -19,7 +19,7 @@ const Overlay = styled.div<OverlayProps>(
     opacity: ${isOpen ? 'var(--opacity)' : 0};
     cursor: ${onClose ? 'pointer' : 'default'};
 
-    transition: all 200ms;
+    transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : 'var(--transition-short)'};
   `
 );
 
