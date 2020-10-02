@@ -12,6 +12,11 @@ export interface Theme {
 
   readonly palette: ColorsMap;
 
+  readonly transition: Readonly<{
+    short: number;
+    long: number;
+  }>;
+
   readonly colorHelper: ColorHelper;
 
   readonly mode: boolean;
@@ -24,6 +29,8 @@ export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'swi
   readonly breakpoints?: Partial<Theme['breakpoints']>;
 
   readonly palette?: Partial<Record<Values<typeof ThemeMode>, Partial<Theme['palette']>>>;
+
+  readonly transition?: Partial<Theme['transition']>;
 
   readonly mode?: Values<typeof ThemeMode>;
 }

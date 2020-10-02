@@ -8,4 +8,8 @@ export const defaultTheme = {
     [Breakpoint.Lg]: 992,
     [Breakpoint.Xl]: 1200,
   },
+  transition: {
+    short: 200,
+    long: 400,
+  },
 };
