@@ -15,7 +15,6 @@ import Styled from './switch.styles';
 const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch(
   {
     children,
-    className,
     value,
     defaultValue,
     onChange,
@@ -42,7 +41,6 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   return (
     <Styled.Switch
       ref={containerRef}
-      className={className}
       value={internalValue}
       isDisabled={isDisabled}
       isInvalid={isInvalid}
