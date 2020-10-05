@@ -1,6 +1,6 @@
-import type { ChangeEvent, Ref, SelectHTMLAttributes } from 'react';
+import type { StylableComponent } from '@brix-ui/types/component';
 
-import type { Affixable, FormComponent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { DropdownProps, DropdownOption as SelectOption } from '../_internal/dropdown';
 
 import { Select, Icon } from './select.styles';
 
@@ -9,10 +9,7 @@ interface Styled {
   Icon: typeof Icon;
 }
 
-export interface SelectOption {
-  value: string;
-  label?: string;
-}
+export { SelectOption };
 
 export interface SelectGroup {
   label: string;
@@ -20,26 +17,12 @@ export interface SelectGroup {
 }
 
 export interface SelectProps
-  extends Omit<FormComponent<HTMLSelectElement, string>, 'isReadonly' | 'onChange'>,
-    Affixable,
-    Omit<
-      IntrinsicComponent<SelectHTMLAttributes<HTMLSelectElement>>,
-      'disabled' | 'required' | 'readonly' | 'multiple' | 'size'
-    >,
+  extends Omit<DropdownProps, 'isReadonly' | 'styles' | 'children'>,
     StylableComponent<Styled> {
   options: SelectGroup[] | SelectOption[];
-  placeholder?: string;
 
   /**
    * Array of groups' indices
    */
   disabledGroups?: number[];
-  /**
-   * Array of options' values
-   */
-  disabledOptions?: string[];
-
-  containerRef?: Ref<HTMLLabelElement>;
-
-  onChange?(value: string | undefined, event: ChangeEvent<HTMLSelectElement>): void;
 }

@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { font, shadow } from '@brix-ui/theme/mixin';
+import { shadow } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import Chevron from '@brix-ui/icons/chevron';
+
+import DropdownStyles from '../_internal/dropdown/dropdown.styles';
 
 import type { SelectProps } from './select.props';
 
@@ -17,57 +19,17 @@ export const Icon = styled(Chevron)(
   `
 );
 
-const Input = styled.select(
-  () => css`
-    appearance: none;
+const { Input } = DropdownStyles;
 
-    width: 100%;
-    height: 28px;
-
-    padding: 2px 0 4px;
-
-    display: inline-block;
-
-    transition: all var(--transition-short);
-
-    cursor: pointer;
-
-    border: none;
-    background: none;
-    font: inherit;
-    opacity: 1;
-  `
-);
-
-export const Select = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }>(
-  ({ isInvalid, isDisabled, hasValue }) => css`
-    position: relative;
-
-    width: 100%;
-    height: 28px;
-
-    padding: 4px 8px;
-
-    display: flex;
-    align-items: center;
-
-    background-color: var(--c-base-weak);
-
+export const Select = styled(DropdownStyles.Dropdown)<
+  Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }
+>(
+  ({ isInvalid, isDisabled }) => css`
     border: 1px solid var(--c-faint-strong-down);
     border-radius: 2px;
 
-    ${font.body.p};
-
-    transition: all var(--transition-short);
-
-    ${Input} {
-      color: ${hasValue ? 'var(--c-base-strong)' : 'var(--c-faint-strong)'};
-    }
-
     &:hover {
       box-shadow: ${shadow('base-strong', 0.1)};
-
-      cursor: pointer;
     }
 
     &:focus-within {
@@ -85,16 +47,7 @@ export const Select = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'>
 
     ${isDisabled &&
     css`
-      background-color: var(--c-faint-weak-down);
       border-color: var(--c-faint-weak-up);
-
-      & {
-        color: var(--c-faint-strong-down);
-      }
-
-      ${Input} {
-        color: ${hasValue ? 'var(--c-faint-strong-down)' : 'var(--c-faint-weak-up)'};
-      }
 
       &:hover {
         box-shadow: none;
