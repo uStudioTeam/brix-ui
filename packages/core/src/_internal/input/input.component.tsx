@@ -1,9 +1,11 @@
 import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
+import { affixable, formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
 import Affix from '../affix';
 
@@ -99,5 +101,13 @@ const Input = intrinsicComponent<
     </Styled.Container>
   );
 });
+
+Input.propTypes = {
+  containerRef: refProp<HTMLLabelElement>(),
+
+  ...affixable,
+  ...formComponent(PT.oneOfType([PT.string, PT.number])),
+  ...stylableComponent(Styled),
+};
 
 export default Input;

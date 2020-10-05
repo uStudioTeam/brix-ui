@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
-import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
+import { formComponent } from '@brix-ui/prop-types/common';
+import { extract } from '@brix-ui/prop-types/utils';
 
 import Input from '../_internal/input';
 
@@ -24,13 +25,14 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
   );
 });
 
+const { type: _type, inputMode: _inputMode, ...inputPropTypes } = extract([Input]);
+
 NumberInput.propTypes = {
   type: PT.oneOf(['tel', 'decimal', 'numeric']),
   inputMode: PT.oneOf(['tel', 'decimal', 'numeric']),
 
-  containerRef: refProp<HTMLLabelElement>(),
-
-  ...stylableComponent(),
-};
+  ...inputPropTypes,
+  ...formComponent(PT.number),
+} as WeakValidationMap<NumberInputProps>;
 
 export default NumberInput;
