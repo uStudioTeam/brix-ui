@@ -1,4 +1,3 @@
-import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 import React from 'react';
 import PT from 'prop-types';
 
@@ -6,9 +5,10 @@ import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
+import { formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
-import Styled from './checkbox.styles';
 import type { CheckboxProps } from './checkbox.props';
+import Styled from './checkbox.styles';
 
 const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Checkbox(
   {
@@ -71,12 +71,9 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
 });
 
 Checkbox.propTypes = {
-  isDisabled: PT.bool,
-  isRequired: PT.bool,
-  isInvalid: PT.bool,
-
   containerRef: refProp<HTMLLabelElement>(),
 
+  ...formComponent(PT.bool),
   ...stylableComponent(Styled),
 };
 

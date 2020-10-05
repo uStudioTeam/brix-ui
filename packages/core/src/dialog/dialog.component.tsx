@@ -24,6 +24,7 @@ import Styled from './dialog.styles';
 const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialog(
   {
     children,
+    styles,
     isOpen,
     onOpen,
     onChange,
@@ -78,7 +79,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
   return shouldMount ? (
     <Portal>
       <Styled.Dialog
-        forwardedAs="dialog"
+        forwardedAs={styles?.Dialog || 'dialog'}
         ref={ref}
         isOpen={shouldBeOpen}
         transitionSpeed={transitionSpeed}
@@ -97,21 +98,21 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           ...props,
         }}
       >
-        <Styled.Header $titleAlign={titleAlign}>
+        <Styled.Header as={styles?.Header} $titleAlign={titleAlign}>
           {title && (
-            <Styled.Title id="dialog_title" align={titleAlign}>
+            <Styled.Title as={styles?.Title} id="dialog_title" align={titleAlign}>
               {title}
             </Styled.Title>
           )}
 
-          <Styled.CloseContainer>
-            <Styled.CloseButton type="button" onClick={() => toggle(false)}>
-              <Styled.CloseIcon />
+          <Styled.CloseContainer as={styles?.CloseContainer}>
+            <Styled.CloseButton as={styles?.CloseButton} type="button" onClick={() => toggle(false)}>
+              <Styled.CloseIcon as={styles?.CloseIcon} />
             </Styled.CloseButton>
           </Styled.CloseContainer>
         </Styled.Header>
 
-        <Styled.Body>{children}</Styled.Body>
+        <Styled.Body as={styles?.Body}>{children}</Styled.Body>
       </Styled.Dialog>
     </Portal>
   ) : null;
