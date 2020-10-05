@@ -1,77 +1,22 @@
-import React, { LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import PT, { Validator } from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
-import useAriaProps from '@brix-ui/hooks/use-aria-props';
-import useInputValue from '@brix-ui/hooks/use-input-value';
+import { stylableComponent } from '@brix-ui/prop-types/common';
+import { extract } from '@brix-ui/prop-types/utils';
 
-import Affix from '../_internal/affix';
+import Dropdown, { renderOptions } from '../_internal/dropdown';
 
 import type { SelectGroup, SelectOption, SelectProps } from './select.props';
 import Styled from './select.styles';
 
-const renderOptions = (
-  options: SelectOption[],
-  {
-    isSelected,
-    isDisabled,
-  }: {
-    isSelected(value: string): boolean;
-    isDisabled(value: string): boolean;
-  }
-): ReactElement[] => {
-  return options.map(({ value, label }) => {
-    const selected = isSelected(value);
-    const disabled = isDisabled(value);
-
-    return (
-      <option
-        key={value}
-        aria-selected={selected || undefined}
-        disabled={disabled}
-        aria-disabled={disabled || undefined}
-        value={value}
-      >
-        {label ?? value}
-      </option>
-    );
-  });
-};
-
 const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Select(
-  {
-    styles,
-    className,
-    options,
-    placeholder,
-    value,
-    defaultValue,
-    onChange,
-    isDisabled: _isDisabled,
-    isRequired,
-    isInvalid,
-    disabledOptions,
-    disabledGroups,
-    containerRef,
-    prefix,
-    suffix,
-    ...props
-  },
+  { styles, options, isDisabled: _isDisabled, disabledGroups, suffix, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
 
-  const [internalValue, handleChange] = useInputValue(
-    value === undefined ? defaultValue : value,
-    onChange,
-    (event) => event.target.value
-  );
-
-  const isOptionSelected = useCallback((optionValue: string) => optionValue === internalValue, [internalValue]);
-  const isOptionDisabled = useCallback(
-    (optionValue: string) => Boolean(isDisabled || disabledOptions?.includes(optionValue)),
-    [isDisabled, JSON.stringify(disabledOptions)]
-  );
   const isGroupDisabled = useCallback(
     (groupIndex: number) => Boolean(isDisabled || disabledGroups?.includes(groupIndex)),
     [isDisabled, JSON.stringify(disabledGroups)]
@@ -79,37 +24,23 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
 
   const isGroupSelect = useMemo(() => 'options' in options[0], [options[0]]);
 
-  const hasValue = useMemo(() => internalValue !== undefined, [internalValue]);
-
-  const { propsWithAria, propsWithoutAria } = useAriaProps(props);
-
   return (
-    <Styled.Select
-      ref={containerRef}
-      hasValue={hasValue}
-      isInvalid={isInvalid}
+    <Dropdown
+      ref={ref}
+      styles={{
+        Dropdown: Styled.Select,
+      }}
+      options={
+        isGroupSelect
+          ? (options as SelectGroup[]).flatMap(({ options: groupOptions }) => groupOptions)
+          : (options as SelectOption[])
+      }
       isDisabled={isDisabled}
-      aria-hidden
-      {...(propsWithoutAria as LabelHTMLAttributes<HTMLLabelElement>)}
+      suffix={suffix || <Styled.Icon as={styles?.Icon} />}
+      {...props}
     >
-      {prefix && <Affix>{prefix}</Affix>}
-
-      <Styled.Input
-        ref={ref}
-        value={internalValue ?? placeholder}
-        onChange={handleChange}
-        disabled={isDisabled}
-        aria-disabled={isDisabled || undefined}
-        aria-invalid={isInvalid || undefined}
-        {...propsWithAria}
-      >
-        {placeholder && (
-          <option disabled aria-disabled aria-selected={hasValue ? undefined : true} value={placeholder}>
-            {placeholder}
-          </option>
-        )}
-
-        {isGroupSelect
+      {({ isOptionSelected, isOptionDisabled }) => {
+        return isGroupSelect
           ? (options as SelectGroup[]).map(({ label, options: groupOptions }, groupIndex) => {
               const isOptionGroupDisabled = isGroupDisabled(groupIndex);
 
@@ -130,12 +61,30 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
           : renderOptions(options as SelectOption[], {
               isSelected: isOptionSelected,
               isDisabled: isOptionDisabled,
-            })}
-      </Styled.Input>
-
-      <Affix>{suffix || <Styled.Icon />}</Affix>
-    </Styled.Select>
+            });
+      }}
+    </Dropdown>
   );
 });
+
+const { children: _children, styles: _styles, options, ...dropdownPropTypes } = extract([Dropdown]);
+
+Select.propTypes = {
+  ...dropdownPropTypes,
+
+  options: PT.oneOfType([
+    options as Validator<SelectOption[]>,
+    PT.arrayOf(
+      PT.exact({
+        label: PT.string.isRequired,
+        options,
+      })
+    ).isRequired,
+  ]).isRequired as Validator<SelectProps['options']>,
+
+  disabledGroups: PT.arrayOf(PT.number.isRequired),
+
+  ...stylableComponent(Styled),
+};
 
 export default Select;
