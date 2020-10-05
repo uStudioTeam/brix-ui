@@ -1,8 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
-import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
+import { formComponent } from '@brix-ui/prop-types/common';
+import { extract } from '@brix-ui/prop-types/utils';
 
 import Input from '../_internal/input';
 
@@ -28,13 +29,14 @@ const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function 
   );
 });
 
+const { type: _type, inputMode: _inputMode, ...inputPropTypes } = extract([Input]);
+
 TextInput.propTypes = {
   type: PT.oneOf(['text', 'password', 'email', 'url', 'search']),
   inputMode: PT.oneOf(['text', 'password', 'email', 'url', 'search']),
 
-  containerRef: refProp<HTMLLabelElement>(),
-
-  ...stylableComponent(),
-};
+  ...inputPropTypes,
+  ...formComponent(PT.string),
+} as WeakValidationMap<TextInputProps>;
 
 export default TextInput;
