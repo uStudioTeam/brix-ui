@@ -33,9 +33,8 @@ export const renderOptions = (
         disabled={disabled}
         aria-disabled={disabled || undefined}
         value={value}
-      >
-        {label ?? value}
-      </option>
+        label={label ?? value}
+      />
     );
   });
 };
@@ -46,6 +45,7 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
     styles,
     options,
     placeholder,
+    id,
     value,
     defaultValue,
     onChange,
@@ -92,6 +92,8 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
 
       <Styled.Input
         ref={ref}
+        as={styles?.Input}
+        id={id}
         value={internalValue ?? placeholder}
         onChange={handleChange}
         disabled={isDisabled}
@@ -100,9 +102,13 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
         {...propsWithAria}
       >
         {placeholder && (
-          <option disabled aria-disabled aria-selected={hasValue ? undefined : true} value={placeholder}>
-            {placeholder}
-          </option>
+          <option
+            disabled
+            aria-disabled
+            aria-selected={hasValue ? undefined : true}
+            value={placeholder}
+            label={placeholder}
+          />
         )}
 
         {children({
