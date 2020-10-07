@@ -1,9 +1,11 @@
-import React, { Children, createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import React, { Children, createContext, useContext, useEffect, useMemo, useReducer, WeakValidationMap } from 'react';
+import PT from 'prop-types';
 
-import { intrinsicComponent, objectKeys, tryCall } from '@brix-ui/utils/functions';
+import { intrinsicComponent, objectKeys, objectValues, tryCall } from '@brix-ui/utils/functions';
 import useUpdateEffect from '@brix-ui/hooks/use-update-effect';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import type { Values } from '@brix-ui/utils/types';
+import { affixable, formComponent, stylableComponent } from '@brix-ui/prop-types/common';
 
 import { TimeMode, Granularity, Time } from './entity';
 import { TimePickerDispatcher } from './actions';
@@ -157,6 +159,15 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
     </Styled.TimePicker>
   );
 });
+
+TimePicker.propTypes = {
+  mode: PT.oneOf(objectValues(TimeMode)),
+  onModeChange: PT.func,
+
+  prefix: affixable.prefix,
+  ...formComponent(PT.string),
+  ...stylableComponent(Styled),
+} as WeakValidationMap<TimePickerProps>;
 
 export default TimePicker;
 

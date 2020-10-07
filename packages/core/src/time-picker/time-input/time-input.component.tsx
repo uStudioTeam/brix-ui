@@ -1,7 +1,9 @@
 import React, { useCallback, useMemo, useRef } from 'react';
+import PT from 'prop-types';
 import { useMergeRefs } from 'use-callback-ref';
 
-import { intrinsicComponent, minMax, toDouble } from '@brix-ui/utils/functions';
+import { intrinsicComponent, minMax, objectValues, toDouble } from '@brix-ui/utils/functions';
+import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
 import { Granularity } from '../entity';
 import { useFocusPass, useId, usePlaceholder } from '../hooks';
@@ -88,5 +90,16 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
     />
   );
 });
+
+TimeInput.propTypes = {
+  name: PT.oneOf(objectValues(Granularity)).isRequired,
+
+  min: PT.number,
+  max: PT.number,
+
+  containerRef: refProp<HTMLLabelElement>(),
+
+  ...stylableComponent(),
+};
 
 export default TimeInput;
