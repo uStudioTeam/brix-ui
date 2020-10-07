@@ -1,8 +1,11 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef, WeakValidationMap } from 'react';
+import PT from 'prop-types';
 import { useMergeRefs } from 'use-callback-ref';
 
-import { fillArray, intrinsicComponent, toDouble } from '@brix-ui/utils/functions';
+import { fillArray, intrinsicComponent, objectValues, toDouble } from '@brix-ui/utils/functions';
 import { Values } from '@brix-ui/utils/types';
+import { extract } from '@brix-ui/prop-types/utils';
+import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Dropdown, { DropdownProps, renderOptions } from '../../_internal/dropdown';
 import { Granularity } from '../entity';
@@ -122,5 +125,30 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
     </Dropdown>
   );
 });
+
+const {
+  styles: _styles,
+  children: _children,
+  value: _value,
+  defaultValue: _defaultValue,
+  onChange: _onChange,
+  isRequired: _isRequired,
+  isInvalid: _isInvalid,
+  prefix: _prefix,
+  suffix: _suffix,
+  options: _options,
+  disabledOptions: _disabledOptions,
+  ...dropdownPropTypes
+} = extract([Dropdown]);
+
+TimeSelect.propTypes = {
+  name: PT.oneOf(objectValues(Granularity)).isRequired,
+
+  options: PT.arrayOf(PT.string.isRequired),
+  disabledOptions: PT.oneOfType([PT.func, PT.arrayOf(PT.string.isRequired)]),
+
+  ...dropdownPropTypes,
+  ...stylableComponent(),
+} as WeakValidationMap<TimeSelectProps>;
 
 export default TimeSelect;
