@@ -63,11 +63,11 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
   const options = _options || useMemo(() => prepopulate(name, mode), [name, mode]);
   const formattedOptions = options.map((option) => ({
     value: option,
-    label: mode && `${option} ${mode.toLowerCase()}`,
+    label: mode && name === Granularity.Hour ? `${option} ${mode.toLowerCase()}` : undefined,
   }));
 
   const finalPlaceholder = usePlaceholder({ placeholder, name });
-  const finalId = useId(name, props.id);
+  const finalId = useId({ name, id: props.id });
 
   const handleChange = useCallback<NonNullable<DropdownProps['onChange']>>(
     (optionValue) => {

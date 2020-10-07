@@ -71,10 +71,18 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
 
   const dispatcher = useMemo(() => new TimePickerDispatcher(dispatch), []);
 
+  const childrenCount = Children.count(children);
+
+  const [internalMode, setInternalMode] = useUpdatedState(mode);
+
+  useEffect(() => {
+    tryCall(onModeChange, internalMode);
+  }, [internalMode]);
+
   useEffect(() => {
     const joinedValue = joinValue(state);
 
-    if (joinedValue.length >= 8) {
+    if (childrenCount * 3 - 1 + Number(Boolean(internalMode)) * 3 === joinedValue.length) {
       tryCall(onChange, joinedValue);
     }
   }, [state]);
@@ -91,12 +99,6 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
       }
     });
   }, [value]);
-
-  const [internalMode, setInternalMode] = useUpdatedState(mode);
-
-  useEffect(() => {
-    tryCall(onModeChange, internalMode);
-  }, [internalMode]);
 
   const { focusOn, passFocus, resetFocus } = useFocusControl([
     Granularity.Hour,
@@ -127,7 +129,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
               <>
                 {child}
 
-                {index !== Children.count(children) - 1 && <Styled.Divider as={styles?.Divider}>:</Styled.Divider>}
+                {index !== childrenCount - 1 && <Styled.Divider as={styles?.Divider}>:</Styled.Divider>}
               </>
             );
           })}
