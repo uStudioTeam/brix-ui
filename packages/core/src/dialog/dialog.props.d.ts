@@ -1,4 +1,5 @@
 import type { DialogHTMLAttributes, PropsWithChildren } from 'react';
+import { StyledComponent } from 'styled-components';
 
 import type {
   BreakpointsProps,
@@ -14,7 +15,9 @@ import { TextAlign } from '@brix-ui/types/typography';
 import { Dialog, Header, Title, CloseContainer, CloseButton, CloseIcon, Body } from './dialog.styles';
 
 interface Styled {
-  Dialog: typeof Dialog;
+  Dialog: typeof Dialog extends StyledComponent<any, infer T, infer O, infer A>
+    ? StyledComponent<'dialog', T, O, A>
+    : never;
   Header: typeof Header;
   Title: typeof Title;
   CloseContainer: typeof CloseContainer;
