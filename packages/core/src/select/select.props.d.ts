@@ -16,9 +16,7 @@ export interface SelectGroup {
   options: SelectOption[];
 }
 
-export interface SelectProps
-  extends Omit<DropdownProps, 'isReadonly' | 'styles' | 'children'>,
-    StylableComponent<Styled> {
+export interface SelectProps extends Omit<DropdownProps, 'styles' | 'children'>, StylableComponent<Styled> {
   options: SelectGroup[] | SelectOption[];
 
   /**
