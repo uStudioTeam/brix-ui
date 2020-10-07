@@ -1,4 +1,4 @@
-import { FocusEventHandler, KeyboardEventHandler, RefObject, useCallback, useMemo, useRef } from 'react';
+import { FocusEventHandler, KeyboardEventHandler, RefObject, useCallback, useRef } from 'react';
 
 import { minMax } from '@brix-ui/utils/functions';
 import useUpdateEffect from '@brix-ui/hooks/use-update-effect';
@@ -78,12 +78,9 @@ export const useFocusPass = <E extends HTMLElement, R extends RefObject<HTMLElem
     }
   }, [focusOn, name]);
 
-  return useMemo(
-    () => ({
-      keyPressCount: keyPressCountRef.current,
-      handleKeyDown,
-      handleFocus,
-    }),
-    [handleKeyDown]
-  );
+  return {
+    keyPressCount: keyPressCountRef.current,
+    handleKeyDown,
+    handleFocus,
+  };
 };

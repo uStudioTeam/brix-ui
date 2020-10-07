@@ -32,7 +32,7 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
   } = useTimePicker();
 
   const finalPlaceholder = usePlaceholder({ placeholder, name });
-  const finalId = useId(name, props.id);
+  const finalId = useId({ name, id: props.id });
 
   const { handleKeyDown, handleFocus } = useFocusPass({ value, name, ref: inputRef, focusOn, passFocus, resetFocus });
 
@@ -52,10 +52,10 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
   }, [props.min, props.max]);
 
   const handleChange = useCallback(
-    (inputValue: number) => {
+    (inputValue: string) => {
       dispatcher.setTime({
         name,
-        value: toDouble(minMax(min, inputValue, max)),
+        value: inputValue,
       });
     },
     [name]
@@ -77,7 +77,9 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
       isInvalid={isInvalid}
       value={value}
       onChange={handleChange}
-      getValue={({ target: { valueAsNumber } }) => (Number.isNaN(valueAsNumber) ? '' : valueAsNumber)}
+      getValue={({ target: { valueAsNumber } }) =>
+        Number.isNaN(valueAsNumber) ? '' : toDouble(minMax(min, valueAsNumber, max))
+      }
       inputProps={{
         onKeyDown: handleKeyDown,
         onFocus: handleFocus,
