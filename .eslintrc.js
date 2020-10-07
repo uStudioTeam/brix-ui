@@ -155,6 +155,7 @@ module.exports = {
         'unicorn/consistent-function-scoping': 'off',
 
         'sonarjs/no-duplicate-string': 'off',
+        'sonarjs/no-identical-functions': 'off',
 
         'immutable/no-let': 'off',
       },
