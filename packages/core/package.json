@@ -22,7 +22,8 @@
     "@brix-ui/types": "*",
     "@brix-ui/utils": "*",
     "honks": "^0.4.0",
-    "react-focus-lock": "^2.4.1"
+    "react-focus-lock": "^2.4.1",
+    "use-callback-ref": "^1.2.4"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",
