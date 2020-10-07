@@ -2,10 +2,11 @@ import type { SelectHTMLAttributes, Ref, ReactNode } from 'react';
 
 import type { Affixable, FormComponent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
-import { Dropdown } from './dropdown.styles';
+import { Dropdown, Input } from './dropdown.styles';
 
 interface Styled {
   Dropdown: typeof Dropdown;
+  Input: typeof Input;
 }
 
 export interface DropdownOption {
@@ -14,7 +15,7 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps
-  extends FormComponent<HTMLSelectElement, string>,
+  extends Omit<FormComponent<HTMLSelectElement, string>, 'isReadonly'>,
     Affixable,
     Omit<
       IntrinsicComponent<SelectHTMLAttributes<HTMLSelectElement>>,

@@ -37,8 +37,10 @@ const Input = intrinsicComponent<
     onChange,
     type,
     inputMode,
-    maxLength,
+    min,
+    max,
     minLength,
+    maxLength,
     name,
     id,
     pattern,
@@ -87,8 +89,10 @@ const Input = intrinsicComponent<
         readOnly={isReadonly}
         aria-readonly={isReadonly}
         aria-invalid={isInvalid}
-        maxLength={maxLength}
+        min={min}
+        max={max}
         minLength={minLength}
+        maxLength={maxLength}
         pattern={pattern}
         placeholder={placeholder}
         aria-valuemin={Number.isNaN(Number(inputProps.min)) ? undefined : Number(inputProps.min)}

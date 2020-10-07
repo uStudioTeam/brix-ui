@@ -5,7 +5,7 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { SelectProps } from '../../select';
 
-const Input = styled.select(
+export const Input = styled.select(
   () => css`
     appearance: none;
 
@@ -20,6 +20,7 @@ const Input = styled.select(
 
     cursor: pointer;
 
+    color: inherit;
     border: none;
     background: none;
     font: inherit;
@@ -39,15 +40,12 @@ export const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled
     display: flex;
     align-items: center;
 
+    color: ${hasValue ? 'var(--c-base-strong)' : 'var(--c-faint-strong-down)'};
     background-color: var(--c-base-weak);
 
     ${font.body.p};
 
     transition: all var(--transition-short);
-
-    ${Input} {
-      color: ${hasValue ? 'var(--c-base-strong)' : 'var(--c-faint-strong)'};
-    }
 
     &:hover {
       cursor: pointer;
