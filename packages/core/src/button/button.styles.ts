@@ -7,7 +7,7 @@ import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';
 
 const Button = styled.button<ButtonProps>(
-  ({ intent = 'base', appearance = 'contained', isRounded }) => css`
+  ({ intent = 'base', appearance = 'contained', isRounded, isDisabled }) => css`
     --height: 28px;
 
     height: var(--height);
@@ -20,14 +20,14 @@ const Button = styled.button<ButtonProps>(
     border: 1px solid transparent;
 
     ${font.body.p};
-    
+
     transform-origin: center;
-    
+
     &,
     & > * {
       line-height: 1;
     }
-    
+
     & > *:not(:last-child) {
       margin-right: 12px;
     }
@@ -37,17 +37,18 @@ const Button = styled.button<ButtonProps>(
     &:active {
       transform: scale(0.975);
     }
-    
-    &:not(:disabled) {
-      ${buttonMixin[appearance][intent]}};
-    }
 
-    &:disabled {
-      cursor: not-allowed;
-      user-select: none;
-      
-      ${disabledButtonMixin[appearance]};
-    }
+    ${isDisabled
+      ? css`
+          cursor: not-allowed;
+          user-select: none;
+
+          ${disabledButtonMixin[appearance]};
+        `
+      : css`
+      ${buttonMixin[appearance][intent]}};
+
+`}
   `
 );
 

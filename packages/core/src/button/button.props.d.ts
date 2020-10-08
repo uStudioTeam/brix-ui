@@ -8,6 +8,7 @@ export interface ButtonProps
     StylableComponent {
   intent?: Values<typeof Intent>;
   appearance?: 'contained' | 'outlined' | 'text' | 'faint';
+
   isRounded?: boolean;
   isDisabled?: boolean;
 }
