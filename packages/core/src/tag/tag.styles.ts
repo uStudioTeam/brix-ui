@@ -1,3 +1,4 @@
+import { size } from '@brix-ui/theme/mixin';
 import styled, { css } from 'styled-components';
 
 import { Color } from '@brix-ui/types/palette';
@@ -9,19 +10,16 @@ import Flex from '../flex';
 import type { TagProps } from './tag.props';
 
 export const CloseIcon = styled(Times)`
-  width: 0.5rem;
-  height: 0.5rem;
+  ${size('12px')};
+
+  position: relative;
+  top: 1px;
 `;
 
 export const CloseButton = styled.button`
   position: relative;
 
-  width: 24px;
-  height: 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${size('24px')};
 
   cursor: pointer;
 
