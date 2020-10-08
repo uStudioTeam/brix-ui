@@ -6,18 +6,21 @@ import { tryCall } from '@brix-ui/utils/functions';
 export default function useInputValue<V, E extends HTMLInputElement | HTMLSelectElement>(
   value: V,
   onChange: ((value: V, event: ChangeEvent<E>) => void) | undefined,
-  getValue: (event: ChangeEvent<E>) => V
+  getValue: (event: ChangeEvent<E>, prevValue: V) => V
 ): [internalValue: V, handleChange: ChangeEventHandler<E>] {
   const [internalValue, setInternalValue] = useUpdatedState(value);
 
   const handleChange = useCallback<ChangeEventHandler<E>>(
     (event) => {
-      const nextValue = getValue(event);
+      setInternalValue((prevValue) => {
+        const nextValue = getValue(event, prevValue);
 
-      setInternalValue(nextValue);
-      tryCall(onChange, nextValue, event);
+        tryCall(onChange, nextValue, event);
+
+        return nextValue;
+      });
     },
-    [onChange]
+    [setInternalValue, onChange]
   );
 
   return [internalValue, handleChange];

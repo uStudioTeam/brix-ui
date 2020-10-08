@@ -18,7 +18,7 @@ const Input = intrinsicComponent<
      * These are considered to be native input props including aria-* attributes
      */
     inputProps: InputHTMLAttributes<HTMLInputElement>;
-    getValue(event: ChangeEvent<HTMLInputElement>): string | number;
+    getValue(event: ChangeEvent<HTMLInputElement>, prevValue: string | number): string | number;
   },
   HTMLInputElement
 >(function Input(

@@ -79,9 +79,11 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
       isInvalid={isInvalid}
       value={value}
       onChange={handleChange}
-      getValue={({ target: { valueAsNumber } }) =>
-        Number.isNaN(valueAsNumber) ? '' : toDouble(minMax(min, valueAsNumber, max))
-      }
+      getValue={({ target: { valueAsNumber } }, prevValue) => {
+        return Number.isNaN(valueAsNumber)
+          ? prevValue
+          : toDouble(minMax(min, Number.parseInt(`${valueAsNumber}`, 10), max));
+      }}
       inputProps={{
         onKeyDown: handleKeyDown,
         onFocus: handleFocus,
