@@ -18,6 +18,8 @@ export const ModeSwitch = styled(Button)`
   align-items: center;
   justify-content: center;
 
+  color: var(--c-faint-strong-up);
+
   border: none;
 
   &:hover {
@@ -76,7 +78,7 @@ export const TimePicker = styled.div<TimePickerProps>(
       }
 
       ${ModeSwitch} {
-        color: var(--c-faint-strong);
+        color: var(--c-faint-strong-down);
         background-color: var(--c-faint-weak);
       }
     `}
