@@ -12,6 +12,12 @@ export default function useInputValue<V, E extends HTMLInputElement | HTMLSelect
 
   const handleChange = useCallback<ChangeEventHandler<E>>(
     (event) => {
+      /**
+       * This event can be gone de to unknown reason so we try to persist it
+       * @see ()[https://fb.me/react-event-pooling]
+       */
+      event.persist();
+
       setInternalValue((prevValue) => {
         const nextValue = getValue(event, prevValue);
 
