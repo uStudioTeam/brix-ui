@@ -1,6 +1,5 @@
-import { FocusEventHandler, KeyboardEventHandler, RefObject, useCallback, useRef } from 'react';
+import { FocusEventHandler, KeyboardEventHandler, RefObject, useCallback } from 'react';
 
-import { minMax } from '@brix-ui/utils/functions';
 import useUpdateEffect from '@brix-ui/hooks/use-update-effect';
 
 import { useFocusControl } from './use-focus-control';
@@ -20,24 +19,13 @@ export const useFocusPass = <E extends HTMLElement, R extends RefObject<HTMLElem
   passFocus: ReturnType<typeof useFocusControl>['passFocus'];
   resetFocus: ReturnType<typeof useFocusControl>['resetFocus'];
 }): {
-  keyPressCount: number;
   handleKeyDown: KeyboardEventHandler<E>;
   handleFocus: FocusEventHandler<E>;
 } => {
-  const keyPressCountRef = useRef(0);
-
   const handleKeyDown = useCallback<KeyboardEventHandler<E>>(
     ({ key, shiftKey }) => {
-      if (minMax(0, Number(key), 10)) {
-        keyPressCountRef.current += 1;
-
-        if (keyPressCountRef.current === 2 && value) {
-          setTimeout(() => passFocus(1), 0);
-        }
-      }
-
       if (key === 'Tab') {
-        return passFocus(shiftKey ? -1 : 1);
+        return passFocus(shiftKey ? -1 : 1, key);
       }
 
       if (!shiftKey) {
@@ -47,10 +35,10 @@ export const useFocusPass = <E extends HTMLElement, R extends RefObject<HTMLElem
           }
           case 'Enter':
           case 'ArrowRight': {
-            return passFocus(1);
+            return passFocus(1, key);
           }
           case 'ArrowLeft': {
-            return passFocus(-1);
+            return passFocus(-1, key);
           }
           default: {
             // eslint-disable-next-line no-useless-return
@@ -71,7 +59,7 @@ export const useFocusPass = <E extends HTMLElement, R extends RefObject<HTMLElem
       if (focusOn === name) {
         ref.current.focus();
       } else {
-        keyPressCountRef.current = 0;
+        // keyPressCountRef.current = 0;
 
         ref.current.blur();
       }
@@ -79,7 +67,6 @@ export const useFocusPass = <E extends HTMLElement, R extends RefObject<HTMLElem
   }, [focusOn, name]);
 
   return {
-    keyPressCount: keyPressCountRef.current,
     handleKeyDown,
     handleFocus,
   };
