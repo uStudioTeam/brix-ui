@@ -54,7 +54,7 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
     dispatcher,
   } = useTimePicker();
 
-  const { keyPressCount, handleKeyDown, handleFocus } = useFocusPass({
+  const { handleKeyDown, handleFocus } = useFocusPass({
     value,
     name,
     ref,
@@ -78,8 +78,6 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
         name,
         value: optionValue,
       });
-
-      passFocus(1);
     },
     [name]
   );
@@ -105,9 +103,15 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
       isInvalid={isInvalid}
       value={value}
       onChange={handleChange}
-      onKeyDown={handleKeyDown}
+      onKeyDown={(event) => {
+        // Failsafe for Firefox default behaviour
+        if (['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+          event.preventDefault();
+        }
+
+        handleKeyDown(event);
+      }}
       onFocus={handleFocus}
-      keyPressCount={keyPressCount}
       id={finalId}
       placeholder={finalPlaceholder}
       aria-label={value || finalPlaceholder}

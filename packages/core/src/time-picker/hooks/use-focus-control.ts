@@ -1,16 +1,16 @@
 import { useCallback, useState } from 'react';
 
-export const useFocusControl = <F extends string>(
-  focusOrder: F[]
-): {
+interface UseFocusControl<F> {
   focusOn: F | undefined;
   resetFocus(): void;
-  passFocus(nextPosition: number | string): void;
-} => {
-  const [focusOn, setFocusOn] = useState<F | undefined>();
+  passFocus(nextPosition: number | string, key?: string): void;
+}
 
-  const passFocus = useCallback(
-    (nextPosition: number | string) => {
+export const useFocusControl = <F extends string>(focusOrder: F[]): UseFocusControl<F> => {
+  const [focusOn, setFocusOn] = useState<UseFocusControl<F>['focusOn']>();
+
+  const passFocus = useCallback<UseFocusControl<F>['passFocus']>(
+    (nextPosition, key) => {
       setFocusOn((prevFocusOn) => {
         if (prevFocusOn === undefined) {
           return focusOrder[0];
@@ -22,12 +22,16 @@ export const useFocusControl = <F extends string>(
 
         switch (nextPosition) {
           case -1: {
-            return prevFocusOn === focusOrder[0] ? undefined : focusOrder[focusOrder.indexOf(prevFocusOn) - 1];
+            return prevFocusOn === focusOrder[0] ? prevFocusOn : focusOrder[focusOrder.indexOf(prevFocusOn) - 1];
           }
           case 1:
           default: {
+            if (key === 'Enter') {
+              return undefined;
+            }
+
             return prevFocusOn === focusOrder[focusOrder.length - 1]
-              ? undefined
+              ? prevFocusOn
               : focusOrder[focusOrder.indexOf(prevFocusOn) + 1];
           }
         }
@@ -36,7 +40,7 @@ export const useFocusControl = <F extends string>(
     [setFocusOn]
   );
 
-  const resetFocus = useCallback(() => {
+  const resetFocus = useCallback<UseFocusControl<F>['resetFocus']>(() => {
     setFocusOn(undefined);
   }, [setFocusOn]);
 

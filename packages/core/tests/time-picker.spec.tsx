@@ -35,7 +35,7 @@ describe('useFocusPass', () => {
   }) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    const { handleKeyDown, handleFocus, keyPressCount } = useFocusPass({
+    const { handleKeyDown, handleFocus } = useFocusPass({
       value,
       name: fixtureId,
       ref,
@@ -46,85 +46,9 @@ describe('useFocusPass', () => {
 
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div
-        ref={ref}
-        data-testid={fixtureId}
-        data-key-press-count={keyPressCount}
-        onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
-        onBlur={onBlur}
-      />
+      <div ref={ref} data-testid={fixtureId} onKeyDown={handleKeyDown} onFocus={handleFocus} onBlur={onBlur} />
     );
   };
-
-  describe('counting key presses', () => {
-    describe('when key is not numeric', () => {
-      it('should not count', () => {
-        const { getByTestId } = render(<Fixture />);
-        const fixture = getByTestId(fixtureId);
-
-        fireKeyDown(fixture, 'Escape');
-
-        expect(fixture.dataset.keyPressCount).toBe('0');
-      });
-    });
-
-    describe('when key is numeric', () => {
-      let result: RenderResult;
-      let fixture: HTMLElement;
-      const passFocus = jest.fn();
-
-      beforeEach(() => {
-        result = render(<Fixture passFocus={passFocus} />);
-        fixture = result.getByTestId(fixtureId);
-      });
-
-      describe('when count is below 2', () => {
-        it('should count', async () => {
-          fireKeyDown(fixture, '1');
-          result.rerender(<Fixture passFocus={passFocus} />);
-
-          await waitFor(() => {
-            expect(fixture.dataset.keyPressCount).toBe('1');
-          });
-        });
-      });
-
-      describe('when count is 2', () => {
-        describe('when value is still undefined', () => {
-          it('should not pass focus and not reset count', async () => {
-            fireKeyDown(fixture, '1');
-            result.rerender(<Fixture passFocus={passFocus} />);
-
-            fireKeyDown(fixture, '1');
-            result.rerender(<Fixture passFocus={passFocus} />);
-
-            await waitFor(() => {
-              expect(fixture.dataset.keyPressCount).toBe('2');
-            });
-            expect(passFocus).not.toHaveBeenCalled();
-          });
-        });
-
-        describe('when value is not undefined', () => {
-          it('should pass focus to the next element and reset count', async () => {
-            fireKeyDown(fixture, '1');
-            result.rerender(<Fixture passFocus={passFocus} value="01" />);
-
-            fireKeyDown(fixture, '1');
-            result.rerender(<Fixture passFocus={passFocus} focusOn="notFixture" />);
-
-            await waitFor(() => {
-              expect(passFocus).toHaveBeenCalledWith(1);
-            });
-            result.rerender(<Fixture passFocus={passFocus} focusOn="notFixture" />);
-
-            expect(fixture.dataset.keyPressCount).toBe('0');
-          });
-        });
-      });
-    });
-  });
 
   describe('moving focus', () => {
     describe('passing focus', () => {
@@ -227,13 +151,13 @@ describe('useFocusControl', () => {
     describe('when called with a number', () => {
       describe('when number is -1', () => {
         describe('when previous focus value is the first element in the order', () => {
-          it('should reset focus', () => {
+          it('should stay on that element', () => {
             act(() => {
               hook.result.current.passFocus('1');
               hook.result.current.passFocus(-1);
             });
 
-            expect(hook.result.current.focusOn).toBe(undefined);
+            expect(hook.result.current.focusOn).toBe('1');
           });
         });
 
@@ -251,13 +175,13 @@ describe('useFocusControl', () => {
 
       describe('when number is 1', () => {
         describe('when previous focus value is the last element in the order', () => {
-          it('should reset focus', () => {
+          it('should stay on that element', () => {
             act(() => {
               hook.result.current.passFocus('3');
               hook.result.current.passFocus(1);
             });
 
-            expect(hook.result.current.focusOn).toBe(undefined);
+            expect(hook.result.current.focusOn).toBe('3');
           });
         });
 
@@ -511,14 +435,14 @@ describe('<TimePicker />', () => {
 
   describe('defaultValue', () => {
     it('should format and apply `defaultValue`', async () => {
-      const { result, waitFor } = renderWithProps({
+      const { result, waitFor: hookWaitFor } = renderWithProps({
         defaultValue: '12:28:54 AM',
         mode: 'AM',
       });
 
       const { hour, minute, second } = result.current;
 
-      await waitFor(() => {
+      await hookWaitFor(() => {
         expect(hour).toBe('12');
         expect(minute).toBe('28');
         expect(second).toBe('54');

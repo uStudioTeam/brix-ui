@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { hidden } from '@brix-ui/theme/mixin';
@@ -12,24 +12,6 @@ export const Input = styled(DropdownStyles.Input)`
   z-index: 1;
 `;
 
-const pulse = keyframes`
-  0% {
-    opacity: 1;
-  }
-  
-  49% {
-    opacity: 1;
-  }
-  
-  51% {
-    opacity: 0;
-  }
-  
-  100% {
-    opacity: 0;
-  }
-`;
-
 const Value = styled(Text).attrs(() => ({
   forwardedAs: 'span',
 }))`
@@ -38,8 +20,8 @@ const Value = styled(Text).attrs(() => ({
   width: auto;
 `;
 
-export const TimeSelect = styled(DropdownStyles.Dropdown)<{ keyPressCount: number }>(
-  ({ keyPressCount, isDisabled, hasValue }) => css`
+export const TimeSelect = styled(DropdownStyles.Dropdown)(
+  ({ isDisabled, hasValue }) => css`
     position: relative;
 
     width: auto;
@@ -48,28 +30,8 @@ export const TimeSelect = styled(DropdownStyles.Dropdown)<{ keyPressCount: numbe
 
     border-radius: 2px;
 
-    &:before {
-      height: 18px;
-      width: 1px;
-
-      position: absolute;
-      left: ${keyPressCount + 1 === 2 ? '18px' : '8px'};
-      top: 50%;
-
-      opacity: 1;
-      background-color: var(--c-base-strong);
-
-      transform: translateY(-50%);
-
-      animation: ${pulse} 1s infinite linear;
-    }
-
     &:focus-within {
       background-color: var(--c-faint-weak);
-
-      &:before {
-        content: '';
-      }
     }
 
     ${isDisabled &&

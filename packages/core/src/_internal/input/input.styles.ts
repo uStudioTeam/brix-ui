@@ -7,13 +7,14 @@ import type { InputProps } from './input.props';
 
 export const Input = styled.input(
   () => css`
-    -moz-appearance: textfield;
     -webkit-appearance: none;
+    -moz-appearance: textfield;
 
     width: 100%;
 
     &::placeholder {
       color: var(--c-faint-strong-down);
+      opacity: 1;
 
       transition: opacity var(--transition-short);
     }
