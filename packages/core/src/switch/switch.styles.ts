@@ -90,8 +90,7 @@ const Track = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolat
       ${value
         ? // Checked
           css`
-            background-color: var(--c-accent-strong);
-            border-color: var(--c-accent-strong);
+            ${shapeColor('accent-strong')};
 
             ${isInvalid &&
             css`
@@ -106,7 +105,7 @@ const Track = ({ value, isDisabled, isInvalid }: Props): FlattenSimpleInterpolat
         : // Unchecked
           css`
             background-color: var(--c-base-weak);
-            border-color: var(--c-accent-strong);
+            border-color: var(--c-faint-strong-down);
 
             ${isInvalid &&
             css`
