@@ -1,59 +1,56 @@
-import styled, { css, Keyframes, keyframes } from 'styled-components';
-import { applyDisplayNames } from '@ustudio-ui/utils/functions';
+import styled, { css, keyframes } from 'styled-components';
+
+import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { size } from '@brix-ui/theme/mixin';
+import { Intent } from '@brix-ui/types/component';
 
 import type { StatusProps } from './status.props';
 
-const parseBackgroundColor = (intent: StatusProps['intent'], isWeak: StatusProps['isWeak']): string => {
-  return `${intent}-${isWeak ? 'weak' : 'strong'}-up`;
-};
-
-const parseBorderColor = (intent: StatusProps['intent'], isWeak: StatusProps['isWeak']): string => {
-  return `${intent}-weak-${isWeak ? 'down' : 'up'}`;
-};
-
-const parseAnimation = (animation: StatusProps['animation']): Keyframes => {
-  switch (animation) {
-    case 'pulsing':
-      return keyframes`
-                0% {
-                  transform: scale(1);
-                }
-                50% {
-                  transform: scale(1.2);
-                  border-width: 0;
-                }
-                100% {
-                  transform: scale(1);
-                }`;
-
-    case 'saturating':
-      return keyframes`
-                0% {
-                  opacity: 1;
-                }
-                50% {
-                  opacity: 0.5;
-                }
-                100% {
-                  opacity: 1;
-                }`;
-    case 'none':
-    default:
-      return keyframes``;
+const pulse = keyframes`
+  0%,
+  100% {
+    background-color: var(--border-color);
   }
-};
+  
+  50% {
+    background-color: transparent;
+  }
+`;
 
-const Status = styled.div<Omit<StatusProps, 'animation'> & { $animation: StatusProps['animation'] }>(
-  ({ intent = 'accent', isWeak, $animation = 'none', animationDuration = 500 }) => css`
-    width: 10px;
-    height: 10px;
+const Status = styled.span<StatusProps>(
+  ({ intent = Intent.Accent, isStatic, hasBorder = true }) => css`
+    --size: 16px;
+    --border-width: 4px;
+    --border-color: var(--c-${intent}-weak-down);
 
-    background: var(--c-${parseBackgroundColor(intent, isWeak)});
+    position: relative;
 
-    border: 2px solid var(--c-${parseBorderColor(intent, isWeak)});
-    border-radius: 10px;
+    ${size('var(--size)')};
 
-    animation: ${parseAnimation($animation)} ${animationDuration}ms infinite;
+    display: inline-block;
+
+    background-color: ${hasBorder && 'var(--border-color)'};
+
+    animation: ${!isStatic && hasBorder && pulse} 2s infinite;
+
+    &,
+    &:after {
+      border-radius: 50%;
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      ${size('calc(var(--size) - var(--border-width) * 2)')};
+
+      background-color: var(--c-${intent}-strong);
+
+      transform: translate(-50%, -50%);
+    }
   `
 );
 
