@@ -7,7 +7,7 @@ import { intentable, stylableComponent } from '@brix-ui/prop-types/common';
 import type { StatusProps } from './status.props';
 import Styled from './status.styles';
 
-const Status = intrinsicComponent<StatusProps, HTMLDivElement>(function Status(props, ref) {
+const Status = intrinsicComponent<StatusProps, HTMLSpanElement>(function Status(props, ref) {
   return <Styled.Status ref={ref} {...props} />;
 });
 
