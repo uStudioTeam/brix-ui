@@ -135,7 +135,7 @@ describe('<Button />', () => {
   });
 
   describe('when values for props are not provided', () => {
-    it('should render button with default styles - contained appearance, base intent, isDisables: false', () => {
+    it('should render button with default styles - contained appearance, base intent, isDisabled: false', () => {
       const { getByTestId } = renderWithProps({});
 
       expect(getByTestId(buttonId)).toHaveStyleRule('color', getColorVariable(Color.BaseWeak), modifier);
