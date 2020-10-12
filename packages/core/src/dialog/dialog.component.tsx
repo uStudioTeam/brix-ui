@@ -16,6 +16,7 @@ import {
 } from '@brix-ui/prop-types/common';
 import { TextAlign } from '@brix-ui/types/typography';
 
+import CloseButton from '../_internal/close-button';
 import Portal from '../portal';
 
 import type { DialogBreakpointProps, DialogProps } from './dialog.props';
@@ -105,11 +106,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
             </Styled.Title>
           )}
 
-          <Styled.CloseContainer as={styles?.CloseContainer}>
-            <Styled.CloseButton as={styles?.CloseButton} type="button" onClick={() => toggle(false)}>
-              <Styled.CloseIcon as={styles?.CloseIcon} />
-            </Styled.CloseButton>
-          </Styled.CloseContainer>
+          <CloseButton intent="critical" onClick={() => toggle(false)} />
         </Styled.Header>
 
         <Styled.Body as={styles?.Body}>{children}</Styled.Body>
