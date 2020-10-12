@@ -1,9 +1,11 @@
-import type { Values } from '@brix-ui/utils/types';
-import { Intent } from '@brix-ui/types/component';
+import type { HTMLAttributes } from 'react';
 
-export interface StatusProps {
-  intent?: Exclude<Values<typeof Intent>, 'base'>;
+import type { Intentable, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
+export interface StatusProps
+  extends IntrinsicComponent<HTMLAttributes<HTMLSpanElement>>,
+    Intentable,
+    StylableComponent {
   isStatic?: boolean;
   hasBorder?: boolean;
 }

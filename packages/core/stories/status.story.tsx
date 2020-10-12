@@ -1,6 +1,9 @@
 import React from 'react';
 import type { Story } from '@storybook/react';
 
+import { Intent } from '@brix-ui/types/component';
+import { objectValues } from '@brix-ui/utils/functions';
+
 import Status, { StatusProps } from '../src/status';
 
 export default {
@@ -11,7 +14,7 @@ export default {
     intent: {
       control: {
         type: 'inline-radio',
-        options: ['success', 'critical', 'accent'],
+        options: objectValues(Intent),
       },
     },
     isStatic: {
