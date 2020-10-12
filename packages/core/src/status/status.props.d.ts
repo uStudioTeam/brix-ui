@@ -1,9 +1,9 @@
-import { Values } from '@ustudio-ui/utils/types';
-import { Intent } from '@ustudio-ui/types/css';
+import type { Values } from '@brix-ui/utils/types';
+import { Intent } from '@brix-ui/types/component';
 
 export interface StatusProps {
-  intent: Values<typeof Intent>;
-  isWeak?: boolean;
-  animation?: 'pulsing' | 'saturating' | 'none';
-  animationDuration?: number;
+  intent?: Exclude<Values<typeof Intent>, 'base'>;
+
+  isStatic?: boolean;
+  hasBorder?: boolean;
 }

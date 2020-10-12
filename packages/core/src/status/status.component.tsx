@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { intrinsicComponent } from '@ustudio-ui/utils/functions';
+import { intrinsicComponent } from '@brix-ui/utils/functions';
 
-import { StatusProps } from './status.props';
-
+import type { StatusProps } from './status.props';
 import Styled from './status.styles';
 
-const Status = intrinsicComponent<StatusProps, HTMLDivElement>(function Status({ animation, ...props }, ref) {
-  return <Styled.Status ref={ref} $animation={animation} {...props} />;
+const Status = intrinsicComponent<StatusProps, HTMLDivElement>(function Status(props, ref) {
+  return <Styled.Status ref={ref} {...props} />;
 });
 
 export default Status;
