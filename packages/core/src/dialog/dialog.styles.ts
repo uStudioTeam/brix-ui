@@ -1,12 +1,10 @@
-import Times from '@brix-ui/icons/times';
 import styled, { css } from 'styled-components';
 import FocusLock from 'react-focus-lock';
 import type { ReactFocusLockProps } from 'react-focus-lock/interfaces';
 
-import { font, shadow, size } from '@brix-ui/theme/mixin';
+import { font, shadow } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
-import Button from '../button';
 import Flex from '../flex';
 import Text from '../text';
 
@@ -88,49 +86,6 @@ export const Title = styled(Text).attrs(() => ({
   transition: all var(--transition-short);
 `;
 
-export const CloseButton = styled(Button).attrs(() => ({
-  isRounded: true,
-  appearance: 'faint',
-  intent: 'critical',
-}))`
-  ${size('12px')};
-
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: all var(--transition-short);
-`;
-
-export const CloseContainer = styled(Flex).attrs(() => ({
-  forwardedAs: 'label',
-  align: 'center',
-}))`
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  ${size('28px')};
-
-  transition: all var(--transition-short);
-
-  cursor: pointer;
-
-  &:active {
-    ${CloseButton} {
-      transform: scale(0.875);
-    }
-  }
-`;
-
-export const CloseIcon = styled(Times)`
-  ${size('8px')};
-
-  transition: all var(--transition-short);
-`;
-
 export const Body = styled(Flex).attrs(() => ({
   forwardedAs: 'article',
   direction: 'column',
@@ -146,6 +101,6 @@ export const Body = styled(Flex).attrs(() => ({
   transition: all var(--transition-short);
 `;
 
-const Styled = applyDisplayNames({ Dialog, Header, Title, CloseContainer, CloseButton, CloseIcon, Body });
+const Styled = applyDisplayNames({ Dialog, Header, Title, Body });
 
 export default Styled;
