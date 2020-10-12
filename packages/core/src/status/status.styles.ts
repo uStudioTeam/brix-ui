@@ -17,8 +17,10 @@ const pulse = keyframes`
   }
 `;
 
-const Status = styled.span<StatusProps>(
-  ({ intent = Intent.Accent, isStatic, hasBorder = true }) => css`
+const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, isStatic, hasBorder = true }) => {
+  const intent = _intent === Intent.Base ? 'faint' : _intent;
+
+  return css`
     --size: 16px;
     --border-width: 4px;
     --border-color: var(--c-${intent}-weak-down);
@@ -51,8 +53,8 @@ const Status = styled.span<StatusProps>(
 
       transform: translate(-50%, -50%);
     }
-  `
-);
+  `;
+});
 
 const Styled = applyDisplayNames({ Status });
 
