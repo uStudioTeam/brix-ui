@@ -44,11 +44,14 @@ const Button = styled.button<ButtonProps>(
           user-select: none;
 
           ${disabledButtonMixin[appearance]};
+
+          &:active {
+            transform: scale(1);
+          }
         `
       : css`
-      ${buttonMixin[appearance][intent]}};
-
-`}
+          ${buttonMixin[appearance][intent]}};
+        `}
   `
 );
 

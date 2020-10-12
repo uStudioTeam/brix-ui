@@ -16,7 +16,7 @@ const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Butto
   const isDisabled = useDisabled(_isDisabled);
 
   return (
-    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} {...props}>
+    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} isDisabled={isDisabled} {...props}>
       {children}
     </Styled.Button>
   );
