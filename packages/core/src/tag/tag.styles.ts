@@ -21,6 +21,10 @@ export const CloseButton = styled.button`
 
   ${size('24px')};
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
 
   transition: all 0.2s;
