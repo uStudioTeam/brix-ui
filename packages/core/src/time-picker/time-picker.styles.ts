@@ -8,7 +8,7 @@ import Text from '../text';
 
 import type { TimePickerProps } from './time-picker.props';
 
-export const ModeSwitch = styled(Button)`
+const ModeSwitch = styled(Button)`
   width: 28px;
   height: 26px;
 
@@ -27,11 +27,11 @@ export const ModeSwitch = styled(Button)`
   }
 `;
 
-export const Mode = styled(Text).attrs(() => ({
+const Mode = styled(Text).attrs(() => ({
   forwardedAs: 'span',
 }))``;
 
-export const TimePicker = styled.div<TimePickerProps>(
+const TimePicker = styled.div<TimePickerProps>(
   ({ isDisabled, isInvalid }) => css`
     height: 28px;
     width: auto;
@@ -85,7 +85,7 @@ export const TimePicker = styled.div<TimePickerProps>(
   `
 );
 
-export const InputsContainer = styled.div`
+const InputsContainer = styled.div`
   height: 28px;
 
   padding: 2px 0 4px;
@@ -99,7 +99,7 @@ export const InputsContainer = styled.div`
   }
 `;
 
-export const Divider = styled(Text).attrs(() => ({
+const Divider = styled(Text).attrs(() => ({
   forwardedAs: 'span',
 }))`
   margin-top: -4px;

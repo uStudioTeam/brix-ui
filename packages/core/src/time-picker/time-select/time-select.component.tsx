@@ -8,6 +8,7 @@ import { extract } from '@brix-ui/prop-types/utils';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Dropdown, { DropdownProps, renderOptions } from '../../_internal/dropdown';
+
 import { Granularity } from '../entity';
 import { useFocusPass, useId, usePlaceholder } from '../hooks';
 import { useTimePicker } from '../time-picker.component';
@@ -36,7 +37,7 @@ const prepopulate = (granularity: Values<typeof Granularity>, mode: TimePickerPr
 };
 
 const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(function TimeSelect(
-  { styles, name, options: _options, isDisabled: localDisabled, disabledOptions, placeholder, ...props },
+  { name, options: _options, isDisabled: localDisabled, disabledOptions, placeholder, ...props },
   externalRef
 ) {
   const internalRef = useRef<HTMLSelectElement>(null);
@@ -83,15 +84,8 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
   );
 
   return (
-    <Dropdown
+    <Styled.TimeSelect
       ref={ref}
-      // Had to use it here for proper props' types merging
-      // @ts-ignore
-      as={styles?.TimeSelect || Styled.TimeSelect}
-      styles={{
-        Dropdown: styles?.TimeSelect || Styled.TimeSelect,
-        Input: styles?.Input || Styled.Input,
-      }}
       prefix={
         <Styled.Value align="center" lineHeightCompensation>
           {value || finalPlaceholder}
@@ -101,6 +95,7 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
       isDisabled={isDisabled}
       isRequired={isRequired}
       isInvalid={isInvalid}
+      hasValue={value !== undefined}
       value={value}
       onChange={handleChange}
       onKeyDown={(event) => {
@@ -126,12 +121,11 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
           },
         });
       }}
-    </Dropdown>
+    </Styled.TimeSelect>
   );
 });
 
 const {
-  styles: _styles,
   children: _children,
   value: _value,
   defaultValue: _defaultValue,

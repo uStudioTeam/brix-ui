@@ -12,7 +12,7 @@ import type { SelectGroup, SelectOption, SelectProps } from './select.props';
 import Styled from './select.styles';
 
 const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Select(
-  { styles, options, isDisabled: _isDisabled, disabledGroups, suffix, ...props },
+  { options, isDisabled: _isDisabled, disabledGroups, suffix, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -25,18 +25,15 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
   const isGroupSelect = useMemo(() => 'options' in options[0], [options[0]]);
 
   return (
-    <Dropdown
+    <Styled.Select
       ref={ref}
-      styles={{
-        Dropdown: Styled.Select,
-      }}
       options={
         isGroupSelect
           ? (options as SelectGroup[]).flatMap(({ options: groupOptions }) => groupOptions)
           : (options as SelectOption[])
       }
       isDisabled={isDisabled}
-      suffix={suffix || <Styled.Icon as={styles?.Icon} />}
+      suffix={suffix || <Styled.Icon />}
       {...props}
     >
       {({ isOptionSelected, isOptionDisabled }) => {
@@ -63,11 +60,11 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
               isDisabled: isOptionDisabled,
             });
       }}
-    </Dropdown>
+    </Styled.Select>
   );
 });
 
-const { children: _children, styles: _styles, options, ...dropdownPropTypes } = extract([Dropdown]);
+const { children: _children, options, ...dropdownPropTypes } = extract([Dropdown]);
 
 Select.propTypes = {
   ...dropdownPropTypes,

@@ -1,36 +1,36 @@
-import styled, { css } from 'styled-components';
+import styled, { css, Keyframes } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { SpinnerProps } from './spinner.props';
 
-export const Spinner = styled.div`
+const Spinner = styled.div`
   position: relative;
 
   width: 100%;
   height: 100%;
 `;
 
-export const Blade = styled.div<{
+const Blade = styled.div<{
   $width: string;
   $height: string;
   $color: SpinnerProps['color'];
+  $animation: Keyframes;
 
-  animation: string;
   animationDuration: number;
-}>(({ theme, $width, $height, $color = 'faint-strong', animation, animationDuration }) => {
+}>(({ theme, $width: width, $height: height, $color = 'faint-strong', $animation: animation, animationDuration }) => {
   const color = theme.colorHelper.parseColor($color);
 
   // `width` and `height` are swapped to represent themselves more intuitively to the user
   return css`
-    width: ${$height};
-    height: ${$width};
+    width: ${height};
+    height: ${width};
 
     position: absolute;
     left: 50%;
     top: 50%;
 
-    border-radius: ${Math.min(Number.parseFloat($width), Number.parseFloat($height)) / 2}px;
+    border-radius: ${Math.min(Number.parseFloat(width), Number.parseFloat(height)) / 2}px;
     background-color: ${color};
 
     animation: ${animation} ${animationDuration}ms infinite;

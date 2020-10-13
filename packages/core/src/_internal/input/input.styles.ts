@@ -5,7 +5,7 @@ import { shadow, font } from '@brix-ui/theme/mixin';
 
 import type { InputProps } from './input.props';
 
-export const Input = styled.input(
+const Input = styled.input(
   () => css`
     -webkit-appearance: none;
     -moz-appearance: textfield;
@@ -27,7 +27,7 @@ export const Input = styled.input(
   `
 );
 
-export const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 'isReadonly' | 'isInvalid'>>(
+const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 'isReadonly' | 'isInvalid'>>(
   ({ isDisabled, isReadonly, isInvalid }) => css`
     --affix-indent: 8px;
 

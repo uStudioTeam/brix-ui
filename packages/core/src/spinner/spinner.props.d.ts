@@ -2,17 +2,7 @@ import type { HTMLAttributes } from 'react';
 
 import type { Delayable, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 
-import { Spinner, Blade } from './spinner.styles';
-
-interface Styled {
-  Spinner: typeof Spinner;
-  Blade: typeof Blade;
-}
-
-export interface SpinnerProps
-  extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
-    StylableComponent<Styled>,
-    Delayable {
+export interface SpinnerProps extends IntrinsicComponent<HTMLAttributes<HTMLDivElement>>, StylableComponent, Delayable {
   blades?: number;
   bladeSize?:
     | string

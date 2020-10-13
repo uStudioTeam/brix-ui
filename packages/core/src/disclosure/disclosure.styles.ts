@@ -8,7 +8,7 @@ import Flex from '../flex';
 
 import type { DisclosureProps } from './disclosure.props';
 
-export const Container = styled(Flex)<{
+const Container = styled(Flex)<{
   isOpen: DisclosureProps['isOpen'];
   isDisabled: DisclosureProps['isDisabled'];
 }>(
@@ -44,7 +44,7 @@ export const Container = styled(Flex)<{
   `
 );
 
-export const Icon = styled(Chevron)`
+const Icon = styled(Chevron)`
   width: 10px;
   height: 6px;
 
@@ -53,7 +53,7 @@ export const Icon = styled(Chevron)`
   transition: transform var(--transition-short);
 `;
 
-export const Summary = styled.button<{
+const Summary = styled.button<{
   isOpen: NonNullable<DisclosureProps['isOpen']>;
 }>(
   ({ isOpen }) => css`
@@ -110,7 +110,7 @@ export const Summary = styled.button<{
   `
 );
 
-export const Details = styled.div<{
+const Details = styled.div<{
   transitionSpeed?: number;
 }>(
   ({ transitionSpeed }) => css`

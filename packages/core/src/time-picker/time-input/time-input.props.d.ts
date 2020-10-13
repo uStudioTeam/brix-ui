@@ -7,7 +7,6 @@ export interface TimeInputProps
       InputProps<number>,
       | 'type'
       | 'inputMode'
-      | 'styles'
       | 'value'
       | 'defaultValue'
       | 'onChange'

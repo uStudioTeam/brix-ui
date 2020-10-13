@@ -4,11 +4,11 @@ import { shadow } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import Chevron from '@brix-ui/icons/chevron';
 
-import DropdownStyles from '../_internal/dropdown/dropdown.styles';
+import Dropdown from '../_internal/dropdown';
 
 import type { SelectProps } from './select.props';
 
-export const Icon = styled(Chevron)(
+const Icon = styled(Chevron)(
   () => css`
     width: 10px;
     height: 10px;
@@ -19,11 +19,7 @@ export const Icon = styled(Chevron)(
   `
 );
 
-const { Input } = DropdownStyles;
-
-export const Select = styled(DropdownStyles.Dropdown)<
-  Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }
->(
+const Select = styled(Dropdown)<Pick<SelectProps, 'isInvalid' | 'isDisabled'>>(
   ({ isInvalid, isDisabled }) => css`
     border: 1px solid var(--c-faint-strong-down);
     border-radius: 2px;
@@ -56,6 +52,6 @@ export const Select = styled(DropdownStyles.Dropdown)<
   `
 );
 
-const Styled = applyDisplayNames({ Select, Input, Icon });
+const Styled = applyDisplayNames({ Select, Icon });
 
 export default Styled;

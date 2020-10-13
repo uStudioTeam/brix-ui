@@ -4,18 +4,12 @@ import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/compo
 import type { Values } from '@brix-ui/utils/types';
 
 import { Align } from '@brix-ui/types/css';
-import { Badge, BadgeContainer } from './badge.styles';
-
-interface Styled {
-  Badge: typeof Badge;
-  BadgeContainer: typeof BadgeContainer;
-}
 
 type BadgePosition = Values<Pick<typeof Align, 'start' | 'end' | 'center'>>;
 
 export interface BadgeProps
   extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
-    StylableComponent<Styled> {
+    StylableComponent {
   color?: string;
   backgroundColor?: string;
 

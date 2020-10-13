@@ -6,7 +6,7 @@ import Check from '@brix-ui/icons/check';
 
 import type { CheckboxProps } from './checkbox.props';
 
-export const CheckIcon = styled(Check)`
+const CheckIcon = styled(Check)`
   width: 14px;
   height: 14px;
 
@@ -51,7 +51,7 @@ const checkedValidity = (color: 'accent' | 'critical') => {
   `;
 };
 
-export const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' | 'isInvalid'>>(
+const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' | 'isInvalid'>>(
   ({ value, isDisabled, isInvalid }) => css`
     position: relative;
 
