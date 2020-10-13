@@ -28,13 +28,17 @@ export default {
 
   args: {
     intent: Intent.Base,
+    showStatus: true,
   },
 };
 
 export const Basic: Story<AlertProps> = (args) => {
   return (
     <Alert {...args} onClose={args.onClose && (() => {})}>
-      <Text lineHeightCompensation>{capitalize(args.intent as string)} alert message</Text>
+      <Text lineHeightCompensation>
+        Very very very long{capitalize(args.intent as string)} alert message describing something important to the user
+        inline
+      </Text>
     </Alert>
   );
 };

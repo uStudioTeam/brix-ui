@@ -12,7 +12,7 @@ const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showSta
   return css`
     position: relative;
 
-    padding: 16px;
+    padding: 16px 48px 16px 16px;
 
     align-items: center;
 
@@ -24,7 +24,12 @@ const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showSta
     ${showStatus &&
     css`
       & > *:first-child {
+        position: relative;
+        top: 2px;
+
         margin-right: 1rem;
+
+        align-self: start;
       }
     `}
 
@@ -33,10 +38,8 @@ const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showSta
       & > *:last-child {
         --icon-size: 16px;
 
-        top: 50%;
+        top: 12px;
         right: 14px;
-
-        transform: translateY(-50%);
       }
     `}
   `;
