@@ -66,7 +66,7 @@ describe('useFocusPass', () => {
           it('should pass focus to the element before current', () => {
             fireKeyDown(fixture, 'Tab', true);
 
-            expect(passFocus).toHaveBeenCalledWith(-1);
+            expect(passFocus).toHaveBeenCalledWith(-1, 'Tab');
           });
         });
 
@@ -74,7 +74,7 @@ describe('useFocusPass', () => {
           it('should pass focus to the element after current', () => {
             fireKeyDown(fixture, 'Tab', false);
 
-            expect(passFocus).toHaveBeenCalledWith(1);
+            expect(passFocus).toHaveBeenCalledWith(1, 'Tab');
           });
         });
       });
@@ -83,11 +83,11 @@ describe('useFocusPass', () => {
         it('should pass focus to the element after current', () => {
           fireKeyDown(fixture, 'Enter');
 
-          expect(passFocus).toHaveBeenCalledWith(1);
+          expect(passFocus).toHaveBeenCalledWith(1, 'Enter');
 
           fireKeyDown(fixture, 'ArrowRight');
 
-          expect(passFocus).toHaveBeenCalledWith(1);
+          expect(passFocus).toHaveBeenCalledWith(1, 'ArrowRight');
         });
       });
 
@@ -95,7 +95,7 @@ describe('useFocusPass', () => {
         it('should pass focus to the element before current', () => {
           fireKeyDown(fixture, 'ArrowLeft');
 
-          expect(passFocus).toHaveBeenCalledWith(-1);
+          expect(passFocus).toHaveBeenCalledWith(-1, 'ArrowLeft');
         });
       });
     });
@@ -462,7 +462,7 @@ describe('<TimePicker />', () => {
 
       rerender(
         <ThemeProvider>
-          <TimePicker mode="PM" />
+          <TimePicker onModeChange={onModeChange} mode="PM" />
         </ThemeProvider>
       );
 

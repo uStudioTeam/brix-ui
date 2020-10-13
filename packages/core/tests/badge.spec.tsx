@@ -19,7 +19,6 @@ const renderWithProps = (props: BadgeProps = {}, children: ReactNode = <div />) 
   );
 };
 
-// @ToDo: add `transform: translate` into position tests
 describe('<Badge />', () => {
   beforeEach(() => {
     matchMedia();
@@ -31,7 +30,9 @@ describe('<Badge />', () => {
         const { getByTestId } = renderWithProps();
 
         ['position', 'top', 'left', 'transform'].forEach((property) => {
-          expect(getByTestId(badgeId)).toHaveStyleRule(property, expect.any(String));
+          expect(getByTestId(badgeId)).toHaveStyleRule(property, expect.any(String), {
+            modifier: '[data-has-children]',
+          });
         });
       });
     });
@@ -52,7 +53,9 @@ describe('<Badge />', () => {
       it('should have property left with value of 0', () => {
         const { getByTestId } = renderWithProps({ horizontalPosition: 'start' });
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('left', '0');
+        expect(getByTestId(badgeId)).toHaveStyleRule('left', '0', {
+          modifier: '[data-has-children]',
+        });
       });
     });
 
@@ -60,7 +63,9 @@ describe('<Badge />', () => {
       it('should have property left with value of 50%', () => {
         const { getByTestId } = renderWithProps({ horizontalPosition: 'center' });
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('left', '50%');
+        expect(getByTestId(badgeId)).toHaveStyleRule('left', '50%', {
+          modifier: '[data-has-children]',
+        });
       });
     });
 
@@ -68,7 +73,9 @@ describe('<Badge />', () => {
       it('should have property left with value of 100%', () => {
         const { getByTestId } = renderWithProps({ horizontalPosition: 'end' });
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('left', '100%');
+        expect(getByTestId(badgeId)).toHaveStyleRule('left', '100%', {
+          modifier: '[data-has-children]',
+        });
       });
     });
 
@@ -76,7 +83,9 @@ describe('<Badge />', () => {
       it('should have property left with value of 100%', () => {
         const { getByTestId } = renderWithProps();
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('left', '100%');
+        expect(getByTestId(badgeId)).toHaveStyleRule('left', '100%', {
+          modifier: '[data-has-children]',
+        });
       });
     });
 
@@ -84,7 +93,9 @@ describe('<Badge />', () => {
       it('should shift badge on defined value', () => {
         const { getByTestId } = renderWithProps({ verticalOffset: '30px' });
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('transform', 'translate(calc(0px - 50%),calc(30px - 50%))');
+        expect(getByTestId(badgeId)).toHaveStyleRule('transform', 'translate(calc(0px - 50%),calc(30px - 50%))', {
+          modifier: '[data-has-children]',
+        });
       });
     });
 
@@ -92,7 +103,9 @@ describe('<Badge />', () => {
       it('should shift badge on defined value', () => {
         const { getByTestId } = renderWithProps({ horizontalOffset: '50px' });
 
-        expect(getByTestId(badgeId)).toHaveStyleRule('transform', 'translate(calc(50px - 50%),calc(0px - 50%))');
+        expect(getByTestId(badgeId)).toHaveStyleRule('transform', 'translate(calc(50px - 50%),calc(0px - 50%))', {
+          modifier: '[data-has-children]',
+        });
       });
     });
   });

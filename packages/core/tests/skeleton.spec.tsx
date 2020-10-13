@@ -73,7 +73,9 @@ describe('<Skeleton />', () => {
           isRounded: true,
         });
 
-        expect(getByTestId(skeletonId)).toHaveStyleRule('--border-radius', 'calc(var(--height) / 2)');
+        expect(getByTestId(skeletonId)).toHaveStyleRule('--border-radius', 'calc(var(--height) / 2)', {
+          modifier: '[data-rounded]',
+        });
       });
     });
 
@@ -99,7 +101,9 @@ describe('<Skeleton />', () => {
         ['background-image', 'background-size', 'animation'].forEach((property) => {
           expect(getByTestId(skeletonId)).not.toHaveStyleRule(property);
         });
-        expect(getByTestId(skeletonId)).toHaveStyleRule('background-color', 'var(--background-color)');
+        expect(getByTestId(skeletonId)).toHaveStyleRule('background-color', 'var(--background-color)', {
+          modifier: '[data-static]',
+        });
       });
     });
 

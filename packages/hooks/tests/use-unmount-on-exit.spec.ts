@@ -62,21 +62,7 @@ describe('useUnmountOnExit', () => {
 
   describe('when `unmountOnExit` parameter is `false`', () => {
     it('should always allow mounting', async () => {
-      const { result, waitFor, rerender } = render(false, false);
-
-      await waitFor(() => {
-        expect(result.current[0]).toBe(false);
-        expect(result.current[1]).toBe(true);
-      });
-
-      rerender([true]);
-
-      await waitFor(() => {
-        expect(result.current[0]).toBe(true);
-        expect(result.current[1]).toBe(true);
-      });
-
-      rerender([false]);
+      const { result, waitFor } = render(false, false);
 
       await waitFor(() => {
         expect(result.current[0]).toBe(false);
