@@ -12,7 +12,7 @@ const Alert = styled(Flex)<Pick<AlertProps, 'intent'>>(({ intent: _intent = Inte
   return css`
     position: relative;
 
-    padding: 16px 48px 16px 16px;
+    padding: 12px 16px;
 
     align-items: center;
 
@@ -35,10 +35,12 @@ const Alert = styled(Flex)<Pick<AlertProps, 'intent'>>(({ intent: _intent = Inte
     }
 
     &[data-should-close] {
+      padding-right: 54px;
+
       & > *:last-child {
         --icon-size: 16px;
 
-        top: 12px;
+        top: 8px;
         right: 14px;
       }
     }

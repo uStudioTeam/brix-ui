@@ -25,6 +25,7 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
       intent={intent}
       data-show-status={orUndefined(showStatus)}
       data-should-close={orUndefined(Boolean(onClose))}
+      isInline
       {...props}
     >
       {showStatus && <Status className="alert-status" intent={intent} />}
