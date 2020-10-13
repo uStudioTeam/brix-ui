@@ -21,6 +21,7 @@ describe('<Switch /> & <Checkbox />', () => {
     const fixture = (props = {} as Partial<CheckboxProps | SwitchProps>) => {
       return (
         <ThemeProvider>
+          {/* @ts-ignore */}
           {React.createElement(component, {
             ...props,
             // `data-testid` is preset in JSX, not in `ComponentType`

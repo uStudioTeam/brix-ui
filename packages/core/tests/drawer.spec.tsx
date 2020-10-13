@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
@@ -65,14 +65,16 @@ describe('<Drawer />', () => {
       });
 
       describe('translate', () => {
-        it('should translateY between 0 and -100%', () => {
+        it('should translateY between 0 and -100%', async () => {
           const { getByTestId, rerender } = result;
 
           expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(-100%)');
 
           rerender(withProps(props(true)));
 
-          expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(0)');
+          await waitFor(() => {
+            expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(0)');
+          });
         });
       });
     });
@@ -100,14 +102,16 @@ describe('<Drawer />', () => {
       });
 
       describe('translate', () => {
-        it('should translateX between 0 and 100%', () => {
+        it('should translateX between 0 and 100%', async () => {
           const { getByTestId, rerender } = result;
 
           expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(100%)');
 
           rerender(withProps(props(true)));
 
-          expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(0)');
+          await waitFor(() => {
+            expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(0)');
+          });
         });
       });
     });
@@ -135,14 +139,16 @@ describe('<Drawer />', () => {
       });
 
       describe('translate', () => {
-        it('should translateY between 0 and 100%', () => {
+        it('should translateY between 0 and 100%', async () => {
           const { getByTestId, rerender } = result;
 
           expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(100%)');
 
           rerender(withProps(props(true)));
 
-          expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(0)');
+          await waitFor(() => {
+            expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateY(0)');
+          });
         });
       });
     });
@@ -170,14 +176,16 @@ describe('<Drawer />', () => {
       });
 
       describe('translate', () => {
-        it('should translateX between 0 and -100%', () => {
+        it('should translateX between 0 and -100%', async () => {
           const { getByTestId, rerender } = result;
 
           expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(-100%)');
 
           rerender(withProps(props(true)));
 
-          expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(0)');
+          await waitFor(() => {
+            expect(getByTestId(drawerId)).toHaveStyleRule('transform', 'translateX(0)');
+          });
         });
       });
     });
