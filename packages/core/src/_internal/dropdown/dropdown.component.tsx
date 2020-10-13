@@ -140,7 +140,7 @@ Dropdown.propTypes = {
 
   ...affixable,
   ...formComponent(PT.string),
-  ...stylableComponent(Styled),
+  ...stylableComponent(),
 };
 
 export default Dropdown;

@@ -13,7 +13,7 @@ import type { DrawerProps } from './drawer.props';
 import Styled from './drawer.styles';
 
 const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
-  { children, position, unmountOnExit, isOpen, transitionSpeed, onOpen, onChange, onClose, ...props },
+  { children, customProperties, position, unmountOnExit, isOpen, transitionSpeed, onOpen, onChange, onClose, ...props },
   ref
 ) {
   const { shouldBeOpen, shouldMount, toggle } = useModal({
@@ -36,6 +36,7 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
       <Styled.Drawer
         forwardedAs="aside"
         ref={ref}
+        customProperties={customProperties}
         isOpen={shouldBeOpen}
         transitionSpeed={transitionSpeed}
         $position={position}
@@ -52,7 +53,7 @@ Drawer.propTypes = {
 
   ...disclosable,
   ...unmountable,
-  ...stylableComponent(),
+  ...stylableComponent(['borderRadius', 'overflow']),
 };
 
 export default Drawer;

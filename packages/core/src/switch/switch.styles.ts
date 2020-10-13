@@ -1,7 +1,8 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
+import { SwitchProps } from './switch.props';
 
 const Input = styled.input`
   ${hidden};
@@ -38,19 +39,18 @@ const shapeColor = (color: string): FlattenSimpleInterpolation => {
   `;
 };
 
-const Switch = styled.label(() => {
+const Switch = styled.label<Pick<SwitchProps, 'customProperties'>>(({ customProperties }) => {
   return css`
-    --track-height: 16px;
-    --track-width: 32px;
-
-    --thumb-size: 12px;
-    --thumb-scale: 4px;
-
-    --vertical-padding: calc(var(--track-height) / 2);
-    --horizontal-padding: calc(var(--vertical-padding) * 0.75);
-
-    --border-width: 1px;
-    --thumb-indent: 1px;
+    ${createCustomProperties(customProperties, {
+      trackHeight: '16px',
+      trackWidth: 'calc(var(--track-height) * 2)',
+      thumbSize: '12px',
+      thumbScale: '4px',
+      thumbIndent: '1px',
+      verticalPadding: 'calc(var(--track-height) / 2)',
+      horizontalPadding: 'calc(var(--vertical-padding) * 0.75)',
+      borderWidth: '1px',
+    })};
 
     position: relative;
 

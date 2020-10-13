@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 
 import { shadow, size } from '@brix-ui/theme/mixin';
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 import Chevron from '@brix-ui/icons/chevron';
 
 import Dropdown from '../_internal/dropdown';
+
+import type { SelectProps } from './select.props';
 
 const Icon = styled(Chevron)(
   () => css`
@@ -16,9 +18,11 @@ const Icon = styled(Chevron)(
   `
 );
 
-const Select = styled(Dropdown)(
-  () => css`
-    --icon-size: 10px;
+const Select = styled(Dropdown)<Pick<SelectProps, 'customProperties'>>(
+  ({ customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      iconSize: '10px',
+    })};
 
     border: 1px solid var(--input-border-color);
     border-radius: var(--input-border-radius);

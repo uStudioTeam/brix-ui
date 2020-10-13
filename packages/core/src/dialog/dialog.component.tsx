@@ -25,6 +25,7 @@ import Styled from './dialog.styles';
 const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialog(
   {
     children,
+    customProperties,
     isOpen,
     onOpen,
     onChange,
@@ -81,7 +82,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
       <Styled.Dialog
         forwardedAs="dialog"
         ref={ref}
-        open={shouldBeOpen}
+        customProperties={customProperties}
         transitionSpeed={transitionSpeed}
         $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}
         $margin={applyPolymorphicFunctionProp(currentBreakpointProps.margin, currentBreakpoint) || '2rem'}
@@ -92,23 +93,23 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
         lockProps={{
           open: shouldBeOpen,
           'aria-modal': 'true',
-          'aria-labelledby': title ? 'dialog_title' : undefined,
-          'aria-describedby': title ? 'dialog_title' : undefined,
+          'aria-labelledby': title ? 'dialog-title' : undefined,
+          'aria-describedby': title ? 'dialog-title' : undefined,
           onKeyUp: handleClose,
           ...props,
         }}
       >
-        <Styled.Header $titleAlign={titleAlign}>
+        <Styled.Header className="dialog-header" $titleAlign={titleAlign}>
           {title && (
-            <Styled.Title id="dialog_title" align={titleAlign}>
+            <Styled.Title className="dialog-title" align={titleAlign}>
               {title}
             </Styled.Title>
           )}
 
-          <CloseButton intent="critical" onClick={() => toggle(false)} />
+          <CloseButton className="dialog-close-button" intent="critical" onClick={() => toggle(false)} />
         </Styled.Header>
 
-        <Styled.Body>{children}</Styled.Body>
+        <Styled.Body className="dialog-body">{children}</Styled.Body>
       </Styled.Dialog>
     </Portal>
   ) : null;
@@ -127,7 +128,7 @@ Dialog.propTypes = {
   ...breakpointProps(dialogBreakpointData),
   ...disclosable,
   ...unmountable,
-  ...stylableComponent(Styled),
+  ...stylableComponent(['margin', 'padding', 'titleColor']),
 } as WeakValidationMap<DialogProps>;
 
 export default Dialog;

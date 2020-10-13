@@ -31,18 +31,18 @@ const Mode = styled(Text).attrs(() => ({
 
 const TimePicker = styled.div(
   () => css`
-    height: 28px;
+    height: var(--input-height-large);
     width: auto;
 
     display: inline-flex;
 
     color: var(--c-base-strong);
-    background-color: var(--c-base-weak);
+    background-color: var(--input-background-color);
 
     border-width: 1px;
     border-style: solid;
-    border-color: var(--c-faint-strong-down);
-    border-radius: 2px;
+    border-color: var(--input-border-color);
+    border-radius: var(--input-border-radius);
 
     transition: all var(--transition-short);
 
@@ -51,21 +51,21 @@ const TimePicker = styled.div(
     }
 
     &:focus-within {
-      border-color: var(--c-accent-strong);
+      border-color: var(--input-border-color-focus);
     }
 
     &[aria-invalid] {
-      border-color: var(--c-critical-strong);
+      border-color: var(--input-border-color-invalid);
 
       &:focus-within {
-        border-color: var(--c-critical-weak-up);
+        border-color: var(--input-border-color-invalid-focus);
       }
     }
 
     &[aria-disabled] {
-      color: var(--c-faint-strong-down);
-      background-color: var(--c-faint-weak-down);
-      border-color: var(--c-faint-weak-up);
+      color: var(--input-color-disabled);
+      background-color: var(--input-background-color-disabled);
+      border-color: var(--input-border-color-disabled);
 
       cursor: not-allowed;
 
@@ -74,7 +74,7 @@ const TimePicker = styled.div(
       }
 
       ${ModeSwitch} {
-        color: var(--c-faint-strong-down);
+        color: var(--input-placeholder-color);
         background-color: var(--c-faint-weak);
       }
     }
@@ -82,7 +82,7 @@ const TimePicker = styled.div(
 );
 
 const InputsContainer = styled.div`
-  height: 28px;
+  height: var(--input-height-large);
 
   padding: 2px 0 4px;
 
@@ -91,7 +91,7 @@ const InputsContainer = styled.div`
   justify-content: center;
 
   & > label {
-    height: 26px;
+    height: calc(var(--input-height-large) - 2px);
   }
 `;
 

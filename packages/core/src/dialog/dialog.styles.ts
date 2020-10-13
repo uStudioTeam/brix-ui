@@ -3,10 +3,12 @@ import FocusLock from 'react-focus-lock';
 import type { ReactFocusLockProps } from 'react-focus-lock/interfaces';
 
 import { font, shadow } from '@brix-ui/theme/mixin';
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 
 import Flex from '../flex';
 import Text from '../text';
+
+import type { DialogProps } from './dialog.props';
 
 const Dialog = styled(FocusLock)<
   {
@@ -15,12 +17,22 @@ const Dialog = styled(FocusLock)<
     $margin: string;
     $maxWidth: string;
     $maxHeight: string;
-  } & ReactFocusLockProps
+  } & ReactFocusLockProps &
+    Pick<DialogProps, 'customProperties'>
 >(
-  ({ transitionSpeed, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
-    --margin: ${margin};
-    --padding: 1rem;
-    --title-color: var(--c-faint-strong);
+  ({
+    transitionSpeed,
+    $top: top,
+    $margin: margin,
+    $maxWidth: maxWidth,
+    $maxHeight: maxHeight,
+    customProperties,
+  }) => css`
+    ${createCustomProperties(customProperties, {
+      margin,
+      padding: '1rem',
+      titleColor: 'var(--c-faint-strong)',
+    })};
 
     position: fixed;
     top: ${top};

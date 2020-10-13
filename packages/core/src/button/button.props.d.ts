@@ -5,7 +5,7 @@ import { Intentable, IntrinsicComponent, StylableComponent } from '@brix-ui/type
 export interface ButtonProps
   extends PropsWithChildren<Omit<IntrinsicComponent<ButtonHTMLAttributes<HTMLButtonElement>>, 'disabled'>>,
     Intentable,
-    StylableComponent {
+    StylableComponent<'height'> {
   appearance?: 'contained' | 'outlined' | 'text' | 'faint';
 
   isRounded?: boolean;

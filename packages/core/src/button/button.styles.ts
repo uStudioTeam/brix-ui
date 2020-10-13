@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components';
 
 import { font } from '@brix-ui/theme/mixin';
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
+import { Intent } from '@brix-ui/types/component';
 
 import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';
 
-const Button = styled.button<Omit<ButtonProps, 'isDisabled'>>(
-  ({ intent = 'base', appearance = 'contained', isRounded }) => css`
-    --height: 28px;
+const Button = styled.button<Omit<ButtonProps, 'isDisabled' | 'isRounded'>>(
+  ({ intent = Intent.Base, appearance = 'contained', customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      height: 'var(--input-height-large)',
+    })};
 
     height: var(--height);
     padding: 5px 16px 6px;
@@ -16,7 +19,7 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled'>>(
     display: inline-flex;
     align-items: center;
 
-    border-radius: ${isRounded ? 'calc(var(--height) / 2)' : '2px'};
+    border-radius: var(--input-border-radius);
     border: 1px solid transparent;
 
     ${font.body.p};
@@ -37,8 +40,12 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled'>>(
     &:active {
       transform: scale(0.975);
     }
+    
+    &[data-rounded] {
+      border-radius: calc(var(--height) / 2);
+    }
 
-    &[disabled] {
+    &:disabled {
       cursor: not-allowed;
       user-select: none;
 
@@ -49,7 +56,7 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled'>>(
       }
     }
     
-    &:not([disabled]) {
+    &:not(:disabled) {
       ${buttonMixin[appearance][intent]}};
     }
   `

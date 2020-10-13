@@ -21,7 +21,7 @@ Status.propTypes = {
   hasBorder: PT.bool,
 
   ...intentable,
-  ...stylableComponent(),
+  ...stylableComponent(['size', 'borderWidth', 'borderColor']),
 };
 
 export default Status;

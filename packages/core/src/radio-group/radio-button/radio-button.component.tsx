@@ -12,7 +12,7 @@ import type { RadioButtonProps } from './radio-button.props';
 import Styled from './radio-button.styles';
 
 const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(function RadioButton(
-  { className, value, id, form, containerRef, ...props },
+  { value, id, form, containerRef, ...props },
   ref
 ) {
   const { value: selectedOption, name, dispatcher, handleChange, isDisabled, isRequired, isInvalid } = useRadioGroup();
@@ -30,7 +30,6 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
     <Styled.RadioButton
       ref={containerRef}
       aria-checked={selectedOption === value}
-      className={className}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}
       aria-hidden

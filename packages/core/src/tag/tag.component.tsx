@@ -15,13 +15,17 @@ const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
 ) {
   return (
     <Styled.Container ref={ref} $color={color} $backgroundColor={backgroundColor} {...props}>
-      <Styled.Content align="center">
-        <Text as="span" variant="small" lineHeightCompensation>
+      <Styled.Content className="tag-content-container" align="center">
+        <Text as="span" className="tag-content" variant="small" lineHeightCompensation>
           {children}
         </Text>
       </Styled.Content>
 
-      {onClose && <Styled.CloseButton onClick={onClose}>{closeIcon || <Styled.CloseIcon />}</Styled.CloseButton>}
+      {onClose && (
+        <Styled.CloseButton className="tag-close-button" onClick={onClose}>
+          {closeIcon || <Styled.CloseIcon />}
+        </Styled.CloseButton>
+      )}
     </Styled.Container>
   );
 });
@@ -33,7 +37,7 @@ Tag.propTypes = {
   closeIcon: PT.element,
   onClose: PT.func,
 
-  ...stylableComponent(Styled),
+  ...stylableComponent(),
 };
 
 export default Tag;

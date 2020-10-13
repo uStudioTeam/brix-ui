@@ -27,11 +27,11 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
       data-should-close={orUndefined(Boolean(onClose))}
       {...props}
     >
-      {showStatus && <Status intent={intent} />}
+      {showStatus && <Status className="alert-status" intent={intent} />}
 
       {children}
 
-      {onClose && <CloseButton intent={intent} onClick={onClose} />}
+      {onClose && <CloseButton className="alert-close-button" intent={intent} onClick={onClose} />}
     </Styled.Alert>
   );
 });

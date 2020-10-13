@@ -15,7 +15,16 @@ export type SkeletonSize =
 export interface SkeletonProps
   extends Omit<BlockProps, 'as' | 'padding' | 'gap'>,
     IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
-    StylableComponent,
+    StylableComponent<
+      [
+        'height',
+        'backgroundColor',
+        'borderRadius',
+        'animationDuration',
+        'animationTimingFunction',
+        'animationIterationCount'
+      ]
+    >,
     Delayable {
   width?: SkeletonSize;
   height?: SkeletonSize;

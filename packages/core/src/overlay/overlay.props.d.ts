@@ -5,4 +5,4 @@ import type { Disclosable, IntrinsicComponent, StylableComponent } from '@brix-u
 export interface OverlayProps
   extends Disclosable,
     IntrinsicComponent<HTMLAttributes<HTMLDivElement>>,
-    StylableComponent {}
+    StylableComponent<'opacity'> {}

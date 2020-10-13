@@ -33,7 +33,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
           : (options as SelectOption[])
       }
       isDisabled={isDisabled}
-      suffix={suffix || <Styled.Icon />}
+      suffix={suffix || <Styled.Icon className="select-icon" />}
       {...props}
     >
       {({ isOptionSelected, isOptionDisabled }) => {
@@ -81,7 +81,7 @@ Select.propTypes = {
 
   disabledGroups: PT.arrayOf(PT.number.isRequired),
 
-  ...stylableComponent(Styled),
+  ...stylableComponent('iconSize'),
 };
 
 export default Select;

@@ -9,13 +9,19 @@ import { ButtonProps } from './button.props';
 import Styled from './button.styles';
 
 const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button(
-  { children, isDisabled: _isDisabled, ...props },
+  { children, isDisabled: _isDisabled, isRounded, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
 
   return (
-    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={orUndefined(isDisabled)} {...props}>
+    <Styled.Button
+      ref={ref}
+      disabled={isDisabled}
+      aria-disabled={orUndefined(isDisabled)}
+      data-rounded={orUndefined(isRounded)}
+      {...props}
+    >
       {children}
     </Styled.Button>
   );
@@ -27,7 +33,7 @@ Button.propTypes = {
   isDisabled: PT.bool,
 
   ...intentable,
-  ...stylableComponent(),
+  ...stylableComponent('height'),
 };
 
 export default Button;

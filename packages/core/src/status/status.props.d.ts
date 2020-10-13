@@ -5,7 +5,7 @@ import type { Intentable, IntrinsicComponent, StylableComponent } from '@brix-ui
 export interface StatusProps
   extends IntrinsicComponent<HTMLAttributes<HTMLSpanElement>>,
     Intentable,
-    StylableComponent {
+    StylableComponent<['size', 'borderWidth', 'borderColor']> {
   isStatic?: boolean;
   hasBorder?: boolean;
 }

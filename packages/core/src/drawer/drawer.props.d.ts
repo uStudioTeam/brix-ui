@@ -8,6 +8,6 @@ export interface DrawerProps
   extends Disclosable,
     Unmountable,
     PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
-    StylableComponent {
+    StylableComponent<['borderRadius', 'overflow']> {
   position: Values<typeof Position>;
 }
