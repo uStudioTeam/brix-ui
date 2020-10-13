@@ -1,4 +1,4 @@
-import React, { WeakValidationMap } from 'react';
+import React, { ChangeEvent, useCallback, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
@@ -13,14 +13,21 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
   { type = 'decimal', inputMode, min, max, step, ...props },
   ref
 ) {
+  const handleGetValue = useCallback<(event: ChangeEvent<HTMLInputElement>) => number | ''>(
+    ({ target: { valueAsNumber } }) => (Number.isNaN(valueAsNumber) ? '' : valueAsNumber),
+    []
+  );
+
   return (
     <Input
       ref={ref}
       {...props}
-      getValue={({ target: { valueAsNumber } }) => (Number.isNaN(valueAsNumber) ? '' : valueAsNumber)}
+      getValue={handleGetValue}
       type={type === 'tel' ? type : 'number'}
       inputMode={inputMode ?? type}
-      inputProps={{ min, max, step }}
+      min={min}
+      max={max}
+      step={step}
     />
   );
 });

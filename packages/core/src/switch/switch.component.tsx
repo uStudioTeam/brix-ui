@@ -1,10 +1,11 @@
-import React, { HTMLAttributes, WeakValidationMap } from 'react';
+import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { extract } from '@brix-ui/prop-types/utils';
 import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
+import useEventProps from '@brix-ui/hooks/use-event-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 
 import Checkbox from '../checkbox';
@@ -20,6 +21,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
     onChange,
     name,
     id,
+    form,
     isDisabled: _isDisabled,
     isRequired,
     isInvalid,
@@ -37,6 +39,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   );
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
+  const { propsWithEvents, propsWithoutEvents } = useEventProps(propsWithoutAria);
 
   return (
     <Styled.Switch
@@ -45,7 +48,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       isDisabled={isDisabled}
       isInvalid={isInvalid}
       aria-hidden
-      {...(propsWithoutAria as HTMLAttributes<HTMLLabelElement>)}
+      {...propsWithoutEvents}
     >
       {children && (
         <Styled.Children value={internalValue} isDisabled={isDisabled} isInvalid={isInvalid}>
@@ -59,6 +62,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
         role="switch"
         name={name}
         id={id}
+        form={form}
         defaultChecked={internalValue}
         aria-checked={internalValue}
         value={internalValue ? 'on' : 'off'}
@@ -69,12 +73,13 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
         aria-required={isRequired}
         aria-invalid={isInvalid}
         {...propsWithAria}
+        {...propsWithEvents}
       />
     </Styled.Switch>
   );
 });
 
-const { styles: _styles, ...checkboxPropTypes } = extract([Checkbox]);
+const checkboxPropTypes = extract([Checkbox]);
 
 Switch.propTypes = {
   children: PT.oneOfType([PT.func, PT.node]),

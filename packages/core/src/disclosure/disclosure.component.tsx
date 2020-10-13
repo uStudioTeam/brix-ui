@@ -14,7 +14,6 @@ import Styled from './disclosure.styles';
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
   {
     children,
-    styles,
     className,
     isOpen,
     transitionSpeed,
@@ -50,7 +49,6 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   return (
     <Styled.Container
       ref={ref}
-      as={styles?.Container}
       direction="column"
       isOpen={internalIsOpen}
       isDisabled={isDisabled}
@@ -58,22 +56,18 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       {...props}
     >
       <Styled.Summary
-        as={styles?.Summary}
         type="button"
         isOpen={internalIsOpen}
+        aria-disabled={isDisabled || undefined}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
         onClick={() => toggle()}
       >
         {summary}
 
-        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
-          <Styled.Icon as={styles?.Icon} />
-        )}
+        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || <Styled.Icon />}
       </Styled.Summary>
 
       <Styled.Details
-        as={styles?.Details}
         transitionSpeed={transitionSpeed}
         aria-expanded={internalIsOpen}
         style={{

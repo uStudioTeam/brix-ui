@@ -8,7 +8,7 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 import Flex from '../flex';
 import Text from '../text';
 
-export const Dialog = styled(FocusLock)<
+const Dialog = styled(FocusLock)<
   {
     isOpen: boolean;
     transitionSpeed?: number;
@@ -48,7 +48,7 @@ export const Dialog = styled(FocusLock)<
   `
 );
 
-export const Header = styled(Flex).attrs<{
+const Header = styled(Flex).attrs<{
   $titleAlign: 'left' | 'center' | undefined;
 }>(({ $titleAlign: titleAlign }) => ({
   forwardedAs: 'header',
@@ -76,7 +76,7 @@ export const Header = styled(Flex).attrs<{
   `
 );
 
-export const Title = styled(Text).attrs(() => ({
+const Title = styled(Text).attrs(() => ({
   forwardedAs: 'h2',
   variant: 'h5',
   lineHeightCompensation: true,
@@ -86,7 +86,7 @@ export const Title = styled(Text).attrs(() => ({
   transition: all var(--transition-short);
 `;
 
-export const Body = styled(Flex).attrs(() => ({
+const Body = styled(Flex).attrs(() => ({
   forwardedAs: 'article',
   direction: 'column',
   verticalAlign: 'space-between',

@@ -53,20 +53,7 @@ interface TimePickerValue
 const TimePickerContext = createContext<TimePickerValue | undefined>(undefined);
 
 const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function TimePicker(
-  {
-    children,
-    styles,
-    mode,
-    value,
-    defaultValue,
-    onChange,
-    onModeChange,
-    isDisabled,
-    isRequired,
-    isInvalid,
-    prefix,
-    ...props
-  },
+  { children, mode, value, defaultValue, onChange, onModeChange, isDisabled, isRequired, isInvalid, prefix, ...props },
   ref
 ) {
   const [state, dispatch] = useReducer(timePickerReducer, splitValue(defaultValue ?? ''));
@@ -109,10 +96,10 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
   ]);
 
   return (
-    <Styled.TimePicker ref={ref} as={styles?.TimePicker} isDisabled={isDisabled} isInvalid={isInvalid} {...props}>
+    <Styled.TimePicker ref={ref} isDisabled={isDisabled} isInvalid={isInvalid} {...props}>
       {prefix}
 
-      <Styled.InputsContainer as={styles?.InputsContainer}>
+      <Styled.InputsContainer>
         <TimePickerContext.Provider
           value={{
             ...state,
@@ -131,7 +118,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
               <>
                 {child}
 
-                {index !== childrenCount - 1 && <Styled.Divider as={styles?.Divider}>:</Styled.Divider>}
+                {index !== childrenCount - 1 && <Styled.Divider>:</Styled.Divider>}
               </>
             );
           })}
@@ -140,7 +127,6 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
 
       {mode && (
         <Styled.ModeSwitch
-          as={styles?.ModeSwitch}
           type="button"
           role="switch"
           aria-checked

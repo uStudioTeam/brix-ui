@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, WeakValidationMap } from 'react';
+import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
@@ -10,7 +10,7 @@ import Input from '../_internal/input';
 import type { TextInputProps } from './text-input.props';
 
 const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function TextInput(
-  { type, autoComplete, inputMode, ...props },
+  { type, inputMode, ...props },
   ref
 ) {
   return (
@@ -20,11 +20,6 @@ const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function 
       getValue={({ target: { value } }) => value}
       type={type}
       inputMode={inputMode ?? type === 'password' ? 'text' : type}
-      inputProps={
-        {
-          autoComplete,
-        } as InputHTMLAttributes<HTMLInputElement>
-      }
     />
   );
 });

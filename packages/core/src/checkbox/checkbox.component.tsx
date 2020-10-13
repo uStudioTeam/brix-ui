@@ -4,6 +4,7 @@ import PT from 'prop-types';
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
+import useEventProps from '@brix-ui/hooks/use-event-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 import { formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
@@ -12,7 +13,6 @@ import Styled from './checkbox.styles';
 
 const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Checkbox(
   {
-    styles,
     className,
     value,
     defaultValue,
@@ -22,6 +22,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
     isDisabled: _isDisabled,
     isRequired,
     isInvalid,
+    form,
     containerRef,
     ...props
   },
@@ -36,19 +37,19 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
   );
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
+  const { propsWithEvents, propsWithoutEvents } = useEventProps(propsWithoutAria);
 
   return (
     <Styled.Checkbox
       ref={containerRef}
-      as={styles?.Checkbox}
       className={className}
       value={internalValue}
       isDisabled={isDisabled}
       isInvalid={isInvalid}
       aria-hidden
-      {...propsWithoutAria}
+      {...propsWithoutEvents}
     >
-      <Styled.CheckIcon as={styles?.CheckIcon} />
+      <Styled.CheckIcon />
 
       <Styled.Input
         ref={ref}
@@ -64,7 +65,9 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
         required={isRequired}
         aria-required={isRequired}
         aria-invalid={isInvalid}
+        form={form}
         {...propsWithAria}
+        {...propsWithEvents}
       />
     </Styled.Checkbox>
   );

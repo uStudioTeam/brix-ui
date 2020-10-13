@@ -84,10 +84,8 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
           ? prevValue
           : toDouble(minMax(min, Number.parseInt(`${valueAsNumber}`, 10), max));
       }}
-      inputProps={{
-        onKeyDown: handleKeyDown,
-        onFocus: handleFocus,
-      }}
+      onKeyDown={handleKeyDown}
+      onFocus={handleFocus}
       {...props}
     />
   );

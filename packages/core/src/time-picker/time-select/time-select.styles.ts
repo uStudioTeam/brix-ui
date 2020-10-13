@@ -3,14 +3,9 @@ import styled, { css } from 'styled-components';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { hidden } from '@brix-ui/theme/mixin';
 
-import DropdownStyles from '../../_internal/dropdown/dropdown.styles';
+import Dropdown from '../../_internal/dropdown';
+
 import Text from '../../text';
-
-export const Input = styled(DropdownStyles.Input)`
-  ${hidden};
-
-  z-index: 1;
-`;
 
 const Value = styled(Text).attrs(() => ({
   forwardedAs: 'span',
@@ -20,7 +15,7 @@ const Value = styled(Text).attrs(() => ({
   width: auto;
 `;
 
-export const TimeSelect = styled(DropdownStyles.Dropdown)(
+const TimeSelect = styled(Dropdown)<{ hasValue: boolean }>(
   ({ isDisabled, hasValue }) => css`
     position: relative;
 
@@ -40,9 +35,15 @@ export const TimeSelect = styled(DropdownStyles.Dropdown)(
         color: ${hasValue ? 'var(--c-faint-strong-down)' : 'var(--c-faint-weak-up)'};
       }
     `}
+
+    select {
+      ${hidden};
+
+      z-index: 1;
+    }
   `
 );
 
-const Styled = applyDisplayNames({ TimeSelect, Input, Value });
+const Styled = applyDisplayNames({ TimeSelect, Value });
 
 export default Styled;

@@ -5,7 +5,7 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 
 import type { SelectProps } from '../../select';
 
-export const Input = styled.select(
+const Input = styled.select(
   () => css`
     appearance: none;
 
@@ -28,7 +28,7 @@ export const Input = styled.select(
   `
 );
 
-export const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }>(
+const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }>(
   ({ isDisabled, hasValue }) => css`
     position: relative;
 

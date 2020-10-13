@@ -9,14 +9,14 @@ import Flex from '../flex';
 
 import type { TagProps } from './tag.props';
 
-export const CloseIcon = styled(Times)`
+const CloseIcon = styled(Times)`
   ${size('12px')};
 
   position: relative;
   top: 1px;
 `;
 
-export const CloseButton = styled.button`
+const CloseButton = styled.button`
   position: relative;
 
   ${size('24px')};
@@ -47,7 +47,7 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const Container = styled.div<
+const Container = styled.div<
   Omit<TagProps, 'color' | 'backgroundColor'> & {
     $color: TagProps['color'];
     $backgroundColor: TagProps['backgroundColor'];
@@ -93,7 +93,7 @@ export const Container = styled.div<
   `;
 });
 
-export const Content = styled(Flex)`
+const Content = styled(Flex)`
   padding: 6px 8px;
 
   cursor: default;

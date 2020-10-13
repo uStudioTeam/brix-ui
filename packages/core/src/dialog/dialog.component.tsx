@@ -25,7 +25,6 @@ import Styled from './dialog.styles';
 const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialog(
   {
     children,
-    styles,
     isOpen,
     onOpen,
     onChange,
@@ -80,7 +79,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
   return shouldMount ? (
     <Portal>
       <Styled.Dialog
-        forwardedAs={styles?.Dialog || 'dialog'}
+        forwardedAs="dialog"
         ref={ref}
         isOpen={shouldBeOpen}
         transitionSpeed={transitionSpeed}
@@ -99,9 +98,9 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           ...props,
         }}
       >
-        <Styled.Header as={styles?.Header} $titleAlign={titleAlign}>
+        <Styled.Header $titleAlign={titleAlign}>
           {title && (
-            <Styled.Title as={styles?.Title} id="dialog_title" align={titleAlign}>
+            <Styled.Title id="dialog_title" align={titleAlign}>
               {title}
             </Styled.Title>
           )}
@@ -109,7 +108,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           <CloseButton intent="critical" onClick={() => toggle(false)} />
         </Styled.Header>
 
-        <Styled.Body as={styles?.Body}>{children}</Styled.Body>
+        <Styled.Body>{children}</Styled.Body>
       </Styled.Dialog>
     </Portal>
   ) : null;

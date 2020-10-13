@@ -42,7 +42,6 @@ export const renderOptions = (
 const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function Dropdown(
   {
     children,
-    styles,
     options,
     placeholder,
     id,
@@ -81,7 +80,6 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
   return (
     <Styled.Dropdown
       ref={containerRef}
-      as={styles?.Dropdown}
       hasValue={hasValue}
       isInvalid={isInvalid}
       isDisabled={isDisabled}
@@ -92,7 +90,6 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
 
       <Styled.Input
         ref={ref}
-        as={styles?.Input}
         id={id}
         value={internalValue ?? placeholder}
         onChange={handleChange}

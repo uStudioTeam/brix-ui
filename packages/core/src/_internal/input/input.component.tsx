@@ -1,9 +1,10 @@
-import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent } from 'react';
 import PT from 'prop-types';
 
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
+import useEventProps from '@brix-ui/hooks/use-event-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 import { affixable, formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
@@ -14,17 +15,12 @@ import Styled from './input.styles';
 
 const Input = intrinsicComponent<
   InputProps<string | number> & {
-    /**
-     * These are considered to be native input props including aria-* attributes
-     */
-    inputProps: InputHTMLAttributes<HTMLInputElement>;
     getValue(event: ChangeEvent<HTMLInputElement>, prevValue: string | number): string | number;
   },
   HTMLInputElement
 >(function Input(
   {
     getValue,
-    styles,
     className,
     prefix,
     suffix,
@@ -38,15 +34,19 @@ const Input = intrinsicComponent<
     type,
     inputMode,
     min,
-    max,
     minLength,
+    max,
     maxLength,
     name,
     id,
     pattern,
     placeholder,
+    autoComplete,
+    autoFocus,
+    form,
+    list,
+    step,
     containerRef,
-    inputProps,
     ...props
   },
   ref
@@ -60,17 +60,17 @@ const Input = intrinsicComponent<
   );
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
+  const { propsWithEvents, propsWithoutEvents } = useEventProps(propsWithoutAria);
 
   return (
     <Styled.Container
       ref={containerRef}
-      as={styles?.Container}
       className={className}
       isDisabled={isDisabled}
       isReadonly={isReadonly}
       isInvalid={isInvalid}
       aria-hidden
-      {...propsWithoutAria}
+      {...propsWithoutEvents}
     >
       {prefix && <Affix>{prefix}</Affix>}
 
@@ -95,9 +95,14 @@ const Input = intrinsicComponent<
         maxLength={maxLength}
         pattern={pattern}
         placeholder={placeholder}
-        aria-valuemin={Number.isNaN(Number(inputProps.min)) ? undefined : Number(inputProps.min)}
-        aria-valuemax={Number.isNaN(Number(inputProps.max)) ? undefined : Number(inputProps.max)}
-        {...inputProps}
+        aria-valuemin={Number.isNaN(Number(min)) ? undefined : Number(min)}
+        aria-valuemax={Number.isNaN(Number(max)) ? undefined : Number(max)}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
+        form={form}
+        list={list}
+        step={step}
+        {...propsWithEvents}
         {...propsWithAria}
       />
 
