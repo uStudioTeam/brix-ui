@@ -1,7 +1,7 @@
 import React, { isValidElement } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 import { Align } from '@brix-ui/types/css';
 
@@ -21,7 +21,7 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
       {shouldDisplay && (
         <Styled.Badge
           ref={ref}
-          hasChildren={isValidElement(children)}
+          data-has-children={orUndefined(isValidElement(children))}
           $color={color}
           $backgroundColor={backgroundColor}
           $value={value}

@@ -1,9 +1,10 @@
-import React, { LabelHTMLAttributes, ReactElement, useCallback, useMemo } from 'react';
+import React, { ReactElement, useCallback, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
+import useEventProps from '@brix-ui/hooks/use-event-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 import { affixable, formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
@@ -76,15 +77,16 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
   const hasValue = useMemo(() => internalValue !== undefined, [internalValue]);
 
   const { propsWithAria, propsWithoutAria } = useAriaProps(props);
+  const { propsWithEvents, propsWithoutEvents } = useEventProps(propsWithoutAria);
 
   return (
     <Styled.Dropdown
       ref={containerRef}
-      hasValue={hasValue}
-      isInvalid={isInvalid}
-      isDisabled={isDisabled}
+      data-has-value={orUndefined(hasValue)}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-invalid={orUndefined(isInvalid)}
       aria-hidden
-      {...(propsWithoutAria as LabelHTMLAttributes<HTMLLabelElement>)}
+      {...propsWithoutEvents}
     >
       {prefix && <Affix>{prefix}</Affix>}
 
@@ -94,9 +96,10 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
         value={internalValue ?? placeholder}
         onChange={handleChange}
         disabled={isDisabled}
-        aria-disabled={isDisabled || undefined}
-        aria-invalid={isInvalid || undefined}
+        aria-disabled={orUndefined(isDisabled)}
+        aria-invalid={orUndefined(isInvalid)}
         {...propsWithAria}
+        {...propsWithEvents}
       >
         {placeholder && (
           <option

@@ -6,8 +6,6 @@ import { shadow } from '@brix-ui/theme/mixin';
 import Button from '../button';
 import Text from '../text';
 
-import type { TimePickerProps } from './time-picker.props';
-
 const ModeSwitch = styled(Button)`
   width: 28px;
   height: 26px;
@@ -31,8 +29,8 @@ const Mode = styled(Text).attrs(() => ({
   forwardedAs: 'span',
 }))``;
 
-const TimePicker = styled.div<TimePickerProps>(
-  ({ isDisabled, isInvalid }) => css`
+const TimePicker = styled.div(
+  () => css`
     height: 28px;
     width: auto;
 
@@ -56,17 +54,15 @@ const TimePicker = styled.div<TimePickerProps>(
       border-color: var(--c-accent-strong);
     }
 
-    ${isInvalid &&
-    css`
+    &[aria-invalid] {
       border-color: var(--c-critical-strong);
 
       &:focus-within {
         border-color: var(--c-critical-weak-up);
       }
-    `};
+    }
 
-    ${isDisabled &&
-    css`
+    &[aria-disabled] {
       color: var(--c-faint-strong-down);
       background-color: var(--c-faint-weak-down);
       border-color: var(--c-faint-weak-up);
@@ -81,7 +77,7 @@ const TimePicker = styled.div<TimePickerProps>(
         color: var(--c-faint-strong-down);
         background-color: var(--c-faint-weak);
       }
-    `}
+    }
   `
 );
 

@@ -6,13 +6,8 @@ import Chevron from '@brix-ui/icons/chevron';
 
 import Flex from '../flex';
 
-import type { DisclosureProps } from './disclosure.props';
-
-const Container = styled(Flex)<{
-  isOpen: DisclosureProps['isOpen'];
-  isDisabled: DisclosureProps['isDisabled'];
-}>(
-  ({ isOpen, isDisabled }) => css`
+const Container = styled(Flex)(
+  () => css`
     --icon-indent: 1rem;
 
     color: var(--c-base-strong);
@@ -30,17 +25,15 @@ const Container = styled(Flex)<{
 
     transition: all var(--transition-short);
 
-    ${!isDisabled &&
-    css`
+    &[aria-disabled='false'] {
       &:hover {
         box-shadow: ${shadow('base-strong', 0.1)};
       }
-    `}
+    }
 
-    ${isOpen &&
-    css`
+    &[data-expanded='true'] {
       box-shadow: ${shadow('accent-strong', 0.15)};
-    `}
+    }
   `
 );
 
@@ -53,10 +46,8 @@ const Icon = styled(Chevron)`
   transition: transform var(--transition-short);
 `;
 
-const Summary = styled.button<{
-  isOpen: NonNullable<DisclosureProps['isOpen']>;
-}>(
-  ({ isOpen }) => css`
+const Summary = styled.button(
+  () => css`
     padding: 12px 16px;
 
     display: flex;
@@ -90,23 +81,23 @@ const Summary = styled.button<{
       background-color: var(--c-faint-weak-down);
     }
 
-    ${isOpen
-      ? css`
-          background-color: var(--c-faint-weak-down);
+    &[data-expanded='true'] {
+      background-color: var(--c-faint-weak-down);
 
-          ${Icon} {
-            color: var(--c-accent-strong);
+      ${Icon} {
+        color: var(--c-accent-strong);
 
-            transform: rotate(-180deg);
-          }
-        `
-      : css`
-          ${Icon} {
-            color: var(--c-base-strong);
+        transform: rotate(-180deg);
+      }
+    }
 
-            transform: rotate(0deg);
-          }
-        `};
+    &[data-expanded='false'] {
+      ${Icon} {
+        color: var(--c-base-strong);
+
+        transform: rotate(0deg);
+      }
+    }
   `
 );
 

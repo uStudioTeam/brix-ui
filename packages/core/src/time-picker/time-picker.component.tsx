@@ -1,7 +1,7 @@
 import React, { Children, createContext, useContext, useEffect, useMemo, useReducer, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, objectKeys, objectValues, tryCall } from '@brix-ui/utils/functions';
+import { intrinsicComponent, objectKeys, objectValues, orUndefined, tryCall } from '@brix-ui/utils/functions';
 import useUpdateEffect from '@brix-ui/hooks/use-update-effect';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import type { Values } from '@brix-ui/utils/types';
@@ -96,7 +96,12 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
   ]);
 
   return (
-    <Styled.TimePicker ref={ref} isDisabled={isDisabled} isInvalid={isInvalid} {...props}>
+    <Styled.TimePicker
+      ref={ref}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-invalid={orUndefined(isInvalid)}
+      {...props}
+    >
       {prefix}
 
       <Styled.InputsContainer>

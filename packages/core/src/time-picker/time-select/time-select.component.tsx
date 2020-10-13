@@ -95,7 +95,6 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
       isDisabled={isDisabled}
       isRequired={isRequired}
       isInvalid={isInvalid}
-      hasValue={value !== undefined}
       value={value}
       onChange={handleChange}
       onKeyDown={(event) => {

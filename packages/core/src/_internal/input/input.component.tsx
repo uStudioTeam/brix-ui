@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -66,9 +66,9 @@ const Input = intrinsicComponent<
     <Styled.Container
       ref={containerRef}
       className={className}
-      isDisabled={isDisabled}
-      isReadonly={isReadonly}
-      isInvalid={isInvalid}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-readonly={orUndefined(isReadonly)}
+      aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -83,12 +83,12 @@ const Input = intrinsicComponent<
         value={internalValue}
         onChange={handleChange}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
+        aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
-        aria-required={isRequired}
+        aria-required={orUndefined(isRequired)}
         readOnly={isReadonly}
-        aria-readonly={isReadonly}
-        aria-invalid={isInvalid}
+        aria-readonly={orUndefined(isReadonly)}
+        aria-invalid={orUndefined(isInvalid)}
         min={min}
         max={max}
         minLength={minLength}

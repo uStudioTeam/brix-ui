@@ -6,7 +6,7 @@ import Flex from '../flex';
 
 import type { AlertProps } from './alert.props';
 
-const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showStatus, onClose }) => {
+const Alert = styled(Flex)<Pick<AlertProps, 'intent'>>(({ intent: _intent = Intent.Base }) => {
   const intent = _intent === Intent.Base ? 'faint' : _intent;
 
   return css`
@@ -21,8 +21,9 @@ const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showSta
 
     border-radius: 4px;
 
-    ${showStatus &&
-    css`
+    transition: all var(--transition-short);
+
+    &[data-show-status] {
       & > *:first-child {
         position: relative;
         top: 2px;
@@ -31,17 +32,16 @@ const Alert = styled(Flex)<AlertProps>(({ intent: _intent = Intent.Base, showSta
 
         align-self: start;
       }
-    `}
+    }
 
-    ${onClose &&
-    css`
+    &[data-should-close] {
       & > *:last-child {
         --icon-size: 16px;
 
         top: 12px;
         right: 14px;
       }
-    `}
+    }
   `;
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useModal } from '@brix-ui/contexts/modal';
 
@@ -27,9 +27,9 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
       <Styled.Overlay
         ref={ref}
         role="button"
-        isOpen={shouldBeOpen}
+        aria-expanded={shouldBeOpen}
         transitionSpeed={transitionSpeed}
-        onClose={onClose}
+        data-should-close={orUndefined(Boolean(onClose))}
         onClick={() => toggle(false)}
         {...props}
       />

@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 import { font } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
-import type { SelectProps } from '../../select';
-
 const Input = styled.select(
   () => css`
     appearance: none;
@@ -28,8 +26,8 @@ const Input = styled.select(
   `
 );
 
-const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { hasValue: boolean }>(
-  ({ isDisabled, hasValue }) => css`
+const Dropdown = styled.label(
+  () => css`
     position: relative;
 
     width: 100%;
@@ -40,7 +38,7 @@ const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { 
     display: flex;
     align-items: center;
 
-    color: ${hasValue ? 'var(--c-base-strong)' : 'var(--c-faint-strong-down)'};
+    color: var(--c-faint-strong-down);
     background-color: var(--c-base-weak);
 
     ${font.body.p};
@@ -51,15 +49,26 @@ const Dropdown = styled.label<Pick<SelectProps, 'isInvalid' | 'isDisabled'> & { 
       cursor: pointer;
     }
 
-    ${isDisabled &&
-    css`
+    &[data-has-value] {
+      color: var(--c-base-strong);
+    }
+
+    &[aria-disabled] {
       color: var(--c-faint-strong-down);
       background-color: var(--c-faint-weak-down);
 
+      cursor: not-allowed;
+
       ${Input} {
-        color: ${hasValue ? 'var(--c-faint-strong-down)' : 'var(--c-faint-weak-up)'};
+        color: var(--c-faint-weak-up);
       }
-    `}
+
+      &[data-has-value] {
+        ${Input} {
+          color: var(--c-faint-strong-down);
+        }
+      }
+    }
   `
 );
 

@@ -51,8 +51,8 @@ const checkedValidity = (color: 'accent' | 'critical') => {
   `;
 };
 
-const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' | 'isInvalid'>>(
-  ({ value, isDisabled, isInvalid }) => css`
+const Checkbox = styled.label(
+  () => css`
     position: relative;
 
     ${size('28px')};
@@ -81,110 +81,104 @@ const Checkbox = styled.label<Pick<CheckboxProps, 'value' | 'isDisabled' | 'isIn
       transition: all var(--transition-short);
     }
 
-    ${isDisabled
-      ? css`
-          cursor: not-allowed;
-        `
-      : css`
-          &:active {
-            transform: scale(0.975);
+    &[aria-disabled='true'] {
+      cursor: not-allowed;
+    }
+
+    &[aria-disabled='false'] {
+      &:active {
+        transform: scale(0.975);
+      }
+    }
+
+    &[aria-checked='true'] {
+      color: var(--c-text-base-weak);
+
+      ${checkedValidity('accent')};
+
+      &[aria-invalid] {
+        ${checkedValidity('critical')};
+      }
+
+      &[aria-disabled='true'] {
+        &:hover {
+          &:before {
+            box-shadow: none;
           }
-        `}
+        }
 
-    ${value
-      ? // Checked
-        css`
-          color: var(--c-text-base-weak);
+        &,
+        &:active {
+          &:before {
+            ${checkedShapeColor('faint-weak-up')}
+          }
+        }
+      }
+    }
 
-          ${checkedValidity('accent')};
+    &[aria-checked='false'] {
+      color: var(--c-base-weak);
 
-          ${isInvalid &&
-          css`
-            ${checkedValidity('critical')};
-          `}
+      &:before {
+        background-color: var(--c-base-weak);
+        border-color: var(--c-faint-strong-down);
+      }
 
-          ${isDisabled &&
-          css`
-            &:hover {
-              &:before {
-                box-shadow: none;
-              }
-            }
+      &:hover {
+        &:before {
+          box-shadow: ${shadow('base-strong', 0.15)};
+        }
+      }
 
-            &,
-            &:active {
-              &:before {
-                ${checkedShapeColor('faint-weak-up')}
-              }
-            }
-          `}
-        `
-      : // Unchecked
-        css`
-          color: var(--c-base-weak);
+      &:focus-within,
+      &:active {
+        &:before {
+          border-color: var(--c-accent-strong);
+        }
+      }
+
+      &:active {
+        color: var(--c-accent-strong-down);
+      }
+
+      &[aria-invalid] {
+        &:before {
+          border-color: var(--c-critical-strong);
+        }
+
+        &:focus-within,
+        &:active {
+          &:before {
+            border-color: var(--c-critical-weak-up);
+          }
+        }
+
+        &:active {
+          color: var(--c-critical-weak-up);
+        }
+      }
+
+      &[aria-disabled='true'] {
+        &:before {
+          background-color: var(--c-faint-weak-down);
+        }
+
+        &:hover {
+          &:before {
+            box-shadow: none;
+          }
+        }
+
+        &,
+        &:active {
+          color: var(--c-faint-weak-down);
 
           &:before {
-            background-color: var(--c-base-weak);
-            border-color: var(--c-faint-strong-down);
+            border-color: var(--c-faint-weak-up);
           }
-
-          &:hover {
-            &:before {
-              box-shadow: ${shadow('base-strong', 0.15)};
-            }
-          }
-
-          &:focus-within,
-          &:active {
-            &:before {
-              border-color: var(--c-accent-strong);
-            }
-          }
-
-          &:active {
-            color: var(--c-accent-strong-down);
-          }
-
-          ${isInvalid &&
-          css`
-            &:before {
-              border-color: var(--c-critical-strong);
-            }
-
-            &:focus-within,
-            &:active {
-              &:before {
-                border-color: var(--c-critical-weak-up);
-              }
-            }
-
-            &:active {
-              color: var(--c-critical-weak-up);
-            }
-          `}
-
-          ${isDisabled &&
-          css`
-            &:before {
-              background-color: var(--c-faint-weak-down);
-            }
-
-            &:hover {
-              &:before {
-                box-shadow: none;
-              }
-            }
-
-            &,
-            &:active {
-              color: var(--c-faint-weak-down);
-
-              &:before {
-                border-color: var(--c-faint-weak-up);
-              }
-            }
-          `}
-        `}
+        }
+      }
+    }
   `
 );
 

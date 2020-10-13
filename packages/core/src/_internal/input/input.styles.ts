@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { shadow, font } from '@brix-ui/theme/mixin';
 
-import type { InputProps } from './input.props';
-
 const Input = styled.input(
   () => css`
     -webkit-appearance: none;
@@ -27,8 +25,8 @@ const Input = styled.input(
   `
 );
 
-const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 'isReadonly' | 'isInvalid'>>(
-  ({ isDisabled, isReadonly, isInvalid }) => css`
+const Container = styled.label(
+  () => css`
     --affix-indent: 8px;
 
     height: 28px;
@@ -60,27 +58,24 @@ const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 
       border-color: var(--c-accent-strong);
     }
 
-    ${isReadonly &&
-    css`
+    &[aria-readonly] {
       color: var(--c-faint-strong-up);
       border-color: var(--c-faint-weak-up);
 
       ${Input}::placeholder {
         opacity: 1;
       }
-    `}
+    }
 
-    ${isInvalid &&
-    css`
+    &[aria-invalid] {
       border-color: var(--c-critical-strong);
 
       &:focus-within {
         border-color: var(--c-critical-weak-up);
       }
-    `};
+    }
 
-    ${isDisabled &&
-    css`
+    &[aria-disabled] {
       color: var(--c-faint-strong-down);
       background-color: var(--c-faint-weak-down);
       border-color: var(--c-faint-weak-up);
@@ -94,7 +89,7 @@ const Container = styled.label<Pick<InputProps<string | number>, 'isDisabled' | 
       ${Input}::placeholder {
         color: var(--c-faint-weak-up);
       }
-    `}
+    }
   `
 );
 

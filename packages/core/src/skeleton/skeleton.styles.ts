@@ -60,10 +60,10 @@ const Skeleton = styled(Block)<
     $height: string | undefined;
   }
 >(
-  ({ size, $width: width, $height: height, isRounded, isStatic }) => css`
+  ({ size, $width: width, $height: height }) => css`
     --height: ${size || tryTextHeight(height)};
     --background-color: var(--c-faint-weak);
-    --border-radius: ${isRounded ? 'calc(var(--height) / 2)' : '2px'};
+    --border-radius: 2px;
 
     --animation-duration: 3s;
     --animation-timing-function: linear;
@@ -75,24 +75,27 @@ const Skeleton = styled(Block)<
     margin-top: ${tryTextLineHeight(height)};
     margin-bottom: ${tryTextLineHeight(height)};
 
+    &[data-rounded] {
+      --border-radius: calc(var(--height) / 2);
+    }
+
     border-radius: var(--border-radius);
 
-    ${isStatic
-      ? css`
-          background-color: var(--background-color);
-        `
-      : css`
-          background-image: linear-gradient(
-            to right,
-            var(--background-color),
-            rgba(255, 255, 255, 0),
-            var(--background-color)
-          );
-          background-size: 2000px 100%;
+    &[data-static] {
+      background-color: var(--background-color);
+    }
 
-          animation: ${shimmer} var(--animation-duration) var(--animation-timing-function)
-            var(--animation-iteration-count);
-        `};
+    &:not([data-static]) {
+      background-image: linear-gradient(
+        to right,
+        var(--background-color),
+        rgba(255, 255, 255, 0),
+        var(--background-color)
+      );
+      background-size: 2000px 100%;
+
+      animation: ${shimmer} var(--animation-duration) var(--animation-timing-function) var(--animation-iteration-count);
+    }
 
     cursor: wait;
   `

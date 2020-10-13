@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import useAutoTransition from 'honks/use-auto-transition';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useDisclose from '@brix-ui/hooks/use-disclose';
@@ -50,16 +50,16 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
     <Styled.Container
       ref={ref}
       direction="column"
-      isOpen={internalIsOpen}
-      isDisabled={isDisabled}
+      data-expanded={internalIsOpen}
+      aria-disabled={orUndefined(isDisabled)}
       className={className}
       {...props}
     >
       <Styled.Summary
         type="button"
-        isOpen={internalIsOpen}
-        aria-disabled={isDisabled || undefined}
+        data-expanded={internalIsOpen}
         disabled={isDisabled}
+        aria-disabled={orUndefined(isDisabled)}
         onClick={() => toggle()}
       >
         {summary}

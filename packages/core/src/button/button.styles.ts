@@ -6,8 +6,8 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 import type { ButtonProps } from './button.props';
 import { buttonMixin, disabledButtonMixin } from './button.mixin';
 
-const Button = styled.button<ButtonProps>(
-  ({ intent = 'base', appearance = 'contained', isRounded, isDisabled }) => css`
+const Button = styled.button<Omit<ButtonProps, 'isDisabled'>>(
+  ({ intent = 'base', appearance = 'contained', isRounded }) => css`
     --height: 28px;
 
     height: var(--height);
@@ -38,20 +38,20 @@ const Button = styled.button<ButtonProps>(
       transform: scale(0.975);
     }
 
-    ${isDisabled
-      ? css`
-          cursor: not-allowed;
-          user-select: none;
+    &[disabled] {
+      cursor: not-allowed;
+      user-select: none;
 
-          ${disabledButtonMixin[appearance]};
+      ${disabledButtonMixin[appearance]};
 
-          &:active {
-            transform: scale(1);
-          }
-        `
-      : css`
-          ${buttonMixin[appearance][intent]}};
-        `}
+      &:active {
+        transform: scale(1);
+      }
+    }
+    
+    &:not([disabled]) {
+      ${buttonMixin[appearance][intent]}};
+    }
   `
 );
 
