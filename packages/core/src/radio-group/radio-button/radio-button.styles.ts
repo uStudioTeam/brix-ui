@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
 
-import type { RadioGroupProps } from '../radio-group.props';
+const Input = styled.input`
+  ${hidden};
+`;
 
 const scale = (factor: number) => css`
   transform: translate(-50%, -50%) scale(${factor});
@@ -40,8 +42,8 @@ const checkedValidity = (color: string) => css`
   }
 `;
 
-const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid'> & { value: boolean }>(
-  ({ value, isDisabled, isInvalid }) => css`
+const RadioButton = styled.label(
+  () => css`
     position: relative;
 
     ${size('28px')};
@@ -50,17 +52,17 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
 
     transition: all var(--transition-short);
 
-    ${isDisabled
-      ? css`
-          cursor: not-allowed;
-        `
-      : css`
-          cursor: pointer;
+    cursor: pointer;
 
-          &:active {
-            transform: scale(0.925);
-          }
-        `}
+    &[aria-disabled] {
+      cursor: not-allowed;
+    }
+
+    &:not([aria-disabled]) {
+      &:active {
+        transform: scale(0.925);
+      }
+    }
 
     &,
     &:before,
@@ -94,127 +96,120 @@ const RadioButton = styled.label<Pick<RadioGroupProps, 'isDisabled' | 'isInvalid
       ${size('8px')};
     }
 
-    ${value
-      ? // Checked
-        css`
-          ${checkedValidity('accent')};
+    &[aria-checked='true'] {
+      ${checkedValidity('accent')};
 
-          ${isInvalid && checkedValidity('critical')};
+      &:after {
+        background-color: var(--c-text-base-weak);
+      }
 
-          &:after {
-            background-color: var(--c-text-base-weak);
-          }
+      &[aria-invalid] {
+        ${checkedValidity('critical')};
+      }
 
-          ${isDisabled &&
-          css`
-            &:before {
-              border-color: var(--c-faint-weak-up);
+      &[aria-disabled] {
+        &:before {
+          border-color: var(--c-faint-weak-up);
 
-              background-color: var(--c-faint-weak-up);
-            }
+          background-color: var(--c-faint-weak-up);
+        }
 
-            &:focus-within,
-            &:active {
-              &:before {
-                border-color: var(--c-faint-weak-up);
-
-                background-color: var(--c-faint-weak-up);
-              }
-            }
-
-            &:hover {
-              &:before {
-                box-shadow: none;
-              }
-            }
-          `}
-        `
-      : // Unchecked
-        css`
+        &:focus-within,
+        &:active {
           &:before {
-            border-color: var(--c-faint-strong);
-          }
+            border-color: var(--c-faint-weak-up);
 
-          &:before,
-          &:after {
-            background-color: var(--c-base-weak);
+            background-color: var(--c-faint-weak-up);
           }
+        }
 
-          &:hover {
-            &:before {
-              box-shadow: ${shadow('base-strong', 0.15)};
-            }
+        &:hover {
+          &:before {
+            box-shadow: none;
           }
+        }
+      }
+    }
 
-          &:focus-within,
-          &:active {
-            &:before {
-              border-color: var(--c-accent-strong);
-            }
+    &[aria-checked='false'] {
+      &:before {
+        border-color: var(--c-faint-strong);
+      }
+
+      &:before,
+      &:after {
+        background-color: var(--c-base-weak);
+      }
+
+      &:hover {
+        &:before {
+          box-shadow: ${shadow('base-strong', 0.15)};
+        }
+      }
+
+      &:focus-within,
+      &:active {
+        &:before {
+          border-color: var(--c-accent-strong);
+        }
+      }
+
+      &:after {
+        ${scale(0)};
+      }
+
+      &:active {
+        &:after {
+          ${scale(1)};
+        }
+      }
+
+      &[aria-invalid] {
+        &:before {
+          border-color: var(--c-critical-strong);
+        }
+
+        &:after {
+          background-color: var(--c-critical-weak-up);
+        }
+
+        &:focus-within,
+        &:active {
+          &:before {
+            border-color: var(--c-critical-weak-up);
           }
+        }
+      }
 
+      &[aria-disabled] {
+        &:after {
+          ${scale(0)};
+        }
+
+        &,
+        &:focus-within,
+        &:active {
+          &:before {
+            border-color: var(--c-faint-weak-up);
+            background-color: var(--c-faint-weak-down);
+          }
+        }
+
+        &:active {
           &:after {
             ${scale(0)};
           }
+        }
 
-          &:active {
-            &:after {
-              ${scale(1)};
-            }
+        &:hover {
+          &:before {
+            box-shadow: none;
           }
-
-          ${isInvalid &&
-          css`
-            &:before {
-              border-color: var(--c-critical-strong);
-            }
-
-            &:after {
-              background-color: var(--c-critical-weak-up);
-            }
-
-            &:focus-within,
-            &:active {
-              &:before {
-                border-color: var(--c-critical-weak-up);
-              }
-            }
-          `}
-
-          ${isDisabled &&
-          css`
-            &:after {
-              ${scale(0)};
-            }
-
-            &,
-            &:focus-within,
-            &:active {
-              &:before {
-                border-color: var(--c-faint-weak-up);
-                background-color: var(--c-faint-weak-down);
-              }
-            }
-
-            &:active {
-              &:after {
-                ${scale(0)};
-              }
-            }
-
-            &:hover {
-              &:before {
-                box-shadow: none;
-              }
-            }
-          `}
-        `}
+        }
+      }
+    }
   `
 );
-
-const Input = styled.input`
-  ${hidden};
-`;
 
 const Styled = applyDisplayNames({ RadioButton, Input });
 

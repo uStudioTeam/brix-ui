@@ -10,7 +10,6 @@ import Text from '../text';
 
 const Dialog = styled(FocusLock)<
   {
-    isOpen: boolean;
     transitionSpeed?: number;
     $top: string;
     $margin: string;
@@ -18,7 +17,7 @@ const Dialog = styled(FocusLock)<
     $maxHeight: string;
   } & ReactFocusLockProps
 >(
-  ({ isOpen, transitionSpeed, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
+  ({ transitionSpeed, $top: top, $margin: margin, $maxWidth: maxWidth, $maxHeight: maxHeight }) => css`
     --margin: ${margin};
     --padding: 1rem;
     --title-color: var(--c-faint-strong);
@@ -40,11 +39,15 @@ const Dialog = styled(FocusLock)<
     border-radius: 4px;
     box-shadow: ${shadow('base-strong', 0.1)};
 
-    opacity: ${isOpen ? 1 : 0};
+    opacity: 0;
 
     transform: translate(calc(-50% - var(--margin)), -50%);
 
     transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : `var(--transition-long)`};
+
+    &[open] {
+      opacity: 1;
+    }
   `
 );
 

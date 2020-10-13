@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
 import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
@@ -29,10 +29,10 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
   return (
     <Styled.RadioButton
       ref={containerRef}
-      value={selectedOption === value}
+      aria-checked={selectedOption === value}
       className={className}
-      isDisabled={isDisabled}
-      isInvalid={isInvalid}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -43,10 +43,10 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
         name={name}
         onChange={(event) => handleChange(value, event)}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
+        aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
-        aria-required={isRequired}
-        aria-invalid={isInvalid}
+        aria-required={orUndefined(isRequired)}
+        aria-invalid={orUndefined(isInvalid)}
         form={form}
         {...propsWithAria}
         {...propsWithEvents}

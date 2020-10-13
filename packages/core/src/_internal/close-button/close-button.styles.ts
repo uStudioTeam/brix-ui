@@ -8,7 +8,7 @@ import Button from '../../button';
 import Flex from '../../flex';
 
 const CloseButton = styled(Button)`
-  ${size('var(--icon-size)')};
+  ${size('var(--button-size)')};
 
   padding: 0;
 
@@ -22,7 +22,7 @@ const CloseButton = styled(Button)`
 const CloseContainer = styled(Flex).attrs(() => ({
   forwardedAs: 'label',
 }))`
-  --icon-size: 12px;
+  --button-size: 12px;
 
   position: absolute;
   top: 0;
@@ -42,7 +42,7 @@ const CloseContainer = styled(Flex).attrs(() => ({
 `;
 
 const CloseIcon = styled(Times)`
-  ${size('calc(var(--icon-size) * (2 / 3))')};
+  ${size('calc(var(--button-size) * (2 / 3))')};
 
   transition: all var(--transition-short);
 `;

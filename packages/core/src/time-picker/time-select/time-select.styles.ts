@@ -15,13 +15,13 @@ const Value = styled(Text).attrs(() => ({
   width: auto;
 `;
 
-const TimeSelect = styled(Dropdown)<{ hasValue: boolean }>(
-  ({ isDisabled, hasValue }) => css`
+const TimeSelect = styled(Dropdown)(
+  () => css`
     position: relative;
 
     width: auto;
 
-    padding: 2px ${hasValue ? 10 : 8}px 4px;
+    padding: 2px 8px 4px;
 
     border-radius: 2px;
 
@@ -29,12 +29,21 @@ const TimeSelect = styled(Dropdown)<{ hasValue: boolean }>(
       background-color: var(--c-faint-weak);
     }
 
-    ${isDisabled &&
-    css`
+    &[data-has-value] {
+      padding: 2px 10px 4px;
+    }
+
+    &[aria-disabled] {
       ${Value} {
-        color: ${hasValue ? 'var(--c-faint-strong-down)' : 'var(--c-faint-weak-up)'};
+        color: var(--c-faint-weak-up);
       }
-    `}
+
+      &[data-has-value] {
+        ${Value} {
+          color: var(--c-faint-strong-down);
+        }
+      }
+    }
 
     select {
       ${hidden};

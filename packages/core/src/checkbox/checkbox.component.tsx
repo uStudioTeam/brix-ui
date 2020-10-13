@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -43,9 +43,9 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
     <Styled.Checkbox
       ref={containerRef}
       className={className}
-      value={internalValue}
-      isDisabled={isDisabled}
-      isInvalid={isInvalid}
+      aria-checked={internalValue ?? false}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -56,15 +56,15 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
         type="checkbox"
         name={name}
         id={id}
-        defaultChecked={internalValue}
-        aria-checked={internalValue}
+        defaultChecked={internalValue ?? false}
+        aria-checked={internalValue ?? false}
         value={internalValue ? 'on' : 'off'}
         onChange={handleChange}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
+        aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
-        aria-required={isRequired}
-        aria-invalid={isInvalid}
+        aria-required={orUndefined(isRequired)}
+        aria-invalid={orUndefined(isInvalid)}
         form={form}
         {...propsWithAria}
         {...propsWithEvents}

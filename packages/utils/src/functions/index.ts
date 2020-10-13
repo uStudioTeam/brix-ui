@@ -6,6 +6,7 @@ export * from './to-double';
 export * from './capitalize';
 export * from './fill-array';
 export * from './object-keys';
+export * from './or-undefined';
 export * from './is-undefined';
 export * from './filter-object';
 export * from './object-values';

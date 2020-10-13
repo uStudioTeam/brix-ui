@@ -2,7 +2,7 @@ import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { extract } from '@brix-ui/prop-types/utils';
-import { applyPolymorphicFunctionProp, intrinsicComponent } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -44,14 +44,14 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   return (
     <Styled.Switch
       ref={containerRef}
-      value={internalValue}
-      isDisabled={isDisabled}
-      isInvalid={isInvalid}
+      aria-checked={internalValue ?? false}
+      aria-disabled={orUndefined(isDisabled)}
+      aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
       {children && (
-        <Styled.Children value={internalValue} isDisabled={isDisabled} isInvalid={isInvalid}>
+        <Styled.Children>
           {applyPolymorphicFunctionProp(children, { value: internalValue, isDisabled, isInvalid })}
         </Styled.Children>
       )}
@@ -63,15 +63,15 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
         name={name}
         id={id}
         form={form}
-        defaultChecked={internalValue}
-        aria-checked={internalValue}
+        defaultChecked={internalValue ?? false}
+        aria-checked={internalValue ?? false}
         value={internalValue ? 'on' : 'off'}
         onChange={handleChange}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
+        aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
-        aria-required={isRequired}
-        aria-invalid={isInvalid}
+        aria-required={orUndefined(isRequired)}
+        aria-invalid={orUndefined(isInvalid)}
         {...propsWithAria}
         {...propsWithEvents}
       />

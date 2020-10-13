@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { intentable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 
@@ -15,7 +15,7 @@ const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Butto
   const isDisabled = useDisabled(_isDisabled);
 
   return (
-    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={isDisabled} isDisabled={isDisabled} {...props}>
+    <Styled.Button ref={ref} disabled={isDisabled} aria-disabled={orUndefined(isDisabled)} {...props}>
       {children}
     </Styled.Button>
   );

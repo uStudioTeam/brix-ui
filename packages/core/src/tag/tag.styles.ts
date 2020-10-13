@@ -1,9 +1,9 @@
-import { size } from '@brix-ui/theme/mixin';
 import styled, { css } from 'styled-components';
 
 import { Color } from '@brix-ui/types/palette';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import Times from '@brix-ui/icons/times';
+import { size } from '@brix-ui/theme/mixin';
 
 import Flex from '../flex';
 

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
@@ -46,7 +46,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
                   key={label}
                   label={label}
                   disabled={isOptionGroupDisabled}
-                  aria-disabled={isOptionGroupDisabled || undefined}
+                  aria-disabled={orUndefined(isOptionGroupDisabled)}
                 >
                   {renderOptions(groupOptions, {
                     isSelected: isOptionSelected,

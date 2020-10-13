@@ -21,7 +21,7 @@ const pulse = keyframes`
   }
 `;
 
-const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, isStatic, hasBorder = true }) => {
+const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base }) => {
   const intent = _intent === Intent.Base ? 'faint' : _intent;
 
   return css`
@@ -51,9 +51,13 @@ const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, isStat
       top: 0;
       left: 0;
 
-      background-color: ${hasBorder && 'var(--border-color)'};
+      &[data-has-border] {
+        background-color: var(--border-color);
 
-      animation: ${!isStatic && hasBorder && pulse} 2s infinite;
+        &:not([data-static]) {
+          animation: ${pulse} 2s infinite;
+        }
+      }
     }
 
     &:after {

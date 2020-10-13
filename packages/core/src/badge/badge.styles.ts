@@ -27,7 +27,6 @@ const Badge = styled.div<
     $color: BadgeProps['color'];
     $backgroundColor: BadgeProps['backgroundColor'];
     $value: BadgeProps['value'];
-    hasChildren: boolean;
   }
 >(
   ({
@@ -38,7 +37,6 @@ const Badge = styled.div<
     verticalPosition = Align.Start,
     horizontalOffset,
     verticalOffset,
-    hasChildren,
     theme,
   }) => {
     const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
@@ -63,14 +61,13 @@ const Badge = styled.div<
 
       line-height: 1;
 
-      ${hasChildren &&
-      css`
+      &[data-has-children] {
         position: absolute;
         top: ${parsePosition(verticalPosition)};
         left: ${parsePosition(horizontalPosition)};
 
         transform: translate(${calculateTranslation(horizontalOffset)}, ${calculateTranslation(verticalOffset)});
-      `}
+      }
     `;
   }
 );
