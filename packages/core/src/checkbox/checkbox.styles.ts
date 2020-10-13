@@ -4,11 +4,8 @@ import { applyDisplayNames } from '@brix-ui/utils/functions';
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
 import Check from '@brix-ui/icons/check';
 
-import type { CheckboxProps } from './checkbox.props';
-
 const CheckIcon = styled(Check)`
-  width: 14px;
-  height: 14px;
+  ${size('var(--icon-size)')};
 
   transform: translateY(2.5%);
 `;
@@ -20,42 +17,18 @@ const Input = styled.input`
 // Did not specify ReturnType due to `styled-components` typing inconsistency
 const checkedShapeColor = (color: string) => {
   return css`
-    background-color: var(--c-${color});
-    border-color: var(--c-${color});
-  `;
-};
-
-const checkedValidity = (color: 'accent' | 'critical') => {
-  return css`
-    &:before {
-      ${checkedShapeColor(`${color}-strong`)};
-    }
-
-    &:hover {
-      &:before {
-        box-shadow: ${shadow(`${color}-strong`, 0.25)};
-      }
-    }
-
-    &:focus-within {
-      &:before {
-        ${checkedShapeColor(`${color}-strong-down`)};
-      }
-    }
-
-    &:active {
-      &:before {
-        ${checkedShapeColor(`${color}-weak-up`)};
-      }
-    }
+    background-color: var(--${color});
+    border-color: var(--${color});
   `;
 };
 
 const Checkbox = styled.label(
   () => css`
+    --icon-size: 14px;
+
     position: relative;
 
-    ${size('28px')};
+    ${size('var(--input-height-large)')};
 
     display: flex;
     align-items: center;
@@ -70,37 +43,65 @@ const Checkbox = styled.label(
       top: 50%;
       left: 50%;
 
-      ${size('16px')};
+      ${size('var(--input-height-small)')};
 
       border-width: 1px;
       border-style: solid;
-      border-radius: 2px;
+      border-radius: var(--input-border-radius);
 
       transform: translate(-50%, -50%);
 
       transition: all var(--transition-short);
     }
 
-    &[aria-disabled='true'] {
+    &[aria-disabled] {
       cursor: not-allowed;
     }
 
-    &[aria-disabled='false'] {
+    &:not([aria-disabled]) {
       &:active {
-        transform: scale(0.975);
+        transform: scale(0.95);
       }
     }
 
     &[aria-checked='true'] {
       color: var(--c-text-base-weak);
 
-      ${checkedValidity('accent')};
-
-      &[aria-invalid] {
-        ${checkedValidity('critical')};
+      &:before {
+        ${checkedShapeColor(`input-background-color-checked`)};
       }
 
-      &[aria-disabled='true'] {
+      &:hover {
+        &:before {
+          box-shadow: ${shadow(`accent-strong`, 0.25)};
+        }
+      }
+
+      &:focus-within {
+        &:before {
+          ${checkedShapeColor(`input-background-color-checked-focus`)};
+        }
+      }
+
+      &[aria-invalid] {
+        &:before {
+          ${checkedShapeColor(`input-border-color-invalid`)};
+        }
+
+        &:hover {
+          &:before {
+            box-shadow: ${shadow(`accent-strong`, 0.25)};
+          }
+        }
+
+        &:focus-within {
+          &:before {
+            ${checkedShapeColor(`input-border-color-invalid-focus`)};
+          }
+        }
+      }
+
+      &[aria-disabled] {
         &:hover {
           &:before {
             box-shadow: none;
@@ -110,18 +111,18 @@ const Checkbox = styled.label(
         &,
         &:active {
           &:before {
-            ${checkedShapeColor('faint-weak-up')}
+            ${checkedShapeColor('input-placeholder-color-disabled')}
           }
         }
       }
     }
 
     &[aria-checked='false'] {
-      color: var(--c-base-weak);
+      color: var(--input-background-color);
 
       &:before {
-        background-color: var(--c-base-weak);
-        border-color: var(--c-faint-strong-down);
+        background-color: var(--input-background-color);
+        border-color: var(--input-border-color);
       }
 
       &:hover {
@@ -133,34 +134,34 @@ const Checkbox = styled.label(
       &:focus-within,
       &:active {
         &:before {
-          border-color: var(--c-accent-strong);
+          border-color: var(--input-border-color-focus);
         }
       }
 
       &:active {
-        color: var(--c-accent-strong-down);
+        color: var(--input-background-color-checked-focus);
       }
 
       &[aria-invalid] {
         &:before {
-          border-color: var(--c-critical-strong);
+          border-color: var(--input-border-color-invalid);
         }
 
         &:focus-within,
         &:active {
           &:before {
-            border-color: var(--c-critical-weak-up);
+            border-color: var(--input-border-color-invalid-focus);
           }
         }
 
         &:active {
-          color: var(--c-critical-weak-up);
+          color: var(--input-border-color-invalid-focus);
         }
       }
 
-      &[aria-disabled='true'] {
+      &[aria-disabled] {
         &:before {
-          background-color: var(--c-faint-weak-down);
+          background-color: var(--input-background-color-disabled);
         }
 
         &:hover {
@@ -171,10 +172,10 @@ const Checkbox = styled.label(
 
         &,
         &:active {
-          color: var(--c-faint-weak-down);
+          color: var(--input-background-color-disabled);
 
           &:before {
-            border-color: var(--c-faint-weak-up);
+            border-color: var(--input-border-color-disabled);
           }
         }
       }

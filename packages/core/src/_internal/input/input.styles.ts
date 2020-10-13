@@ -29,7 +29,7 @@ const Container = styled.label(
   () => css`
     --affix-indent: 8px;
 
-    height: 28px;
+    height: var(--input-height-large);
     width: 100%;
 
     padding: 2px 8px 4px;
@@ -38,11 +38,11 @@ const Container = styled.label(
     justify-content: space-between;
     align-items: center;
 
-    color: var(--c-base-strong);
-    background-color: var(--c-base-weak);
+    color: var(--input-color);
+    background-color: var(--input-background-color);
 
-    border: 1px solid var(--c-faint-strong-down);
-    border-radius: 2px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
 
     ${font.body.p};
 
@@ -55,7 +55,7 @@ const Container = styled.label(
     }
 
     &:focus-within {
-      border-color: var(--c-accent-strong);
+      border-color: var(--input-border-color-focus);
     }
 
     &[aria-readonly] {
@@ -68,17 +68,17 @@ const Container = styled.label(
     }
 
     &[aria-invalid] {
-      border-color: var(--c-critical-strong);
+      border-color: var(--input-border-color-invalid);
 
       &:focus-within {
-        border-color: var(--c-critical-weak-up);
+        border-color: var(--input-border-color-invalid-focus);
       }
     }
 
     &[aria-disabled] {
-      color: var(--c-faint-strong-down);
-      background-color: var(--c-faint-weak-down);
-      border-color: var(--c-faint-weak-up);
+      color: var(--input-color-disabled);
+      background-color: var(--input-background-color-disabled);
+      border-color: var(--input-border-color-disabled);
 
       cursor: not-allowed;
 
@@ -87,7 +87,7 @@ const Container = styled.label(
       }
 
       ${Input}::placeholder {
-        color: var(--c-faint-weak-up);
+        color: var(--input-placeholder-color-disabled);
       }
     }
   `

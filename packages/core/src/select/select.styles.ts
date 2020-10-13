@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { shadow } from '@brix-ui/theme/mixin';
+import { shadow, size } from '@brix-ui/theme/mixin';
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 import Chevron from '@brix-ui/icons/chevron';
 
@@ -8,8 +8,7 @@ import Dropdown from '../_internal/dropdown';
 
 const Icon = styled(Chevron)(
   () => css`
-    width: 10px;
-    height: 10px;
+    ${size('var(--icon-size)')};
 
     cursor: pointer;
 
@@ -19,27 +18,29 @@ const Icon = styled(Chevron)(
 
 const Select = styled(Dropdown)(
   () => css`
-    border: 1px solid var(--c-faint-strong-down);
-    border-radius: 2px;
+    --icon-size: 10px;
+
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
 
     &:hover {
       box-shadow: ${shadow('base-strong', 0.1)};
     }
 
     &:focus-within {
-      border-color: var(--c-accent-strong);
+      border-color: var(--input-border-color-focus);
     }
 
     &[aria-invalid] {
-      border-color: var(--c-critical-strong);
+      border-color: var(--input-border-color-invalid);
 
       &:focus-within {
-        border-color: var(--c-critical-weak-up);
+        border-color: var(--input-border-color-invalid-focus);
       }
     }
 
     &[aria-disabled] {
-      border-color: var(--c-faint-weak-up);
+      border-color: var(--input-border-color-disabled);
 
       &:hover {
         box-shadow: none;

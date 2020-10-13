@@ -11,42 +11,11 @@ const scale = (factor: number) => css`
   transform: translate(-50%, -50%) scale(${factor});
 `;
 
-const checkedValidity = (color: string) => css`
-  &:before {
-    border-color: var(--c-${color}-strong);
-    background-color: var(--c-${color}-strong);
-  }
-
-  &:after {
-    ${scale(1)};
-  }
-
-  &:hover {
-    &:before {
-      box-shadow: ${shadow(`${color}-strong`, 0.25)};
-    }
-  }
-
-  &:focus-within {
-    &:before {
-      border-color: var(--c-${color}-weak-up);
-      background-color: var(--c-${color}-weak-up);
-    }
-  }
-
-  &:active {
-    &:before {
-      border-color: var(--c-${color}-weak-up);
-      background-color: var(--c-${color}-weak-up);
-    }
-  }
-`;
-
 const RadioButton = styled.label(
   () => css`
     position: relative;
 
-    ${size('28px')};
+    ${size('var(--input-height-large)')};
 
     display: block;
 
@@ -67,7 +36,7 @@ const RadioButton = styled.label(
     &,
     &:before,
     &:after {
-      border-radius: 8px;
+      border-radius: calc(var(--input-height-small) / 2);
     }
 
     &:before,
@@ -84,7 +53,7 @@ const RadioButton = styled.label(
     }
 
     &:before {
-      ${size('16px')};
+      ${size('var(--input-height-small)')};
 
       border-width: 1px;
       border-style: solid;
@@ -93,33 +62,69 @@ const RadioButton = styled.label(
     }
 
     &:after {
-      ${size('8px')};
+      ${size('calc(var(--input-height-small) / 2)')};
     }
 
     &[aria-checked='true'] {
-      ${checkedValidity('accent')};
+      &:before {
+        border-color: var(--input-background-color-checked);
+        background-color: var(--input-background-color-checked);
+      }
+
+      &:hover {
+        &:before {
+          box-shadow: ${shadow(`accent-strong`, 0.25)};
+        }
+      }
+
+      &:focus-within,
+      &:active {
+        &:before {
+          border-color: var(--input-background-color-checked-focus);
+          background-color: var(--input-background-color-checked-focus);
+        }
+      }
 
       &:after {
         background-color: var(--c-text-base-weak);
+
+        ${scale(1)};
       }
 
       &[aria-invalid] {
-        ${checkedValidity('critical')};
-      }
-
-      &[aria-disabled] {
         &:before {
-          border-color: var(--c-faint-weak-up);
+          border-color: var(--input-border-color-invalid);
+          background-color: var(--input-border-color-invalid);
+        }
 
-          background-color: var(--c-faint-weak-up);
+        &:hover {
+          &:before {
+            box-shadow: ${shadow(`accent-strong`, 0.25)};
+          }
         }
 
         &:focus-within,
         &:active {
           &:before {
-            border-color: var(--c-faint-weak-up);
+            border-color: var(--input-border-color-invalid-focus);
+            background-color: var(--input-border-color-invalid-focus);
+          }
+        }
+      }
 
-            background-color: var(--c-faint-weak-up);
+      &[aria-disabled] {
+        &:before {
+          border-color: var(--input-border-color-disabled);
+
+          background-color: var(--input-background-color-checked-disabled);
+        }
+
+        &:focus-within,
+        &:active {
+          &:before {
+            border-color: var(--input-border-color-disabled);
+
+            background-color: var(--input-border-color-disabled);
           }
         }
 
@@ -133,12 +138,12 @@ const RadioButton = styled.label(
 
     &[aria-checked='false'] {
       &:before {
-        border-color: var(--c-faint-strong);
+        border-color: var(--input-border-color);
       }
 
       &:before,
       &:after {
-        background-color: var(--c-base-weak);
+        background-color: var(--input-background-color);
       }
 
       &:hover {
@@ -150,7 +155,7 @@ const RadioButton = styled.label(
       &:focus-within,
       &:active {
         &:before {
-          border-color: var(--c-accent-strong);
+          border-color: var(--input-background-color-checked);
         }
       }
 
@@ -166,17 +171,17 @@ const RadioButton = styled.label(
 
       &[aria-invalid] {
         &:before {
-          border-color: var(--c-critical-strong);
+          border-color: var(--input-border-color-invalid);
         }
 
         &:after {
-          background-color: var(--c-critical-weak-up);
+          background-color: var(--input-border-color-invalid-focus);
         }
 
         &:focus-within,
         &:active {
           &:before {
-            border-color: var(--c-critical-weak-up);
+            border-color: var(--input-border-color-invalid-focus);
           }
         }
       }
@@ -190,8 +195,8 @@ const RadioButton = styled.label(
         &:focus-within,
         &:active {
           &:before {
-            border-color: var(--c-faint-weak-up);
-            background-color: var(--c-faint-weak-down);
+            border-color: var(--input-border-color-disabled);
+            background-color: var(--input-background-color-disabled);
           }
         }
 
