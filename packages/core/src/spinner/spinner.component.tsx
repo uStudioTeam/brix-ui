@@ -76,6 +76,8 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
           <Styled.Blade
             // eslint-disable-next-line react/no-array-index-key
             key={index}
+            data-index={index}
+            className="spinner-blade"
             animationDuration={animationDuration}
             $animation={animation(index)}
             $width={width}
@@ -109,7 +111,7 @@ Spinner.propTypes = {
   spread: PT.number,
 
   ...delayable,
-  ...stylableComponent(Styled),
+  ...stylableComponent(),
 };
 
 export default Spinner;

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 import { size } from '@brix-ui/theme/mixin';
 import { Intent } from '@brix-ui/types/component';
 
@@ -21,13 +21,15 @@ const pulse = keyframes`
   }
 `;
 
-const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base }) => {
+const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, customProperties }) => {
   const intent = _intent === Intent.Base ? 'faint' : _intent;
 
   return css`
-    --size: 16px;
-    --border-width: 4px;
-    --border-color: var(--c-${intent}-weak-down);
+    ${createCustomProperties(customProperties, {
+      size: '16px',
+      borderWidth: '4px',
+      borderColor: `var(--c-${intent}-weak-down)`,
+    })};
 
     position: relative;
 

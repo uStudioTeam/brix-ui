@@ -4,8 +4,6 @@ import type { Story } from '@storybook/react';
 import Flex from '../src/flex';
 import Badge, { BadgeProps } from '../src/badge';
 
-const positionControl = { type: 'inline-radio', options: ['start', 'center', 'end'] };
-
 export default {
   title: 'Data/Badge',
   component: Badge,
@@ -13,8 +11,8 @@ export default {
   argTypes: {
     color: { control: 'color' },
     backgroundColor: { control: 'color' },
-    horizontalPosition: { control: positionControl },
-    verticalPosition: { control: positionControl },
+    horizontalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
+    verticalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
     horizontalOffset: { control: 'text' },
     verticalOffset: { control: 'text' },
     shouldDisplay: { control: 'boolean', description: 'Hide/show the `Badge` but leave children intact' },

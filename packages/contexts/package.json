@@ -8,7 +8,8 @@
     "@brix-ui/types": "*",
     "@brix-ui/utils": "*",
     "@brix-ui/prop-types": "*",
-    "@brix-ui/hooks": "*"
+    "@brix-ui/hooks": "*",
+    "@brix-ui/theme": "*"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",

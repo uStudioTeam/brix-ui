@@ -22,13 +22,13 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
         <Styled.Badge
           ref={ref}
           data-has-children={orUndefined(isValidElement(children))}
+          data-long-value={orUndefined(`${value || ''}`.length > 1)}
           $color={color}
           $backgroundColor={backgroundColor}
-          $value={value}
           className={className}
           {...props}
         >
-          <Text variant="h5" as="span" lineHeightCompensation>
+          <Text className="badge-value" variant="h5" as="span" lineHeightCompensation>
             {value}
           </Text>
         </Styled.Badge>
@@ -51,7 +51,7 @@ Badge.propTypes = {
   shouldDisplay: PT.bool,
   value: PT.oneOfType([PT.string, PT.number]),
 
-  ...stylableComponent(Styled),
+  ...stylableComponent(),
 };
 
 export default Badge;

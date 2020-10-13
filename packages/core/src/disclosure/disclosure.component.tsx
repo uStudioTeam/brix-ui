@@ -12,19 +12,7 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  {
-    children,
-    className,
-    isOpen,
-    transitionSpeed,
-    summary,
-    icon,
-    onOpen,
-    onChange,
-    onClose,
-    isDisabled: _isDisabled,
-    ...props
-  },
+  { children, isOpen, transitionSpeed, summary, icon, onOpen, onChange, onClose, isDisabled: _isDisabled, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -52,10 +40,10 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       direction="column"
       data-expanded={internalIsOpen}
       aria-disabled={orUndefined(isDisabled)}
-      className={className}
       {...props}
     >
       <Styled.Summary
+        className="disclosure-summary"
         type="button"
         data-expanded={internalIsOpen}
         disabled={isDisabled}
@@ -68,13 +56,16 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       </Styled.Summary>
 
       <Styled.Details
+        className="disclosure-details"
         transitionSpeed={transitionSpeed}
         aria-expanded={internalIsOpen}
         style={{
           height: detailsHeight,
         }}
       >
-        <div ref={detailsRef}>{children}</div>
+        <div className="disclosure-details-inner" ref={detailsRef}>
+          {children}
+        </div>
       </Styled.Details>
     </Styled.Container>
   );
@@ -87,7 +78,7 @@ Disclosure.propTypes = {
   isDisabled: PT.bool,
 
   ...disclosable,
-  ...stylableComponent(Styled),
+  ...stylableComponent('iconIndent'),
 };
 
 export default Disclosure;

@@ -39,7 +39,7 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
 
 Overlay.propTypes = {
   ...disclosable,
-  ...stylableComponent(),
+  ...stylableComponent('opacity'),
 };
 
 export default Overlay;

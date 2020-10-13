@@ -23,7 +23,7 @@ export interface DialogProps
     Unmountable,
     BreakpointsProps<DialogBreakpointProps>,
     PropsWithChildren<IntrinsicComponent<DialogHTMLAttributes<HTMLDialogElement>>>,
-    StylableComponent {
+    StylableComponent<['margin', 'padding', 'titleColor']> {
   title?: string;
   titleAlign?: Exclude<Values<typeof TextAlign>, 'right'>;
 }

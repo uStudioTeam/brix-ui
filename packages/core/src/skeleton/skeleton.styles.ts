@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 import { TypeVariant } from '@brix-ui/types/typography';
 import type { Values } from '@brix-ui/utils/types';
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 
 import Block from '../block';
 
@@ -60,14 +60,15 @@ const Skeleton = styled(Block)<
     $height: string | undefined;
   }
 >(
-  ({ size, $width: width, $height: height }) => css`
-    --height: ${size || tryTextHeight(height)};
-    --background-color: var(--c-faint-weak);
-    --border-radius: 2px;
-
-    --animation-duration: 3s;
-    --animation-timing-function: linear;
-    --animation-iteration-count: infinite;
+  ({ size, $width: width, $height: height, customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      height: size || tryTextHeight(height),
+      backgroundColor: 'var(--c-faint-weak)',
+      borderRadius: '2px',
+      animationDuration: '3s',
+      animationTimingFunction: 'linear',
+      animationIterationCount: 'infinite',
+    })};
 
     width: ${size || width || '100%'};
     height: var(--height);

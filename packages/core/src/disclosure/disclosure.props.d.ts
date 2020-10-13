@@ -5,7 +5,7 @@ import type { Disclosable, IntrinsicComponent, StylableComponent } from '@brix-u
 export interface DisclosureProps
   extends Disclosable,
     PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
-    StylableComponent {
+    StylableComponent<'iconIndent'> {
   summary?: ReactNode;
   icon?: ReactNode | ((props: Pick<DisclosureProps, 'isOpen' | 'isDisabled'>) => ReactNode);
 

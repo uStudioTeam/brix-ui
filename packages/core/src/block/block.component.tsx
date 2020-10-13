@@ -1,7 +1,7 @@
 import React from 'react';
 import PT, { Requireable } from 'prop-types';
 
-import { intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import { intrinsicComponent, objectValues, orUndefined } from '@brix-ui/utils/functions';
 import { indent, stylableComponent, taggable } from '@brix-ui/prop-types/common';
 import { record } from '@brix-ui/prop-types/utils';
 import { Axis } from '@brix-ui/types/component';
@@ -9,9 +9,20 @@ import { Axis } from '@brix-ui/types/component';
 import type { BlockProps } from './block.props';
 import Styled from './block.styles';
 
-const Block = intrinsicComponent<BlockProps>(function Block({ children, as, margin, padding, gap, ...props }, ref) {
+const Block = intrinsicComponent<BlockProps>(function Block(
+  { children, as, margin, padding, gap, isInline, ...props },
+  ref
+) {
   return (
-    <Styled.Block ref={ref} as={as} $margin={margin} $padding={padding} $gap={gap} {...props}>
+    <Styled.Block
+      ref={ref}
+      as={as}
+      $margin={margin}
+      $padding={padding}
+      $gap={gap}
+      data-inline={orUndefined(isInline)}
+      {...props}
+    >
       {children}
     </Styled.Block>
   );

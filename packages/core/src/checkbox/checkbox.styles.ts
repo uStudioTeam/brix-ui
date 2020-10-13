@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 import { hidden, shadow, size } from '@brix-ui/theme/mixin';
 import Check from '@brix-ui/icons/check';
+
+import type { CheckboxProps } from './checkbox.props';
 
 const CheckIcon = styled(Check)`
   ${size('var(--icon-size)')};
@@ -22,9 +24,11 @@ const checkedShapeColor = (color: string) => {
   `;
 };
 
-const Checkbox = styled.label(
-  () => css`
-    --icon-size: 14px;
+const Checkbox = styled.label<Pick<CheckboxProps, 'customProperties'>>(
+  ({ customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      iconSize: '14px',
+    })};
 
     position: relative;
 

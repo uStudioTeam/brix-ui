@@ -7,6 +7,7 @@ import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
 import useInputValue from '@brix-ui/hooks/use-input-value';
+import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Checkbox from '../checkbox';
 
@@ -51,7 +52,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       {...propsWithoutEvents}
     >
       {children && (
-        <Styled.Children>
+        <Styled.Children className="switch-children">
           {applyPolymorphicFunctionProp(children, { value: internalValue, isDisabled, isInvalid })}
         </Styled.Children>
       )}
@@ -84,10 +85,17 @@ const checkboxPropTypes = extract([Checkbox]);
 Switch.propTypes = {
   children: PT.oneOfType([PT.func, PT.node]),
 
-  background: PT.func,
-  color: PT.func,
-
   ...checkboxPropTypes,
+  ...stylableComponent([
+    'trackHeight',
+    'trackWidth',
+    'thumbSize',
+    'thumbScale',
+    'verticalPadding',
+    'horizontalPadding',
+    'borderWidth',
+    'thumbIndent',
+  ]),
 } as WeakValidationMap<SwitchProps>;
 
 export default Switch;

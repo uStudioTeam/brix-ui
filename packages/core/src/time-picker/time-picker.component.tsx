@@ -104,7 +104,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
     >
       {prefix}
 
-      <Styled.InputsContainer>
+      <Styled.InputsContainer className="time-picker-inputs-container">
         <TimePickerContext.Provider
           value={{
             ...state,
@@ -123,7 +123,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
               <>
                 {child}
 
-                {index !== childrenCount - 1 && <Styled.Divider>:</Styled.Divider>}
+                {index !== childrenCount - 1 && <Styled.Divider className="time-picker-divider">:</Styled.Divider>}
               </>
             );
           })}
@@ -135,7 +135,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
           type="button"
           role="switch"
           aria-checked
-          id="time-mode"
+          className="time-picker-mode-switch"
           appearance="faint"
           isDisabled={isDisabled}
           onClick={() => {
@@ -157,7 +157,7 @@ TimePicker.propTypes = {
 
   prefix: affixable.prefix,
   ...formComponent(PT.string),
-  ...stylableComponent(Styled),
+  ...stylableComponent(),
 } as WeakValidationMap<TimePickerProps>;
 
 export default TimePicker;

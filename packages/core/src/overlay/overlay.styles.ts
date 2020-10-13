@@ -1,12 +1,14 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 
 import type { OverlayProps } from './overlay.props';
 
-const Overlay = styled.div<Pick<OverlayProps, 'transitionSpeed'>>(
-  ({ transitionSpeed }) => css`
-    --opacity: 0.5;
+const Overlay = styled.div<Pick<OverlayProps, 'transitionSpeed' | 'customProperties'>>(
+  ({ transitionSpeed, customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      opacity: '0.5',
+    })};
 
     position: fixed;
     top: 0;

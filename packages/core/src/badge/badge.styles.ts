@@ -26,13 +26,11 @@ const Badge = styled.div<
   Omit<BadgeProps, 'color' | 'backgroundColor' | 'value'> & {
     $color: BadgeProps['color'];
     $backgroundColor: BadgeProps['backgroundColor'];
-    $value: BadgeProps['value'];
   }
 >(
   ({
     $backgroundColor,
     $color,
-    $value: value = '',
     horizontalPosition = Align.End,
     verticalPosition = Align.Start,
     horizontalOffset,
@@ -50,7 +48,7 @@ const Badge = styled.div<
       min-width: 16px;
       min-height: 16px;
 
-      padding: 0 ${`${value}`.length > 1 ? 6 : 4}px 0;
+      padding: 0 4px 0;
 
       border-radius: 10px;
 
@@ -60,6 +58,10 @@ const Badge = styled.div<
       white-space: nowrap;
 
       line-height: 1;
+
+      &[data-long-value] {
+        padding: 0 6px 0;
+      }
 
       &[data-has-children] {
         position: absolute;

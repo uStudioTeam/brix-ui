@@ -3,7 +3,7 @@ import { transparentize } from 'polished';
 import FocusLock from 'react-focus-lock';
 import type { ReactFocusLockProps } from 'react-focus-lock/interfaces';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 
 import type { DrawerProps } from './drawer.props';
 
@@ -60,9 +60,11 @@ const isHorizontal = (position: DrawerProps['position']): boolean => position ==
 const Drawer = styled(FocusLock)<
   Omit<DrawerProps, 'position'> & { $position: DrawerProps['position'] } & ReactFocusLockProps
 >(
-  ({ isOpen, transitionSpeed, $position: position, theme }) => css`
-    --border-radius: 2px;
-    --overflow: auto;
+  ({ isOpen, transitionSpeed, $position: position, theme, customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      borderRadius: '2px',
+      overflow: 'auto',
+    })};
 
     ${isHorizontal(position) ? 'height' : 'width'}: 100%;
     max-${isHorizontal(position) ? 'height' : 'width'}: 100%;

@@ -6,7 +6,7 @@ export interface InputProps<V extends string | number>
   extends Affixable,
     FormComponent<HTMLInputElement, V>,
     IntrinsicComponent<InputHTMLAttributes<HTMLInputElement>>,
-    StylableComponent {
+    StylableComponent<'affixIndent'> {
   type: HTMLInputElement['type'] | undefined;
 
   containerRef?: Ref<HTMLLabelElement>;

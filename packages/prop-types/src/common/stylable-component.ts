@@ -1,16 +1,15 @@
 import type { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { objectKeys } from '@brix-ui/utils/functions';
 import type { StylableComponent } from '@brix-ui/types/component';
 
-export const stylableComponent = <S extends Record<string, any> = { className?: string }>(
-  styledObject: S = {} as S
+export const stylableComponent = <S extends string>(
+  customProperties?: S | S[]
 ): WeakValidationMap<StylableComponent<S>> => {
-  return objectKeys(styledObject).reduce(
+  return (Array.isArray(customProperties) ? customProperties : [customProperties ?? '']).reduce(
     (propTypes, key) => {
       return Object.assign(propTypes, {
-        [key]: PT.func,
+        [key]: PT.string,
       });
     },
     { className: PT.string } as unknown

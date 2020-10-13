@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -13,7 +13,6 @@ import Styled from './checkbox.styles';
 
 const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Checkbox(
   {
-    className,
     value,
     defaultValue,
     onChange,
@@ -24,6 +23,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
     isInvalid,
     form,
     containerRef,
+    icon,
     ...props
   },
   ref
@@ -42,14 +42,15 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
   return (
     <Styled.Checkbox
       ref={containerRef}
-      className={className}
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
-      <Styled.CheckIcon />
+      {applyPolymorphicFunctionProp(icon, { value: internalValue, isDisabled, isInvalid }) || (
+        <Styled.CheckIcon className="checkbox-icon" />
+      )}
 
       <Styled.Input
         ref={ref}
@@ -77,7 +78,7 @@ Checkbox.propTypes = {
   containerRef: refProp<HTMLLabelElement>(),
 
   ...formComponent(PT.bool),
-  ...stylableComponent(Styled),
+  ...stylableComponent('iconSize'),
 };
 
 export default Checkbox;

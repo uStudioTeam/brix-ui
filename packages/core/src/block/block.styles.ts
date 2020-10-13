@@ -66,19 +66,23 @@ const parseGap = (gap: BlockProps['gap']): FlattenSimpleInterpolation | undefine
 };
 
 const Block = styled.div<
-  Omit<BlockProps, 'margin' | 'padding' | 'gap'> & {
+  Omit<BlockProps, 'margin' | 'padding' | 'gap' | 'isInline'> & {
     $margin?: BlockProps['margin'];
     $padding?: BlockProps['padding'];
     $gap?: BlockProps['gap'];
   }
 >(
-  ({ isInline, $margin: margin, $padding: padding, $gap: gap }) => css`
-    display: ${isInline ? 'inline-block' : 'block'};
+  ({ $margin: margin, $padding: padding, $gap: gap }) => css`
+    display: block;
 
     margin: ${parseIndent(margin)};
     padding: ${parseIndent(padding)};
 
     ${parseGap(gap)};
+
+    &[data-inline] {
+      display: inline-block;
+    }
   `
 );
 

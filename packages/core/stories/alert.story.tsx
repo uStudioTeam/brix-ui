@@ -34,6 +34,7 @@ export default {
 
 export const Basic: Story<AlertProps> = (args) => {
   return (
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     <Alert {...args} onClose={args.onClose && (() => {})}>
       <Text lineHeightCompensation>
         Very very very long{capitalize(args.intent as string)} alert message describing something important to the user

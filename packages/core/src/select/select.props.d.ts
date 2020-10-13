@@ -9,7 +9,7 @@ export interface SelectGroup {
   options: SelectOption[];
 }
 
-export interface SelectProps extends Omit<DropdownProps, 'styles' | 'children'>, StylableComponent {
+export interface SelectProps extends Omit<DropdownProps, 'styles' | 'children'>, StylableComponent<'iconSize'> {
   options: SelectGroup[] | SelectOption[];
 
   /**

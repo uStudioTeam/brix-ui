@@ -21,7 +21,6 @@ const Input = intrinsicComponent<
 >(function Input(
   {
     getValue,
-    className,
     prefix,
     suffix,
     value,
@@ -65,14 +64,13 @@ const Input = intrinsicComponent<
   return (
     <Styled.Container
       ref={containerRef}
-      className={className}
       aria-disabled={orUndefined(isDisabled)}
       aria-readonly={orUndefined(isReadonly)}
       aria-invalid={orUndefined(isInvalid)}
       aria-hidden
       {...propsWithoutEvents}
     >
-      {prefix && <Affix>{prefix}</Affix>}
+      {prefix && <Affix className="input-prefix">{prefix}</Affix>}
 
       <Styled.Input
         ref={ref}
@@ -106,7 +104,7 @@ const Input = intrinsicComponent<
         {...propsWithAria}
       />
 
-      {suffix && <Affix>{suffix}</Affix>}
+      {suffix && <Affix className="input-suffix">{suffix}</Affix>}
     </Styled.Container>
   );
 });
@@ -116,7 +114,7 @@ Input.propTypes = {
 
   ...affixable,
   ...formComponent(PT.oneOfType([PT.string, PT.number])),
-  ...stylableComponent(Styled),
+  ...stylableComponent('affixIndent'),
 };
 
 export default Input;

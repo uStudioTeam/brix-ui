@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 import { font, shadow } from '@brix-ui/theme/mixin';
 import Chevron from '@brix-ui/icons/chevron';
 
 import Flex from '../flex';
+import { DisclosureProps } from './disclosure.props';
 
-const Container = styled(Flex)(
-  () => css`
-    --icon-indent: 1rem;
+const Container = styled(Flex)<Pick<DisclosureProps, 'customProperties'>>(
+  ({ customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      iconIndent: '1rem',
+    })};
 
     color: var(--c-base-strong);
 

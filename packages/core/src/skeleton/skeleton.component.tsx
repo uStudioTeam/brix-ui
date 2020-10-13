@@ -69,7 +69,14 @@ Skeleton.propTypes = {
 
   ...blockPropTypes,
   ...delayable,
-  ...stylableComponent(),
+  ...stylableComponent([
+    'height',
+    'backgroundColor',
+    'borderRadius',
+    'animationDuration',
+    'animationTimingFunction',
+    'animationIterationCount',
+  ]),
 };
 
 export default Skeleton;

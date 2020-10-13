@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, createCustomProperties } from '@brix-ui/utils/functions';
 import { shadow, font } from '@brix-ui/theme/mixin';
+import { InputProps } from './input.props';
 
 const Input = styled.input(
   () => css`
@@ -25,9 +26,11 @@ const Input = styled.input(
   `
 );
 
-const Container = styled.label(
-  () => css`
-    --affix-indent: 8px;
+const Container = styled.label<Pick<InputProps<any>, 'customProperties'>>(
+  ({ customProperties }) => css`
+    ${createCustomProperties(customProperties, {
+      affixIndent: '8px',
+    })};
 
     height: var(--input-height-large);
     width: 100%;
