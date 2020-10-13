@@ -10,10 +10,14 @@ const pulse = keyframes`
   0%,
   100% {
     background-color: var(--border-color);
+    
+    transform: scale(1);
   }
   
   50% {
     background-color: transparent;
+    
+    transform: scale(0);
   }
 `;
 
@@ -27,23 +31,32 @@ const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, isStat
 
     position: relative;
 
-    ${size('var(--size)')};
-
     display: inline-block;
 
-    background-color: ${hasBorder && 'var(--border-color)'};
-
-    animation: ${!isStatic && hasBorder && pulse} 2s infinite;
-
     &,
-    &:after {
-      border-radius: 50%;
+    &:before {
+      ${size('var(--size)')};
     }
 
+    &:before,
     &:after {
       content: '';
 
       position: absolute;
+
+      border-radius: 50%;
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+
+      background-color: ${hasBorder && 'var(--border-color)'};
+
+      animation: ${!isStatic && hasBorder && pulse} 2s infinite;
+    }
+
+    &:after {
       left: 50%;
       top: 50%;
 
