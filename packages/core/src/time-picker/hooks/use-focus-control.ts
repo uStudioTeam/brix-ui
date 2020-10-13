@@ -12,12 +12,12 @@ export const useFocusControl = <F extends string>(focusOrder: F[]): UseFocusCont
   const passFocus = useCallback<UseFocusControl<F>['passFocus']>(
     (nextPosition, key) => {
       setFocusOn((prevFocusOn) => {
-        if (prevFocusOn === undefined) {
-          return focusOrder[0];
-        }
-
         if (typeof nextPosition === 'string') {
           return nextPosition as F;
+        }
+
+        if (prevFocusOn === undefined) {
+          return focusOrder[0];
         }
 
         switch (nextPosition) {
