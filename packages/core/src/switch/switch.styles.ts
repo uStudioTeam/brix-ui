@@ -33,8 +33,8 @@ const Children = styled.span(
 
 const shapeColor = (color: string): FlattenSimpleInterpolation => {
   return css`
-    background-color: var(--c-${color});
-    border-color: var(--c-${color});
+    background-color: var(--${color});
+    border-color: var(--${color});
   `;
 };
 
@@ -111,7 +111,7 @@ const Switch = styled.label(() => {
       }
 
       &:before {
-        ${shapeColor('accent-strong')};
+        ${shapeColor('c-accent-strong')};
       }
 
       &:after {
@@ -135,21 +135,21 @@ const Switch = styled.label(() => {
       &:active,
       &:focus-within {
         &:before {
-          ${shapeColor('accent-strong-down')};
+          ${shapeColor('c-accent-strong-down')};
         }
       }
 
       &[aria-disabled] {
         ${Children} {
-          color: var(--c-faint-strong-down);
+          color: var(--input-color-disabled);
         }
 
         &:before {
-          ${shapeColor('faint-weak-up')};
+          ${shapeColor('input-border-color-disabled')};
         }
 
         &:after {
-          background-color: var(--c-faint-strong-down);
+          background-color: var(--input-color-disabled);
         }
 
         &:hover {
@@ -171,14 +171,14 @@ const Switch = styled.label(() => {
         &:active,
         &:focus-within {
           &:before {
-            ${shapeColor('faint-weak-up')};
+            ${shapeColor('input-border-color-disabled')};
           }
         }
       }
 
       &[aria-invalid] {
         &:before {
-          ${shapeColor('critical-strong')};
+          ${shapeColor('input-border-color-invalid')};
         }
 
         &:hover {
@@ -190,7 +190,7 @@ const Switch = styled.label(() => {
         &:active,
         &:focus-within {
           &:before {
-            ${shapeColor('critical-weak-up')};
+            ${shapeColor('input-border-color-invalid-focus')};
           }
         }
       }
@@ -204,14 +204,14 @@ const Switch = styled.label(() => {
       }
 
       &:before {
-        background-color: var(--c-base-weak);
-        border-color: var(--c-faint-strong-down);
+        background-color: var(--input-background-color);
+        border-color: var(--input-border-color);
       }
 
       &:after {
         left: ${start};
 
-        background-color: var(--c-accent-strong);
+        background-color: var(--input-border-color-focus);
       }
 
       &:hover {
@@ -233,15 +233,15 @@ const Switch = styled.label(() => {
 
       &[aria-invalid] {
         ${Children} {
-          color: var(--c-critical-strong);
+          color: var(--input-border-color-invalid);
         }
 
         &:before {
-          border-color: var(--c-critical-strong);
+          border-color: var(--input-border-color-invalid);
         }
 
         &:after {
-          background-color: var(--c-critical-strong);
+          background-color: var(--input-border-color-invalid);
         }
 
         &:hover {
@@ -253,27 +253,27 @@ const Switch = styled.label(() => {
         &:active,
         &:focus-within {
           &:before {
-            border-color: var(--c-critical-weak-up);
+            border-color: var(--input-border-color-invalid-focus);
           }
 
           &:after {
-            background-color: var(--c-critical-weak-up);
+            background-color: var(--input-border-color-invalid-focus);
           }
         }
       }
 
       &[aria-disabled] {
         ${Children} {
-          color: var(--c-faint-strong-down);
+          color: var(--input-color-disabled);
         }
 
         &:before,
         &:after {
-          background-color: var(--faint-weak);
+          background-color: var(--input-background-color-disabled);
         }
 
         &:before {
-          border-color: var(--c-faint-weak-up);
+          border-color: var(--input-border-color-disabled);
         }
 
         &:hover {
@@ -294,11 +294,11 @@ const Switch = styled.label(() => {
         &:active,
         &:focus-within {
           &:before {
-            border-color: var(--c-faint-weak-up);
+            border-color: var(--input-border-color-disabled);
           }
 
           &:after {
-            background-color: var(--c-faint-weak-up);
+            background-color: var(--input-border-color-disabled);
           }
         }
       }

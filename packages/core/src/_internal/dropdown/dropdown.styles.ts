@@ -31,15 +31,15 @@ const Dropdown = styled.label(
     position: relative;
 
     width: 100%;
-    height: 28px;
+    height: var(--input-height-large);
 
     padding: 4px 8px;
 
     display: flex;
     align-items: center;
 
-    color: var(--c-faint-strong-down);
-    background-color: var(--c-base-weak);
+    color: var(--input-placeholder-color);
+    background-color: var(--input-background-color);
 
     ${font.body.p};
 
@@ -49,23 +49,25 @@ const Dropdown = styled.label(
       cursor: pointer;
     }
 
-    &[data-has-value] {
-      color: var(--c-base-strong);
+    &[data-has-value],
+    &[data-has-value] ${Input} {
+      color: var(--input-color);
     }
 
     &[aria-disabled] {
-      color: var(--c-faint-strong-down);
-      background-color: var(--c-faint-weak-down);
+      background-color: var(--input-background-color-disabled);
 
       cursor: not-allowed;
 
+      &,
       ${Input} {
-        color: var(--c-faint-weak-up);
+        color: var(--input-placeholder-color-disabled);
       }
 
       &[data-has-value] {
+        &,
         ${Input} {
-          color: var(--c-faint-strong-down);
+          color: var(--input-color-disabled);
         }
       }
     }
