@@ -1,3 +1,4 @@
+import { orUndefined } from '@brix-ui/utils/functions';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Story } from '@storybook/react';
@@ -22,15 +23,10 @@ export default {
 
 const Label = styled(Flex).attrs(() => ({
   forwardedAs: 'label',
-  gap: { horizontal: '16px' },
+  gap: { horizontal: '8px' },
   verticalAlign: 'center',
-}))<
-  {
-    isDisabled?: boolean;
-    isInvalid?: boolean;
-  } & FlexProps
->(
-  ({ isDisabled, isInvalid }) => css`
+}))<FlexProps>(
+  () => css`
     cursor: pointer;
 
     transition: all 200ms;
@@ -39,21 +35,19 @@ const Label = styled(Flex).attrs(() => ({
       color: var(--c-accent-strong);
     }
 
-    ${isInvalid &&
-    css`
+    &[aria-invalid] {
       color: var(--c-critical-strong);
 
       &:focus-within {
         color: var(--c-critical-weak-up);
       }
-    `}
+    }
 
-    ${isDisabled &&
-    css`
+    &[aria-disabled] {
       color: var(--c-faint-strong);
 
       cursor: not-allowed;
-    `}
+    }
   `
 );
 
@@ -70,7 +64,12 @@ export const Basic: Story<RadioGroupProps> = (args) => {
           >
             {['One', 'Two', 'Three'].map((option) => {
               return (
-                <Label isDisabled={isDisabled} isInvalid={isInvalid} key={option}>
+                <Label
+                  aria-hidden
+                  aria-disabled={orUndefined(isDisabled)}
+                  aria-invalid={orUndefined(isInvalid)}
+                  key={option}
+                >
                   <RadioButton id={option} value={option} />
 
                   <Text lineHeightCompensation>{option}</Text>
