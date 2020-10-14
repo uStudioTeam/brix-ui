@@ -86,8 +86,9 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
   return (
     <Styled.TimeSelect
       ref={ref}
+      className="time-select"
       prefix={
-        <Styled.Value align="center" lineHeightCompensation>
+        <Styled.Value className="time-select-value" align="center" lineHeightCompensation>
           {value || finalPlaceholder}
         </Styled.Value>
       }

@@ -42,6 +42,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
   return (
     <Styled.Checkbox
       ref={containerRef}
+      className="checkbox"
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}

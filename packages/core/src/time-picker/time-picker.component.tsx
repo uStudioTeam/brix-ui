@@ -98,6 +98,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
   return (
     <Styled.TimePicker
       ref={ref}
+      className="time-picker"
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}
       {...props}

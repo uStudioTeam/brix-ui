@@ -16,6 +16,7 @@ const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function 
   return (
     <Input
       ref={ref}
+      className="text-input"
       {...props}
       getValue={({ target: { value } }) => value}
       type={type}

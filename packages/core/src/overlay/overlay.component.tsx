@@ -26,6 +26,7 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
     <Portal>
       <Styled.Overlay
         ref={ref}
+        className="overlay"
         role="button"
         aria-expanded={shouldBeOpen}
         transitionSpeed={transitionSpeed}

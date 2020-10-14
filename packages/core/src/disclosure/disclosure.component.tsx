@@ -37,6 +37,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   return (
     <Styled.Container
       ref={ref}
+      className="disclosure"
       direction="column"
       data-expanded={internalIsOpen}
       aria-disabled={orUndefined(isDisabled)}
