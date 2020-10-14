@@ -14,7 +14,7 @@ const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
   ref
 ) {
   return (
-    <Styled.Container ref={ref} $color={color} $backgroundColor={backgroundColor} {...props}>
+    <Styled.Container ref={ref} className="tag" $color={color} $backgroundColor={backgroundColor} {...props}>
       <Styled.Content className="tag-content-container" align="center">
         <Text as="span" className="tag-content" variant="small" lineHeightCompensation>
           {children}

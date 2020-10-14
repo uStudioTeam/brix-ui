@@ -67,6 +67,7 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
     <Styled.TimeInput
       ref={inputRef}
       containerRef={labelRef}
+      className="time-input"
       type="number"
       inputMode="numeric"
       id={finalId}

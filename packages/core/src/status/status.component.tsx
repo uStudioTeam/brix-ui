@@ -12,7 +12,14 @@ const Status = intrinsicComponent<StatusProps, HTMLSpanElement>(function Status(
   ref
 ) {
   return (
-    <Styled.Status ref={ref} role="status" data-static={isStatic} data-has-border={orUndefined(hasBorder)} {...props} />
+    <Styled.Status
+      ref={ref}
+      className="status"
+      role="status"
+      data-static={orUndefined(isStatic)}
+      data-has-border={orUndefined(hasBorder)}
+      {...props}
+    />
   );
 });
 

@@ -27,6 +27,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
   return (
     <Styled.Select
       ref={ref}
+      className="select"
       options={
         isGroupSelect
           ? (options as SelectGroup[]).flatMap(({ options: groupOptions }) => groupOptions)

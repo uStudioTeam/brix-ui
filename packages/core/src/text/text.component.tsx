@@ -11,7 +11,7 @@ import type { TextProps } from './text.props';
 
 const Text = intrinsicComponent<TextProps, TextElement>(function Text({ children, as, color, align, ...props }, ref) {
   return (
-    <Styled.Text ref={ref} as={as} $color={color} $align={align} {...props}>
+    <Styled.Text ref={ref} as={as} className="text" $color={color} $align={align} {...props}>
       {children}
     </Styled.Text>
   );

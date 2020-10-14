@@ -29,6 +29,7 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
   return (
     <Styled.RadioButton
       ref={containerRef}
+      className="radio-button"
       aria-checked={selectedOption === value}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}

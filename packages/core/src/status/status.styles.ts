@@ -52,11 +52,15 @@ const Status = styled.span<StatusProps>(({ intent: _intent = Intent.Base, custom
     &:before {
       top: 0;
       left: 0;
+    }
 
-      &[data-has-border] {
+    &[data-has-border] {
+      &:before {
         background-color: var(--border-color);
+      }
 
-        &:not([data-static]) {
+      &:not([data-static]) {
+        &:before {
           animation: ${pulse} 2s infinite;
         }
       }

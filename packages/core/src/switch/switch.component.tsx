@@ -45,6 +45,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   return (
     <Styled.Switch
       ref={containerRef}
+      className="switch"
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}

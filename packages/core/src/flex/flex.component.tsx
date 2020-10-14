@@ -22,6 +22,7 @@ const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
       <Styled.Flex
         ref={ref}
         forwardedAs={as}
+        className="flex"
         $direction={direction}
         $align={align}
         data-wrap={orUndefined(hasWrap)}

@@ -34,8 +34,9 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
   return shouldMount ? (
     <Portal>
       <Styled.Drawer
-        forwardedAs="aside"
         ref={ref}
+        forwardedAs="aside"
+        className="drawer"
         customProperties={customProperties}
         isOpen={shouldBeOpen}
         transitionSpeed={transitionSpeed}

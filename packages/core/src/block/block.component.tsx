@@ -17,6 +17,7 @@ const Block = intrinsicComponent<BlockProps>(function Block(
     <Styled.Block
       ref={ref}
       as={as}
+      className="block"
       $margin={margin}
       $padding={padding}
       $gap={gap}

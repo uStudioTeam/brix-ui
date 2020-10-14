@@ -21,6 +21,7 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
   return (
     <Styled.Alert
       ref={ref}
+      className="alert"
       aria-live={intent === Intent.Critical ? 'assertive' : undefined}
       intent={intent}
       data-show-status={orUndefined(showStatus)}
@@ -28,7 +29,7 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
       isInline
       {...props}
     >
-      {showStatus && <Status className="alert-status" intent={intent} />}
+      {showStatus && <Status className="alert-status" intent={intent} hasBorder={false} />}
 
       {children}
 

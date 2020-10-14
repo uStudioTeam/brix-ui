@@ -21,6 +21,7 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
   return (
     <Input
       ref={ref}
+      className="number-input"
       {...props}
       getValue={handleGetValue}
       type={type === 'tel' ? type : 'number'}

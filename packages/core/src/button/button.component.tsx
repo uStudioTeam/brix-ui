@@ -17,6 +17,7 @@ const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Butto
   return (
     <Styled.Button
       ref={ref}
+      className="button"
       disabled={isDisabled}
       aria-disabled={orUndefined(isDisabled)}
       data-rounded={orUndefined(isRounded)}

@@ -82,6 +82,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
       <Styled.Dialog
         forwardedAs="dialog"
         ref={ref}
+        className="dialog"
         customProperties={customProperties}
         transitionSpeed={transitionSpeed}
         $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}

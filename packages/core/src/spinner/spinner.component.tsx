@@ -26,7 +26,7 @@ const parseBladeSize = (
 };
 
 const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinner(
-  { className, blades = 9, bladeSize, speed = 100, color, property = 'opacity', range, swirl, spread = 1, delay },
+  { blades = 9, bladeSize, speed = 100, color, property = 'opacity', range, swirl, spread = 1, delay, ...props },
   ref
 ) {
   const [rangeFrom, rangeTo] = useMemo(() => [range?.[0] || 0.25, range?.[1] || 1], [JSON.stringify(range)]);
@@ -70,7 +70,7 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
   const shouldRender = useDelay(delay);
 
   return shouldRender ? (
-    <Styled.Spinner ref={ref} className={className} role="status" aria-busy="true" aria-live="polite">
+    <Styled.Spinner ref={ref} className="spinner" role="status" aria-busy="true" aria-live="polite" {...props}>
       {[...new Array(blades).keys()].map((_, index) => {
         return (
           <Styled.Blade

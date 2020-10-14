@@ -35,6 +35,7 @@ const Skeleton = intrinsicComponent<SkeletonProps, HTMLDivElement>(function Skel
   return shouldRender ? (
     <Styled.Skeleton
       ref={ref}
+      className="skeleton"
       $width={width}
       $height={height}
       size={size}
