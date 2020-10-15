@@ -1,1 +1,1 @@
-export const orUndefined = (value: boolean | undefined): true | undefined => value || undefined;
+export const orUndefined = <V>(value: V | undefined): true | undefined => Boolean(value) || undefined;
