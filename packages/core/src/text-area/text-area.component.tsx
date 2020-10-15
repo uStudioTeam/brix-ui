@@ -27,7 +27,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
     placeholder,
     spellCheck,
     wrap,
-    resize,
+    resize = 'vertical',
     containerRef,
     showSymbolsLeft,
     isDisabled,

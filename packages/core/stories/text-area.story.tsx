@@ -39,9 +39,6 @@ export default {
 
   args: {
     placeholder: 'Placeholder',
-    resize: 'none',
-    showSymbolsLeft: true,
-    maxLength: 100,
   },
 };
 
