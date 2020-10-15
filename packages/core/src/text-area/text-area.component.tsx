@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
+import PT from 'prop-types';
 
 import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
+import { formComponent, refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
 import type { TextAreaProps } from './text-area.props';
 import Styled from './text-area.styles';
@@ -100,5 +102,14 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
     </Styled.Label>
   );
 });
+
+TextArea.propTypes = {
+  resize: PT.oneOf(['both', 'horizontal', 'vertical']),
+  showSymbolsLeft: PT.bool,
+  containerRef: refProp<HTMLLabelElement>(),
+
+  ...formComponent(PT.oneOfType([PT.string, PT.number, PT.arrayOf(PT.string.isRequired)])),
+  ...stylableComponent(),
+};
 
 export default TextArea;
