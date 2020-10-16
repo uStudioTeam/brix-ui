@@ -1,1 +1,3 @@
-export const fillArray = (length: number): number[] => [...new Array(length).keys()];
+export function fillArray(length: number): number[] {
+  return [...new Array(length).keys()];
+}

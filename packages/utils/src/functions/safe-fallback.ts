@@ -1,8 +1,8 @@
-export const safeFallback = <C = boolean, T = '', F = undefined, R = F extends undefined ? T | '' : T | F>(
+export function safeFallback<C = boolean, T = '', F = undefined, R = F extends undefined ? T | '' : T | F>(
   condition: C | undefined,
   truthy?: T,
   falsy?: F
-): R => {
+): R {
   if (condition === undefined) {
     return ('' as unknown) as R;
   }
@@ -16,4 +16,4 @@ export const safeFallback = <C = boolean, T = '', F = undefined, R = F extends u
   }
 
   return ((condition ? truthy : falsy) as unknown) as R;
-};
+}
