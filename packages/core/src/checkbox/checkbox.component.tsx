@@ -46,7 +46,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
       className={classNames('checkbox', className)}
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -67,7 +67,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
         aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
         aria-required={orUndefined(isRequired)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         form={form}
         {...propsWithAria}
         {...propsWithEvents}

@@ -62,7 +62,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
       className={classNames('text-area-label', className)}
       aria-disabled={orUndefined(isDisabled)}
       aria-readonly={orUndefined(isReadonly)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -90,7 +90,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
         aria-required={orUndefined(isRequired)}
         readOnly={isReadonly}
         aria-readonly={orUndefined(isReadonly)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         {...propsWithAria}
         {...propsWithEvents}
       />

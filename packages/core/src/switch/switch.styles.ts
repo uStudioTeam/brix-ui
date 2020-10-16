@@ -39,6 +39,56 @@ const shapeColor = (color: string): FlattenSimpleInterpolation => {
   `;
 };
 
+const checkedValidity = (state: 'valid' | 'invalid') => css`
+  &:before {
+    ${shapeColor(`input-border-color-${state}`)};
+  }
+
+  &:hover {
+    &:before {
+      box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+    }
+  }
+
+  &:active,
+  &:focus-within {
+    &:before {
+      ${shapeColor(`input-border-color-${state}-focus`)};
+    }
+  }
+`;
+
+const uncheckedValidity = (state: 'valid' | 'invalid') => css`
+  ${Children} {
+    color: var(--input-border-color-${state});
+  }
+
+  &:before {
+    border-color: var(--input-border-color-${state});
+  }
+
+  &:after {
+    background-color: var(--input-border-color-${state});
+  }
+
+  &:hover {
+    &:before {
+      box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+    }
+  }
+
+  &:active,
+  &:focus-within {
+    &:before {
+      border-color: var(--input-border-color-${state}-focus);
+    }
+
+    &:after {
+      background-color: var(--input-border-color-${state}-focus);
+    }
+  }
+`;
+
 const Switch = styled.label<Pick<SwitchProps, 'customProperties'>>(({ customProperties }) => {
   return css`
     ${createCustomProperties(customProperties, {
@@ -176,23 +226,12 @@ const Switch = styled.label<Pick<SwitchProps, 'customProperties'>>(({ customProp
         }
       }
 
-      &[aria-invalid] {
-        &:before {
-          ${shapeColor('input-border-color-invalid')};
-        }
+      &[aria-invalid='true'] {
+        ${checkedValidity('invalid')};
+      }
 
-        &:hover {
-          &:before {
-            box-shadow: ${shadow('critical-strong', 0.25)};
-          }
-        }
-
-        &:active,
-        &:focus-within {
-          &:before {
-            ${shapeColor('input-border-color-invalid-focus')};
-          }
-        }
+      &[aria-invalid='false'] {
+        ${checkedValidity('valid')};
       }
     }
 
@@ -231,35 +270,12 @@ const Switch = styled.label<Pick<SwitchProps, 'customProperties'>>(({ customProp
         }
       }
 
-      &[aria-invalid] {
-        ${Children} {
-          color: var(--input-border-color-invalid);
-        }
+      &[aria-invalid='true'] {
+        ${uncheckedValidity('invalid')};
+      }
 
-        &:before {
-          border-color: var(--input-border-color-invalid);
-        }
-
-        &:after {
-          background-color: var(--input-border-color-invalid);
-        }
-
-        &:hover {
-          &:before {
-            box-shadow: ${shadow('critical-strong', 0.25)};
-          }
-        }
-
-        &:active,
-        &:focus-within {
-          &:before {
-            border-color: var(--input-border-color-invalid-focus);
-          }
-
-          &:after {
-            background-color: var(--input-border-color-invalid-focus);
-          }
-        }
+      &[aria-invalid='false'] {
+        ${uncheckedValidity('valid')};
       }
 
       &[aria-disabled] {

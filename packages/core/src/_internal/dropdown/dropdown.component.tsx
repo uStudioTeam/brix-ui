@@ -84,7 +84,7 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
       ref={containerRef}
       data-has-value={orUndefined(hasValue)}
       aria-disabled={orUndefined(isDisabled)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -97,7 +97,7 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
         onChange={handleChange}
         disabled={isDisabled}
         aria-disabled={orUndefined(isDisabled)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         {...propsWithAria}
         {...propsWithEvents}
       >

@@ -49,7 +49,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       className={classNames('switch', className)}
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -74,7 +74,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
         aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
         aria-required={orUndefined(isRequired)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         {...propsWithAria}
         {...propsWithEvents}
       />

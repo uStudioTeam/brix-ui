@@ -24,6 +24,41 @@ const checkedShapeColor = (color: string) => {
   `;
 };
 
+const checkedValidity = (state: 'valid' | 'invalid') => css`
+  &:before {
+    ${checkedShapeColor(`input-border-color-${state}`)};
+  }
+
+  &:hover {
+    &:before {
+      box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+    }
+  }
+
+  &:focus-within {
+    &:before {
+      ${checkedShapeColor(`input-border-color-${state}-focus`)};
+    }
+  }
+`;
+
+const uncheckedValidity = (state: 'valid' | 'invalid') => css`
+  &:before {
+    border-color: var(--input-border-color-${state});
+  }
+
+  &:focus-within,
+  &:active {
+    &:before {
+      border-color: var(--input-border-color-${state}-focus);
+    }
+  }
+
+  &:active {
+    color: var(--input-border-color-${state}-focus);
+  }
+`;
+
 const Checkbox = styled.label<Pick<CheckboxProps, 'customProperties'>>(
   ({ customProperties }) => css`
     ${createCustomProperties(customProperties, {
@@ -87,22 +122,12 @@ const Checkbox = styled.label<Pick<CheckboxProps, 'customProperties'>>(
         }
       }
 
-      &[aria-invalid] {
-        &:before {
-          ${checkedShapeColor(`input-border-color-invalid`)};
-        }
+      &[aria-invalid='true'] {
+        ${checkedValidity('invalid')};
+      }
 
-        &:hover {
-          &:before {
-            box-shadow: ${shadow(`accent-strong`, 0.25)};
-          }
-        }
-
-        &:focus-within {
-          &:before {
-            ${checkedShapeColor(`input-border-color-invalid-focus`)};
-          }
-        }
+      &[aria-invalid='false'] {
+        ${checkedValidity('valid')};
       }
 
       &[aria-disabled] {
@@ -146,21 +171,12 @@ const Checkbox = styled.label<Pick<CheckboxProps, 'customProperties'>>(
         color: var(--input-background-color-checked-focus);
       }
 
-      &[aria-invalid] {
-        &:before {
-          border-color: var(--input-border-color-invalid);
-        }
+      &[aria-invalid='true'] {
+        ${uncheckedValidity('invalid')};
+      }
 
-        &:focus-within,
-        &:active {
-          &:before {
-            border-color: var(--input-border-color-invalid-focus);
-          }
-        }
-
-        &:active {
-          color: var(--input-border-color-invalid-focus);
-        }
+      &[aria-invalid='false'] {
+        ${uncheckedValidity('valid')};
       }
 
       &[aria-disabled] {

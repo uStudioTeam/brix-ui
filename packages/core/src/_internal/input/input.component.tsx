@@ -66,7 +66,7 @@ const Input = intrinsicComponent<
       ref={containerRef}
       aria-disabled={orUndefined(isDisabled)}
       aria-readonly={orUndefined(isReadonly)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -86,7 +86,7 @@ const Input = intrinsicComponent<
         aria-required={orUndefined(isRequired)}
         readOnly={isReadonly}
         aria-readonly={orUndefined(isReadonly)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         min={min}
         max={max}
         minLength={minLength}

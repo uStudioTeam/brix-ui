@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Story } from '@storybook/react';
 import styled from 'styled-components';
 
@@ -15,13 +15,28 @@ export default {
       control: 'boolean',
     },
     isInvalid: {
-      control: 'boolean',
+      control: {
+        type: 'inline-radio',
+        options: ['valid', 'invalid', 'indeterminate'],
+      },
     },
   },
 };
 
-export const Basic: Story<SwitchProps> = (args) => {
-  return <Switch {...args} />;
+export const Basic: Story<SwitchProps> = ({ isInvalid, ...args }) => {
+  const validity = useCallback((): typeof isInvalid => {
+    switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [isInvalid]);
+
+  return <Switch isInvalid={validity()} {...args} />;
 };
 
 const Emoji = styled(Text).attrs(() => ({
@@ -41,12 +56,25 @@ const Label = styled(Flex).attrs(() => ({
   cursor: pointer;
 `;
 
-export const WithChildren: Story<SwitchProps> = (args) => {
+export const WithChildren: Story<SwitchProps> = ({ isInvalid, ...args }) => {
+  // eslint-disable-next-line sonarjs/no-identical-functions
+  const validity = useCallback((): typeof isInvalid => {
+    switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [isInvalid]);
+
   return (
     <Label>
       <Text lineHeightCompensation>Dark Theme</Text>
 
-      <Switch {...args}>
+      <Switch isInvalid={validity()} {...args}>
         {({ value }) => <Emoji aria-label={value ? 'moon' : 'sun'}>{value ? '🌚' : '🌞'}</Emoji>}
       </Switch>
     </Label>
