@@ -1,3 +1,5 @@
 import { Values } from '@brix-ui/utils/types';
 
-export const objectValues = <O>(object: O): Values<O>[] => Object.values(object);
+export function objectValues<O>(object: O): Values<O>[] {
+  return Object.values(object);
+}

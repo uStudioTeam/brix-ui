@@ -1,12 +1,12 @@
 import { objectKeys } from './object-keys';
 
-export const filterObject = <O extends Record<string, any>, K extends keyof O>(
+export function filterObject<O extends Record<string, any>, K extends keyof O>(
   object: O,
   predicate: (key: keyof O) => boolean
-): O => {
+): O {
   return (objectKeys(object).filter((key) => predicate(key as string)) as K[]).reduce((filteredObject, key) => {
     return Object.assign(filteredObject, {
       [key]: object[key],
     });
   }, {} as O);
-};
+}

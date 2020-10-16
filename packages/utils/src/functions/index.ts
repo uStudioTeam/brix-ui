@@ -12,7 +12,6 @@ export * from './is-undefined';
 export * from './filter-object';
 export * from './object-values';
 export * from './safe-fallback';
-export * from './extract-styles';
 export * from './parse-alignment';
 export * from './get-css-variable';
 export * from './set-css-variable';

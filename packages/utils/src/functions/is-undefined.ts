@@ -1,1 +1,3 @@
-export const isUndefined = <V>(value: V | undefined): value is undefined => value === undefined;
+export function isUndefined<V>(value: V | undefined): value is undefined {
+  return value === undefined;
+}

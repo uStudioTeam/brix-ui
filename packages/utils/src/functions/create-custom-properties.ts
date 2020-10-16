@@ -2,10 +2,10 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { StylableComponent } from '@brix-ui/types/component';
 
-export const createCustomProperties = <CP extends StylableComponent<string>['customProperties']>(
+export function createCustomProperties<CP extends StylableComponent<string>['customProperties']>(
   customProperties = {} as CP,
   defaultValues: Record<keyof Required<NonNullable<CP>>, string | undefined>
-): FlattenSimpleInterpolation => {
+): FlattenSimpleInterpolation {
   return Object.keys(defaultValues).reduce((properties, property) => {
     return css`
       ${properties};
@@ -15,4 +15,4 @@ export const createCustomProperties = <CP extends StylableComponent<string>['cus
     };
       `;
   }, css``);
-};
+}

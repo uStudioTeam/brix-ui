@@ -1,3 +1,5 @@
 type Keys<O> = (keyof O)[];
 
-export const objectKeys = <O>(object: O): Keys<O> => Object.keys(object) as Keys<O>;
+export function objectKeys<O>(object: O): Keys<O> {
+  return Object.keys(object) as Keys<O>;
+}
