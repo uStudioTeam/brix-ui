@@ -57,7 +57,6 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
   ref
 ) {
   const [state, dispatch] = useReducer(timePickerReducer, splitValue(defaultValue ?? ''));
-
   const dispatcher = useMemo(() => new TimePickerDispatcher(dispatch), []);
 
   const childrenCount = Children.count(children);
