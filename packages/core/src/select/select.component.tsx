@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
@@ -12,7 +12,7 @@ import type { SelectGroup, SelectOption, SelectProps } from './select.props';
 import Styled from './select.styles';
 
 const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Select(
-  { options, isDisabled: _isDisabled, disabledGroups, suffix, ...props },
+  { className, options, isDisabled: _isDisabled, disabledGroups, suffix, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -27,14 +27,14 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
   return (
     <Styled.Select
       ref={ref}
-      className="select"
+      className={classNames('select', className)}
       options={
         isGroupSelect
           ? (options as SelectGroup[]).flatMap(({ options: groupOptions }) => groupOptions)
           : (options as SelectOption[])
       }
       isDisabled={isDisabled}
-      suffix={suffix || <Styled.Icon className="select-icon" />}
+      suffix={suffix || <Styled.Icon className="select__icon" />}
       {...props}
     >
       {({ isOptionSelected, isOptionDisabled }) => {

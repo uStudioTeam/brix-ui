@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { intentable } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
 import type { FlexElement } from '@brix-ui/types/html';
@@ -15,13 +15,13 @@ import type { AlertProps } from './alert.props';
 import Styled from './alert.styles';
 
 const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
-  { children, intent, showStatus = true, onClose, ...props },
+  { children, className, intent, showStatus = true, onClose, ...props },
   ref
 ) {
   return (
     <Styled.Alert
       ref={ref}
-      className="alert"
+      className={classNames('alert', className)}
       aria-live={intent === Intent.Critical ? 'assertive' : undefined}
       intent={intent}
       data-show-status={orUndefined(showStatus)}
@@ -29,11 +29,11 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
       isInline
       {...props}
     >
-      {showStatus && <Status className="alert-status" intent={intent} hasBorder={false} />}
+      {showStatus && <Status className="alert__status" intent={intent} hasBorder={false} />}
 
       {children}
 
-      {onClose && <CloseButton className="alert-close-button" intent={intent} onClick={onClose} />}
+      {onClose && <CloseButton className="alert__close-button" intent={intent} onClick={onClose} />}
     </Styled.Alert>
   );
 });

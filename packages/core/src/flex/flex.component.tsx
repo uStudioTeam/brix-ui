@@ -1,7 +1,7 @@
 import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, objectValues, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, objectValues, orUndefined } from '@brix-ui/utils/functions';
 import type { FlexElement } from '@brix-ui/types/html';
 import { Direction as DirectionType, FlexContainer } from '@brix-ui/types/css';
 import { alignable, stylableComponent, taggable } from '@brix-ui/prop-types/common';
@@ -14,7 +14,7 @@ import type { FlexProps } from './flex.props';
 import Styled from './flex.styles';
 
 const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
-  { children, as, direction = DirectionType.Row, align, hasWrap, isInline, ...props },
+  { children, className, as, direction = DirectionType.Row, align, hasWrap, isInline, ...props },
   ref
 ) {
   return (
@@ -22,7 +22,7 @@ const Flex = intrinsicComponent<FlexProps, FlexElement>(function Flex(
       <Styled.Flex
         ref={ref}
         forwardedAs={as}
-        className="flex"
+        className={classNames('flex', className)}
         $direction={direction}
         $align={align}
         data-wrap={orUndefined(hasWrap)}

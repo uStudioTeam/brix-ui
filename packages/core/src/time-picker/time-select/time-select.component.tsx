@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 import { useMergeRefs } from 'use-callback-ref';
 
-import { fillArray, intrinsicComponent, objectValues, toDouble } from '@brix-ui/utils/functions';
+import { classNames, fillArray, intrinsicComponent, objectValues, toDouble } from '@brix-ui/utils/functions';
 import { Values } from '@brix-ui/utils/types';
 import { extract } from '@brix-ui/prop-types/utils';
 import { stylableComponent } from '@brix-ui/prop-types/common';
@@ -37,7 +37,7 @@ const prepopulate = (granularity: Values<typeof Granularity>, mode: TimePickerPr
 };
 
 const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(function TimeSelect(
-  { name, options: _options, isDisabled: localDisabled, disabledOptions, placeholder, ...props },
+  { className, name, options: _options, isDisabled: localDisabled, disabledOptions, placeholder, ...props },
   externalRef
 ) {
   const internalRef = useRef<HTMLSelectElement>(null);
@@ -86,9 +86,9 @@ const TimeSelect = intrinsicComponent<TimeSelectProps, HTMLSelectElement>(functi
   return (
     <Styled.TimeSelect
       ref={ref}
-      className="time-select"
+      className={classNames('time-select', className)}
       prefix={
-        <Styled.Value className="time-select-value" align="center" lineHeightCompensation>
+        <Styled.Value className="time-select__value" align="center" lineHeightCompensation>
           {value || finalPlaceholder}
         </Styled.Value>
       }

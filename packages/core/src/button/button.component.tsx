@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { intentable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 
@@ -9,7 +9,7 @@ import { ButtonProps } from './button.props';
 import Styled from './button.styles';
 
 const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Button(
-  { children, isDisabled: _isDisabled, isRounded, ...props },
+  { children, className, isDisabled: _isDisabled, isRounded, ...props },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -17,7 +17,7 @@ const Button = intrinsicComponent<ButtonProps, HTMLButtonElement>(function Butto
   return (
     <Styled.Button
       ref={ref}
-      className="button"
+      className={classNames('button', className)}
       disabled={isDisabled}
       aria-disabled={orUndefined(isDisabled)}
       data-rounded={orUndefined(isRounded)}

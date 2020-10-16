@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import { Position } from '@brix-ui/types/css';
 import { disclosable, stylableComponent, unmountable } from '@brix-ui/prop-types/common';
-import { intrinsicComponent, objectValues, tryCall } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, objectValues, tryCall } from '@brix-ui/utils/functions';
 import { useModal } from '@brix-ui/contexts/modal';
 import useKeyPressHandle from '@brix-ui/hooks/use-key-press-handle';
 
@@ -13,7 +13,19 @@ import type { DrawerProps } from './drawer.props';
 import Styled from './drawer.styles';
 
 const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
-  { children, customProperties, position, unmountOnExit, isOpen, transitionSpeed, onOpen, onChange, onClose, ...props },
+  {
+    children,
+    className,
+    customProperties,
+    position,
+    unmountOnExit,
+    isOpen,
+    transitionSpeed,
+    onOpen,
+    onChange,
+    onClose,
+    ...props
+  },
   ref
 ) {
   const { shouldBeOpen, shouldMount, toggle } = useModal({
@@ -36,7 +48,7 @@ const Drawer = intrinsicComponent<DrawerProps, HTMLDivElement>(function Drawer(
       <Styled.Drawer
         ref={ref}
         forwardedAs="aside"
-        className="drawer"
+        className={classNames('drawer', className)}
         customProperties={customProperties}
         isOpen={shouldBeOpen}
         transitionSpeed={transitionSpeed}

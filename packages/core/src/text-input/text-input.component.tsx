@@ -1,7 +1,7 @@
 import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { formComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
 
@@ -10,13 +10,13 @@ import Input from '../_internal/input';
 import type { TextInputProps } from './text-input.props';
 
 const TextInput = intrinsicComponent<TextInputProps, HTMLInputElement>(function TextInput(
-  { type, inputMode, ...props },
+  { className, type, inputMode, ...props },
   ref
 ) {
   return (
     <Input
       ref={ref}
-      className="text-input"
+      className={classNames('text-input', className)}
       {...props}
       getValue={({ target: { value } }) => value}
       type={type}

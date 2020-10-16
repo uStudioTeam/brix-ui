@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { formComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
 
@@ -10,7 +10,7 @@ import Input from '../_internal/input';
 import type { NumberInputProps } from './number-input.props';
 
 const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(function NumberInput(
-  { type = 'decimal', inputMode, min, max, step, ...props },
+  { className, type = 'decimal', inputMode, min, max, step, ...props },
   ref
 ) {
   const handleGetValue = useCallback<(event: ChangeEvent<HTMLInputElement>) => number | ''>(
@@ -21,7 +21,7 @@ const NumberInput = intrinsicComponent<NumberInputProps, HTMLInputElement>(funct
   return (
     <Input
       ref={ref}
-      className="number-input"
+      className={classNames('number-input', className)}
       {...props}
       getValue={handleGetValue}
       type={type === 'tel' ? type : 'number'}

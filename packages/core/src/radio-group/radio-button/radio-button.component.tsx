@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
 import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
@@ -12,7 +12,7 @@ import type { RadioButtonProps } from './radio-button.props';
 import Styled from './radio-button.styles';
 
 const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(function RadioButton(
-  { value, id, form, containerRef, ...props },
+  { className, value, id, form, containerRef, ...props },
   ref
 ) {
   const { value: selectedOption, name, dispatcher, handleChange, isDisabled, isRequired, isInvalid } = useRadioGroup();
@@ -29,7 +29,7 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
   return (
     <Styled.RadioButton
       ref={containerRef}
-      className="radio-button"
+      className={classNames('radio-button', className)}
       aria-checked={selectedOption === value}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}

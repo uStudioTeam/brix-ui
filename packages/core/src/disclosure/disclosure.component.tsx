@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import useAutoTransition from 'honks/use-auto-transition';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useDisclose from '@brix-ui/hooks/use-disclose';
@@ -12,7 +12,19 @@ import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
 
 const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function Disclosure(
-  { children, isOpen, transitionSpeed, summary, icon, onOpen, onChange, onClose, isDisabled: _isDisabled, ...props },
+  {
+    children,
+    className,
+    isOpen,
+    transitionSpeed,
+    summary,
+    icon,
+    onOpen,
+    onChange,
+    onClose,
+    isDisabled: _isDisabled,
+    ...props
+  },
   ref
 ) {
   const isDisabled = useDisabled(_isDisabled);
@@ -37,7 +49,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
   return (
     <Styled.Container
       ref={ref}
-      className="disclosure"
+      className={classNames('disclosure', className)}
       direction="column"
       data-expanded={internalIsOpen}
       aria-disabled={orUndefined(isDisabled)}
@@ -53,7 +65,9 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       >
         {summary}
 
-        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || <Styled.Icon />}
+        {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
+          <Styled.Icon className="disclosure-summary__icon" />
+        )}
       </Styled.Summary>
 
       <Styled.Details
@@ -64,7 +78,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
           height: detailsHeight,
         }}
       >
-        <div className="disclosure-details-inner" ref={detailsRef}>
+        <div className="disclosure-details__inner" ref={detailsRef}>
           {children}
         </div>
       </Styled.Details>

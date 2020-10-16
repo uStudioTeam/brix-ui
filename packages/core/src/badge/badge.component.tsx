@@ -1,7 +1,7 @@
 import React, { isValidElement } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 import { Align } from '@brix-ui/types/css';
 
@@ -11,7 +11,7 @@ import type { BadgeProps } from './badge.props';
 import Styled from './badge.styles';
 
 const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
-  { children, color, backgroundColor, value, shouldDisplay = true, ...props },
+  { children, className, color, backgroundColor, value, shouldDisplay = true, ...props },
   ref
 ) {
   return (
@@ -21,14 +21,14 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
       {shouldDisplay && (
         <Styled.Badge
           ref={ref}
-          className="badge"
+          className={classNames('badge', className)}
           data-has-children={orUndefined(isValidElement(children))}
           data-long-value={orUndefined(`${value || ''}`.length > 1)}
           $color={color}
           $backgroundColor={backgroundColor}
           {...props}
         >
-          <Text className="badge-value" variant="h5" as="span" lineHeightCompensation>
+          <Text className="badge__value" variant="h5" as="span" lineHeightCompensation>
             {value}
           </Text>
         </Styled.Badge>

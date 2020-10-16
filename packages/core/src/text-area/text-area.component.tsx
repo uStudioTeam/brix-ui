@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import useInputValue from '@brix-ui/hooks/use-input-value';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -12,6 +12,7 @@ import Styled from './text-area.styles';
 
 const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function TextArea(
   {
+    className,
     value,
     defaultValue,
     onChange,
@@ -58,7 +59,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
   return (
     <Styled.Label
       ref={containerRef}
-      className="text-area-label"
+      className={classNames('text-area-label', className)}
       aria-disabled={orUndefined(isDisabled)}
       aria-readonly={orUndefined(isReadonly)}
       aria-invalid={orUndefined(isInvalid)}

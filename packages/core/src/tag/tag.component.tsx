@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Text from '../text';
@@ -10,20 +10,26 @@ import type { TagProps } from './tag.props';
 import Styled from './tag.styles';
 
 const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
-  { children, color, backgroundColor, onClose, closeIcon, ...props },
+  { children, className, color, backgroundColor, onClose, closeIcon, ...props },
   ref
 ) {
   return (
-    <Styled.Container ref={ref} className="tag" $color={color} $backgroundColor={backgroundColor} {...props}>
-      <Styled.Content className="tag-content-container" align="center">
-        <Text as="span" className="tag-content" variant="small" lineHeightCompensation>
+    <Styled.Container
+      ref={ref}
+      className={classNames('tag', className)}
+      $color={color}
+      $backgroundColor={backgroundColor}
+      {...props}
+    >
+      <Styled.Content className="tag__content-container" align="center">
+        <Text as="span" className="tag__content" variant="small" lineHeightCompensation>
           {children}
         </Text>
       </Styled.Content>
 
       {onClose && (
-        <Styled.CloseButton className="tag-close-button" onClick={onClose}>
-          {closeIcon || <Styled.CloseIcon />}
+        <Styled.CloseButton className="tag__close-button" onClick={onClose}>
+          {closeIcon || <Styled.CloseIcon className="tag__close-icon" />}
         </Styled.CloseButton>
       )}
     </Styled.Container>
