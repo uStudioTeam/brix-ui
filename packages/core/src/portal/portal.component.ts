@@ -1,18 +1,20 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-const Portal: FC = ({ children }) => {
+import type { PortalProps } from './portal.props';
+
+const Portal: FC<PortalProps> = ({ children, container }) => {
   const [shouldMount, setMount] = useState(false);
-  const containerRef = useRef<HTMLBodyElement>();
+  const containerRef = useRef<HTMLElement>(null) as MutableRefObject<HTMLElement | null>;
 
   useEffect(() => {
     if (document) {
-      containerRef.current = document.querySelector('body') as HTMLBodyElement;
+      containerRef.current = (container || document.querySelector('body')) as HTMLElement;
       setMount(true);
     }
   }, []);
 
-  return shouldMount ? createPortal(children, containerRef.current as HTMLBodyElement) : null;
+  return shouldMount ? createPortal(children, containerRef.current as HTMLElement) : null;
 };
 
 export default Portal;
