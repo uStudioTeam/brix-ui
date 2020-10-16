@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react';
+import { useMemo, useReducer } from 'react';
 
 import { areaBuilderReducer, AreaBuilderState } from './reducer';
 import { AreaBuilderDispatcher } from './actions';
@@ -9,7 +9,7 @@ export const useAreaBuilder = (): [AreaBuilderState, AreaBuilderDispatcher] => {
     areas: [],
     fractionsCount: 0,
   });
-  const { current: dispatcher } = useRef(new AreaBuilderDispatcher(dispatch));
+  const dispatcher = useMemo(() => new AreaBuilderDispatcher(dispatch), []);
 
   return [state, dispatcher];
 };
