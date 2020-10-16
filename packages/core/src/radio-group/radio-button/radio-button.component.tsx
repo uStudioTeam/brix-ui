@@ -32,7 +32,7 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
       className={classNames('radio-button', className)}
       aria-checked={selectedOption === value}
       aria-disabled={orUndefined(isDisabled)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
@@ -46,7 +46,7 @@ const RadioButton = intrinsicComponent<RadioButtonProps, HTMLInputElement>(funct
         aria-disabled={orUndefined(isDisabled)}
         required={isRequired}
         aria-required={orUndefined(isRequired)}
-        aria-invalid={orUndefined(isInvalid)}
+        aria-invalid={isInvalid}
         form={form}
         {...propsWithAria}
         {...propsWithEvents}

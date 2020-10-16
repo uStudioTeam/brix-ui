@@ -18,6 +18,18 @@ const Icon = styled(Chevron)(
   `
 );
 
+const validity = (state: 'valid' | 'invalid') => css`
+  border-color: var(--input-border-color-${state});
+
+  &:focus-within {
+    border-color: var(--input-border-color-${state}-focus);
+  }
+
+  &:hover {
+    box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+  }
+`;
+
 const Select = styled(Dropdown)<Pick<SelectProps, 'customProperties'>>(
   ({ customProperties }) => css`
     ${createCustomProperties(customProperties, {
@@ -35,12 +47,12 @@ const Select = styled(Dropdown)<Pick<SelectProps, 'customProperties'>>(
       border-color: var(--input-border-color-focus);
     }
 
-    &[aria-invalid] {
-      border-color: var(--input-border-color-invalid);
+    &[aria-invalid='true'] {
+      ${validity('invalid')};
+    }
 
-      &:focus-within {
-        border-color: var(--input-border-color-invalid-focus);
-      }
+    &[aria-invalid='false'] {
+      ${validity('valid')};
     }
 
     &[aria-disabled] {

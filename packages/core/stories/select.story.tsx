@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import type { Meta, Story } from '@storybook/react';
 
@@ -23,7 +23,10 @@ const argTypes = {
     control: 'boolean',
   },
   isInvalid: {
-    control: 'boolean',
+    control: {
+      type: 'inline-radio',
+      options: ['valid', 'invalid', 'indeterminate'],
+    },
   },
   disabledOptions: {
     control: 'array',
@@ -35,8 +38,20 @@ const defaultArgs = {
   placeholder: 'Select...',
 };
 
-const FlatTemplate: Story<SelectProps> = (args) => {
-  return <Select {...args} />;
+const FlatTemplate: Story<SelectProps> = ({ isInvalid, ...args }) => {
+  const validity = useCallback((): typeof isInvalid => {
+    switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [isInvalid]);
+
+  return <Select isInvalid={validity()} {...args} />;
 };
 
 export const Flat = FlatTemplate.bind({});
@@ -70,8 +85,20 @@ Flat.args = {
   ],
 };
 
-const GroupsTemplate: Story<SelectProps> = (args) => {
-  return <Select {...args} />;
+const GroupsTemplate: Story<SelectProps> = ({ isInvalid, ...args }) => {
+  const validity = useCallback((): typeof isInvalid => {
+    switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [isInvalid]);
+
+  return <Select isInvalid={validity()} {...args} />;
 };
 
 export const Groups = GroupsTemplate.bind({});

@@ -18,6 +18,8 @@ const Miscelaneous = createGlobalStyle<Pick<Theme, 'transition'>>`
     --input-border-color-focus: var(--c-accent-strong);
     --input-border-color-invalid: var(--c-critical-strong);
     --input-border-color-invalid-focus: var(--c-critical-weak-up);
+    --input-border-color-valid: var(--c-success-strong);
+    --input-border-color-valid-focus: var(--c-success-weak-up);
     --input-border-color-disabled: var(--c-faint-weak-up);
     
     --input-background-color: var(--c-base-weak);

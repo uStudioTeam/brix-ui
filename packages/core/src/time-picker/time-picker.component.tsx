@@ -119,7 +119,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
       ref={ref}
       className={classNames('time-picker', className)}
       aria-disabled={orUndefined(isDisabled)}
-      aria-invalid={orUndefined(isInvalid)}
+      aria-invalid={isInvalid}
       {...props}
     >
       {prefix}

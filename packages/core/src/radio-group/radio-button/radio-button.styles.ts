@@ -11,6 +11,44 @@ const scale = (factor: number) => css`
   transform: translate(-50%, -50%) scale(${factor});
 `;
 
+const checkedValidity = (state: 'valid' | 'invalid') => css`
+  &:before {
+    border-color: var(--input-border-color-${state});
+    background-color: var(--input-border-color-${state});
+  }
+
+  &:hover {
+    &:before {
+      box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+    }
+  }
+
+  &:focus-within,
+  &:active {
+    &:before {
+      border-color: var(--input-border-color-${state}-focus);
+      background-color: var(--input-border-color-${state}-focus);
+    }
+  }
+`;
+
+const uncheckedValidity = (state: 'valid' | 'invalid') => css`
+  &:before {
+    border-color: var(--input-border-color-${state});
+  }
+
+  &:after {
+    background-color: var(--input-border-color-${state}-focus);
+  }
+
+  &:focus-within,
+  &:active {
+    &:before {
+      border-color: var(--input-border-color-${state}-focus);
+    }
+  }
+`;
+
 const RadioButton = styled.label(
   () => css`
     position: relative;
@@ -91,25 +129,12 @@ const RadioButton = styled.label(
         ${scale(1)};
       }
 
-      &[aria-invalid] {
-        &:before {
-          border-color: var(--input-border-color-invalid);
-          background-color: var(--input-border-color-invalid);
-        }
+      &[aria-invalid='true'] {
+        ${checkedValidity('invalid')};
+      }
 
-        &:hover {
-          &:before {
-            box-shadow: ${shadow(`accent-strong`, 0.25)};
-          }
-        }
-
-        &:focus-within,
-        &:active {
-          &:before {
-            border-color: var(--input-border-color-invalid-focus);
-            background-color: var(--input-border-color-invalid-focus);
-          }
-        }
+      &[aria-invalid='false'] {
+        ${checkedValidity('valid')};
       }
 
       &[aria-disabled] {
@@ -169,21 +194,12 @@ const RadioButton = styled.label(
         }
       }
 
-      &[aria-invalid] {
-        &:before {
-          border-color: var(--input-border-color-invalid);
-        }
+      &[aria-invalid='true'] {
+        ${uncheckedValidity('invalid')};
+      }
 
-        &:after {
-          background-color: var(--input-border-color-invalid-focus);
-        }
-
-        &:focus-within,
-        &:active {
-          &:before {
-            border-color: var(--input-border-color-invalid-focus);
-          }
-        }
+      &[aria-invalid='false'] {
+        ${uncheckedValidity('valid')};
       }
 
       &[aria-disabled] {

@@ -14,7 +14,8 @@ const TimeInput = styled(Input)(
       text-align: center;
     }
 
-    &:hover {
+    &:hover,
+    &[aria-invalid]:hover {
       box-shadow: none;
     }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import type { Story } from '@storybook/react';
 
@@ -21,7 +21,10 @@ export default {
       control: 'boolean',
     },
     isInvalid: {
-      control: 'boolean',
+      control: {
+        type: 'inline-radio',
+        options: ['valid', 'invalid', 'indeterminate'],
+      },
     },
     showSymbolsLeft: {
       control: 'boolean',
@@ -48,11 +51,23 @@ const Container = styled.div`
 
 const Styled = applyDisplayNames({ Container });
 
-export const Basic: Story<TextAreaProps> = ({ resize, ...args }) => {
+export const Basic: Story<TextAreaProps> = ({ resize, isInvalid, ...args }) => {
+  const validity = useCallback((): typeof isInvalid => {
+    switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [isInvalid]);
+
   return (
     <Styled.Container>
       {/* @ts-ignore */}
-      <TextArea resize={resize === 'none' ? undefined : resize} {...args} />
+      <TextArea isInvalid={validity()} resize={resize === 'none' ? undefined : resize} {...args} />
     </Styled.Container>
   );
 };

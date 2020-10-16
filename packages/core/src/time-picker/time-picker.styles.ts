@@ -29,6 +29,18 @@ const Mode = styled(Text).attrs(() => ({
   forwardedAs: 'span',
 }))``;
 
+const validity = (state: 'valid' | 'invalid') => css`
+  border-color: var(--input-border-color-${state});
+
+  &:focus-within {
+    border-color: var(--input-border-color-${state}-focus);
+  }
+
+  &:hover {
+    box-shadow: ${shadow(`${state === 'valid' ? 'success' : 'critical'}-strong`, 0.25)};
+  }
+`;
+
 const TimePicker = styled.div(
   () => css`
     height: var(--input-height-large);
@@ -54,12 +66,12 @@ const TimePicker = styled.div(
       border-color: var(--input-border-color-focus);
     }
 
-    &[aria-invalid] {
-      border-color: var(--input-border-color-invalid);
+    &[aria-invalid='true'] {
+      ${validity('invalid')};
+    }
 
-      &:focus-within {
-        border-color: var(--input-border-color-invalid-focus);
-      }
+    &[aria-invalid='false'] {
+      ${validity('valid')};
     }
 
     &[aria-disabled] {

@@ -1,5 +1,5 @@
 import { orUndefined } from '@brix-ui/utils/functions';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import { Story } from '@storybook/react';
 
@@ -16,7 +16,10 @@ export default {
       control: 'boolean',
     },
     isInvalid: {
-      control: 'boolean',
+      control: {
+        type: 'inline-radio',
+        options: ['valid', 'invalid', 'indeterminate'],
+      },
     },
   },
 };
@@ -35,14 +38,6 @@ const Label = styled(Flex).attrs(() => ({
       color: var(--c-accent-strong);
     }
 
-    &[aria-invalid] {
-      color: var(--c-critical-strong);
-
-      &:focus-within {
-        color: var(--c-critical-weak-up);
-      }
-    }
-
     &[aria-disabled] {
       color: var(--c-faint-strong);
 
@@ -51,9 +46,21 @@ const Label = styled(Flex).attrs(() => ({
   `
 );
 
-export const Basic: Story<RadioGroupProps> = (args) => {
+export const Basic: Story<RadioGroupProps> = ({ isInvalid: _isInvalid, ...args }) => {
+  const validity = useCallback((): typeof _isInvalid => {
+    switch ((_isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
+      case 'invalid':
+        return true;
+      case 'valid':
+        return false;
+      case 'indeterminate':
+      default:
+        return undefined;
+    }
+  }, [_isInvalid]);
+
   return (
-    <RadioGroup {...args} name="radio-group">
+    <RadioGroup isInvalid={validity()} {...args} name="radio-group">
       {({ isDisabled, isInvalid }) => {
         return (
           <Flex
@@ -64,12 +71,7 @@ export const Basic: Story<RadioGroupProps> = (args) => {
           >
             {['One', 'Two', 'Three'].map((option) => {
               return (
-                <Label
-                  aria-hidden
-                  aria-disabled={orUndefined(isDisabled)}
-                  aria-invalid={orUndefined(isInvalid)}
-                  key={option}
-                >
+                <Label aria-hidden aria-disabled={orUndefined(isDisabled)} aria-invalid={isInvalid} key={option}>
                   <RadioButton id={option} value={option} />
 
                   <Text lineHeightCompensation>{option}</Text>
