@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useModal } from '@brix-ui/contexts/modal';
 
@@ -10,7 +10,7 @@ import type { OverlayProps } from './overlay.props';
 import Styled from './overlay.styles';
 
 const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overlay(
-  { isOpen, transitionSpeed, onOpen, onChange, onClose, onClick, ...props },
+  { className, isOpen, transitionSpeed, onOpen, onChange, onClose, onClick, ...props },
   ref
 ) {
   const { shouldBeOpen, shouldMount, toggle } = useModal({
@@ -26,7 +26,7 @@ const Overlay = intrinsicComponent<OverlayProps, HTMLDivElement>(function Overla
     <Portal>
       <Styled.Overlay
         ref={ref}
-        className="overlay"
+        className={classNames('overlay', className)}
         role="button"
         aria-expanded={shouldBeOpen}
         transitionSpeed={transitionSpeed}

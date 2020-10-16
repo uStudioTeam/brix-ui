@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import PT, { Requireable } from 'prop-types';
 import { Keyframes, keyframes } from 'styled-components';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { delayable, stylableComponent } from '@brix-ui/prop-types/common';
 import useDelay from '@brix-ui/hooks/use-delay';
 
@@ -26,7 +26,19 @@ const parseBladeSize = (
 };
 
 const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinner(
-  { blades = 9, bladeSize, speed = 100, color, property = 'opacity', range, swirl, spread = 1, delay, ...props },
+  {
+    className,
+    blades = 9,
+    bladeSize,
+    speed = 100,
+    color,
+    property = 'opacity',
+    range,
+    swirl,
+    spread = 1,
+    delay,
+    ...props
+  },
   ref
 ) {
   const [rangeFrom, rangeTo] = useMemo(() => [range?.[0] || 0.25, range?.[1] || 1], [JSON.stringify(range)]);
@@ -70,14 +82,21 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
   const shouldRender = useDelay(delay);
 
   return shouldRender ? (
-    <Styled.Spinner ref={ref} className="spinner" role="status" aria-busy="true" aria-live="polite" {...props}>
+    <Styled.Spinner
+      ref={ref}
+      className={classNames('spinner', className)}
+      role="status"
+      aria-busy="true"
+      aria-live="polite"
+      {...props}
+    >
       {[...new Array(blades).keys()].map((_, index) => {
         return (
           <Styled.Blade
             // eslint-disable-next-line react/no-array-index-key
             key={index}
             data-index={index}
-            className="spinner-blade"
+            className="spinner__blade"
             animationDuration={animationDuration}
             $animation={animation(index)}
             $width={width}

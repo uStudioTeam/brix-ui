@@ -1,7 +1,7 @@
 import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, tryCall } from '@brix-ui/utils/functions';
 import { useModal } from '@brix-ui/contexts/modal';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 import useKeyPressHandle from '@brix-ui/hooks/use-key-press-handle';
@@ -25,6 +25,7 @@ import Styled from './dialog.styles';
 const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialog(
   {
     children,
+    className,
     customProperties,
     isOpen,
     onOpen,
@@ -82,7 +83,7 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
       <Styled.Dialog
         forwardedAs="dialog"
         ref={ref}
-        className="dialog"
+        className={classNames('dialog', className)}
         customProperties={customProperties}
         transitionSpeed={transitionSpeed}
         $top={applyPolymorphicFunctionProp(currentBreakpointProps.top, currentBreakpoint) || '33%'}
@@ -100,17 +101,17 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           ...props,
         }}
       >
-        <Styled.Header className="dialog-header" $titleAlign={titleAlign}>
+        <Styled.Header className="dialog__header" $titleAlign={titleAlign}>
           {title && (
-            <Styled.Title className="dialog-title" align={titleAlign}>
+            <Styled.Title className="dialog__title" align={titleAlign}>
               {title}
             </Styled.Title>
           )}
 
-          <CloseButton className="dialog-close-button" intent="critical" onClick={() => toggle(false)} />
+          <CloseButton className="dialog__close-button" intent="critical" onClick={() => toggle(false)} />
         </Styled.Header>
 
-        <Styled.Body className="dialog-body">{children}</Styled.Body>
+        <Styled.Body className="dialog__body">{children}</Styled.Body>
       </Styled.Dialog>
     </Portal>
   ) : null;

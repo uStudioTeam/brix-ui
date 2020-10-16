@@ -1,7 +1,14 @@
 import React, { Children, createContext, useContext, useEffect, useMemo, useReducer, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, objectKeys, objectValues, orUndefined, tryCall } from '@brix-ui/utils/functions';
+import {
+  classNames,
+  intrinsicComponent,
+  objectKeys,
+  objectValues,
+  orUndefined,
+  tryCall,
+} from '@brix-ui/utils/functions';
 import useUpdateEffect from '@brix-ui/hooks/use-update-effect';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import type { Values } from '@brix-ui/utils/types';
@@ -53,7 +60,20 @@ interface TimePickerValue
 const TimePickerContext = createContext<TimePickerValue | undefined>(undefined);
 
 const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function TimePicker(
-  { children, mode, value, defaultValue, onChange, onModeChange, isDisabled, isRequired, isInvalid, prefix, ...props },
+  {
+    children,
+    className,
+    mode,
+    value,
+    defaultValue,
+    onChange,
+    onModeChange,
+    isDisabled,
+    isRequired,
+    isInvalid,
+    prefix,
+    ...props
+  },
   ref
 ) {
   const [state, dispatch] = useReducer(timePickerReducer, splitValue(defaultValue ?? ''));
@@ -97,14 +117,14 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
   return (
     <Styled.TimePicker
       ref={ref}
-      className="time-picker"
+      className={classNames('time-picker', className)}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}
       {...props}
     >
       {prefix}
 
-      <Styled.InputsContainer className="time-picker-inputs-container">
+      <Styled.InputsContainer className="time-picker__inputs-container">
         <TimePickerContext.Provider
           value={{
             ...state,
@@ -123,7 +143,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
               <>
                 {child}
 
-                {index !== childrenCount - 1 && <Styled.Divider className="time-picker-divider">:</Styled.Divider>}
+                {index !== childrenCount - 1 && <Styled.Divider className="time-picker__divider">:</Styled.Divider>}
               </>
             );
           })}
@@ -135,7 +155,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
           type="button"
           role="switch"
           aria-checked
-          className="time-picker-mode-switch"
+          className="time-picker__mode-switch"
           appearance="faint"
           isDisabled={isDisabled}
           onClick={() => {
@@ -144,7 +164,9 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
             });
           }}
         >
-          <Styled.Mode variant="h5">{internalMode}</Styled.Mode>
+          <Styled.Mode variant="h5" className="time-picker__mode">
+            {internalMode}
+          </Styled.Mode>
         </Styled.ModeSwitch>
       )}
     </Styled.TimePicker>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PT, { Requireable } from 'prop-types';
 
-import { intrinsicComponent, objectValues, orUndefined, random } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, objectValues, orUndefined, random } from '@brix-ui/utils/functions';
 import { delayable, stylableComponent } from '@brix-ui/prop-types/common';
 import { extract } from '@brix-ui/prop-types/utils';
 import { TypeVariant } from '@brix-ui/types/typography';
@@ -23,7 +23,7 @@ const parseSize = (size: SkeletonSize | undefined): string | undefined => {
 };
 
 const Skeleton = intrinsicComponent<SkeletonProps, HTMLDivElement>(function Skeleton(
-  { width: _width, height: _height, size: _size, delay, isStatic, isRounded, ...props },
+  { className, width: _width, height: _height, size: _size, delay, isStatic, isRounded, ...props },
   ref
 ) {
   const shouldRender = useDelay(delay);
@@ -35,7 +35,7 @@ const Skeleton = intrinsicComponent<SkeletonProps, HTMLDivElement>(function Skel
   return shouldRender ? (
     <Styled.Skeleton
       ref={ref}
-      className="skeleton"
+      className={classNames('skeleton', className)}
       $width={width}
       $height={height}
       size={size}

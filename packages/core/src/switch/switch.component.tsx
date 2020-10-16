@@ -2,7 +2,7 @@ import React, { WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
 import { extract } from '@brix-ui/prop-types/utils';
-import { applyPolymorphicFunctionProp, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -17,6 +17,7 @@ import Styled from './switch.styles';
 const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch(
   {
     children,
+    className,
     value,
     defaultValue,
     onChange,
@@ -45,7 +46,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
   return (
     <Styled.Switch
       ref={containerRef}
-      className="switch"
+      className={classNames('switch', className)}
       aria-checked={internalValue ?? false}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={orUndefined(isInvalid)}
@@ -53,7 +54,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       {...propsWithoutEvents}
     >
       {children && (
-        <Styled.Children className="switch-children">
+        <Styled.Children className="switch__children">
           {applyPolymorphicFunctionProp(children, { value: internalValue, isDisabled, isInvalid })}
         </Styled.Children>
       )}

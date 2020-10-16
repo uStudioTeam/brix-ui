@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import PT from 'prop-types';
 import { useMergeRefs } from 'use-callback-ref';
 
-import { intrinsicComponent, minMax, objectValues, toDouble } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, minMax, objectValues, toDouble } from '@brix-ui/utils/functions';
 import { refProp, stylableComponent } from '@brix-ui/prop-types/common';
 
 import { Granularity } from '../entity';
@@ -13,7 +13,7 @@ import type { TimeInputProps } from './time-input.props';
 import Styled from './time-input.styles';
 
 const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function TimeInput(
-  { name, placeholder, containerRef, ...props },
+  { className, name, placeholder, containerRef, ...props },
   externalRef
 ) {
   const internalLabelRef = useRef<HTMLLabelElement>(null);
@@ -67,7 +67,7 @@ const TimeInput = intrinsicComponent<TimeInputProps, HTMLInputElement>(function 
     <Styled.TimeInput
       ref={inputRef}
       containerRef={labelRef}
-      className="time-input"
+      className={classNames('time-input', className)}
       type="number"
       inputMode="numeric"
       id={finalId}
