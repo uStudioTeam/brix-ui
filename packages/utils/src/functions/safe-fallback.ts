@@ -7,6 +7,10 @@ export const safeFallback = <C = boolean, T = '', F = undefined, R = F extends u
     return ('' as unknown) as R;
   }
 
+  if (truthy === undefined && falsy === undefined) {
+    return (condition as unknown) as R;
+  }
+
   if (falsy === undefined) {
     return ((condition ? truthy : '') as unknown) as R;
   }
