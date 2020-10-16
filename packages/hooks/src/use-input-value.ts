@@ -3,7 +3,7 @@ import { ChangeEvent, ChangeEventHandler, useCallback } from 'react';
 import useUpdatedState from '@brix-ui/hooks/use-updated-state';
 import { tryCall } from '@brix-ui/utils/functions';
 
-export default function useInputValue<V, E extends HTMLInputElement | HTMLSelectElement>(
+export default function useInputValue<V, E extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
   value: V,
   onChange: ((value: V, event: ChangeEvent<E>) => void) | undefined,
   getValue: (event: ChangeEvent<E>, prevValue: V) => V

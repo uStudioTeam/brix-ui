@@ -12,7 +12,7 @@ const Input = styled.input(
     width: 100%;
 
     &::placeholder {
-      color: var(--c-faint-strong-down);
+      color: var(--input-placeholder-color);
       opacity: 1;
 
       transition: opacity var(--transition-short);
