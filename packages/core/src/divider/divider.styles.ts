@@ -76,6 +76,7 @@ const Divider = styled(Flex).attrs({
     theme,
     thickness = '1px',
     direction,
+    isInline,
     redLine = '1rem',
     $color = 'faint-weak-up',
     $align: align = Align.Start,
@@ -86,7 +87,7 @@ const Divider = styled(Flex).attrs({
 
     return css`
       ${isDirectionColumn(direction) ? 'width' : 'height'}: ${thickness};
-      ${isDirectionColumn(direction) ? 'height' : 'width'}: 100%;
+      ${isDirectionColumn(direction) ? 'height' : 'width'}: ${isInline ? 'auto' : '100%'};
 
       margin: ${parseIndent(margin, Number(!isDirectionColumn(direction)))};
 
@@ -99,11 +100,11 @@ const Divider = styled(Flex).attrs({
       &[data-has-children] {
         ${isDirectionColumn(direction) ? 'width' : 'height'}: auto;
 
-        background-color: unset;
-
         position: relative;
 
         align-items: center;
+
+        background-color: unset;
 
         & > * {
           padding: ${parseIndent(padding, Number(isDirectionColumn(direction)))};
