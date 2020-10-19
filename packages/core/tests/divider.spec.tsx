@@ -17,6 +17,8 @@ const renderWithProps = (props = {} as DividerProps) => {
 
 const pseudoElement = (name: string) => `&[data-has-children]:${name}`;
 
+const children = <div />;
+
 describe('<Divider />', () => {
   beforeEach(() => {
     matchMedia();
@@ -55,7 +57,7 @@ describe('<Divider />', () => {
           const { getByTestId } = renderWithProps({
             thickness: '1px',
             direction: 'row',
-            children: 'Children',
+            children,
             align: 'center',
           });
 
@@ -120,7 +122,7 @@ describe('<Divider />', () => {
           const { getByTestId } = renderWithProps({
             padding: '1rem',
             direction: 'row',
-            children: 'Children',
+            children,
           });
 
           expect(getByTestId(dividerId)).toHaveStyleRule('padding', '0 1rem', options);
@@ -132,7 +134,7 @@ describe('<Divider />', () => {
           const { getByTestId } = renderWithProps({
             padding: '1rem',
             direction: 'column',
-            children: 'Children',
+            children,
           });
 
           expect(getByTestId(dividerId)).toHaveStyleRule('padding', '1rem 0', options);
@@ -145,7 +147,7 @@ describe('<Divider />', () => {
         const { getByTestId } = renderWithProps({
           padding: '1px 2px 3px 4px',
           direction: 'row',
-          children: 'Children',
+          children,
         });
 
         expect(getByTestId(dividerId)).toHaveStyleRule('padding', '1px 2px 3px 4px', options);
@@ -158,7 +160,7 @@ describe('<Divider />', () => {
       it('should apply `redLine` to the `:before` pseudo-element', () => {
         const { getByTestId } = renderWithProps({
           align: 'start',
-          children: 'Children',
+          children,
           redLine: '1px',
         });
 
@@ -172,7 +174,7 @@ describe('<Divider />', () => {
       it('should not apply `redLine`', () => {
         const { getByTestId } = renderWithProps({
           align: 'center',
-          children: 'Children',
+          children,
           redLine: '1px',
         });
 
@@ -188,7 +190,7 @@ describe('<Divider />', () => {
       it('should apply `redLine` to the `:after` pseudo-element', () => {
         const { getByTestId } = renderWithProps({
           align: 'end',
-          children: 'Children',
+          children,
           redLine: '1px',
         });
 

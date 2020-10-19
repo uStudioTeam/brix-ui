@@ -39,6 +39,7 @@ Divider.propTypes = {
   direction,
   isInline,
   isReversed,
+  children: PT.element,
   color: PT.string,
   thickness: PT.string,
   align: PT.oneOf(['start', 'center', 'end']),
