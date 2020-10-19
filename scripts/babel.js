@@ -4,7 +4,7 @@ const presets = {
 };
 
 const plugins = {
-  styledComponents: ['styled-components', { displayName: true, preprocess: false }],
+  styledComponents: ['styled-components', { displayName: false, fileName: false, pure: true }],
   polished: 'polished',
   runtime: '@babel/plugin-transform-runtime',
   classProperties: '@babel/plugin-proposal-class-properties',
