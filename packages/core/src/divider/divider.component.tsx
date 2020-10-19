@@ -1,9 +1,8 @@
 import React, { isValidElement, useMemo } from 'react';
 import PT from 'prop-types';
 
-import { classNames, intrinsicComponent, objectValues, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { extract } from '@brix-ui/prop-types/utils';
-import { TextAlign } from '@brix-ui/types/typography';
 import { stylableComponent } from '@brix-ui/prop-types/common';
 
 import Flex from '../flex';
@@ -42,7 +41,7 @@ Divider.propTypes = {
   isReversed,
   color: PT.string,
   thickness: PT.string,
-  align: PT.oneOf(objectValues(TextAlign)),
+  align: PT.oneOf(['start', 'center', 'end']),
   redLine: PT.string,
   padding: PT.string,
   margin: PT.string,
