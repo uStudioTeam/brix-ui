@@ -51,7 +51,7 @@ const Checkbox = intrinsicComponent<CheckboxProps, HTMLInputElement>(function Ch
       {...propsWithoutEvents}
     >
       {applyPolymorphicFunctionProp(icon, { value: internalValue, isDisabled, isInvalid }) || (
-        <Styled.CheckIcon className="checkbox__icon" />
+        <Styled.CheckIcon className={classNames('checkbox__icon')} />
       )}
 
       <Styled.Input

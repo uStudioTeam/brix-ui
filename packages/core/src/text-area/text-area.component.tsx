@@ -68,7 +68,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
     >
       <Styled.TextArea
         ref={ref}
-        className="text-area"
+        className={classNames('text-area')}
         value={internalValue}
         onChange={handleChange}
         autoComplete={autoComplete}
@@ -96,7 +96,7 @@ const TextArea = intrinsicComponent<TextAreaProps, HTMLTextAreaElement>(function
       />
 
       {showSymbolsLeft && maxLength && (
-        <Styled.SymbolsLeft className="text-area-symbols-left" data-resize={orUndefined(resize)}>
+        <Styled.SymbolsLeft className={classNames('text-area-symbols-left')} data-resize={orUndefined(resize)}>
           {symbolsLeft} / {maxLength}
         </Styled.SymbolsLeft>
       )}

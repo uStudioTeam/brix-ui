@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import PT from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -70,10 +70,11 @@ const Input = intrinsicComponent<
       aria-hidden
       {...propsWithoutEvents}
     >
-      {prefix && <Affix className="input-prefix">{prefix}</Affix>}
+      {prefix && <Affix className={classNames('input__prefix')}>{prefix}</Affix>}
 
       <Styled.Input
         ref={ref}
+        className={classNames('input')}
         type={type}
         inputMode={inputMode}
         name={name}
@@ -104,7 +105,7 @@ const Input = intrinsicComponent<
         {...propsWithAria}
       />
 
-      {suffix && <Affix className="input-suffix">{suffix}</Affix>}
+      {suffix && <Affix className={classNames('input__suffix')}>{suffix}</Affix>}
     </Styled.Container>
   );
 });

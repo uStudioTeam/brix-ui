@@ -1,13 +1,21 @@
 import React, { FC } from 'react';
 
+import { classNames } from '@brix-ui/utils/functions';
+
 import type { ButtonProps } from '../../button';
 import Styled from './close-button.styles';
 
-const CloseButton: FC<ButtonProps> = (props) => {
+const CloseButton: FC<ButtonProps> = ({ className, ...props }) => {
   return (
-    <Styled.CloseContainer align="center">
-      <Styled.CloseButton {...props} type="button" isRounded appearance="faint">
-        <Styled.CloseIcon />
+    <Styled.CloseContainer className={classNames('close-button-container')} align="center">
+      <Styled.CloseButton
+        className={classNames('close-button', className)}
+        {...props}
+        type="button"
+        isRounded
+        appearance="faint"
+      >
+        <Styled.CloseIcon className={classNames('close-button__icon')} />
       </Styled.CloseButton>
     </Styled.CloseContainer>
   );

@@ -21,15 +21,15 @@ const Tag = intrinsicComponent<TagProps, HTMLDivElement>(function Tag(
       $backgroundColor={backgroundColor}
       {...props}
     >
-      <Styled.Content className="tag__content-container" align="center">
-        <Text as="span" className="tag__content" variant="small" lineHeightCompensation>
+      <Styled.Content className={classNames('tag__content-container')} align="center">
+        <Text as="span" className={classNames('tag__content')} variant="small" lineHeightCompensation>
           {children}
         </Text>
       </Styled.Content>
 
       {onClose && (
-        <Styled.CloseButton className="tag__close-button" onClick={onClose}>
-          {closeIcon || <Styled.CloseIcon className="tag__close-icon" />}
+        <Styled.CloseButton className={classNames('tag__close-button')} onClick={onClose}>
+          {closeIcon || <Styled.CloseIcon className={classNames('tag__close-icon')} />}
         </Styled.CloseButton>
       )}
     </Styled.Container>

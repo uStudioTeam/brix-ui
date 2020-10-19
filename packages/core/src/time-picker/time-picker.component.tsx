@@ -124,7 +124,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
     >
       {prefix}
 
-      <Styled.InputsContainer className="time-picker__inputs-container">
+      <Styled.InputsContainer className={classNames('time-picker__inputs-container')}>
         <TimePickerContext.Provider
           value={{
             ...state,
@@ -143,7 +143,9 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
               <>
                 {child}
 
-                {index !== childrenCount - 1 && <Styled.Divider className="time-picker__divider">:</Styled.Divider>}
+                {index !== childrenCount - 1 && (
+                  <Styled.Divider className={classNames('time-picker__divider')}>:</Styled.Divider>
+                )}
               </>
             );
           })}
@@ -155,7 +157,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
           type="button"
           role="switch"
           aria-checked
-          className="time-picker__mode-switch"
+          className={classNames('time-picker__mode-switch')}
           appearance="faint"
           isDisabled={isDisabled}
           onClick={() => {
@@ -164,7 +166,7 @@ const TimePicker = intrinsicComponent<TimePickerProps, HTMLDivElement>(function 
             });
           }}
         >
-          <Styled.Mode variant="h5" className="time-picker__mode">
+          <Styled.Mode variant="h5" className={classNames('time-picker__mode')}>
             {internalMode}
           </Styled.Mode>
         </Styled.ModeSwitch>

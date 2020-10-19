@@ -34,7 +34,7 @@ const Select = intrinsicComponent<SelectProps, HTMLSelectElement>(function Selec
           : (options as SelectOption[])
       }
       isDisabled={isDisabled}
-      suffix={suffix || <Styled.Icon className="select__icon" />}
+      suffix={suffix || <Styled.Icon className={classNames('select__icon')} />}
       {...props}
     >
       {({ isOptionSelected, isOptionDisabled }) => {

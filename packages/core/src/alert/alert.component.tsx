@@ -29,11 +29,11 @@ const Alert = intrinsicComponent<AlertProps, FlexElement>(function Alert(
       isInline
       {...props}
     >
-      {showStatus && <Status className="alert__status" intent={intent} hasBorder={false} />}
+      {showStatus && <Status className={classNames('alert__status')} intent={intent} hasBorder={false} />}
 
       {children}
 
-      {onClose && <CloseButton className="alert__close-button" intent={intent} onClick={onClose} />}
+      {onClose && <CloseButton className={classNames('alert__close-button')} intent={intent} onClick={onClose} />}
     </Styled.Alert>
   );
 });

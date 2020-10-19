@@ -96,7 +96,7 @@ const Spinner = intrinsicComponent<SpinnerProps, HTMLDivElement>(function Spinne
             // eslint-disable-next-line react/no-array-index-key
             key={index}
             data-index={index}
-            className="spinner__blade"
+            className={classNames('spinner__blade')}
             animationDuration={animationDuration}
             $animation={animation(index)}
             $width={width}
