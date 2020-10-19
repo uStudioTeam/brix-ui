@@ -37,7 +37,7 @@ export default function useUnmountOnExit(
         setMount(!shouldUnmount);
       }
     },
-    [handle, shouldMount, shouldUnmount]
+    [handle, shouldMount, shouldUnmount, transitionSpeed]
   );
 
   useUpdateEffect(
