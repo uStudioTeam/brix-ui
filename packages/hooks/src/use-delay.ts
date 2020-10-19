@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import useMount from 'honks/use-mount';
-
 export default function useDelay(delay: number | undefined): boolean {
-  const hasMounted = useMount();
-
+  const [hasMounted, setMounted] = useState(false);
   const [shouldRender, setRender] = useState(delay === undefined);
+
+  useEffect(() => {
+    setMounted(true);
+
+    return () => setMounted(false);
+  }, []);
 
   useEffect(() => {
     if (delay !== undefined) {
       const timeoutId = setTimeout(() => {
-        if (hasMounted()) {
+        if (hasMounted) {
           setRender(true);
         }
       }, delay);
@@ -23,7 +26,7 @@ export default function useDelay(delay: number | undefined): boolean {
     return () => {
       setRender(false);
     };
-  }, [delay]);
+  }, [delay, hasMounted]);
 
   return shouldRender;
 }
