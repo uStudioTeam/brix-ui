@@ -3,8 +3,7 @@ import { Story } from '@storybook/react';
 import styled from 'styled-components';
 
 import { objectValues } from '@brix-ui/utils/functions';
-import { Direction } from '@brix-ui/types/css';
-import { TextAlign } from '@brix-ui/types/typography';
+import { Align, Direction } from '@brix-ui/types/css';
 
 import Divider, { DividerProps } from '../src/divider';
 import { H3 } from '../src/text';
@@ -35,7 +34,7 @@ export default {
     align: {
       control: {
         type: 'inline-radio',
-        options: objectValues(TextAlign),
+        options: ['start', 'center', 'end'],
       },
     },
     padding: {
@@ -52,7 +51,7 @@ export default {
   args: {
     direction: Direction.Row,
     thickness: '1px',
-    align: TextAlign.Left,
+    align: Align.Start,
     padding: '1rem',
     margin: '1rem',
     redLine: '1rem',
