@@ -1,7 +1,7 @@
 import type { Values } from '@brix-ui/utils/types';
 import { TypeVariant } from '@brix-ui/types/typography';
 
-export const compensateLineHeight = (variant: Values<typeof TypeVariant>): number => {
+export function compensateLineHeight(variant: Values<typeof TypeVariant>): number {
   switch (variant) {
     case 'small':
       return 0;
@@ -16,4 +16,4 @@ export const compensateLineHeight = (variant: Values<typeof TypeVariant>): numbe
     default:
       return -3;
   }
-};
+}
