@@ -31,19 +31,16 @@ const getAlignStyles = ({
   property: 'width' | 'height';
   value: string;
 }): FlattenSimpleInterpolation => {
-  const { smaller, larger } = (() => {
-    if (align === Align.Start) {
-      return {
-        smaller: 'before',
-        larger: 'after',
-      };
-    }
-
-    return {
-      smaller: 'after',
-      larger: 'before',
-    };
-  })();
+  const { smaller, larger } =
+    align === Align.Start
+      ? {
+          smaller: 'before',
+          larger: 'after',
+        }
+      : {
+          smaller: 'after',
+          larger: 'before',
+        };
 
   if (align === Align.Center) {
     return css`
