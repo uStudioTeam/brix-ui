@@ -15,7 +15,7 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
   ref
 ) {
   return (
-    <Styled.BadgeContainer className="badge-container">
+    <Styled.BadgeContainer className={classNames('badge-container')}>
       {children}
 
       {shouldDisplay && (
@@ -28,7 +28,7 @@ const Badge = intrinsicComponent<BadgeProps, HTMLDivElement>(function Badge(
           $backgroundColor={backgroundColor}
           {...props}
         >
-          <Text className="badge__value" variant="h5" as="span" lineHeightCompensation>
+          <Text className={classNames('badge__value')} variant="h5" as="span" lineHeightCompensation>
             {value}
           </Text>
         </Styled.Badge>

@@ -1,7 +1,7 @@
 import React, { useMemo, WeakValidationMap } from 'react';
 import PT from 'prop-types';
 
-import { applyPolymorphicFunctionProp, intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import type { With } from '@brix-ui/utils/types';
 import { extract } from '@brix-ui/prop-types/utils';
 import { breakpointProps, stylableComponent, polymorphicBreakpointProp } from '@brix-ui/prop-types/common';
@@ -17,7 +17,7 @@ import type { GridBreakpointProps, GridProps } from './grid.props';
 import Styled from './grid.styles';
 
 const Grid = intrinsicComponent<GridProps>(function Grid(
-  { children, as, direction, gap, template, maxWidth, sm, md, lg, xl, ...props },
+  { children, className, as, direction, gap, template, maxWidth, sm, md, lg, xl, ...props },
   ref
 ) {
   const [grid, dispatcher] = useAreaBuilder();
@@ -52,6 +52,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
         <Styled.Grid
           ref={ref}
           forwardedAs={as}
+          className={classNames('grid', className)}
           $direction={currentBreakpointProps.direction}
           $gap={currentBreakpointProps.gap}
           $maxWidth={applyPolymorphicFunctionProp(currentBreakpointProps.maxWidth, currentBreakpoint)}

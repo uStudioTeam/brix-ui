@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 
 import type { IconProps } from './icon.props';
 
-const Check = intrinsicComponent<IconProps, SVGSVGElement>(function Check(props, ref) {
+const Check = intrinsicComponent<IconProps, SVGSVGElement>(function Check({ className, ...props }, ref) {
   return (
-    <svg ref={ref} viewBox="0 0 13 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      ref={ref}
+      viewBox="0 0 13 13"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={classNames('check', className)}
+      {...props}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 
 import type { IconProps } from './icon.props';
 
-const Times = intrinsicComponent<IconProps, SVGSVGElement>(function Times(props, ref) {
+const Times = intrinsicComponent<IconProps, SVGSVGElement>(function Times({ className, ...props }, ref) {
   return (
-    <svg ref={ref} viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      ref={ref}
+      viewBox="0 0 11 11"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={classNames('times', className)}
+      {...props}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

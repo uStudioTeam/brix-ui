@@ -1,7 +1,7 @@
 import React, { ReactElement, useCallback, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 
-import { intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useAriaProps from '@brix-ui/hooks/use-aria-props';
 import useEventProps from '@brix-ui/hooks/use-event-props';
@@ -43,6 +43,7 @@ export const renderOptions = (
 const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function Dropdown(
   {
     children,
+    className,
     options,
     placeholder,
     id,
@@ -82,16 +83,18 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
   return (
     <Styled.Dropdown
       ref={containerRef}
+      className={classNames('dropdown', className)}
       data-has-value={orUndefined(hasValue)}
       aria-disabled={orUndefined(isDisabled)}
       aria-invalid={isInvalid}
       aria-hidden
       {...propsWithoutEvents}
     >
-      {prefix && <Affix>{prefix}</Affix>}
+      {prefix && <Affix className={classNames('dropdown__prefix')}>{prefix}</Affix>}
 
       <Styled.Input
         ref={ref}
+        className={classNames('dropdown__input')}
         id={id}
         value={internalValue ?? placeholder}
         onChange={handleChange}
@@ -117,7 +120,7 @@ const Dropdown = intrinsicComponent<DropdownProps, HTMLSelectElement>(function D
         })}
       </Styled.Input>
 
-      {suffix && <Affix>{suffix}</Affix>}
+      {suffix && <Affix className={classNames('dropdown__suffix')}>{suffix}</Affix>}
     </Styled.Dropdown>
   );
 });

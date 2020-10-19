@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, WeakValidationMap } from 'react';
 import PT, { Requireable } from 'prop-types';
 
 import { useDirection } from '@brix-ui/contexts/direction';
-import { intrinsicComponent } from '@brix-ui/utils/functions';
+import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 
@@ -13,7 +13,7 @@ import type { CellBreakpointProps, CellProps } from './cell.props';
 import Styled from './cell.styles';
 
 const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
-  { children, area, size, offset, sm, md, lg, xl, ...props },
+  { children, className, area, size, offset, sm, md, lg, xl, ...props },
   ref
 ) {
   const { areas, dispatcher } = useAreaBuilderContext();
@@ -46,7 +46,15 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
   const direction = useDirection();
 
   return (
-    <Styled.Cell ref={ref} areas={areas} area={id} $size={size} $direction={direction} {...props}>
+    <Styled.Cell
+      ref={ref}
+      className={classNames('cell', className)}
+      areas={areas}
+      area={id}
+      $size={size}
+      $direction={direction}
+      {...props}
+    >
       {children}
     </Styled.Cell>
   );

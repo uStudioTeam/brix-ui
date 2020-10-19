@@ -54,7 +54,7 @@ const Switch = intrinsicComponent<SwitchProps, HTMLInputElement>(function Switch
       {...propsWithoutEvents}
     >
       {children && (
-        <Styled.Children className="switch__children">
+        <Styled.Children className={classNames('switch__children')}>
           {applyPolymorphicFunctionProp(children, { value: internalValue, isDisabled, isInvalid })}
         </Styled.Children>
       )}

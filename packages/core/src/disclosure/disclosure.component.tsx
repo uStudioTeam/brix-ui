@@ -56,7 +56,7 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
       {...props}
     >
       <Styled.Summary
-        className="disclosure-summary"
+        className={classNames('disclosure-summary')}
         type="button"
         data-expanded={internalIsOpen}
         disabled={isDisabled}
@@ -66,19 +66,19 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
         {summary}
 
         {applyPolymorphicFunctionProp(icon, { isOpen: internalIsOpen, isDisabled }) || (
-          <Styled.Icon className="disclosure-summary__icon" />
+          <Styled.Icon className={classNames('disclosure-summary__icon')} />
         )}
       </Styled.Summary>
 
       <Styled.Details
-        className="disclosure-details"
+        className={classNames('disclosure-details')}
         transitionSpeed={transitionSpeed}
         aria-expanded={internalIsOpen}
         style={{
           height: detailsHeight,
         }}
       >
-        <div className="disclosure-details__inner" ref={detailsRef}>
+        <div className={classNames('disclosure-details__inner')} ref={detailsRef}>
           {children}
         </div>
       </Styled.Details>

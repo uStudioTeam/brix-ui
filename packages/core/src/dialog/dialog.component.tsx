@@ -101,17 +101,17 @@ const Dialog = intrinsicComponent<DialogProps, HTMLDialogElement>(function Dialo
           ...props,
         }}
       >
-        <Styled.Header className="dialog__header" $titleAlign={titleAlign}>
+        <Styled.Header className={classNames('dialog__header')} $titleAlign={titleAlign}>
           {title && (
-            <Styled.Title className="dialog__title" align={titleAlign}>
+            <Styled.Title className={classNames('dialog__title')} align={titleAlign}>
               {title}
             </Styled.Title>
           )}
 
-          <CloseButton className="dialog__close-button" intent="critical" onClick={() => toggle(false)} />
+          <CloseButton className={classNames('dialog__close-button')} intent="critical" onClick={() => toggle(false)} />
         </Styled.Header>
 
-        <Styled.Body className="dialog__body">{children}</Styled.Body>
+        <Styled.Body className={classNames('dialog__body')}>{children}</Styled.Body>
       </Styled.Dialog>
     </Portal>
   ) : null;
