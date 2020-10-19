@@ -1,7 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
-import { TextAlign } from '@brix-ui/types/typography';
+import { Align } from '@brix-ui/types/css';
 
 import Flex from '../flex';
 
@@ -32,7 +32,7 @@ const getAlignStyles = ({
   value: string;
 }): FlattenSimpleInterpolation => {
   const { smaller, larger } = (() => {
-    if (align === TextAlign.Left) {
+    if (align === Align.Start) {
       return {
         smaller: 'before',
         larger: 'after',
@@ -45,7 +45,7 @@ const getAlignStyles = ({
     };
   })();
 
-  if (align === TextAlign.Center) {
+  if (align === Align.Center) {
     return css`
       &:before,
       &:after {
@@ -81,7 +81,7 @@ const Divider = styled(Flex).attrs({
     direction,
     redLine = '1rem',
     $color = 'faint-weak-up',
-    $align: align = TextAlign.Left,
+    $align: align = Align.Start,
     $padding: padding = '1rem',
     $margin: margin = '1rem',
   }) => {
