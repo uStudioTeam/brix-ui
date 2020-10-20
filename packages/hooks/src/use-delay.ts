@@ -21,6 +21,8 @@ export default function useDelay(delay: number | undefined): boolean {
       return () => {
         clearTimeout(timeoutId);
       };
+      // This return is for the effect cleanup
+      // eslint-disable-next-line no-else-return
     } else {
       setRender(true);
     }
