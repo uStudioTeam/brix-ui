@@ -21,6 +21,8 @@ export default function useDelay(delay: number | undefined): boolean {
       return () => {
         clearTimeout(timeoutId);
       };
+    } else {
+      setRender(true);
     }
 
     return () => {
