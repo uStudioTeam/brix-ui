@@ -21,7 +21,7 @@ import { useThemeMode } from './hooks';
 const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
   const [themeMode, switchMode] = useThemeMode(theme);
 
-  const { typography: overrideTypography = {}, palette: overridePalette = {}, ...override } = theme;
+  const { palette: overridePalette = {}, ...override } = theme;
 
   const finalTheme = useMemo<Theme>(() => {
     if (themeMode !== undefined) {
@@ -60,7 +60,7 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
       <Miscelaneous transition={finalTheme.transition} />
       <Palette palette={finalTheme.palette} />
       <Breakpoints {...finalTheme.breakpoints} />
-      <Typography {...overrideTypography} />
+      <Typography />
     </SCThemeProvider>
   );
 };

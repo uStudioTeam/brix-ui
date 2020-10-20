@@ -1,13 +1,14 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { objectKeys } from '@brix-ui/utils/functions';
-import { FontWeight } from '@brix-ui/types/typography';
-
-import type { FontsCssMap } from '../typography/entity';
+import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
+import type { Values } from '@brix-ui/utils/types';
 
 const pxToRem = (value: number): number => value / 16;
 
 const percentToEm = (value: number): number => value / 100;
+
+type FontsCssMap = Record<Values<typeof FontVariant>, Record<Values<typeof TypeVariant>, FlattenSimpleInterpolation>>;
 
 const applyFontFamily = (fontVariants: FontsCssMap): FontsCssMap => {
   return objectKeys(fontVariants).reduce((variants, font) => {
@@ -24,7 +25,7 @@ const applyFontFamily = (fontVariants: FontsCssMap): FontsCssMap => {
   }, {}) as FontsCssMap;
 };
 
-export const font: FontsCssMap = applyFontFamily({
+export const font = applyFontFamily({
   body: {
     h1: css`
       font-weight: ${FontWeight.Black};
