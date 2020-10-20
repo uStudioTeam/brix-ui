@@ -1,4 +1,6 @@
 const { resolve } = require('path');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
 const pathsToWebpackAlias = require('../../scripts/paths-to-webpack-alias');
 
 module.exports = {
@@ -11,9 +13,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: 'ts-loader',
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
         exclude: /node_modules/,
+        options: {
+          useBabel: true,
+          babelCore: '@babel/core',
+          configFileName: 'tsconfig.build.json',
+        },
       },
       {
         test: /\.ttf$/,
@@ -25,7 +32,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts'],
+    extensions: ['.ts', '.tsx'],
     alias: pathsToWebpackAlias(),
   },
+  plugins: [new HardSourceWebpackPlugin()],
 };

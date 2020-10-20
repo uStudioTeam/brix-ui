@@ -2,19 +2,39 @@
   "name": "@brix-ui/fonts",
   "version": "0.0.1",
   "description": "Default fonts acceptable by @brix-ui theme",
-  "keywords": ["fonts", "ttf", "ui", "typography", "font-face"],
+  "keywords": [
+    "fonts",
+    "ttf",
+    "ui",
+    "typography",
+    "font-face"
+  ],
   "scripts": {
     "prebuild": "copyfiles fonts.d.ts README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*"
+    "@brix-ui/types": "*",
+    "@brix-ui/utils": "*",
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.6",
+    "@types/react": "^16.9.53",
+    "@types/styled-components": "^5.1.4",
+    "awesome-typescript-loader": "^5.2.1",
     "copyfiles": "^2.3.0",
     "file-loader": "^6.1.0",
-    "ts-loader": "^8.0.3",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "react": "^16.13.1",
+    "react-dom": "16.13.1",
+    "styled-components": "^5.2.0",
     "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0"
   }
 }

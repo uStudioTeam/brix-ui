@@ -3,8 +3,8 @@ import { jsxDecorator } from 'storybook-addon-jsx';
 import { createGlobalStyle } from 'styled-components';
 
 import ThemeProvider, { useTheme } from '@brix-ui/theme';
+import Fonts from '@brix-ui/fonts';
 import { ThemeMode } from '@brix-ui/theme/entity';
-import fonts from '@brix-ui/fonts';
 
 export const globalTypes = {
   theme: {
@@ -42,13 +42,10 @@ export const decorators = [
   jsxDecorator,
   (StoryFn, context) => {
     return (
-      <ThemeProvider
-        theme={{
-          typography: fonts,
-        }}
-      >
+      <ThemeProvider>
         <main>{StoryFn()}</main>
 
+        <Fonts />
         <GlobalStyle />
         <ThemeSwitcher context={context} />
       </ThemeProvider>
