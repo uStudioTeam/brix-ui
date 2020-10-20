@@ -16,7 +16,7 @@
     "prebuild:local": "lerna run prebuild",
     "prebuild": "npm-run-all -p prebuild:root prebuild:local",
     "build:dts": "tsc -b tsconfig.build.json",
-    "build:babel": "lerna exec --ignore @brix-ui/fonts -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
+    "build:babel": "lerna exec -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
     "build:webpack": "lerna exec --scope @brix-ui/fonts -- webpack",
     "build": "npm-run-all -s build:dts -p build:babel build:webpack",
     "test": "jest",
