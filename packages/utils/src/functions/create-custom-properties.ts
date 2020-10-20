@@ -10,7 +10,7 @@ export function createCustomProperties<CP extends StylableComponent<string>['cus
     return css`
       ${properties};
       
-      --${property.replace(/(?<=[a-z])[A-Z]/, (character) => `-${character.toLowerCase()}`)}: ${
+      --${property.replace(/(?<=[a-z])[A-Z]/g, (character) => `-${character.toLowerCase()}`)}: ${
       customProperties[property] ?? defaultValues[property]
     };
       `;

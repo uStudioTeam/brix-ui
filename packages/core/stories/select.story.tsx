@@ -85,7 +85,9 @@ Flat.args = {
   ],
 };
 
+// eslint-disable-next-line sonarjs/no-identical-functions
 const GroupsTemplate: Story<SelectProps> = ({ isInvalid, ...args }) => {
+  // eslint-disable-next-line sonarjs/no-identical-functions
   const validity = useCallback((): typeof isInvalid => {
     switch ((isInvalid as unknown) as 'valid' | 'invalid' | 'indeterminate') {
       case 'invalid':

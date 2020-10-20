@@ -10,11 +10,9 @@ import Skeleton, { SkeletonProps } from '../src/skeleton';
 const skeletonId = 'skeleton';
 
 const renderWithProps = (props = {} as SkeletonProps) => {
-  return render(
-    <ThemeProvider>
-      <Skeleton data-testid={skeletonId} {...props} />
-    </ThemeProvider>
-  );
+  return render(<Skeleton data-testid={skeletonId} {...props} />, {
+    wrapper: ThemeProvider,
+  });
 };
 
 describe('<Skeleton />', () => {

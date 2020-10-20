@@ -23,7 +23,7 @@ const parseSize = (size: SkeletonSize | undefined): string | undefined => {
 };
 
 const Skeleton = intrinsicComponent<SkeletonProps, HTMLDivElement>(function Skeleton(
-  { className, width: _width, height: _height, size: _size, delay, isStatic, isRounded, ...props },
+  { customProperties, className, width: _width, height: _height, size: _size, delay, isStatic, isRounded, ...props },
   ref
 ) {
   const shouldRender = useDelay(delay);
@@ -36,6 +36,7 @@ const Skeleton = intrinsicComponent<SkeletonProps, HTMLDivElement>(function Skel
     <Styled.Skeleton
       ref={ref}
       className={classNames('skeleton', className)}
+      customProperties={customProperties}
       $width={width}
       $height={height}
       size={size}
