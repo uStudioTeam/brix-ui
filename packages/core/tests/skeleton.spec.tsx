@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
-import { matchMedia } from '@brix-ui/utils/tests';
+import { matchMedia } from '../../../mocks/match-media';
 
 import Skeleton, { SkeletonProps } from '../src/skeleton';
 
@@ -11,7 +11,7 @@ const skeletonId = 'skeleton';
 
 const renderWithProps = (props = {} as SkeletonProps) => {
   return render(<Skeleton data-testid={skeletonId} {...props} />, {
-    wrapper: ThemeProvider,
+    wrapper: ThemeProvider as FC<{}>,
   });
 };
 

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
-import { matchMedia } from '@brix-ui/utils/tests';
+import { matchMedia } from '../../../mocks/match-media';
 
 import Select, { SelectProps } from '../src/select';
 

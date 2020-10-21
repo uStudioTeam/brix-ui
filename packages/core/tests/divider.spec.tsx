@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
-import { matchMedia } from '@brix-ui/utils/tests';
+import { matchMedia } from '../../../mocks/match-media';
 
 import Divider, { DividerProps } from '../src/divider';
 
@@ -11,7 +11,7 @@ const dividerId = 'divider';
 
 const renderWithProps = (props = {} as DividerProps) => {
   return render(<Divider data-testid={dividerId} {...props} />, {
-    wrapper: ThemeProvider,
+    wrapper: ThemeProvider as FC<{}>,
   });
 };
 

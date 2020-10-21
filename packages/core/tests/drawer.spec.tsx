@@ -3,9 +3,10 @@ import { render, RenderResult, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
-import { matchMedia } from '@brix-ui/utils/tests';
 import { Position } from '@brix-ui/types/css';
 import { objectValues } from '@brix-ui/utils/functions';
+
+import { matchMedia } from '../../../mocks/match-media';
 
 import Drawer, { DrawerProps } from '../src/drawer';
 
