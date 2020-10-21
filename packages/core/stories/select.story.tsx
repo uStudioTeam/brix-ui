@@ -2,7 +2,9 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import type { Meta, Story } from '@storybook/react';
 
-import Select, { SelectProps } from '../src/select';
+import _Select, { SelectProps } from '../src/select';
+
+export const Select = _Select;
 
 const Container = styled.div`
   width: 33%;
@@ -11,28 +13,10 @@ const Container = styled.div`
 export default {
   title: 'Form/Select',
   component: Select,
+  excludeStories: ['Select'],
 
   decorators: [(StoryFn) => <Container>{StoryFn()}</Container>],
 } as Meta;
-
-const argTypes = {
-  placeholder: {
-    control: 'text',
-  },
-  isDisabled: {
-    control: 'boolean',
-  },
-  isInvalid: {
-    control: {
-      type: 'inline-radio',
-      options: ['valid', 'invalid', 'indeterminate'],
-    },
-  },
-  disabledOptions: {
-    control: 'array',
-    description: 'Values of options to be disabled',
-  },
-};
 
 const defaultArgs = {
   placeholder: 'Select...',
@@ -55,13 +39,6 @@ const FlatTemplate: Story<SelectProps> = ({ isInvalid, ...args }) => {
 };
 
 export const Flat = FlatTemplate.bind({});
-
-Flat.argTypes = {
-  ...argTypes,
-  options: {
-    control: 'array',
-  },
-};
 
 Flat.args = {
   ...defaultArgs,
@@ -104,20 +81,6 @@ const GroupsTemplate: Story<SelectProps> = ({ isInvalid, ...args }) => {
 };
 
 export const Groups = GroupsTemplate.bind({});
-
-Groups.argTypes = {
-  ...argTypes,
-  options: {
-    control: 'object',
-  },
-  disabledGroups: {
-    control: {
-      type: 'inline-check',
-      options: [0, 1],
-    },
-    description: 'Indices of groups to be disabled',
-  },
-};
 
 Groups.args = {
   ...defaultArgs,

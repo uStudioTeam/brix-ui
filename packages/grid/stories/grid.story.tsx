@@ -1,15 +1,21 @@
 import React, { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import Flex from '@brix-ui/core/flex';
 import Text from '@brix-ui/core/text';
 
-import { Grid, Cell } from '../src';
+import { Grid as _Grid, Cell as _Cell } from '../src';
 
-export default {
+export const Grid = _Grid;
+export const Cell = _Cell;
+
+export default ({
   title: 'General/Grid',
-};
+  component: Grid,
+  subcomponents: { Cell },
+  excludeStories: ['Grid', 'Cell'],
+} as unknown) as Meta;
 
 const Box = styled(Flex).attrs(() => ({
   padding: '1rem',

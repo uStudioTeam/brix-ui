@@ -1,30 +1,18 @@
 import React, { useCallback, useState } from 'react';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import TimePicker, { TimePickerProps, TimeSelect, TimeInput } from '../src/time-picker';
+import _TimePicker, { TimePickerProps, TimeSelect as _TimeSelect, TimeInput as _TimeInput } from '../src/time-picker';
 
-export default {
+export const TimePicker = _TimePicker;
+export const TimeSelect = _TimeSelect;
+export const TimeInput = _TimeInput;
+
+export default ({
   title: 'Form/TimePicker',
   component: TimePicker,
-
-  argTypes: {
-    mode: {
-      control: {
-        type: 'inline-radio',
-        options: ['AM', 'PM', 'Unset'],
-      },
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
-};
+  subcomponents: { TimeSelect, TimeInput },
+  excludeStories: ['TimePicker', 'TimeSelect', 'TimeInput'],
+} as unknown) as Meta;
 
 export const Basic: Story<TimePickerProps> = ({ mode, isInvalid, ...args }) => {
   const [, setValue] = useState('');

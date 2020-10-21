@@ -1,49 +1,22 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
-import TextArea, { TextAreaProps } from '../src/text-area';
+import _TextArea, { TextAreaProps } from '../src/text-area';
+
+export const TextArea = _TextArea;
 
 export default {
   title: 'Form/TextArea',
   component: TextArea,
-
-  argTypes: {
-    placeholder: {
-      control: 'text',
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
-    isReadonly: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-    showSymbolsLeft: {
-      control: 'boolean',
-    },
-    maxLength: {
-      control: 'number',
-    },
-    resize: {
-      control: {
-        type: 'inline-radio',
-        options: ['both', 'horizontal', 'vertical', 'none'],
-      },
-    },
-  },
+  excludeStories: ['TextArea'],
 
   args: {
     placeholder: 'Placeholder',
   },
-};
+} as Meta;
 
 const Container = styled.div`
   width: 33%;

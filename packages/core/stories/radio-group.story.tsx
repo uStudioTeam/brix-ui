@@ -1,28 +1,22 @@
-import { orUndefined } from '@brix-ui/utils/functions';
 import React, { useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import RadioGroup, { RadioButton, RadioGroupProps } from '../src/radio-group';
+import { orUndefined } from '@brix-ui/utils/functions';
+
+import _RadioGroup, { RadioButton as _RadioButton, RadioGroupProps } from '../src/radio-group';
 import Flex, { FlexProps } from '../src/flex';
 import Text from '../src/text';
 
-export default {
+export const RadioGroup = _RadioGroup;
+export const RadioButton = _RadioButton;
+
+export default ({
   title: 'Form/RadioGroup',
   component: RadioGroup,
-
-  argTypes: {
-    isDisabled: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
-};
+  subcomponents: { RadioButton },
+  excludeStories: ['RadioGroup', 'RadioButton'],
+} as unknown) as Meta;
 
 const Label = styled(Flex).attrs(() => ({
   forwardedAs: 'label',

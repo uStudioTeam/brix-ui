@@ -1,37 +1,22 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
-import NumberInput, { NumberInputProps } from '../src/number-input';
+import _NumberInput, { NumberInputProps } from '../src/number-input';
+
+export const NumberInput = _NumberInput;
 
 export default {
   title: 'Form/NumberInput',
   component: NumberInput,
-
-  argTypes: {
-    placeholder: {
-      control: 'text',
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
-    isReadonly: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
+  excludeStories: ['NumberInput'],
 
   args: {
     placeholder: 'Placeholder',
   },
-};
+} as Meta;
 
 const Container = styled.div`
   width: 33%;

@@ -1,34 +1,20 @@
 import React from 'react';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import Text from '../src/text';
-import Disclosure, { DisclosureProps } from '../src/disclosure';
+import _Disclosure, { DisclosureProps } from '../src/disclosure';
+
+export const Disclosure = _Disclosure;
 
 export default {
   title: 'Widgets/Disclosure',
   component: Disclosure,
-
-  argTypes: {
-    isOpen: {
-      control: 'boolean',
-    },
-    icon: {},
-    summary: {
-      control: 'text',
-      description: 'Content to be displayed inside the button',
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
-    onOpen: {},
-    onChange: {},
-    onClose: {},
-  },
+  excludeStories: ['Disclosure'],
   args: {
     summary: 'Disclosure summary',
     isDisabled: false,
   },
-};
+} as Meta;
 
 export const Basic: Story<DisclosureProps> = ({ summary, ...args }) => {
   return (

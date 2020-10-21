@@ -1,40 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import Modal from '@brix-ui/contexts/modal';
+import _Modal from '@brix-ui/contexts/modal';
 import Button from '@brix-ui/core/button';
 import Flex from '@brix-ui/core/flex';
-import Overlay from '@brix-ui/core/overlay';
+import _Overlay from '@brix-ui/core/overlay';
 import Text from '@brix-ui/core/text';
 import TextInput from '@brix-ui/core/text-input';
 
-import Dialog, { DialogProps } from '../src/dialog';
+import _Dialog, { DialogProps } from '../src/dialog';
+
+export const Dialog = _Dialog;
+export const Modal = _Modal;
+export const Overlay = _Overlay;
 
 export default {
   title: 'Widgets/Dialog',
   component: Dialog,
-
-  argTypes: {
-    isOpen: {
-      control: 'boolean',
-    },
-    title: {
-      control: 'text',
-    },
-    titleAlign: {
-      control: {
-        type: 'inline-radio',
-        options: ['left', 'center'],
-      },
-    },
-  },
+  subcomponents: { Modal, Overlay },
+  excludeStories: ['Dialog', 'Modal', 'Overlay'],
 
   args: {
     title: 'Confirm password reset',
     titleAlign: 'left',
   },
-};
+} as Meta;
 
 const Styled = {
   Overlay: styled(Overlay)`
