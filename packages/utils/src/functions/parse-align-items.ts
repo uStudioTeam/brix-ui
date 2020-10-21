@@ -1,9 +1,12 @@
 import { Align } from '@brix-ui/types/css';
 
-import { Values } from '../types';
+import type { Values } from '../types';
 
 import { parseAlignment } from './parse-alignment';
 
+/**
+ * @package
+ */
 export function parseAlignItems(alignItems?: Values<typeof Align>): string {
   switch (alignItems) {
     case 'space-between':

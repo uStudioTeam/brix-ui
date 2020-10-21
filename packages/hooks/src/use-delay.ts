@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Delays the appearance of a component by the given amount of milliseconds
+ */
 export default function useDelay(delay: number | undefined): boolean {
   const [hasMounted, setMounted] = useState(false);
   const [shouldRender, setRender] = useState(delay === undefined);

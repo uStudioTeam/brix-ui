@@ -11,6 +11,9 @@ const withTimeout = (callback: EffectCallback, timeout: number): (() => void) =>
   };
 };
 
+/**
+ * Unmounts the component when it's "closed", mounts back when it's "open"
+ */
 export default function useUnmountOnExit(
   handle: boolean,
   unmountOnExit: boolean | undefined,

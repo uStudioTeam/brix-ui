@@ -6,6 +6,10 @@ import type { Disclosable } from '@brix-ui/types/component';
 import useUpdateEffect from './use-update-effect';
 import useUpdatedState from './use-updated-state';
 
+/**
+ * Handles open/close state of the component.
+ * Calls callback functions when their respective events occur
+ */
 export default function useDisclose({
   isOpen,
   onOpen,

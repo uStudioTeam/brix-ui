@@ -1,7 +1,10 @@
 import { Align } from '@brix-ui/types/css';
 
-import { Values } from '../types';
+import type { Values } from '../types';
 
+/**
+ * @package
+ */
 export function parseAlignment(alignment?: Values<typeof Align>): string {
   switch (alignment) {
     case 'start':

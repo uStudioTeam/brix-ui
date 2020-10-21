@@ -1,5 +1,8 @@
 import { objectKeys } from './object-keys';
 
+/**
+ * Filters the object from unwanted keys
+ */
 export function filterObject<O extends Record<string, any>, K extends keyof O>(
   object: O,
   predicate: (key: keyof O) => boolean

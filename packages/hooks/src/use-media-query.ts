@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Programmatically matches given media query
+ */
 export default function useMediaQuery(query: string): boolean {
   const [isMatching, setMatching] = useState(false);
 
