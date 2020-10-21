@@ -23,15 +23,15 @@
     "@brix-ui/utils": "*",
     "honks": "^0.4.0",
     "react-focus-lock": "^2.4.1",
-    "use-callback-ref": "^1.2.4"
+    "use-callback-ref": "^1.2.4",
+    "polished": "^3.6.5",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.1",
-    "polished": "^3.6.5",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1",

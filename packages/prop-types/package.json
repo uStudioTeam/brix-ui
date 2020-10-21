@@ -6,12 +6,12 @@
   },
   "dependencies": {
     "@brix-ui/types": "*",
-    "@brix-ui/utils": "*"
+    "@brix-ui/utils": "*",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
-    "prop-types": "^15.7.2",
     "typescript": "^4.0.2"
   }
 }

@@ -9,13 +9,13 @@
     "@brix-ui/utils": "*",
     "@brix-ui/prop-types": "*",
     "@brix-ui/hooks": "*",
-    "@brix-ui/theme": "*"
+    "@brix-ui/theme": "*",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^4.0.2"

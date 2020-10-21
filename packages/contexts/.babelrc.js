@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('../../scripts/babel')({ styledComponents: false, polished: false }),
+  ...require('../../scripts/babel')({ styledComponents: false }),
 };
