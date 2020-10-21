@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react';
+import PT from 'prop-types';
 import { css, createGlobalStyle, FlattenSimpleInterpolation } from 'styled-components';
 import merge from 'lodash.merge';
 
-import { objectKeys } from '@brix-ui/utils/functions';
+import { objectKeys, objectValues } from '@brix-ui/utils/functions';
+import { record } from '@brix-ui/prop-types/utils';
+import { FontVariant, TypeVariant } from '@brix-ui/types/typography';
 
 import { defaultFontFaces } from '../entity';
 
@@ -65,5 +68,21 @@ const Fonts = (props = {} as FontsProps): JSX.Element => {
 
   return <FontsGlobalStyle fontFaces={fontFaces} variables={variables} />;
 };
+
+Fonts.propTypes = PT.exact(
+  record(
+    objectValues(FontVariant),
+    PT.exact({
+      name: PT.string,
+      ...record(
+        objectValues(TypeVariant),
+        PT.exact({
+          src: PT.string.isRequired,
+          weight: PT.oneOfType([PT.number, PT.string]).isRequired,
+        })
+      ),
+    })
+  )
+);
 
 export default Fonts;
