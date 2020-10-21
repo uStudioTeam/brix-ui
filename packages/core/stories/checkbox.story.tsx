@@ -1,24 +1,15 @@
 import React, { useCallback } from 'react';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import Checkbox, { CheckboxProps } from '../src/checkbox';
+import _Checkbox, { CheckboxProps } from '../src/checkbox';
+
+export const Checkbox = _Checkbox;
 
 export default {
   title: 'Form/Checkbox',
   component: Checkbox,
-
-  argTypes: {
-    isDisabled: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
-};
+  excludeStories: ['Checkbox'],
+} as Meta;
 
 export const Basic: Story<CheckboxProps> = ({ isInvalid, ...args }) => {
   const validity = useCallback((): typeof isInvalid => {

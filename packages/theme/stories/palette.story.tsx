@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { getLuminance, transparentize } from 'polished';
-import { Story } from '@storybook/react';
+import type { Story } from '@storybook/react';
 
 import { capitalize, objectValues } from '@brix-ui/utils/functions';
 import { Color } from '@brix-ui/types/palette';
 import { defaultPalette } from '@brix-ui/theme/roots/palette';
-import { Values } from '@brix-ui/utils/types';
+import type { Values } from '@brix-ui/utils/types';
 
 import Flex from '@brix-ui/core/flex';
 import Text from '@brix-ui/core/text';

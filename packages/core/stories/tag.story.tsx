@@ -1,25 +1,16 @@
 import React from 'react';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import Block from '../src/block';
-import Tag, { TagProps } from '../src/tag';
+import _Tag, { TagProps } from '../src/tag';
+
+export const Tag = _Tag;
 
 export default {
   title: 'Data/Tag',
   component: Tag,
-
-  argTypes: {
-    color: { control: 'color' },
-    backgroundColor: { control: 'color' },
-    onClose: {
-      control: 'boolean',
-      description:
-        'Render `closeIcon` when `onClose` prop is passed. When control is true `onClose` handler is attached to the component (see console).',
-      type: 'function',
-    },
-    closeIcon: {},
-  },
-};
+  excludeStories: ['Tag'],
+} as Meta;
 
 export const Basic: Story<TagProps> = ({ onClose, ...props }) => {
   const handleClose = () => console.log('Handle close');

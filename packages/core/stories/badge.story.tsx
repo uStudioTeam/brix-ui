@@ -2,22 +2,15 @@ import React from 'react';
 import type { Story } from '@storybook/react';
 
 import Flex from '../src/flex';
-import Badge, { BadgeProps } from '../src/badge';
+import _Badge, { BadgeProps } from '../src/badge';
+
+export const Badge = _Badge;
 
 export default {
   title: 'Data/Badge',
   component: Badge,
+  excludeStories: ['Badge'],
 
-  argTypes: {
-    color: { control: 'color' },
-    backgroundColor: { control: 'color' },
-    horizontalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
-    verticalPosition: { control: { type: 'inline-radio', options: ['start', 'center', 'end'] } },
-    horizontalOffset: { control: 'text' },
-    verticalOffset: { control: 'text' },
-    shouldDisplay: { control: 'boolean', description: 'Hide/show the `Badge` but leave children intact' },
-    value: { control: 'text', description: 'The content of the `Badge` itself' },
-  },
   args: {
     horizontalPosition: 'end',
     verticalPosition: 'start',

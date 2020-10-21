@@ -1,27 +1,18 @@
 import React, { useCallback } from 'react';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 
-import Switch, { SwitchProps } from '../src/switch';
+import _Switch, { SwitchProps } from '../src/switch';
 import Flex from '../src/flex';
 import Text from '../src/text';
+
+export const Switch = _Switch;
 
 export default {
   title: 'Form/Switch',
   component: Switch,
-
-  argTypes: {
-    isDisabled: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
-};
+  excludeStories: ['Switch'],
+} as Meta;
 
 export const Basic: Story<SwitchProps> = ({ isInvalid, ...args }) => {
   const validity = useCallback((): typeof isInvalid => {

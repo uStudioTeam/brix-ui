@@ -1,41 +1,30 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { transparentize } from 'polished';
 
-import { Position } from '@brix-ui/types/css';
-import { objectValues } from '@brix-ui/utils/functions';
+import _Modal from '@brix-ui/contexts/modal';
 
-import Modal from '@brix-ui/contexts/modal';
-import Drawer, { DrawerProps } from '../src/drawer';
+import _Drawer, { DrawerProps } from '../src/drawer';
 import Flex from '../src/flex';
 import Text from '../src/text';
-import Overlay from '../src/overlay';
+import _Overlay from '../src/overlay';
 
-export default {
+export const Drawer = _Drawer;
+export const Overlay = _Overlay;
+export const Modal = _Modal;
+
+export default ({
   title: 'Widgets/Drawer',
   component: Drawer,
-
-  argTypes: {
-    isOpen: {
-      control: 'boolean',
-    },
-    position: {
-      control: {
-        type: 'inline-radio',
-        options: objectValues(Position),
-      },
-    },
-    unmountOnExit: {
-      control: 'boolean',
-    },
-  },
+  subcomponents: { Overlay, Modal },
+  excludeStories: ['Drawer', 'Overlay', 'Modal'],
 
   args: {
     isOpen: false,
     position: 'left',
   },
-};
+} as unknown) as Meta;
 
 const Cookie = styled.img`
   width: 10rem;

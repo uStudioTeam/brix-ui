@@ -1,52 +1,18 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 
-import { objectValues } from '@brix-ui/utils/functions';
 import { Align, Direction } from '@brix-ui/types/css';
 
-import Divider, { DividerProps } from '../src/divider';
+import _Divider, { DividerProps } from '../src/divider';
 import { H3 } from '../src/text';
+
+export const Divider = _Divider;
 
 export default {
   title: 'General/Divider',
   component: Divider,
-
-  argTypes: {
-    direction: {
-      control: {
-        type: 'inline-radio',
-        options: objectValues(Direction),
-      },
-    },
-    isInline: {
-      control: 'boolean',
-    },
-    isReversed: {
-      control: 'boolean',
-    },
-    color: {
-      control: 'color',
-    },
-    thickness: {
-      control: 'text',
-    },
-    align: {
-      control: {
-        type: 'inline-radio',
-        options: ['start', 'center', 'end'],
-      },
-    },
-    padding: {
-      control: 'text',
-    },
-    margin: {
-      control: 'text',
-    },
-    redLine: {
-      control: 'text',
-    },
-  },
+  excludeStories: ['Divider'],
 
   args: {
     direction: Direction.Row,
@@ -56,7 +22,7 @@ export default {
     margin: '1rem',
     redLine: '1rem',
   },
-};
+} as Meta;
 
 const Container = styled.div`
   width: 100%;

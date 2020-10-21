@@ -1,36 +1,24 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
-import { capitalize, objectValues } from '@brix-ui/utils/functions';
+import { capitalize } from '@brix-ui/utils/functions';
 import { Intent } from '@brix-ui/types/component';
 import Text from '@brix-ui/core/text';
 
-import Alert, { AlertProps } from '../src/alert';
+import _Alert, { AlertProps } from '../src/alert';
+
+export const Alert = _Alert;
 
 export default {
   title: 'Data/Alert',
   component: Alert,
-
-  argTypes: {
-    intent: {
-      control: {
-        type: 'inline-radio',
-        options: objectValues(Intent),
-      },
-    },
-    showStatus: {
-      control: 'boolean',
-    },
-    onClose: {
-      control: 'boolean',
-    },
-  },
+  excludeStories: ['Alert'],
 
   args: {
     intent: Intent.Base,
     showStatus: true,
   },
-};
+} as Meta;
 
 export const Basic: Story<AlertProps> = (args) => {
   return (

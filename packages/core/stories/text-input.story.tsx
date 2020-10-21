@@ -1,37 +1,22 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import { applyDisplayNames } from '@brix-ui/utils/functions';
 
-import TextInput, { TextInputProps } from '../src/text-input';
+import _TextInput, { TextInputProps } from '../src/text-input';
+
+export const TextInput = _TextInput;
 
 export default {
   title: 'Form/TextInput',
   component: TextInput,
-
-  argTypes: {
-    placeholder: {
-      control: 'text',
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
-    isReadonly: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: {
-        type: 'inline-radio',
-        options: ['valid', 'invalid', 'indeterminate'],
-      },
-    },
-  },
+  excludeStories: ['TextInput'],
 
   args: {
     placeholder: 'Placeholder',
   },
-};
+} as Meta;
 
 const Container = styled.div`
   width: 33%;

@@ -1,42 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { Story } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react';
 
 import { shadow } from '@brix-ui/theme/mixin';
 
-import Skeleton, { SkeletonProps } from '../src/skeleton';
+import _Skeleton, { SkeletonProps } from '../src/skeleton';
 import Flex from '../src/flex';
+
+export const Skeleton = _Skeleton;
 
 export default {
   title: 'Loaders/Skeleton',
   component: Skeleton,
-
-  argTypes: {
-    width: {
-      control: 'text',
-    },
-    height: {
-      control: 'text',
-    },
-    size: {
-      control: 'text',
-    },
-    isRounded: {
-      control: 'boolean',
-    },
-    isStatic: {
-      control: 'boolean',
-    },
-    delay: {
-      control: 'number',
-    },
-  },
+  excludeStories: ['Skeleton'],
 
   args: {
     width: '100%',
     height: 'h1',
   },
-};
+} as Meta;
 
 export const Basic: Story<SkeletonProps> = (args) => {
   return <Skeleton {...args} />;
