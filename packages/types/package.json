@@ -1,6 +1,13 @@
 {
   "name": "@brix-ui/types",
   "version": "0.0.1",
+  "description": "Runtime and compile time types for Brix UI",
+  "keywords": [
+    "types",
+    "typings",
+    "objects",
+    "declarations"
+  ],
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },

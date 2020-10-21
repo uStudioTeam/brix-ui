@@ -1,6 +1,10 @@
 {
   "name": "@brix-ui/prop-types",
   "version": "0.0.1",
+  "description": "Prop-types for Brix UI",
+  "keywords": [
+    "prop-types"
+  ],
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },

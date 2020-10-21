@@ -1,7 +1,7 @@
 {
   "name": "@brix-ui/fonts",
   "version": "0.0.1",
-  "description": "Default fonts acceptable by @brix-ui theme",
+  "description": "Default fonts accepted by the Brix UI theme",
   "keywords": [
     "fonts",
     "ttf",
