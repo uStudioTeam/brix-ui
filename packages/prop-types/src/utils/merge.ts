@@ -1,4 +1,4 @@
-import { WeakValidationMap } from 'react';
+import type { WeakValidationMap } from 'react';
 
 export const merge = <P extends WeakValidationMap<unknown>>(...propTypes: P[]): P => {
   return propTypes.reduce((merged, toMerge) => {

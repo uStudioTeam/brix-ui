@@ -15,10 +15,13 @@
   "dependencies": {
     "@brix-ui/types": "*",
     "@brix-ui/utils": "*",
-    "lodash.merge": "^4.6.2"
+    "@brix-ui/prop-types": "*",
+    "lodash.merge": "^4.6.2",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.6",
+    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.53",
     "@types/styled-components": "^5.1.4",
     "awesome-typescript-loader": "^5.2.1",

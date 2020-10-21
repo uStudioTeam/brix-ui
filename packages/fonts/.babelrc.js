@@ -1,1 +1,1 @@
-module.exports = require('../../scripts/babel')({ polished: false });
+module.exports = require('../../scripts/babel')();

@@ -5,7 +5,6 @@ const presets = {
 
 const plugins = {
   styledComponents: ['styled-components', { displayName: false, fileName: false, pure: true }],
-  polished: 'polished',
   runtime: '@babel/plugin-transform-runtime',
   classProperties: '@babel/plugin-proposal-class-properties',
 };
@@ -19,11 +18,11 @@ const applyConfigs = (object, options) => {
 };
 
 module.exports = (options = {}) => {
-  const { styledComponents = true, react = true, env = true, polished = true, runtime, classProperties } = options;
+  const { styledComponents = true, react = true, env = true, runtime, classProperties } = options;
 
   return {
     presets: [...applyConfigs(presets, { react, env }), '@babel/preset-typescript'],
-    plugins: applyConfigs(plugins, { styledComponents, polished, runtime, classProperties }),
+    plugins: applyConfigs(plugins, { styledComponents, runtime, classProperties }),
     ignore: ['src/**/*.d.ts'],
   };
 };
