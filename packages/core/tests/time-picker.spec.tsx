@@ -2,8 +2,8 @@ import React, { FC, useRef } from 'react';
 import { render, fireEvent, waitFor, RenderResult } from '@testing-library/react';
 import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks';
 
-import { matchMedia } from '@brix-ui/utils/tests';
 import ThemeProvider from '@brix-ui/theme';
+import { matchMedia } from '../../../mocks/match-media';
 
 import { useFocusControl, useFocusPass } from '../src/time-picker/hooks';
 import { useTimePicker } from '../src/time-picker/time-picker.component';
@@ -536,7 +536,7 @@ describe('<TimePicker />', () => {
           <div />
         </TimePicker>,
         {
-          wrapper: ThemeProvider,
+          wrapper: ThemeProvider as FC<{}>,
         }
       );
 

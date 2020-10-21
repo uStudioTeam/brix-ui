@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { matchMedia } from '@brix-ui/utils/tests';
+import { matchMedia } from '../../../mocks/match-media';
 
 import sut from '../src/use-breakpoint-props';
 

@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const mock = (): void => {};
+const mock = () => {};
 
 export const matchMedia = (minWidth = 0): void => {
   Object.defineProperty(window, 'matchMedia', {

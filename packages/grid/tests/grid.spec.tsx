@@ -4,7 +4,7 @@ import 'jest-styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
 import { Direction } from '@brix-ui/types/css';
-import { matchMedia } from '@brix-ui/utils/tests';
+import { matchMedia } from '../../../mocks/match-media';
 
 import Cell from '../src/cell';
 import Grid, { GridProps } from '../src/grid';
