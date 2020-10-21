@@ -5,7 +5,7 @@ import type { Values } from '@brix-ui/utils/types';
 
 import { Align } from '@brix-ui/types/css';
 
-type BadgePosition = Values<Pick<typeof Align, 'start' | 'end' | 'center'>>;
+export type BadgePosition = Values<Pick<typeof Align, 'start' | 'end' | 'center'>>;
 
 export interface BadgeProps
   extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,

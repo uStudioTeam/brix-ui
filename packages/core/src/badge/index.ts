@@ -1,2 +1,2 @@
 export { default } from './badge.component';
-export type { BadgeProps } from './badge.props';
+export type { BadgeProps, BadgePosition } from './badge.props';
