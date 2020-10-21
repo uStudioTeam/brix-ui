@@ -13,6 +13,9 @@ export interface MultipleSelection<V> {
 
 type Dispatch<V> = MultipleSelection<V>['dispatch'];
 
+/**
+ * Handles selection of multiple values from the set of options
+ */
 export default function useMultipleSelection<V>(defaultValue = new Set<V>()): MultipleSelection<V> {
   const [options, setOptions] = useState(defaultValue);
   const [internalValue, setInternalValue] = useState(defaultValue);

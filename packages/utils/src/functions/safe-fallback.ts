@@ -1,3 +1,9 @@
+/**
+ * If the condition is undefined, returns empty string
+ * If truthy and falsy are undefined, returns the condition
+ * If only falsy is undefined, returns thuthy or an empty string depending on the condition
+ * Otherwise acts as a ternary operator
+ */
 export function safeFallback<C = boolean, T = '', F = undefined, R = F extends undefined ? T | '' : T | F>(
   condition: C | undefined,
   truthy?: T,

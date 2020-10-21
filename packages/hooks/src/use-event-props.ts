@@ -2,6 +2,10 @@ import { DOMAttributes, HTMLAttributes, useMemo } from 'react';
 
 import { filterObject } from '@brix-ui/utils/functions';
 
+/**
+ * Filters out props starting with `on-`
+ * Returns two objects – with those props only and without them
+ */
 export default function useEventProps<P extends Record<string, any>, I extends HTMLElement, E extends HTMLElement>(
   props: P
 ): {

@@ -12,6 +12,9 @@ export interface SingleSelection<V> {
 
 type Dispatch<V> = SingleSelection<V>['dispatch'];
 
+/**
+ * Handles selection of a single value from the set of options
+ */
 export default function useSingleSelection<V>(defaultValue?: V): SingleSelection<V> {
   const [options, setOptions] = useState(
     defaultValue !== undefined ? new Set<V>([defaultValue]) : new Set<V>()

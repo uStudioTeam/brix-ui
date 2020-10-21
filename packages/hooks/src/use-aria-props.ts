@@ -4,6 +4,10 @@ import { filterObject } from '@brix-ui/utils/functions';
 
 const isAriaKey = <P>(key: keyof P): boolean => (key as string).startsWith('aria-');
 
+/**
+ * Filters out props starting with `aria-`
+ * Returns two objects – with those props only and without them
+ */
 export default function useAriaProps<P extends Record<string, any>>(
   props: P
 ): {
