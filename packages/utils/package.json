@@ -1,6 +1,11 @@
 {
   "name": "@brix-ui/utils",
   "version": "0.0.1",
+  "description": "Utility functions and types for Brix UI",
+  "keywords": [
+    "functions",
+    "types"
+  ],
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },

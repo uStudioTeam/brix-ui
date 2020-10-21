@@ -1,7 +1,7 @@
 {
   "name": "@brix-ui/theme",
   "version": "0.0.1",
-  "description": "Theme package providing light and dark modes as well as css/js variables and helpers used in theming",
+  "description": "Theme package providing light and dark modes as well as CSS/JS variables and helpers used in theming",
   "keywords": [
     "theme",
     "ui",

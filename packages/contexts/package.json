@@ -1,6 +1,11 @@
 {
   "name": "@brix-ui/contexts",
   "version": "0.0.1",
+  "description": "Package of some useful helper React contexts",
+  "keywords": [
+    "library",
+    "contexts"
+  ],
   "scripts": {
     "prebuild": "copyfiles README.md lib"
   },
