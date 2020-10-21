@@ -1,24 +1,21 @@
-import React, { FC, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
 
 import { record } from '@brix-ui/prop-types/utils';
-import { objectValues } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, objectValues } from '@brix-ui/utils/functions';
 import { Breakpoint } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
 import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
 
-import Breakpoints from './breakpoints';
-import Typography from './typography';
-import Palette, { ColorHelper, defaultPalette } from './palette';
-import Reset from './reset';
-import Miscelaneous from './miscelaneous';
+import { Reset, Palette, Typography, Breakpoints, Miscelaneous, ColorHelper, defaultPalette } from '../roots';
+import { defaultTheme, Theme, ThemeMode, ThemeOverride } from '../entity';
+import { useThemeMode } from '../hooks';
 
-import { defaultTheme, Theme, ThemeMode, ThemeOverride } from './entity';
-import { useThemeMode } from './hooks';
+import type { ThemeProviderProps } from './theme-provider.props';
 
-const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) => {
+const ThemeProvider = ({ children, theme = {} }: ThemeProviderProps): ReactNode => {
   const [themeMode, switchMode] = useThemeMode(theme);
 
   const { palette: overridePalette = {}, ...override } = theme;
@@ -53,14 +50,13 @@ const ThemeProvider: FC<{ theme?: ThemeOverride }> = ({ children, theme = {} }) 
 
   return themeMode === undefined ? null : (
     <SCThemeProvider theme={finalTheme}>
-      {children}
+      {applyPolymorphicFunctionProp(children, finalTheme)}
 
       <Reset />
-
+      <Typography />
       <Miscelaneous transition={finalTheme.transition} />
       <Palette palette={finalTheme.palette} />
       <Breakpoints {...finalTheme.breakpoints} />
-      <Typography />
     </SCThemeProvider>
   );
 };

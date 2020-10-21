@@ -1,8 +1,8 @@
 import type { DefaultTheme } from 'styled-components';
 import type { Values, With } from '@brix-ui/utils/types';
 
-import type { BreakpointsMap } from '../breakpoints';
-import type { ColorsMap, ColorHelper } from '../palette';
+import type { BreakpointsMap } from '../roots/breakpoints';
+import type { ColorsMap, ColorHelper } from '../roots/palette';
 
 import { ThemeMode } from './theme-mode';
 

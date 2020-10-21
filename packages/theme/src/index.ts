@@ -1,3 +1,4 @@
 export * from './use-theme';
 export type { Theme } from './entity';
-export { default } from './theme-provider.context';
+export { default } from './theme-provider';
+export type { ThemeProviderProps } from './theme-provider';

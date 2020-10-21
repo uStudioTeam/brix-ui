@@ -1,7 +1,7 @@
 import { Color } from '@brix-ui/types/palette';
 import type { Values } from '@brix-ui/utils/types';
 
-import { ThemeMode } from '../../entity';
+import { ThemeMode } from '../../../entity';
 
 import type { ColorsMap } from './colors-map';
 
