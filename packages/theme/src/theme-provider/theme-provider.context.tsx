@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import PT, { Validator } from 'prop-types';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
@@ -15,7 +15,7 @@ import { useThemeMode } from '../hooks';
 
 import type { ThemeProviderProps } from './theme-provider.props';
 
-const ThemeProvider = ({ children, theme = {} }: ThemeProviderProps): ReactNode => {
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
   const [themeMode, switchMode] = useThemeMode(theme);
 
   const { palette: overridePalette = {}, ...override } = theme;
@@ -62,6 +62,7 @@ const ThemeProvider = ({ children, theme = {} }: ThemeProviderProps): ReactNode 
 };
 
 ThemeProvider.propTypes = {
+  children: PT.oneOfType([PT.node, PT.func]),
   theme: PT.exact({
     breakpoints: PT.exact(record(objectValues(Breakpoint), PT.number)),
     palette: PT.exact(record(objectValues(Color), PT.string)),
