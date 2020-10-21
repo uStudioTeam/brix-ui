@@ -4,7 +4,7 @@ import useDisclose from '@brix-ui/hooks/use-disclose';
 import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
 import { applyPolymorphicFunctionProp } from '@brix-ui/utils/functions';
 import { disclosable, unmountable } from '@brix-ui/prop-types/common';
-import { useTheme } from '@brix-ui/theme';
+import useTheme from '@brix-ui/theme/hooks/use-theme';
 
 import type { ModalProps, ModalValue } from './modal.props';
 

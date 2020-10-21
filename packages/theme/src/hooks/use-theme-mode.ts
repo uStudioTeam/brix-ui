@@ -5,7 +5,9 @@ import useMediaQuery from '@brix-ui/hooks/use-media-query';
 
 import { Theme, ThemeMode, ThemeOverride } from '../entity';
 
-export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | undefined, Theme['switchMode']] => {
+export default function useThemeMode(
+  theme: ThemeOverride
+): [Values<typeof ThemeMode> | undefined, Theme['switchMode']] {
   const [themeMode, setThemeMode] = useState<Values<typeof ThemeMode> | undefined>();
 
   const switchMode = useCallback<Theme['switchMode']>(
@@ -42,4 +44,4 @@ export const useThemeMode = (theme: ThemeOverride): [Values<typeof ThemeMode> | 
   }, [themeMode]);
 
   return [themeMode, switchMode];
-};
+}

@@ -5,7 +5,7 @@ import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, tryCall }
 import { useModal } from '@brix-ui/contexts/modal';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 import useKeyPressHandle from '@brix-ui/hooks/use-key-press-handle';
-import { useTheme } from '@brix-ui/theme';
+import useTheme from '@brix-ui/theme/hooks/use-theme';
 import type { With } from '@brix-ui/utils/types';
 import {
   breakpointProps,
