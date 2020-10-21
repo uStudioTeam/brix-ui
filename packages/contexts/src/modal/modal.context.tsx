@@ -1,4 +1,5 @@
 import React, { createContext, FC, useContext } from 'react';
+import PT from 'prop-types';
 
 import useDisclose from '@brix-ui/hooks/use-disclose';
 import useUnmountOnExit from '@brix-ui/hooks/use-unmount-on-exit';
@@ -45,6 +46,8 @@ const Modal: FC<ModalProps> = ({ children, isOpen, unmountOnExit, onOpen, onChan
 };
 
 Modal.propTypes = {
+  children: PT.oneOfType([PT.func, PT.node]).isRequired,
+
   ...disclosable,
   ...unmountable,
 };
