@@ -1,5 +1,5 @@
-import { Values } from '@brix-ui/utils/types';
+import { Align as _Align } from '../css';
 
-import { Align } from '../css';
+type Align = typeof _Align;
 
-export type Alignable = Partial<Record<'horizontalAlign' | 'verticalAlign' | 'align', Values<typeof Align>>>;
+export type Alignable = Partial<Record<'horizontalAlign' | 'verticalAlign' | 'align', Align[keyof Align]>>;
