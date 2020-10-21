@@ -12,7 +12,7 @@ export const globalTypes = {
     name: 'Theme',
     defaultValue: ThemeMode.Light,
     toolbar: {
-      icon: 'circlehollow',
+      icon: 'mirror',
       items: Object.values(ThemeMode),
     },
   },
