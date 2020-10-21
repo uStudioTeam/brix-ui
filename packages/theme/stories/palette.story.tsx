@@ -5,7 +5,7 @@ import { Story } from '@storybook/react';
 
 import { capitalize, objectValues } from '@brix-ui/utils/functions';
 import { Color } from '@brix-ui/types/palette';
-import { defaultPalette } from '@brix-ui/theme/palette';
+import { defaultPalette } from '@brix-ui/theme/roots/palette';
 import { Values } from '@brix-ui/utils/types';
 
 import Flex from '@brix-ui/core/flex';
