@@ -20,4 +20,5 @@ node_modules/
 .yarn/build-state.yml
 .pnp.*
 lib
+dist
 *.tsbuildinfo
