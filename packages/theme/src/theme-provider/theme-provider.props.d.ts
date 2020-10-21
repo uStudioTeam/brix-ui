@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+
 import type { Theme, ThemeOverride } from '../entity';
 
 export interface ThemeProviderProps {

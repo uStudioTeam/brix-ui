@@ -1,4 +1,3 @@
-import { useTheme } from '@brix-ui/theme';
 import React, { useEffect, useMemo, useRef, WeakValidationMap } from 'react';
 import PT, { Requireable } from 'prop-types';
 
@@ -6,6 +5,7 @@ import { useDirection } from '@brix-ui/contexts/direction';
 import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
+import useTheme from '@brix-ui/theme/hooks/use-theme';
 
 import { useAreaBuilderContext } from '../area-builder';
 

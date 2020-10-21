@@ -9,9 +9,10 @@ import { Breakpoint } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
 import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
 
+import useThemeMode from '../hooks/use-theme-mode';
+
 import { Reset, Palette, Typography, Breakpoints, Miscelaneous, ColorHelper, defaultPalette } from '../roots';
 import { defaultTheme, Theme, ThemeMode, ThemeOverride } from '../entity';
-import { useThemeMode } from '../hooks';
 
 import type { ThemeProviderProps } from './theme-provider.props';
 

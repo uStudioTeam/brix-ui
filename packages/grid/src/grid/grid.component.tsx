@@ -9,7 +9,7 @@ import Direction from '@brix-ui/contexts/direction';
 import { Direction as DirectionType } from '@brix-ui/types/css';
 import Block from '@brix-ui/core/block';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
-import { useTheme } from '@brix-ui/theme';
+import useTheme from '@brix-ui/theme/hooks/use-theme';
 
 import { useAreaBuilder, AreaBuilder } from '../area-builder';
 
