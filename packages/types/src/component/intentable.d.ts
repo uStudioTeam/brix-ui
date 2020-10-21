@@ -1,7 +1,7 @@
-import type { Values } from '@brix-ui/utils/types';
+import { Intent as _Intent } from './intent';
 
-import { Intent } from './intent';
+type Intent = typeof _Intent;
 
 export interface Intentable {
-  intent?: Values<typeof Intent>;
+  intent?: Intent[keyof Intent];
 }

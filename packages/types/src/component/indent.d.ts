@@ -1,11 +1,12 @@
-import { Values } from '@brix-ui/utils/types';
+import { Position as _Position } from '../css';
+import { Axis as _Axis } from './axis';
 
-import { Position } from '../css';
-import { Axis } from './axis';
+type Position = typeof _Position;
+type Axis = typeof _Axis;
 
-export type PositionIndent = Partial<Record<Values<typeof Position>, string>>;
+export type PositionIndent = Partial<Record<Position[keyof Position], string>>;
 
-export type AxisIndent = Partial<Record<Values<typeof Axis>, string>>;
+export type AxisIndent = Partial<Record<Axis[keyof Axis], string>>;
 
 export interface MixedHorizontalIndent {
   top?: string;
