@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/theme",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Theme package providing light and dark modes as well as CSS/JS variables and helpers used in theming",
   "keywords": [
     "theme",
@@ -15,10 +15,10 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
-    "@brix-ui/hooks": "*",
-    "@brix-ui/prop-types": "*",
+    "@brix-ui/types": "1.0.0",
+    "@brix-ui/utils": "1.0.0",
+    "@brix-ui/hooks": "1.0.0",
+    "@brix-ui/prop-types": "1.0.0",
     "lodash.merge": "^4.6.2",
     "polished": "^3.6.6"
   },

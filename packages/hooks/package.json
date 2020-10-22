@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/hooks",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Batch of useful UI-related React hooks",
   "keywords": [
     "hooks"
@@ -9,8 +9,8 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
+    "@brix-ui/types": "1.0.0",
+    "@brix-ui/utils": "1.0.0",
     "honks": "^0.4.0"
   },
   "devDependencies": {

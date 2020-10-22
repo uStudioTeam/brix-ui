@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/contexts",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Package of some useful helper React contexts",
   "keywords": [
     "library",
@@ -10,11 +10,11 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
-    "@brix-ui/prop-types": "*",
-    "@brix-ui/hooks": "*",
-    "@brix-ui/theme": "*",
+    "@brix-ui/types": "1.0.0",
+    "@brix-ui/utils": "1.0.0",
+    "@brix-ui/prop-types": "1.0.0",
+    "@brix-ui/hooks": "1.0.0",
+    "@brix-ui/theme": "1.0.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utility functions and types for Brix UI",
   "keywords": [
     "functions",
@@ -10,7 +10,7 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*"
+    "@brix-ui/types": "1.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",

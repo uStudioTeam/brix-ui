@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/prop-types",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Prop-types for Brix UI",
   "keywords": [
     "prop-types"
@@ -9,8 +9,8 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
+    "@brix-ui/types": "1.0.0",
+    "@brix-ui/utils": "1.0.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
