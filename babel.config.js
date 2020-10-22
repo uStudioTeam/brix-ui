@@ -1,7 +1,6 @@
 module.exports = {
   ...require('./scripts/babel')({
-    inlineSvg: true,
     runtime: true,
   }),
-  babelrcRoots: ['.', 'packages/{contexts,core,grid,prop-types,theme,types,utils}'],
+  babelrcRoots: ['.', 'packages/{contexts,core,fonts,grid,hooks,icons,prop-types,theme,types,utils}'],
 };
