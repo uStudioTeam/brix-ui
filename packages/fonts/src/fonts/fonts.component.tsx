@@ -69,20 +69,18 @@ const Fonts = (props = {} as FontsProps): JSX.Element => {
   return <FontsGlobalStyle fontFaces={fontFaces} variables={variables} />;
 };
 
-Fonts.propTypes = PT.exact(
-  record(
-    objectValues(FontVariant),
-    PT.exact({
-      name: PT.string,
-      ...record(
-        objectValues(TypeVariant),
-        PT.exact({
-          src: PT.string.isRequired,
-          weight: PT.oneOfType([PT.number, PT.string]).isRequired,
-        })
-      ),
-    })
-  )
+Fonts.propTypes = record(
+  objectValues(FontVariant),
+  PT.exact({
+    name: PT.string,
+    ...record(
+      objectValues(TypeVariant),
+      PT.exact({
+        src: PT.string.isRequired,
+        weight: PT.oneOfType([PT.number, PT.string]).isRequired,
+      })
+    ),
+  })
 );
 
 export default Fonts;
