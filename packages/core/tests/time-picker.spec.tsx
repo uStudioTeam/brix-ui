@@ -419,6 +419,8 @@ describe('<TimePicker />', () => {
     matchMedia();
 
     jest.spyOn(React.Children, 'count').mockReturnValue(3);
+    // Prevent warning: 'The global style component * was given child JSX. createGlobalStyle does not render children.'
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
   const renderWithProps = (props = {} as TimePickerProps) => {
