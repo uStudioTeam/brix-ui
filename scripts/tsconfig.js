@@ -8,7 +8,10 @@ module.exports = () => {
     () => {
       return [fileName, require(resolve(__dirname, `../${fileName}`))];
     },
-    (directoryPath, { paths: _paths, types: _types, rootDir: _rootDir, baseUrl: _baseUrl, ...compilerOptions }) => {
+    (
+      directoryPath,
+      { compilerOptions: { paths: _paths, types: _types, rootDir: _rootDir, baseUrl: _baseUrl, ...compilerOptions } }
+    ) => {
       return JSON.stringify(
         {
           compilerOptions,
