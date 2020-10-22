@@ -1,11 +1,8 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react';
 
 import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
-import type { Values } from '@brix-ui/utils/types';
 
-import { Align } from '@brix-ui/types/css';
-
-export type BadgePosition = Values<Pick<typeof Align, 'start' | 'end' | 'center'>>;
+export type BadgePosition = 'start' | 'center' | 'end';
 
 export interface BadgeProps
   extends PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
