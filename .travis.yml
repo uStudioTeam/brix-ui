@@ -8,3 +8,11 @@ cache: yarn
 install: yarn install --frozen-lockfile
 
 script: yarn ci
+
+deploy:
+  provider: script
+  script: yarn cd
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
