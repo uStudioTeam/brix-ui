@@ -1,5 +1,8 @@
 # Brix UI
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+
 Minimal UI framework for React built with [TypeScript](https://github.com/microsoft/TypeScript) and [styled-components](https://github.com/styled-components/styled-components).
 
 ---
