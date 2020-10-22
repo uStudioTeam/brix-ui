@@ -1,6 +1,6 @@
 {
   "name": "brix-ui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -16,17 +16,17 @@
     "prebuild:local": "lerna run prebuild",
     "prebuild": "npm-run-all -p prebuild:root prebuild:local",
     "build:dts": "tsc -b tsconfig.build.json",
-    "build:babel": "lerna exec -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
-    "build:webpack": "lerna exec --scope @brix-ui/fonts -- webpack",
+    "build:js": "lerna exec -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
     "build:storybook": "build-storybook -o dist",
-    "build": "npm-run-all -s build:dts -p build:babel build:webpack build:storybook",
+    "build": "npm-run-all -s build:dts -p build:babel build:js build:storybook",
+    "pretest": "npm-run-all -p format lint typecheck",
     "test": "jest",
-    "ci": "npm-run-all -p format lint typecheck -s build test",
-    "release": "lerna version --yes --conventional-commits --create-release github",
+    "ci": "npm-run-all -s build test",
     "prepublishOnly": "yarn build",
     "prepack": "node scripts/create-meta-files.js",
-    "publish": "lerna publish --yes --contents lib",
-    "deploy": "storybook-to-ghpages --ci"
+    "release": "lerna publish --yes --conventional-commits --create-release github --contents lib",
+    "deploy": "storybook-to-ghpages --ci",
+    "cd": "npm-run-all -p deploy release"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
@@ -49,6 +49,7 @@
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "babel-preset-react-app": "^9.1.2",
+    "copyfiles": "^2.4.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.10.0",
