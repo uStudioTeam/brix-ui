@@ -1,14 +1,12 @@
 {
-  "version": "independent",
+  "version": "1.0.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": ["packages/*"],
+  "ignoreChanges": ["**/*.spec.{ts,tsx}", "**/*.story.tsx"],
   "command": {
     "publish": {
       "allowBranch": ["master"],
-      "ignoreChanges": ["**/*.spec.{ts,tsx}", "**/*.story.tsx", "**/*.md"]
-    },
-    "version": {
       "message": "chore(release): %s"
     }
   }
