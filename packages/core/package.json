@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/core",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React UI components library by uStudio Company",
   "keywords": [
     "library",
@@ -14,13 +14,13 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/contexts": "*",
-    "@brix-ui/hooks": "*",
-    "@brix-ui/icons": "*",
-    "@brix-ui/prop-types": "*",
-    "@brix-ui/theme": "*",
-    "@brix-ui/types": "*",
-    "@brix-ui/utils": "*",
+    "@brix-ui/contexts": "1.0.0",
+    "@brix-ui/hooks": "1.0.0",
+    "@brix-ui/icons": "1.0.0",
+    "@brix-ui/prop-types": "1.0.0",
+    "@brix-ui/theme": "1.0.0",
+    "@brix-ui/types": "1.0.0",
+    "@brix-ui/utils": "1.0.0",
     "honks": "^0.4.0",
     "react-focus-lock": "^2.4.1",
     "use-callback-ref": "^1.2.4",
