@@ -18,7 +18,7 @@
     "build:dts": "tsc -b tsconfig.build.json",
     "build:js": "lerna exec -- babel src --out-dir lib --extensions \".ts,.tsx\" --copy-files --root-mode upward",
     "build:storybook": "build-storybook -o dist",
-    "build": "npm-run-all -s build:dts -p build:babel build:js build:storybook",
+    "build": "npm-run-all -s build:dts -p build:js build:storybook",
     "pretest": "npm-run-all -p format lint typecheck",
     "test": "jest",
     "ci": "npm-run-all -s build test",
