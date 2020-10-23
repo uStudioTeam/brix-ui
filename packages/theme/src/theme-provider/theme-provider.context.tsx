@@ -7,42 +7,58 @@ import { record } from '@brix-ui/prop-types/utils';
 import { applyPolymorphicFunctionProp, objectValues } from '@brix-ui/utils/functions';
 import { Breakpoint } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
-import { FontVariant, FontWeight, TypeVariant } from '@brix-ui/types/typography';
 
-import useThemeMode from '../hooks/use-theme-mode';
+import { useThemeMode } from '../hooks';
 
-import { Reset, Palette, Typography, Breakpoints, Miscelaneous, ColorHelper, defaultPalette } from '../roots';
-import { defaultTheme, Theme, ThemeMode, ThemeOverride } from '../entity';
+import { Reset, Palette, Typography, Breakpoints, Miscellaneous } from '../roots';
+import { Theme, ThemeMode, ThemeOverride, defaultTheme } from '../entity';
+import { ColorHelper, defaultPalette } from '../roots/palette';
 
 import type { ThemeProviderProps } from './theme-provider.props';
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
-  const [themeMode, switchMode] = useThemeMode(theme);
+  const [themeMode, switchMode] = useThemeMode(theme.mode);
 
-  const { palette: overridePalette = {}, ...override } = theme;
+  const {
+    palette: paletteOverride = {},
+    breakpoints: breakpointsOverride = {},
+    miscellaneous: miscelaneousOverride = {},
+    typography: typographyOverride = {},
+  } = theme;
 
   const finalTheme = useMemo<Theme>(() => {
     if (themeMode !== undefined) {
-      const overriddenTheme = {
-        ...merge(
-          { ...defaultTheme },
-          {
-            ...override,
-            palette: {
-              ...defaultPalette[themeMode],
-              ...(overridePalette[themeMode] || {}),
-            },
-            mode: themeMode === ThemeMode.Light,
-          }
-        ),
-      } as Omit<Theme, 'colorHelper' | 'switchMode'>;
+      const palette = {
+        ...defaultPalette[themeMode],
+        ...paletteOverride[themeMode],
+      };
 
-      const colorHelper = new ColorHelper(overriddenTheme.palette);
+      const colorHelper = new ColorHelper(palette);
 
       return {
-        ...overriddenTheme,
-        colorHelper,
+        palette,
+        breakpoints: {
+          ...defaultTheme.breakpoints,
+          ...breakpointsOverride,
+        },
+        miscellaneous: {
+          ...merge(
+            {
+              ...defaultTheme.miscellaneous,
+            },
+            {
+              ...miscelaneousOverride,
+            }
+          ),
+        },
+        typography: {
+          ...defaultTheme.typography,
+          ...typographyOverride,
+        },
+        mode: themeMode === ThemeMode.Light,
+        modeString: themeMode,
         switchMode,
+        colorHelper,
       };
     }
 
@@ -55,9 +71,9 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
 
       <Reset />
       <Typography />
-      <Miscelaneous transition={finalTheme.transition} />
-      <Palette palette={finalTheme.palette} />
-      <Breakpoints {...finalTheme.breakpoints} />
+      <Miscellaneous />
+      <Palette />
+      <Breakpoints />
     </SCThemeProvider>
   );
 };
@@ -66,24 +82,8 @@ ThemeProvider.propTypes = {
   children: PT.oneOfType([PT.node, PT.func]),
   theme: PT.exact({
     breakpoints: PT.exact(record(objectValues(Breakpoint), PT.number)),
-    palette: PT.exact(record(objectValues(Color), PT.string)),
+    palette: PT.exact(record(objectValues(ThemeMode), PT.exact(record(objectValues(Color), PT.string)))),
     mode: PT.oneOf(objectValues(ThemeMode)),
-    typography: PT.exact({
-      ...record(['fontBody', 'fontArticle', 'fontCode'], PT.string),
-      ...record(
-        objectValues(FontVariant),
-        PT.exact(
-          record(
-            objectValues(TypeVariant),
-            PT.exact({
-              url: PT.string.isRequired,
-              weight: PT.oneOf(objectValues(FontWeight)).isRequired,
-              format: PT.string,
-            })
-          )
-        )
-      ),
-    }),
   }) as Validator<ThemeOverride>,
 };
 

@@ -5,15 +5,13 @@ import useMediaQuery from '@brix-ui/hooks/use-media-query';
 
 import { Theme, ThemeMode, ThemeOverride } from '../entity';
 
-export default function useThemeMode(
-  theme: ThemeOverride
-): [Values<typeof ThemeMode> | undefined, Theme['switchMode']] {
+export function useThemeMode(mode: ThemeOverride['mode']): [Values<typeof ThemeMode> | undefined, Theme['switchMode']] {
   const [themeMode, setThemeMode] = useState<Values<typeof ThemeMode> | undefined>();
 
   const switchMode = useCallback<Theme['switchMode']>(
-    (mode) => {
-      if (mode !== undefined) {
-        setThemeMode(mode ? ThemeMode.Light : ThemeMode.Dark);
+    (nextMode) => {
+      if (nextMode !== undefined) {
+        setThemeMode(nextMode ? ThemeMode.Light : ThemeMode.Dark);
       } else {
         setThemeMode(themeMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
       }
@@ -28,8 +26,8 @@ export default function useThemeMode(
   useEffect(() => {
     const storedMode = localStorage.getItem(localStorageKey) as Values<typeof ThemeMode> | null;
 
-    if (theme.mode !== undefined) {
-      switchMode(theme.mode === ThemeMode.Light);
+    if (mode !== undefined) {
+      switchMode(mode === ThemeMode.Light);
     } else if (storedMode) {
       switchMode(storedMode === ThemeMode.Light);
     } else {
