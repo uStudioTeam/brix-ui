@@ -3,7 +3,7 @@ import { jsxDecorator } from 'storybook-addon-jsx';
 import { createGlobalStyle } from 'styled-components';
 
 import ThemeProvider from '@brix-ui/theme';
-import useTheme from '@brix-ui/theme/hooks/use-theme';
+import { useTheme } from '@brix-ui/theme/hooks';
 import { ThemeMode } from '@brix-ui/theme/entity';
 import Fonts from '@brix-ui/fonts';
 

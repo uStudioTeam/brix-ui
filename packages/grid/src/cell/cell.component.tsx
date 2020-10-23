@@ -5,7 +5,7 @@ import { useDirection } from '@brix-ui/contexts/direction';
 import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
-import useTheme from '@brix-ui/theme/hooks/use-theme';
+import { useTheme } from '@brix-ui/theme/hooks';
 
 import { useAreaBuilderContext } from '../area-builder';
 
