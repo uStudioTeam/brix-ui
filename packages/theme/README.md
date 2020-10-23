@@ -68,7 +68,7 @@ const Button = styled.button(
 #### React (switching theme mode)
 
 ```typescript jsx
-import useTheme from '@brix-ui/theme/hooks/use-theme';
+import { useTheme } from '@brix-ui/theme/hooks';
 
 import Flex from '@brix-ui/core/switch';
 import Switch from '@brix-ui/core/switch';

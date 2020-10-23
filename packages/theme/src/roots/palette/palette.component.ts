@@ -1,13 +1,12 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-import type { Theme } from '@brix-ui/theme';
 import { objectKeys } from '@brix-ui/utils/functions';
 
-const Palette = createGlobalStyle<{
-  palette: Theme['palette'];
-}>`
+const Palette = createGlobalStyle`
   :root {
-    ${({ palette }) => {
+    ${({ theme }) => {
+      const { palette } = theme;
+
       return objectKeys(palette).reduce((variables, key) => {
         return css`
             ${variables};

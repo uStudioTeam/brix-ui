@@ -21,11 +21,8 @@ html {
   }
 }
 
-body {
-  color: var(--c-base-strong);
-  background-color: var(--c-base-weak);
-  
-  transition: background-color 200ms, color 200ms;
+body {  
+  transition: background-color var(--transition-short), color var(--transition-short);
   
   display: flex;
   flex-direction: column;
@@ -316,11 +313,6 @@ dialog {
 :-webkit-autofill {
   box-shadow: 0 0 100px #fff inset;
   -webkit-text-fill-color: currentColor;
-}
-
-::selection {
-  color: var(--c-base-strong);
-  background-color: var(--c-accent-weak);
 }
 `;
 
