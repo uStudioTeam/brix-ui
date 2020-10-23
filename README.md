@@ -23,6 +23,8 @@ Brix UI is shipping several packages:
 Some of these are not intended to be used directly but are required for the others to work.
 Most common use-case for Brix UI would be installing the `core` package which provides full-on experience of the framework.
 
+Also, to include the default fonts from our design system you have to install the `fonts` package.
+
 ## Installation
 
 ```shell script
