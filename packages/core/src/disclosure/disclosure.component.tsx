@@ -6,7 +6,7 @@ import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, orUndefin
 import { disclosable, stylableComponent } from '@brix-ui/prop-types/common';
 import { useDisabled } from '@brix-ui/contexts/disabled';
 import useDisclose from '@brix-ui/hooks/use-disclose';
-import useTheme from '@brix-ui/theme/hooks/use-theme';
+import { useTheme } from '@brix-ui/theme/hooks';
 
 import type { DisclosureProps } from './disclosure.props';
 import Styled from './disclosure.styles';
@@ -36,7 +36,9 @@ const Disclosure = intrinsicComponent<DisclosureProps, HTMLDivElement>(function 
     onClose,
   });
 
-  const { transition } = useTheme();
+  const {
+    miscellaneous: { transition },
+  } = useTheme();
 
   const [detailsRef, detailsHeight] = useAutoTransition<HTMLDivElement>(
     (element) => {
