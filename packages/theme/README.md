@@ -43,7 +43,7 @@ Or as [render props](https://en.reactjs.org/docs/render-props.html):
 
 Then, use all the features of our theme inside any part of your React application:
 
-#### CSS
+### CSS
 
 ```css
 .class {
@@ -51,7 +51,7 @@ Then, use all the features of our theme inside any part of your React applicatio
 }
 ```
 
-#### styled-components
+### styled-components
 
 ```typescript
 import { shadow } from '@brix-ui/theme/mixin';
@@ -65,7 +65,7 @@ const Button = styled.button(
 );
 ```
 
-#### React (switching theme mode)
+### React (switching theme mode)
 
 ```typescript jsx
 import { useTheme } from '@brix-ui/theme/hooks';
@@ -86,3 +86,20 @@ const Component = () => {
   );
 };
 ```
+
+### Fonts
+
+Out of the box we provide **no default fonts**.
+But we foresaw your desire to obtain some – [`@brix-ui/fonts`](../fonts/README.md) package comes to help!
+
+It serves two main purposes in your application:
+
+- Sets up main font-family variables: `--font-body`, `--font-article`, `--font-code`.
+- Generates `@font-face` declarations and connects them with the font files we provide.
+
+More in-depth guide can be found in the package's [readme](../fonts/README.md).
+
+If you'd like to use your own fonts, you have basically two options:
+
+- Override the defaults in the `<Fonts />` component.
+- Make your own version of it, declaring the variables mentioned above and writing `@font-face` declarations.
