@@ -4,7 +4,7 @@ import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import merge from 'lodash.merge';
 
 import { record } from '@brix-ui/prop-types/utils';
-import { applyPolymorphicFunctionProp, objectValues } from '@brix-ui/utils/functions';
+import { applyPolymorphicFunctionProp, objectKeys, objectValues } from '@brix-ui/utils/functions';
 import { Breakpoint } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
 
@@ -78,11 +78,22 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
   );
 };
 
+const { transition, ...miscellaneous } = defaultTheme.miscellaneous;
+const { lineHeight, ...typography } = defaultTheme.typography;
+
 ThemeProvider.propTypes = {
   children: PT.oneOfType([PT.node, PT.func]),
   theme: PT.exact({
     breakpoints: PT.exact(record(objectValues(Breakpoint), PT.number)),
     palette: PT.exact(record(objectValues(ThemeMode), PT.exact(record(objectValues(Color), PT.string)))),
+    miscellaneous: PT.exact({
+      transition: PT.exact(record(objectKeys(transition), PT.number)),
+      ...record(objectKeys(miscellaneous), PT.string),
+    }),
+    typography: PT.exact({
+      lineHeight: PT.oneOfType([PT.string, PT.number]),
+      ...record(objectKeys(typography), PT.string),
+    }),
     mode: PT.oneOf(objectValues(ThemeMode)),
   }) as Validator<ThemeOverride>,
 };
