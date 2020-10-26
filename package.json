@@ -24,7 +24,7 @@
     "ci": "npm-run-all -s build test",
     "prerelease": "yarn build && node scripts/create-meta-files.js",
     "release": "lerna publish --yes --conventional-commits --create-release github --contents lib",
-    "deploy": "storybook-to-ghpages --ci",
+    "deploy": "storybook-to-ghpages --ci --existing-output-dir dist",
     "cd": "npm-run-all -p deploy release"
   },
   "devDependencies": {
