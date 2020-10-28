@@ -1,6 +1,17 @@
 {
+  "version": "2.0.0-rc.1",
   "npmClient": "yarn",
-  "packages": ["packages/*"],
-  "version": "independent",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "ignoreChanges": [
+    "**/*.spec.{ts,tsx}",
+    "**/*.story.tsx"
+  ],
+  "command": {
+    "version": {
+      "message": "chore(release): %s"
+    }
+  }
 }

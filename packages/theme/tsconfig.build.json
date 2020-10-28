@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "include": ["src", "../../globals.d.ts"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "declarationDir": "lib",
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
+  },
+  "references": [
+    {
+      "path": "../types/tsconfig.build.json"
+    },
+    {
+      "path": "../utils/tsconfig.build.json"
+    },
+    {
+      "path": "../prop-types/tsconfig.build.json"
+    },
+    {
+      "path": "../hooks/tsconfig.build.json"
+    }
+  ]
+}

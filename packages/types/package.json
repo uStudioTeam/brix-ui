@@ -1,0 +1,19 @@
+{
+  "name": "@brix-ui/types",
+  "version": "2.0.0-rc.1",
+  "description": "Runtime and compile time types for Brix UI",
+  "keywords": [
+    "types",
+    "typings",
+    "objects",
+    "declarations"
+  ],
+  "scripts": {
+    "prebuild": "copyfiles README.md lib"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@types/styled-components": "^5.1.1",
+    "typescript": "^4.0.2"
+  }
+}

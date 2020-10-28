@@ -1,0 +1,36 @@
+{
+  "name": "@brix-ui/grid",
+  "version": "2.0.0-rc.1",
+  "description": "React grid system based on CSS-Grid module",
+  "keywords": [
+    "css-grid",
+    "grid"
+  ],
+  "scripts": {
+    "prebuild": "copyfiles README.md lib"
+  },
+  "dependencies": {
+    "@brix-ui/contexts": "^2.0.0-rc.1",
+    "@brix-ui/hooks": "^2.0.0-rc.1",
+    "@brix-ui/prop-types": "^2.0.0-rc.1",
+    "@brix-ui/theme": "^2.0.0-rc.1",
+    "@brix-ui/types": "^2.0.0-rc.1",
+    "@brix-ui/utils": "^2.0.0-rc.1",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1",
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  }
+}

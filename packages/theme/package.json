@@ -1,0 +1,42 @@
+{
+  "name": "@brix-ui/theme",
+  "version": "2.0.0-rc.1",
+  "description": "Theme package providing light and dark modes as well as CSS/JS variables and helpers used in theming",
+  "keywords": [
+    "theme",
+    "ui",
+    "light mode",
+    "dark mode",
+    "css",
+    "styled-components",
+    "css-in-js"
+  ],
+  "scripts": {
+    "prebuild": "copyfiles README.md lib"
+  },
+  "dependencies": {
+    "@brix-ui/hooks": "^2.0.0-rc.1",
+    "@brix-ui/prop-types": "^2.0.0-rc.1",
+    "@brix-ui/types": "^2.0.0-rc.1",
+    "@brix-ui/utils": "^2.0.0-rc.1",
+    "lodash.merge": "^4.6.2",
+    "polished": "^3.6.6"
+  },
+  "devDependencies": {
+    "@types/lodash.merge": "^4.6.6",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1",
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  }
+}

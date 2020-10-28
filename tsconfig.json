@@ -1,0 +1,39 @@
+{
+  "include": ["packages/**/*", "globals.d.ts"],
+  "exclude": ["node_modules", "packages/*/lib"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
+    "types": ["jest"],
+    "jsx": "react",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@brix-ui/contexts/*": ["packages/contexts/src/*"],
+      "@brix-ui/core/*": ["packages/core/src/*"],
+      "@brix-ui/fonts/*": ["packages/fonts/src/*"],
+      "@brix-ui/fonts": ["packages/fonts/src/index.ts"],
+      "@brix-ui/grid/*": ["packages/grid/src/*"],
+      "@brix-ui/grid": ["packages/grid/src/index.ts"],
+      "@brix-ui/hooks/*": ["packages/hooks/src/*"],
+      "@brix-ui/icons/*": ["packages/icons/src/*"],
+      "@brix-ui/prop-types/*": ["packages/prop-types/src/*"],
+      "@brix-ui/theme/*": ["packages/theme/src/*"],
+      "@brix-ui/theme": ["packages/theme/src/index.ts"],
+      "@brix-ui/types/*": ["packages/types/src/*"],
+      "@brix-ui/utils/*": ["packages/utils/src/*"]
+    }
+  }
+}
