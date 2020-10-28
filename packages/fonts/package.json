@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/fonts",
-  "version": "1.0.0",
+  "version": "2.0.0-rc.1",
   "description": "Default fonts accepted by the Brix UI theme",
   "keywords": [
     "fonts",
@@ -13,9 +13,9 @@
     "prebuild": "copyfiles README.md lib"
   },
   "dependencies": {
-    "@brix-ui/types": "1.0.0",
-    "@brix-ui/utils": "1.0.0",
-    "@brix-ui/prop-types": "1.0.0",
+    "@brix-ui/prop-types": "^2.0.0-rc.1",
+    "@brix-ui/types": "^2.0.0-rc.1",
+    "@brix-ui/utils": "^2.0.0-rc.1",
     "lodash.merge": "^4.6.2",
     "prop-types": "^15.7.2"
   },
