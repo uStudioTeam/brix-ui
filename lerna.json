@@ -6,6 +6,9 @@
   "ignoreChanges": ["**/*.spec.{ts,tsx}", "**/*.story.tsx"],
   "command": {
     "publish": {
+      "allowBranch": ["master"]
+    },
+    "version": {
       "allowBranch": ["master"],
       "message": "chore(release): %s"
     }

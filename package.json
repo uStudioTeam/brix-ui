@@ -23,8 +23,9 @@
     "test": "jest",
     "ci": "npm-run-all -s build test",
     "prerelease": "yarn build && node scripts/create-meta-files.js",
-    "release": "lerna publish --yes --conventional-commits --create-release github --contents lib",
+    "bump": "lerna version --yes --conventional-commits --create-release github",
     "deploy": "storybook-to-ghpages --ci --existing-output-dir dist",
+    "release": "lerna exec -- yarn publish lib",
     "cd": "npm-run-all -p deploy release"
   },
   "devDependencies": {
