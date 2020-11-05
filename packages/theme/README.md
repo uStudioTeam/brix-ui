@@ -90,16 +90,94 @@ const Component = () => {
 ### Fonts
 
 Out of the box we provide **no default fonts**.
-But we foresaw your desire to obtain some – [`@brix-ui/fonts`](../fonts/README.md) package comes to help!
 
-It serves two main purposes in your application:
+To connect the fonts defined as default in our design system you have an option to create your own `@font-face`
+rules.
 
-- Sets up main font-family variables: `--font-body`, `--font-article`, `--font-code`.
-- Generates `@font-face` declarations and connects them with the font files we provide.
+To override predefined `font-family` names for each of the font variants (`body`, `article`, `code`),
+you can either override custom properties for each of those variants (prefixed with `f-`)
+or pass them into the `theme` prop of the `ThemeProvider` component:
 
-More in-depth guide can be found in the package's [readme](../fonts/README.md).
+```typescript jsx
+<ThemeProvider
+  theme={{
+    typography: {
+      font: {
+        body: 'Roboto, sans-serif',
+        article: 'Lora, serif',
+        code: '"Fira Code", monospace',
+      },
+    },
+  }}
+/>
+```
 
-If you'd like to use your own fonts, you have basically two options:
+An example of the `@font-face` rules we expect to receive:
 
-- Override the defaults in the `<Fonts />` component.
-- Make your own version of it, declaring the variables mentioned above and writing `@font-face` declarations.
+```css
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Merriweather;
+  font-weight: 900;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Merriweather;
+  font-weight: 400;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Merriweather;
+  font-weight: 300;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Inconsolata;
+  font-weight: 800;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Inconsolata;
+  font-weight: 400;
+  src: url('') format('');
+}
+
+@font-face {
+  font-family: Inconsolata;
+  font-weight: 300;
+  src: url('') format('');
+}
+```

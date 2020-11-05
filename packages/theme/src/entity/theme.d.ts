@@ -36,7 +36,7 @@ export interface ThemeOverride extends Omit<Partial<Theme>, 'colorHelper' | 'swi
     }
   >;
 
-  readonly typography?: Partial<TypographyProps>;
+  readonly typography?: Partial<Omit<TypographyProps, 'font'>> & Partial<Pick<TypographyProps, 'font'>>;
 
   readonly mode?: Values<typeof ThemeMode>;
 }
