@@ -7,6 +7,7 @@ import { record } from '@brix-ui/prop-types/utils';
 import { applyPolymorphicFunctionProp, objectKeys, objectValues } from '@brix-ui/utils/functions';
 import { Breakpoint } from '@brix-ui/types/css';
 import { Color } from '@brix-ui/types/palette';
+import { FontVariant } from '@brix-ui/types/typography';
 
 import { useThemeMode } from '../hooks';
 
@@ -79,7 +80,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
 };
 
 const { transition, ...miscellaneous } = defaultTheme.miscellaneous;
-const { lineHeight, ...typography } = defaultTheme.typography;
+const { baseLineHeight, font, ...typography } = defaultTheme.typography;
 
 ThemeProvider.propTypes = {
   children: PT.oneOfType([PT.node, PT.func]),
@@ -91,7 +92,8 @@ ThemeProvider.propTypes = {
       ...record(objectKeys(miscellaneous), PT.string),
     }),
     typography: PT.exact({
-      lineHeight: PT.oneOfType([PT.string, PT.number]),
+      baseLineHeight: PT.oneOfType([PT.string, PT.number]),
+      font: PT.exact(record(objectValues(FontVariant), PT.string)),
       ...record(objectKeys(typography), PT.string),
     }),
     mode: PT.oneOf(objectValues(ThemeMode)),

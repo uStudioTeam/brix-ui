@@ -2,15 +2,21 @@ import { createGlobalStyle, css } from 'styled-components';
 
 const Typography = createGlobalStyle`
   ${({ theme }) => {
-    const { fontSize, fontFamily, lineHeight } = theme.typography;
+    const { font, rootFontSize, defaultFontFamily, baseLineHeight } = theme.typography;
 
     return css`
       html {
-        font-size: ${fontSize};
+        font-size: ${rootFontSize};
+      }
+
+      :root {
+        --f-body: ${font.body};
+        --f-article: ${font.article};
+        --f-code: ${font.code};
       }
 
       body {
-        font-family: ${fontFamily};
+        font-family: ${defaultFontFamily};
       }
 
       h1,
@@ -21,7 +27,7 @@ const Typography = createGlobalStyle`
       h6,
       p,
       small {
-        line-height: ${lineHeight};
+        line-height: ${baseLineHeight};
       }
     `;
   }};
