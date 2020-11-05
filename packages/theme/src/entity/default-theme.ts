@@ -45,8 +45,13 @@ export const defaultTheme: Pick<Theme, 'breakpoints' | 'miscellaneous' | 'typogr
     inputPlaceholderColorDisabled: 'var(--c-faint-weak-up)',
   },
   typography: {
-    fontSize: '16px',
-    fontFamily: 'var(--f-body)',
-    lineHeight: 1.375,
+    rootFontSize: '16px',
+    defaultFontFamily: 'var(--f-body)',
+    baseLineHeight: 1.375,
+    font: {
+      body: '"Source Sans Pro", sans-serif',
+      article: 'Lora, serif',
+      code: 'Inconsolata, monospace',
+    },
   },
 };
