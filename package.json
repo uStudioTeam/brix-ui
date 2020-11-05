@@ -1,6 +1,7 @@
 {
   "name": "brix-ui",
   "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "workspaces": {
     "packages": [
@@ -8,7 +9,7 @@
     ]
   },
   "scripts": {
-    "start": "start-storybook",
+    "start": "start-storybook -s public",
     "format": "prettier --check packages/**/*.{ts,tsx}",
     "lint": "eslint --quiet --color packages/**/*.{ts,tsx}",
     "typecheck": "tsc -p ./tsconfig.ci.json",
