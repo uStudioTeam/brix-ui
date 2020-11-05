@@ -23,8 +23,6 @@
     "paths": {
       "@brix-ui/contexts/*": ["packages/contexts/src/*"],
       "@brix-ui/core/*": ["packages/core/src/*"],
-      "@brix-ui/fonts/*": ["packages/fonts/src/*"],
-      "@brix-ui/fonts": ["packages/fonts/src/index.ts"],
       "@brix-ui/grid/*": ["packages/grid/src/*"],
       "@brix-ui/grid": ["packages/grid/src/index.ts"],
       "@brix-ui/hooks/*": ["packages/hooks/src/*"],

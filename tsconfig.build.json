@@ -18,9 +18,6 @@
       "path": "packages/core/tsconfig.build.json"
     },
     {
-      "path": "packages/fonts/tsconfig.build.json"
-    },
-    {
       "path": "packages/grid/tsconfig.build.json"
     },
     {
