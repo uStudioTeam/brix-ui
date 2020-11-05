@@ -1,13 +1,21 @@
 {
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*"],
-  "ignoreChanges": ["**/*.spec.{ts,tsx}", "**/*.story.tsx"],
+  "packages": [
+    "packages/*"
+  ],
+  "ignoreChanges": [
+    "**/*.spec.{ts,tsx}",
+    "**/*.story.tsx"
+  ],
   "command": {
     "version": {
       "message": "chore(release): %s",
-      "allowBranch": ["hotfix-*", "release-*"],
+      "allowBranch": [
+        "hotfix-*",
+        "release-*"
+      ],
       "conventionalCommits": true
     }
   }

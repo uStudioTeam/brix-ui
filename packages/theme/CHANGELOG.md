@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
+
+
+### Features
+
+* **theme:** Update `theme` with new fonts settings ([974fcd2](https://github.com/uStudioTeam/brix-ui/commit/974fcd296a8c85d8be67227f787234d92ef70324))
+
+
+
+
+
 # 2.0.0-rc.1 (2020-10-28)
 
 
