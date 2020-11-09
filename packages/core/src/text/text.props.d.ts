@@ -15,6 +15,7 @@ export interface TextProps
   color?: string;
   align?: Values<typeof TextAlign>;
   decoration?: Values<typeof TextDecoration>;
+  weight?: string;
 
   lineHeightCompensation?: boolean | ((variant: NonNullable<TextProps['variant']>) => number);
 }

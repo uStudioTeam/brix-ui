@@ -28,6 +28,7 @@ Text.propTypes = {
   color: PT.string,
   align: PT.oneOf(objectValues(TextAlign)),
   decoration: PT.oneOf(objectValues(TextDecoration)),
+  weight: PT.string,
 
   lineHeightCompensation: PT.oneOfType([PT.bool, PT.func]),
 
