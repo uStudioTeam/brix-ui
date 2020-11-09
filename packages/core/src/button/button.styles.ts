@@ -18,6 +18,7 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled' | 'isRounded'>>(
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     border-radius: var(--input-border-radius);
     border: 1px solid transparent;
