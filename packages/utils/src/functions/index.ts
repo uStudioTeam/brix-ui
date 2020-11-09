@@ -9,6 +9,7 @@ export * from './class-names';
 export * from './object-keys';
 export * from './or-undefined';
 export * from './is-undefined';
+export * from './parse-indent';
 export * from './filter-object';
 export * from './object-values';
 export * from './safe-fallback';
