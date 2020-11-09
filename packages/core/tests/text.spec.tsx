@@ -3,16 +3,25 @@ import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import { TextDecoration } from '@brix-ui/types/typography';
+import ThemeProvider from '@brix-ui/theme';
+
+import { matchMedia } from '../../../mocks/match-media';
 
 import Text, { TextProps } from '../src/text';
 
 const textId = 'text';
 
 const renderWithProps = (props: TextProps = {}) => {
-  return render(<Text data-testid={textId} {...props} />);
+  return render(<Text data-testid={textId} {...props} />, {
+    wrapper: ({ children }) => <ThemeProvider>{children}</ThemeProvider>,
+  });
 };
 
 describe('<Text />', () => {
+  beforeEach(() => {
+    matchMedia();
+  });
+
   describe('decoration', () => {
     describe('empty value', () => {
       it('should not apply any css properties related to decoration', () => {
