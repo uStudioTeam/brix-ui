@@ -34,7 +34,18 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
         ...paletteOverride[themeMode],
       };
 
-      const colorHelper = new ColorHelper(palette);
+      const miscellaneous = {
+        ...merge(
+          {
+            ...defaultTheme.miscellaneous,
+          },
+          {
+            ...miscelaneousOverride,
+          }
+        ),
+      };
+
+      const colorHelper = new ColorHelper(palette, miscellaneous);
 
       return {
         palette,
@@ -42,16 +53,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme = {} }) => {
           ...defaultTheme.breakpoints,
           ...breakpointsOverride,
         },
-        miscellaneous: {
-          ...merge(
-            {
-              ...defaultTheme.miscellaneous,
-            },
-            {
-              ...miscelaneousOverride,
-            }
-          ),
-        },
+        miscellaneous,
         typography: {
           ...defaultTheme.typography,
           ...typographyOverride,
