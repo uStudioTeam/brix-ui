@@ -93,10 +93,6 @@ describe('<Button />', () => {
     });
   });
 
-  const modifier = {
-    modifier: ':not(:disabled)',
-  };
-
   describe('not disabled', () => {
     describe('when appearance is contained', () => {
       describe('when intent is accent', () => {
@@ -107,7 +103,7 @@ describe('<Button />', () => {
             ['background-color', 'var(--c-accent-strong)'],
             ['color', 'var(--c-text-base-weak)'],
           ].forEach(([property, value]) => {
-            expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
+            expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
           });
         });
 
@@ -121,7 +117,7 @@ describe('<Button />', () => {
               ['background-color', 'var(--c-accent-strong)'],
               ['color', 'var(--c-text-base-weak)'],
             ].forEach(([property, value]) => {
-              expect(getByTestId(buttonId)).toHaveStyleRule(property, value, modifier);
+              expect(getByTestId(buttonId)).toHaveStyleRule(property, value);
             });
           });
         });
@@ -133,8 +129,8 @@ describe('<Button />', () => {
     it('should render button with default styles - contained appearance, base intent, isDisabled: false', () => {
       const { getByTestId } = renderWithProps({});
 
-      expect(getByTestId(buttonId)).toHaveStyleRule('color', 'var(--c-base-weak)', modifier);
-      expect(getByTestId(buttonId)).toHaveStyleRule('background-color', 'var(--c-base-strong)', modifier);
+      expect(getByTestId(buttonId)).toHaveStyleRule('color', 'var(--c-base-weak)');
+      expect(getByTestId(buttonId)).toHaveStyleRule('background-color', 'var(--c-base-strong)');
       expect(getByTestId(buttonId).hasAttribute('disabled')).toBe(false);
     });
   });
