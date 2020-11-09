@@ -39,6 +39,7 @@ const Text = styled.p<
     $color: color,
     $align: align,
     decoration,
+    weight,
     lineHeightCompensation,
     theme,
   }) => {
@@ -49,6 +50,7 @@ const Text = styled.p<
 
       color: ${theme.colorHelper.parseColor(color)};
       text-align: ${align};
+      font-weight: ${weight};
 
       ${parseTextDecoration(decoration)};
 
