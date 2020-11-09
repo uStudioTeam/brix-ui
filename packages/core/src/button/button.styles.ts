@@ -45,6 +45,8 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled' | 'isRounded'>>(
     &[data-rounded] {
       border-radius: calc(var(--height) / 2);
     }
+    
+    ${buttonMixin[appearance][intent]}};
 
     &:disabled {
       cursor: not-allowed;
@@ -55,10 +57,10 @@ const Button = styled.button<Omit<ButtonProps, 'isDisabled' | 'isRounded'>>(
       &:active {
         transform: scale(1);
       }
-    }
-    
-    &:not(:disabled) {
-      ${buttonMixin[appearance][intent]}};
+      
+      &:hover {
+        box-shadow: none;
+      }
     }
   `
 );
