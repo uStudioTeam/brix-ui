@@ -40,13 +40,14 @@ const Text = styled.p<
     $align: align,
     decoration,
     lineHeightCompensation,
+    theme,
   }) => {
     const defaultVariant = variant || TypeVariant.P;
 
     return css`
       ${font[appearance][variant || (as as Values<typeof TypeVariant>)] || font[appearance].p};
 
-      color: ${color};
+      color: ${theme.colorHelper.parseColor(color)};
       text-align: ${align};
 
       ${parseTextDecoration(decoration)};
