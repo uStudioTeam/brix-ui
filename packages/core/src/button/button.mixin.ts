@@ -35,6 +35,14 @@ export const disabledButtonMixin = {
   `,
   text: css`
     color: var(--c-faint-strong);
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:active {
+      text-shadow: none;
+    }
   `,
 };
 
