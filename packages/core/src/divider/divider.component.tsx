@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import { classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
 import { extract } from '@brix-ui/prop-types/utils';
-import { stylableComponent } from '@brix-ui/prop-types/common';
+import { indent, stylableComponent } from '@brix-ui/prop-types/common';
 
 import Flex from '../flex';
 
@@ -44,8 +44,8 @@ Divider.propTypes = {
   thickness: PT.string,
   align: PT.oneOf(['start', 'center', 'end']),
   redLine: PT.string,
-  padding: PT.string,
-  margin: PT.string,
+  padding: indent(),
+  margin: indent(),
 
   ...stylableComponent(),
 };

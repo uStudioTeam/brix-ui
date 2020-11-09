@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { applyDisplayNames } from '@brix-ui/utils/functions';
+import { applyDisplayNames, parseIndent } from '@brix-ui/utils/functions';
 import { Align } from '@brix-ui/types/css';
 
 import Flex from '../flex';
@@ -11,7 +11,7 @@ const isDirectionColumn = (direction: DividerProps['direction']) => {
   return direction?.endsWith('column');
 };
 
-const parseIndent = (value: string, position: number): string => {
+const parseIndentByPosition = (value: string, position: number): string => {
   if (value.split(' ').length > 1) {
     return value;
   }
@@ -80,8 +80,8 @@ const Divider = styled(Flex).attrs({
     redLine = '1rem',
     $color = 'faint-weak-up',
     $align: align = Align.Start,
-    $padding: padding = '1rem',
-    $margin: margin = '1rem',
+    $padding: padding,
+    $margin: margin,
   }) => {
     const color = theme.colorHelper.parseColor($color);
 
@@ -89,7 +89,7 @@ const Divider = styled(Flex).attrs({
       ${isDirectionColumn(direction) ? 'width' : 'height'}: ${thickness};
       ${isDirectionColumn(direction) ? 'height' : 'width'}: ${isInline ? 'auto' : '100%'};
 
-      margin: ${parseIndent(margin, Number(!isDirectionColumn(direction)))};
+      margin: ${parseIndentByPosition(parseIndent(margin), Number(!isDirectionColumn(direction)))};
 
       &,
       &:before,
@@ -107,7 +107,7 @@ const Divider = styled(Flex).attrs({
         background-color: unset;
 
         & > * {
-          padding: ${parseIndent(padding, Number(isDirectionColumn(direction)))};
+          padding: ${parseIndentByPosition(parseIndent(padding), Number(isDirectionColumn(direction)))};
         }
 
         &:before,

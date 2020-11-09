@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactElement } from 'react';
 
-import type { IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
+import type { Indent, IntrinsicComponent, StylableComponent } from '@brix-ui/types/component';
 import type { Values } from '@brix-ui/utils/types';
 import { Align } from '@brix-ui/types/css';
 
@@ -17,7 +17,7 @@ export interface DividerProps
   thickness?: string;
   align?: Extract<Values<typeof Align>, 'start' | 'center' | 'end'>;
 
-  padding?: string;
-  margin?: string;
+  padding?: Indent;
+  margin?: Indent;
   redLine?: string;
 }
