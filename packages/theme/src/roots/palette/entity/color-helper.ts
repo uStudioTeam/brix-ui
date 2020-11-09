@@ -1,15 +1,19 @@
-import { darken, getLuminance, hsla, parseToHsl } from 'polished';
+import { darken, getLuminance, parseToHsl } from 'polished';
 
 import { Color } from '@brix-ui/types/palette';
-import type { Theme } from '@brix-ui/theme';
+
+import type { Theme } from '../../../entity';
+import type { MiscellaneousProps } from '../../miscellaneous';
 
 export class ColorHelper {
-  public constructor(private readonly palette: Theme['palette']) {}
+  public constructor(private readonly palette: Theme['palette'], private readonly miscellaneous: MiscellaneousProps) {}
 
-  public parseColor(color: string): string {
-    // `color` can be missing from palette
-    // @ts-expect-error
-    return hsla({ alpha: 1, ...parseToHsl(this.palette[color] || color) });
+  public parseColor(color = ''): string {
+    const fromTheme =
+      // @ts-expect-error
+      this.palette[color] || this.miscellaneous[color.replace(/-([a-z])/g, ([, match]) => match.toUpperCase())];
+
+    return fromTheme || color;
   }
 
   public getContrastingColor(color: string): string {
