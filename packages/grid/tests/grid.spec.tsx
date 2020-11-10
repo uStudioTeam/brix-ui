@@ -38,40 +38,12 @@ describe('<Grid />', () => {
     });
 
     describe('as string', () => {
-      it('should apply single grid-gap', () => {
+      it('should apply single `grid-gap`', () => {
         const { getByTestId } = renderWithProps({
           gap: '1px',
         });
 
         expect(getByTestId(gridId)).toHaveStyleRule('grid-gap', '1px');
-      });
-    });
-
-    describe('as axes object', () => {
-      describe('when one axis is not set', () => {
-        it('should apply only the defined one', () => {
-          const { getByTestId } = renderWithProps({
-            gap: {
-              vertical: '1px',
-            },
-          });
-
-          expect(getByTestId(gridId)).toHaveStyleRule('grid-row-gap', '1px');
-        });
-      });
-
-      describe('when both axes are set', () => {
-        it('should apply gap in both directions', () => {
-          const { getByTestId } = renderWithProps({
-            gap: {
-              vertical: '1px',
-              horizontal: '2px',
-            },
-          });
-
-          expect(getByTestId(gridId)).toHaveStyleRule('grid-row-gap', '1px');
-          expect(getByTestId(gridId)).toHaveStyleRule('grid-column-gap', '2px');
-        });
       });
     });
   });
