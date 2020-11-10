@@ -1,6 +1,6 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { StylableComponent } from '@brix-ui/types/component';
+import type { StylableComponent } from '@brix-ui/types/component';
 
 /**
  * Creates CSS custom properties from the provided object and their default values
