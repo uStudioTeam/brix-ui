@@ -26,6 +26,38 @@ const parseTextDecoration = (decoration: TextProps['decoration']): FlattenSimple
   }
 };
 
+const parseWeight = (weight: TextProps['weight']): TextProps['weight'] => {
+  switch (weight) {
+    case 'thin': {
+      return 100;
+    }
+    case 'extra-light': {
+      return 200;
+    }
+    case 'light': {
+      return 300;
+    }
+    case 'regular': {
+      return 400;
+    }
+    case 'medium': {
+      return 500;
+    }
+    case 'semi-bold': {
+      return 600;
+    }
+    case 'extra-bold': {
+      return 800;
+    }
+    case 'black': {
+      return 900;
+    }
+    default: {
+      return weight;
+    }
+  }
+};
+
 const Text = styled.p<
   Omit<TextProps, 'color' | 'align'> & {
     $color?: TextProps['color'];
@@ -50,7 +82,7 @@ const Text = styled.p<
 
       color: ${theme.colorHelper.parseColor(color)};
       text-align: ${align};
-      font-weight: ${weight};
+      font-weight: ${parseWeight(weight)};
 
       ${parseTextDecoration(decoration)};
 
