@@ -4,7 +4,7 @@ import PT, { Requireable } from 'prop-types';
 import { classNames, intrinsicComponent, objectValues } from '@brix-ui/utils/functions';
 import type { TextElement } from '@brix-ui/types/html';
 import { stylableComponent } from '@brix-ui/prop-types/common';
-import { FontVariant, TextAlign, TextDecoration, TypeVariant } from '@brix-ui/types/typography';
+import { FontVariant, FontWeight, TextAlign, TextDecoration, TypeVariant } from '@brix-ui/types/typography';
 
 import Styled from './text.styles';
 import type { TextProps } from './text.props';
@@ -28,7 +28,21 @@ Text.propTypes = {
   color: PT.string,
   align: PT.oneOf(objectValues(TextAlign)),
   decoration: PT.oneOf(objectValues(TextDecoration)),
-  weight: PT.string,
+  weight: PT.oneOf([
+    ...objectValues(FontWeight),
+    'thin',
+    'extra-light',
+    'light',
+    'regular',
+    'medium',
+    'semi-bold',
+    'bold',
+    'extra-bold',
+    'black',
+    'normal',
+    'lighter',
+    'bolder',
+  ]),
 
   lineHeightCompensation: PT.oneOfType([PT.bool, PT.func]),
 
