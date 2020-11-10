@@ -1,6 +1,6 @@
 import { createElement, Ref } from 'react';
 
-import { TextElement } from '@brix-ui/types/html';
+import type { TextElement } from '@brix-ui/types/html';
 import { intrinsicComponent } from '@brix-ui/utils/functions';
 
 import Text from './text.component';
@@ -42,7 +42,23 @@ const Span = intrinsicComponent<TextProps, HTMLSpanElement>(function Span(props,
   return createTextElement(props, ref, 'span');
 });
 
+const Strong = intrinsicComponent<TextProps, HTMLSpanElement>(function Strong(props, ref) {
+  return createTextElement({ weight: 'bold', ...props }, ref, 'strong');
+});
+
+const Em = intrinsicComponent<TextProps, HTMLSpanElement>(function Em(props, ref) {
+  return createTextElement({ decoration: 'italic', ...props }, ref, 'em');
+});
+
+const Code = intrinsicComponent<TextProps, HTMLSpanElement>(function Em(props, ref) {
+  return createTextElement({ appearance: 'code', ...props }, ref, 'code');
+});
+
+const Pre = intrinsicComponent<TextProps, HTMLSpanElement>(function Pre(props, ref) {
+  return createTextElement({ appearance: 'code', ...props }, ref, 'pre');
+});
+
 export type { TextProps };
-export { H1, H2, H3, H4, H5, P, Span };
+export { H1, H2, H3, H4, H5, P, Span, Strong, Em, Code, Pre };
 
 export default Text;
