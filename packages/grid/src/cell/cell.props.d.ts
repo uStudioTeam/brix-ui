@@ -1,15 +1,11 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react';
-
-import type { IntrinsicComponent, StylableComponent, BreakpointsProps } from '@brix-ui/types/component';
+import type { FlexProps } from '@brix-ui/core/flex';
+import type { BreakpointsProps } from '@brix-ui/types/component';
 
 export interface CellBreakpointProps {
   size?: number;
-  offset?: [number?, number?];
+  offset?: [number?, number?] | number;
 }
 
-export interface CellProps
-  extends BreakpointsProps<CellBreakpointProps>,
-    PropsWithChildren<IntrinsicComponent<HTMLAttributes<HTMLDivElement>>>,
-    StylableComponent {
+export interface CellProps extends BreakpointsProps<CellBreakpointProps>, FlexProps {
   area?: string;
 }

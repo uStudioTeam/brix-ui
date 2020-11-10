@@ -6,7 +6,8 @@ import { classNames, intrinsicComponent } from '@brix-ui/utils/functions';
 import { breakpointProps, stylableComponent } from '@brix-ui/prop-types/common';
 import useBreakpointProps from '@brix-ui/hooks/use-breakpoint-props';
 import { useTheme } from '@brix-ui/theme/hooks';
-
+import Flex from '@brix-ui/core/flex';
+import { extract } from '@brix-ui/prop-types/utils';
 import { useAreaBuilderContext } from '../area-builder';
 
 import type { CellBreakpointProps, CellProps } from './cell.props';
@@ -39,7 +40,9 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
     dispatcher.mountCell({
       id,
       size: currentBreakpointProps.size,
-      offset: currentBreakpointProps.offset,
+      offset: Array.isArray(currentBreakpointProps.offset)
+        ? currentBreakpointProps.offset
+        : [currentBreakpointProps.offset, currentBreakpointProps.offset],
     });
   }, [id]);
 
@@ -51,8 +54,8 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
       className={classNames('cell', className)}
       areas={areas}
       area={id}
+      direction={direction}
       $size={size}
-      $direction={direction}
       {...props}
     >
       {children}
@@ -67,6 +70,7 @@ const cellBreakpointData: WeakValidationMap<CellBreakpointProps> = {
 
 Cell.propTypes = {
   area: PT.string,
+  ...extract([Flex]),
   ...breakpointProps(cellBreakpointData),
 
   ...stylableComponent(),
