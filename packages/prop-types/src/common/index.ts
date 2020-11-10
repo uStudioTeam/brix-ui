@@ -1,4 +1,5 @@
 export * from './indent';
+export * from './gapable';
 export * from './ref-prop';
 export * from './taggable';
 export * from './affixable';
