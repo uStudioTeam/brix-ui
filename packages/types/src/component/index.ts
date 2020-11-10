@@ -1,5 +1,6 @@
 export * from './axis';
 export * from './intent';
+export type { Gapable } from './gapable';
 export type { Taggable } from './taggable';
 export type { Delayable } from './delayable';
 export type { Affixable } from './affixable';
