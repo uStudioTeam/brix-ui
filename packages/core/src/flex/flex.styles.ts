@@ -40,17 +40,23 @@ const setAlignment = ({
   `;
 };
 
+const getDirection = (direction: FlexProps['direction'], isReversed: FlexProps['isReversed']): string | undefined => {
+  if (isReversed !== undefined) {
+    return `${direction || Direction.Row}${safeFallback(isReversed, '-reverse')}`;
+  }
+
+  return direction;
+};
+
 const Flex = styled(Block)<
   Omit<FlexProps, 'direction' | 'align'> & {
     $direction: FlexProps['direction'];
     $align: FlexProps['align'];
   }
->(({ $direction: direction = Direction.Row, isReversed, $align: align, horizontalAlign, verticalAlign }) => {
-  const flexDirection = safeFallback(direction || isReversed, `${direction}${safeFallback(isReversed, '-reverse')}`);
-
+>(({ $direction: direction, isReversed, $align: align, horizontalAlign, verticalAlign }) => {
   return css`
     display: flex;
-    flex-direction: ${flexDirection};
+    flex-direction: ${getDirection(direction, isReversed)};
 
     ${setAlignment({ direction, align, horizontalAlign, verticalAlign })};
 
