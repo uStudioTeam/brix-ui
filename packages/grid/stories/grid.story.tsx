@@ -38,13 +38,13 @@ const mapCells = (count: number, content?: (index: number) => ReactNode): ReactE
   });
 };
 
-export const Basic: Story = () => {
-  return <Grid>{mapCells(3)}</Grid>;
+export const Basic: Story = (args) => {
+  return <Grid {...args}>{mapCells(3)}</Grid>;
 };
 
-export const MultipleRows: Story = () => {
+export const MultipleRows: Story = (args) => {
   return (
-    <Grid direction="column" gap="1rem">
+    <Grid direction="column" gap="1rem" {...args}>
       <Cell>
         <Grid>{mapCells(2)}</Grid>
       </Cell>
@@ -56,9 +56,9 @@ export const MultipleRows: Story = () => {
   );
 };
 
-export const SettingColumnWidth: Story = () => {
+export const SettingColumnWidth: Story = (args) => {
   return (
-    <Grid>
+    <Grid {...args}>
       <Cell>
         <Box>One of three columns</Box>
       </Cell>
@@ -74,9 +74,9 @@ export const SettingColumnWidth: Story = () => {
   );
 };
 
-export const Gaps: Story = () => {
+export const Gaps: Story = (args) => {
   return (
-    <Grid direction="column" gap="1rem">
+    <Grid direction="column" gap="1rem" {...args}>
       <Cell>
         <Grid gap="2rem">{mapCells(3)}</Grid>
       </Cell>
@@ -88,9 +88,9 @@ export const Gaps: Story = () => {
   );
 };
 
-export const Offsets: Story = () => {
+export const Offsets: Story = (args) => {
   return (
-    <Grid direction="column" gap="1rem">
+    <Grid direction="column" gap="1rem" {...args}>
       <Cell>
         <Grid gap="2rem">
           <Cell>
@@ -122,16 +122,11 @@ export const Offsets: Story = () => {
   );
 };
 
-export const Nesting: Story = () => {
+export const Nesting: Story = (args) => {
   return (
-    <Grid direction="column" gap="1rem">
+    <Grid direction="column" gap="1rem" {...args}>
       <Cell>
-        <Box
-          direction="column"
-          gap={{
-            vertical: '1rem',
-          }}
-        >
+        <Box direction="column" verticalGap="1rem">
           <Text variant="h3">One of two rows</Text>
 
           <Grid>{mapCells(2)}</Grid>
@@ -139,12 +134,7 @@ export const Nesting: Story = () => {
       </Cell>
 
       <Cell>
-        <Box
-          direction="column"
-          gap={{
-            vertical: '1rem',
-          }}
-        >
+        <Box direction="column" verticalGap="1rem">
           <Text variant="h3">One of two rows</Text>
 
           <Grid>{mapCells(2)}</Grid>
