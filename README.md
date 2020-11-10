@@ -11,7 +11,6 @@ Brix UI is shipping several packages:
 
 - [`contexts`](packages/contexts/README.md)
 - [`core`](packages/core/README.md)
-- [`fonts`](packages/fonts/README.md)
 - [`grid`](packages/grid/README.md)
 - [`hooks`](packages/hooks/README.md)
 - [`icons`](packages/icons/README.md)
