@@ -50,7 +50,7 @@ const Em = intrinsicComponent<TextProps, HTMLSpanElement>(function Em(props, ref
   return createTextElement({ decoration: 'italic', ...props }, ref, 'em');
 });
 
-const Code = intrinsicComponent<TextProps, HTMLSpanElement>(function Em(props, ref) {
+const Code = intrinsicComponent<TextProps, HTMLSpanElement>(function Code(props, ref) {
   return createTextElement({ appearance: 'code', ...props }, ref, 'code');
 });
 
