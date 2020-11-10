@@ -42,19 +42,19 @@ const Span = intrinsicComponent<TextProps, HTMLSpanElement>(function Span(props,
   return createTextElement(props, ref, 'span');
 });
 
-const Strong = intrinsicComponent<TextProps, HTMLSpanElement>(function Strong(props, ref) {
+const Strong = intrinsicComponent<TextProps, TextElement>(function Strong(props, ref) {
   return createTextElement({ weight: 'bold', ...props }, ref, 'strong');
 });
 
-const Em = intrinsicComponent<TextProps, HTMLSpanElement>(function Em(props, ref) {
+const Em = intrinsicComponent<TextProps, TextElement>(function Em(props, ref) {
   return createTextElement({ decoration: 'italic', ...props }, ref, 'em');
 });
 
-const Code = intrinsicComponent<TextProps, HTMLSpanElement>(function Code(props, ref) {
+const Code = intrinsicComponent<TextProps, TextElement>(function Code(props, ref) {
   return createTextElement({ appearance: 'code', ...props }, ref, 'code');
 });
 
-const Pre = intrinsicComponent<TextProps, HTMLSpanElement>(function Pre(props, ref) {
+const Pre = intrinsicComponent<TextProps, HTMLPreElement>(function Pre(props, ref) {
   return createTextElement({ appearance: 'code', ...props }, ref, 'pre');
 });
 
