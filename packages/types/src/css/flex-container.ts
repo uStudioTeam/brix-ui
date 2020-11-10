@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const FlexContainer = {
   Div: 'div',
   Ul: 'ul',
