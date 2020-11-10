@@ -23,7 +23,7 @@
     "pretest": "npm-run-all -p format lint typecheck",
     "test": "jest",
     "ci": "npm-run-all -s build test",
-    "bump": "lerna version --yes --create-release github --tag-version-prefix=''",
+    "bump": "lerna version --yes --tag-version-prefix=''",
     "deploy": "gh-pages -d dist -r https://${GH_TOKEN}@github.com/uStudioTeam/brix-ui",
     "prerelease": "node scripts/create-meta-files.js",
     "release": "lerna exec -- yarn publish lib --non-interactive",
