@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-10)
+
+
+### Bug Fixes
+
+* **docs:** update `Palette` story ([d055bc6](https://github.com/uStudioTeam/brix-ui/commit/d055bc615fe14cb37ca0fe9548ca229f8075c68c))
+* **theme:** Make `ColorHelper.parseColor` return given value if it was not found in the palette or miscellaneous ([802d05d](https://github.com/uStudioTeam/brix-ui/commit/802d05d08e6db809820465a97727df1bdd3ea300)), closes [#260](https://github.com/uStudioTeam/brix-ui/issues/260)
+
+
+
+
+
 # [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
 
 

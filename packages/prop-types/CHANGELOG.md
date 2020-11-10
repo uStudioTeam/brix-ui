@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-10)
+
+
+### Bug Fixes
+
+* **docs:** update `Palette` story ([d055bc6](https://github.com/uStudioTeam/brix-ui/commit/d055bc615fe14cb37ca0fe9548ca229f8075c68c))
+
+
+### Features
+
+* **prop-types:** add `gapable` common prop-type ([baffbdc](https://github.com/uStudioTeam/brix-ui/commit/baffbdc81196d31f6e5de27283e23374e815855c))
+
+
+
+
+
 # [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
 
 **Note:** Version bump only for package @brix-ui/prop-types

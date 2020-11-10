@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-10)
+
+
+### Features
+
+* **types:** add new `Gapable` type ([1edf014](https://github.com/uStudioTeam/brix-ui/commit/1edf014aeb3ca9a361998ab9d0ef0ed867ae9811))
+* **types:** deprecate `FlexContainer` type due to its inconvenience and poor implementation ([db991b3](https://github.com/uStudioTeam/brix-ui/commit/db991b3aa8442967231b4dcdd6191d3c736ab9ba))
+
+
+
+
+
 # [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
 
 **Note:** Version bump only for package @brix-ui/types
