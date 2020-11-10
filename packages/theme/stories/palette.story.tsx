@@ -117,39 +117,16 @@ const Family: FC<{
   colors: PaletteProps;
 }> = ({ name, colors }) => {
   return (
-    <Flex
-      direction="column"
-      align="center"
-      gap={{
-        vertical: '16px',
-      }}
-    >
+    <Flex direction="column" align="center" verticalGap="16px">
       <Text variant="h2">{capitalize(name)}</Text>
 
-      <Flex
-        gap={{
-          horizontal: '24px',
-        }}
-      >
+      <Flex horizontalGap="24px">
         {['strong', 'weak'].map((member) => {
           return (
-            <Flex
-              key={member}
-              direction="column"
-              gap={{
-                vertical: '12px',
-              }}
-              align="center"
-            >
+            <Flex key={member} direction="column" verticalGap="12px" align="center">
               <Text variant="h4">{member}</Text>
 
-              <Flex
-                direction="column"
-                align="center"
-                gap={{
-                  vertical: '4px',
-                }}
-              >
+              <Flex direction="column" align="center" verticalGap="4px">
                 {['up', '', 'down'].map((shade) => {
                   const color = `${name}-${member}${shade ? `-${shade}` : ''}`;
 
@@ -172,12 +149,7 @@ const Family: FC<{
 
 export const Colors: Story<PaletteProps> = (args) => {
   return (
-    <Flex
-      align="center"
-      gap={{
-        horizontal: '64px',
-      }}
-    >
+    <Flex align="center" horizontalGap="64px">
       {['base', 'faint', 'accent', 'critical', 'success'].map((family) => (
         <Family key={family} name={family} colors={args} />
       ))}
