@@ -16,7 +16,7 @@ export const Basic: Story<TagProps> = ({ onClose, ...props }) => {
   const handleClose = () => console.log('Handle close');
 
   return (
-    <Block gap={{ horizontal: '0.5rem' }}>
+    <Block horizontalGap="0.5rem">
       <Tag>Default tag</Tag>
 
       <Tag onClose={handleClose}>Closable tag</Tag>

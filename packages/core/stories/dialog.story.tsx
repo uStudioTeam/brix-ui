@@ -49,7 +49,7 @@ export const Basic: Story<DialogProps> = ({ title, titleAlign, ...args }) => {
   return (
     <Modal {...args} unmountOnExit>
       <Dialog {...dialogProps}>
-        <Flex direction="column" gap={{ vertical: '0.75rem' }}>
+        <Flex direction="column" verticalGap="0.75rem">
           <Text as="label" htmlFor="confirm_password">
             Are you sure you want to <Styled.Strong>reset your password?</Styled.Strong>
           </Text>
@@ -57,7 +57,7 @@ export const Basic: Story<DialogProps> = ({ title, titleAlign, ...args }) => {
           <Styled.Input id="confirm_password" type="password" isReadonly placeholder="Confirm password" />
         </Flex>
 
-        <Flex as="footer" margin={{ top: '1.5rem' }} gap={{ horizontal: '1rem' }} horizontalAlign="end">
+        <Flex as="footer" margin={{ top: '1.5rem' }} horizontalGap="1rem" horizontalAlign="end">
           <Button type="reset" appearance="faint">
             Cancel
           </Button>
