@@ -22,8 +22,6 @@ Brix UI is shipping several packages:
 Some of these are not intended to be used directly but are required for the others to work.
 Most common use-case for Brix UI would be installing the `core` package which provides full-on experience of the framework.
 
-Also, to include the default fonts from our design system you have to install the `fonts` package.
-
 ## Installation
 
 ```shell script
@@ -57,12 +55,11 @@ ReactDOM.render(
 After that, you are ready to use our framework inside of your application!
 
 ```typescript jsx
+// Please note that in most cases we provide direct default exports for better tree-shaking support.
 import Button from '@brix-ui/core/button';
 ```
 
-> More examples can be found in the [`core`](packages/core/README.md) package readme.
-
-> Please note that in most cases we provide direct default exports for better tree-shaking support.
+Live demo can be found [here](https://brix-ui-showcase.vercel.app/) ([GitHub](https://github.com/drizzer14/brix-ui-showcase)).
 
 ## Contributing
 
