@@ -57,12 +57,7 @@ export const Basic: Story<RadioGroupProps> = ({ isInvalid: _isInvalid, ...args }
     <RadioGroup isInvalid={validity()} {...args} name="radio-group">
       {({ isDisabled, isInvalid }) => {
         return (
-          <Flex
-            direction="column"
-            gap={{
-              vertical: '16px',
-            }}
-          >
+          <Flex direction="column" verticalGap="16px">
             {['One', 'Two', 'Three'].map((option) => {
               return (
                 <Label aria-hidden aria-disabled={orUndefined(isDisabled)} aria-invalid={isInvalid} key={option}>
