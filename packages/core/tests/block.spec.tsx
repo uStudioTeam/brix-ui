@@ -213,9 +213,17 @@ describe('<Block />', () => {
       ` as unknown) as string,
     };
 
-    const renderWithGap = (gap: BlockProps['gap']) => {
+    const renderWithGap = ({
+      gap,
+      vertical,
+      horizontal,
+    }: {
+      gap?: BlockProps['gap'];
+      horizontal?: BlockProps['horizontalGap'];
+      vertical?: BlockProps['verticalGap'];
+    }) => {
       return render(
-        <Block data-testid={blockId} gap={gap}>
+        <Block data-testid={blockId} gap={gap} verticalGap={vertical} horizontalGap={horizontal}>
           <div />
 
           <div data-testid={lastChildId} />
@@ -225,7 +233,9 @@ describe('<Block />', () => {
 
     describe('empty value', () => {
       it('should not apply margin to children', () => {
-        const { getByTestId } = renderWithGap('');
+        const { getByTestId } = renderWithGap({
+          gap: '',
+        });
 
         ['margin-right', 'margin-bottom'].forEach((property) => {
           expect(getByTestId(blockId)).not.toHaveStyleRule(property, undefined, firstChildOptions);
@@ -235,7 +245,7 @@ describe('<Block />', () => {
 
     describe('as string', () => {
       it('should apply both right and bottom margin to all children except the last', () => {
-        const { getByTestId } = renderWithGap('1rem');
+        const { getByTestId } = renderWithGap({ gap: '1rem' });
 
         ['margin-right', 'margin-bottom'].forEach((property) => {
           expect(getByTestId(blockId)).toHaveStyleRule(property, '1rem', firstChildOptions);
