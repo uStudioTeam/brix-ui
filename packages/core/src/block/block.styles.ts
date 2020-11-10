@@ -1,12 +1,25 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
+import type { Gapable } from '@brix-ui/types/component';
 import { applyDisplayNames, parseIndent } from '@brix-ui/utils/functions';
 
 import type { BlockProps } from './block.props';
 
-const parseGap = (gap: BlockProps['gap']): FlattenSimpleInterpolation | undefined => {
-  if (!gap) {
-    return;
+const parseGap = ({
+  gap,
+  verticalGap,
+  horizontalGap,
+}: Pick<BlockProps, keyof Gapable>): FlattenSimpleInterpolation | undefined => {
+  /**
+   * @deprecated
+   */
+  if (typeof gap === 'object') {
+    return css`
+      & > *:not(:last-child) {
+        margin-right: ${gap.horizontal};
+        margin-bottom: ${gap.vertical};
+      }
+    `;
   }
 
   if (typeof gap === 'string') {
@@ -20,8 +33,8 @@ const parseGap = (gap: BlockProps['gap']): FlattenSimpleInterpolation | undefine
 
   return css`
     & > *:not(:last-child) {
-      margin-right: ${gap.horizontal};
-      margin-bottom: ${gap.vertical};
+      margin-right: ${horizontalGap};
+      margin-bottom: ${verticalGap};
     }
   `;
 };
@@ -33,13 +46,13 @@ const Block = styled.div<
     $gap?: BlockProps['gap'];
   }
 >(
-  ({ $margin: margin, $padding: padding, $gap: gap }) => css`
+  ({ $margin: margin, $padding: padding, $gap: gap, horizontalGap, verticalGap }) => css`
     display: block;
 
     margin: ${parseIndent(margin)};
     padding: ${parseIndent(padding)};
 
-    ${parseGap(gap)};
+    ${parseGap({ gap, horizontalGap, verticalGap })};
 
     &[data-inline] {
       display: inline-block;
