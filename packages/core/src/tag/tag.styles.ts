@@ -53,8 +53,8 @@ const Container = styled.div<
     $backgroundColor: TagProps['backgroundColor'];
   }
 >(({ $color, $backgroundColor, theme }) => {
-  const backgroundColor = $backgroundColor || theme.palette[Color.FaintWeak];
-  const color = $color || theme.colorHelper.getContrastingColor(backgroundColor);
+  const backgroundColor = theme.colorHelper.parseColor($backgroundColor) || theme.palette[Color.FaintWeak];
+  const color = theme.colorHelper.parseColor($color) || theme.colorHelper.getContrastingColor(backgroundColor);
 
   return css`
     display: inline-flex;
