@@ -72,9 +72,9 @@ const primaryPalette = {
     [Color.AccentWeak]: '#0C3B64',
     [Color.AccentWeakDown]: '#092B49',
 
-    [Color.SuccessStrongUp]: '#54C837',
-    [Color.SuccessStrong]: '#3CBA1C',
-    [Color.SuccessStrongDown]: '#33A018',
+    [Color.SuccessStrongUp]: '#4DB832',
+    [Color.SuccessStrong]: '#36A919',
+    [Color.SuccessStrongDown]: '#2D8E15',
 
     [Color.SuccessWeakUp]: '#1E640C',
     [Color.SuccessWeak]: '#18520A',
