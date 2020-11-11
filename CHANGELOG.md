@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-11)
+
+
+### Bug Fixes
+
+* **Badge:** parse `color` and `backgroundColor` from props ([7d320ea](https://github.com/uStudioTeam/brix-ui/commit/7d320ea1580265b8ae9198464beec8bca15f5c7d))
+* **docs:** update `core` stories ([95e7f16](https://github.com/uStudioTeam/brix-ui/commit/95e7f162720ff9ecbcef3c5f79be2935af751ce7))
+* **docs:** update `Grid` story ([eab8fa5](https://github.com/uStudioTeam/brix-ui/commit/eab8fa5792706ef24382b17f60558b6daa15493c))
+* **docs:** update `Palette` story ([d055bc6](https://github.com/uStudioTeam/brix-ui/commit/d055bc615fe14cb37ca0fe9548ca229f8075c68c))
+* **Tag:** parse `color` and `backgroundColor` from props ([eef7ad4](https://github.com/uStudioTeam/brix-ui/commit/eef7ad48a315cb99819cc3f1c07d3fb87eb8ed6b))
+* **theme:** Make `ColorHelper.parseColor` return given value if it was not found in the palette or miscellaneous ([802d05d](https://github.com/uStudioTeam/brix-ui/commit/802d05d08e6db809820465a97727df1bdd3ea300)), closes [#260](https://github.com/uStudioTeam/brix-ui/issues/260)
+* **utils:** replace unsupported in Safari lookbehind regex in `createCustomProperties` ([3b7674d](https://github.com/uStudioTeam/brix-ui/commit/3b7674d5c03bab47e6eb0aff9fcae00d60a41390))
+
+
+### Features
+
+* **Button:** add `justify-content: center` rule ([3f89c30](https://github.com/uStudioTeam/brix-ui/commit/3f89c30ee29fe8c6f8226cdd7eb52b9c6cf305eb))
+* **Button:** remove `:not(:disabled)` modifier from styles ([799e60c](https://github.com/uStudioTeam/brix-ui/commit/799e60c0ba65e7cd384eccc8a202576547fecb83)), closes [#262](https://github.com/uStudioTeam/brix-ui/issues/262)
+* **Cell:** update `Cell` component, now extending from `Flex` ([76622da](https://github.com/uStudioTeam/brix-ui/commit/76622da7231d9f64495b6b91224b8e8926a345e2))
+* **core:** update `Block` and `Flex` implementations with new `Gapable` type & more ([d96277d](https://github.com/uStudioTeam/brix-ui/commit/d96277d3e33d56bb36660514b4303bb7d3205fd6))
+* **Divider:** Widen the interface of `margin` and `padding` props ([1f303b5](https://github.com/uStudioTeam/brix-ui/commit/1f303b52570019266a1d9d28347315ec52b8fbee))
+* **Grid:** update `Grid` component, now extending from `Flex` ([9e099f6](https://github.com/uStudioTeam/brix-ui/commit/9e099f68838fb6b86465cd2aea6f2d2eaabfe73e))
+* **prop-types:** add `gapable` common prop-type ([baffbdc](https://github.com/uStudioTeam/brix-ui/commit/baffbdc81196d31f6e5de27283e23374e815855c))
+* **Text:** add `weight` prop ([50bbd63](https://github.com/uStudioTeam/brix-ui/commit/50bbd636b791a42504c26228bbe8248e5f8fbc55)), closes [#261](https://github.com/uStudioTeam/brix-ui/issues/261)
+* **Text:** add exports of `Strong`, `Em`, `Code` and `Pre` components ([aef738b](https://github.com/uStudioTeam/brix-ui/commit/aef738b11b0b591be53fa290c7bfb48a7d6d657a))
+* **Text:** make `weight` prop more flexible ([cc4a221](https://github.com/uStudioTeam/brix-ui/commit/cc4a221c513ac0f673a60e1d7fa454cc8ea8ac32))
+* **Text:** parse `color` prop like everywhere else ([99dbce1](https://github.com/uStudioTeam/brix-ui/commit/99dbce1d6cdfd5e168fd5e14fef4d7e2bef0510f)), closes [#266](https://github.com/uStudioTeam/brix-ui/issues/266)
+* **theme:** darken `success-strong` colors on dark theme ([37da01e](https://github.com/uStudioTeam/brix-ui/commit/37da01e2f8e7c0895f19bcbf444abaf311081b86))
+* **types:** add new `Gapable` type ([1edf014](https://github.com/uStudioTeam/brix-ui/commit/1edf014aeb3ca9a361998ab9d0ef0ed867ae9811))
+* **types:** deprecate `FlexContainer` type due to its inconvenience and poor implementation ([db991b3](https://github.com/uStudioTeam/brix-ui/commit/db991b3aa8442967231b4dcdd6191d3c736ab9ba))
+* **utils:** Move `parseIndent` function from `Block` to `utils` ([8153739](https://github.com/uStudioTeam/brix-ui/commit/8153739d37110bac7f0f286fe2f0239b91603c5c))
+
+
+
+
+
 # [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
 
 **2.0.0** 🥳🎉!

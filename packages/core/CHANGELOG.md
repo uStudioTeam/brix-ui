@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-11)
+
+
+### Bug Fixes
+
+* **Badge:** parse `color` and `backgroundColor` from props ([7d320ea](https://github.com/uStudioTeam/brix-ui/commit/7d320ea1580265b8ae9198464beec8bca15f5c7d))
+* **docs:** update `core` stories ([95e7f16](https://github.com/uStudioTeam/brix-ui/commit/95e7f162720ff9ecbcef3c5f79be2935af751ce7))
+* **Tag:** parse `color` and `backgroundColor` from props ([eef7ad4](https://github.com/uStudioTeam/brix-ui/commit/eef7ad48a315cb99819cc3f1c07d3fb87eb8ed6b))
+
+
+### Features
+
+* **Button:** add `justify-content: center` rule ([3f89c30](https://github.com/uStudioTeam/brix-ui/commit/3f89c30ee29fe8c6f8226cdd7eb52b9c6cf305eb))
+* **Button:** remove `:not(:disabled)` modifier from styles ([799e60c](https://github.com/uStudioTeam/brix-ui/commit/799e60c0ba65e7cd384eccc8a202576547fecb83)), closes [#262](https://github.com/uStudioTeam/brix-ui/issues/262)
+* **core:** update `Block` and `Flex` implementations with new `Gapable` type & more ([d96277d](https://github.com/uStudioTeam/brix-ui/commit/d96277d3e33d56bb36660514b4303bb7d3205fd6))
+* **Divider:** Widen the interface of `margin` and `padding` props ([1f303b5](https://github.com/uStudioTeam/brix-ui/commit/1f303b52570019266a1d9d28347315ec52b8fbee))
+* **Text:** add `weight` prop ([50bbd63](https://github.com/uStudioTeam/brix-ui/commit/50bbd636b791a42504c26228bbe8248e5f8fbc55)), closes [#261](https://github.com/uStudioTeam/brix-ui/issues/261)
+* **Text:** add exports of `Strong`, `Em`, `Code` and `Pre` components ([aef738b](https://github.com/uStudioTeam/brix-ui/commit/aef738b11b0b591be53fa290c7bfb48a7d6d657a))
+* **Text:** make `weight` prop more flexible ([cc4a221](https://github.com/uStudioTeam/brix-ui/commit/cc4a221c513ac0f673a60e1d7fa454cc8ea8ac32))
+* **Text:** parse `color` prop like everywhere else ([99dbce1](https://github.com/uStudioTeam/brix-ui/commit/99dbce1d6cdfd5e168fd5e14fef4d7e2bef0510f)), closes [#266](https://github.com/uStudioTeam/brix-ui/issues/266)
+* **utils:** Move `parseIndent` function from `Block` to `utils` ([8153739](https://github.com/uStudioTeam/brix-ui/commit/8153739d37110bac7f0f286fe2f0239b91603c5c))
+
+
+
+
+
 # [2.0.0](https://github.com/uStudioTeam/brix-ui/compare/v2.0.0-rc.1...2.0.0) (2020-11-05)
 
 **Note:** Version bump only for package @brix-ui/core
