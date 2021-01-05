@@ -7,11 +7,11 @@ Theme package providing light and dark modes as well as CSS/JS variables and hel
 ## Installation
 
 ```shell script
-npm i @brix-ui/core # styled-components react react-dom
+npm i @brix-ui/theme # styled-components react react-dom
 ```
 
 ```shell script
-yarn add @brix-ui/core # styled-components react react-dom
+yarn add @brix-ui/theme # styled-components react react-dom
 ```
 
 > Make sure to have `react`, `react-dom` and `styled-components` installed in your package as they are included in our peer dependencies.
