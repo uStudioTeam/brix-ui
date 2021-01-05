@@ -1,4 +1,4 @@
-# @brix-ui/icons
+# @brix-ui/hooks
 
 Batch of useful UI-related React hooks.
 
@@ -7,11 +7,11 @@ Batch of useful UI-related React hooks.
 ## Installation
 
 ```shell script
-npm i @brix-ui/icons # react react-dom
+npm i @brix-ui/hooks # react react-dom
 ```
 
 ```shell script
-yarn add @brix-ui/icons # react react-dom
+yarn add @brix-ui/hooks # react react-dom
 ```
 
 > Make sure to have `react` and `react-dom` installed in your package as they are included in our peer dependencies.
