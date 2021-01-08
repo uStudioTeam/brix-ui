@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **docs:** update `Grid` story ([d00ca68](https://github.com/uStudioTeam/brix-ui/commit/d00ca68dd53c1ca82fe90d4420c903f4eca57ae7))
+
+
+### Features
+
+* **Cell:** update `Cell` component, now extending from `Flex` ([49cccc6](https://github.com/uStudioTeam/brix-ui/commit/49cccc6136cd830f721dbe5a3af016d9db292103))
+* **Grid:** update `Grid` component, now extending from `Flex` ([3cf8b81](https://github.com/uStudioTeam/brix-ui/commit/3cf8b8106261707f2ef0b96f0a8b1c8fc783b0af))
+
+
+
+
+
 # [2.1.0](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.0) (2020-11-11)
 
 
