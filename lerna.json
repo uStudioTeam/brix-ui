@@ -14,6 +14,7 @@
       "message": "chore(release): %s",
       "allowBranch": [
         "hotfix-*",
+        "bugfix-*",
         "release-*"
       ],
       "conventionalCommits": true
