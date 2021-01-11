@@ -1,7 +1,6 @@
 import React, { useMemo, WeakValidationMap } from 'react';
 
 import { applyPolymorphicFunctionProp, classNames, intrinsicComponent, orUndefined } from '@brix-ui/utils/functions';
-import type { With } from '@brix-ui/utils/types';
 import { extract } from '@brix-ui/prop-types/utils';
 import { breakpointProps, stylableComponent, polymorphicBreakpointProp, gapable } from '@brix-ui/prop-types/common';
 import Flex from '@brix-ui/core/flex';
@@ -30,7 +29,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
 
   const { breakpoints } = useTheme();
 
-  const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps(
+  const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps<GridBreakpointProps>(
     {
       sm,
       md,
@@ -42,7 +41,7 @@ const Grid = intrinsicComponent<GridProps>(function Grid(
       maxWidth,
     },
     breakpoints
-  ) as With<GridBreakpointProps, { currentBreakpoint: number }>;
+  );
 
   return (
     <AreaBuilder areas={grid.areas} dispatcher={dispatcher}>
