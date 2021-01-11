@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **TextArea:** make container element span full-width ([ab8cdd0](https://github.com/uStudioTeam/brix-ui/commit/ab8cdd00edc94067487ea28a0367d608b17bca95))
+
+
+
+
+
 ## [2.1.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.1) (2021-01-08)
 
 

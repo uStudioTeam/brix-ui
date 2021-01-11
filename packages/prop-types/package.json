@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/prop-types",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Prop-types for Brix UI",
   "keywords": [
     "prop-types"
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@brix-ui/types": "^2.1.1",
-    "@brix-ui/utils": "^2.1.1",
+    "@brix-ui/utils": "^2.2.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

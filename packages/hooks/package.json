@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/hooks",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Batch of useful UI-related React hooks",
   "keywords": [
     "hooks"
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@brix-ui/types": "^2.1.1",
-    "@brix-ui/utils": "^2.1.1",
+    "@brix-ui/utils": "^2.2.0",
     "honks": "^0.4.0"
   },
   "devDependencies": {

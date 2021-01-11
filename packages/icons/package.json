@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/icons",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "SVG icons as React components",
   "keywords": [
     "library",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@brix-ui/types": "^2.1.1",
-    "@brix-ui/utils": "^2.1.1"
+    "@brix-ui/utils": "^2.2.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",

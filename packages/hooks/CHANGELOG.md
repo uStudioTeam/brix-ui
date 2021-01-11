@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
+
+
+### Features
+
+* **hooks:** update and simplify `useBreakpointProps` function type ([ba10d1e](https://github.com/uStudioTeam/brix-ui/commit/ba10d1e92f0fa771f8a08bc137428556c7944a0b))
+
+
+
+
+
 ## [2.1.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.1) (2021-01-08)
 
 **Note:** Version bump only for package @brix-ui/hooks

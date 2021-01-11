@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
+
+
+### Features
+
+* **utils:** update `spread` function type ([1f26089](https://github.com/uStudioTeam/brix-ui/commit/1f26089d7d62674d3c1239c25364588d3245522b))
+
+
+
+
+
 ## [2.1.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.1) (2021-01-08)
 
 
