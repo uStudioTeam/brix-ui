@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **docs:** update `Palette` story ([6aac54c](https://github.com/uStudioTeam/brix-ui/commit/6aac54c50c9a636d174122ff600025f8c13a9873))
+* **theme:** Make `ColorHelper.parseColor` return given value if it was not found in the palette or miscellaneous ([5eaa419](https://github.com/uStudioTeam/brix-ui/commit/5eaa4193cd5c5d4433d0a2c47b8ccfa619573c89)), closes [#260](https://github.com/uStudioTeam/brix-ui/issues/260)
+
+
+### Features
+
+* **theme:** darken `success-strong` colors on dark theme ([f98d41c](https://github.com/uStudioTeam/brix-ui/commit/f98d41c05593755301887201d6bcc4887494142c))
+
+
+
+
+
 # [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
 
 **Note:** Version bump only for package @brix-ui/theme

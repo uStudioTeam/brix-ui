@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **utils:** replace unsupported in Safari lookbehind regex in `createCustomProperties` ([ceec1d8](https://github.com/uStudioTeam/brix-ui/commit/ceec1d880fd3fc1787831505eb9477ab8f33f0e4))
+
+
+### Features
+
+* **utils:** Move `parseIndent` function from `Block` to `utils` ([562d3c2](https://github.com/uStudioTeam/brix-ui/commit/562d3c2c02fa5c16292d6d9efe5822e5e50714a2))
+* **utils:** update `spread` function type ([416d3f7](https://github.com/uStudioTeam/brix-ui/commit/416d3f76a1d01150265230de1d207fdc81d49e64))
+
+
+
+
+
 # [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
 
 
