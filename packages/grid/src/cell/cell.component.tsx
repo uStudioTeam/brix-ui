@@ -21,7 +21,7 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
 
   const { breakpoints } = useTheme();
 
-  const currentBreakpointProps = useBreakpointProps(
+  const { currentBreakpoint, ...currentBreakpointProps } = useBreakpointProps<CellBreakpointProps>(
     {
       sm,
       md,
@@ -31,7 +31,7 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
       offset,
     },
     breakpoints
-  ) as CellBreakpointProps;
+  );
 
   const { current: internalId } = useRef(Math.random().toString(32).slice(2).replace(/\d+/, ''));
   const id = useMemo(() => area || internalId, [area]);
@@ -44,7 +44,7 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
         ? currentBreakpointProps.offset
         : [currentBreakpointProps.offset, currentBreakpointProps.offset],
     });
-  }, [id]);
+  }, [id, currentBreakpoint]);
 
   const direction = useDirection();
 
@@ -65,7 +65,9 @@ const Cell = intrinsicComponent<CellProps, HTMLDivElement>(function Cell(
 
 const cellBreakpointData: WeakValidationMap<CellBreakpointProps> = {
   size: PT.number,
-  offset: PT.arrayOf(PT.number) as Requireable<CellBreakpointProps['offset']>,
+  offset: PT.oneOfType([PT.arrayOf(PT.number).isRequired, PT.number.isRequired]) as Requireable<
+    CellBreakpointProps['offset']
+  >,
 };
 
 Cell.propTypes = {
