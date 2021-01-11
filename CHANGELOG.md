@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **grid:** add `currentBreakpoint` to dispatch memoization ([c88ef8b](https://github.com/uStudioTeam/brix-ui/commit/c88ef8b711a586fc92b1f285039a424073c34b07))
+* **grid:** update `useBreakpointProps` usage ([1924585](https://github.com/uStudioTeam/brix-ui/commit/19245855103160f5564a5fe68a3677f77968de2e))
+* **TextArea:** make container element span full-width ([ab8cdd0](https://github.com/uStudioTeam/brix-ui/commit/ab8cdd00edc94067487ea28a0367d608b17bca95))
+
+
+### Features
+
+* **hooks:** update and simplify `useBreakpointProps` function type ([ba10d1e](https://github.com/uStudioTeam/brix-ui/commit/ba10d1e92f0fa771f8a08bc137428556c7944a0b))
+* **utils:** update `spread` function type ([1f26089](https://github.com/uStudioTeam/brix-ui/commit/1f26089d7d62674d3c1239c25364588d3245522b))
+
+
+
+
+
 ## [2.1.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.1.1) (2021-01-08)
 
 
