@@ -9,7 +9,8 @@ import type { TextAreaProps } from './text-area.props';
 const Label = styled.label`
   position: relative;
 
-  ${size('fit-content')};
+  width: 100%;
+  height: fit-content;
 
   display: inline-block;
 `;
