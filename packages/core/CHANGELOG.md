@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **Badge:** parse `color` and `backgroundColor` from props ([4d3d160](https://github.com/uStudioTeam/brix-ui/commit/4d3d1605d0d96db7adf2bbbcb0ceb7847618834f))
+* **Block:** remove `TextTag` type exclusion from the props extension of `Taggable` ([a5e26c8](https://github.com/uStudioTeam/brix-ui/commit/a5e26c8e7f28cafea96343d419ab3398276bafd4))
+* **docs:** update `core` stories ([859b6eb](https://github.com/uStudioTeam/brix-ui/commit/859b6eb1613bf74171f90affc693105b562864b6))
+* **Tag:** parse `color` and `backgroundColor` from props ([901ab59](https://github.com/uStudioTeam/brix-ui/commit/901ab598738f01cc7b11b84b7ca1503fc6da2665))
+* **TextArea:** make container element span full-width ([559c7b9](https://github.com/uStudioTeam/brix-ui/commit/559c7b92ea4ed4ff92a988fd6a3bd27e2b19947d))
+
+
+### Features
+
+* **Button:** add `justify-content: center` rule ([8d4df60](https://github.com/uStudioTeam/brix-ui/commit/8d4df6043a2043e52963a1715665411e2970a0e1))
+* **Button:** remove `:not(:disabled)` modifier from styles ([78852ba](https://github.com/uStudioTeam/brix-ui/commit/78852bae21e40c82cb0e3df7ed6f1be16b7595c0)), closes [#262](https://github.com/uStudioTeam/brix-ui/issues/262)
+* **core:** update `Block` and `Flex` implementations with new `Gapable` type & more ([f9db1aa](https://github.com/uStudioTeam/brix-ui/commit/f9db1aa12c4c097f1ea4167238d4d8b302fe2670))
+* **Divider:** Widen the interface of `margin` and `padding` props ([130b012](https://github.com/uStudioTeam/brix-ui/commit/130b012c8fc259cc19d38e905072ec8fe1f7e32c))
+* **Text:** add `weight` prop ([c592fba](https://github.com/uStudioTeam/brix-ui/commit/c592fba97abd2b95983cf18481606a6127ba0c2c)), closes [#261](https://github.com/uStudioTeam/brix-ui/issues/261)
+* **Text:** add exports of `Strong`, `Em`, `Code` and `Pre` components ([462385e](https://github.com/uStudioTeam/brix-ui/commit/462385eff16ff39d57fa66aedf3f65634e272ee9))
+* **Text:** make `weight` prop more flexible ([0b9518b](https://github.com/uStudioTeam/brix-ui/commit/0b9518bb1e88261fcae5edf77065f751cedf2deb))
+* **Text:** parse `color` prop like everywhere else ([9d9afff](https://github.com/uStudioTeam/brix-ui/commit/9d9afffeb5b68616db8c26e79b5d4662009be2ae)), closes [#266](https://github.com/uStudioTeam/brix-ui/issues/266)
+* **utils:** Move `parseIndent` function from `Block` to `utils` ([562d3c2](https://github.com/uStudioTeam/brix-ui/commit/562d3c2c02fa5c16292d6d9efe5822e5e50714a2))
+
+
+
+
+
 # [2.2.0](https://github.com/uStudioTeam/brix-ui/compare/2.1.1...2.2.0) (2021-01-11)
 
 
