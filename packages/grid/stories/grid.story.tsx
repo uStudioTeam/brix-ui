@@ -143,3 +143,15 @@ export const Nesting: Story = (args) => {
     </Grid>
   );
 };
+
+export const Container: Story = (args) => {
+  return (
+    <Grid {...args}>
+      <Cell size={12} md={{ size: 10, offset: 2 }} lg={{ size: 8, offset: 2 }} xl={{ size: 6, offset: 3 }}>
+        <Box direction="column" verticalGap="1rem">
+          <Text variant="h3">Content</Text>
+        </Box>
+      </Cell>
+    </Grid>
+  );
+};
