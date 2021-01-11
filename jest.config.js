@@ -25,7 +25,6 @@ module.exports = {
       babelConfig: '<rootDir>/babel.config.js',
     },
   },
-  transformIgnorePatterns: ['node_modules/(?!(honks)/)'],
   testRegex: '.*\\.spec.tsx?$',
   coveragePathIgnorePatterns: ['/node_modules/'],
   coverageThreshold: {
