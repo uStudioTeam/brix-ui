@@ -1,14 +1,8 @@
-import type { Values } from '@brix-ui/utils/types';
-
 /**
  * Spreads multiple objects into one
  */
-export function spread<
-  _O extends Record<string, unknown> | undefined,
-  O extends Exclude<_O, undefined>,
-  R extends Record<keyof O, Values<O>>
->(...objects: _O[]): R {
-  return objects.reduce((spreadObject, object) => {
-    return Object.assign(spreadObject, object || {});
-  }, {} as R);
+export function spread<R extends object>(...objects: (object | undefined)[]): R {
+  return objects.reduce((target, object = {}) => {
+    return Object.assign(target, object);
+  }, ({} as unknown) as R) as R;
 }
