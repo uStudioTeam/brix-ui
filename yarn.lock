@@ -8496,6 +8496,11 @@ honks@^0.4.0:
   resolved "https://registry.yarnpkg.com/honks/-/honks-0.4.0.tgz#44119940bc6da78a372f04747887e35d37562daa"
   integrity sha512-f7EvfFN36vAQ7PKYMMMSAr5tfKjaAIHA7nDV3vU8ppNawCGWGGBGLaWbnYasdDOemtY0k6KbbDy41I4a23u0BA==
 
+honks@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/honks/-/honks-0.4.1.tgz#8e62ffa1f919787c9723538cfc3fc61701e23507"
+  integrity sha512-c/Dh+XunKCfYAp9vx3iOLjK6JAp2vjftFtnMq5R37lCgf2ZhTVwYTc2sfknxuWgMlprBVeZo+J1qCcdCMH/bYg==
+
 hosted-git-info@^2.1.4, hosted-git-info@^2.7.1:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"

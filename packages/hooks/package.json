@@ -11,7 +11,7 @@
   "dependencies": {
     "@brix-ui/types": "^2.2.0",
     "@brix-ui/utils": "^2.2.0",
-    "honks": "^0.4.0"
+    "honks": "^0.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",
