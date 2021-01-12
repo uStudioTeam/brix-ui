@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.2) (2021-01-12)
+
+
+### Bug Fixes
+
+* **docs:** update `Grid` story ([d00ca68](https://github.com/uStudioTeam/brix-ui/commit/d00ca68dd53c1ca82fe90d4420c903f4eca57ae7))
+* **grid:** add `currentBreakpoint` to dispatch memoization ([215c07c](https://github.com/uStudioTeam/brix-ui/commit/215c07c01ee069e21bb574342cef848bcf18fadf))
+* **grid:** update `useBreakpointProps` usage ([5d4cb5a](https://github.com/uStudioTeam/brix-ui/commit/5d4cb5a0a0c83f2a97deeed7f21c5358e248e15e))
+
+
+### Features
+
+* **Cell:** update `Cell` component, now extending from `Flex` ([49cccc6](https://github.com/uStudioTeam/brix-ui/commit/49cccc6136cd830f721dbe5a3af016d9db292103))
+* **Grid:** update `Grid` component, now extending from `Flex` ([3cf8b81](https://github.com/uStudioTeam/brix-ui/commit/3cf8b8106261707f2ef0b96f0a8b1c8fc783b0af))
+
+
+
+
+
 ## [2.2.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.1) (2021-01-11)
 
 

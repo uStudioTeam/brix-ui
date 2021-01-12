@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.2) (2021-01-12)
+
+
+### Bug Fixes
+
+* **docs:** update `Palette` story ([6aac54c](https://github.com/uStudioTeam/brix-ui/commit/6aac54c50c9a636d174122ff600025f8c13a9873))
+
+
+### Features
+
+* **prop-types:** add `gapable` common prop-type ([37cfb2c](https://github.com/uStudioTeam/brix-ui/commit/37cfb2cfe2605b0cc54402544d3adcfbb6feceb6))
+
+
+
+
+
 ## [2.2.1](https://github.com/uStudioTeam/brix-ui/compare/2.0.0...2.2.1) (2021-01-11)
 
 
