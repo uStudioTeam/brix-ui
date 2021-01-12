@@ -114,7 +114,7 @@ const Details = styled.div<{
 
     transition: all ${transitionSpeed !== undefined ? `${transitionSpeed}ms` : 'var(--transition-long)'};
 
-    div {
+    & > div {
       padding: 12px 16px;
     }
   `
