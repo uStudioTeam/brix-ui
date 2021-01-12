@@ -1,6 +1,6 @@
 {
   "name": "@brix-ui/types",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Runtime and compile time types for Brix UI",
   "keywords": [
     "types",
